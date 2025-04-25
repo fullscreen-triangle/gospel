@@ -1,0 +1,88 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
+*.egg
+
+# Virtual environments
+venv/
+env/
+.env/
+.venv/
+ENV/
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IDE specific files
+.idea/
+.vscode/
+*.swp
+*.swo
+*.sublime-workspace
+*.sublime-project
+
+# Project specific
+public/
+trained_models/
+network_data/
+network_data_cache/
+network_analysis/
+training_data/
+
+# Data files
+*.json
+*.jsonl
+*.csv
+*.tsv
+*.xlsx
+*.xls
+!requirements*.txt
+
+# Media
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.svg
+*.mp4
+*.wav
+*.mp3
+
+# Compressed files
+*.tar
+*.gz
+*.zip
+*.rar
+*.7z
+
+# Logs
+*.log
+logs/
+
+# Local configuration
+config.local.yaml
+.env
+
+# OS specific
+.DS_Store
+Thumbs.db
