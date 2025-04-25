@@ -2,7 +2,7 @@
 <p align="center"><em>"So good was the news, that one decided to kiss an ICE"</em></p>
 
 <p align="center">
-  <img src="gospel.png" alt="Zangalewa Logo">
+  <img src="./gospel.png" alt="Zangalewa Logo">
 </p>
 
 The original Pollio framework provided valuable insights into sprint
@@ -263,9 +263,197 @@ facilitate:
 
 ## Data Processing Pipeline
 
+Gospel implements a sophisticated data processing pipeline optimized for handling large-scale genomic data efficiently:
+
+```
+genome_data → Quality Control → Variant Calling → Annotation → Filtering → Scoring → Domain Analysis
+```
+
+### Input Processing
+
+The pipeline begins with comprehensive quality control of input data:
+
+- **Format Validation**: Validates VCF, BAM, FASTQ, and other standard bioinformatics formats
+- **Quality Assessment**: Evaluates read quality, coverage depth, and variant call confidence
+- **Error Correction**: Applies error correction algorithms for low-quality regions
+
+### Variant Processing
+
+The variant processing module handles multiple variant types:
+
+1. **SNP Processing**: Identifies and annotates single nucleotide polymorphisms
+2. **Indel Analysis**: Processes insertions and deletions of various sizes
+3. **Structural Variant Detection**: Identifies larger genomic rearrangements
+4. **Copy Number Analysis**: Quantifies gene copy number variations
+
+### Annotation Pipeline
+
+Variants are annotated using multiple reference databases:
+
+- **Functional Annotation**: Gene impact, protein changes, and regulatory effects
+- **Population Frequencies**: Allele frequencies from gnomAD, 1000 Genomes, and other population databases
+- **Clinical Significance**: Annotations from ClinVar, OMIM, and other clinical databases
+- **Conservation Scores**: GERP, PhyloP, and other evolutionary conservation metrics
+
+### Parallelized Processing
+
+The pipeline employs efficient parallel processing techniques:
+
+- **Chromosome-Level Parallelization**: Processes chromosomes independently
+- **Batch Processing**: Handles variants in optimized batches
+- **Stream Processing**: Implements memory-efficient streaming for large files
+- **Checkpointing**: Enables recovery from failures at intermediate stages
+
 ## Domain-Specific Processing Modules
 
+Gospel implements specialized processing modules for each analytical domain:
+
+### Fitness Domain Module
+
+The fitness domain module analyzes variants relevant to physical performance:
+
+- **Performance Gene Analysis**: Evaluates variants in genes associated with endurance, power, and recovery
+- **Muscle Fiber Composition**: Analyzes genetic factors influencing fast-twitch vs. slow-twitch muscle distribution
+- **Recovery Efficiency**: Assesses genetic factors affecting recovery time and injury susceptibility
+- **Training Response Prediction**: Predicts responsiveness to different training modalities
+
+```python
+class FitnessDomainProcessor:
+    def __init__(self, config):
+        self.performance_analyzer = PerformanceGeneAnalyzer(config)
+        self.muscle_composition_analyzer = MuscleCompositionAnalyzer(config)
+        self.recovery_analyzer = RecoveryEfficiencyAnalyzer(config)
+        self.training_response_predictor = TrainingResponsePredictor(config)
+        
+    def process(self, variants):
+        performance_results = self.performance_analyzer.analyze(variants)
+        composition_results = self.muscle_composition_analyzer.analyze(variants)
+        recovery_results = self.recovery_analyzer.analyze(variants)
+        training_results = self.training_response_predictor.predict(variants)
+        
+        return {
+            "performance": performance_results,
+            "muscle_composition": composition_results,
+            "recovery": recovery_results,
+            "training_response": training_results
+        }
+```
+
+### Pharmacogenetic Domain Module
+
+The pharmacogenetic module focuses on drug metabolism and response:
+
+- **Drug Metabolism Analysis**: Evaluates variants affecting drug-metabolizing enzymes
+- **Transporter Variant Analysis**: Assesses variants in drug transport proteins
+- **Receptor Sensitivity**: Analyzes variants affecting drug target receptors
+- **Adverse Reaction Risk**: Predicts genetic risk for adverse drug reactions
+
+The module integrates with major pharmacogenomic databases:
+
+- PharmGKB
+- PharmVar
+- FDA Pharmacogenomic Biomarkers
+- CPIC Guidelines
+
+### Nutritional Domain Module
+
+The nutritional module analyzes genetic factors affecting nutrient metabolism:
+
+- **Macronutrient Metabolism**: Analyzes variants affecting carbohydrate, protein, and fat metabolism
+- **Micronutrient Processing**: Evaluates genetic factors influencing vitamin and mineral requirements
+- **Food Sensitivity Analysis**: Identifies genetic factors related to food intolerances
+- **Metabolic Pathway Analysis**: Maps variants to key metabolic pathways
+
+Each domain module implements standardized interfaces for:
+
+1. Variant prioritization specific to the domain
+2. Domain-specific scoring algorithms
+3. Integration with domain knowledge bases
+4. Generation of domain-specific recommendations
+
 ## Language Model Integration
+
+Gospel integrates a domain-expert language model (LLM) to provide natural language interpretation of genomic analysis:
+
+### Knowledge-Grounded Architecture
+
+The LLM integration follows a knowledge-grounded architecture:
+
+```
+User Query → Query Understanding → Knowledge Retrieval → Context Assembly → LLM Generation → Response Formatting
+```
+
+The system employs several key components:
+
+- **Domain-Specific Embeddings**: Custom embeddings trained on genomic literature
+- **Retrieval-Augmented Generation (RAG)**: Enhances responses with retrieved knowledge
+- **Multi-Hop Reasoning**: Connects information across multiple knowledge sources
+- **Citation Tracking**: Links responses to scientific literature
+
+### Query Processing
+
+The query processing system handles various types of genomic questions:
+
+1. **Variant Interpretation**: "What does my ACTN3 variant mean for sprint performance?"
+2. **Mechanism Exploration**: "How does the ACE gene influence endurance capacity?"
+3. **Recommendation Requests**: "What training approach works best for my genetic profile?"
+4. **Comparative Analysis**: "How do my PPARGC1A variants compare to typical endurance athletes?"
+
+### Knowledge Base Integration
+
+The LLM interfaces with multiple knowledge sources:
+
+- **Internal Knowledge Base**: Curated genomic knowledge with structured relationships
+- **Scientific Literature**: Access to processed genomic research papers
+- **Analysis Results**: Direct access to the user's analysis results
+- **External Databases**: Integration with ClinVar, GWAS Catalog, and other resources
+
+### Response Generation
+
+The response generation system implements:
+
+- **Accuracy Verification**: Fact-checking against scientific knowledge
+- **Evidence Grading**: Classification of evidence strength (strong, moderate, preliminary)
+- **Uncertainty Communication**: Clear expression of confidence levels
+- **Domain Adaptation**: Specialized outputs for fitness, pharmacogenetics, and nutrition
+
+```python
+def llm_query_processing(query, user_results, knowledge_base):
+    # Parse and classify the query
+    query_intent = classify_query_intent(query)
+    query_domains = identify_relevant_domains(query)
+    
+    # Retrieve relevant knowledge
+    kb_results = knowledge_base.retrieve(
+        query=query,
+        domains=query_domains,
+        limit=10
+    )
+    
+    # Extract relevant user results
+    user_context = extract_relevant_results(
+        results=user_results,
+        query=query,
+        domains=query_domains
+    )
+    
+    # Assemble context for the LLM
+    context = assemble_context(kb_results, user_context)
+    
+    # Generate response with the LLM
+    response = query_llm(
+        query=query,
+        context=context,
+        intent=query_intent
+    )
+    
+    # Format and validate the response
+    validated_response = validate_scientific_accuracy(response, knowledge_base)
+    
+    return format_response(validated_response, query_intent)
+```
+
+The LLM integration enables Gospel to provide scientifically accurate, personalized explanations of complex genomic findings in natural language, bridging the gap between raw analytical results and actionable insights.
 
 # Implementation Details
 
