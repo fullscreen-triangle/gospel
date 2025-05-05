@@ -1,20 +1,13 @@
 <h1 align="center">Gospel</h1>
-<p align="center"><em>"So good was the news, that one decided to kiss an ICE"</em></p>
+<p align="center"><em>Kissing a movin train</em></p>
 
 <p align="center">
-  <img src="./gospel.png" alt="Zangalewa Logo">
+  <img src="gospel.png" alt="Zangalewa Logo">
 </p>
 
-The original Pollio framework provided valuable insights into sprint
-performance potential through targeted SNP analysis. However, modern
-genomic sequencing technologies generate far richer datasets that remain
-underutilized in most analysis pipelines. Whole genome and exome
-sequencing data contain information extending beyond simple SNPs,
-including structural variants, copy number variations, and regulatory
-region mutations that collectively influence an individual's phenotype
-across multiple domains [@Manolio2009].
+Gospel is a new and enhanced framework that inherits from the original Pollio framework which involved targeted SNP analysis in human genomes which generated sprinting potential scores for individuals. However, modern genomic sequencing technologies generate far richer datasets that remain underutilized in most analysis pipelines. Whole genome and exome sequencing data contain information extending beyond simple SNPs, including structural variants, copy number variations, and regulatory region mutations that collectively influence an individual's phenotype across multiple domains [@Manolio2009].
 
-Gospel addresses these limitations by expanding the analytical scope to
+Gospel addresses these limitations by expanding the inherited analytical scope to
 encompass:
 
 -   Complete exome analysis for comprehensive variant detection
@@ -28,23 +21,16 @@ encompass:
 -   Command-line focused architecture for integration into existing
     bioinformatics workflows
 
-This white paper outlines the scientific foundations, technical
-architecture, and implementation strategies for Gospel, providing a
-roadmap for development and collaboration.
 
 # Scientific Background
 
 ## Beyond SNPs: The Comprehensive Genomic Landscape
 
-While SNPs represent important genetic markers, they account for only a
-portion of genetic variation influencing complex traits. A comprehensive
-genomic analysis must consider:
+While SNPs represent important genetic markers, they account for only a portion of genetic variation influencing complex traits. A comprehensive genomic analysis must consider:
 
 ### Exonic Variants
 
-Exonic variants directly affect protein structure and function,
-potentially altering enzyme efficiency, receptor sensitivity, and
-structural protein properties [@Choi2009]. These include:
+Exonic variants directly affect protein structure and function, potentially altering enzyme efficiency, receptor sensitivity, and structural protein properties [@Choi2009]. These include:
 
 -   Missense mutations altering amino acid sequence
 
@@ -56,8 +42,7 @@ structural protein properties [@Choi2009]. These include:
 
 ### Structural Variants
 
-Structural variants (SVs) include larger genomic alterations that can
-have profound phenotypic effects [@Weischenfeldt2013]:
+Structural variants (SVs) include larger genomic alterations that can have profound phenotypic effects [@Weischenfeldt2013]:
 
 -   Copy number variations (CNVs)
 
@@ -67,8 +52,7 @@ have profound phenotypic effects [@Weischenfeldt2013]:
 
 ### Regulatory Variants
 
-Variants in non-coding regulatory regions affect gene expression
-patterns without altering protein structure [@Albert2015]:
+Variants in non-coding regulatory regions affect gene expression patterns without altering protein structure [@Albert2015]:
 
 -   Promoter and enhancer variants
 
@@ -78,7 +62,6 @@ patterns without altering protein structure [@Albert2015]:
 
 -   Variants affecting transcription factor binding
 
-## Multi-Domain Genomic Influence
 
 ### Fitness Domain
 
