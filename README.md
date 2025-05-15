@@ -889,3 +889,73 @@ techniques while maintaining the practical utility of a command-line
 interface. Pollio 2.0 aims to transform personal genomic data into
 actionable intelligence across multiple domains, providing a powerful
 tool for personalized health and performance optimization.
+
+# Visualization Examples
+
+Gospel provides comprehensive visualization of genomic analysis results across multiple domains.
+
+## Genome Scoring Results
+
+![Genome Scoring Results](public/visualization_examples/genome_score.png)
+
+The Genome Scoring Results chart displays the variant scores for each gene, allowing you to quickly identify the highest-impact variants in your genomic data.
+
+## Variant Score Distribution
+
+![Variant Score Distribution](public/visualization_examples/variant_distribution.png)
+
+This pie chart shows the distribution of variant scores by category (high, medium, low), providing a quick overview of your variant profile.
+
+## Gene Interaction Network
+
+![Gene Interaction Network](public/visualization_examples/network_visualization.png)
+
+The Gene Interaction Network visualizes the relationships between genes identified in your genomic analysis, with node size representing the degree of connectivity.
+
+## Network Degree Centrality
+
+![Network Degree Centrality](public/visualization_examples/degree_centrality.png)
+
+This chart shows the degree centrality of each gene in the network, highlighting which genes have the most connections and potential influence.
+
+## Fitness Domain Analysis
+
+![Fitness-Related Variants by Chromosome](public/visualization_examples/fitness.png)
+
+This visualization shows the distribution of fitness-related variants across chromosomes, helping identify chromosomal regions of interest for athletic performance.
+
+## Nutrition Domain Analysis
+
+![Nutrition-Related Variants by Nutrient Type](public/visualization_examples/nutrition.png)
+
+This grouped bar chart displays nutrition-related variants categorized by nutrient type, providing insights into how your genetics may influence nutrient metabolism.
+
+## Pharmacogenetic Analysis
+
+![Pharmacogenetic Variants by Drug](public/visualization_examples/pharmacogenetics.png)
+
+This chart visualizes how genetic variants may influence your response to different medications, grouped by drug category.
+
+## Metabolic Pathway Deficiency Analysis
+
+![Metabolic Pathway Deficiency Analysis](public/visualization_examples/deficiencies.png)
+
+This visualization highlights potential metabolic pathway deficiencies based on your genetic profile, with color intensity indicating the severity of the deficiency.
+
+## Drug Interaction Network
+
+![Drug Interaction Network](public/visualization_examples/drug_interactions.png)
+
+The Drug Interaction Network shows potential interactions between medications based on your genetic profile, with edge colors indicating interaction severity.
+
+## Pathway Enrichment Analysis
+
+![Pathway Enrichment Analysis](public/visualization_examples/pathways.png)
+
+This scatter plot shows the enrichment of biological pathways in your genomic data, with dot size representing the number of genes involved and color indicating statistical significance.
+
+## Complete Dashboard
+
+![Complete Genomic Analysis Dashboard](public/visualization_examples/dashboard.png)
+
+Gospel generates a comprehensive dashboard that combines all visualizations into a single overview for easy reference and analysis.
