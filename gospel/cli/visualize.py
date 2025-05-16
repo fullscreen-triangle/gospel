@@ -23,14 +23,14 @@ def parse_args():
     parser.add_argument(
         "--results-dir",
         type=str,
-        default="public/output/results",
+        default="./public/output/results",
         help="Path to the directory containing result files (default: public/output/results)",
     )
     
     parser.add_argument(
         "--output-dir",
         type=str,
-        default="public/visualizations",
+        default="./public/visualizations",
         help="Path to the directory to save visualizations (default: public/visualizations)",
     )
     
@@ -62,7 +62,7 @@ def parse_args():
     parser.add_argument(
         "--image-prefix",
         type=str,
-        default="public/visualizations/",
+        default="./public/visualisations/",
         help="Prefix to add to image paths in markdown (default: public/visualizations/)",
     )
     

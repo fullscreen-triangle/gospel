@@ -60,6 +60,7 @@ training_data/
 
 # Media
 *.png
+!gospel.png
 *.jpg
 *.jpeg
 *.gif
