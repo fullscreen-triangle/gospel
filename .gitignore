@@ -43,6 +43,8 @@ coverage.xml
 
 # Project specific
 public/
+!public/visualizations/
+!public/visualizations/*.png
 trained_models/
 network_data/
 network_data_cache/
@@ -61,6 +63,7 @@ training_data/
 # Media
 *.png
 !gospel.png
+!public/visualizations/*.png
 *.jpg
 *.jpeg
 *.gif
