@@ -17,3 +17,11 @@ argparse>=1.4.0
 
 # Data processing
 joblib>=1.1.0
+
+# Hugging Face dependencies for genomic models
+transformers>=4.15.0
+torch>=2.0.0
+huggingface_hub>=0.16.0
+accelerate>=0.20.0
+bitsandbytes>=0.40.0
+sentencepiece>=0.1.99
