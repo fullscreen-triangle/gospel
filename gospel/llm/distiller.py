@@ -1,5 +1,5 @@
 """
-Knowledge distiller for Gospel LLM.
+Knowledge distiller for Gospel LLM - focused on real genomic sequence data.
 """
 
 import json
@@ -9,119 +9,109 @@ from typing import Dict, List, Optional, Tuple, Union
 import torch
 from tqdm import tqdm
 
-from gospel.knowledge_base import KnowledgeBase
 from gospel.llm.model import GospelLLM
 
 
-class KnowledgeDistiller:
+class SequenceDataDistiller:
     """
-    Knowledge distiller for LLM fine-tuning.
+    Sequence data distiller for LLM fine-tuning using real genomic sequences.
     
     This class implements the process of:
-    1. Taking a problem or query
-    2. Using a "solver" (expert LLM) to solve it
-    3. Recording the prompt, solution method, and response
+    1. Taking real genomic sequences from experiments
+    2. Using expert analysis to understand their function
+    3. Recording the sequence, analysis method, and biological interpretation
     4. Using this as training data for knowledge distillation
     """
 
     def __init__(
         self,
         expert_llm: GospelLLM,
-        kb: Optional[KnowledgeBase] = None,
+        sequence_data_dir: Optional[str] = None,
     ):
         """
-        Initialize a knowledge distiller.
+        Initialize a sequence data distiller.
 
         Args:
             expert_llm: Expert LLM instance (already trained)
-            kb: Knowledge base instance
+            sequence_data_dir: Directory containing experimental sequence data
         """
         self.expert_llm = expert_llm
-        self.kb = kb or expert_llm.kb
+        self.sequence_data_dir = sequence_data_dir
         self.distillation_data = []
 
-    def generate_problem(self, gene_name: Optional[str] = None) -> str:
+    def load_experimental_sequences(self, data_dir: str) -> List[Dict]:
         """
-        Generate a problem related to a gene or genomics in general.
+        Load real genomic sequences from experimental data.
 
         Args:
-            gene_name: Specific gene name (optional)
+            data_dir: Directory containing sequence files
 
         Returns:
-            Generated problem statement
+            List of sequence data dictionaries
         """
-        if not self.kb:
-            raise ValueError("Knowledge base is required for problem generation")
+        sequences = []
         
-        if gene_name:
-            gene_info = self.kb.get_gene_info(gene_name)
-            prompt = f"""
-            Generate a challenging but solvable genomics problem related to the gene {gene_name}.
-            Use the following information about the gene:
-            
-            {gene_info}
-            
-            The problem should require understanding of this gene's function, variants, 
-            and its role in systems biology networks, especially as related to sprint performance.
-            """
-        else:
-            # Get a random set of genes from the knowledge base
-            genes = list(self.kb.get_all_genes())[:5]
-            gene_infos = [f"{gene}: {self.kb.get_gene_info(gene)[:100]}..." for gene in genes]
-            genes_text = "\n".join(gene_infos)
-            
-            prompt = f"""
-            Generate a challenging but solvable genomics problem related to sprint performance.
-            Consider using information about these genes:
-            
-            {genes_text}
-            
-            The problem should require understanding of gene functions, variants,
-            and systems biology networks, especially as related to sprint performance.
-            """
+        # This would load actual experimental sequence data
+        # For now, we'll use a placeholder structure
+        if os.path.exists(data_dir):
+            for filename in os.listdir(data_dir):
+                if filename.endswith(('.fasta', '.fa', '.seq')):
+                    filepath = os.path.join(data_dir, filename)
+                    with open(filepath, 'r') as f:
+                        content = f.read()
+                        sequences.append({
+                            'filename': filename,
+                            'sequence': content,
+                            'source': 'experimental',
+                            'filepath': filepath
+                        })
         
-        # Generate problem using the expert LLM
-        problem = self.expert_llm.query(prompt)
-        
-        # Clean up and format the problem
-        lines = problem.strip().split("\n")
-        for i, line in enumerate(lines):
-            if line.strip().lower().startswith(("problem:", "question:")):
-                problem = line.split(":", 1)[1].strip()
-                # Include any following lines that are part of the problem
-                for j in range(i+1, len(lines)):
-                    if lines[j].strip() and not lines[j].strip().lower().startswith(("hint:", "answer:", "solution:")):
-                        problem += " " + lines[j].strip()
-                    else:
-                        break
-                break
-        
-        return problem.strip()
+        return sequences
 
-    def solve_problem(self, problem: str) -> Dict:
+    def analyze_sequence(self, sequence_data: Dict) -> Dict:
         """
-        Solve a problem using the expert LLM.
+        Analyze a genomic sequence using the expert LLM.
 
         Args:
-            problem: Problem statement
+            sequence_data: Dictionary containing sequence information
 
         Returns:
-            Dictionary containing the solution, method, and supporting information
+            Dictionary containing the analysis and biological interpretation
         """
-        return self.expert_llm.solve_genomic_problem(problem)
+        sequence = sequence_data['sequence']
+        
+        # Create a prompt for sequence analysis
+        prompt = f"""
+        Analyze the following genomic sequence and provide:
+        1. Sequence composition and characteristics
+        2. Potential functional regions or motifs
+        3. Likely biological function or significance
+        4. Comparison to known genomic elements
+        
+        Sequence: {sequence[:500]}{'...' if len(sequence) > 500 else ''}
+        """
+        
+        # Get analysis from expert LLM
+        analysis = self.expert_llm.query(prompt)
+        
+        return {
+            'sequence': sequence,
+            'analysis': analysis,
+            'source_file': sequence_data.get('filename', 'unknown'),
+            'sequence_length': len(sequence),
+            'gc_content': (sequence.count('G') + sequence.count('C')) / len(sequence) if sequence else 0
+        }
 
-    def distill_knowledge(
+    def distill_from_sequences(
         self,
-        num_problems: int = 50,
-        genes: Optional[List[str]] = None,
+        sequence_data_dir: str,
         output_dir: str = "distillation_data"
     ) -> List[Dict]:
         """
-        Generate problems, solve them, and record the distillation data.
+        Generate training data from real genomic sequences.
 
         Args:
-            num_problems: Number of problems to generate
-            genes: List of genes to focus on (optional)
+            sequence_data_dir: Directory containing experimental sequences
             output_dir: Directory to save distillation data
 
         Returns:
@@ -129,42 +119,36 @@ class KnowledgeDistiller:
         """
         os.makedirs(output_dir, exist_ok=True)
         
-        if not genes and self.kb:
-            all_genes = list(self.kb.get_all_genes())
-            # Use a subset if there are too many
-            genes = all_genes[:min(len(all_genes), num_problems * 2)]
+        # Load experimental sequences
+        sequences = self.load_experimental_sequences(sequence_data_dir)
         
-        for i in tqdm(range(num_problems), desc="Distilling knowledge"):
-            # Select a gene if provided, otherwise generate generic problem
-            gene = None
-            if genes:
-                gene = genes[i % len(genes)]
-            
-            # Generate problem
-            problem = self.generate_problem(gene)
-            
-            # Solve problem
-            solution = self.solve_problem(problem)
+        if not sequences:
+            print(f"No sequence data found in {sequence_data_dir}")
+            return []
+        
+        for i, seq_data in enumerate(tqdm(sequences, desc="Distilling from sequences")):
+            # Analyze sequence
+            analysis = self.analyze_sequence(seq_data)
             
             # Record distillation data
             data = {
-                "id": f"problem_{i+1}",
-                "problem": problem,
-                "solution": solution["solution"],
-                "method": solution["method"],
-                "genes": solution["genes"],
-                "prompt_template": f"Solve the following genomics problem: {problem}",
-                "networks": solution.get("networks", {}),
+                "id": f"sequence_{i+1}",
+                "sequence": analysis['sequence'],
+                "analysis": analysis['analysis'],
+                "source_file": analysis['source_file'],
+                "sequence_length": analysis['sequence_length'],
+                "gc_content": analysis['gc_content'],
+                "prompt_template": f"Analyze the genomic sequence and explain its biological significance: {analysis['sequence'][:100]}...",
             }
             
             self.distillation_data.append(data)
             
             # Save incrementally
-            with open(os.path.join(output_dir, f"distillation_data_{i+1}.json"), "w") as f:
+            with open(os.path.join(output_dir, f"sequence_analysis_{i+1}.json"), "w") as f:
                 json.dump(data, f, indent=2)
         
         # Save all data
-        with open(os.path.join(output_dir, "all_distillation_data.json"), "w") as f:
+        with open(os.path.join(output_dir, "all_sequence_distillation.json"), "w") as f:
             json.dump(self.distillation_data, f, indent=2)
         
         return self.distillation_data
@@ -187,71 +171,71 @@ class KnowledgeDistiller:
         os.makedirs(output_dir, exist_ok=True)
         
         if not self.distillation_data:
-            raise ValueError("No distillation data available. Run distill_knowledge first.")
+            raise ValueError("No distillation data available. Run distill_from_sequences first.")
         
         if format == "jsonl":
             # Prepare for instruction fine-tuning format
             training_data = []
             for item in self.distillation_data:
                 training_example = {
-                    "instruction": item["prompt_template"],
-                    "input": "",  # Empty input as the instruction contains the problem
-                    "output": item["solution"]
+                    "instruction": f"Analyze this genomic sequence and explain its biological significance:",
+                    "input": item["sequence"][:500] + "..." if len(item["sequence"]) > 500 else item["sequence"],
+                    "output": item["analysis"]
                 }
                 training_data.append(training_example)
             
-            output_path = os.path.join(output_dir, "training_data.jsonl")
-            with open(output_path, "w") as f:
-                for item in training_data:
-                    f.write(json.dumps(item) + "\n")
-        
-        elif format == "txt":
-            # Simple text format with separators
-            output_path = os.path.join(output_dir, "training_data.txt")
-            with open(output_path, "w") as f:
-                for item in self.distillation_data:
-                    f.write(f"### INSTRUCTION:\n{item['prompt_template']}\n\n")
-                    f.write(f"### RESPONSE:\n{item['solution']}\n\n")
-                    f.write("### END\n\n")
+            # Save as JSONL
+            output_file = os.path.join(output_dir, "sequence_training_data.jsonl")
+            with open(output_file, "w") as f:
+                for example in training_data:
+                    f.write(json.dumps(example) + "\n")
+            
+            return output_file
         
         else:
             raise ValueError(f"Unsupported format: {format}")
-        
-        return output_path
 
     def export_for_ollama(self, output_dir: str = "ollama_model") -> str:
         """
-        Export distillation data in a format suitable for Ollama fine-tuning.
+        Export distilled knowledge for Ollama model creation.
 
         Args:
-            output_dir: Directory to save Ollama fine-tuning data
+            output_dir: Directory to save Ollama model files
 
         Returns:
-            Path to the Ollama model definition file
+            Path to the Ollama model directory
         """
         os.makedirs(output_dir, exist_ok=True)
         
-        if not self.distillation_data:
-            raise ValueError("No distillation data available. Run distill_knowledge first.")
+        # Prepare training data
+        training_file = self.prepare_training_data(output_dir)
         
-        # Prepare training data in Ollama format
-        training_data_path = os.path.join(output_dir, "training.jsonl")
-        with open(training_data_path, "w") as f:
-            for item in self.distillation_data:
-                training_example = {
-                    "prompt": item["prompt_template"],
-                    "response": item["solution"]
-                }
-                f.write(json.dumps(training_example) + "\n")
+        # Create Ollama Modelfile
+        modelfile_content = f"""
+FROM llama3
+
+# Set parameters
+PARAMETER temperature 0.7
+PARAMETER top_p 0.9
+PARAMETER repeat_penalty 1.1
+
+# Set system message
+SYSTEM You are a genomic analysis expert specializing in sequence interpretation and biological significance.
+
+# Add training data
+"""
         
-        # Create Modelfile
+        # Add training examples to the Modelfile
+        for item in self.distillation_data[:10]:  # Limit to first 10 for demo
+            sequence_preview = item["sequence"][:200] + "..." if len(item["sequence"]) > 200 else item["sequence"]
+            modelfile_content += f'\nTEMPLATE "Sequence: {sequence_preview}\\nAnalysis: {item["analysis"][:200]}..."\n'
+        
         modelfile_path = os.path.join(output_dir, "Modelfile")
         with open(modelfile_path, "w") as f:
-            f.write(f"FROM {self.expert_llm.base_model}\n")
-            f.write("PARAMETER temperature 0.7\n")
-            f.write("PARAMETER top_p 0.9\n")
-            f.write(f"SYSTEM You are a genomics expert specializing in sprint performance analysis.\n")
-            f.write(f"TEMPLATE \"{{.System}}\\n\\n{{.Prompt}}\"\n")
-            f.write(f"TRAINING_DATA training.jsonl\n")
+            f.write(modelfile_content)
         
-        return modelfile_path 
+        return output_dir
+
+
+# Legacy compatibility
+KnowledgeDistiller = SequenceDataDistiller 
