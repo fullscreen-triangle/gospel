@@ -1,0 +1,74 @@
+[package]
+name = "gospel-rust"
+version = "0.2.0"
+edition = "2021"
+authors = ["Kundai Sachikonye"]
+description = "High-performance Rust core for Gospel genomic analysis framework"
+license = "MIT"
+
+[lib]
+name = "gospel_rust"
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+# Core Rust dependencies
+rayon = { version = "1.7", optional = true }  # Parallel processing
+crossbeam = "0.8"                # Lock-free concurrency
+tokio = { version = "1.0", features = ["full"] }  # Async runtime
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+
+# Bioinformatics libraries
+bio = "1.4"                      # Bioinformatics algorithms
+rust-htslib = "0.44"             # HTSlib bindings (SAM/BAM/VCF)
+ndarray = "0.15"                 # N-dimensional arrays
+nalgebra = "0.32"                # Linear algebra
+
+# Memory-mapped I/O
+memmap2 = "0.9"                  # Memory mapping
+byteorder = "1.4"                # Byte order utilities
+
+# SIMD and vectorization
+wide = { version = "0.7", optional = true }     # SIMD operations
+packed_simd = { version = "0.3", optional = true }  # Portable SIMD
+
+# Fuzzy logic and ML
+smartcore = "0.3"                # Machine learning algorithms
+candle-core = "0.3"              # Deep learning framework
+
+# Error handling and logging
+anyhow = "1.0"                   # Error handling
+thiserror = "1.0"                # Error derive macros
+tracing = "0.1"                  # Structured logging
+tracing-subscriber = "0.3"
+chrono = { version = "0.4", features = ["serde"] }  # Date/time handling
+
+# Python bindings
+pyo3 = { version = "0.20", features = ["extension-module", "abi3-py38"], optional = true }
+numpy = { version = "0.20", optional = true }   # NumPy integration
+
+# Performance optimization
+mimalloc = { version = "0.1", default-features = false }  # Fast allocator
+
+[dev-dependencies]
+criterion = { version = "0.5", features = ["html_reports"] }  # Benchmarking
+proptest = "1.0"                 # Property-based testing
+tempfile = "3.0"                 # Temporary files for testing
+
+[features]
+default = ["simd", "parallel"]
+simd = ["wide", "packed_simd"]
+parallel = ["rayon"]
+python-bindings = ["pyo3", "numpy"]
+
+
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+panic = "abort"
+
+[profile.bench]
+opt-level = 3
+debug = true 
