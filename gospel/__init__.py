@@ -1,23 +1,32 @@
 """
-Gospel - Genomic analysis framework with real data integration and HuggingFace models
+Gospel - Metacognitive Genomic Analysis Framework with Bayesian Optimization
 
 A comprehensive bioinformatics framework for genomic analysis that:
-- Uses real data from public genomic databases (Ensembl, ClinVar, GWAS Catalog)
-- Integrates HuggingFace transformer models for sequence analysis
-- Provides cross-domain analysis (genomics + pharmacogenomics + systems biology)
-- Supports variant annotation, gene network analysis, and clinical interpretation
+- Uses metacognitive Bayesian networks for tool orchestration
+- Implements fuzzy logic for uncertainty quantification  
+- Provides visual understanding verification through circuit diagrams
+- Integrates with external tools (Autobahn, Hegel, Borgia, etc.)
+- Supports high-performance Rust acceleration for large datasets
+- Enables per-experiment LLM specialization
 """
 
-__version__ = "0.1.0"
+__version__ = "0.2.0"
 __author__ = "Kundai Sachikonye"
 
-# Core genomic analysis modules
+# Main metacognitive analyzer
+from gospel.core.gospel_analyzer import GospelAnalyzer
+
+# Core genomic analysis modules (legacy compatibility)
 from gospel.core import (
     VariantProcessor, 
     VariantAnnotator, 
     GenomicScorer,
-    ExpressionAnalyzer,
-    NetworkAnalyzer
+    # New metacognitive components
+    MetacognitiveBayesianNetwork,
+    GenomicFuzzySystem,
+    GenomicCircuitVisualizer,
+    VisualUnderstandingVerifier,
+    ToolOrchestrator
 )
 
 # LLM and AI integration
@@ -25,10 +34,19 @@ from gospel.llm import GospelLLM
 
 # Export public API
 __all__ = [
+    # Main analyzer
+    "GospelAnalyzer",
+    
+    # Legacy components (backward compatibility)
     "VariantProcessor",
     "VariantAnnotator", 
     "GenomicScorer",
-    "ExpressionAnalyzer",
-    "NetworkAnalyzer",
-    "GospelLLM"
+    "GospelLLM",
+    
+    # New metacognitive framework
+    "MetacognitiveBayesianNetwork",
+    "GenomicFuzzySystem",
+    "GenomicCircuitVisualizer", 
+    "VisualUnderstandingVerifier",
+    "ToolOrchestrator"
 ] 

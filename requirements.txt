@@ -23,16 +23,47 @@ aiohttp>=3.8.0
 scikit-learn>=1.0.0
 scipy>=1.7.0
 
+# Fuzzy logic and Bayesian networks
+scikit-fuzzy>=0.4.2
+pgmpy>=0.1.19
+pymc>=5.0.0
+
+# Gaussian Processes for Bayesian optimization
+GPy>=1.10.0
+
+# Advanced visualization for circuit diagrams
+matplotlib>=3.5.0
+seaborn>=0.11.0
+plotly>=5.0.0
+graphviz>=0.20.0
+
+# Image processing for visual verification
+Pillow>=9.0.0
+opencv-python>=4.5.0
+
+# Async processing and concurrency
+asyncio-throttle>=1.0.2
+aiofiles>=0.8.0
+
+# Configuration management
+pydantic>=1.10.0
+pyyaml>=6.0
+
+# Performance monitoring
+psutil>=5.9.0
+memory-profiler>=0.60.0
+
 # Logging and monitoring
 wandb>=0.13.0
 
 # Development and testing
 pytest>=6.0.0
 pytest-asyncio>=0.19.0
-
-# Visualization (optional)
-matplotlib>=3.5.0
-seaborn>=0.11.0
+pytest-mock>=3.10.0
 
 # CLI support
 click>=8.0.0
+rich>=12.0.0
+
+# Optional Rust integration (when available)
+# maturin>=0.14.0  # For building Rust extensions
