@@ -12,6 +12,17 @@ from .fuzzy_system import GenomicFuzzySystem
 from .visual_verification import GenomicCircuitVisualizer, VisualUnderstandingVerifier
 from .tool_orchestrator import ToolOrchestrator, ExternalToolInterface
 from .gospel_analyzer import GospelAnalyzer
+from .external_tools import (
+    ExternalToolManager,
+    AutobahnInterface,
+    HegelInterface,
+    BorgiaInterface,
+    NebuchadnezzarInterface,
+    BeneGesseritInterface,
+    LavoisierInterface,
+    create_tool_manager,
+    create_query
+)
 
 __all__ = [
     # Legacy components
@@ -27,5 +38,16 @@ __all__ = [
     "VisualUnderstandingVerifier",
     "ToolOrchestrator",
     "ExternalToolInterface",
-    "GospelAnalyzer"
+    "GospelAnalyzer",
+    
+    # External tool interfaces
+    "ExternalToolManager",
+    "AutobahnInterface",
+    "HegelInterface",
+    "BorgiaInterface",
+    "NebuchadnezzarInterface",
+    "BeneGesseritInterface",
+    "LavoisierInterface",
+    "create_tool_manager",
+    "create_query"
 ] 

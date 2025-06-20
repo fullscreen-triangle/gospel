@@ -32,6 +32,14 @@ from .trainer import GenomicLLMTrainer
 from .genomic_models import GenomicModelManager, GENOMIC_MODELS
 from ..core.metacognitive import AnalysisContext, ObjectiveFunction
 
+# Import Rust-accelerated processing
+try:
+    import gospel_rust
+    RUST_AVAILABLE = True
+except ImportError:
+    RUST_AVAILABLE = False
+    logging.warning("Rust acceleration not available. Using Python fallback.")
+
 logger = logging.getLogger(__name__)
 
 
@@ -179,17 +187,77 @@ class ExperimentLLMManager:
     
     def generate_training_dataset(self,
                                 experiment_context: ExperimentContext,
-                                genomic_data: Dict[str, Any]) -> Dataset:
+                                genomic_data: Dict[str, Any],
+                                max_examples: int = 10000) -> Dataset:
         """
-        Generate training dataset from experiment context and genomic data.
+        Generate training dataset from experiment context and genomic data using Rust acceleration.
         
         Args:
             experiment_context: Experiment context information
             genomic_data: Genomic datasets
+            max_examples: Maximum number of training examples to generate
             
         Returns:
             HuggingFace Dataset for training
         """
+        if RUST_AVAILABLE:
+            # Use Rust-accelerated processing for heavy data operations
+            return self._generate_dataset_rust_accelerated(experiment_context, genomic_data, max_examples)
+        else:
+            # Fallback to Python implementation
+            return self._generate_dataset_python_fallback(experiment_context, genomic_data, max_examples)
+    
+    def _generate_dataset_rust_accelerated(self,
+                                         experiment_context: ExperimentContext,
+                                         genomic_data: Dict[str, Any],
+                                         max_examples: int) -> Dataset:
+        """Generate training dataset using Rust acceleration for performance."""
+        logger.info("Using Rust-accelerated training dataset generation")
+        
+        # Convert Python data structures to Rust-compatible format
+        rust_context = {
+            "experiment_id": experiment_context.experiment_id,
+            "research_objective": experiment_context.research_objective,
+            "genomic_focus": experiment_context.genomic_focus,
+            "tissue_types": experiment_context.tissue_types,
+            "organism": experiment_context.organism,
+            "publications": experiment_context.publications,
+            "temporal_scope": experiment_context.temporal_scope,
+            "collaboration_partners": experiment_context.collaboration_partners,
+            "expected_sample_size": experiment_context.expected_sample_size,
+            "computational_budget": experiment_context.computational_budget,
+        }
+        
+        # Convert genomic data to Rust format
+        rust_genomic_data = self._convert_genomic_data_for_rust(genomic_data)
+        
+        # Call Rust implementation for high-performance processing
+        try:
+            rust_examples = gospel_rust.generate_training_dataset(
+                rust_context,
+                rust_genomic_data,
+                max_examples
+            )
+            
+            # Convert Rust results back to Python format
+            training_examples = self._convert_rust_examples_to_python(rust_examples)
+            
+            logger.info(f"Generated {len(training_examples)} training examples using Rust acceleration")
+            
+        except Exception as e:
+            logger.error(f"Rust acceleration failed: {e}. Falling back to Python implementation.")
+            return self._generate_dataset_python_fallback(experiment_context, genomic_data, max_examples)
+        
+        # Convert to HuggingFace Dataset
+        return Dataset.from_list(training_examples)
+    
+    def _generate_dataset_python_fallback(self,
+                                        experiment_context: ExperimentContext,
+                                        genomic_data: Dict[str, Any],
+                                        max_examples: int) -> Dataset:
+        """Fallback Python implementation for training dataset generation."""
+        logger.info("Using Python fallback for training dataset generation")
+        
         training_examples = []
         
         # Generate examples based on research objective
@@ -227,10 +295,72 @@ class ExperimentLLMManager:
             temporal_examples = self._generate_temporal_examples(genomic_data)
             training_examples.extend(temporal_examples)
         
-        logger.info(f"Generated {len(training_examples)} training examples for experiment")
+        # Limit examples to max_examples
+        if len(training_examples) > max_examples:
+            training_examples = training_examples[:max_examples]
+        
+        logger.info(f"Generated {len(training_examples)} training examples using Python fallback")
         
         # Convert to HuggingFace Dataset
         return Dataset.from_list(training_examples)
+    
+    def _convert_genomic_data_for_rust(self, genomic_data: Dict[str, Any]) -> Dict[str, Any]:
+        """Convert Python genomic data structures to Rust-compatible format."""
+        rust_data = {}
+        
+        # Convert variants DataFrame to list of dictionaries
+        if "variants" in genomic_data and isinstance(genomic_data["variants"], pd.DataFrame):
+            variants_list = []
+            for _, row in genomic_data["variants"].iterrows():
+                variant_dict = {
+                    "id": str(row.get("id", "")),
+                    "chromosome": str(row.get("chromosome", "")),
+                    "position": int(row.get("position", 0)),
+                    "reference": str(row.get("reference", "")),
+                    "alternate": str(row.get("alternate", "")),
+                    "annotations": {
+                        "gene": str(row.get("gene", "")),
+                        "clinvar_significance": str(row.get("clinvar_significance", "")),
+                        "vep_impact": str(row.get("vep_impact", "")),
+                        "gnomad_af": str(row.get("gnomad_af", "")),
+                        "phylop_score": str(row.get("phylop_score", "")),
+                        "sift_prediction": str(row.get("sift_prediction", ""))
+                    }
+                }
+                variants_list.append(variant_dict)
+            rust_data["variants"] = variants_list
+        
+        # Convert expression data
+        if "expression" in genomic_data and isinstance(genomic_data["expression"], pd.DataFrame):
+            expression_dict = {}
+            for gene in genomic_data["expression"].index:
+                expression_dict[gene] = genomic_data["expression"].loc[gene].tolist()
+            rust_data["expression_data"] = expression_dict
+        
+        # Convert network data
+        if "networks" in genomic_data:
+            # Assuming network data is a list of edges
+            network_edges = []
+            if hasattr(genomic_data["networks"], 'edges'):
+                for edge in genomic_data["networks"].edges(data=True):
+                    network_edges.append((edge[0], edge[1], edge[2].get('weight', 1.0)))
+            rust_data["network_edges"] = network_edges
+        
+        return rust_data
+    
+    def _convert_rust_examples_to_python(self, rust_examples: List[Dict[str, Any]]) -> List[Dict[str, str]]:
+        """Convert Rust training examples to Python format."""
+        python_examples = []
+        
+        for rust_example in rust_examples:
+            python_example = {
+                "instruction": rust_example.get("instruction", ""),
+                "input": rust_example.get("input", ""),
+                "output": rust_example.get("output", "")
+            }
+            python_examples.append(python_example)
+        
+        return python_examples
     
     def _generate_objective_examples(self,
                                    research_objective: str,
