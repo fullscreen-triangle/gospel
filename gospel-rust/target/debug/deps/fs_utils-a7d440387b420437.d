@@ -1,0 +1,11 @@
+/Users/kundai/Development/bioinformatics/gospel/gospel-rust/target/debug/deps/libfs_utils-a7d440387b420437.rmeta: /Users/kundai/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/fs-utils-1.1.4/src/lib.rs /Users/kundai/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/fs-utils-1.1.4/src/check.rs /Users/kundai/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/fs-utils-1.1.4/src/copy.rs /Users/kundai/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/fs-utils-1.1.4/src/read.rs /Users/kundai/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/fs-utils-1.1.4/src/remove.rs
+
+/Users/kundai/Development/bioinformatics/gospel/gospel-rust/target/debug/deps/libfs_utils-a7d440387b420437.rlib: /Users/kundai/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/fs-utils-1.1.4/src/lib.rs /Users/kundai/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/fs-utils-1.1.4/src/check.rs /Users/kundai/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/fs-utils-1.1.4/src/copy.rs /Users/kundai/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/fs-utils-1.1.4/src/read.rs /Users/kundai/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/fs-utils-1.1.4/src/remove.rs
+
+/Users/kundai/Development/bioinformatics/gospel/gospel-rust/target/debug/deps/fs_utils-a7d440387b420437.d: /Users/kundai/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/fs-utils-1.1.4/src/lib.rs /Users/kundai/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/fs-utils-1.1.4/src/check.rs /Users/kundai/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/fs-utils-1.1.4/src/copy.rs /Users/kundai/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/fs-utils-1.1.4/src/read.rs /Users/kundai/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/fs-utils-1.1.4/src/remove.rs
+
+/Users/kundai/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/fs-utils-1.1.4/src/lib.rs:
+/Users/kundai/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/fs-utils-1.1.4/src/check.rs:
+/Users/kundai/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/fs-utils-1.1.4/src/copy.rs:
+/Users/kundai/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/fs-utils-1.1.4/src/read.rs:
+/Users/kundai/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/fs-utils-1.1.4/src/remove.rs:
