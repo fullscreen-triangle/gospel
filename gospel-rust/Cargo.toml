@@ -1,6 +1,6 @@
 [package]
 name = "gospel-rust"
-version = "0.2.0"
+version = "0.1.0"
 edition = "2021"
 authors = ["Kundai Sachikonye"]
 description = "High-performance Rust core for Gospel genomic analysis framework"
@@ -12,7 +12,7 @@ crate-type = ["cdylib", "rlib"]
 
 [dependencies]
 # Core Rust dependencies
-rayon = { version = "1.7", optional = true }  # Parallel processing
+rayon = "1.8"
 crossbeam = "0.8"                # Lock-free concurrency
 tokio = { version = "1.0", features = ["full"] }  # Async runtime
 serde = { version = "1.0", features = ["derive"] }
@@ -44,11 +44,28 @@ tracing-subscriber = "0.3"
 chrono = { version = "0.4", features = ["serde"] }  # Date/time handling
 
 # Python bindings
-pyo3 = { version = "0.20", features = ["extension-module", "abi3-py38"], optional = true }
+pyo3 = { version = "0.20", features = ["auto-initialize", "macros"], optional = true }
 numpy = { version = "0.20", optional = true }   # NumPy integration
 
 # Performance optimization
 mimalloc = { version = "0.1", default-features = false }  # Fast allocator
+
+# Additional dependencies
+num-traits = "0.2"
+rand = "0.8"
+
+# Fuzzy logic dependencies
+fuzzy-logic = "0.3"
+
+# Network analysis dependencies
+petgraph = "0.6"
+
+# Async and HTTP dependencies for network processing
+reqwest = { version = "0.11", features = ["json"] }
+futures = "0.3"
+
+# Additional performance dependencies
+dashmap = "5.5"
 
 [dev-dependencies]
 criterion = { version = "0.5", features = ["html_reports"] }  # Benchmarking
@@ -56,12 +73,10 @@ proptest = "1.0"                 # Property-based testing
 tempfile = "3.0"                 # Temporary files for testing
 
 [features]
-default = ["simd", "parallel"]
+default = ["python-bindings"]
+python-bindings = ["pyo3"]
 simd = ["wide", "packed_simd"]
 parallel = ["rayon"]
-python-bindings = ["pyo3", "numpy"]
-
-
 
 [profile.release]
 opt-level = 3

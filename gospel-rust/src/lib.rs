@@ -19,11 +19,17 @@ pub mod expression;
 pub mod network;
 pub mod fuzzy;
 pub mod circuit;
+pub mod experiment;
 pub mod utils;
 
 // Python bindings
 #[cfg(feature = "python-bindings")]
 pub mod python;
+
+// New high-performance modules
+pub mod genomic_models;
+pub mod network_analysis;
+pub mod network_processor;
 
 // Re-export main types
 pub use variant::{Variant, VariantProcessor, VariantStats};
@@ -168,4 +174,29 @@ mod tests {
         let deserialized: GospelConfig = serde_json::from_str(&serialized).unwrap();
         assert_eq!(config.enable_simd, deserialized.enable_simd);
     }
+}
+
+use pyo3::prelude::*;
+
+/// High-performance genomic analysis functions
+#[pymodule]
+fn gospel_rust(_py: Python, m: &PyModule) -> PyResult<()> {
+    // Existing modules
+    m.add_function(wrap_pyfunction!(variant::process_variants, m)?)?;
+    m.add_function(wrap_pyfunction!(fuzzy::calculate_fuzzy_membership, m)?)?;
+    m.add_function(wrap_pyfunction!(fuzzy::fuzzy_and, m)?)?;
+    m.add_function(wrap_pyfunction!(fuzzy::fuzzy_or, m)?)?;
+    m.add_function(wrap_pyfunction!(fuzzy::fuzzy_not, m)?)?;
+    m.add_function(wrap_pyfunction!(expression::process_expression_matrix, m)?)?;
+    m.add_function(wrap_pyfunction!(network::calculate_network_metrics, m)?)?;
+    m.add_function(wrap_pyfunction!(circuit::simulate_circuit, m)?)?;
+    m.add_function(wrap_pyfunction!(experiment::generate_training_data, m)?)?;
+    m.add_function(wrap_pyfunction!(utils::parallel_processing_test, m)?)?;
+
+    // New high-performance modules
+    m.add_class::<genomic_models::GenomicModelsManager>()?;
+    m.add_class::<network_analysis::NetworkAnalyzer>()?;
+    m.add_class::<network_processor::NetworkDataProcessor>()?;
+
+    Ok(())
 } 

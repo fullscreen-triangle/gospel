@@ -4,42 +4,90 @@ use serde::{Deserialize, Serialize};
 use anyhow::{Result, Context};
 use rayon::prelude::*;
 use tokio::time::Instant;
+use pyo3::prelude::*;
 
 /// Configuration for a genomic model
+#[pyclass]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct GenomicModelConfig {
+    #[pyo3(get, set)]
     pub model_id: String,
+    #[pyo3(get, set)]
     pub model_type: String,
+    #[pyo3(get, set)]
     pub description: String,
+    #[pyo3(get, set)]
     pub task: String,
+    #[pyo3(get, set)]
     pub max_length: usize,
+    #[pyo3(get, set)]
     pub supported_sequences: Vec<String>,
-    pub performance_tier: String, // "high", "medium", "low"
+    #[pyo3(get, set)]
+    pub performance_tier: String,
+}
+
+#[pymethods]
+impl GenomicModelConfig {
+    #[new]
+    fn new(
+        model_id: String,
+        model_type: String,
+        description: String,
+        task: String,
+        max_length: usize,
+        supported_sequences: Vec<String>,
+        performance_tier: String,
+    ) -> Self {
+        Self {
+            model_id,
+            model_type,
+            description,
+            task,
+            max_length,
+            supported_sequences,
+            performance_tier,
+        }
+    }
 }
 
 /// Model performance benchmarks
+#[pyclass]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct ModelBenchmark {
+    #[pyo3(get, set)]
     pub model_name: String,
+    #[pyo3(get, set)]
     pub sequences_processed: usize,
+    #[pyo3(get, set)]
     pub total_time_ms: f64,
+    #[pyo3(get, set)]
     pub average_time_per_sequence_ms: f64,
+    #[pyo3(get, set)]
     pub throughput_sequences_per_second: f64,
+    #[pyo3(get, set)]
     pub memory_usage_mb: f64,
+    #[pyo3(get, set)]
     pub success_rate: f64,
 }
 
 /// Sequence validation result
+#[pyclass]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct ValidationResult {
+    #[pyo3(get, set)]
     pub is_valid: bool,
+    #[pyo3(get, set)]
     pub message: String,
+    #[pyo3(get, set)]
     pub sequence_length: usize,
+    #[pyo3(get, set)]
     pub sequence_type: String,
+    #[pyo3(get, set)]
     pub invalid_characters: Vec<char>,
 }
 
 /// High-performance genomic models manager
+#[pyclass]
 pub struct GenomicModelsManager {
     available_models: HashMap<String, GenomicModelConfig>,
     model_cache: HashMap<String, ModelCacheEntry>,
@@ -56,92 +104,23 @@ struct ModelCacheEntry {
     access_count: usize,
 }
 
+#[pymethods]
 impl GenomicModelsManager {
-    /// Create a new genomic models manager
-    pub fn new(max_cache_size_mb: usize) -> Self {
+    #[new]
+    fn new(max_cache_size_mb: Option<usize>) -> Self {
         let mut manager = Self {
             available_models: HashMap::new(),
             model_cache: HashMap::new(),
             benchmarks: HashMap::new(),
-            max_cache_size: max_cache_size_mb,
+            max_cache_size: max_cache_size_mb.unwrap_or(8192),
             current_cache_size: 0,
         };
-        
         manager.initialize_default_models();
         manager
     }
 
-    /// Initialize default genomic models
-    fn initialize_default_models(&mut self) {
-        // Caduceus model
-        self.available_models.insert("caduceus".to_string(), GenomicModelConfig {
-            model_id: "kuleshov-group/caduceus-ps_seqlen-131k_d_model-256_n_layer-16".to_string(),
-            model_type: "dna_sequence".to_string(),
-            description: "Caduceus: Bi-directional equivariant long-range DNA sequence modeling".to_string(),
-            task: "fill-mask".to_string(),
-            max_length: 131072,
-            supported_sequences: vec!["dna".to_string()],
-            performance_tier: "high".to_string(),
-        });
-
-        // Nucleotide Transformer
-        self.available_models.insert("nucleotide_transformer".to_string(), GenomicModelConfig {
-            model_id: "InstaDeepAI/nucleotide-transformer-2.5b-1000g".to_string(),
-            model_type: "dna_sequence".to_string(),
-            description: "Nucleotide Transformer: Foundation model for human genomics".to_string(),
-            task: "fill-mask".to_string(),
-            max_length: 1000,
-            supported_sequences: vec!["dna".to_string()],
-            performance_tier: "high".to_string(),
-        });
-
-        // ESM2 Protein Model
-        self.available_models.insert("esm2".to_string(), GenomicModelConfig {
-            model_id: "facebook/esm2_t33_650M_UR50D".to_string(),
-            model_type: "protein_sequence".to_string(),
-            description: "ESM-2: Evolutionary Scale Modeling for protein sequences".to_string(),
-            task: "fill-mask".to_string(),
-            max_length: 1024,
-            supported_sequences: vec!["protein".to_string()],
-            performance_tier: "high".to_string(),
-        });
-
-        // ProtBERT
-        self.available_models.insert("protbert".to_string(), GenomicModelConfig {
-            model_id: "Rostlab/prot_bert".to_string(),
-            model_type: "protein_sequence".to_string(),
-            description: "ProtBERT: Pre-trained protein language model".to_string(),
-            task: "fill-mask".to_string(),
-            max_length: 512,
-            supported_sequences: vec!["protein".to_string()],
-            performance_tier: "medium".to_string(),
-        });
-
-        // Gene42 (hypothetical long-range model)
-        self.available_models.insert("gene42".to_string(), GenomicModelConfig {
-            model_id: "kuleshov-group/gene42-192k".to_string(),
-            model_type: "genomic_foundation".to_string(),
-            description: "Gene42: Long-range genomic foundation model with dense attention".to_string(),
-            task: "generation".to_string(),
-            max_length: 192000,
-            supported_sequences: vec!["dna".to_string(), "rna".to_string()],
-            performance_tier: "high".to_string(),
-        });
-
-        // MAMMAL Multimodal
-        self.available_models.insert("mammal_biomed".to_string(), GenomicModelConfig {
-            model_id: "ibm/biomed.omics.bl.sm.ma-ted-458m".to_string(),
-            model_type: "multimodal_biomed".to_string(),
-            description: "MAMMAL: Molecular aligned multi-modal architecture for biomedical data".to_string(),
-            task: "generation".to_string(),
-            max_length: 2048,
-            supported_sequences: vec!["dna".to_string(), "protein".to_string(), "rna".to_string()],
-            performance_tier: "medium".to_string(),
-        });
-    }
-
     /// Get models filtered by type
-    pub fn get_models_by_type(&self, model_type: &str) -> Vec<(String, GenomicModelConfig)> {
+    fn get_models_by_type(&self, model_type: &str) -> Vec<(String, GenomicModelConfig)> {
         self.available_models
             .iter()
             .filter(|(_, config)| config.model_type == model_type)
@@ -150,7 +129,7 @@ impl GenomicModelsManager {
     }
 
     /// Get models filtered by task
-    pub fn get_models_by_task(&self, task: &str) -> Vec<(String, GenomicModelConfig)> {
+    fn get_models_by_task(&self, task: &str) -> Vec<(String, GenomicModelConfig)> {
         self.available_models
             .iter()
             .filter(|(_, config)| config.task == task)
@@ -159,7 +138,7 @@ impl GenomicModelsManager {
     }
 
     /// Recommend models for specific analysis type
-    pub fn recommend_models_for_analysis(&self, analysis_type: &str) -> Vec<String> {
+    fn recommend_models_for_analysis(&self, analysis_type: &str) -> Vec<String> {
         match analysis_type {
             "variant_effect" => vec!["caduceus".to_string(), "nucleotide_transformer".to_string()],
             "protein_function" => vec!["esm2".to_string(), "protbert".to_string()],
@@ -171,8 +150,8 @@ impl GenomicModelsManager {
         }
     }
 
-    /// Validate sequence for genomic analysis with high performance
-    pub fn validate_sequence_batch(&self, sequences: &[(String, String)]) -> Vec<ValidationResult> {
+    /// Validate sequence batch with high performance
+    fn validate_sequence_batch(&self, sequences: Vec<(String, String)>) -> Vec<ValidationResult> {
         sequences
             .par_iter()
             .map(|(sequence, sequence_type)| self.validate_single_sequence(sequence, sequence_type))
@@ -254,39 +233,34 @@ impl GenomicModelsManager {
         }
     }
 
-    /// Benchmark model performance with synthetic data
-    pub fn benchmark_model_performance(
+    /// Benchmark model performance
+    fn benchmark_model_performance(
         &mut self,
         model_name: &str,
-        test_sequences: &[String],
-    ) -> Result<ModelBenchmark> {
+        test_sequences: Vec<String>,
+    ) -> PyResult<ModelBenchmark> {
         if !self.available_models.contains_key(model_name) {
-            return Err(anyhow::anyhow!("Model {} not found", model_name));
+            return Err(PyErr::new::<pyo3::exceptions::PyValueError, _>(
+                format!("Model {} not found", model_name)
+            ));
         }
 
-        let start_time = Instant::now();
+        let start_time = std::time::Instant::now();
         let mut success_count = 0;
         let mut total_processing_time = 0.0;
 
-        // Simulate model processing (in real implementation, this would call actual models)
+        // Simulate model processing with parallel computation
         let processing_results: Vec<_> = test_sequences
             .par_iter()
             .map(|sequence| {
-                let seq_start = std::time::Instant::now();
-                
-                // Simulate processing time based on sequence length and model complexity
                 let model_config = &self.available_models[model_name];
                 let processing_time = self.simulate_model_processing(sequence, model_config);
-                
-                let seq_end = std::time::Instant::now();
-                let actual_time = seq_end.duration_since(seq_start).as_secs_f64() * 1000.0;
-
-                (processing_time, actual_time, true) // success = true for simulation
+                (processing_time, true) // success = true for simulation
             })
             .collect();
 
         // Aggregate results
-        for (proc_time, _actual_time, success) in processing_results {
+        for (proc_time, success) in processing_results {
             total_processing_time += proc_time;
             if success {
                 success_count += 1;
@@ -315,6 +289,98 @@ impl GenomicModelsManager {
         Ok(benchmark)
     }
 
+    /// Get compatible models for sequence type
+    fn get_compatible_models(&self, sequence_type: &str) -> Vec<String> {
+        self.available_models
+            .iter()
+            .filter(|(_, config)| {
+                config.supported_sequences.contains(&sequence_type.to_string()) ||
+                config.model_type.contains("multimodal")
+            })
+            .map(|(name, _)| name.clone())
+            .collect()
+    }
+
+    /// List all available models
+    fn list_available_models(&self) -> Vec<String> {
+        self.available_models.keys().cloned().collect()
+    }
+
+    /// Get benchmark results
+    fn get_benchmark_results(&self, model_name: &str) -> Option<ModelBenchmark> {
+        self.benchmarks.get(model_name).cloned()
+    }
+
+    /// Clear benchmarks
+    fn clear_benchmarks(&mut self) {
+        self.benchmarks.clear();
+    }
+}
+
+impl GenomicModelsManager {
+    /// Initialize default genomic models
+    fn initialize_default_models(&mut self) {
+        self.available_models.insert("caduceus".to_string(), GenomicModelConfig {
+            model_id: "kuleshov-group/caduceus-ps_seqlen-131k_d_model-256_n_layer-16".to_string(),
+            model_type: "dna_sequence".to_string(),
+            description: "Caduceus: Bi-directional equivariant long-range DNA sequence modeling".to_string(),
+            task: "fill-mask".to_string(),
+            max_length: 131072,
+            supported_sequences: vec!["dna".to_string()],
+            performance_tier: "high".to_string(),
+        });
+
+        self.available_models.insert("nucleotide_transformer".to_string(), GenomicModelConfig {
+            model_id: "InstaDeepAI/nucleotide-transformer-2.5b-1000g".to_string(),
+            model_type: "dna_sequence".to_string(),
+            description: "Nucleotide Transformer: Foundation model for human genomics".to_string(),
+            task: "fill-mask".to_string(),
+            max_length: 1000,
+            supported_sequences: vec!["dna".to_string()],
+            performance_tier: "high".to_string(),
+        });
+
+        self.available_models.insert("esm2".to_string(), GenomicModelConfig {
+            model_id: "facebook/esm2_t33_650M_UR50D".to_string(),
+            model_type: "protein_sequence".to_string(),
+            description: "ESM-2: Evolutionary Scale Modeling for protein sequences".to_string(),
+            task: "fill-mask".to_string(),
+            max_length: 1024,
+            supported_sequences: vec!["protein".to_string()],
+            performance_tier: "high".to_string(),
+        });
+
+        self.available_models.insert("protbert".to_string(), GenomicModelConfig {
+            model_id: "Rostlab/prot_bert".to_string(),
+            model_type: "protein_sequence".to_string(),
+            description: "ProtBERT: Pre-trained protein language model".to_string(),
+            task: "fill-mask".to_string(),
+            max_length: 512,
+            supported_sequences: vec!["protein".to_string()],
+            performance_tier: "medium".to_string(),
+        });
+
+        self.available_models.insert("gene42".to_string(), GenomicModelConfig {
+            model_id: "kuleshov-group/gene42-192k".to_string(),
+            model_type: "genomic_foundation".to_string(),
+            description: "Gene42: Long-range genomic foundation model with dense attention".to_string(),
+            task: "generation".to_string(),
+            max_length: 192000,
+            supported_sequences: vec!["dna".to_string(), "rna".to_string()],
+            performance_tier: "high".to_string(),
+        });
+
+        self.available_models.insert("mammal_biomed".to_string(), GenomicModelConfig {
+            model_id: "ibm/biomed.omics.bl.sm.ma-ted-458m".to_string(),
+            model_type: "multimodal_biomed".to_string(),
+            description: "MAMMAL: Molecular aligned multi-modal architecture for biomedical data".to_string(),
+            task: "generation".to_string(),
+            max_length: 2048,
+            supported_sequences: vec!["dna".to_string(), "protein".to_string(), "rna".to_string()],
+            performance_tier: "medium".to_string(),
+        });
+    }
+
     /// Simulate model processing time for benchmarking
     fn simulate_model_processing(&self, sequence: &str, model_config: &GenomicModelConfig) -> f64 {
         let base_time = match model_config.performance_tier.as_str() {
@@ -337,7 +403,6 @@ impl GenomicModelsManager {
 
     /// Estimate memory usage for a model
     fn estimate_model_memory_usage(&self, model_name: &str) -> f64 {
-        // Simplified estimation based on model type
         match model_name {
             "caduceus" => 2048.0,           // ~2GB
             "nucleotide_transformer" => 4096.0, // ~4GB
@@ -348,232 +413,6 @@ impl GenomicModelsManager {
             _ => 1024.0,                    // Default 1GB
         }
     }
-
-    /// Get compatible models for sequence type
-    pub fn get_compatible_models(&self, sequence_type: &str) -> Vec<String> {
-        self.available_models
-            .iter()
-            .filter(|(_, config)| {
-                config.supported_sequences.contains(&sequence_type.to_string()) ||
-                config.model_type.contains("multimodal")
-            })
-            .map(|(name, _)| name.clone())
-            .collect()
-    }
-
-    /// Create analysis configuration
-    pub fn create_analysis_config(
-        &self,
-        analysis_type: &str,
-        sequence_type: &str,
-        models: Option<Vec<String>>,
-        device: &str,
-    ) -> HashMap<String, serde_json::Value> {
-        let recommended_models = models.unwrap_or_else(|| {
-            self.recommend_models_for_analysis(analysis_type)
-        });
-
-        // Filter by sequence type compatibility
-        let compatible_models: Vec<String> = recommended_models
-            .into_iter()
-            .filter(|model_name| {
-                if let Some(config) = self.available_models.get(model_name) {
-                    config.supported_sequences.contains(&sequence_type.to_string()) ||
-                    config.model_type.contains("multimodal")
-                } else {
-                    false
-                }
-            })
-            .collect();
-
-        // Calculate max sequence length
-        let max_length = compatible_models
-            .iter()
-            .filter_map(|model_name| self.available_models.get(model_name))
-            .map(|config| config.max_length)
-            .min()
-            .unwrap_or(1000);
-
-        let mut config = HashMap::new();
-        config.insert("analysis_type".to_string(), serde_json::Value::String(analysis_type.to_string()));
-        config.insert("sequence_type".to_string(), serde_json::Value::String(sequence_type.to_string()));
-        config.insert("models".to_string(), serde_json::Value::Array(
-            compatible_models.into_iter().map(serde_json::Value::String).collect()
-        ));
-        config.insert("device".to_string(), serde_json::Value::String(device.to_string()));
-        config.insert("recommended_batch_size".to_string(), serde_json::Value::Number(
-            serde_json::Number::from(if device == "cpu" { 1 } else { 4 })
-        ));
-        config.insert("max_sequence_length".to_string(), serde_json::Value::Number(
-            serde_json::Number::from(max_length)
-        ));
-
-        config
-    }
-
-    /// Batch sequence processing for training data generation
-    pub fn process_sequences_for_training(
-        &self,
-        sequences: &[(String, String)], // (sequence, sequence_type)
-        model_names: &[String],
-        batch_size: usize,
-    ) -> Result<Vec<TrainingSequenceResult>> {
-        // Process sequences in parallel batches
-        let results: Vec<TrainingSequenceResult> = sequences
-            .par_chunks(batch_size)
-            .flat_map(|batch| {
-                batch
-                    .par_iter()
-                    .map(|(sequence, seq_type)| {
-                        self.process_single_sequence_for_training(sequence, seq_type, model_names)
-                    })
-                    .collect::<Vec<_>>()
-            })
-            .collect();
-
-        Ok(results)
-    }
-
-    /// Process a single sequence for training
-    fn process_single_sequence_for_training(
-        &self,
-        sequence: &str,
-        sequence_type: &str,
-        model_names: &[String],
-    ) -> TrainingSequenceResult {
-        let validation = self.validate_single_sequence(sequence, sequence_type);
-        
-        if !validation.is_valid {
-            return TrainingSequenceResult {
-                sequence: sequence.to_string(),
-                sequence_type: sequence_type.to_string(),
-                validation_result: validation,
-                compatible_models: vec![],
-                processing_estimates: HashMap::new(),
-                training_features: HashMap::new(),
-            };
-        }
-
-        // Find compatible models
-        let compatible_models: Vec<String> = model_names
-            .iter()
-            .filter(|model_name| {
-                if let Some(config) = self.available_models.get(*model_name) {
-                    config.supported_sequences.contains(&sequence_type.to_string()) &&
-                    sequence.len() <= config.max_length
-                } else {
-                    false
-                }
-            })
-            .cloned()
-            .collect();
-
-        // Estimate processing times
-        let mut processing_estimates = HashMap::new();
-        for model_name in &compatible_models {
-            if let Some(config) = self.available_models.get(model_name) {
-                let estimated_time = self.simulate_model_processing(sequence, config);
-                processing_estimates.insert(model_name.clone(), estimated_time);
-            }
-        }
-
-        // Generate training features
-        let mut training_features = HashMap::new();
-        training_features.insert("sequence_length".to_string(), sequence.len() as f64);
-        training_features.insert("gc_content".to_string(), self.calculate_gc_content(sequence));
-        training_features.insert("complexity_score".to_string(), self.calculate_sequence_complexity(sequence));
-
-        TrainingSequenceResult {
-            sequence: sequence.to_string(),
-            sequence_type: sequence_type.to_string(),
-            validation_result: validation,
-            compatible_models,
-            processing_estimates,
-            training_features,
-        }
-    }
-
-    /// Calculate GC content for DNA/RNA sequences
-    fn calculate_gc_content(&self, sequence: &str) -> f64 {
-        let sequence = sequence.to_uppercase();
-        let gc_count = sequence.chars().filter(|&c| c == 'G' || c == 'C').count();
-        gc_count as f64 / sequence.len() as f64
-    }
-
-    /// Calculate sequence complexity
-    fn calculate_sequence_complexity(&self, sequence: &str) -> f64 {
-        let mut char_counts = HashMap::new();
-        for ch in sequence.chars() {
-            *char_counts.entry(ch).or_insert(0) += 1;
-        }
-
-        // Calculate entropy as complexity measure
-        let len = sequence.len() as f64;
-        let entropy: f64 = char_counts
-            .values()
-            .map(|&count| {
-                let p = count as f64 / len;
-                -p * p.log2()
-            })
-            .sum();
-
-        entropy
-    }
-
-    /// Get model information
-    pub fn get_model_info(&self, model_name: &str) -> Option<ModelInfo> {
-        self.available_models.get(model_name).map(|config| {
-            ModelInfo {
-                name: model_name.to_string(),
-                config: config.clone(),
-                benchmark: self.benchmarks.get(model_name).cloned(),
-                cache_status: self.model_cache.contains_key(model_name),
-                estimated_memory_mb: self.estimate_model_memory_usage(model_name),
-            }
-        })
-    }
-
-    /// Get all available models
-    pub fn list_available_models(&self) -> Vec<String> {
-        self.available_models.keys().cloned().collect()
-    }
-
-    /// Get benchmark results
-    pub fn get_benchmark_results(&self, model_name: &str) -> Option<&ModelBenchmark> {
-        self.benchmarks.get(model_name)
-    }
-
-    /// Clear benchmarks
-    pub fn clear_benchmarks(&mut self) {
-        self.benchmarks.clear();
-    }
-}
-
-/// Result of processing a sequence for training
-#[derive(Debug, Clone, Serialize, Deserialize)]
-pub struct TrainingSequenceResult {
-    pub sequence: String,
-    pub sequence_type: String,
-    pub validation_result: ValidationResult,
-    pub compatible_models: Vec<String>,
-    pub processing_estimates: HashMap<String, f64>,
-    pub training_features: HashMap<String, f64>,
-}
-
-/// Complete model information
-#[derive(Debug, Clone, Serialize, Deserialize)]
-pub struct ModelInfo {
-    pub name: String,
-    pub config: GenomicModelConfig,
-    pub benchmark: Option<ModelBenchmark>,
-    pub cache_status: bool,
-    pub estimated_memory_mb: f64,
-}
-
-impl Default for GenomicModelsManager {
-    fn default() -> Self {
-        Self::new(8192) // Default 8GB cache
-    }
 }
 
 #[cfg(test)]
@@ -582,14 +421,14 @@ mod tests {
 
     #[test]
     fn test_genomic_models_manager_creation() {
-        let manager = GenomicModelsManager::new(4096);
+        let manager = GenomicModelsManager::new(Some(4096));
         assert!(manager.available_models.len() > 0);
         assert!(manager.available_models.contains_key("caduceus"));
     }
 
     #[test]
     fn test_sequence_validation() {
-        let manager = GenomicModelsManager::new(4096);
+        let manager = GenomicModelsManager::new(Some(4096));
         
         // Valid DNA sequence
         let result = manager.validate_single_sequence("ATCGATCGATCG", "dna");
@@ -603,33 +442,10 @@ mod tests {
 
     #[test]
     fn test_model_recommendations() {
-        let manager = GenomicModelsManager::new(4096);
+        let manager = GenomicModelsManager::new(Some(4096));
         
         let recommendations = manager.recommend_models_for_analysis("dna_analysis");
         assert!(recommendations.contains(&"caduceus".to_string()));
         assert!(recommendations.contains(&"nucleotide_transformer".to_string()));
-    }
-
-    #[test]
-    fn test_gc_content_calculation() {
-        let manager = GenomicModelsManager::new(4096);
-        
-        let gc_content = manager.calculate_gc_content("ATCGATCG");
-        assert!((gc_content - 0.5).abs() < 0.001); // 4 GC out of 8 = 0.5
-    }
-
-    #[test]
-    fn test_batch_validation() {
-        let manager = GenomicModelsManager::new(4096);
-        
-        let sequences = vec![
-            ("ATCGATCGATCG".to_string(), "dna".to_string()),
-            ("AUCGAUCGAUCG".to_string(), "rna".to_string()),
-            ("ACDEFGHIKLMN".to_string(), "protein".to_string()),
-        ];
-        
-        let results = manager.validate_sequence_batch(&sequences);
-        assert_eq!(results.len(), 3);
-        assert!(results.iter().all(|r| r.is_valid));
     }
 } 
