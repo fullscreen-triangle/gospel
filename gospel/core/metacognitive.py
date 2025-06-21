@@ -1,406 +1,415 @@
 """
-Metacognitive Bayesian Network for Gospel Analysis Orchestration
+Metacognitive Bayesian Network with Environmental Noise Modeling
 
-This module implements the core decision-making engine that autonomously selects
-computational tools and analysis strategies to maximize research objective functions.
+This module implements a noise-first approach to genomic analysis where:
+1. Environmental noise is actively modeled and controlled
+2. Relevant signals emerge as deviations from noise baselines
+3. Water-level modulation metaphor: adjust noise floor to reveal signal topology
+4. Bayesian evidence accumulates through gradient perturbation rather than isolation
 """
 
 import numpy as np
 import pandas as pd
-from typing import Dict, List, Any, Optional, Tuple
+from typing import Dict, List, Tuple, Optional, Callable, Any
 from dataclasses import dataclass
-from enum import Enum
+from scipy import stats
+from scipy.optimize import minimize
+import networkx as nx
+from sklearn.mixture import GaussianMixture
+from sklearn.decomposition import PCA
 import logging
-from scipy.stats import beta, norm
-from sklearn.gaussian_process import GaussianProcessRegressor
-from sklearn.gaussian_process.kernels import RBF, ConstantKernel as C
 
-
-class AnalysisState(Enum):
-    """Current state of genomic analysis"""
-    VARIANT_LOADING = "variant_loading"
-    ANNOTATION_REQUIRED = "annotation_required"
-    UNCERTAINTY_HIGH = "uncertainty_high"
-    EVIDENCE_CONFLICTING = "evidence_conflicting"
-    COMPUTATION_LIMITED = "computation_limited"
-    MOLECULAR_MODELING_NEEDED = "molecular_modeling_needed"
-    PROBABILISTIC_REASONING_NEEDED = "probabilistic_reasoning_needed"
-
-
-class ToolAction(Enum):
-    """Available tool actions"""
-    INTERNAL_PROCESSING = "internal_processing"
-    QUERY_AUTOBAHN = "query_autobahn"
-    QUERY_HEGEL = "query_hegel"
-    QUERY_BORGIA = "query_borgia"
-    QUERY_NEBUCHADNEZZAR = "query_nebuchadnezzar"
-    QUERY_BENE_GESSERIT = "query_bene_gesserit"
-    QUERY_LAVOISIER = "query_lavoisier"
-
+logger = logging.getLogger(__name__)
 
 @dataclass
-class ObjectiveFunction:
-    """Research objective function specification"""
-    primary_goal: str
-    weights: Dict[str, float]
-    constraints: Dict[str, Any]
-    time_budget: Optional[int] = None
-    computational_budget: Optional[float] = None
-    confidence_threshold: float = 0.9
-
+class NoiseProfile:
+    """Environmental noise characterization"""
+    baseline_level: float
+    distribution_params: Dict[str, float]
+    temporal_dynamics: np.ndarray
+    spatial_correlations: np.ndarray
+    entropy_measure: float
+    gradient_sensitivity: float
 
 @dataclass
-class AnalysisContext:
-    """Current analysis context and state"""
-    variant_count: int
-    expression_data_size: int
-    network_complexity: float
-    uncertainty_level: float
-    computational_resources: float
-    time_remaining: Optional[int]
-    available_tools: List[str]
+class SignalEmergence:
+    """Signal that emerges from noise modulation"""
+    emergence_threshold: float
+    signal_strength: float
+    noise_contrast_ratio: float
+    stability_measure: float
+    confidence_interval: Tuple[float, float]
+    emergence_trajectory: np.ndarray
 
-
-class MetacognitiveBayesianNetwork:
+class EnvironmentalGradientSearch:
     """
-    Bayesian network for metacognitive analysis orchestration.
-    
-    This system employs variational Bayes for approximate inference to select
-    optimal tools and strategies for genomic analysis based on current state
-    and research objectives.
+    Noise-modeling search algorithm that uses environmental perturbation
+    to reveal signal topology through controlled noise modulation
     """
     
     def __init__(self, 
-                 learning_rate: float = 0.01,
-                 exploration_rate: float = 0.1,
-                 max_iterations: int = 1000,
-                 convergence_threshold: float = 1e-6):
+                 noise_resolution: int = 1000,
+                 gradient_steps: int = 50,
+                 emergence_threshold: float = 2.0):
+        self.noise_resolution = noise_resolution
+        self.gradient_steps = gradient_steps
+        self.emergence_threshold = emergence_threshold
+        self.noise_models = {}
+        self.signal_topology = {}
+        
+    def model_environmental_noise(self, 
+                                data: np.ndarray,
+                                noise_dimensions: List[str]) -> NoiseProfile:
         """
-        Initialize the metacognitive Bayesian network.
-        
-        Args:
-            learning_rate: Learning rate for variational updates
-            exploration_rate: Exploration vs exploitation balance
-            max_iterations: Maximum iterations for variational inference
-            convergence_threshold: Convergence threshold for ELBO
+        Model the environmental noise across specified dimensions
+        like nature models background environmental conditions
         """
-        self.learning_rate = learning_rate
-        self.exploration_rate = exploration_rate
-        self.max_iterations = max_iterations
-        self.convergence_threshold = convergence_threshold
+        # Fit mixture model to capture noise complexity
+        n_components = min(10, len(data) // 100)  # Adaptive complexity
+        gmm = GaussianMixture(n_components=n_components, random_state=42)
+        gmm.fit(data.reshape(-1, 1) if data.ndim == 1 else data)
         
-        # Initialize network parameters
-        self._initialize_network()
+        # Calculate entropy of noise distribution
+        log_likelihood = gmm.score_samples(data.reshape(-1, 1) if data.ndim == 1 else data)
+        entropy = -np.mean(log_likelihood)
         
-        # Gaussian Process for tool utility estimation
-        kernel = C(1.0, (1e-3, 1e3)) * RBF(1.0, (1e-2, 1e2))
-        self.gp_utility = GaussianProcessRegressor(kernel=kernel, alpha=1e-6)
+        # Temporal dynamics through autocorrelation
+        if data.ndim == 1:
+            temporal_dynamics = np.correlate(data, data, mode='full')
+            temporal_dynamics = temporal_dynamics[temporal_dynamics.size // 2:]
+        else:
+            temporal_dynamics = np.array([np.corrcoef(data[i], data[i+1])[0,1] 
+                                        for i in range(len(data)-1)])
         
-        # Experience replay buffer
-        self.experience_buffer = []
-        self.max_buffer_size = 10000
+        # Spatial correlations
+        if data.ndim > 1:
+            spatial_correlations = np.corrcoef(data)
+        else:
+            spatial_correlations = np.array([[1.0]])
         
-        self.logger = logging.getLogger(__name__)
+        # Gradient sensitivity - how responsive is the noise to perturbation
+        gradient_sensitivity = np.std(np.gradient(data.flatten())) / np.mean(np.abs(data.flatten()))
         
-    def _initialize_network(self):
-        """Initialize Bayesian network structure and parameters"""
-        
-        # Prior probabilities for states
-        self.state_priors = {
-            AnalysisState.VARIANT_LOADING: 0.2,
-            AnalysisState.ANNOTATION_REQUIRED: 0.3,
-            AnalysisState.UNCERTAINTY_HIGH: 0.15,
-            AnalysisState.EVIDENCE_CONFLICTING: 0.1,
-            AnalysisState.COMPUTATION_LIMITED: 0.1,
-            AnalysisState.MOLECULAR_MODELING_NEEDED: 0.05,
-            AnalysisState.PROBABILISTIC_REASONING_NEEDED: 0.1
-        }
-        
-        # Tool effectiveness priors (Beta distributions)
-        self.tool_effectiveness = {
-            ToolAction.INTERNAL_PROCESSING: beta(a=8, b=2),  # High effectiveness
-            ToolAction.QUERY_AUTOBAHN: beta(a=7, b=3),      # Good for probabilistic
-            ToolAction.QUERY_HEGEL: beta(a=6, b=4),         # Good for evidence
-            ToolAction.QUERY_BORGIA: beta(a=5, b=5),        # Moderate effectiveness
-            ToolAction.QUERY_NEBUCHADNEZZAR: beta(a=6, b=4), # Good for circuits
-            ToolAction.QUERY_BENE_GESSERIT: beta(a=4, b=6),  # Specialized use
-            ToolAction.QUERY_LAVOISIER: beta(a=5, b=5)       # Moderate effectiveness
-        }
-        
-        # State-action compatibility matrix
-        self.compatibility_matrix = np.array([
-            # States vs Actions compatibility scores
-            [0.9, 0.1, 0.2, 0.3, 0.4, 0.2, 0.1],  # VARIANT_LOADING
-            [0.8, 0.2, 0.7, 0.4, 0.3, 0.1, 0.2],  # ANNOTATION_REQUIRED
-            [0.3, 0.9, 0.6, 0.2, 0.2, 0.3, 0.1],  # UNCERTAINTY_HIGH
-            [0.2, 0.7, 0.9, 0.3, 0.2, 0.1, 0.2],  # EVIDENCE_CONFLICTING
-            [0.5, 0.3, 0.2, 0.6, 0.8, 0.7, 0.4],  # COMPUTATION_LIMITED
-            [0.1, 0.4, 0.2, 0.9, 0.8, 0.6, 0.7],  # MOLECULAR_MODELING_NEEDED
-            [0.2, 0.9, 0.5, 0.6, 0.4, 0.7, 0.3]   # PROBABILISTIC_REASONING_NEEDED
-        ])
-        
-    def infer_current_state(self, context: AnalysisContext) -> Dict[AnalysisState, float]:
-        """
-        Infer current analysis state probabilities using variational Bayes.
-        
-        Args:
-            context: Current analysis context
-            
-        Returns:
-            Dictionary mapping states to probabilities
-        """
-        # Feature extraction from context
-        features = self._extract_state_features(context)
-        
-        # Variational inference for state estimation
-        state_posteriors = {}
-        
-        for state in AnalysisState:
-            # Compute likelihood based on context features
-            likelihood = self._compute_state_likelihood(state, features)
-            
-            # Bayesian update: posterior ∝ likelihood × prior
-            posterior = likelihood * self.state_priors[state]
-            state_posteriors[state] = posterior
-            
-        # Normalize probabilities
-        total_prob = sum(state_posteriors.values())
-        if total_prob > 0:
-            state_posteriors = {k: v/total_prob for k, v in state_posteriors.items()}
-        
-        return state_posteriors
+        return NoiseProfile(
+            baseline_level=np.mean(data),
+            distribution_params={
+                'means': gmm.means_.flatten(),
+                'covariances': gmm.covariances_.flatten(),
+                'weights': gmm.weights_
+            },
+            temporal_dynamics=temporal_dynamics,
+            spatial_correlations=spatial_correlations,
+            entropy_measure=entropy,
+            gradient_sensitivity=gradient_sensitivity
+        )
     
-    def select_optimal_actions(self, 
-                             state_posteriors: Dict[AnalysisState, float],
-                             objective: ObjectiveFunction,
-                             context: AnalysisContext) -> List[Tuple[ToolAction, float]]:
+    def modulate_noise_level(self, 
+                           data: np.ndarray, 
+                           noise_profile: NoiseProfile,
+                           modulation_factor: float) -> np.ndarray:
         """
-        Select optimal tool actions using Bayesian decision theory.
+        Modulate the noise level - equivalent to changing water level in swamp
+        """
+        # Generate noise with similar characteristics but different amplitude
+        noise_sample = np.random.normal(
+            noise_profile.baseline_level * modulation_factor,
+            np.sqrt(np.mean(noise_profile.distribution_params['covariances'])) * modulation_factor,
+            size=data.shape
+        )
         
-        Args:
-            state_posteriors: Current state probability distribution
-            objective: Research objective function
-            context: Analysis context
+        # Apply temporal correlation structure
+        if len(noise_profile.temporal_dynamics) > 1:
+            for i in range(1, min(len(noise_sample), len(noise_profile.temporal_dynamics))):
+                correlation = noise_profile.temporal_dynamics[i-1]
+                if not np.isnan(correlation):
+                    noise_sample[i] = (noise_sample[i] * (1 - abs(correlation)) + 
+                                     noise_sample[i-1] * correlation)
+        
+        return noise_sample
+    
+    def detect_signal_emergence(self, 
+                              original_data: np.ndarray,
+                              modulated_noise: np.ndarray,
+                              threshold_multiplier: float = 2.0) -> SignalEmergence:
+        """
+        Detect signals that emerge above the modulated noise floor
+        """
+        # Calculate signal-to-noise ratio at each point
+        snr = np.abs(original_data) / (np.abs(modulated_noise) + 1e-10)
+        
+        # Find emergence threshold
+        noise_std = np.std(modulated_noise)
+        emergence_threshold = np.mean(modulated_noise) + threshold_multiplier * noise_std
+        
+        # Identify emergent signals
+        emergent_mask = snr > threshold_multiplier
+        signal_strength = np.mean(snr[emergent_mask]) if np.any(emergent_mask) else 0.0
+        
+        # Calculate noise contrast ratio
+        if signal_strength > 0:
+            noise_contrast_ratio = signal_strength / np.mean(snr[~emergent_mask])
+        else:
+            noise_contrast_ratio = 0.0
+        
+        # Stability measure - how consistent is the emergence
+        stability_measure = 1.0 - (np.std(snr[emergent_mask]) / signal_strength) if signal_strength > 0 else 0.0
+        
+        # Confidence interval for emergence
+        if np.any(emergent_mask):
+            conf_int = stats.t.interval(0.95, len(snr[emergent_mask])-1, 
+                                      loc=signal_strength, 
+                                      scale=stats.sem(snr[emergent_mask]))
+        else:
+            conf_int = (0.0, 0.0)
+        
+        return SignalEmergence(
+            emergence_threshold=emergence_threshold,
+            signal_strength=signal_strength,
+            noise_contrast_ratio=noise_contrast_ratio,
+            stability_measure=stability_measure,
+            confidence_interval=conf_int,
+            emergence_trajectory=snr
+        )
+    
+    def environmental_gradient_search(self, 
+                                    genomic_data: np.ndarray,
+                                    target_function: Callable[[np.ndarray], float],
+                                    noise_dimensions: List[str]) -> Dict[str, Any]:
+        """
+        Perform environmental gradient search using noise modulation
+        to reveal optimal genomic solutions
+        """
+        logger.info("Starting environmental gradient search with noise modeling")
+        
+        # Model the environmental noise
+        noise_profile = self.model_environmental_noise(genomic_data, noise_dimensions)
+        
+        # Track signal emergence across gradient steps
+        emergence_history = []
+        best_solution = None
+        best_fitness = float('-inf')
+        
+        # Modulate noise level across gradient steps
+        modulation_factors = np.logspace(-1, 1, self.gradient_steps)  # 0.1x to 10x noise
+        
+        for step, mod_factor in enumerate(modulation_factors):
+            # Generate modulated noise
+            modulated_noise = self.modulate_noise_level(genomic_data, noise_profile, mod_factor)
             
-        Returns:
-            List of (action, utility) tuples sorted by utility
-        """
-        action_utilities = {}
-        
-        for action in ToolAction:
-            # Skip unavailable tools
-            if action.value not in context.available_tools and action != ToolAction.INTERNAL_PROCESSING:
-                continue
+            # Detect signal emergence
+            signal_emergence = self.detect_signal_emergence(genomic_data, modulated_noise)
+            
+            # Evaluate fitness of emerged signals
+            if signal_emergence.signal_strength > self.emergence_threshold:
+                # Extract emergent signal positions
+                emergent_indices = signal_emergence.emergence_trajectory > self.emergence_threshold
+                candidate_solution = genomic_data[emergent_indices]
                 
-            # Compute expected utility
-            expected_utility = self._compute_expected_utility(
-                action, state_posteriors, objective, context
+                if len(candidate_solution) > 0:
+                    fitness = target_function(candidate_solution)
+                    
+                    if fitness > best_fitness:
+                        best_fitness = fitness
+                        best_solution = candidate_solution
+            
+            emergence_history.append({
+                'step': step,
+                'modulation_factor': mod_factor,
+                'signal_emergence': signal_emergence,
+                'fitness': target_function(genomic_data) if signal_emergence.signal_strength > 0 else 0
+            })
+        
+        return {
+            'best_solution': best_solution,
+            'best_fitness': best_fitness,
+            'noise_profile': noise_profile,
+            'emergence_history': emergence_history,
+            'optimization_trajectory': [h['fitness'] for h in emergence_history]
+        }
+
+class NoiseBayesianNetwork:
+    """
+    Bayesian network that uses noise modeling as primary mechanism
+    for evidence accumulation and decision making
+    """
+    
+    def __init__(self):
+        self.network = nx.DiGraph()
+        self.noise_profiles = {}
+        self.signal_emergence_history = {}
+        self.environmental_search = EnvironmentalGradientSearch()
+        
+    def add_genomic_evidence_node(self, 
+                                node_id: str, 
+                                genomic_data: np.ndarray,
+                                noise_dimensions: List[str],
+                                prior_belief: float = 0.5):
+        """
+        Add evidence node with noise-based modeling
+        """
+        # Model environmental noise for this genomic region
+        noise_profile = self.environmental_search.model_environmental_noise(
+            genomic_data, noise_dimensions
+        )
+        
+        self.network.add_node(node_id, 
+                            data=genomic_data,
+                            noise_profile=noise_profile,
+                            prior_belief=prior_belief,
+                            evidence_type='genomic')
+        
+        self.noise_profiles[node_id] = noise_profile
+        
+    def update_belief_through_noise_modulation(self, 
+                                             node_id: str, 
+                                             new_evidence: np.ndarray) -> float:
+        """
+        Update belief by modulating noise and observing signal emergence
+        """
+        if node_id not in self.network.nodes:
+            raise ValueError(f"Node {node_id} not found in network")
+        
+        node_data = self.network.nodes[node_id]
+        noise_profile = node_data['noise_profile']
+        
+        # Test multiple noise modulations
+        modulation_factors = [0.5, 1.0, 1.5, 2.0]
+        emergence_strengths = []
+        
+        for mod_factor in modulation_factors:
+            modulated_noise = self.environmental_search.modulate_noise_level(
+                new_evidence, noise_profile, mod_factor
             )
             
-            action_utilities[action] = expected_utility
+            signal_emergence = self.environmental_search.detect_signal_emergence(
+                new_evidence, modulated_noise
+            )
             
-        # Sort by utility (descending)
-        sorted_actions = sorted(action_utilities.items(), 
-                              key=lambda x: x[1], reverse=True)
+            emergence_strengths.append(signal_emergence.signal_strength)
         
-        # Apply exploration vs exploitation
-        if np.random.random() < self.exploration_rate:
-            # Exploration: sample from utility distribution
-            utilities = np.array([u for _, u in sorted_actions])
-            probs = self._softmax(utilities / 0.1)  # Temperature = 0.1
-            idx = np.random.choice(len(sorted_actions), p=probs)
-            selected = [sorted_actions[idx]]
-        else:
-            # Exploitation: select top actions
-            selected = sorted_actions[:3]  # Top 3 actions
-            
-        return selected
+        # Calculate belief update based on consistent signal emergence
+        emergence_consistency = 1.0 - np.std(emergence_strengths) / (np.mean(emergence_strengths) + 1e-10)
+        max_emergence = np.max(emergence_strengths)
+        
+        # Bayesian update with noise-modulated evidence
+        prior = node_data['prior_belief']
+        likelihood = max_emergence * emergence_consistency
+        
+        # Simple Bayesian update (can be made more sophisticated)
+        posterior = (likelihood * prior) / (likelihood * prior + (1 - likelihood) * (1 - prior))
+        
+        # Update node
+        self.network.nodes[node_id]['posterior_belief'] = posterior
+        self.network.nodes[node_id]['emergence_strength'] = max_emergence
+        
+        return posterior
     
-    def _extract_state_features(self, context: AnalysisContext) -> np.ndarray:
-        """Extract numerical features from analysis context"""
-        return np.array([
-            np.log10(context.variant_count + 1),
-            np.log10(context.expression_data_size + 1),
-            context.network_complexity,
-            context.uncertainty_level,
-            context.computational_resources,
-            context.time_remaining or 3600,  # Default 1 hour
-            len(context.available_tools)
-        ])
-    
-    def _compute_state_likelihood(self, state: AnalysisState, features: np.ndarray) -> float:
-        """Compute likelihood of state given context features"""
+    def make_decision(self, decision_threshold: float = 0.7) -> Dict[str, Any]:
+        """
+        Make decision based on noise-modulated evidence across network
+        """
+        decisions = {}
         
-        # State-specific likelihood functions
-        if state == AnalysisState.VARIANT_LOADING:
-            return norm.pdf(features[0], loc=4, scale=1)  # log10(10k variants)
+        for node_id in self.network.nodes:
+            node_data = self.network.nodes[node_id]
+            posterior = node_data.get('posterior_belief', node_data.get('prior_belief', 0.5))
+            emergence = node_data.get('emergence_strength', 0.0)
             
-        elif state == AnalysisState.ANNOTATION_REQUIRED:
-            return 1.0 - np.exp(-features[0]/3)  # More variants = more annotation needed
+            # Decision combines posterior belief and signal emergence strength
+            decision_confidence = posterior * emergence
             
-        elif state == AnalysisState.UNCERTAINTY_HIGH:
-            return features[3]  # Directly use uncertainty level
-            
-        elif state == AnalysisState.EVIDENCE_CONFLICTING:
-            return features[3] * (1 - np.exp(-features[2]))  # Uncertainty × complexity
-            
-        elif state == AnalysisState.COMPUTATION_LIMITED:
-            return 1.0 / (1.0 + features[4])  # Inverse of available resources
-            
-        elif state == AnalysisState.MOLECULAR_MODELING_NEEDED:
-            return features[2] * 0.5  # Network complexity indicator
-            
-        elif state == AnalysisState.PROBABILISTIC_REASONING_NEEDED:
-            return features[3] * features[2] * 0.3  # Uncertainty × complexity
-            
-        return 0.1  # Default low likelihood
-    
-    def _compute_expected_utility(self, 
-                                action: ToolAction,
-                                state_posteriors: Dict[AnalysisState, float],
-                                objective: ObjectiveFunction,
-                                context: AnalysisContext) -> float:
-        """Compute expected utility of action given states and objective"""
-        
-        expected_utility = 0.0
-        
-        for state, prob in state_posteriors.items():
-            # Get compatibility score
-            state_idx = list(AnalysisState).index(state)
-            action_idx = list(ToolAction).index(action)
-            compatibility = self.compatibility_matrix[state_idx, action_idx]
-            
-            # Get tool effectiveness
-            effectiveness = self.tool_effectiveness[action].mean()
-            
-            # Compute costs
-            cost = self._compute_action_cost(action, context)
-            
-            # Objective-specific benefits
-            benefit = self._compute_objective_benefit(action, objective, state)
-            
-            # Expected utility for this state
-            utility = prob * (compatibility * effectiveness * benefit - cost)
-            expected_utility += utility
-            
-        return expected_utility
-    
-    def _compute_action_cost(self, action: ToolAction, context: AnalysisContext) -> float:
-        """Compute computational/time cost of action"""
-        
-        base_costs = {
-            ToolAction.INTERNAL_PROCESSING: 0.1,
-            ToolAction.QUERY_AUTOBAHN: 0.3,
-            ToolAction.QUERY_HEGEL: 0.2,
-            ToolAction.QUERY_BORGIA: 0.4,
-            ToolAction.QUERY_NEBUCHADNEZZAR: 0.5,
-            ToolAction.QUERY_BENE_GESSERIT: 0.6,
-            ToolAction.QUERY_LAVOISIER: 0.3
-        }
-        
-        base_cost = base_costs.get(action, 0.5)
-        
-        # Scale by data size
-        size_factor = np.log10(context.variant_count + 1) / 5.0
-        
-        # Scale by resource availability
-        resource_factor = 1.0 / (context.computational_resources + 0.1)
-        
-        return base_cost * size_factor * resource_factor
-    
-    def _compute_objective_benefit(self, 
-                                 action: ToolAction, 
-                                 objective: ObjectiveFunction,
-                                 state: AnalysisState) -> float:
-        """Compute benefit of action for specific objective"""
-        
-        # Objective-specific benefit matrices
-        objective_benefits = {
-            "identify_pathogenic_variants": {
-                ToolAction.INTERNAL_PROCESSING: 0.8,
-                ToolAction.QUERY_HEGEL: 0.9,  # Evidence validation
-                ToolAction.QUERY_AUTOBAHN: 0.7,  # Probabilistic reasoning
-            },
-            "pathway_analysis": {
-                ToolAction.QUERY_NEBUCHADNEZZAR: 0.9,  # Circuit modeling
-                ToolAction.QUERY_BORGIA: 0.8,  # Molecular representation
-                ToolAction.INTERNAL_PROCESSING: 0.6,
-            },
-            "drug_interaction_prediction": {
-                ToolAction.QUERY_BORGIA: 0.9,  # Molecular modeling
-                ToolAction.QUERY_LAVOISIER: 0.8,  # Mass spec analysis
-                ToolAction.QUERY_HEGEL: 0.7,  # Evidence validation
+            decisions[node_id] = {
+                'decision': decision_confidence > decision_threshold,
+                'confidence': decision_confidence,
+                'posterior_belief': posterior,
+                'emergence_strength': emergence,
+                'reasoning': f"Signal emergence: {emergence:.3f}, Posterior: {posterior:.3f}"
             }
+        
+        return decisions
+
+class MetacognitiveOrchestrator:
+    """
+    Main orchestrator that uses noise-modeling for genomic analysis decisions
+    """
+    
+    def __init__(self):
+        self.bayesian_network = NoiseBayesianNetwork()
+        self.environmental_search = EnvironmentalGradientSearch()
+        self.decision_history = []
+        
+    def analyze_genomic_region(self, 
+                             genomic_data: np.ndarray,
+                             region_id: str,
+                             analysis_objectives: List[str]) -> Dict[str, Any]:
+        """
+        Analyze genomic region using environmental noise modeling
+        """
+        logger.info(f"Analyzing genomic region {region_id} with noise-first approach")
+        
+        # Add evidence node
+        self.bayesian_network.add_genomic_evidence_node(
+            region_id, genomic_data, ['sequence', 'expression', 'variation']
+        )
+        
+        # Define target function based on analysis objectives
+        def objective_function(data):
+            # Example: maximize information content while minimizing noise
+            return np.var(data) / (np.mean(np.abs(data)) + 1e-10)
+        
+        # Perform environmental gradient search
+        search_results = self.environmental_search.environmental_gradient_search(
+            genomic_data, objective_function, ['genomic_sequence']
+        )
+        
+        # Update beliefs based on search results
+        if search_results['best_solution'] is not None:
+            posterior = self.bayesian_network.update_belief_through_noise_modulation(
+                region_id, search_results['best_solution']
+            )
+        else:
+            posterior = 0.5  # Default prior
+        
+        # Make decision
+        decisions = self.bayesian_network.make_decision()
+        
+        analysis_result = {
+            'region_id': region_id,
+            'noise_profile': search_results['noise_profile'],
+            'signal_emergence': search_results['emergence_history'],
+            'best_solution': search_results['best_solution'],
+            'optimization_fitness': search_results['best_fitness'],
+            'posterior_belief': posterior,
+            'decisions': decisions,
+            'environmental_search_trajectory': search_results['optimization_trajectory']
         }
         
-        goal = objective.primary_goal
-        if goal in objective_benefits:
-            return objective_benefits[goal].get(action, 0.3)
-        
-        return 0.5  # Default moderate benefit
+        self.decision_history.append(analysis_result)
+        return analysis_result
     
-    def _softmax(self, x: np.ndarray) -> np.ndarray:
-        """Compute softmax probabilities"""
-        exp_x = np.exp(x - np.max(x))
-        return exp_x / np.sum(exp_x)
-    
-    def update_experience(self, 
-                         context: AnalysisContext,
-                         actions_taken: List[ToolAction],
-                         outcomes: Dict[str, float]):
-        """Update network based on action outcomes"""
+    def query_external_tool(self, 
+                          tool_name: str, 
+                          query_data: Dict[str, Any],
+                          noise_context: NoiseProfile) -> Dict[str, Any]:
+        """
+        Query external tools (Autobahn, Hegel, etc.) with noise context
+        """
+        logger.info(f"Querying {tool_name} with environmental noise context")
         
-        # Store experience
-        experience = {
-            'context': context,
-            'actions': actions_taken,
-            'outcomes': outcomes,
-            'timestamp': pd.Timestamp.now()
+        # Prepare query with noise characteristics
+        contextualized_query = {
+            'data': query_data,
+            'noise_baseline': noise_context.baseline_level,
+            'entropy_context': noise_context.entropy_measure,
+            'gradient_sensitivity': noise_context.gradient_sensitivity,
+            'temporal_dynamics': noise_context.temporal_dynamics.tolist(),
+            'request_type': 'probabilistic_reasoning' if tool_name == 'autobahn' else 'analysis'
         }
         
-        self.experience_buffer.append(experience)
-        
-        # Maintain buffer size
-        if len(self.experience_buffer) > self.max_buffer_size:
-            self.experience_buffer.pop(0)
-            
-        # Update tool effectiveness priors
-        self._update_tool_effectiveness(actions_taken, outcomes)
-        
-        self.logger.info(f"Updated experience buffer. Size: {len(self.experience_buffer)}")
-    
-    def _update_tool_effectiveness(self, 
-                                 actions: List[ToolAction], 
-                                 outcomes: Dict[str, float]):
-        """Update tool effectiveness distributions based on outcomes"""
-        
-        for action in actions:
-            if action in self.tool_effectiveness:
-                # Get outcome score (0-1)
-                score = outcomes.get('success_rate', 0.5)
-                
-                # Update Beta distribution parameters
-                current_dist = self.tool_effectiveness[action]
-                
-                if score > 0.5:
-                    # Success: increase alpha
-                    new_alpha = current_dist.args[0] + self.learning_rate
-                    new_beta = current_dist.args[1]
-                else:
-                    # Failure: increase beta
-                    new_alpha = current_dist.args[0]
-                    new_beta = current_dist.args[1] + self.learning_rate
-                    
-                self.tool_effectiveness[action] = beta(a=new_alpha, b=new_beta)
-    
-    def get_network_state(self) -> Dict[str, Any]:
-        """Get current network state for debugging/monitoring"""
+        # Simulate tool response (in real implementation, this would be actual API calls)
         return {
-            'state_priors': self.state_priors,
-            'tool_effectiveness': {
-                k: {'mean': v.mean(), 'std': v.std()} 
-                for k, v in self.tool_effectiveness.items()
-            },
-            'experience_count': len(self.experience_buffer),
-            'exploration_rate': self.exploration_rate
+            'tool': tool_name,
+            'response': f"Analysis complete with noise context: {noise_context.entropy_measure:.3f}",
+            'confidence': min(1.0, noise_context.gradient_sensitivity * 2),
+            'recommendations': ['use_fuzzy_logic', 'apply_bayesian_inference']
         } 
