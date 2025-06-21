@@ -20,6 +20,7 @@ pub mod network;
 pub mod fuzzy;
 pub mod circuit;
 pub mod experiment;
+pub mod turbulance;
 pub mod utils;
 
 // Python bindings
@@ -37,6 +38,7 @@ pub use expression::{ExpressionProcessor, ExpressionMatrix};
 pub use network::{GeneNetwork, NetworkProcessor};
 pub use fuzzy::{FuzzyProcessor, FuzzyResult};
 pub use circuit::{GenomicCircuit, CircuitProcessor};
+pub use turbulance::{TurbulanceCompiler, TurbulanceAST, ExecutionPlan, TurbulanceError};
 
 use anyhow::Result;
 use serde::{Deserialize, Serialize};
@@ -75,6 +77,7 @@ pub struct GospelProcessor {
     network_processor: NetworkProcessor,
     fuzzy_processor: FuzzyProcessor,
     circuit_processor: CircuitProcessor,
+    turbulance_compiler: TurbulanceCompiler,
 }
 
 impl GospelProcessor {
@@ -99,6 +102,7 @@ impl GospelProcessor {
             network_processor: NetworkProcessor::new(&config)?,
             fuzzy_processor: FuzzyProcessor::new(&config)?,
             circuit_processor: CircuitProcessor::new(&config)?,
+            turbulance_compiler: TurbulanceCompiler::new(),
             config,
         })
     }
@@ -131,6 +135,25 @@ impl GospelProcessor {
     pub async fn circuit_analysis(&self, network: &GeneNetwork, expression: &ExpressionMatrix) -> Result<GenomicCircuit> {
         tracing::info!("Generating genomic circuit");
         self.circuit_processor.generate_circuit(network, expression).await
+    }
+
+    /// Compile Turbulance script into execution plan
+    pub fn compile_turbulance(&self, source: &str) -> Result<ExecutionPlan, TurbulanceError> {
+        tracing::info!("Compiling Turbulance script");
+        let ast = self.turbulance_compiler.parse(source)?;
+        self.turbulance_compiler.compile(ast)
+    }
+
+    /// Parse Turbulance script into AST
+    pub fn parse_turbulance(&self, source: &str) -> Result<TurbulanceAST, TurbulanceError> {
+        tracing::info!("Parsing Turbulance script");
+        self.turbulance_compiler.parse(source)
+    }
+
+    /// Validate Turbulance AST for scientific soundness
+    pub fn validate_turbulance(&self, ast: &TurbulanceAST) -> Result<(), Vec<TurbulanceError>> {
+        tracing::info!("Validating Turbulance AST");
+        self.turbulance_compiler.validate(ast)
     }
 
     /// Get processor statistics
@@ -197,6 +220,9 @@ fn gospel_rust(_py: Python, m: &PyModule) -> PyResult<()> {
     m.add_class::<genomic_models::GenomicModelsManager>()?;
     m.add_class::<network_analysis::NetworkAnalyzer>()?;
     m.add_class::<network_processor::NetworkDataProcessor>()?;
+    
+    // Turbulance DSL compiler
+    m.add_class::<turbulance::TurbulanceCompiler>()?;
 
     Ok(())
 } 

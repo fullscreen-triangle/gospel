@@ -32,6 +32,9 @@ from gospel.core import (
 # LLM and AI integration
 from gospel.llm import GospelLLM
 
+# Turbulance DSL compiler
+from gospel.turbulance import TurbulanceCompiler, compile_turbulance_script, validate_turbulance_script
+
 # Export public API
 __all__ = [
     # Main analyzer
@@ -48,5 +51,10 @@ __all__ = [
     "GenomicFuzzySystem",
     "GenomicCircuitVisualizer", 
     "VisualUnderstandingVerifier",
-    "ToolOrchestrator"
+    "ToolOrchestrator",
+    
+    # Turbulance DSL compiler
+    "TurbulanceCompiler",
+    "compile_turbulance_script",
+    "validate_turbulance_script"
 ] 
