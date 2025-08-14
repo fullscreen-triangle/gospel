@@ -1,0 +1,117 @@
+[package]
+name = "gospel-core"
+version = "0.1.0"
+edition = "2021"
+authors = ["Kundai Farai Sachikonye <kundai.sachikonye@wzw.tum.de>"]
+description = "Revolutionary consciousness-mimetic genomic analysis framework - Core Rust implementation"
+license = "MIT"
+repository = "https://github.com/fullscreen-triangle/gospel"
+keywords = ["genomics", "consciousness", "s-entropy", "oscillatory", "truth-reconstruction"]
+categories = ["science", "algorithms", "mathematics"]
+
+[dependencies]
+# Core dependencies
+tokio = { version = "1.0", features = ["full"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+rayon = "1.7"
+crossbeam = "0.8"
+dashmap = "5.0"
+
+# Mathematical and scientific computing
+ndarray = "0.15"
+nalgebra = "0.32"
+num-complex = "0.4"
+statrs = "0.16"
+rand = "0.8"
+rand_distr = "0.4"
+
+# Performance optimization
+simd-adler32 = "0.3"
+memmap2 = "0.7"
+parking_lot = "0.12"
+
+# Async and concurrency
+futures = "0.3"
+async-trait = "0.1"
+
+# Error handling and logging
+anyhow = "1.0"
+thiserror = "1.0"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+
+# Compression and encoding
+lz4_flex = "0.11"
+zstd = "0.12"
+
+# Time and temporal precision
+chrono = { version = "0.4", features = ["serde"] }
+instant = "0.1"
+
+# Network and external integrations
+reqwest = { version = "0.11", features = ["json"] }
+url = "2.0"
+
+[dev-dependencies]
+criterion = { version = "0.5", features = ["html_reports"] }
+proptest = "1.0"
+tempfile = "3.0"
+
+[[bench]]
+name = "framework_benchmarks"
+harness = false
+
+[[bench]]
+name = "s_entropy_benchmarks"
+harness = false
+
+[[bench]]
+name = "oscillatory_benchmarks"
+harness = false
+
+[features]
+default = ["all-frameworks"]
+all-frameworks = [
+    "cellular-information",
+    "environmental-gradient", 
+    "fuzzy-bayesian",
+    "oscillatory-reality",
+    "s-entropy",
+    "universal-solvability",
+    "stella-lorraine",
+    "tributary-streams",
+    "harare-algorithm",
+    "honjo-masamune",
+    "buhera-east",
+    "mufakose-search"
+]
+
+# Individual framework features
+cellular-information = []
+environmental-gradient = []
+fuzzy-bayesian = []
+oscillatory-reality = []
+s-entropy = []
+universal-solvability = []
+stella-lorraine = []
+tributary-streams = []
+harare-algorithm = []
+honjo-masamune = []
+buhera-east = []
+mufakose-search = []
+
+# Performance features
+simd = []
+gpu-acceleration = []
+distributed = []
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+panic = "abort"
+
+[profile.bench]
+opt-level = 3
+debug = true
