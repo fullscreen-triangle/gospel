@@ -61,11 +61,9 @@ training_data/
 !requirements*.txt
 
 # Media
-*.png
+
 !gospel.png
 !public/visualizations/*.png
-*.jpg
-*.jpeg
 *.gif
 *.svg
 *.mp4
