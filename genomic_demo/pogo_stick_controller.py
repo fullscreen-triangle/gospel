@@ -7,11 +7,13 @@ by using Bayesian inference to navigate directly to relevant problem subspaces.
 """
 
 import numpy as np
+import matplotlib.pyplot as plt
 from typing import Dict, List, Tuple, Any, Optional
 from dataclasses import dataclass, field
 import random
 import time
 from enum import Enum
+import os
 
 class ProcessingMode(Enum):
     ASSISTANT = "assistant"  # Interactive processing with human collaboration
@@ -108,7 +110,7 @@ class BayesianPogoStickController:
             self._update_bayesian_posterior(solution_quality)
             
             print(f"  Local solution quality: {solution_quality:.4f}")
-            print(f"  Updated posterior: {self.bayesian_posterior:.4f}")
+            print(f"  Updated posterior: {self.bayesian_prior:.4f}")
             
             # Check if problem is solved
             if self._is_problem_solved():
@@ -126,7 +128,7 @@ class BayesianPogoStickController:
                     from_position=current_position,
                     to_position=next_position,
                     jump_distance=np.linalg.norm(next_position.coordinates - current_position.coordinates),
-                    bayesian_posterior=self.bayesian_posterior,
+                    bayesian_posterior=self.bayesian_prior,
                     jump_reason=self._determine_jump_reason(current_position, next_position)
                 )
                 
@@ -149,7 +151,7 @@ class BayesianPogoStickController:
         print(f"=== Solution Integration ===")
         print(f"Total landings: {len(self.landing_history)}")
         print(f"Total jumps: {len(self.jump_history)}")
-        print(f"Final posterior: {self.bayesian_posterior:.6f}")
+        print(f"Final posterior: {self.bayesian_prior:.6f}")
         print(f"Integrated quality: {integrated_solution['integrated_quality']:.4f}")
         
         return integrated_solution
@@ -351,8 +353,8 @@ class BayesianPogoStickController:
         """Update Bayesian posterior based on solution quality"""
         # Simple Bayesian update based on solution quality
         likelihood = solution_quality
-        self.bayesian_posterior = (self.bayesian_posterior * likelihood) / \
-                                (self.bayesian_posterior * likelihood + (1 - self.bayesian_posterior) * (1 - likelihood))
+        self.bayesian_prior = (self.bayesian_prior * likelihood) / \
+                                (self.bayesian_prior * likelihood + (1 - self.bayesian_prior) * (1 - likelihood))
     
     def _determine_next_landing(self, current_pos: LandingPosition, 
                               problem_spec: Dict[str, Any],
@@ -455,7 +457,7 @@ class BayesianPogoStickController:
         diversity_bonus = min(0.2, len(unique_subspaces) * 0.05)
         
         # Bayesian confidence bonus
-        posterior_bonus = self.bayesian_posterior * 0.1
+        posterior_bonus = self.bayesian_prior * 0.1
         
         integrated_quality = min(1.0, weighted_quality + diversity_bonus + posterior_bonus)
         
@@ -464,11 +466,116 @@ class BayesianPogoStickController:
             'landing_positions': len(self.landing_history),
             'unique_subspaces': len(unique_subspaces),
             'subspaces_explored': list(unique_subspaces),
-            'final_bayesian_posterior': self.bayesian_posterior,
+            'final_bayesian_posterior': self.bayesian_prior,
             'solution_diversity': diversity_bonus,
             'processing_mode': self.mode.value,
             'integration_method': 'bayesian_weighted_average'
         }
+
+def plot_pogo_stick_navigation(controller, result, mode_name, filename):
+    """Visualize the pogo-stick navigation process"""
+    plt.figure(figsize=(15, 10))
+    
+    # Landing positions visualization
+    plt.subplot(2, 3, 1)
+    if controller.landing_history:
+        positions = np.array([pos.coordinates for pos in controller.landing_history])
+        plt.scatter(positions[:, 0], positions[:, 1], c=range(len(positions)), 
+                   cmap='viridis', s=100, alpha=0.7, label='Landing Positions')
+        
+        # Draw path
+        if len(positions) > 1:
+            plt.plot(positions[:, 0], positions[:, 1], 'b--', alpha=0.5, linewidth=2)
+        
+        # Mark start and end
+        plt.scatter(positions[0, 0], positions[0, 1], c='green', s=200, marker='o', 
+                   label='Start', edgecolors='black', linewidth=2)
+        plt.scatter(positions[-1, 0], positions[-1, 1], c='red', s=200, marker='s', 
+                   label='Final', edgecolors='black', linewidth=2)
+    
+    plt.xlabel('X Coordinate')
+    plt.ylabel('Y Coordinate') 
+    plt.title(f'Pogo-Stick Landing Path - {mode_name}')
+    plt.legend()
+    plt.grid(True, alpha=0.3)
+    
+    # Subspace exploration
+    plt.subplot(2, 3, 2)
+    subspaces = [pos.problem_subspace for pos in controller.landing_history]
+    unique_subspaces = list(set(subspaces))
+    subspace_counts = [subspaces.count(sub) for sub in unique_subspaces]
+    
+    colors = plt.cm.tab10(np.linspace(0, 1, len(unique_subspaces)))
+    bars = plt.bar(range(len(unique_subspaces)), subspace_counts, color=colors, alpha=0.7)
+    plt.xticks(range(len(unique_subspaces)), unique_subspaces, rotation=45)
+    plt.ylabel('Landing Count')
+    plt.title('Problem Subspace Exploration')
+    
+    # Jump distances
+    plt.subplot(2, 3, 3)
+    if controller.jump_history:
+        jump_distances = [jump.jump_distance for jump in controller.jump_history]
+        plt.plot(jump_distances, 'bo-', linewidth=2, markersize=8)
+        plt.xlabel('Jump Number')
+        plt.ylabel('Jump Distance')
+        plt.title('Jump Distance Progression')
+        plt.grid(True, alpha=0.3)
+    
+    # Bayesian posterior evolution
+    plt.subplot(2, 3, 4)
+    posterior_evolution = [0.5]  # Starting prior
+    for jump in controller.jump_history:
+        posterior_evolution.append(jump.bayesian_posterior)
+    
+    plt.plot(posterior_evolution, 'ro-', linewidth=2, markersize=8)
+    plt.xlabel('Landing/Jump')
+    plt.ylabel('Bayesian Posterior')
+    plt.title('Bayesian Confidence Evolution')
+    plt.grid(True, alpha=0.3)
+    plt.ylim(0, 1)
+    
+    # Solution quality progression
+    plt.subplot(2, 3, 5)
+    qualities = []
+    for pos in controller.landing_history:
+        if pos.local_solution:
+            qualities.append(pos.local_solution.get('overall_quality', 0))
+        else:
+            qualities.append(0)
+    
+    plt.plot(qualities, 'go-', linewidth=2, markersize=8)
+    plt.xlabel('Landing Position')
+    plt.ylabel('Solution Quality')
+    plt.title('Solution Quality Progression')
+    plt.grid(True, alpha=0.3)
+    plt.ylim(0, 1)
+    
+    # Performance metrics
+    plt.subplot(2, 3, 6)
+    metrics = ['Integrated Quality', 'Subspaces', 'Positions', 'Posterior']
+    values = [
+        result['integrated_quality'],
+        len(result['subspaces_explored']) / 10.0,  # Normalize
+        result['landing_positions'] / 20.0,  # Normalize 
+        result['final_bayesian_posterior']
+    ]
+    colors = ['blue', 'green', 'orange', 'red']
+    
+    bars = plt.bar(metrics, values, color=colors, alpha=0.7)
+    plt.ylabel('Normalized Score')
+    plt.title('Performance Metrics')
+    plt.ylim(0, 1.2)
+    
+    # Add value labels
+    for bar, value in zip(bars, values):
+        plt.text(bar.get_x() + bar.get_width()/2, bar.get_height() + 0.02,
+                f'{value:.3f}', ha='center', va='bottom')
+    
+    plt.tight_layout()
+    os.makedirs('outputs', exist_ok=True)
+    plt.savefig(f'outputs/{filename}', dpi=300, bbox_inches='tight')
+    print(f"Pogo-stick navigation visualization saved to: outputs/{filename}")
+    plt.close()
 
 def demonstrate_pogo_stick_controller():
     """Demonstrate the Bayesian pogo-stick landing controller"""

@@ -1,0 +1,23 @@
+# Requirements for Genomic Demo - Revolutionary Three-Layer Framework
+# Dependencies for running demonstration scripts with visualizations
+
+# Core numerical computing
+numpy>=1.21.0
+
+# Plotting and visualization
+matplotlib>=3.5.0
+
+# Optional enhancements
+scipy>=1.7.0
+
+# Note: All other imports use Python standard library:
+# - typing (built-in Python 3.5+)
+# - dataclasses (built-in Python 3.7+) 
+# - enum (built-in Python 3.4+)
+# - random (built-in)
+# - time (built-in)
+# - abc (built-in)
+
+# For development/testing (optional):
+# pytest>=6.0.0
+# black>=21.0.0
