@@ -29,7 +29,7 @@ coverage.xml
 *.cover
 .hypothesis/
 .pytest_cache/
-
+public/genome
 # Jupyter Notebook
 .ipynb_checkpoints
 
@@ -60,6 +60,26 @@ training_data/
 *.xls
 !requirements*.txt
 
+# Genomic and bioinformatics data files
+*.gz
+*.fasta
+*.fa
+*.fas
+*.fastq
+*.fq
+*.sam
+*.bam
+*.bai
+*.vcf
+*.gff
+*.gtf
+*.bed
+*.wig
+*.bigwig
+*.bw
+*.bedgraph
+*.2bit
+*.nib
 # Media
 
 !gospel.png
@@ -72,7 +92,6 @@ training_data/
 
 # Compressed files
 *.tar
-*.gz
 *.zip
 *.rar
 *.7z

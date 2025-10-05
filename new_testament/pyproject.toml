@@ -1,0 +1,202 @@
+
+[build-system]
+requires = ["setuptools>=45", "wheel", "setuptools_scm[toml]>=6.2"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "new-testament"
+version = "1.0.0"
+description = "St. Stella's Genomic Analysis Framework - High Performance Cardinal Direction Coordinate Transformation"
+readme = "README.md"
+license = {text = "MIT"}
+authors = [
+    {name = "Kundai Farai Sachikonye", email = "sachikonye@wzw.tum.de"},
+]
+keywords = [
+    "genomics", "bioinformatics", "sequence-analysis", "coordinate-transformation",
+    "cardinal-directions", "s-entropy", "pattern-recognition", "dual-strand-analysis",
+    "high-performance-computing", "numba", "parallel-processing", "genomic-patterns",
+    "dna-analysis", "sequence-optimization", "genomic-coordinates", "stella-sequence"
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research", 
+    "Intended Audience :: Healthcare Industry",
+    "Topic :: Scientific/Engineering :: Bio-Informatics",
+    "Topic :: Scientific/Engineering :: Information Analysis",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9", 
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Operating System :: OS Independent",
+    "Natural Language :: English",
+]
+requires-python = ">=3.8"
+dependencies = [
+    "numpy>=1.21.0,<2.0.0",
+    "scipy>=1.7.0,<2.0.0",
+    "numba>=0.56.0,<1.0.0",
+    "pandas>=1.3.0,<3.0.0",
+    "matplotlib>=3.5.0,<4.0.0",
+    "seaborn>=0.11.0,<1.0.0",
+    "biopython>=1.79,<2.0.0",
+    "psutil>=5.8.0,<6.0.0",
+    "pyyaml>=6.0,<7.0.0",
+    "h5py>=3.6.0,<4.0.0",
+    "pytest>=6.2.0,<8.0.0",
+    "pytest-benchmark>=3.4.0,<5.0.0",
+    "tqdm>=4.62.0,<5.0.0",
+    "joblib>=1.1.0,<2.0.0",
+    "memory-profiler>=0.60.0,<1.0.0",
+]
+
+[project.optional-dependencies]
+gpu = [
+    "cupy>=10.0.0,<12.0.0",
+    "numba[cuda]>=0.56.0",
+]
+visualization = [
+    "plotly>=5.0.0,<6.0.0",
+    "bokeh>=2.4.0,<3.0.0",
+    "networkx>=2.6.0,<3.0.0",
+]
+ml = [
+    "scikit-learn>=1.0.0,<2.0.0",
+    "tensorflow>=2.8.0,<3.0.0",
+    "torch>=1.11.0,<3.0.0",
+]
+bioinformatics = [
+    "pysam>=0.19.0,<1.0.0",
+    "pyvcf>=0.6.8,<1.0.0",
+    "pyranges>=0.0.120,<1.0.0",
+]
+development = [
+    "black>=22.0.0,<24.0.0",
+    "flake8>=4.0.0,<7.0.0",
+    "mypy>=0.950,<2.0.0",
+    "pre-commit>=2.17.0,<4.0.0",
+    "pytest-cov>=3.0.0,<5.0.0",
+    "sphinx>=4.5.0,<8.0.0",
+    "sphinx-rtd-theme>=1.0.0,<3.0.0",
+]
+all = [
+    # GPU acceleration
+    "cupy>=10.0.0,<12.0.0",
+    # Enhanced visualization
+    "plotly>=5.0.0,<6.0.0", "bokeh>=2.4.0,<3.0.0", "networkx>=2.6.0,<3.0.0",
+    # Machine learning
+    "scikit-learn>=1.0.0,<2.0.0", "tensorflow>=2.8.0,<3.0.0", "torch>=1.11.0,<3.0.0",
+    # Advanced bioinformatics
+    "pysam>=0.19.0,<1.0.0", "pyvcf>=0.6.8,<1.0.0", "pyranges>=0.0.120,<1.0.0",
+    # Development tools
+    "black>=22.0.0,<24.0.0", "flake8>=4.0.0,<7.0.0", "mypy>=0.950,<2.0.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/fullscreen-triangle/gospel/tree/main/new_testament"
+Documentation = "https://github.com/fullscreen-triangle/gospel/tree/main/new_testament/README.md"
+Repository = "https://github.com/fullscreen-triangle/gospel.git"
+"Bug Tracker" = "https://github.com/fullscreen-triangle/gospel/issues"
+Publications = "https://github.com/fullscreen-triangle/gospel/tree/main/docs/publication"
+
+[project.scripts]
+st-stellas = "st_stellas.sequence.coordinate_transform:main"
+new-testament = "st_stellas.sequence:print_framework_info"
+stella-benchmark = "st_stellas.sequence.performance_benchmarks:main"
+stella-dual-strand = "st_stellas.sequence.dual_strand_analyzer:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+"st_stellas" = ["*.md", "*.txt", "*.json"]
+"st_stellas.sequence" = ["*.json", "*.txt"]
+"st_stellas.genome" = ["*.json", "*.txt"]
+
+# Black configuration
+[tool.black]
+line-length = 88
+target-version = ['py38', 'py39', 'py310', 'py311']
+include = '\.pyi?$'
+extend-exclude = '''
+/(
+  # directories
+  \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | build
+  | dist
+)/
+'''
+
+# isort configuration
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+line_length = 88
+known_first_party = ["st_stellas"]
+
+# Flake8 configuration
+[tool.flake8]
+max-line-length = 88
+extend-ignore = ["E203", "W503"]
+exclude = [
+    ".git",
+    "__pycache__",
+    ".pytest_cache",
+    "build",
+    "dist",
+    "*.egg-info",
+]
+
+# MyPy configuration
+[tool.mypy]
+python_version = "3.8"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+ignore_missing_imports = true
+
+# Pytest configuration
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "-ra -q --strict-markers --benchmark-only"
+testpaths = [
+    "tests",
+]
+markers = [
+    "slow: marks tests as slow (deselect with '-m \"not slow\"')",
+    "integration: marks tests as integration tests",
+    "benchmark: marks tests as benchmarks",
+]
+
+# Coverage configuration
+[tool.coverage.run]
+source = ["src/st_stellas"]
+omit = [
+    "*/tests/*",
+    "*/test_*",
+    "setup.py",
+]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "if self.debug:",
+    "if settings.DEBUG",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if 0:",
+    "if __name__ == .__main__.:",
+    "class .*\\bProtocol\\):",
+    "@(abc\\.)?abstractmethod",
+]
