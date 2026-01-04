@@ -1,0 +1,268 @@
+\section{Partition Coordinates in Bounded Phase Space}
+\label{sec:partition_coordinates}
+
+We develop a coordinate system for addressing categorical states in bounded phase space. The coordinates arise from the geometric structure of nested partitioning operations, not from dynamical equations or boundary value problems.
+
+\subsection{Foundational Structures}
+
+\begin{definition}[Bounded Phase Space]
+\label{def:bounded_phase_space}
+A \emph{bounded phase space} $\Omega$ is a compact region of state space with finite volume:
+\begin{equation}
+    \text{Vol}(\Omega) = \int_\Omega d\mu < \infty
+\end{equation}
+where $d\mu$ is the natural measure on states. The boundary $\partial\Omega$ is a closed $(d-1)$-dimensional manifold for $d$-dimensional phase space.
+\end{definition}
+
+Boundedness is a physical constraint: systems with finite energy and finite spatial extent necessarily occupy bounded phase space regions. The compactness of $\Omega$ ensures that partitioning operations are well-defined.
+
+\begin{axiom}[Categorical Partitioning]
+\label{ax:partitioning}
+Any bounded region $\Omega$ admits categorical partitioning into disjoint subregions:
+\begin{equation}
+    \Omega = \bigsqcup_{i=1}^{k} \Omega_i
+\end{equation}
+where $\bigsqcup$ denotes disjoint union: $\Omega_i \cap \Omega_j = \emptyset$ for $i \neq j$.
+\end{axiom}
+
+This axiom formalizes the observation principle: an observer with finite resolution groups states into distinguishable categories. The partition $\{\Omega_i\}$ represents the observer's categorical structure.
+
+\begin{axiom}[Nested Partitioning]
+\label{ax:nesting}
+Partitioning operations compose hierarchically. If $\{\Omega_i\}$ is a partition of $\Omega$, each subregion $\Omega_i$ admits its own partition:
+\begin{equation}
+    \Omega_i = \bigsqcup_{j=1}^{k_i} \Omega_{i,j}
+\end{equation}
+This nesting can be iterated to arbitrary depth, subject to volume constraints.
+\end{axiom}
+
+Nesting reflects the hierarchical nature of observation: finer-grained distinctions require examining subregions of coarser partitions. The depth of nesting is limited by the finite volume of $\Omega$ and the finite resolution of the observer.
+
+\subsection{The Depth Coordinate}
+
+\begin{definition}[Partition Depth]
+\label{def:partition_depth}
+The \emph{partition depth} $n$ of a state $\sigma \in \Omega$ is the number of nested partition boundaries enclosing $\sigma$:
+\begin{equation}
+    n(\sigma) = |\{B : B \text{ is a partition boundary and } \sigma \in \text{int}(B)\}|
+\end{equation}
+where $\text{int}(B)$ denotes the interior region bounded by $B$.
+\end{definition}
+
+Geometrically, $n$ measures how deeply nested a state is within the hierarchical partition structure. States near the center of $\Omega$ have larger $n$ than states near the boundary.
+
+\begin{theorem}[Discrete Depth]
+\label{thm:discrete_depth}
+Partition depth takes only positive integer values: $n \in \mathbb{Z}_{\geq 1}$.
+\end{theorem}
+
+\begin{proof}
+Each partition boundary is either present or absent in the hierarchy. The count of enclosing boundaries is therefore a non-negative integer. Since every state in $\Omega$ is enclosed by at least the outer boundary $\partial\Omega$, we have $n \geq 1$.
+\end{proof}
+
+\begin{corollary}[Depth Ordering]
+\label{cor:depth_ordering}
+Partition depth induces a partial ordering on states: $\sigma_1 \prec \sigma_2$ if all boundaries enclosing $\sigma_1$ also enclose $\sigma_2$.
+\end{corollary}
+
+\subsection{The Complexity Coordinate}
+
+At each partition depth, boundaries can exhibit internal structure. We quantify this through an angular complexity parameter.
+
+\begin{definition}[Angular Complexity]
+\label{def:angular_complexity}
+For a partition boundary $B$ at depth $n$, the \emph{angular complexity} $l$ is the dimension of the space of angular variations in $B$:
+\begin{equation}
+    l(B) = \dim(\text{Harm}(B))
+\end{equation}
+where $\text{Harm}(B)$ is the space of harmonic functions on $B$ with $l$ nodal surfaces.
+\end{definition}
+
+Intuitively, $l$ counts the number of independent angular nodes in the boundary surface. A spherically symmetric boundary has $l = 0$. A boundary with one nodal plane has $l = 1$. More complex boundaries have higher $l$.
+
+\begin{theorem}[Complexity Constraint]
+\label{thm:complexity_constraint}
+For a state at partition depth $n$, the angular complexity satisfies:
+\begin{equation}
+    l \in \{0, 1, \ldots, n-1\}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+We prove by induction on $n$.
+
+\textbf{Base case ($n=1$):} At the outermost boundary, no internal angular structure is possible since there are no interior boundaries to support nodal surfaces. Thus $l = 0$, and $l \in \{0, \ldots, n-1\} = \{0\}$. \checkmark
+
+\textbf{Inductive step:} Assume the constraint holds for depth $n$. Consider depth $n+1$. Each additional nesting level introduces at most one new angular degree of freedom, corresponding to one additional nodal surface. Therefore:
+\begin{equation}
+    l_{n+1} \leq l_n + 1 \leq (n-1) + 1 = n
+\end{equation}
+Thus $l \in \{0, 1, \ldots, n\}$ at depth $n+1$, confirming $l \leq (n+1) - 1$. \checkmark
+\end{proof}
+
+\begin{remark}
+The constraint $l < n$ is geometric, not dynamical. It arises from the topology of nested boundaries, not from solving differential equations.
+\end{remark}
+
+\subsection{The Orientation Coordinate}
+
+Boundaries with angular complexity $l > 0$ can be orientated in multiple ways within the ambient space.
+
+\begin{definition}[Spatial Orientation]
+\label{def:spatial_orientation}
+For a boundary with angular complexity $l$, the \emph{orientation parameter} $m$ labels the spatial orientation of the boundary's nodal structure:
+\begin{equation}
+    m \in \{-l, -l+1, \ldots, 0, \ldots, l-1, l\}
+\end{equation}
+\end{definition}
+
+The orientation parameter $m$ specifies how the boundary's angular nodes are aligned relative to a chosen coordinate system. Different values of $m$ correspond to rotations of the nodal structure.
+
+\begin{theorem}[Orientation Multiplicity]
+\label{thm:orientation_multiplicity}
+For angular complexity $l$, there are exactly $2l + 1$ distinct orientations.
+\end{theorem}
+
+\begin{proof}
+Consider a boundary with $l$ independent angular nodes. In three-dimensional space, the orientation of this structure is characterised by spherical harmonics $Y_l^m(\theta, \phi)$ of degree $l$. For each $l$, there are $2l+1$ linearly independent spherical harmonics, corresponding to $m \in \{-l, \ldots, +l\}$.
+
+Geometrically, this counts the number of distinct ways to orient $l$ nodal planes in three-dimensional space. The factor of $2l+1$ arises from the $(2l+1)$-dimensional irreducible representation of the rotation group $\text{SO}(3)$ acting on functions of angular complexity $l$.
+\end{proof}
+
+\begin{corollary}[Orientation Degeneracy]
+\label{cor:orientation_degeneracy}
+In the absence of external fields that break rotational symmetry, all $2l+1$ orientations have identical geometric properties. They form a degenerate manifold under rotations.
+\end{corollary}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/partition_coordinates_panel.png}
+\caption{\textbf{The Complete Partition Coordinate System in Bounded Phase Space.}
+\textbf{(A)} Partition depth coordinate $n$ (principal quantum number) represents nested boundary shells in phase space. Concentric circles show $n = 1$ (innermost, dark blue), $n = 2$ (cyan), $n = 3$ (green), $n = 4$ (light green). Each shell corresponds to a distinct energy level with $E_n \propto -1/n^2$. The radial extent scales as $\langle r \rangle \propto n^2$, so outer shells are progressively more diffuse. The number of radial nodes in the wave function equals $n - l - 1$, reflecting the nested structure. This coordinate measures the "depth" of the partition in the energy hierarchy.
+\textbf{(B)} Angular complexity coordinate $l$ (azimuthal quantum number) represents the boundary shape. Four shapes shown: $l = 0$ (s-orbital, blue circle, spherically symmetric, no angular nodes), $l = 1$ (p-orbital, magenta dumbbell, one nodal plane), $l = 2$ (d-orbital, red cloverleaf, two nodal planes), $l = 3$ (f-orbital, orange complex shape, three nodal planes). The number of angular nodes equals $l$, and the angular momentum magnitude is $L = \sqrt{l(l+1)}\hbar$. Higher $l$ corresponds to more complex phase space topology and higher rotational kinetic energy. This coordinate measures the "shape complexity" of the partition boundary.
+\textbf{(C)} Orientation coordinate $m$ (magnetic quantum number) represents the spatial direction of the angular momentum vector. Shown for $l = 2$ (d-orbital): five possible orientations $m \in \{-2, -1, 0, +1, +2\}$, depicted as vectors pointing in different directions from a central nucleus (blue dot). Each orientation corresponds to a different projection of angular momentum along the quantization axis (typically chosen as $z$-axis): $L_z = m\hbar$. In the absence of external fields, all $m$ states have the same energy (degeneracy). An external magnetic field breaks this degeneracy (Zeeman effect), with energy shifts $\Delta E = m \mu_B B$. This coordinate measures the "orientation" of the partition in space.
+\textbf{(D)} Chirality coordinate $s$ (spin quantum number) represents boundary handedness. Two possible values: $s = +1/2$ (spin-up, red arrow pointing up) and $s = -1/2$ (spin-down, blue arrow pointing down). This is an intrinsic topological property of the partition boundary, not related to spatial rotation. The spin angular momentum magnitude is $S = \sqrt{s(s+1)}\hbar = \sqrt{3}/2 \hbar$, with $z$-component $S_z = s\hbar = \pm\hbar/2$. Spin-up and spin-down states have opposite magnetic moments: $\mu_s = \pm g_s \mu_B/2$, where $g_s \approx 2$ is the spin g-factor. This coordinate measures the "handedness" or "chirality" of the partition.
+\textbf{(E)} Geometric constraints on partition coordinates. The complete coordinate specification is the 4-tuple $(n, l, m, s)$ with constraints: $n \geq 1$ (positive integer, partition depth), $l \in \{0, 1, \ldots, n-1\}$ (angular complexity bounded by depth), $m \in \{-l, -l+1, \ldots, +l-1, +l\}$ (orientation bounded by complexity, $2l+1$ values), $s \in \{-1/2, +1/2\}$ (chirality has two values). These constraints arise from the geometry of bounded phase space and ensure that partition coordinates form a consistent labeling system.
+\textbf{(F)} Shell capacity formula $C(n) = 2n^2$ showing the maximum number of electrons that can occupy shell $n$. Bar chart shows: $n=1$ (blue, $C=2$), $n=2$ (cyan, $C=8$), $n=3$ (green, $C=18$), $n=4$ (teal, $C=32$), $n=5$ (light green, $C=50$). The factor of 2 comes from spin degeneracy ($s = \pm 1/2$), and the $n^2$ comes from the number of $(l,m)$ pairs: $\sum_{l=0}^{n-1}(2l+1) = n^2$. This formula explains the periodic table structure: periods have lengths 2, 8, 8, 18, 18, 32, 32, \ldots, corresponding to filling shells in order of energy. The capacity formula is a direct consequence of partition coordinate constraints and the exclusion principle (no two electrons can have identical coordinates).}
+\label{fig:partition_coordinates}
+\end{figure}
+
+\subsection{The Chirality Coordinate}
+
+Partition boundaries possess an intrinsic handedness arising from their orientation as manifolds.
+
+\begin{definition}[Boundary Chirality]
+\label{def:chirality}
+Each partition boundary $B$ carries a \emph{chirality} $s \in \{-\frac{1}{2}, +\frac{1}{2}\}$ determined by its orientation as a manifold. The chirality specifies whether traversing $B$ in the direction of increasing depth corresponds to a right-handed or left-handed rotation.
+\end{definition}
+
+Chirality is a topological invariant of orientated surfaces. It cannot be changed by continuous deformations.
+
+\begin{theorem}[Binary Chirality]
+\label{thm:binary_chirality}
+Chirality takes exactly two values: $s = \pm\frac{1}{2}$.
+\end{theorem}
+
+\begin{proof}
+Chirality is determined by the orientation of the boundary as a manifold. An orientable manifold has exactly two possible orientations, related by reversal. These correspond to the two chirality values $s = +\frac{1}{2}$ (right-handed) and $s = -\frac{1}{2}$ (left-handed).
+
+The specific values $\pm\frac{1}{2}$ are conventional, chosen so that chirality behaves algebraically like angular momentum under composition rules.
+\end{proof}
+
+\begin{remark}
+The binary nature of chirality is topological, not dynamical. It reflects the fact that orientation is a discrete choice, not a continuous parameter.
+\end{remark}
+
+\subsection{The Complete Coordinate System}
+
+\begin{definition}[Partition Coordinate]
+\label{def:partition_coordinate}
+A \emph{partition coordinate} is a 4-tuple $(n, l, m, s)$ satisfying:
+\begin{align}
+    n &\in \mathbb{Z}_{\geq 1} \label{eq:constraint_n} \\
+    l &\in \{0, 1, \ldots, n-1\} \label{eq:constraint_l} \\
+    m &\in \{-l, -l+1, \ldots, l\} \label{eq:constraint_m} \\
+    s &\in \{-\tfrac{1}{2}, +\tfrac{1}{2}\} \label{eq:constraint_s}
+\end{align}
+Each valid coordinate addresses a unique categorical state in bounded phase space $\Omega$.
+\end{definition}
+
+\begin{theorem}[Coordinate Completeness]
+\label{thm:completeness}
+Every categorical state in bounded phase space has a unique partition coordinate $(n, l, m, s)$.
+\end{theorem}
+
+\begin{proof}
+Let $\sigma \in \Omega$ be an arbitrary categorical state. By Definition~\ref{def:partition_depth}, $\sigma$ has a well-defined partition depth $n(\sigma) \geq 1$. By Definition~\ref{def:angular_complexity}, the innermost boundary enclosing $\sigma$ has angular complexity $l(\sigma) \in \{0, \ldots, n-1\}$. By Definition~\ref{def:spatial_orientation}, this boundary has orientation $m(\sigma) \in \{-l, \ldots, +l\}$. By Definition~\ref{def:chirality}, the boundary has chirality $s(\sigma) \in \{\pm\frac{1}{2}\}$.
+
+Thus, every state $\sigma$ determines a unique 4-tuple $(n, l, m, s)$ satisfying the constraints~\eqref{eq:constraint_n}--\eqref{eq:constraint_s}.
+
+Conversely, every valid 4-tuple $(n, l, m, s)$ corresponds to a categorical state: specify a boundary at depth $n$ with complexity $l$, orientation $m$, and chirality $s$. The region enclosed by this boundary defines a categorical state.
+
+Therefore, the map $\sigma \mapsto (n, l, m, s)$ is a bijection between categorical states and valid partition coordinates.
+\end{proof}
+
+\begin{theorem}[Coordinate Constraints are Necessary]
+\label{thm:constraints_necessary}
+The constraints~\eqref{eq:constraint_n}--\eqref{eq:constraint_s} are necessary consequences of bounded phase space geometry. No other coordinate system satisfying these geometric requirements exists.
+\end{theorem}
+
+\begin{proof}
+\textbf{Necessity of $n \geq 1$:} Every state must be enclosed by at least the outer boundary $\partial\Omega$, so $n \geq 1$ is necessary.
+
+\textbf{Necessity of $l \leq n-1$:} By Theorem~\ref{thm:complexity_constraint}, angular complexity cannot exceed $n-1$ due to topological constraints on nested boundaries.
+
+\textbf{Necessity of $|m| \leq l$:} By Theorem~\ref{thm:orientation_multiplicity}, exactly $2l+1$ orientations exist for complexity $l$, requiring $m \in \{-l, \ldots, +l\}$.
+
+\textbf{Necessity of $s = \pm\frac{1}{2}$:} By Theorem~\ref{thm:binary_chirality}, chirality is a binary topological invariant.
+
+Any coordinate system addressing categorical states in bounded phase space must respect these geometric constraints. Therefore, the partition coordinate system is unique up to relabelling.
+\end{proof}
+
+\subsection{Enumeration of States}
+
+\begin{theorem}[State Count at Fixed Depth]
+\label{thm:state_count}
+The number of distinct partition coordinates at depth $n$ is:
+\begin{equation}
+    N(n) = \sum_{l=0}^{n-1} (2l+1) \cdot 2 = 2n^2
+\end{equation}
+where the factor $(2l+1)$ counts orientations, and the factor $2$ counts chiralities.
+\end{theorem}
+
+\begin{proof}
+At depth $n$, the complexity $l$ ranges from $0$ to $n-1$. For each $l$, there are $2l+1$ orientations $m \in \{-l, \ldots, +l\}$ and $2$ chiralities $s \in \{\pm\frac{1}{2}\}$. Thus:
+\begin{align}
+    N(n) &= \sum_{l=0}^{n-1} (2l+1) \cdot 2 \\
+         &= 2 \sum_{l=0}^{n-1} (2l+1) \\
+         &= 2 \left[ 2 \sum_{l=0}^{n-1} l + \sum_{l=0}^{n-1} 1 \right] \\
+         &= 2 \left[ 2 \cdot \frac{(n-1)n}{2} + n \right] \\
+         &= 2[n(n-1) + n] \\
+         &= 2n^2 \qedhere
+\end{align}
+\end{proof}
+
+\begin{corollary}[Capacity Sequence]
+\label{cor:capacity_sequence}
+The number of states at depths $n = 1, 2, 3, \ldots$ forms the sequence:
+\begin{equation}
+    2, \quad 8, \quad 18, \quad 32, \quad 50, \quad 72, \quad 98, \quad \ldots
+\end{equation}
+\end{corollary}
+
+This sequence will play a crucial role in understanding systems with multiple entities occupying the same bounded phase space (Section~\ref{sec:capacity}).
+
+\begin{remark}[Structural Correspondence]
+\label{rem:structural_correspondence}
+The partition coordinate system $(n, l, m, s)$ exhibits the same algebraic structure as the quantum numbers $(n, l, m_l, m_s)$ used to label electronic states in atoms:
+\begin{itemize}
+    \item Depth $n$ corresponds to principal quantum number
+    \item Complexity $l$ corresponds to the azimuthal quantum number  
+    \item Orientation $m$ corresponds to the magnetic quantum number
+    \item Chirality $s$ corresponds to spin quantum number
+\end{itemize}
+
+Moreover, the constraints~\eqref{eq:constraint_n}--\eqref{eq:constraint_s} are identical to the constraints on quantum numbers, and the state count $2n^2$ matches the capacity of the $n$-th electron shell.
+
+This structural similarity suggests a deep connection between categorical partitioning geometry and atomic structure. We explore this correspondence in Section~\ref{sec:discussion}.
+\end{remark}

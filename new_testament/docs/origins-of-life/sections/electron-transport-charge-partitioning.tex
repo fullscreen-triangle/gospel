@@ -1,0 +1,149 @@
+\section{Electron Transport as Charge Partitioning}
+\label{sec:electron_transport_partitioning}
+
+\subsection{Charge Separation as Fundamental Partition}
+
+We establish that electron transport constitutes the most fundamental form of partitioning—a categorical operation that divides phase space into distinct regions.
+
+\begin{definition}[Charge Partition]
+\label{def:charge_partition}
+A \emph{charge partition} $\Pi_q$ is a spatial separation of positive and negative charge densities:
+\begin{equation}
+    \Pi_q: \mathbb{R}^3 \rightarrow \{+, -, 0\}
+\end{equation}
+such that for regions $\Omega_+$ and $\Omega_-$:
+\begin{equation}
+    \int_{\Omega_+} \rho(\mathbf{r}) \, d^3r > 0, \quad \int_{\Omega_-} \rho(\mathbf{r}) \, d^3r < 0
+\end{equation}
+where $\rho(\mathbf{r})$ is the charge density.
+\end{definition}
+
+\begin{theorem}[Electron Transport Creates Partition]
+\label{thm:et_creates_partition}
+Any electron transport event across a spatial boundary creates a charge partition. This partition is:
+\begin{enumerate}
+    \item \textbf{Instantaneous}: Created at quantum mechanical timescales ($\tau \sim 10^{-15}$ s)
+    \item \textbf{Self-sustaining}: The electric field resists charge recombination
+    \item \textbf{Information-free}: Requires no external instructions or templates
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+Consider an electron moving from position $\mathbf{r}_1$ to $\mathbf{r}_2$ across a boundary $\Sigma$. Before transport:
+\begin{equation}
+    \rho_{\text{before}}(\mathbf{r}) = \rho_0(\mathbf{r})
+\end{equation}
+
+After transport:
+\begin{equation}
+    \rho_{\text{after}}(\mathbf{r}) = \rho_0(\mathbf{r}) - e\delta^3(\mathbf{r} - \mathbf{r}_1) + e\delta^3(\mathbf{r} - \mathbf{r}_2)
+\end{equation}
+
+This creates an electric field:
+\begin{equation}
+    \mathbf{E}(\mathbf{r}) = \frac{e}{4\pi\epsilon_0} \left( \frac{\mathbf{r} - \mathbf{r}_2}{|\mathbf{r} - \mathbf{r}_2|^3} - \frac{\mathbf{r} - \mathbf{r}_1}{|\mathbf{r} - \mathbf{r}_1|^3} \right)
+\end{equation}
+
+This field constitutes a partition: regions near $\mathbf{r}_1$ are positive, and regions near $\mathbf{r}_2$ are negative. The field itself resists recombination, as returning the electron requires work against the field.
+\end{proof}
+
+\begin{figure*}[htbp]
+\centering
+\includegraphics[width=0.90\textwidth]{figures/aperture_as_field_panel.png}
+\caption{\textbf{Apertures as External Charge Fields: Electromagnetic Molecular Selection.} 
+Categorical apertures function as external charge field configurations rather than mechanical filters. 
+\textbf{(A)} Monopole aperture (simple ion channel) creates radial field selecting ions by charge sign. 
+\textbf{(B)} Dipole aperture (K$^+$ selectivity filter) creates asymmetric field matching K$^+$ charge distribution while excluding Na$^+$. 
+\textbf{(C)} Quadrupole aperture (ribosome tRNA selection) creates complex field geometry matching correct tRNA charge configuration while rejecting incorrect tRNAs. 
+\textbf{(D)} Membrane as charge field barrier: $-70$ mV potential creates selection gradient. 
+\textbf{(E)} Ion channel as localized field aperture embedded in membrane barrier. 
+\textbf{(F)} Unifying principle: all molecular selection is electromagnetic (charge configuration matching), not mechanical (size filtering), explaining temperature-independent prebiotic chemistry and universal biological selectivity. Field lines show force direction; color indicates potential magnitude.}
+\label{fig:aperture_fields}
+\end{figure*}
+
+\subsection{Quantum Mechanical Foundation}
+
+Electron transport occurs through quantum tunnelling, which is temperature-independent at the fundamental level.
+
+\begin{definition}[Electron Tunneling Probability]
+\label{def:tunneling_prob}
+For a barrier of height $V_0$, width $d$, and electron energy $E < V_0$, the tunnelling probability is:
+\begin{equation}
+    P_{\text{tunnel}} = \frac{16E(V_0 - E)}{V_0^2} \exp\left(-\frac{2d}{\hbar}\sqrt{2m_e(V_0 - E)}\right)
+\end{equation}
+where $m_e$ is the electron mass.
+\end{definition}
+
+\begin{theorem}[Temperature Independence of Quantum Tunneling]
+\label{thm:temp_independence}
+The tunnelling probability $P_{\text{tunnel}}$ depends on barrier geometry $(V_0, d)$ and electron energy $E$, not on temperature $T$. Temperature affects only the population of electrons at energy $E$.
+\end{theorem}
+
+\begin{proof}
+The tunnelling probability is determined by the Schrödinger equation:
+\begin{equation}
+    -\frac{\hbar^2}{2m_e}\frac{d^2\psi}{dx^2} + V(x)\psi = E\psi
+\end{equation}
+
+This equation contains no temperature dependence. Temperature enters only through the Fermi-Dirac distribution determining electron populations:
+\begin{equation}
+    f(E) = \frac{1}{e^{(E-E_F)/k_BT} + 1}
+\end{equation}
+
+At low temperatures, $f(E)$ approaches a step function, but tunnelling at energy $E$ remains possible with a probability of $P_{\text{tunnel}}(E)$.
+\end{proof}
+
+\subsection{Electron Transport as Categorical Operation}
+
+\begin{definition}[Categorical Aperture from Charge Field]
+\label{def:aperture_from_charge}
+An electron transport event creates a categorical aperture $\mathcal{A}$ defined by the resulting electric field geometry:
+\begin{equation}
+    \mathcal{A} = \{ \mathbf{r} : \Phi(\mathbf{r}) \in [\Phi_{\min}, \Phi_{\max}] \}
+\end{equation}
+where $\Phi(\mathbf{r})$ is the electrostatic potential created by the charge partition.
+\end{definition}
+
+\begin{theorem}[Charge Fields as Molecular Filters]
+\label{thm:charge_filter}
+The electric field geometry created by electron transport functions as a molecular filter, selecting molecules based on charge configuration:
+\begin{equation}
+    P(\text{passage}|\text{molecule } M) = \begin{cases}
+        \sim 1 & \text{if } \int_M \rho_M(\mathbf{r}) \cdot \mathbf{E}(\mathbf{r}) \, d^3r < 0 \\
+        \sim 0 & \text{otherwise}
+    \end{cases}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+A molecule $M$ with charge distribution $\rho_M$ in an electric field $\mathbf{E}$ experiences a force:
+\begin{equation}
+    \mathbf{F} = \int_M \rho_M(\mathbf{r}) \mathbf{E}(\mathbf{r}) \, d^3r
+\end{equation}
+
+Molecules with favourable charge distributions are attracted through the aperture; unfavourable distributions are repelled. This selection is geometric, depending on the spatial relationship between $\rho_M$ and $\mathbf{E}$, not on molecular velocity or temperature.
+\end{proof}
+
+\subsection{Energy Landscape of Charge Partitioning}
+
+\begin{theorem}[Partitioning Free Energy]
+\label{thm:partition_energy}
+The creation and maintenance of a charge partition has associated free energy:
+\begin{equation}
+    \Delta G_{\text{partition}} = \Delta G_{\text{electrostatic}} + \Delta G_{\text{entropy}} + \Delta G_{\text{solvation}}
+\end{equation}
+where:
+\begin{align}
+    \Delta G_{\text{electrostatic}} &= \frac{1}{2}\epsilon_0 \int |\mathbf{E}|^2 \, d^3r > 0 \\
+    \Delta G_{\text{entropy}} &= -T\Delta S_{\text{ion distribution}} \\
+    \Delta G_{\text{solvation}} &\text{ depends on local dielectric environment}
+\end{align}
+\end{theorem}
+
+In biological systems, this energy is offset by electron transport from high-energy donors to low-energy acceptors, making the process thermodynamically spontaneous:
+\begin{equation}
+    \Delta G_{\text{total}} = \Delta G_{\text{partition}} - \Delta G_{\text{redox}} < 0
+\end{equation}
+
+where $\Delta G_{\text{redox}}$ is the free energy of the redox reaction driving electron transport.
+

@@ -1,0 +1,177 @@
+\begin{thebibliography}{26}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Bailey et~al.(1998)Bailey, Chrysostomou, Hough, Gledhill, McCall,
+  Clark, M{\'e}nard, and Tamura]{bailey1998circular}
+Jeremy Bailey, Antonio Chrysostomou, James~H Hough, Tim~M Gledhill, Alan
+  McCall, Stuart Clark, Francois M{\'e}nard, and Motohide Tamura.
+\newblock Circular polarization in star-formation regions: implications for
+  biomolecular homochirality.
+\newblock \emph{Science}, 281\penalty0 (5377):\penalty0 672--674, 1998.
+
+\bibitem[Beinert et~al.(1997)Beinert, Holm, and M{\"u}nck]{beinert1997iron}
+Helmut Beinert, Richard~H Holm, and Eckard M{\"u}nck.
+\newblock Iron-sulfur clusters: nature's modular, multipurpose structures.
+\newblock \emph{Science}, 277\penalty0 (5326):\penalty0 653--659, 1997.
+
+\bibitem[Bossa et~al.(2012)Bossa, Isokoski, de~Valois, and
+  Linnartz]{bossa2012porosity}
+Jean-Baptiste Bossa, Karoliina Isokoski, Michel~S de~Valois, and Harold
+  Linnartz.
+\newblock Porosity measurements of interstellar ice analogs.
+\newblock \emph{Astronomy \& Astrophysics}, 545:\penalty0 A82, 2012.
+
+\bibitem[Chyba et~al.(1990)Chyba, Thomas, Brookshaw, and
+  Sagan]{chyba1990cometary}
+Christopher~F Chyba, Paul~J Thomas, Leigh Brookshaw, and Carl Sagan.
+\newblock Cometary delivery of organic molecules to the early {Earth}.
+\newblock \emph{Science}, 249\penalty0 (4967):\penalty0 366--373, 1990.
+
+\bibitem[Deamer et~al.(2010)Deamer, Dworkin, Sandford, Bernstein, and
+  Allamandola]{deamer2010liquid}
+David Deamer, Jason~P Dworkin, Scott~A Sandford, Max~P Bernstein, and Louis~J
+  Allamandola.
+\newblock Liquid crystalline nanostructures: organizing matrices for
+  non-enzymatic nucleic acid polymerization.
+\newblock \emph{Chemical Society Reviews}, 39\penalty0 (6):\penalty0
+  2074--2086, 2010.
+
+\bibitem[Gilbert(1986)]{gilbert1986origin}
+Walter Gilbert.
+\newblock Origin of life: The {RNA} world.
+\newblock \emph{Nature}, 319\penalty0 (6055):\penalty0 618--618, 1986.
+
+\bibitem[G{\"o}hler et~al.(2011)G{\"o}hler, Hamelbeck, Markus, Kettner, Hanne,
+  Vager, Naaman, and Zacharias]{gohler2011spin}
+Benjamin G{\"o}hler, Volker Hamelbeck, Tomasz~Z Markus, Michael Kettner,
+  Georg~F Hanne, Zeev Vager, Ron Naaman, and Helmut Zacharias.
+\newblock Spin selectivity in electron transmission through self-assembled
+  monolayers of double-stranded {DNA}.
+\newblock \emph{Science}, 331\penalty0 (6019):\penalty0 894--897, 2011.
+
+\bibitem[Goldbeter(1996)]{goldbeter1996biochemical}
+Albert Goldbeter.
+\newblock Biochemical oscillations and cellular rhythms: the molecular bases of
+  periodic and chaotic behaviour.
+\newblock \emph{Cambridge University Press}, 1996.
+
+\bibitem[Gregory(2001)]{gregory2001coincidence}
+T~Ryan Gregory.
+\newblock Coincidence, coevolution, or causation? {DNA} content, cell size, and
+  the {C}-value enigma.
+\newblock \emph{Biological Reviews}, 76\penalty0 (1):\penalty0 65--101, 2001.
+
+\bibitem[Joyce(2002)]{joyce2002antiquity}
+Gerald~F Joyce.
+\newblock The antiquity of {RNA}-based evolution.
+\newblock \emph{Nature}, 418\penalty0 (6894):\penalty0 214--221, 2002.
+
+\bibitem[Landauer(1961)]{landauer1961irreversibility}
+Rolf Landauer.
+\newblock Irreversibility and heat generation in the computing process.
+\newblock \emph{IBM Journal of Research and Development}, 5\penalty0
+  (3):\penalty0 183--191, 1961.
+
+\bibitem[Larsson et~al.(2019)Larsson, Johnsson, Hagemann-Jensen, Hartmanis,
+  Faridani, Reinius, Segerstolpe, Rivera, Ren, and
+  Sandberg]{larsson2019genomic}
+Anton~JM Larsson, Per Johnsson, Michael Hagemann-Jensen, Leonard Hartmanis,
+  Omid~R Faridani, Bj{\"o}rn Reinius, {\AA}sa Segerstolpe, Cynthia~M Rivera,
+  Bing Ren, and Rickard Sandberg.
+\newblock Genomic encoding of transcriptional burst kinetics.
+\newblock \emph{Nature}, 565\penalty0 (7738):\penalty0 251--254, 2019.
+
+\bibitem[Li and Widom(2005)]{li2005nucleosome}
+Gu~Li and Jonathan Widom.
+\newblock Rapid spontaneous accessibility of nucleosomal {DNA}.
+\newblock \emph{Nature Structural \& Molecular Biology}, 12\penalty0
+  (1):\penalty0 46--53, 2005.
+
+\bibitem[Naaman and Waldeck(2012)]{naaman2012chiral}
+Ron Naaman and David~H Waldeck.
+\newblock Chiral-induced spin selectivity effect.
+\newblock \emph{The Journal of Physical Chemistry Letters}, 3\penalty0
+  (16):\penalty0 2178--2187, 2012.
+
+\bibitem[Nicholls and Ferguson(2013)]{nicholls2013bioenergetics}
+David~G Nicholls and Stuart~J Ferguson.
+\newblock \emph{Bioenergetics}.
+\newblock Academic Press, 4 edition, 2013.
+
+\bibitem[Orgel(1968)]{orgel1968evolution}
+Leslie~E Orgel.
+\newblock Evolution of the genetic apparatus.
+\newblock \emph{Journal of Molecular Biology}, 38\penalty0 (3):\penalty0
+  381--393, 1968.
+
+\bibitem[Orgel(2004)]{orgel2004prebiotic}
+Leslie~E Orgel.
+\newblock Prebiotic chemistry and the origin of the {RNA} world.
+\newblock \emph{Critical Reviews in Biochemistry and Molecular Biology},
+  39\penalty0 (2):\penalty0 99--123, 2004.
+
+\bibitem[Padovani et~al.(2009)Padovani, Galli, and
+  Glassgold]{padovani2009cosmic}
+Marco Padovani, Daniele Galli, and Alfred~E Glassgold.
+\newblock Cosmic-ray ionization of molecular clouds.
+\newblock \emph{Astronomy \& Astrophysics}, 501\penalty0 (2):\penalty0
+  619--631, 2009.
+
+\bibitem[Pizzarello et~al.(2006)Pizzarello, Huang, and
+  Fuller]{pizzarello2006isotopic}
+Sandra Pizzarello, Yongsong Huang, and Michael Fuller.
+\newblock The origin of molecules in interstellar space and their delivery to
+  planetary systems.
+\newblock \emph{Annual Review of Physical Chemistry}, 57:\penalty0 427--458,
+  2006.
+
+\bibitem[Quack(2002)]{quack2002high}
+Martin Quack.
+\newblock How important is parity violation for molecular and biomolecular
+  chirality?
+\newblock \emph{Angewandte Chemie International Edition}, 41\penalty0
+  (24):\penalty0 4618--4630, 2002.
+
+\bibitem[Russell and Hall(2007)]{russell2007alkaline}
+Michael~J Russell and Allan~J Hall.
+\newblock The emergence of life from iron monosulphide bubbles at a submarine
+  hydrothermal redox and {pH} front.
+\newblock \emph{Journal of the Geological Society}, 154\penalty0 (3):\penalty0
+  377--402, 2007.
+
+\bibitem[Segr{\'e} et~al.(2001)Segr{\'e}, Ben-Eli, Deamer, and
+  Lancet]{segre2001lipid}
+Daniel Segr{\'e}, Dafna Ben-Eli, David~W Deamer, and Doron Lancet.
+\newblock The lipid world.
+\newblock \emph{Origins of Life and Evolution of the Biosphere}, 31\penalty0
+  (1):\penalty0 119--145, 2001.
+
+\bibitem[Shapiro(2006)]{shapiro2006small}
+Robert Shapiro.
+\newblock Small molecule interactions were central to the origin of life.
+\newblock \emph{The Quarterly Review of Biology}, 81\penalty0 (2):\penalty0
+  105--125, 2006.
+
+\bibitem[Smith and Whitehouse(2015)]{smith2015okazaki}
+Douglas~J Smith and Iestyn Whitehouse.
+\newblock Intrinsic coupling of lagging-strand synthesis to chromatin assembly.
+\newblock \emph{Nature}, 483\penalty0 (7390):\penalty0 434--438, 2015.
+
+\bibitem[Soai et~al.(1995)Soai, Shibata, Morioka, and
+  Choji]{soai1995asymmetric}
+Kenso Soai, Takanori Shibata, Hiroshi Morioka, and Kaori Choji.
+\newblock Asymmetric autocatalysis and amplification of enantiomeric excess of
+  a chiral molecule.
+\newblock \emph{Nature}, 378\penalty0 (6559):\penalty0 767--768, 1995.
+
+\bibitem[W{\"a}chtersh{\"a}user(1988)]{wachtershauser1988before}
+G{\"u}nter W{\"a}chtersh{\"a}user.
+\newblock Before enzymes and templates: theory of surface metabolism.
+\newblock \emph{Microbiological Reviews}, 52\penalty0 (4):\penalty0 452--484,
+  1988.
+
+\end{thebibliography}

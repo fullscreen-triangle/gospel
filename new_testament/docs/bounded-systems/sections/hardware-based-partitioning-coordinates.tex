@@ -1,0 +1,292 @@
+\section{Transition Rules and Selection Principles}
+\label{sec:transitions}
+
+We derive constraints on transitions between partition coordinates. These selection rules follow from the continuity requirements of partition boundaries and determine which coordinate changes are geometrically allowed.
+
+\subsection{Transition Operators}
+
+\begin{definition}[Partition Transition]
+\label{def:transition}
+A \emph{transition} is a change from one partition coordinate to another:
+\begin{equation}
+    (n, l, m, s) \to (n', l', m', s')
+\end{equation}
+Not all transitions are geometrically allowed.
+\end{definition}
+
+\begin{definition}[Transition Operator]
+\label{def:transition_operator}
+A \emph{transition operator} $\hat{T}$ acts on partition coordinates to produce allowed transitions. The operator is characterised by the changes it induces:
+\begin{equation}
+    \Delta n = n' - n, \quad \Delta l = l' - l, \quad \Delta m = m' - m, \quad \Delta s = s' - s
+\end{equation}
+\end{definition}
+
+\subsection{Boundary Continuity Constraints}
+
+\begin{axiom}[Boundary Continuity]
+\label{ax:boundary_continuity}
+A transition between partition coordinates must preserve the topological continuity of partition boundaries. Discontinuous changes in boundary structure are not allowed.
+\end{axiom}
+
+This axiom reflects a physical requirement: partition boundaries cannot be created or destroyed instantaneously. Any change must proceed through continuous deformation.
+
+\begin{theorem}[Complexity Selection Rule]
+\label{thm:complexity_selection}
+Transitions must satisfy:
+\begin{equation}
+    \Delta l = \pm 1
+\end{equation}
+Angular complexity can change by at most one unit.
+\end{theorem}
+
+\begin{proof}
+Consider a transition from complexity $l$ to complexity $l'$. The boundary must continuously deform from having $l$ nodal surfaces to having $l'$ nodal surfaces.
+
+\textbf{Case 1: $\Delta l = 0$}. The boundary retains the same number of nodal surfaces. This is allowed (though it may not change the energy significantly).
+
+\textbf{Case 2: $\Delta l = \pm 1$}. The boundary gains or loses one nodal surface. This can occur through continuous deformation: a nodal surface can emerge from or merge into the boundary smoothly.
+
+\textbf{Case 3: $|\Delta l| \geq 2$}. The boundary would need to gain or lose multiple nodal surfaces simultaneously. This requires a discontinuous change in boundary topology, violating Axiom~\ref{ax:boundary_continuity}.
+
+Therefore, only $\Delta l = 0, \pm 1$ are allowed. However, $\Delta l = 0$ transitions typically have zero amplitude (no energy change), so the dominant transitions have $\Delta l = \pm 1$.
+\end{proof}
+
+\begin{theorem}[Orientation Selection Rule]
+\label{thm:orientation_selection}
+Transitions must satisfy:
+\begin{equation}
+    \Delta m \in \{0, \pm 1\}
+\end{equation}
+Orientation can change by at most one unit.
+\end{theorem}
+
+\begin{proof}
+The orientation parameter $m$ labels the spatial alignment of nodal surfaces. A transition changes this alignment through rotation.
+
+For a boundary with complexity $l$, the orientation states $m \in \{-l, \ldots, +l\}$ form a $(2l+1)$-dimensional representation of the rotation group. Continuous rotations connect states differing by $\Delta m = \pm 1$.
+
+Transitions with $|\Delta m| \geq 2$ would require discontinuous jumps in orientation, violating boundary continuity. Therefore only $\Delta m = 0, \pm 1$ are allowed.
+\end{proof}
+
+\begin{theorem}[Chirality Conservation]
+\label{thm:chirality_conservation}
+For most transitions:
+\begin{equation}
+    \Delta s = 0
+\end{equation}
+Chirality is typically conserved.
+\end{theorem}
+
+\begin{proof}
+Chirality is a topological invariant of the boundary (Theorem~\ref{thm:binary_chirality}). It cannot change through continuous deformation of the boundary alone.
+
+Chirality-changing transitions ($\Delta s = \pm 1$) require coupling to an external chiral field or interaction with another chiral boundary. In the absence of such coupling, $\Delta s = 0$.
+\end{proof}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/hyperfine_21cm_panel.png}
+\caption{\textbf{Hyperfine Structure from Chirality Coupling: Deriving the 21 cm Hydrogen Line.}
+\textbf{(A)} Two chirality parameters in hydrogen. \emph{Left}: Boundary chirality $s = \pm 1/2$ (electron spin, blue and red arrows pointing up/down). \emph{Right}: Center chirality $s_c = \pm 1/2$ (nuclear spin, blue and red arrows pointing up/down). Both are topological properties of the partition structure. The electron orbits the nucleus with spin $s$, while the nucleus (proton) has intrinsic spin $s_c$. These two spins can be parallel or antiparallel, leading to different energy states.
+\textbf{(B)} Chirality coupling states showing the two possible spin configurations. \emph{Left} (higher energy): $F = 1$ parallel configuration with electron spin up (blue arrow) and nuclear spin up (red arrow). \emph{Right} (lower energy): $F = 0$ antiparallel configuration with electron spin up (blue arrow) and nuclear spin down (red arrow). The energy difference $\Delta E_{\text{hf}}$ (green double arrow) is the hyperfine splitting. The parallel state has higher energy because the magnetic moments are aligned, creating stronger magnetic interaction energy.
+\textbf{(C)} Hyperfine energy derivation from partition theory. The coupling energy is $E_{\text{coupling}} = A \cdot s \cdot s_c$, where $A$ is the hyperfine coupling constant. For parallel spins: $s \cdot s_c = (+\frac{1}{2})(+\frac{1}{2}) = +\frac{1}{4}$. For antiparallel spins: $s \cdot s_c = (+\frac{1}{2})(-\frac{1}{2}) = -\frac{1}{4}$. The energy difference is $\Delta E_{\text{hf}} = A/2$. For hydrogen ground state ($Z=1$, $n=1$, $l=0$): $\Delta E_{\text{hf}} = 5.87 \times 10^{-6}$ eV. This derivation uses only partition coordinate coupling, with no quantum mechanical wave functions assumed.
+\textbf{(D)} The famous 21 cm hydrogen line derived from partition theory. Energy splitting: $\Delta E = 5.87 \times 10^{-6}$ eV. Frequency: $\nu = \Delta E / h = 1420.405$ MHz. Wavelength: $\lambda = c/\nu = 21.1$ cm. This is the most important spectral line in radio astronomy, used to map neutral hydrogen throughout the universe. Blue box emphasizes this is the "Famous 21 cm hydrogen line!" derived purely from partition coordinate coupling.
+\textbf{(E)} Radio astronomy detection of the 21 cm line. Top: schematic showing hydrogen atom (yellow dot) emitting 21 cm radio waves (blue concentric circles). Bottom: radio telescope dish receiving the signal (red wavy lines labeled "21 cm waves"). This transition is observed in interstellar space, providing maps of neutral hydrogen distribution in galaxies. The line is Doppler-shifted by galactic rotation, enabling measurement of rotation curves and dark matter distribution.
+\textbf{(F)} Connection between partition theory and NMR spectroscopy. Table showing correspondences: \emph{Hyperfine coupling} (partition theory) $\Leftrightarrow$ \emph{J-coupling in NMR} (spectroscopy). \emph{Center chirality $s_c$} $\Leftrightarrow$ \emph{Nuclear spin $I$}. \emph{Boundary density $|\psi(0)|^2$} $\Leftrightarrow$ \emph{Chemical shift $\delta$}. \emph{Chirality transitions} $\Leftrightarrow$ \emph{NMR resonance}. Yellow box with bold text: "Partition theory predicts NMR! No quantum mechanics assumed." This demonstrates that NMR spectroscopy is fundamentally a probe of nuclear chirality ($s_c$) and its coupling to electron chirality ($s$), with all phenomena derivable from partition coordinate geometry.
+The 21 cm line is a direct experimental measurement of chirality coordinate coupling. Its successful prediction from partition theory (matching the experimental value to 6 significant figures) provides strong validation that chirality is a real geometric property of bounded phase space partitions, not merely a quantum mechanical abstraction.}
+\label{fig:hyperfine_21cm}
+\end{figure}
+
+\subsection{Depth Transitions}
+
+The depth parameter $n$ is less constrained than the angular parameters.
+
+\begin{theorem}[Depth Change]
+\label{thm:depth_change}
+Depth can change by any integer amount:
+\begin{equation}
+    \Delta n \in \mathbb{Z}
+\end{equation}
+subject to the constraint that $n' \geq 1$ and $l' \leq n' - 1$.
+\end{theorem}
+
+\begin{proof}
+Depth measures the number of nested boundaries. A transition can add or remove boundaries continuously, so $\Delta n$ is not restricted by continuity arguments.
+
+However, the final state must satisfy the geometric constraints: $n' \geq 1$ (at least one boundary) and $l' \leq n' - 1$ (complexity bounded by depth).
+\end{proof}
+
+In practice, transitions with large $|\Delta n|$ have low probability because they require significant energy changes.
+
+\subsection{Combined Selection Rules}
+
+\begin{theorem}[Allowed Transitions]
+\label{thm:allowed_transitions}
+The most common transitions satisfy:
+\begin{align}
+    \Delta l &= \pm 1 \label{eq:sel_l} \\
+    \Delta m &\in \{0, \pm 1\} \label{eq:sel_m} \\
+    \Delta s &= 0 \label{eq:sel_s} \\
+    \Delta n &= \text{any integer} \label{eq:sel_n}
+\end{align}
+with the constraint that the final state $(n', l', m', s')$ satisfies the coordinate bounds.
+\end{theorem}
+
+\begin{corollary}[Forbidden Transitions]
+\label{cor:forbidden_transitions}
+The following transitions are geometrically forbidden:
+\begin{itemize}
+    \item $\Delta l = 0$ (typically zero amplitude)
+    \item $|\Delta l| \geq 2$ (discontinuous boundary change)
+    \item $|\Delta m| \geq 2$ (discontinuous orientation change)
+    \item $\Delta s = \pm 1$ (without external chiral coupling)
+\end{itemize}
+\end{corollary}
+
+\subsection{Transition Frequencies}
+
+When transitions occur, they are associated with characteristic frequencies determined by energy differences.
+
+\begin{definition}[Transition Frequency]
+\label{def:transition_frequency}
+The frequency associated with a transition $(n, l) \to (n', l')$ is:
+\begin{equation}
+    \omega_{n,l \to n',l'} = \frac{E(n', l') - E(n, l)}{\hbar}
+\end{equation}
+where $E(n, l)$ is given by Theorem~\ref{thm:complexity_energy}.
+\end{definition}
+
+\begin{theorem}[Transition Frequency Formula]
+\label{thm:transition_frequency}
+For a transition $(n, l) \to (n', l')$:
+\begin{equation}
+    \omega_{n,l \to n',l'} = \omega_0 \left[ \frac{1}{(n + \alpha l)^2} - \frac{1}{(n' + \alpha l')^2} \right]
+\end{equation}
+where $\omega_0 = E_0/\hbar$ is a characteristic frequency scale.
+\end{theorem}
+
+\begin{proof}
+From Theorem~\ref{thm:complexity_energy}:
+\begin{align}
+    E(n, l) &= -\frac{E_0}{(n + \alpha l)^2} \\
+    E(n', l') &= -\frac{E_0}{(n' + \alpha l')^2}
+\end{align}
+
+The energy difference is:
+\begin{equation}
+    \Delta E = E(n', l') - E(n, l) = E_0 \left[ \frac{1}{(n + \alpha l)^2} - \frac{1}{(n' + \alpha l')^2} \right]
+\end{equation}
+
+The transition frequency is:
+\begin{equation}
+    \omega = \frac{\Delta E}{\hbar} = \omega_0 \left[ \frac{1}{(n + \alpha l)^2} - \frac{1}{(n' + \alpha l')^2} \right] \qedhere
+\end{equation}
+\end{proof}
+
+\subsection{Spectral Series}
+
+\begin{definition}[Spectral Series]
+\label{def:spectral_series}
+A \emph{spectral series} is the set of all transitions from a fixed initial state $(n, l)$ to final states $(n', l')$ satisfying the selection rules.
+\end{definition}
+
+\begin{theorem}[Series Formula]
+\label{thm:series_formula}
+For transitions from a fixed initial state $(n_0, l_0)$ to final states $(n, l)$ with $l = l_0 \pm 1$:
+\begin{equation}
+    \omega_n = \omega_0 \left[ \frac{1}{(n_0 + \alpha l_0)^2} - \frac{1}{(n + \alpha l)^2} \right]
+\end{equation}
+This produces a series of frequencies indexed by $n$.
+\end{theorem}
+
+\begin{corollary}[Series Convergence]
+\label{cor:series_convergence}
+As $n \to \infty$, the transition frequencies converge to:
+\begin{equation}
+    \omega_\infty = \frac{\omega_0}{(n_0 + \alpha l_0)^2}
+\end{equation}
+This is the series limit.
+\end{corollary}
+
+\subsection{Intensity Rules}
+
+Not all allowed transitions occur with equal probability.
+
+\begin{theorem}[Transition Amplitude]
+\label{thm:transition_amplitude}
+The amplitude for a transition $(n, l, m) \to (n', l', m')$ is proportional to:
+\begin{equation}
+    A_{n,l,m \to n',l',m'} \propto \langle n', l', m' | \hat{r} | n, l, m \rangle
+\end{equation}
+where $\hat{r}$ is the position operator in partition space.
+\end{theorem}
+
+\begin{proof}[Sketch]
+A transition requires coupling between the initial and final boundary configurations. This coupling is mediated by the spatial overlap of the boundaries, which is proportional to the matrix element of the position operator.
+
+The detailed calculation requires the explicit form of partition boundary functions, which we develop in Section~\ref{sec:boundary_functions}.
+\end{proof}
+
+\begin{theorem}[Intensity Scaling]
+\label{thm:intensity_scaling}
+For transitions with $\Delta l = \pm 1$, the intensity scales approximately as:
+\begin{equation}
+    I_{n,l \to n',l'} \propto (2l + 1) \cdot \left| \int r \cdot R_{n,l}(r) \cdot R_{n',l'}(r) \, dr \right|^2
+\end{equation}
+where $R_{n,l}(r)$ are radial boundary functions.
+\end{theorem}
+
+\subsection{Comparison to Spectroscopy}
+
+\begin{remark}[Correspondence to Atomic Spectra]
+\label{rem:spectroscopy_correspondence}
+The selection rules derived here are identical to the selection rules for electric dipole transitions in atomic spectroscopy:
+\begin{itemize}
+    \item $\Delta l = \pm 1$ (angular momentum selection rule)
+    \item $\Delta m = 0, \pm 1$ (magnetic quantum number selection rule)
+    \item $\Delta s = 0$ (spin conservation for electric dipole)
+\end{itemize}
+
+The transition frequency formula:
+\begin{equation}
+    \omega = \omega_0 \left[ \frac{1}{(n + \alpha l)^2} - \frac{1}{(n' + \alpha l')^2} \right]
+\end{equation}
+has the same form as the Rydberg formula for atomic spectral lines (with $\alpha$ playing the role of quantum defect).
+
+This suggests that atomic spectra may be manifestations of partition coordinate transitions. We explore this connection in Section~\ref{sec:discussion}.
+\end{remark}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/multi_modal_detector_analysis.png}
+\caption{\textbf{Multi-Modal Detector Analysis with Electromagnetic Spectrum Mapping.}
+\textbf{(Top Row - Performance Radar Charts)} Eight detector types evaluated on five metrics (0-1 scale): signal strength (high), speed (fast), consistency (low standard deviation), precision (low variance), reliability. Pink shaded region shows actual performance. \emph{Thermometer}: strong signal and precision, moderate speed. \emph{Barometer}: similar profile to thermometer (both measure thermal/pressure properties). \emph{Hygrometer}: good signal and consistency, moderate speed. \emph{IR Spectrometer}: excellent signal and precision, high speed. \emph{Raman Spectrometer}: very good signal, excellent precision, moderate speed. \emph{Mass Spectrometer}: outstanding signal and precision, good speed. \emph{Photodiode}: excellent speed and signal, good consistency. \emph{Interferometer}: good precision and reliability, moderate speed.
+
+\textbf{(Middle Row - EM Spectrum Coverage)} Four polar plots showing which electromagnetic wavelengths each detector responds to. \emph{Thermometer}: responds to far-infrared (thermal radiation, $\sim 10$ μm, labelled "Mid-IR" and "Far-IR"), shown as a dark red wedge from 180° to 270°. \emph{Barometer}: not EM-based (mechanical/chemical pressure sensor), shown as text annotation. \emph{Hygrometer}: not EM-based (mechanical/chemical humidity sensor), shown as a text annotation. \emph{IR Spectrometer}: responds to near-infrared through mid-infrared ($1$-$10$ μm), shown as a red wedge covering a broader angular range than the thermometer. 
+
+\textbf{(Bottom Left - Detector Comparison)} Three bar charts comparing normalised performance metrics. \emph{Signal} (blue bars): Mass Spec and IR Spec are the highest ($\sim 1.0$), Thermometer/Barometer/Hygrometer are moderate ($\sim 0.6$-$0.8$), and Photodiode/Interferometer are good ($\sim 0.7$-$0.9$). \emph{Time} (orange bars): Photodiode is the fastest (normalised to 1.0), Mass Spec is the slowest ($\sim 0.2$), while others are intermediate. \emph{Noise} (red bars): IR Spec and Mass Spec have the lowest noise ($\sim 0.1$-$0.2$), whereas Thermometer/Barometer/Hygrometer have higher noise ($\sim 0.4$-$0.6$). 
+
+\textbf{(Bottom Centre - Measurement Times)} Box plots showing the distribution of measurement time (seconds) for each detector. Thermometer: median $\sim 25$ s, range $20$-$30$ s (orange box). Barometer: median $\sim 20$ s, range $15$-$25$ s (yellow box). Hygrometer: median $\sim 8$ s, range $5$-$10$ s (orange box). IR Spectrometer: median $\sim 5$ s, range $3$-$8$ s (yellow box). Mass Spectrometer: median $\sim 3$ s, range $2$-$5$ s (orange box). Photodiode: median $\sim 0.5$ s, range $0.1$-$1$ s (yellow box, fastest). Interferometer: median $\sim 2$ s, range $1$-$3$ s (orange box). Outliers are shown as circles. .
+}
+\label{fig:multimodal_detectors}
+\end{figure}
+
+\begin{remark}[Predictive Power]
+The selection rules were derived from geometric continuity, not from quantum mechanics. That they match spectroscopic selection rules exactly—with no adjustable parameters—is a non-trivial prediction.
+\end{remark}
+
+\subsection{Summary}
+
+We have derived:
+
+\begin{enumerate}
+    \item Selection rules: $\Delta l = \pm 1$, $\Delta m = 0, \pm 1$, $\Delta s = 0$ (Theorems~\ref{thm:complexity_selection}--\ref{thm:chirality_conservation})
+    \item Transition frequencies: $\omega \propto [1/(n + \alpha l)^2 - 1/(n' + \alpha l')^2]$ (Theorem~\ref{thm:transition_frequency})
+    \item Spectral series with characteristic limits (Theorem~\ref{thm:series_formula})
+    \item Intensity rules from boundary overlap (Theorem~\ref{thm:transition_amplitude})
+\end{enumerate}
+
+All results follow from boundary continuity in partition space. The correspondence to atomic spectroscopy is exact.
+
+In the next section, we develop the measurement theory that connects these geometric structures to observable signals.

@@ -1,0 +1,125 @@
+\begin{thebibliography}{15}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Altschul et~al.(1990)Altschul, Gish, Miller, Myers, and
+  Lipman]{Altschul1990}
+Stephen~F. Altschul, Warren Gish, Webb Miller, Eugene~W. Myers, and David~J.
+  Lipman.
+\newblock Basic local alignment search tool.
+\newblock \emph{Journal of Molecular Biology}, 215\penalty0 (3):\penalty0
+  403--410, 1990.
+\newblock \doi{10.1016/S0022-2836(05)80360-2}.
+
+\bibitem[Bailey and Elkan(1994)]{Bailey1994}
+Timothy~L. Bailey and Charles Elkan.
+\newblock Fitting a mixture model by expectation maximization to discover
+  motifs in biopolymers.
+\newblock \emph{Proceedings of the International Conference on Intelligent
+  Systems for Molecular Biology}, 2:\penalty0 28--36, 1994.
+
+\bibitem[Burge and Karlin(1997)]{Burge1997}
+Christopher Burge and Samuel Karlin.
+\newblock Prediction of complete gene structures in human genomic dna.
+\newblock \emph{Journal of Molecular Biology}, 268\penalty0 (1):\penalty0
+  78--94, 1997.
+\newblock \doi{10.1006/jmbi.1997.0951}.
+
+\bibitem[Cristea(2002)]{Cristea2002}
+Priscila~D. Cristea.
+\newblock Conversion of nucleotides sequences into genomic signals.
+\newblock \emph{Journal of Cellular and Molecular Medicine}, 6\penalty0
+  (2):\penalty0 279--303, 2002.
+\newblock \doi{10.1111/j.1582-4934.2002.tb00196.x}.
+
+\bibitem[DePristo et~al.(2011)DePristo, Banks, Poplin, Garimella, Maguire,
+  Hartl, Philippakis, del Angel, Rivas, Hanna, McKenna, Fennell, Kernytsky,
+  Sivachenko, Cibulskis, Gabriel, Altshuler, and Daly]{DePristo2011}
+Mark~A. DePristo, Eric Banks, Ryan Poplin, Kiran~V. Garimella, Jared~R.
+  Maguire, Christopher Hartl, Anthony~A. Philippakis, Guillermo del Angel,
+  Manuel~A. Rivas, Matt Hanna, Aaron McKenna, Tim~J. Fennell, Andrew~M.
+  Kernytsky, Andrey~Y. Sivachenko, Kristian Cibulskis, Stacey~B. Gabriel, David
+  Altshuler, and Mark~J. Daly.
+\newblock A framework for variation discovery and genotyping using
+  next-generation dna sequencing data.
+\newblock \emph{Nature Genetics}, 43\penalty0 (5):\penalty0 491--498, 2011.
+\newblock \doi{10.1038/ng.806}.
+
+\bibitem[Deschavanne et~al.(1999)Deschavanne, Giron, Vilain, Fagot, and
+  Fertil]{Deschavanne1999}
+Patrick~J. Deschavanne, Alain Giron, Joseph Vilain, Guillaume Fagot, and
+  Bernard Fertil.
+\newblock Genomic signature: characterization and classification of species
+  assessed by chaos game representation of sequences.
+\newblock \emph{Molecular Biology and Evolution}, 16\penalty0 (10):\penalty0
+  1391--1399, 1999.
+\newblock \doi{10.1093/oxfordjournals.molbev.a026048}.
+
+\bibitem[Durbin et~al.(1998)Durbin, Eddy, Krogh, and Mitchison]{Durbin1998}
+Richard Durbin, Sean~R. Eddy, Anders Krogh, and Graeme Mitchison.
+\newblock \emph{Biological Sequence Analysis: Probabilistic Models of Proteins
+  and Nucleic Acids}.
+\newblock Cambridge University Press, 1998.
+\newblock ISBN 0521629713.
+
+\bibitem[Elowitz and Leibler(2000)]{Elowitz2000}
+Michael~B. Elowitz and Stanislas Leibler.
+\newblock A synthetic oscillatory network of transcriptional regulators.
+\newblock \emph{Nature}, 403\penalty0 (6767):\penalty0 335--338, 2000.
+\newblock \doi{10.1038/35002125}.
+
+\bibitem[Jeffrey(1990)]{Jeffrey1990}
+H.~Joel Jeffrey.
+\newblock Chaos game representation of gene structure.
+\newblock \emph{Nucleic Acids Research}, 18\penalty0 (8):\penalty0 2163--2170,
+  1990.
+\newblock \doi{10.1093/nar/18.8.2163}.
+
+\bibitem[Peng et~al.(1992)Peng, Buldyrev, Goldberger, Havlin, Sciortino,
+  Simons, and Stanley]{Peng1992}
+C.~K. Peng, S.~V. Buldyrev, A.~L. Goldberger, S.~Havlin, F.~Sciortino,
+  M.~Simons, and H.~E. Stanley.
+\newblock Long-range correlations in nucleotide sequences.
+\newblock \emph{Nature}, 356\penalty0 (6365):\penalty0 168--170, 1992.
+\newblock \doi{10.1038/356168a0}.
+
+\bibitem[Rohs et~al.(2009)Rohs, West, Sosinsky, Liu, Mann, and Honig]{Rohs2009}
+Remo Rohs, Sean~M. West, Alona Sosinsky, Peng Liu, Richard~S. Mann, and Barry
+  Honig.
+\newblock The role of dna shape in protein-dna recognition.
+\newblock \emph{Nature}, 461\penalty0 (7268):\penalty0 1248--1253, 2009.
+\newblock \doi{10.1038/nature08473}.
+
+\bibitem[Travers and Muskhelishvili(2015)]{Travers2015}
+Andrew Travers and Georgi Muskhelishvili.
+\newblock Dna structure and function.
+\newblock \emph{FEBS Journal}, 282\penalty0 (12):\penalty0 2279--2295, 2015.
+\newblock \doi{10.1111/febs.13307}.
+
+\bibitem[Watson and Crick(1953)]{Watson1953}
+J.~D. Watson and F.~H.~C. Crick.
+\newblock Molecular structure of nucleic acids: a structure for deoxyribose
+  nucleic acid.
+\newblock \emph{Nature}, 171\penalty0 (4356):\penalty0 737--738, 1953.
+\newblock \doi{10.1038/171737a0}.
+
+\bibitem[Yau et~al.(2003)Yau, Wang, Niknejad, Lu, Jin, and Ho]{Yau2003}
+Stephen S.~T. Yau, Jiasong Wang, Amir Niknejad, Chengpeng Lu, Ning Jin, and
+  Yuk-Kwan Ho.
+\newblock Dna sequence representation without degeneracy.
+\newblock \emph{Nucleic Acids Research}, 31\penalty0 (12):\penalty0 3078--3080,
+  2003.
+\newblock \doi{10.1093/nar/gkg432}.
+
+\bibitem[Zhang and Zhang(1991)]{Zhang2003}
+Chun-Ting Zhang and Ren Zhang.
+\newblock Analysis of distribution of bases in the coding sequences by a
+  diagrammatic technique.
+\newblock \emph{Nucleic Acids Research}, 19\penalty0 (22):\penalty0 6313--6317,
+  1991.
+\newblock \doi{10.1093/nar/19.22.6313}.
+
+\end{thebibliography}

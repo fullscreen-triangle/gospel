@@ -1,0 +1,71 @@
+This is BibTeX, Version 0.99d
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: origins-of-life.aux
+Reallocating 'name_of_file' (item size: 1) to 9 items.
+The style file: plainnat.bst
+Reallocating 'name_of_file' (item size: 1) to 11 items.
+Database file #1: references.bib
+Warning--I didn't find a database entry for "marcus1956theory"
+Warning--I didn't find a database entry for "holm1996synthetic"
+Warning--I didn't find a database entry for "martin2008hydrothermal"
+Warning--I didn't find a database entry for "kuan2003interstellar"
+Warning--I didn't find a database entry for "elsila2009cometary"
+Warning--I didn't find a database entry for "shannon1948mathematical"
+Warning--I didn't find a database entry for "maxwell1871"
+Warning--I didn't find a database entry for "griffiths2018introduction"
+Warning--I didn't find a database entry for "mishra2013spin"
+Warning--I didn't find a database entry for "kettner2015spin"
+Warning--I didn't find a database entry for "naaman2019chiral"
+Warning--I didn't find a database entry for "dedkova2006enhanced"
+Warning--I didn't find a database entry for "mitchell1961coupling"
+Warning--I didn't find a database entry for "deamer1985boundary"
+Warning--I didn't find a database entry for "gennis1989biomembranes"
+Warning--I didn't find a database entry for "berridge2003calcium"
+Warning--I didn't find a database entry for "prasad1983uv"
+Warning--I didn't find a database entry for "munoz2002new"
+Warning--I didn't find a database entry for "nuevo2008deoxyribose"
+Warning--I didn't find a database entry for "cronin1997enantiomeric"
+Warning--I didn't find a database entry for "kring2000impact"
+Warning--I didn't find a database entry for "love1993gravitational"
+You've used 26 entries,
+            2773 wiz_defined-function locations,
+            802 strings with 9927 characters,
+and the built_in function-call counts, 12714 in all, are:
+= -- 1143
+> -- 742
+< -- 15
++ -- 254
+- -- 228
+* -- 1108
+:= -- 1971
+add.period$ -- 78
+call.type$ -- 26
+change.case$ -- 154
+chr.to.int$ -- 26
+cite$ -- 52
+duplicate$ -- 530
+empty$ -- 1030
+format.name$ -- 264
+if$ -- 2605
+int.to.chr$ -- 1
+int.to.str$ -- 1
+missing$ -- 27
+newline$ -- 138
+num.names$ -- 104
+pop$ -- 272
+preamble$ -- 1
+purify$ -- 128
+quote$ -- 0
+skip$ -- 398
+stack$ -- 0
+substring$ -- 642
+swap$ -- 26
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 281
+warning$ -- 0
+while$ -- 125
+width$ -- 0
+write$ -- 344
+(There were 22 warnings)

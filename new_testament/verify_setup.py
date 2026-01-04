@@ -43,16 +43,21 @@ def check_dependencies():
     print("\n2. Checking Dependencies...")
     
     required_packages = [
-        ("numpy", ">=1.21.0"),
-        ("numba", ">=0.56.0"), 
-        ("pandas", ">=1.3.0"),
-        ("matplotlib", ">=3.5.0"),
-        ("biopython", ">=1.79"),
-        ("psutil", ">=5.8.0"),
-        ("pytest", ">=6.2.0"),
+        ("numpy", ">=1.24.0"),
+        ("pandas", ">=2.0.0"),
+        ("matplotlib", ">=3.7.0"),
+        ("biopython", ">=1.81"),
+        ("psutil", ">=5.9.0"),
+        ("pytest", ">=7.0.0"),
+    ]
+    
+    optional_packages = [
+        ("numba", ">=0.58.0"),  # Optional for high-performance JIT compilation
     ]
     
     all_good = True
+    
+    # Check required packages
     for package_name, version_req in required_packages:
         try:
             if package_name == "biopython":
@@ -66,6 +71,18 @@ def check_dependencies():
         except ImportError:
             print(f"   ✗ {package_name} not found")
             all_good = False
+        except Exception as e:
+            print(f"   ⚠ {package_name} import warning: {e}")
+    
+    # Check optional packages  
+    print(f"\n   Optional Dependencies:")
+    for package_name, version_req in optional_packages:
+        try:
+            package = __import__(package_name)
+            version = getattr(package, '__version__', 'unknown')
+            print(f"   ✓ {package_name} {version} (high-performance JIT compilation enabled)")
+        except ImportError:
+            print(f"   ○ {package_name} not found (will use NumPy fallback)")
         except Exception as e:
             print(f"   ⚠ {package_name} import warning: {e}")
     

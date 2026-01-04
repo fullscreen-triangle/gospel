@@ -1,0 +1,34 @@
+\begin{thebibliography}{1}
+
+\bibitem{Boltzmann1896}
+Ludwig Boltzmann.
+\newblock {\em Vorlesungen {\"u}ber Gastheorie}.
+\newblock J.A. Barth, Leipzig, 1896.
+
+\bibitem{Jaynes1957}
+Edwin~T. Jaynes.
+\newblock Information theory and statistical mechanics.
+\newblock {\em Physical Review}, 106(4):620--630, 1957.
+
+\bibitem{Landau1980}
+L.~D. Landau and E.~M. Lifshitz.
+\newblock {\em Statistical Physics}.
+\newblock Pergamon Press, 3rd edition, 1980.
+
+\bibitem{MacLane1971}
+Saunders Mac~Lane.
+\newblock {\em Categories for the Working Mathematician}.
+\newblock Springer-Verlag, 1971.
+
+\bibitem{Poincare1890}
+Henri Poincar{\'e}.
+\newblock Sur le probl{\`e}me des trois corps et les {\'e}quations de la
+  dynamique.
+\newblock {\em Acta Mathematica}, 13:1--270, 1890.
+
+\bibitem{Shannon1948}
+Claude~E. Shannon.
+\newblock {\em A Mathematical Theory of Communication}, volume~27.
+\newblock 1948.
+
+\end{thebibliography}

@@ -42,6 +42,11 @@ DESCRIPTION = "St. Stella's Genomic Analysis Framework - High Performance Cardin
 if sys.version_info < (3, 8):
     raise RuntimeError("New Testament requires Python 3.8 or higher")
 
+# Check for Python 3.13 compatibility issues
+if sys.version_info >= (3, 13):
+    print("WARNING: Python 3.13 detected. Some dependencies may have limited support.")
+    print("If you encounter installation issues, consider using Python 3.11 or 3.12.")
+
 setup(
     name="new-testament",
     version=VERSION,
@@ -70,51 +75,51 @@ setup(
         "st_stellas.genome": ["*.json", "*.txt"],
     },
     
-    # Dependencies
+    # Dependencies - Python 3.13 compatible versions
     install_requires=read_requirements() or [
-        # Core scientific computing
-        "numpy>=1.21.0",
-        "scipy>=1.7.0",
-        
-        # High-performance computing
-        "numba>=0.56.0",
+        # Core scientific computing - Python 3.13 compatible
+        "numpy>=1.24.0,<2.0.0",
+        "scipy>=1.11.0,<2.0.0",
         
         # Data manipulation and analysis  
-        "pandas>=1.3.0",
+        "pandas>=2.0.0,<3.0.0",
         
         # Visualization
-        "matplotlib>=3.5.0",
-        "seaborn>=0.11.0",
+        "matplotlib>=3.7.0,<4.0.0",
+        "seaborn>=0.12.0,<1.0.0",
         
         # Bioinformatics
-        "biopython>=1.79",
+        "biopython>=1.81,<2.0.0",
         
         # Performance monitoring
-        "psutil>=5.8.0",
+        "psutil>=5.9.0,<6.0.0",
         
         # Configuration and I/O
-        "pyyaml>=6.0",
-        "h5py>=3.6.0",
+        "pyyaml>=6.0,<7.0.0",
+        "h5py>=3.8.0,<4.0.0",
         
         # Testing and validation
-        "pytest>=6.2.0",
-        "pytest-benchmark>=3.4.0",
+        "pytest>=7.0.0,<8.0.0",
+        "pytest-benchmark>=4.0.0,<5.0.0",
         
         # Progress tracking
-        "tqdm>=4.62.0",
+        "tqdm>=4.64.0,<5.0.0",
         
         # Parallel processing
-        "joblib>=1.1.0",
+        "joblib>=1.3.0,<2.0.0",
         
         # Memory optimization
-        "memory-profiler>=0.60.0",
-    ],
+        "memory-profiler>=0.61.0,<1.0.0",
+    ] + (["numba>=0.58.0,<1.0.0"] if sys.version_info < (3, 13) else []),
     
     # Optional dependencies for advanced features
     extras_require={
+        "numba": [
+            "numba>=0.58.0,<1.0.0",  # High-performance JIT compilation
+        ],
         "gpu": [
             "cupy>=10.0.0",  # GPU acceleration
-            "numba[cuda]>=0.56.0",  # CUDA support
+            "numba[cuda]>=0.58.0",  # CUDA support
         ],
         "visualization": [
             "plotly>=5.0.0",
@@ -173,6 +178,8 @@ setup(
         "Programming Language :: Python :: 3.9", 
         "Programming Language :: Python :: 3.10",
         "Programming Language :: Python :: 3.11",
+        "Programming Language :: Python :: 3.12",
+        "Programming Language :: Python :: 3.13",
         "Operating System :: OS Independent",
         "Natural Language :: English",
     ],

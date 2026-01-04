@@ -1,0 +1,75 @@
+This is BibTeX, Version 0.99d
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: resolution-of-c-value-paradox.aux
+Reallocating 'name_of_file' (item size: 1) to 9 items.
+The style file: plainnat.bst
+Reallocating 'name_of_file' (item size: 1) to 11 items.
+Database file #1: references.bib
+Warning--I didn't find a database entry for "thomas1971organization"
+Warning--I didn't find a database entry for "friz1968amoeba"
+Warning--I didn't find a database entry for "pellicer2010paris"
+Warning--I didn't find a database entry for "ensembl2024"
+Warning--I didn't find a database entry for "taft2007noncoding"
+Warning--I didn't find a database entry for "ohno1972junk"
+Warning--I didn't find a database entry for "alberts2014molecular"
+Warning--I didn't find a database entry for "cavaliersmith1978nuclear"
+Warning--I didn't find a database entry for "sessions2016genome"
+Warning--I didn't find a database entry for "encode2012integrated"
+Warning--I didn't find a database entry for "lynch2003origins"
+Warning--I didn't find a database entry for "wendel2016polyploidy"
+Warning--I didn't find a database entry for "siepel2005evolutionarily"
+Warning--I didn't find a database entry for "luger1997crystal"
+Warning--I didn't find a database entry for "saenger1984principles"
+Warning--I didn't find a database entry for "frauenfelder2009physics"
+Warning--I didn't find a database entry for "pethig1979dielectric"
+Warning--I didn't find a database entry for "rensing1972periodic"
+Warning--I didn't find a database entry for "lloyd2007ultradian"
+Warning--I didn't find a database entry for "kleiber1932body"
+Warning--I didn't find a database entry for "benedictow2004black"
+Warning--I didn't find a database entry for "1000genomes2015global"
+Warning--I didn't find a database entry for "oldstone1998molecular"
+Warning--I didn't find a database entry for "rasmussen2015early"
+Warning--I didn't find a database entry for "stewart2015extreme"
+Warning--I didn't find a database entry for "gregory2001coincidence"
+You've used 10 entries,
+            2773 wiz_defined-function locations,
+            678 strings with 7047 characters,
+and the built_in function-call counts, 4174 in all, are:
+= -- 383
+> -- 187
+< -- 9
++ -- 69
+- -- 57
+* -- 319
+:= -- 654
+add.period$ -- 33
+call.type$ -- 10
+change.case$ -- 49
+chr.to.int$ -- 8
+cite$ -- 20
+duplicate$ -- 198
+empty$ -- 370
+format.name$ -- 71
+if$ -- 858
+int.to.chr$ -- 3
+int.to.str$ -- 1
+missing$ -- 10
+newline$ -- 61
+num.names$ -- 40
+pop$ -- 88
+preamble$ -- 1
+purify$ -- 39
+quote$ -- 0
+skip$ -- 140
+stack$ -- 0
+substring$ -- 189
+swap$ -- 13
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 110
+warning$ -- 0
+while$ -- 44
+width$ -- 0
+write$ -- 140
+(There were 26 warnings)

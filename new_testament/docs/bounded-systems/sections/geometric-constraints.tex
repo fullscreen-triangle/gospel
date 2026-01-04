@@ -1,0 +1,303 @@
+\section{The Capacity Theorem}
+\label{sec:capacity}
+
+We prove that the geometry of bounded partitioning imposes strict constraints on the number of distinguishable states. The central result—that exactly $2n^2$ states exist at each depth level—follows purely from the coordinate constraints derived in Section~\ref{sec:partition_coordinates}.
+
+\subsection{State Enumeration}
+
+\begin{lemma}[States per Complexity Level]
+\label{lem:states_per_l}
+For fixed partition depth $n$ and angular complexity $l \in \{0, \ldots, n-1\}$, the number of distinct states is:
+\begin{equation}
+    N_l = 2(2l + 1)
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+By Definition~\ref{def:partition_coordinate}, a state with complexity $l$ is specified by:
+\begin{itemize}
+    \item Orientation $m \in \{-l, -l+1, \ldots, l-1, l\}$: exactly $2l+1$ values
+    \item Chirality $s \in \{-\frac{1}{2}, +\frac{1}{2}\}$: exactly $2$ values
+\end{itemize}
+Since orientation and chirality are independent parameters, the total count is:
+\begin{equation}
+    N_l = (2l + 1) \times 2 = 2(2l + 1) \qedhere
+\end{equation}
+\end{proof}
+
+\begin{theorem}[Capacity Theorem]
+\label{thm:capacity}
+The number of distinct partition coordinates at depth $n$ is:
+\begin{equation}
+    C(n) = 2n^2
+\end{equation}
+This is a necessary consequence of bounded phase space geometry.
+\end{theorem}
+
+\begin{proof}
+At depth $n$, Theorem~\ref{thm:complexity_constraint} requires $l \in \{0, 1, \ldots, n-1\}$. The total number of states is:
+\begin{align}
+    C(n) &= \sum_{l=0}^{n-1} N_l \\
+         &= \sum_{l=0}^{n-1} 2(2l + 1) \\
+         &= 2 \sum_{l=0}^{n-1} (2l + 1) \\
+         &= 2 \sum_{k=1}^{n} (2k - 1) \quad \text{(reindexing)}
+\end{align}
+
+The sum of the first $n$ odd integers is a classical result:
+\begin{equation}
+    \sum_{k=1}^{n} (2k - 1) = n^2
+\end{equation}
+
+To verify: the $k$-th odd number is $2k-1$, and:
+\begin{align}
+    \sum_{k=1}^{n} (2k - 1) &= 2\sum_{k=1}^{n} k - \sum_{k=1}^{n} 1 \\
+                             &= 2 \cdot \frac{n(n+1)}{2} - n \\
+                             &= n(n+1) - n = n^2
+\end{align}
+
+Therefore:
+\begin{equation}
+    C(n) = 2n^2 \qedhere
+\end{equation}
+\end{proof}
+
+\begin{corollary}[Capacity Sequence]
+\label{cor:capacity_sequence}
+The capacities at successive depths form the sequence:
+\begin{equation}
+    C(1), C(2), C(3), \ldots = 2, 8, 18, 32, 50, 72, 98, \ldots
+\end{equation}
+\end{corollary}
+
+\begin{proof}
+Direct computation: $C(n) = 2n^2$ gives $C(1) = 2$, $C(2) = 8$, $C(3) = 18$, etc.
+\end{proof}
+
+\subsection{Detailed Capacity Structure}
+
+\begin{table}[h]
+\centering
+\caption{Partition capacity at each depth level}
+\label{tab:capacity_by_depth}
+\begin{tabular}{cccc}
+\toprule
+Depth $n$ & Allowed $l$ values & States per $l$ & Total capacity $C(n)$ \\
+\midrule
+1 & $\{0\}$ & $2$ & $2$ \\
+2 & $\{0, 1\}$ & $2 + 6$ & $8$ \\
+3 & $\{0, 1, 2\}$ & $2 + 6 + 10$ & $18$ \\
+4 & $\{0, 1, 2, 3\}$ & $2 + 6 + 10 + 14$ & $32$ \\
+5 & $\{0, 1, 2, 3, 4\}$ & $2 + 6 + 10 + 14 + 18$ & $50$ \\
+6 & $\{0, 1, 2, 3, 4, 5\}$ & $2 + 6 + 10 + 14 + 18 + 22$ & $72$ \\
+7 & $\{0, 1, 2, 3, 4, 5, 6\}$ & $2 + 6 + 10 + 14 + 18 + 22 + 26$ & $98$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Subshell Structure}
+
+The capacity at each depth naturally decomposes into contributions from different complexity levels.
+
+\begin{definition}[Subshell]
+\label{def:subshell}
+A \emph{subshell} is the set of all states with fixed depth $n$ and complexity $l$:
+\begin{equation}
+    \mathcal{S}_{n,l} = \{(n, l, m, s) : m \in \{-l, \ldots, +l\}, \, s \in \{\pm\tfrac{1}{2}\}\}
+\end{equation}
+The subshell has cardinality $|\mathcal{S}_{n,l}| = 2(2l+1)$.
+\end{definition}
+
+\begin{theorem}[Subshell Capacities]
+\label{thm:subshell_capacity}
+Each complexity level $l$ defines a subshell with fixed capacity:
+\begin{equation}
+    |\mathcal{S}_{n,l}| = 2(2l + 1)
+\end{equation}
+independent of the depth $n$ (provided $l \leq n-1$).
+\end{theorem}
+
+\begin{proof}
+Immediate from Lemma~\ref{lem:states_per_l}. The capacity depends only on $l$, not on $n$.
+\end{proof}
+
+\begin{table}[h]
+\centering
+\caption{Subshell capacities and conventional labels}
+\label{tab:subshell_capacity}
+\begin{tabular}{cccc}
+\toprule
+Complexity $l$ & Orientations $m$ & Capacity $2(2l+1)$ & Label \\
+\midrule
+0 & $\{0\}$ & 2 & $s$ \\
+1 & $\{-1, 0, +1\}$ & 6 & $p$ \\
+2 & $\{-2, -1, 0, +1, +2\}$ & 10 & $d$ \\
+3 & $\{-3, -2, -1, 0, +1, +2, +3\}$ & 14 & $f$ \\
+4 & $\{-4, \ldots, +4\}$ & 18 & $g$ \\
+5 & $\{-5, \ldots, +5\}$ & 22 & $h$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The labels $s, p, d, f, g, h$ are conventional designations for complexity levels, chosen for consistency with standard notation in spectroscopy.
+
+\subsection{Cumulative Capacity}
+
+For systems with multiple entities filling partition coordinates sequentially, the cumulative capacity becomes relevant.
+
+\begin{theorem}[Cumulative Capacity]
+\label{thm:cumulative_capacity}
+The total number of distinct states with depth $n \leq N$ is:
+\begin{equation}
+    T(N) = \sum_{n=1}^{N} C(n) = \sum_{n=1}^{N} 2n^2 = \frac{2N(N+1)(2N+1)}{6} = \frac{N(N+1)(2N+1)}{3}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Using the standard formula $\sum_{n=1}^{N} n^2 = \frac{N(N+1)(2N+1)}{6}$:
+\begin{equation}
+    T(N) = 2 \sum_{n=1}^{N} n^2 = 2 \cdot \frac{N(N+1)(2N+1)}{6} = \frac{N(N+1)(2N+1)}{3} \qedhere
+\end{equation}
+\end{proof}
+
+\begin{corollary}[Cumulative Sequence]
+\label{cor:cumulative_sequence}
+The cumulative capacities are:
+\begin{equation}
+    T(1), T(2), T(3), \ldots = 2, 10, 28, 60, 110, 182, 280, \ldots
+\end{equation}
+\end{corollary}
+
+\begin{table}[h]
+\centering
+\caption{Cumulative partition capacity}
+\label{tab:cumulative_capacity}
+\begin{tabular}{ccc}
+\toprule
+Maximum depth $N$ & Capacity at depth $N$ & Cumulative capacity $T(N)$ \\
+\midrule
+1 & 2 & 2 \\
+2 & 8 & 10 \\
+3 & 18 & 28 \\
+4 & 32 & 60 \\
+5 & 50 & 110 \\
+6 & 72 & 182 \\
+7 & 98 & 280 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The cumulative capacities $T(N) = 2, 10, 28, 60, 110, \ldots$ will become significant when we consider systems with $Z$ entities filling partition coordinates according to an exclusion principle (Section~\ref{sec:filling}).
+
+\subsection{Geometric Interpretation}
+
+The capacity formula $C(n) = 2n^2$ admits a natural geometric interpretation.
+
+\begin{theorem}[Surface Area Interpretation]
+\label{thm:surface_area}
+The capacity $C(n) = 2n^2$ reflects the surface area scaling of nested boundaries:
+\begin{itemize}
+    \item The $n^2$ factor: surface area of a spherical boundary at depth $n$ scales as the square of the radius
+    \item The factor of 2: binary chirality doubles the available state space
+\end{itemize}
+\end{theorem}
+
+\begin{proof}[Geometric argument]
+Consider nested spherical partition boundaries at depths $n = 1, 2, 3, \ldots$ with radii $r_n \propto n$. The surface area of the $n$-th boundary scales as:
+\begin{equation}
+    A_n \propto r_n^2 \propto n^2
+\end{equation}
+
+Each point on this surface can be assigned one of two chiralities (handedness). Thus, the total "state capacity" of the boundary is:
+\begin{equation}
+    C(n) \propto 2 \times n^2
+\end{equation}
+
+The proportionality constant is determined by the constraint that $C(1) = 2$ (the innermost boundary has exactly 2 states for $l=0$), giving $C(n) = 2n^2$ exactly.
+\end{proof}
+
+\begin{remark}[Dimensional Analysis]
+The $n^2$ scaling is characteristic of $(d-1)$-dimensional surfaces in $d$-dimensional space. For three-dimensional phase space, partition boundaries are two-dimensional surfaces; hence, the $n^2$ scaling. This suggests that the capacity theorem is a consequence of the dimensionality of bounded phase space.
+\end{remark}
+
+\subsection{Necessity of the Capacity Constraint}
+
+\begin{theorem}[Capacity is Necessary]
+\label{thm:capacity_necessary}
+The capacity constraint $C(n) = 2n^2$ is a necessary consequence of the partition coordinate constraints~\eqref{eq:constraint_n}--\eqref{eq:constraint_s}. No other capacity formula is consistent with bounded phase space geometry.
+\end{theorem}
+
+\begin{proof}
+The capacity is determined by counting valid coordinates $(n, l, m, s)$ satisfying:
+\begin{align}
+    l &\in \{0, \ldots, n-1\} \quad \text{(Theorem~\ref{thm:complexity_constraint})} \\
+    m &\in \{-l, \ldots, +l\} \quad \text{(Theorem~\ref{thm:orientation_multiplicity})} \\
+    s &\in \{\pm\tfrac{1}{2}\} \quad \text{(Theorem~\ref{thm:binary_chirality})}
+\end{align}
+
+Each of these constraints was proven to be a necessary consequence of bounded phase space topology. Therefore, the capacity:
+\begin{equation}
+    C(n) = \sum_{l=0}^{n-1} (2l+1) \times 2 = 2n^2
+\end{equation}
+is uniquely determined by geometry. Any other formula would violate the topological constraints on nested boundaries.
+\end{proof}
+
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/hydrogen_derivation_panel.png}
+\caption{\textbf{Derivation of Hydrogen from Pure Partition Logic: A Single Distinction Creates the Simplest Atom.}
+\textbf{(A)} The primordial partition: a single boundary dividing phase space into interior $Q$ (inside, blue circle) and exterior $Q'$ (outside, white background). The boundary itself (labeled "$\partial$ (boundary)") is the only structure. This is the minimal possible partition—one distinction creating two regions. From this single distinction, all properties of hydrogen will emerge through pure logic.
+
+\textbf{(B)} The negation field emerges from the boundary. Every point in space experiences "negations" (red arrows pointing outward) from the boundary. Points far from the boundary receive many negations (dense arrows), while points near the boundary receive few negations (sparse arrows). The negation field measures "how much the boundary denies the existence of each point." Points inside the boundary are affirmed (part of the partition), points outside are negated (excluded from the partition). The field strength at each point is proportional to the number of boundary elements that negate it.
+
+\textbf{(C)} The $1/r$ potential from negation accumulation. Plot shows potential $\phi(r) \propto -1/r$ vs. distance from center $r$ (Bohr radii). Purple curve: potential energy, starting at $-20$ (arbitrary units) near center and asymptotically approaching 0 at large $r$. Blue dashed vertical line: shell radius (most probable electron position at $r \approx 0.3$ Bohr). Pink shaded region: attractive region (negative potential, bound states). The $1/r$ form emerges because negations accumulate inversely with distance: points near the center are least negated (most affirmed), creating an attractive potential well. This is the Coulomb potential, derived purely from negation logic without assuming charges or forces.
+
+\textbf{(D)} The nucleus emerges at center as the "most affirmed point." Concentric circles show decreasing negation density toward center. Yellow glow at center: nucleus (red dot labeled "Nucleus (most affirmed point)"). The center is the point that receives the minimum negation from the boundary, making it the "most real" location. 
+\textbf{(E)} The electron as a probability boundary. The plot shows the radial probability density $|\psi(r)|^2$ (boundary probability) vs. distance from the nucleus $r$ (Bohr radii). Blue curve: probability distribution, starting at 0 (nucleus), rising to maximum at $r \approx 0.15$ Bohr (green dashed line labeled "Most probable $r$"), then decreasing to 0 at large $r$. Light blue shading: probability distribution. Red dot at origin: nucleus. The text annotation states: "The 'electron' is not a particle but the categorical boundary itself, spread as probability..
+
+\textbf{(F)} Result: The hydrogen atom. Blue gradient sphere showing electron probability cloud (darker blue = higher probability) with red dot at center (nucleus, labeled "p$^+$"). Orange label: "e$^-$ (boundary)" indicating the electron is the boundary structure. Caption: "DERIVED from a single partition." The complete hydrogen atom emerges from the single primordial distinction: the boundary becomes the electron (probability distribution), the center becomes the nucleus (most affirmed point), and the negation field becomes the Coulomb potential (attractive force). No additional assumptions about particles, charges, or forces were required—everything follows from the logic of a single partition.}
+\label{fig:hydrogen_derivation}
+\end{figure}
+
+\subsection{Comparison to Known Systems}
+
+\begin{remark}[Structural Correspondence]
+\label{rem:capacity_correspondence}
+The capacity formula $C(n) = 2n^2$ is identical to the electron capacity of atomic shells in quantum mechanics:
+\begin{itemize}
+    \item Shell $n=1$ (K shell): 2 electrons
+    \item Shell $n=2$ (L shell): 8 electrons
+    \item Shell $n=3$ (M shell): 18 electrons
+    \item Shell $n=4$ (N shell): 32 electrons
+\end{itemize}
+
+The subshell capacities also match exactly:
+\begin{itemize}
+    \item $s$ subshell ($l=0$): 2 states
+    \item $p$ subshell ($l=1$): 6 states
+    \item $d$ subshell ($l=2$): 10 states
+    \item $f$ subshell ($l=3$): 14 states
+\end{itemize}
+
+This correspondence suggests that atomic shell structure may be a physical realisation of partition coordinate geometry. We explore this possibility in detail in Section~\ref{sec:discussion}.
+\end{remark}
+
+\begin{remark}[Predictive Power]
+The capacity theorem was derived without reference to any physical system. It follows purely from the geometry of bounded partitioning. That it matches atomic shell capacities exactly—with no adjustable parameters—is a non-trivial prediction that warrants further investigation.
+\end{remark}
+
+\subsection{Summary}
+
+We have proven:
+
+\begin{enumerate}
+    \item The capacity at depth $n$ is necessarily $C(n) = 2n^2$ (Theorem~\ref{thm:capacity})
+    \item This produces the sequence $2, 8, 18, 32, 50, 72, 98, \ldots$ (Corollary~\ref{cor:capacity_sequence})
+    \item Subshells have capacities $2, 6, 10, 14, 18, \ldots$ (Theorem~\ref{thm:subshell_capacity})
+    \item The cumulative capacity is $T(N) = \frac{N(N+1)(2N+1)}{3}$ (Theorem~\ref{thm:cumulative_capacity})
+    \item These constraints are necessary consequences of bounded phase space geometry (Theorem~\ref{thm:capacity_necessary})
+\end{enumerate}
+
+All results follow from the coordinate constraints derived in Section~\ref{sec:partition_coordinates}, which themselves follow from the axioms of bounded phase space and categorical observation.
+
+In the next section, we investigate how multiple entities occupy these partition coordinates when constrained by an exclusion principle.

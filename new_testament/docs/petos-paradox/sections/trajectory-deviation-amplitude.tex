@@ -1,0 +1,367 @@
+\section{Trajectory Deviation Amplitude}
+\label{sec:trajectory_deviation}
+
+The preceding sections established qualitative arguments for pathological convergence suppression. This section develops the quantitative theory of trajectory deviations, deriving how the amplitude of fluctuations in configuration space scales with system size and showing that collective modes prevent unbounded deviation growth.
+
+The central question is: as an organism grows larger (more cells), do trajectory deviations grow correspondingly, or are they bounded by collective dynamics? We demonstrate that the coupled oscillator network structure of cellular ensembles enforces bounded deviation amplitudes through the equipartition of energy among collective modes.
+
+\subsection{Deviation Measure and Metric Structure}
+
+We quantify trajectory deviations using the root-mean-square distance from a reference trajectory in configuration space.
+
+\begin{definition}[Trajectory Distance]
+The distance between configurations $\mathbf{c}$ and $\mathbf{c}'$ is:
+\begin{equation}
+d(\mathbf{c}, \mathbf{c}') = \sqrt{\sum_{i=1}^{N} (\sigma_i - \sigma_i')^2}
+\end{equation}
+This defines a Euclidean metric on $\Config$ when states are embedded in $\mathbb{R}$.
+\end{definition}
+
+\begin{remark}[Alternative Metrics]
+The Euclidean metric is appropriate when cellular states can be represented as continuous variables (e.g., concentrations, phases). For discrete states (e.g., on/off genes), the Hamming distance
+\begin{equation}
+d_H(\mathbf{c}, \mathbf{c}') = \sum_{i=1}^{N} \mathbf{1}[\sigma_i \neq \sigma_i']
+\end{equation}
+may be more appropriate. The scaling results derived below hold for both metrics.
+\end{remark}
+
+For a trajectory $\Traj(t)$ and reference trajectory $\Traj_0(t)$ (representing the ``healthy'' trajectory), the time-averaged squared deviation is:
+\begin{equation}
+\langle \Delta^2 \rangle_T = \frac{1}{T} \int_0^T d^2(\mathbf{c}(t), \mathbf{c}_0(t)) \, dt
+\end{equation}
+
+\begin{definition}[Instantaneous Deviation Vector]
+The deviation vector at time $t$ is:
+\begin{equation}
+\boldsymbol{\Delta}(t) = \mathbf{c}(t) - \mathbf{c}_0(t) = (\sigma_1(t) - \sigma_{0,1}(t), \ldots, \sigma_N(t) - \sigma_{0,N}(t))
+\end{equation}
+so that $d^2(\mathbf{c}(t), \mathbf{c}_0(t)) = |\boldsymbol{\Delta}(t)|^2$.
+\end{definition}
+
+\subsection{Modal Decomposition of Deviations}
+
+The key to understanding deviation scaling is the decomposition into collective modes. Coupled oscillator networks exhibit normal modes---collective patterns of oscillation that evolve independently under linearised dynamics.
+
+\begin{definition}[Collective Modes]
+Let $\{\mathbf{e}_\lambda\}_{\lambda=1}^{N}$ be an orthonormal basis of collective modes satisfying:
+\begin{equation}
+\mathbf{e}_\lambda \cdot \mathbf{e}_\mu = \delta_{\lambda\mu}, \quad \sum_{\lambda=1}^{N} (\mathbf{e}_\lambda)_i (\mathbf{e}_\lambda)_j = \delta_{ij}
+\end{equation}
+The modes are eigenvectors of the coupling matrix $\mathbf{J}$ with eigenvalues $\omega_\lambda^2$:
+\begin{equation}
+\mathbf{J} \mathbf{e}_\lambda = \omega_\lambda^2 \mathbf{e}_\lambda
+\end{equation}
+\end{definition}
+
+The deviation vector decomposes as:
+\begin{equation}
+\boldsymbol{\Delta}(t) = \sum_{\lambda=1}^{N} a_\lambda(t) \mathbf{e}_\lambda
+\end{equation}
+where $a_\lambda(t) = \boldsymbol{\Delta}(t) \cdot \mathbf{e}_\lambda$ is the amplitude of mode $\lambda$.
+
+\begin{proposition}[Modal Independence]
+Under linearised dynamics, the mode amplitudes evolve independently:
+\begin{equation}
+\ddot{a}_\lambda + \gamma \dot{a}_\lambda + \omega_\lambda^2 a_\lambda = \xi_\lambda(t)
+\end{equation}
+where $\gamma$ is a damping coefficient and $\xi_\lambda(t)$ is stochastic forcing with $\langle \xi_\lambda(t) \rangle = 0$.
+\end{proposition}
+
+The squared deviation is the sum of squared mode amplitudes:
+\begin{equation}
+|\boldsymbol{\Delta}|^2 = \sum_{\lambda=1}^{N} a_\lambda^2
+\end{equation}
+
+\subsection{Equipartition and Mode Energy Distribution}
+
+For a system in thermal equilibrium at temperature $T$, the equipartition theorem determines the distribution of energy among modes.
+
+\begin{theorem}[Equipartition Theorem]
+\label{thm:equipartition}
+For a system at thermal equilibrium with temperature $T$, each quadratic degree of freedom carries mean energy $k_B T / 2$. For mode $\lambda$ with effective mass $m_\lambda$ and frequency $\omega_\lambda$:
+\begin{equation}
+\frac{1}{2} m_\lambda \omega_\lambda^2 \langle a_\lambda^2 \rangle = \frac{1}{2} k_B T
+\end{equation}
+Hence:
+\begin{equation}
+\langle a_\lambda^2 \rangle = \frac{k_B T}{m_\lambda \omega_\lambda^2}
+\label{eq:equipartition}
+\end{equation}
+\end{theorem}
+
+\begin{remark}[Biological Temperature]
+For biological systems, the effective temperature $T$ is not necessarily the physical temperature but rather an effective temperature characterising the amplitude of noise. This may include contributions from:
+\begin{itemize}
+    \item Thermal fluctuations ($\sim k_B T_{\text{phys}}$)
+    \item Stochastic gene expression (can exceed thermal by orders of magnitude)
+    \item Metabolic noise (ATP concentration fluctuations)
+    \item Extrinsic noise (microenvironmental variations)
+\end{itemize}
+The equipartition structure remains valid with $k_B T$ replaced by an effective noise amplitude $\varepsilon$.
+\end{remark}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/abstract_cell.png}
+\caption{\textbf{Abstract cell model: membrane-less representation in S-entropy space showing configuration dynamics without physical boundaries.}
+\textbf{(Top left)} Three-dimensional S-entropy space representation of abstract cell configuration. Axes represent temporal entropy $S_t$ (information flow rate), knowledge entropy $S_k$ (structural complexity), and evolution entropy $S_e$ (developmental trajectory). Point cloud (beige dots) represents accessible configurations sampled from $\Config = \Omega^N$ configuration space. 
+\textbf{(Top right)} S-entropy sliding window extension showing configuration trajectory evolution over time. Vertical axis shows cross-section $S_t$ (temporal entropy). Horizontal axis shows $S_e$ (evolution entropy). Colored violin plots represent probability distributions of configurations at successive time points (purple = early, transitioning through pink, orange, yellow, green = late). Width of violin indicates probability density. Formula $S_{\text{total}} = S_{TD} + k_B \ln(n_{\text{windows}})$ shows total entropy as sum of thermodynamic entropy $S_{TD}$ and configurational entropy from windowing. 
+\textbf{(Bottom left, Panel C)} Categorical concentration boundaries in $S_k$--$S_t$ plane showing partition class structure. Contour plot displays concentration field $c(\mathbf{s})$ of configurations in entropy coordinates. Color scale (white = low concentration, yellow = moderate, orange = high, red = maximum) indicates probability density. Central red region is attractor core $\Attr_0$ (healthy homeostatic configurations). Concentric contours are isoprobability surfaces. 
+\textbf{(Bottom center, Panel D)} Oscillator phase field showing collective phase dynamics in $S_k$ plane. Vector field (arrows) represents phase velocity $d\phi/dt$ of coupled oscillators. Arrow direction shows instantaneous phase evolution direction. Arrow length indicates velocity magnitude. Dashed circles are phase-lock boundaries at different radii. Order parameter $r = 0.12$ (displayed in legend) quantifies phase coherence: $r = 1$ is perfect synchronization, $r = 0$ is complete incoherence. 
+\textbf{(Bottom right, Panel E)} S-entropy flow dynamics showing vector field of configuration evolution. Axes are $S_k$ (horizontal) and $S_t$ (vertical). Vector field (colored arrows: blue = inward flow, orange/red = outward flow) represents $d\mathbf{s}/dt$, the rate of change of entropy coordinates. }
+\label{fig:abstract_cell}
+\end{figure}
+
+\subsection{Dispersion Relations and Density of States}
+
+The distribution of mode frequencies $\{\omega_\lambda\}$ depends on the network structure and coupling type.
+
+\begin{definition}[Dispersion Relation]
+For oscillators on a regular lattice with wavevector $\mathbf{k}$, the dispersion relation $\omega(\mathbf{k})$ specifies the mode frequency as a function of wavevector. Common forms include:
+\begin{enumerate}
+    \item \textbf{Acoustic}: $\omega = c|\mathbf{k}|$ (linear dispersion, $z = 1$)
+    \item \textbf{Diffusive}: $\omega = D|\mathbf{k}|^2$ (quadratic dispersion, $z = 2$)
+    \item \textbf{Optical}: $\omega = \omega_0$ (flat dispersion, $z = 0$)
+\end{enumerate}
+where $z$ is the dynamical exponent.
+\end{definition}
+
+\begin{definition}[Density of States]
+The density of states $g(\omega)$ is the number of modes per unit frequency interval:
+\begin{equation}
+g(\omega) = \frac{dN}{d\omega}
+\end{equation}
+For a $d$-dimensional system with dispersion $\omega = c|\mathbf{k}|^z$:
+\begin{equation}
+g(\omega) \propto \omega^{d/z - 1}
+\end{equation}
+\end{definition}
+
+\begin{example}[Debye Density of States]
+For acoustic modes ($z = 1$) in $d$ dimensions:
+\begin{equation}
+g(\omega) \propto \omega^{d-1}
+\end{equation}
+In 3D, $g(\omega) \propto \omega^2$---the Debye density of states.
+\end{example}
+
+\subsection{Scaling of Total Deviation with System Size}
+
+The total squared deviation is the sum over all modes:
+\begin{equation}
+\langle |\boldsymbol{\Delta}|^2 \rangle = \sum_{\lambda=1}^{N} \langle a_\lambda^2 \rangle = \frac{k_B T}{m \omega_0^2} \sum_{\lambda=1}^{N} \frac{1}{|\mathbf{k}_\lambda|^{2z}}
+\end{equation}
+where we used Equation~\eqref{eq:equipartition} with $\omega_\lambda = \omega_0 |\mathbf{k}_\lambda|^z$.
+
+For a $d$-dimensional system of linear size $L$ with $N = (L/a)^d$ oscillators (where $a$ is the lattice spacing), the wavevectors are quantised: $k_\lambda = 2\pi n_\lambda / L$ with $n_\lambda \in \mathbb{Z}^d \setminus \{0\}$.
+
+\begin{theorem}[Deviation Amplitude Scaling]
+\label{thm:deviation_scaling}
+For a $d$-dimensional oscillator network with dispersion exponent $z$, the mean-squared deviation scales as:
+\begin{equation}
+\langle |\boldsymbol{\Delta}|^2 \rangle \sim \begin{cases}
+L^{2z-d} & \text{if } 2z > d \text{ (infrared divergent)}\\
+\ln L & \text{if } 2z = d \text{ (marginal)}\\
+\text{const.} & \text{if } 2z < d \text{ (infrared convergent)}
+\end{cases}
+\end{equation}
+where $L$ is the system linear size.
+\end{theorem}
+
+\begin{proof}
+Converting the discrete sum to a continuous integral:
+\begin{equation}
+\sum_{\lambda} \frac{1}{|\mathbf{k}_\lambda|^{2z}} \approx \left(\frac{L}{2\pi}\right)^d \int_{k_{\min}}^{k_{\max}} \frac{d^d k}{|\mathbf{k}|^{2z}}
+\end{equation}
+where $k_{\min} = 2\pi/L$ (set by system size) and $k_{\max} = \pi/a$ (set by lattice spacing).
+
+In spherical coordinates:
+\begin{equation}
+\int \frac{d^d k}{|\mathbf{k}|^{2z}} = S_d \int_{k_{\min}}^{k_{\max}} \frac{k^{d-1}}{k^{2z}} dk = S_d \int_{k_{\min}}^{k_{\max}} k^{d-1-2z} dk
+\end{equation}
+where $S_d = 2\pi^{d/2}/\Gamma(d/2)$ is the surface area of the $(d-1)$-sphere.
+
+The integral evaluates to:
+\begin{equation}
+\int_{k_{\min}}^{k_{\max}} k^{d-1-2z} dk = \frac{k^{d-2z}}{d-2z} \Big|_{k_{\min}}^{k_{\max}} = \frac{1}{d-2z} \left( k_{\max}^{d-2z} - k_{\min}^{d-2z} \right)
+\end{equation}
+
+\textbf{Case 1: $2z > d$ (infrared divergent).} The exponent $d - 2z < 0$, so the integral is dominated by the lower limit:
+\begin{equation}
+\int k^{d-1-2z} dk \sim k_{\min}^{d-2z} = \left(\frac{2\pi}{L}\right)^{d-2z} = \left(\frac{L}{2\pi}\right)^{2z-d}
+\end{equation}
+Thus:
+\begin{equation}
+\langle |\boldsymbol{\Delta}|^2 \rangle \sim L^d \cdot L^{2z-d} = L^{2z-d}
+\end{equation}
+
+\textbf{Case 2: $2z < d$ (infrared convergent).} The exponent $d - 2z > 0$, so the integral is dominated by the upper limit:
+\begin{equation}
+\int k^{d-1-2z} dk \sim k_{\max}^{d-2z} = \text{const.}
+\end{equation}
+Thus:
+\begin{equation}
+\langle |\boldsymbol{\Delta}|^2 \rangle \sim L^d \cdot \text{const.} \cdot L^{-d} = \text{const.}
+\end{equation}
+(The $L^d$ from the density of states cancels the volume factor.)
+
+\textbf{Case 3: $2z = d$ (marginal).} The integral is logarithmic:
+\begin{equation}
+\int_{k_{\min}}^{k_{\max}} k^{-1} dk = \ln(k_{\max}/k_{\min}) = \ln(L/a)
+\end{equation}
+$\square$
+\end{proof}
+
+\begin{corollary}[Bounded Deviation in 3D Acoustic Systems]
+For $d = 3$ and acoustic modes with $z = 1$, we have $2z = 2 < d = 3$. The deviation amplitude remains bounded as $L \to \infty$:
+\begin{equation}
+\langle |\boldsymbol{\Delta}|^2 \rangle = \mathcal{O}(1)
+\end{equation}
+Long-wavelength fluctuations do not dominate the deviation; the bulk of the contribution comes from short-wavelength modes.
+\end{corollary}
+
+\begin{corollary}[Diffusive Systems]
+For overdamped diffusive modes with $z = 2$ in $d = 3$, we have $2z = 4 > d = 3$:
+\begin{equation}
+\langle |\boldsymbol{\Delta}|^2 \rangle \sim L^{4-3} = L
+\end{equation}
+Diffusive fluctuations grow with system size — long--wavelength diffusive modes dominate.
+\end{corollary}
+
+\subsection{Regularisation by Reset Dynamics}
+
+The apparently problematic growth of diffusive deviations ($\langle |\boldsymbol{\Delta}|^2 \rangle \sim L$ for $z = 2$, $d = 3$) is regulated by the reset dynamics of Section~\ref{sec:division_cycles}.
+
+\begin{theorem}[Reset Regularisation]
+\label{thm:reset_regularisation}
+For a system with a diffusion coefficient $D$ and a reset period $\tau$, modes with wavelengths exceeding the diffusion length $\ell_D = \sqrt{D\tau}$ are reset before they can contribute to persistent deviations. The effective cutoff wavevector is:
+\begin{equation}
+k_{\text{cutoff}} = \frac{2\pi}{\ell_D} = \frac{2\pi}{\sqrt{D\tau}}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+A diffusive mode with wavevector $\mathbf{k}$ relaxes on timescale $\tau_k = 1/(D|\mathbf{k}|^2)$. For $\tau_k < \tau$, the mode equilibrates within the reset period and does not contribute to the accumulated deviation. The condition $\tau_k = \tau$ defines the cutoff:
+\begin{equation}
+\frac{1}{D k_{\text{cutoff}}^2} = \tau \quad \Rightarrow \quad k_{\text{cutoff}} = \frac{1}{\sqrt{D\tau}}
+\end{equation}
+Modes with $|\mathbf{k}| < k_{\text{cutoff}}$ do not accumulate. $\square$
+\end{proof}
+
+\begin{corollary}[Regularised Deviation]
+With the reset-imposed cutoff, the deviation integral becomes:
+\begin{equation}
+\langle |\boldsymbol{\Delta}|^2 \rangle \sim L^d \int_{k_{\text{cutoff}}}^{k_{\max}} k^{d-1-2z} dk
+\end{equation}
+For $2z > d$ and $k_{\text{cutoff}} \gg k_{\min} = 2\pi/L$, the integral is dominated by $k_{\text{cutoff}}$:
+\begin{equation}
+\langle |\boldsymbol{\Delta}|^2 \rangle \sim L^d \cdot k_{\text{cutoff}}^{d-2z} = L^d \cdot (D\tau)^{(2z-d)/2}
+\end{equation}
+Since $k_{\text{cutoff}}$ is independent of $L$ (determined by microscopic parameters $D$ and $\tau$), the $L^d$ factor cancels the density of states, yielding:
+\begin{equation}
+\langle |\boldsymbol{\Delta}|^2 \rangle = \mathcal{O}(1) \quad (\text{independent of } L)
+\end{equation}
+\end{corollary}
+
+\subsection{Physical Interpretation}
+
+The mathematical results have clear physical interpretations:
+
+\begin{enumerate}
+    \item \textbf{Acoustic (propagating) modes}: Information propagates at finite speed. Long-wavelength perturbations span many cells but oscillate coherently, contributing finite energy per mode by equipartition. The total deviation is bounded.
+    
+    \item \textbf{Diffusive modes without reset}: Diffusive processes spread without restoring force. Long-wavelength modes have arbitrarily slow relaxation ($\tau_k \propto k^{-2}$), allowing unlimited accumulation. The total deviation diverges with system size.
+    
+    \item \textbf{Diffusive modes with reset}: Cell division interrupts accumulation. Modes slower than the reset period are periodically zeroed, preventing long-wavelength dominance. The deviation is bounded by the single-reset period contribution.
+\end{enumerate}
+
+\begin{remark}[Biological Mode Types]
+Biological oscillator networks exhibit both mode types:
+\begin{itemize}
+    \item \textbf{Acoustic-like}: Calcium waves, action potential propagation, mechanical stress transmission---finite propagation speed
+    \item \textbf{Diffusive}: Metabolite diffusion, gene expression noise, epigenetic drift---no restoring force
+\end{itemize}
+The reset mechanism is essential for controlling diffusive modes; acoustic modes are naturally bounded.
+\end{remark}
+
+\subsection{Deviation Distribution and Large Deviation Bounds}
+
+For Gaussian fluctuations (valid in the linear regime), the deviation amplitude follows a chi distribution.
+
+\begin{theorem}[Deviation Distribution]
+\label{thm:deviation_distribution}
+For $N$ independent Gaussian mode amplitudes with variance $\sigma_\lambda^2$, the squared deviation $|\boldsymbol{\Delta}|^2 = \sum_\lambda a_\lambda^2$ follows a generalised chi-squared distribution. For equal variances $\sigma_\lambda^2 = \sigma^2$, the distribution is:
+\begin{equation}
+p(|\boldsymbol{\Delta}|^2) = \frac{1}{2^{N/2} \Gamma(N/2)} \left(\frac{|\boldsymbol{\Delta}|^2}{\sigma^2}\right)^{N/2 - 1} e^{-|\boldsymbol{\Delta}|^2/(2\sigma^2)} \cdot \frac{1}{\sigma^2}
+\end{equation}
+The amplitude $|\boldsymbol{\Delta}| = \sqrt{|\boldsymbol{\Delta}|^2}$ follows a chi distribution with $N$ degrees of freedom.
+\end{theorem}
+
+\begin{corollary}[Concentration of Deviation]
+For large $N$, the chi distribution concentrates sharply around its mean:
+\begin{equation}
+\langle |\boldsymbol{\Delta}| \rangle = \sigma \sqrt{2} \frac{\Gamma((N+1)/2)}{\Gamma(N/2)} \approx \sigma \sqrt{N} \left(1 - \frac{1}{4N} + \mathcal{O}(N^{-2})\right)
+\end{equation}
+\begin{equation}
+\text{Var}(|\boldsymbol{\Delta}|) = N\sigma^2 - \langle |\boldsymbol{\Delta}| \rangle^2 \approx \frac{\sigma^2}{2}
+\end{equation}
+The coefficient of variation scales as $1/\sqrt{N}$:
+\begin{equation}
+\frac{\text{std}(|\boldsymbol{\Delta}|)}{\langle |\boldsymbol{\Delta}| \rangle} \approx \frac{1}{\sqrt{2N}}
+\end{equation}
+\end{corollary}
+
+\begin{theorem}[Large Deviation Bound]
+\label{thm:large_deviation}
+The probability of deviation exceeding a threshold $\Delta_0$ is exponentially suppressed:
+\begin{equation}
+\Pr[|\boldsymbol{\Delta}| > \Delta_0] \leq e^{-(\Delta_0 - \sqrt{N}\sigma)^2/(2\sigma^2)} \quad \text{for } \Delta_0 > \sqrt{N}\sigma
+\end{equation}
+More precisely, for large $N$:
+\begin{equation}
+\Pr[|\boldsymbol{\Delta}| > \sqrt{N}\sigma + t\sigma] \leq e^{-t^2/2}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+This follows from the sub-Gaussian property of the chi distribution. For a chi-distributed random variable $X$ with $N$ degrees of freedom and scale $\sigma$, the moment generating function satisfies:
+\begin{equation}
+\mathbb{E}[e^{t(X - \mathbb{E}[X])}] \leq e^{t^2 \sigma^2 / 2}
+\end{equation}
+The bound follows from Markov's inequality applied to $e^{t(X - \mathbb{E}[X])}$. $\square$
+\end{proof}
+
+\subsection{Implications for Pathological Configurations}
+
+A pathological configuration is characterised by deviation exceeding a threshold: $|\boldsymbol{\Delta}| > \Delta_{\text{path}}$.
+
+\begin{corollary}[Pathological Probability]
+\label{cor:pathological_prob}
+For a pathological threshold $\Delta_{\text{path}} = \alpha \sqrt{N} \sigma$ with $\alpha > 1$:
+\begin{equation}
+\Pr[|\boldsymbol{\Delta}| > \Delta_{\text{path}}] \leq e^{-N(\alpha - 1)^2/2}
+\end{equation}
+This probability decreases exponentially with $N$, the number of oscillators (cells).
+\end{corollary}
+
+\begin{example}[Numerical Estimate]
+For a human with $N = 3.7 \times 10^{13}$ cells, even a modest threshold $\alpha = 1.001$ (deviation just 0.1\% above mean) gives:
+\begin{equation}
+\Pr[\text{pathological}] \leq e^{-3.7 \times 10^{13} \times (0.001)^2 / 2} = e^{-1.85 \times 10^7} \approx 0
+\end{equation}
+The exponential suppression is overwhelming.
+\end{example}
+
+\subsection{Summary}
+
+The trajectory deviation analysis reveals:
+\begin{enumerate}
+    \item Modal decomposition shows that deviation amplitude is controlled by the sum of independent mode contributions
+    \item Equipartition distributes energy among modes, preventing concentration in any single mode
+    \item For acoustic (propagating) modes, the deviation is bounded and independent of system size
+    \item For diffusive modes, potential divergence is regularised by reset dynamics
+    \item Large deviations are exponentially rare in the number of oscillators
+\end{enumerate}
+
+The combination of bounded mode contributions and exponential suppression of large deviations provides the quantitative foundation for the main error propagation theorem developed in the next section.
+

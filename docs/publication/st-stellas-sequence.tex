@@ -60,7 +60,7 @@ We present the St. Stella's Sequence framework, a comprehensive coordinate trans
 
 The St. Stella's Sequence transformation maps nucleotide bases to cardinal directions (A→↑North, T→↓South, G→→East, C→←West), converting linear genomic sequences into navigable coordinate systems accessible through S-entropy optimization. Mathematical analysis establishes that dual-strand cardinal direction analysis extracts geometric information content exceeding traditional linear sequence analysis by factors of 10-1000×. The framework demonstrates that DNA palindromes exhibit perfect geometric symmetry through coordinate reflection, enabling detection accuracy improvements of 237% over traditional string-matching approaches.
 
-Implementation of S-entropy navigation principles transforms genomic analysis from exponential computational generation (O(4^n)) to logarithmic coordinate navigation (O(log S₀)). Cross-domain pattern transfer validation demonstrates systematic performance improvements: protein folding prediction (+341% accuracy), regulatory element identification (+671% sensitivity), evolutionary relationship analysis (+452% resolution), and population genomics variant interpretation (+289% precision).
+Implementation of S-entropy navigation principles transforms genomic analysis from exponential computational generation (O(4^n)) to logarithmic coordinate navigation (O(log S₀)). Cross-domain pattern transfer validation demonstrates systematic performance improvements: protein folding prediction (+341\% accuracy), regulatory element identification (+671\% sensitivity), evolutionary relationship analysis (+452\% resolution), and population genomics variant interpretation (+289\% precision).
 
 The framework establishes mathematical necessity for coordinate-based genomic analysis through Information Architecture Theory, demonstrating that cellular systems contain 170,000× more functional information than genomic sequences. DNA functions as specialized reference library consulted through sophisticated cellular information processing architectures, accessible through coordinate navigation rather than exhaustive computational search.
 
@@ -795,13 +795,13 @@ This enables revolutionary applications:
     \State $\mathbf{P}_{\text{path}} \gets \text{EmptyArray}()$
     \State $\text{current\_position} \gets (0, 0)$
     \State $\text{geometric\_features} \gets \text{EmptyDict}()$
-    
+
     \For{$\text{nucleotide}$ in $\text{DNASequence}$}
         \State $\text{direction\_vector} \gets \text{coordinate\_map}[\text{nucleotide}]$
         \State $\text{current\_position} \gets \text{current\_position} + \text{direction\_vector}$
         \State $\mathbf{P}_{\text{path}}.\text{Append}(\text{current\_position})$
     \EndFor
-    
+
     \If{$\text{AnalysisMode} = \text{"Dual-Strand"}$}
         \State $\text{complement\_sequence} \gets$ GenerateReverseComplement(DNASequence)
         \State $\mathbf{P}_{\text{complement}} \gets$ ComputeCoordinatePath(complement\_sequence)
@@ -809,11 +809,11 @@ This enables revolutionary applications:
     \Else
         \State $\text{geometric\_features} \gets$ ExtractSingleStrandFeatures($\mathbf{P}_{\text{path}}$)
     \EndIf
-    
+
     \State $\text{s\_coordinates} \gets$ ComputeSEntropyCoordinates($\mathbf{P}_{\text{path}}$)
     \State $\text{palindrome\_signatures} \gets$ DetectGeometricPalindromes($\mathbf{P}_{\text{path}}$)
     \State $\text{functional\_elements} \gets$ IdentifyFunctionalElements($\text{geometric\_features}$)
-    
+
     \State \Return $\mathbf{P}_{\text{path}}$, $\text{geometric\_features}$, $\text{s\_coordinates}$, $\text{functional\_elements}$
 \EndProcedure
 \end{algorithmic}
@@ -830,7 +830,7 @@ This enables revolutionary applications:
     \State $\mathbf{P}_{\text{current}} \gets$ StellasSequenceTransform(InitialSequence, "Dual-Strand")
     \State $S_{\text{distance}} \gets$ ComputeGenomicSDistance($\mathbf{P}_{\text{current}}$, $\mathbf{P}_{\text{target}}$)
     \State $\text{optimization\_history} \gets$ EmptyArray()
-    
+
     \While{$S_{\text{distance}} > \epsilon$ \textbf{and} iterations $< \text{MAX\_ITERATIONS}$}
         \State $\nabla S \gets$ ComputeSDistanceGradient($\mathbf{P}_{\text{current}}$, $\mathbf{P}_{\text{target}}$)
         \State $\text{navigation\_direction} \gets$ OptimizeNavigationDirection($\nabla S$, OptimizationGoals)
@@ -838,13 +838,13 @@ This enables revolutionary applications:
         \State $\mathbf{P}_{\text{current}} \gets \mathbf{P}_{\text{current}} + \text{step\_size} \cdot \text{navigation\_direction}$
         \State $S_{\text{distance}} \gets$ ComputeGenomicSDistance($\mathbf{P}_{\text{current}}$, $\mathbf{P}_{\text{target}}$)
         \State $\text{optimization\_history}.\text{Append}(S_{\text{distance}})$
-        
+
         \If{CrossDomainTransferEnabled}
             \State $\text{cross\_domain\_patterns} \gets$ ExtractTransferablePatterns($\mathbf{P}_{\text{current}}$)
             \State ApplyPatternsToDomains($\text{cross\_domain\_patterns}$)
         \EndIf
     \EndWhile
-    
+
     \State $\text{optimal\_sequence} \gets$ ConvertCoordinatesToSequence($\mathbf{P}_{\text{current}}$)
     \State $\text{functional\_analysis} \gets$ AnalyzeFunctionalElements($\mathbf{P}_{\text{current}}$)
     \State \Return $\text{optimal\_sequence}$, $S_{\text{distance}}$, $\text{functional\_analysis}$
@@ -862,23 +862,23 @@ This enables revolutionary applications:
     \State $\text{universal\_patterns} \gets$ ExtractUniversalOptimizationPrinciples(GenomicPatterns)
     \State $\text{domain\_mapping} \gets$ CreateDomainCoordinateMapping(TargetDomain)
     \State $\text{transferred\_patterns} \gets$ EmptyArray()
-    
+
     \For{$\text{pattern}$ in $\text{universal\_patterns}$}
         \State $\text{coordinate\_features} \gets$ ExtractCoordinateFeatures(pattern)
         \State $\text{s\_optimization\_params} \gets$ ExtractSOptimizationParameters(pattern)
         \State $\text{geometric\_relationships} \gets$ ExtractGeometricRelationships(pattern)
-        
+
         \State $\text{target\_coordinates} \gets$ MapToTargetDomain($\text{coordinate\_features}$, $\text{domain\_mapping}$)
         \State $\text{target\_optimization} \gets$ AdaptSOptimization($\text{s\_optimization\_params}$, TargetDomain)
         \State $\text{target\_geometry} \gets$ AdaptGeometricRelationships($\text{geometric\_relationships}$, TargetDomain)
-        
+
         \State $\text{transferred\_pattern} \gets$ CombineTransferredComponents($\text{target\_coordinates}$, $\text{target\_optimization}$, $\text{target\_geometry}$)
         \State $\text{transferred\_patterns}.\text{Append}(\text{transferred\_pattern})$
     \EndFor
-    
+
     \State $\text{validation\_results} \gets$ ValidateTransferEffectiveness($\text{transferred\_patterns}$, TargetDomain)
     \State $\text{performance\_metrics} \gets$ MeasurePerformanceImprovement($\text{transferred\_patterns}$, TargetDomain)
-    
+
     \State \Return $\text{transferred\_patterns}$, $\text{validation\_results}$, $\text{performance\_metrics}$
 \EndProcedure
 \end{algorithmic}
@@ -987,7 +987,7 @@ Results demonstrate systematic performance enhancement rather than isolated impr
     \State $\mathbf{P}_{\text{reverse}} \gets$ ComputeCoordinatePath(reverse\_complement)
     \State $\text{symmetry\_score} \gets \|\mathbf{P}_{\text{forward}} + \mathbf{P}_{\text{reverse}}\|_2$
     \State $\text{geometric\_features} \gets$ ExtractSymmetryFeatures($\mathbf{P}_{\text{forward}}$, $\mathbf{P}_{\text{reverse}}$)
-    
+
     \If{$\text{symmetry\_score} < \text{Threshold}$}
         \State $\text{palindrome\_type} \gets$ ClassifyPalindromeType($\text{geometric\_features}$)
         \State $\text{functional\_significance} \gets$ AssessFunctionalSignificance($\text{palindrome\_type}$)
@@ -1140,7 +1140,7 @@ Functional genomic elements exhibit characteristic geometric signatures:
 Validation across genomic datasets demonstrates:
 \begin{itemize}
 \item Promoter detection: 34\% improvement over traditional motif searching
-\item Coding sequence identification: 45\% accuracy enhancement  
+\item Coding sequence identification: 45\% accuracy enhancement
 \item Regulatory element discovery: 67\% sensitivity increase
 \end{itemize}
 
@@ -1209,16 +1209,16 @@ $\qed$
     \State $\text{coordinate\_map} \gets \{A: (0,1), T: (0,-1), G: (1,0), C: (-1,0)\}$
     \State $\mathbf{P}_{\text{path}} \gets \text{empty\_array}()$
     \State $\text{current\_position} \gets (0, 0)$
-    
+
     \For{$\text{nucleotide}$ in $\text{DNASequence}$}
         \State $\text{direction\_vector} \gets \text{coordinate\_map}[\text{nucleotide}]$
         \State $\text{current\_position} \gets \text{current\_position} + \text{direction\_vector}$
         \State $\mathbf{P}_{\text{path}}.\text{append}(\text{current\_position})$
     \EndFor
-    
+
     \State $\text{geometric\_features} \gets$ ExtractGeometricFeatures($\mathbf{P}_{\text{path}}$)
     \State $\text{s\_coordinates} \gets$ ComputeSEntropyCoordinates($\mathbf{P}_{\text{path}}$)
-    
+
     \State \Return $\mathbf{P}_{\text{path}}$, $\text{geometric\_features}$, $\text{s\_coordinates}$
 \EndProcedure
 \end{algorithmic}
@@ -1234,14 +1234,14 @@ $\qed$
     \State $\mathbf{P}_{\text{target}} \gets$ StellasSequenceTransform(TargetPattern)
     \State $\mathbf{P}_{\text{current}} \gets$ StellasSequenceTransform(InitialSequence)
     \State $S_{\text{distance}} \gets$ ComputeGenomicSDistance($\mathbf{P}_{\text{current}}$, $\mathbf{P}_{\text{target}}$)
-    
+
     \While{$S_{\text{distance}} > \epsilon$}
         \State $\nabla S \gets$ ComputeSDistanceGradient($\mathbf{P}_{\text{current}}$, $\mathbf{P}_{\text{target}}$)
         \State $\text{navigation\_step} \gets -\alpha \cdot \nabla S$
         \State $\mathbf{P}_{\text{current}} \gets \mathbf{P}_{\text{current}} + \text{navigation\_step}$
         \State $S_{\text{distance}} \gets$ ComputeGenomicSDistance($\mathbf{P}_{\text{current}}$, $\mathbf{P}_{\text{target}}$)
     \EndWhile
-    
+
     \State $\text{optimal\_sequence} \gets$ ConvertCoordinatesToSequence($\mathbf{P}_{\text{current}}$)
     \State \Return $\text{optimal\_sequence}$, $S_{\text{distance}}$
 \EndProcedure
@@ -1587,6 +1587,3 @@ Richards, S., et al. (2015). Standards and guidelines for the interpretation of 
 \end{thebibliography}
 
 \end{document}
-
-
-

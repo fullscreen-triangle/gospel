@@ -1,0 +1,159 @@
+\section{Four-State Partition Systems and Nucleotide Derivation}
+
+\subsection{Binary Partition Composition}
+
+\begin{definition}[Binary Partition]
+\label{def:binary_partition}
+A binary partition divides phase space into two regions:
+\begin{equation}
+\mathcal{P}_{\text{binary}}: \Omega \to \{\Omega_0, \Omega_1\}
+\end{equation}
+with boundary $\partial\Omega$ separating regions.
+\end{definition}
+
+\begin{proposition}[Composed Binary Partitions]
+\label{prop:composed_partitions}
+Two independent binary partitions $\mathcal{P}_1, \mathcal{P}_2$ generate four-state system:
+\begin{equation}
+\mathcal{P}_1 \otimes \mathcal{P}_2: \Omega \to \{(0,0), (0,1), (1,0), (1,1)\}
+\end{equation}
+\end{proposition}
+
+This composition principle underlies four-nucleotide system.
+
+\subsection{Electron Transport Partition Structure}
+
+\begin{definition}[Electron Transport Partition]
+\label{def:electron_partition}
+Electron transport chain partitions into donor and acceptor states separated by electrochemical potential:
+\begin{equation}
+\Delta\mu_{e^-} = F\Delta E = F(E_{\text{acceptor}} - E_{\text{donor}})
+\end{equation}
+where $F$ is Faraday constant, $\Delta E$ is redox potential difference.
+\end{definition}
+
+\begin{theorem}[Two-Dimensional Electron Partition]
+\label{thm:two_dim_electron}
+Electron transport admits two independent binary partitions:
+\begin{enumerate}
+\item \textbf{Potential partition}: $\mathcal{P}_{\text{pot}}: \{E_{\text{high}}, E_{\text{low}}\}$
+\item \textbf{Occupancy partition}: $\mathcal{P}_{\text{occ}}: \{e^-_{\text{present}}, e^-_{\text{absent}}\}$
+\end{enumerate}
+Composition yields four states: $(E_{\text{high}}, e^-_{\text{absent}})$, $(E_{\text{high}}, e^-_{\text{present}})$, $(E_{\text{low}}, e^-_{\text{absent}})$, $(E_{\text{low}}, e^-_{\text{present}})$.
+\end{theorem}
+
+\begin{proof}
+Electron transport requires both potential gradient (thermodynamic driving force) and electron availability (kinetic accessibility). These constitute independent partition dimensions. Potential partition distinguishes high-energy (reduced) from low-energy (oxidized) states. Occupancy partition distinguishes electron-bearing from electron-depleted states. The two partitions are orthogonal: potential can be high or low regardless of electron presence, and electrons can be present or absent regardless of potential. Orthogonality establishes independence, yielding $2 \times 2 = 4$ combined states.
+\end{proof}
+
+\subsection{Nucleotide Base Correspondence}
+
+\begin{theorem}[Nucleotide-Partition Isomorphism]
+\label{thm:nucleotide_partition_iso}
+The four nucleotide bases correspond bijectively to four electron transport partition states:
+\begin{align}
+\text{Adenine (A)} &\leftrightarrow (E_{\text{high}}, e^-_{\text{absent}}) \\
+\text{Guanine (G)} &\leftrightarrow (E_{\text{high}}, e^-_{\text{present}}) \\
+\text{Thymine (T)} &\leftrightarrow (E_{\text{low}}, e^-_{\text{absent}}) \\
+\text{Cytosine (C)} &\leftrightarrow (E_{\text{low}}, e^-_{\text{present}})
+\end{align}
+\end{theorem}
+
+\begin{proof}
+Nucleotide bases stabilize electron transport partition states through molecular structure. Purines (A, G) contain fused ring systems providing high electron affinity ($E_{\text{high}}$). Pyrimidines (T, C) contain single rings with lower electron affinity ($E_{\text{low}}$). Within each class, electron occupancy distinguishes bases: guanine contains additional carbonyl group accepting electrons ($e^-_{\text{present}}$), while adenine lacks this group ($e^-_{\text{absent}}$). Similarly, cytosine contains amino group donating electrons ($e^-_{\text{present}}$), while thymine contains methyl group ($e^-_{\text{absent}}$). The four molecular structures correspond exactly to four partition states.
+\end{proof}
+
+\subsection{Watson-Crick Complementarity from Partition Symmetry}
+
+\begin{theorem}[Complementarity as Partition Inversion]
+\label{thm:complementarity}
+Watson-Crick base pairing follows from partition inversion symmetry:
+\begin{align}
+\text{A-T pairing} &: (E_{\text{high}}, e^-_{\text{absent}}) \leftrightarrow (E_{\text{low}}, e^-_{\text{absent}}) \\
+\text{G-C pairing} &: (E_{\text{high}}, e^-_{\text{present}}) \leftrightarrow (E_{\text{low}}, e^-_{\text{present}})
+\end{align}
+High-potential states pair with low-potential states to achieve charge balance.
+\end{theorem}
+
+\begin{proof}
+Stable pairing requires charge neutralization. High-potential base (electron-deficient) must pair with low-potential base (electron-rich) to minimize electrostatic energy. Occupancy state must match to preserve electron transport capacity: electron-absent pairs with electron-absent (A-T), electron-present pairs with electron-present (G-C). Mismatched pairings (A-C, G-T) violate charge balance or occupancy conservation, yielding higher free energy. Partition inversion symmetry (flip potential while preserving occupancy) generates complementary pairs.
+\end{proof}
+
+\subsection{Charge Stabilization Energy}
+
+\begin{theorem}[Partition Stabilization Free Energy]
+\label{thm:stabilization_energy}
+Nucleotide base pairing stabilizes partition states with free energy:
+\begin{align}
+\Delta G_{\text{A-T}} &= -2RT \ln K_{\text{A-T}} \approx -8.4 \text{ kJ/mol} \\
+\Delta G_{\text{G-C}} &= -2RT \ln K_{\text{G-C}} \approx -12.6 \text{ kJ/mol}
+\end{align}
+G-C pairing exhibits higher stability due to additional hydrogen bond from electron occupancy.
+\end{theorem}
+
+\begin{proof}
+Base pairing free energy derives from hydrogen bonding between complementary bases. A-T pairs form two hydrogen bonds, G-C pairs form three. Each hydrogen bond contributes $\approx 4$--5 kJ/mol. Total stabilization: A-T $\approx 2 \times 4.2 = 8.4$ kJ/mol, G-C $\approx 3 \times 4.2 = 12.6$ kJ/mol. The additional G-C hydrogen bond arises from electron occupancy partition state (carbonyl-amino interaction), confirming partition-based derivation.
+\end{proof}
+
+\subsection{DNA/RNA as Charge Capacitors}
+
+\begin{theorem}[Nucleic Acid Capacitance]
+\label{thm:nucleic_capacitance}
+DNA/RNA polymers function as electrostatic capacitors with capacitance:
+\begin{equation}
+C = \frac{\epsilon_0 \epsilon_r A}{d}
+\end{equation}
+where $A$ is effective area, $d$ is charge separation distance, $\epsilon_r$ is dielectric constant.
+\end{theorem}
+
+\begin{proof}
+DNA double helix contains negative charges (phosphate backbone, $-2e$ per base pair) and positive charges (associated cations, histones). These charges separate by distance $d \approx 2$ nm (helix diameter). For human genome with $N = 3 \times 10^9$ base pairs:
+\begin{align}
+Q_{\text{total}} &= 2eN = 2 \times 1.6 \times 10^{-19} \times 3 \times 10^9 \approx 10^{-9} \text{ C} \\
+A_{\text{eff}} &\approx N \times (0.34 \text{ nm})^2 \approx 3.5 \times 10^{-4} \text{ m}^2 \\
+C &= \frac{8.85 \times 10^{-12} \times 80 \times 3.5 \times 10^{-4}}{2 \times 10^{-9}} \approx 124 \text{ pF}
+\end{align}
+Including chromatin structure (nucleosome wrapping) increases effective area by factor $\sim 2$--3, yielding $C \approx 300$ pF. Stored energy:
+\begin{equation}
+U = \frac{1}{2}CV^2 \approx \frac{1}{2} \times 300 \times 10^{-12} \times (0.2)^2 \approx 6 \times 10^{-12} \text{ J}
+\end{equation}
+for membrane potential $V \approx 200$ mV.
+\end{proof}
+
+\subsection{Four-State Partition Operators}
+
+\begin{definition}[Nucleotide Partition Operators]
+\label{def:nucleotide_operators}
+Each nucleotide defines partition operator acting on electron transport states:
+\begin{align}
+\hat{A} &: |\psi\rangle \to |E_{\text{high}}, e^-_{\text{absent}}\rangle \\
+\hat{G} &: |\psi\rangle \to |E_{\text{high}}, e^-_{\text{present}}\rangle \\
+\hat{T} &: |\psi\rangle \to |E_{\text{low}}, e^-_{\text{absent}}\rangle \\
+\hat{C} &: |\psi\rangle \to |E_{\text{low}}, e^-_{\text{present}}\rangle
+\end{align}
+\end{definition}
+
+\begin{proposition}[Operator Algebra]
+\label{prop:operator_algebra}
+Nucleotide operators satisfy commutation relations:
+\begin{align}
+[\hat{A}, \hat{T}] &= \hat{A}\hat{T} - \hat{T}\hat{A} \neq 0 \quad \text{(potential flip)} \\
+[\hat{G}, \hat{C}] &= \hat{G}\hat{C} - \hat{C}\hat{G} \neq 0 \quad \text{(potential flip)} \\
+[\hat{A}, \hat{G}] &= \hat{A}\hat{G} - \hat{G}\hat{A} \neq 0 \quad \text{(occupancy flip)} \\
+[\hat{T}, \hat{C}] &= \hat{T}\hat{C} - \hat{C}\hat{T} \neq 0 \quad \text{(occupancy flip)}
+\end{align}
+Non-commutativity reflects partition state incompatibility.
+\end{proposition}
+
+\subsection{Sequence as Partition Trajectory}
+
+\begin{definition}[Genomic Partition Trajectory]
+\label{def:partition_trajectory}
+DNA sequence $S = s_1 s_2 \ldots s_n$ defines trajectory through partition state space:
+\begin{equation}
+\Gamma_S = \{(E_1, o_1), (E_2, o_2), \ldots, (E_n, o_n)\}
+\end{equation}
+where $E_i \in \{E_{\text{high}}, E_{\text{low}}\}$ is potential state, $o_i \in \{e^-_{\text{present}}, e^-_{\text{absent}}\}$ is occupancy state at position $i$.
+\end{definition}
+
+This trajectory encodes partition state evolution, providing foundation for coordinate geometry analysis (Section 4).

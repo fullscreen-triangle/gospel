@@ -1,0 +1,221 @@
+\begin{thebibliography}{10}
+\expandafter\ifx\csname url\endcsname\relax
+  \def\url#1{\texttt{#1}}\fi
+\expandafter\ifx\csname urlprefix\endcsname\relax\def\urlprefix{URL }\fi
+\providecommand{\bibinfo}[2]{#2}
+\providecommand{\eprint}[2][]{\url{#2}}
+
+\bibitem{Crick1958}
+\bibinfo{author}{Crick, F. H.~C.}
+\newblock \bibinfo{title}{On protein synthesis}.
+\newblock \emph{\bibinfo{journal}{Symposia of the Society for Experimental
+  Biology}} \textbf{\bibinfo{volume}{12}}, \bibinfo{pages}{138--163}
+  (\bibinfo{year}{1958}).
+
+\bibitem{Raj2006}
+\bibinfo{author}{Raj, A.} \& \bibinfo{author}{van Oudenaarden, A.}
+\newblock \bibinfo{title}{Nature, nurture, or chance: stochastic gene
+  expression and its consequences}.
+\newblock \emph{\bibinfo{journal}{Cell}} \textbf{\bibinfo{volume}{135}},
+  \bibinfo{pages}{216--226} (\bibinfo{year}{2008}).
+
+\bibitem{Padovan2016}
+\bibinfo{author}{Padovan-Merhar, O.} \emph{et~al.}
+\newblock \bibinfo{title}{Single mammalian cells compensate for differences in
+  cellular volume and dna copy number through independent global
+  transcriptional mechanisms}.
+\newblock \emph{\bibinfo{journal}{Molecular Cell}}
+  \textbf{\bibinfo{volume}{58}}, \bibinfo{pages}{339--352}
+  (\bibinfo{year}{2016}).
+
+\bibitem{Larsson2019}
+\bibinfo{author}{Larsson, A. J.~M.} \emph{et~al.}
+\newblock \bibinfo{title}{Genomic encoding of transcriptional burst kinetics}.
+\newblock \emph{\bibinfo{journal}{Nature}} \textbf{\bibinfo{volume}{565}},
+  \bibinfo{pages}{251--254} (\bibinfo{year}{2019}).
+
+\bibitem{Castelli2019}
+\bibinfo{author}{Castelli, M.} \emph{et~al.}
+\newblock \bibinfo{title}{The impact of rna velocity and metabolic labeling on
+  single cell transcriptomics}.
+\newblock \emph{\bibinfo{journal}{Nature Biotechnology}}
+  \textbf{\bibinfo{volume}{37}}, \bibinfo{pages}{630--635}
+  (\bibinfo{year}{2019}).
+
+\bibitem{Rivera2008}
+\bibinfo{author}{Rivera-Mulia, J.~C.} \& \bibinfo{author}{Gilbert, D.~M.}
+\newblock \bibinfo{title}{Replication timing and transcriptional control:
+  beyond cause and effect}.
+\newblock \emph{\bibinfo{journal}{Current Opinion in Cell Biology}}
+  \textbf{\bibinfo{volume}{40}}, \bibinfo{pages}{168--177}
+  (\bibinfo{year}{2016}).
+
+\bibitem{Rhind2013}
+\bibinfo{author}{Rhind, N.} \& \bibinfo{author}{Gilbert, D.~M.}
+\newblock \bibinfo{title}{Dna replication timing}.
+\newblock \emph{\bibinfo{journal}{Cold Spring Harbor Perspectives in Biology}}
+  \textbf{\bibinfo{volume}{5}}, \bibinfo{pages}{a010132}
+  (\bibinfo{year}{2013}).
+
+\bibitem{Pope2014}
+\bibinfo{author}{Pope, B.~D.} \emph{et~al.}
+\newblock \bibinfo{title}{Topologically associating domains are stable units of
+  replication-timing regulation}.
+\newblock \emph{\bibinfo{journal}{Nature}} \textbf{\bibinfo{volume}{515}},
+  \bibinfo{pages}{402--405} (\bibinfo{year}{2014}).
+
+\bibitem{Besnard2003}
+\bibinfo{author}{Besnard, E.} \emph{et~al.}
+\newblock \bibinfo{title}{Unraveling cell type-specific and reprogrammable
+  human replication origin signatures associated with g-quadruplex consensus
+  motifs}.
+\newblock \emph{\bibinfo{journal}{Nature Structural and Molecular Biology}}
+  \textbf{\bibinfo{volume}{19}}, \bibinfo{pages}{837--844}
+  (\bibinfo{year}{2012}).
+
+\bibitem{Pan2008}
+\bibinfo{author}{Pan, Q.}, \bibinfo{author}{Shai, O.}, \bibinfo{author}{Lee,
+  L.~J.}, \bibinfo{author}{Frey, B.~J.} \& \bibinfo{author}{Blencowe, B.~J.}
+\newblock \bibinfo{title}{Deep surveying of alternative splicing complexity in
+  the human transcriptome by high-throughput sequencing}.
+\newblock \emph{\bibinfo{journal}{Nature Genetics}}
+  \textbf{\bibinfo{volume}{40}}, \bibinfo{pages}{1413--1415}
+  (\bibinfo{year}{2008}).
+
+\bibitem{Baralle2017}
+\bibinfo{author}{Baralle, F.~E.} \& \bibinfo{author}{Giudice, J.}
+\newblock \bibinfo{title}{Alternative splicing as a regulator of development
+  and tissue identity}.
+\newblock \emph{\bibinfo{journal}{Nature Reviews Molecular Cell Biology}}
+  \textbf{\bibinfo{volume}{18}}, \bibinfo{pages}{437--451}
+  (\bibinfo{year}{2017}).
+
+\bibitem{Xiong2015}
+\bibinfo{author}{Xiong, H.~Y.} \emph{et~al.}
+\newblock \bibinfo{title}{The human splicing code reveals new insights into the
+  genetic determinants of disease}.
+\newblock \emph{\bibinfo{journal}{Science}} \textbf{\bibinfo{volume}{347}},
+  \bibinfo{pages}{1254806} (\bibinfo{year}{2015}).
+
+\bibitem{Gregory2005}
+\bibinfo{author}{Gregory, T.~R.}
+\newblock \bibinfo{title}{The c-value enigma in plants and animals: a review of
+  parallels and an appeal for partnership}.
+\newblock \emph{\bibinfo{journal}{Annals of Botany}}
+  \textbf{\bibinfo{volume}{95}}, \bibinfo{pages}{133--146}
+  (\bibinfo{year}{2005}).
+
+\bibitem{Cavalier2005}
+\bibinfo{author}{Cavalier-Smith, T.}
+\newblock \bibinfo{title}{Economy, speed and size matter: evolutionary forces
+  driving nuclear genome miniaturization and expansion}.
+\newblock \emph{\bibinfo{journal}{Annals of Botany}}
+  \textbf{\bibinfo{volume}{95}}, \bibinfo{pages}{147--175}
+  (\bibinfo{year}{2005}).
+
+\bibitem{Shu2015}
+\bibinfo{author}{Shu, H.}, \bibinfo{author}{Gruissem, W.} \&
+  \bibinfo{author}{Hennig, L.}
+\newblock \bibinfo{title}{Measuring arabidopsis chromatin accessibility using
+  dnase i-hypersensitive site sequencing}.
+\newblock \emph{\bibinfo{journal}{Plant Methods}}
+  \textbf{\bibinfo{volume}{11}}, \bibinfo{pages}{44} (\bibinfo{year}{2015}).
+
+\bibitem{Dancy2015}
+\bibinfo{author}{Dancy, B.~M.} \emph{et~al.}
+\newblock \bibinfo{title}{Azacitidine and decitabine induce setd2-dependent and
+  -independent effects on genomic and non-genomic loci}.
+\newblock \emph{\bibinfo{journal}{Proceedings of the National Academy of
+  Sciences}} \textbf{\bibinfo{volume}{112}}, \bibinfo{pages}{E5900--E5908}
+  (\bibinfo{year}{2015}).
+
+\bibitem{Canto2015}
+\bibinfo{author}{Cantó, C.}, \bibinfo{author}{Menzies, K.~J.} \&
+  \bibinfo{author}{Auwerx, J.}
+\newblock \bibinfo{title}{Nad+ metabolism and the control of energy
+  homeostasis: a balancing act between mitochondria and the nucleus}.
+\newblock \emph{\bibinfo{journal}{Cell Metabolism}}
+  \textbf{\bibinfo{volume}{22}}, \bibinfo{pages}{31--53}
+  (\bibinfo{year}{2015}).
+
+\bibitem{Luger1997}
+\bibinfo{author}{Luger, K.}, \bibinfo{author}{Mäder, A.~W.},
+  \bibinfo{author}{Richmond, R.~K.}, \bibinfo{author}{Sargent, D.~F.} \&
+  \bibinfo{author}{Richmond, T.~J.}
+\newblock \bibinfo{title}{Crystal structure of the nucleosome core particle at
+  2.8 Å resolution}.
+\newblock \emph{\bibinfo{journal}{Nature}} \textbf{\bibinfo{volume}{389}},
+  \bibinfo{pages}{251--260} (\bibinfo{year}{1997}).
+
+\bibitem{Sachikonye2025_Pharma}
+\bibinfo{author}{Sachikonye, K.~F.}
+\newblock \bibinfo{title}{Pharmacology as meta-programming: The quadruple
+  architecture for biological computation}.
+\newblock \emph{\bibinfo{journal}{In preparation}}  (\bibinfo{year}{2025}).
+
+\bibitem{Sachikonye2025_Metabolic}
+\bibinfo{author}{Sachikonye, K.~F.}
+\newblock \bibinfo{title}{Metabolic hierarchy computing: Information
+  compression through o$_2$-h$^+$ electromagnetic coupling}.
+\newblock \emph{\bibinfo{journal}{In preparation}}  (\bibinfo{year}{2025}).
+
+\bibitem{Sachikonye2025_Immunity}
+\bibinfo{author}{Sachikonye, K.~F.}
+\newblock \bibinfo{title}{Categorical immunology: Filter cascades and
+  categorical richness in adaptive immunity}.
+\newblock \emph{\bibinfo{journal}{In preparation}}  (\bibinfo{year}{2025}).
+
+\bibitem{Warburg1956}
+\bibinfo{author}{Warburg, O.}
+\newblock \bibinfo{title}{On the origin of cancer cells}.
+\newblock \emph{\bibinfo{journal}{Science}} \textbf{\bibinfo{volume}{123}},
+  \bibinfo{pages}{309--314} (\bibinfo{year}{1956}).
+
+\bibitem{Luciani2004}
+\bibinfo{author}{Luciani, F.} \emph{et~al.}
+\newblock \bibinfo{title}{Effect of proton pump inhibitor pretreatment on
+  resistance of solid tumors to cytotoxic drugs}.
+\newblock \emph{\bibinfo{journal}{Journal of the National Cancer Institute}}
+  \textbf{\bibinfo{volume}{96}}, \bibinfo{pages}{1702--1713}
+  (\bibinfo{year}{2004}).
+
+\bibitem{Lin2006}
+\bibinfo{author}{Lin, M.~T.} \& \bibinfo{author}{Beal, M.~F.}
+\newblock \bibinfo{title}{Mitochondrial dysfunction and oxidative stress in
+  neurodegenerative diseases}.
+\newblock \emph{\bibinfo{journal}{Nature}} \textbf{\bibinfo{volume}{443}},
+  \bibinfo{pages}{787--795} (\bibinfo{year}{2006}).
+
+\bibitem{Gunthorpe2012}
+\bibinfo{author}{Gunthorpe, M.~J.}, \bibinfo{author}{Large, C.~H.} \&
+  \bibinfo{author}{Sankar, R.}
+\newblock \bibinfo{title}{The mechanism of action of retigabine (ezogabine), a
+  first-in-class k+ channel opener for the treatment of epilepsy}.
+\newblock \emph{\bibinfo{journal}{Epilepsia}} \textbf{\bibinfo{volume}{53}},
+  \bibinfo{pages}{412--424} (\bibinfo{year}{2012}).
+
+\bibitem{DAAngelo2009}
+\bibinfo{author}{D'Angelo, M.~A.}, \bibinfo{author}{Raices, M.},
+  \bibinfo{author}{Panowski, S.~H.} \& \bibinfo{author}{Hetzer, M.~W.}
+\newblock \bibinfo{title}{Age-dependent deterioration of nuclear pore complexes
+  causes a loss of nuclear integrity in postmitotic cells}.
+\newblock \emph{\bibinfo{journal}{Cell}} \textbf{\bibinfo{volume}{136}},
+  \bibinfo{pages}{284--295} (\bibinfo{year}{2009}).
+
+\bibitem{Southworth2009}
+\bibinfo{author}{Southworth, L.~K.}, \bibinfo{author}{Owen, A.~B.} \&
+  \bibinfo{author}{Kim, S.~K.}
+\newblock \bibinfo{title}{Aging mice show a decreasing correlation of gene
+  expression within genetic modules}.
+\newblock \emph{\bibinfo{journal}{PLoS Genetics}} \textbf{\bibinfo{volume}{5}},
+  \bibinfo{pages}{e1000776} (\bibinfo{year}{2009}).
+
+\bibitem{Mills2016}
+\bibinfo{author}{Mills, K.~F.} \emph{et~al.}
+\newblock \bibinfo{title}{Long-term administration of nicotinamide
+  mononucleotide mitigates age-associated physiological decline in mice}.
+\newblock \emph{\bibinfo{journal}{Cell Metabolism}}
+  \textbf{\bibinfo{volume}{24}}, \bibinfo{pages}{795--806}
+  (\bibinfo{year}{2016}).
+
+\end{thebibliography}

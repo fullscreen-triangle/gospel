@@ -1,0 +1,52 @@
+This is BibTeX, Version 0.99d
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: oscillatory-genome-networks.aux
+Reallocating 'name_of_file' (item size: 1) to 10 items.
+The style file: naturemag.bst
+Reallocating 'name_of_file' (item size: 1) to 21 items.
+Database file #1: oscillatory_genomics.bib
+Warning--I didn't find a database entry for "Li2005"
+Warning--I didn't find a database entry for "Henikoff2008"
+Warning--I didn't find a database entry for "McGlincy2012"
+You've used 28 entries,
+            2348 wiz_defined-function locations,
+            1180 strings with 15866 characters,
+and the built_in function-call counts, 10937 in all, are:
+= -- 803
+> -- 244
+< -- 0
++ -- 122
+- -- 61
+* -- 1356
+:= -- 1241
+add.period$ -- 84
+call.type$ -- 28
+change.case$ -- 28
+chr.to.int$ -- 0
+cite$ -- 28
+duplicate$ -- 977
+empty$ -- 1020
+format.name$ -- 82
+if$ -- 2159
+int.to.chr$ -- 0
+int.to.str$ -- 28
+missing$ -- 223
+newline$ -- 148
+num.names$ -- 28
+pop$ -- 141
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 144
+stack$ -- 0
+substring$ -- 615
+swap$ -- 960
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 0
+while$ -- 74
+width$ -- 30
+write$ -- 312
+(There were 3 warnings)

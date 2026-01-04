@@ -1,0 +1,77 @@
+\begin{thebibliography}{12}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Armitage and Doll(1954)]{armitage1954age}
+Peter Armitage and Richard Doll.
+\newblock The age distribution of cancer and a multi-stage theory of
+  carcinogenesis.
+\newblock \emph{British Journal of Cancer}, 8\penalty0 (1):\penalty0 1--12,
+  1954.
+
+\bibitem[Banavar et~al.(1999)Banavar, Maritan, and Rinaldo]{banavar1999size}
+Jayanth~R Banavar, Amos Maritan, and Andrea Rinaldo.
+\newblock Size and form in efficient transportation networks.
+\newblock \emph{Nature}, 399\penalty0 (6732):\penalty0 130--132, 1999.
+
+\bibitem[Barlow and Proschan(1975)]{barlow1975statistical}
+Richard~E Barlow and Frank Proschan.
+\newblock \emph{Statistical Theory of Reliability and Life Testing: Probability
+  Models}.
+\newblock Holt, Rinehart and Winston, 1975.
+
+\bibitem[Gardiner(2009)]{gardiner2009stochastic}
+Crispin Gardiner.
+\newblock \emph{Stochastic Methods: A Handbook for the Natural and Social
+  Sciences}.
+\newblock Springer-Verlag Berlin Heidelberg, 4th edition, 2009.
+
+\bibitem[Kleiber(1932)]{kleiber1932body}
+Max Kleiber.
+\newblock Body size and metabolism.
+\newblock \emph{Hilgardia}, 6\penalty0 (11):\penalty0 315--353, 1932.
+
+\bibitem[Kubo(1962)]{kubo1962generalized}
+Ryogo Kubo.
+\newblock Generalized cumulant expansion method.
+\newblock \emph{Journal of the Physical Society of Japan}, 17\penalty0
+  (7):\penalty0 1100--1120, 1962.
+
+\bibitem[Nunney(2013)]{nunney2013real}
+Leonard Nunney.
+\newblock The real war on cancer: the evolutionary dynamics of cancer
+  suppression.
+\newblock \emph{Evolutionary Applications}, 6\penalty0 (1):\penalty0 11--19,
+  2013.
+
+\bibitem[Peto(1977)]{peto1977epidemiology}
+Richard Peto.
+\newblock The epidemiology of animal cancer.
+\newblock \emph{Origins of Human Cancer}, pages 1403--1428, 1977.
+
+\bibitem[Peto et~al.(1975)Peto, Roe, Lee, Levy, and Clack]{peto1975cancers}
+Richard Peto, Francis~JC Roe, Peter~N Lee, Leonard Levy, and Jacqueline Clack.
+\newblock Cancer and ageing in mice and men.
+\newblock \emph{British Journal of Cancer}, 32\penalty0 (4):\penalty0 411--426,
+  1975.
+
+\bibitem[Poincar{\'e}(1890)]{poincare1890probleme}
+Henri Poincar{\'e}.
+\newblock Sur le probl{\`e}me des trois corps et les {\'e}quations de la
+  dynamique.
+\newblock \emph{Acta Mathematica}, 13:\penalty0 1--270, 1890.
+
+\bibitem[Weinberg(1995)]{weinberg1995quantum}
+Steven Weinberg.
+\newblock \emph{The Quantum Theory of Fields}, volume~1.
+\newblock Cambridge University Press, 1995.
+
+\bibitem[West et~al.(1997)West, Brown, and Enquist]{west1997general}
+Geoffrey~B West, James~H Brown, and Brian~J Enquist.
+\newblock A general model for the origin of allometric scaling laws in biology.
+\newblock \emph{Science}, 276\penalty0 (5309):\penalty0 122--126, 1997.
+
+\end{thebibliography}

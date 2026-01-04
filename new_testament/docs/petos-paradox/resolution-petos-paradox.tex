@@ -1,0 +1,105 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{enumerate}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{natbib}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{axiom}[theorem]{Axiom}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\Config}{\mathcal{C}}
+\newcommand{\Traj}{\mathcal{T}}
+\newcommand{\Attr}{\mathcal{A}}
+\newcommand{\kB}{k_{\mathrm{B}}}
+
+\title{Configuration Space Dimensionality and Trajectory Convergence Probability in Coupled Oscillator Networks: Resolution of the Cell Count--Pathology Rate Invariance}
+
+\author{
+Kundai Farai Sachikonye\\
+\texttt{kundai.sachikonye@wzw.tum.de}
+}
+
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+We analyse the relationship between system size and the probability of trajectory convergence to distinguished subsets in high-dimensional configuration spaces of coupled oscillator networks. For a system of $N$ weakly coupled oscillators, each with $\Omega$ accessible microstates, the configuration space has cardinality $|\Config| = \Omega^N$. We prove that the probability of $k$ spatially separated oscillators simultaneously occupying a specified configuration subset $\Attr \subset \Config$ scales as $P_k \sim |\Attr|^k / |\Config|^k = (|\Attr|/\Omega^N)^k$, which vanishes exponentially in $N$ for fixed $|\Attr|/\Omega^N < 1$. For systems with hierarchical reset dynamics---where subsystem states are periodically restored toward initial conditions with period $\tau$---we derive the critical timescale $\tau_c$ below which trajectory deviations propagate through reset events and above which deviations regress toward the mean configuration. The ratio $\tau/\tau_c$ determines whether the system exhibits error accumulation or error dilution. We establish that $\tau_c \propto N^{-1/4}$ through coupling constraints across hierarchical oscillatory scales, implying that larger systems require proportionally longer reset periods to maintain equivalent error propagation rates. The invariance of pathological trajectory convergence rates across systems with cell counts spanning $10^{13}$ to $10^{15}$ follows directly from these scaling relationships, resolving the apparent paradox identified by Peto \citep{peto1975cancers, peto1977epidemiology}.
+\end{abstract}
+
+\section{Introduction}
+\label{sec:introduction}
+
+The relationship between system size and failure probability in complex dynamical systems presents a fundamental problem in statistical mechanics. Naively, one expects failure rates to scale linearly with component count: a system with $N$ components, each failing independently with probability $p$, exhibits total failure probability $P_{\text{failure}} \approx Np$ for small $p$. This linear scaling underlies reliability engineering \citep{barlow1975statistical}, epidemiological risk models \citep{armitage1954age}, and stochastic population dynamics \citep{gardiner2009stochastic}.
+
+However, this scaling assumes independence of component failures and neglects the structure of the underlying state space. When components are coupled oscillators exploring a shared configuration space, the dimensionality of that space grows exponentially with component count, fundamentally altering the statistics of rare trajectory convergence events.
+
+We consider a system of $N$ coupled oscillators, where each oscillator $i$ occupies a state $\sigma_i \in \{1, 2, \ldots, \Omega\}$ drawn from $\Omega$ accessible microstates. The instantaneous configuration of the system is the $N$-tuple $\mathbf{c} = (\sigma_1, \sigma_2, \ldots, \sigma_N) \in \Config$, where the configuration space $\Config$ has cardinality $|\Config| = \Omega^N$. The system evolves through this configuration space according to dynamics specified by coupling between oscillators and external driving.
+
+A pathological trajectory is defined as one that converges to a distinguished subset $\Attr \subset \Config$ of configurations. The central question is: how does the probability of pathological trajectory convergence scale with system size $N$?
+
+The naive expectation---that more components provide more opportunities for pathological convergence---ignores the explosion of the denominator. As $N$ increases, $|\Config| = \Omega^N$ grows exponentially, diluting the probability mass on any fixed subset $\Attr$. The key insight is that pathological convergence requires \emph{coordinated} behaviour across multiple oscillators, and the probability of such coordination decreases with the size of the configuration space in which the oscillators must ``find'' each other.
+
+This paper establishes the mathematical framework for analysing trajectory convergence in high-dimensional oscillator networks and derives the scaling laws governing convergence probability as a function of system size, spatial correlation length, reset dynamics, and hierarchical coupling structure.
+
+Section~\ref{sec:configuration_space} defines the configuration space formalism and establishes the fundamental probability measures. Section~\ref{sec:spatial_decorrelation} analyses the decay of spatial correlations in large systems and proves the independence of distant oscillators. Section~\ref{sec:division_cycles} introduces reset dynamics and derives conditions for error propagation versus regression. Section~\ref{sec:trajectory_deviation} quantifies trajectory deviation amplitudes and their dependence on system parameters. Section~\ref{sec:error_propagation} proves the main theorem on error scaling with system size. Section~\ref{sec:oscillatory_coherence} extends the analysis to hierarchically coupled oscillator networks and derives the quarter-power scaling of critical timescales.
+
+\input{sections/snapshot-configuration-space}
+\input{sections/spatial-decorrelation}
+\input{sections/division-cycles}
+\input{sections/trajectory-deviation-amplitude}
+\input{sections/error-propagation}
+\input{sections/oscillatory-coherence}
+
+\section{Discussion}
+\label{sec:discussion}
+
+The results of Sections~\ref{sec:configuration_space}--\ref{sec:oscillatory_coherence} establish that pathological trajectory convergence probability in coupled oscillator networks does not scale linearly with component count $N$. Instead, the probability is governed by the ratio of the pathological subset volume to the total configuration space volume, which decreases exponentially with $N$ for fixed subset structure.
+
+The critical timescale $\tau_c \propto N^{-1/4}$ derived in Section~\ref{sec:oscillatory_coherence} implies that larger systems naturally operate in the error-dilution regime ($\tau > \tau_c$) even with fixed reset periods. This is because the quarter-power scaling arises from coupling constraints across hierarchical oscillatory scales, which are themselves consequences of bounded phase space and Poincar\'{e} recurrence \citep{poincare1890probleme}.
+
+The spatial decorrelation length $\xi$ established in Section~\ref{sec:spatial_decorrelation} determines the effective number of independent subsystems. For $L \gg \xi$, where $L$ is the system's spatial extent, the system decomposes into approximately $L^3/\xi^3$ independent correlation volumes. Pathological convergence requires simultaneous coordination across multiple correlation volumes, with probability scaling as the product of individual volume probabilities.
+
+The trajectory deviation amplitude $\langle \Delta^2 \rangle$ analysed in Section~\ref{sec:trajectory_deviation} quantifies the typical distance of system trajectories from reference configurations. The reset dynamics of Section~\ref{sec:division_cycles} show that deviations are restored toward initial conditions with efficiency depending on the reset period $\tau$ relative to the critical timescale $\tau_c$. For $\tau > \tau_c$, successive reset events produce configurations that regress toward the population mean, preventing accumulation of deviations across generations.
+
+The main theorem of Section~\ref{sec:error_propagation} proves that error propagation rate $\Gamma_{\text{error}}$ satisfies
+\begin{equation}
+\Gamma_{\text{error}} \propto \frac{N \cdot p_{\text{local}}}{\Omega^N} \cdot f\left(\frac{\tau}{\tau_c}\right)
+\end{equation}
+where $p_{\text{local}}$ is the single-oscillator pathological transition probability, and $f(\tau/\tau_c)$ is a monotonically decreasing function with $f(x) \to 0$ as $x \to \infty$. For systems with $N \sim 10^{13}$--$10^{15}$ and $\Omega \sim 10^5$, the denominator $\Omega^N$ dominates any polynomial growth in $N$, rendering $\Gamma_{\text{error}}$ effectively independent of $N$ over the observed range.
+
+This analysis resolves the apparent paradox noted by Peto and colleagues \citep{peto1975cancers, peto1977epidemiology, nunney2013real}, who observed that the incidence of malignant neoplasia in mammals does not correlate with body mass or cell count despite spanning several orders of magnitude in these quantities. The resolution lies in recognising that the relevant variable is not cell count per se, but the dimensionality of the configuration space, which grows exponentially with cell count and thereby compensates the linear increase in potential failure sites.
+
+\section{Conclusion}
+\label{sec:conclusion}
+
+We have established that trajectory convergence probability to pathological subsets in coupled oscillator networks scales as $P \sim |\Attr|/\Omega^N$, where $N$ is the number of oscillators and $\Omega$ is the number of accessible states per oscillator. This exponential suppression with system size arises from the geometry of high-dimensional configuration spaces, where specified subsets occupy vanishing volume fractions.
+
+The introduction of hierarchical reset dynamics with period $\tau$ introduces a critical timescale $\tau_c \propto N^{-1/4}$ separating error-accumulation ($\tau < \tau_c$) from error-dilution ($\tau > \tau_c$) regimes. Larger systems, by virtue of their quarter-power scaling of $\tau_c$, naturally operate in the error-dilution regime, where trajectory deviations regress toward population means rather than propagating through reset events.
+
+Spatial decorrelation over length scales $\xi$ ensures that pathological convergence requires coordinated transitions in $(L/\xi)^3$ independent correlation volumes, each contributing multiplicatively to the suppression factor.
+
+These results provide a complete mathematical resolution of the cell count--pathology rate invariance, demonstrating that the apparent paradox arises from neglecting the exponential growth of configuration space dimensionality with system size.
+
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\end{document}
+
