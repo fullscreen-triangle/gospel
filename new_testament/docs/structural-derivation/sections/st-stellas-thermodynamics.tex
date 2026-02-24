@@ -82,7 +82,7 @@ Timescale separation enables hierarchical processing: fast execution layer respo
 \label{def:s_distance}
 Distance between two points in S-entropy space:
 \begin{equation}
-S(\Scoord_1, \Scoord_2) = \sqrt{(\Sk_1 - \Sk_2)^2 + (\St_1 - \St_2)^2 + (\Se_1 - \Se_2)^2}
+S(\Scoord_1, \Scoord_2) = \sqrt{(S_{k,1} - S_{k,2})^2 + (S_{t,1} - S_{t,2})^2 + (S_{e,1} - S_{e,2})^2}
 \end{equation}
 \end{definition}
 
@@ -165,7 +165,7 @@ Metabolite concentrations modulate chromatin state and transcription factor acti
 \label{thm:state_transition}
 Transition rate between genomic states $\Scoord_1 \to \Scoord_2$ follows Arrhenius form:
 \begin{equation}
-k_{1 \to 2} = k_0 \exp\left(-\frac{\Delta F(\Scoord_1, \Scoord_2)}{k_BT}\right)
+k_{12} = k_0 \exp\left(-\frac{\Delta F(\Scoord_1, \Scoord_2)}{k_BT}\right)
 \end{equation}
 where $\Delta F = F(\Scoord_2) - F(\Scoord_1)$ is free energy barrier.
 \end{theorem}
@@ -259,7 +259,7 @@ Three-layer architecture achieves thermodynamic efficiency:
 \eta_{\text{thermo}} = \frac{W_{\text{useful}}}{Q_{\text{input}}} = 1 - \frac{T_{\text{exec}}}{T_{\text{coord}}} \approx 0.7
 \end{equation}
 where $T_{\text{exec}} \sim 300$ K (molecular temperature), $T_{\text{coord}} \sim 1000$ K (effective coordinate temperature).
-\end{equation}
+\end{theorem}
 
 \begin{proof}
 Layered architecture operates as Carnot engine: high-temperature coordinate layer (slow, high free energy) drives low-temperature execution layer (fast, low free energy). Maximum efficiency:

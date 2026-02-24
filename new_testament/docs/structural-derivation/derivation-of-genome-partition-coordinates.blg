@@ -1,0 +1,48 @@
+This is BibTeX, Version 0.99d
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: derivation-of-genome-partition-coordinates.aux
+Reallocating 'name_of_file' (item size: 1) to 9 items.
+The style file: plainnat.bst
+Reallocating 'name_of_file' (item size: 1) to 11 items.
+Database file #1: references.bib
+You've used 6 entries,
+            2773 wiz_defined-function locations,
+            613 strings with 5933 characters,
+and the built_in function-call counts, 1833 in all, are:
+= -- 156
+> -- 60
+< -- 6
++ -- 29
+- -- 18
+* -- 104
+:= -- 300
+add.period$ -- 18
+call.type$ -- 6
+change.case$ -- 24
+chr.to.int$ -- 1
+cite$ -- 12
+duplicate$ -- 114
+empty$ -- 181
+format.name$ -- 24
+if$ -- 373
+int.to.chr$ -- 6
+int.to.str$ -- 1
+missing$ -- 6
+newline$ -- 38
+num.names$ -- 24
+pop$ -- 54
+preamble$ -- 1
+purify$ -- 18
+quote$ -- 0
+skip$ -- 72
+stack$ -- 0
+substring$ -- 12
+swap$ -- 12
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 66
+warning$ -- 0
+while$ -- 18
+width$ -- 0
+write$ -- 79
