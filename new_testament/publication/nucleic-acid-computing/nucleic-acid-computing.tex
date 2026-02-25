@@ -611,6 +611,13 @@ The mapping:
 \end{enumerate}
 \end{proposition}
 
+\begin{figure*}[!htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{figures/panel_computing_2.pdf}
+\caption{\textbf{Nucleic Acid Computing: Cardinal Transform and Ternary Encoding.} (A) Cardinal coordinate vectors: A $\rightarrow$ $(0, +1)$, T $\rightarrow$ $(0, -1)$, G $\rightarrow$ $(+1, 0)$, C $\rightarrow$ $(-1, 0)$. A-T and G-C pairs are negatives; purines (A, G) and pyrimidines (T, C) define orthogonal axes. Complementary strands have opposite trajectories. (B) Random sequence trajectory in cardinal coordinates. Color gradient indicates position along sequence. Start (green circle) and end (red square) positions encode sequence composition. Balanced composition returns near origin. (C) 3D trit partitioning: unit cube subdivided by ternary addressing. Each point receives unique k-trit address specifying refinement trajectory. 50 sample points shown with color indicating position. (D) Encoding precision versus depth: position precision (blue, left axis) decays as $3^{-k}$ while information content (red, right axis) grows as $k \log_2 3$ bits. Position and trajectory are dual representations of the same trit string.}
+\label{fig:computing_2}
+\end{figure*}
+
 \subsection{Feature Signatures}
 
 Genomic features have characteristic S-coordinate patterns:
@@ -761,6 +768,13 @@ T_{\text{parallel}} = \bigO(\log_3 n)
 \end{equation}
 with $m$-way parallelism, independent of $m$.
 \end{proposition}
+
+\begin{figure*}[!htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{figures/panel_computing_1.pdf}
+\caption{\textbf{Nucleic Acid Computing: Complexity and S-Entropy Space.} (A) Complexity scaling comparison: sequential analysis requires $O(n^2)$ operations while partition-based navigation requires only $O(\log_3 n)$ operations. Green shaded region shows computational savings. (B) Speedup factor as a function of sequence length. For $n = 10^6$, navigation achieves $\sim$10$^{11}\times$ speedup over sequential analysis. Speedup grows superlinearly with sequence length. (C) 3D S-entropy coordinate space with dimensions $S_k$ (knowledge entropy), $S_t$ (temporal entropy), and $S_e$ (evolution entropy). Each point uniquely addresses a position in partition space. Color indicates total entropy $S_k + S_t + S_e$. (D) Partition refinement: number of cells (blue, left axis) and resolution (red, right axis) as functions of trit depth $k$. At depth $k = 20$, resolution reaches $\sim$3 $\times$ 10$^{-10}$, sufficient to address individual nucleotides in any genome.}
+\label{fig:computing_1}
+\end{figure*}
 
 \section{Partition Synthesis Language}
 
@@ -1413,6 +1427,13 @@ Memory layout optimizations:
 \item SCoord aligns to 32 bytes for SIMD operations
 \item Genome uses 2-bit encoding internally
 \end{itemize}
+
+\begin{figure*}[!htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{figures/panel_computing_3.pdf}
+\caption{\textbf{Nucleic Acid Computing: Performance Validation.} (A) Task complexity comparison across genomic operations: palindrome detection, motif finding, sequence alignment, and structure prediction. Navigation (green) achieves 3--5 orders of magnitude reduction in operations compared to sequential analysis (coral). (B) Memory scaling: sequential analysis requires $O(n)$ memory (full sequence storage) while navigation requires only $O(\log n)$ memory (coordinate storage). For genome-scale sequences ($n > 10^9$), this represents $>$6 orders of magnitude memory reduction. (C) 3D speedup surface as a function of sequence length $n$ and encoding depth $k$. Optimal speedup occurs at moderate depth ($k \sim 10$--15) for genome-scale sequences. Color indicates $\log_{10}$(speedup). (D) Benchmark results for palindrome detection across sequence sizes from 1 KB to 10 MB. Speedup factors range from $10^{4.4}\times$ (1 KB) to $10^{9.7}\times$ (10 MB), confirming theoretical $O(n^2/\log n)$ scaling.}
+\label{fig:computing_3}
+\end{figure*}
 
 \section{Applications}
 

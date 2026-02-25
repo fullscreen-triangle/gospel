@@ -1,0 +1,86 @@
+\begin{thebibliography}{10}
+
+\bibitem{watson1953}
+James~D Watson and Francis~HC Crick.
+\newblock Molecular structure of nucleic acids: a structure for deoxyribose
+  nucleic acid.
+\newblock {\em Nature}, 171(4356):737--738, 1953.
+
+\bibitem{franklin1953}
+Rosalind~E Franklin and Raymond~G Gosling.
+\newblock Molecular configuration in sodium thymonucleate.
+\newblock {\em Nature}, 171(4356):740--741, 1953.
+
+\bibitem{pullman1963}
+Bernard Pullman and Alberte Pullman.
+\newblock {\em Quantum biochemistry}.
+\newblock Interscience Publishers, 1963.
+
+\bibitem{poincare1890}
+Henri Poincar{\'e}.
+\newblock Sur le probl{\`e}me des trois corps et les {\'e}quations de la
+  dynamique.
+\newblock {\em Acta mathematica}, 13(1):1--270, 1890.
+
+\bibitem{birkhoff1931}
+George~David Birkhoff.
+\newblock Proof of the ergodic theorem.
+\newblock {\em Proceedings of the National Academy of Sciences},
+  17(12):656--660, 1931.
+
+\bibitem{kolmogorov1957}
+Andrey~Nikolaevich Kolmogorov.
+\newblock {\em Foundations of the theory of probability}.
+\newblock Chelsea Publishing Company, New York, 1957.
+
+\bibitem{shannon1948}
+Claude~E Shannon.
+\newblock A mathematical theory of communication.
+\newblock {\em The Bell System Technical Journal}, 27(3):379--423, 1948.
+
+\bibitem{santalucia1998}
+John SantaLucia~Jr.
+\newblock A unified view of polymer, dumbbell, and oligonucleotide {DNA}
+  nearest-neighbor thermodynamics.
+\newblock {\em Proceedings of the National Academy of Sciences},
+  95(4):1460--1465, 1998.
+
+\bibitem{kornyshev2007}
+Alexei~A Kornyshev, Dominic~J Lee, Sergey Leikin, and Aaron Wynveen.
+\newblock Physics of {DNA}: unravelling hidden abilities encoded in the
+  structure of `the most important molecule'.
+\newblock {\em The European Physical Journal E}, 23(4):361--374, 2007.
+
+\bibitem{chargaff1950}
+Erwin Chargaff.
+\newblock Chemical specificity of nucleic acids and mechanism of their
+  enzymatic degradation.
+\newblock {\em Experientia}, 6(6):201--209, 1950.
+
+\bibitem{seeman1976}
+Nadrian~C Seeman, John~M Rosenberg, and Alexander Rich.
+\newblock Sequence-specific recognition of double helical nucleic acids by
+  proteins.
+\newblock {\em Proceedings of the National Academy of Sciences},
+  73(3):804--808, 1976.
+
+\bibitem{sponer2006}
+Ji{\v{r}}{\'i} {\v{S}}poner, Petr Jurecka, Ivan Marchan, F~Javier Luque,
+  Modesto Orozco, and Pavel Hobza.
+\newblock Nature of base stacking: Reference quantum-chemical stacking energies
+  in ten unique {B-DNA} base-pair steps.
+\newblock {\em Chemistry--A European Journal}, 12(10):2854--2865, 2006.
+
+\bibitem{rohs2009}
+Remo Rohs, Sean~M West, Alona Sosinsky, Peng Liu, Richard~S Mann, and Barry
+  Honig.
+\newblock The role of {DNA} shape in protein--{DNA} recognition.
+\newblock {\em Nature}, 461(7268):1248--1253, 2009.
+
+\bibitem{parker2009}
+Scott~CR Parker, Lars Hansen, Hatice~Ozel Abaan, Thomas~D Tullius, and
+  Elliott~H Margulies.
+\newblock The role of {DNA} sequence in nucleosome breathing.
+\newblock {\em Nucleic Acids Research}, 37(4):1135--1145, 2009.
+
+\end{thebibliography}

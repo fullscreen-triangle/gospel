@@ -374,6 +374,13 @@ Measured base pairing free energies \cite{santalucia1998}:
 
 The G-C pair has three hydrogen bonds versus two for A-T, conventionally explaining the energy difference. In partition terms: G-C involves two ``electron present'' states creating additional partition structure that releases more energy upon completion.
 
+\begin{figure*}[!htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{figures/panel_nucleic_acid_derivation_2.pdf}
+\caption{\textbf{Nucleic Acid Derivation: Complementarity and Binding Energetics.} (A) Complementary pair topology: Watson-Crick pairs (A-T, G-C) correspond to partition completion through potential inversion with electron status conservation. Non-complementary pairs (A-C, G-T) violate electron status matching. (B) Base pairing energies: experimental values ($|{\Delta}G|_{\text{A-T}} = 1.2$ kcal/mol, $|{\Delta}G|_{\text{G-C}} = 2.4$ kcal/mol) compared with partition model predictions based on hydrogen bond count (2 vs.\ 3). (C) 3D double helix geometry showing complementary strand trajectories with base pair connections. Helical parameters (twist $\sim$34.3\textdegree/bp, rise $\sim$0.34 nm/bp) emerge from partition boundary interference minimization. (D) Twist angle energy landscape showing optimization at $\sim$36\textdegree, matching observed B-DNA twist of 34.3\textdegree\ within 5\% relative error.}
+\label{fig:nucleic_acid_derivation_2}
+\end{figure*}
+
 %==============================================================================
 \section{Double-Helix Architecture}
 \label{sec:helix}
@@ -458,6 +465,13 @@ For a cylindrical conductor of radius $r \approx 1$ nm and length $L \approx 2$ 
 
 This order-of-magnitude agreement ($\sim 100$--$300$ pF) validates partition-generated charge.
 
+\begin{figure*}[!htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{figures/panel_nucleic_acid_derivation_1.pdf}
+\caption{\textbf{Nucleic Acid Derivation: Capacitance and Partition States.} (A) DNA capacitance as a function of length for a cylindrical capacitor model. The human genome ($\sim$2 m total length) yields capacitance $\sim$300 pF, consistent with partition-generated charge storage. (B) Four-state partition system: two binary partitions (potential axis: high/low; electron axis: present/absent) compose to yield exactly four states corresponding to nucleotides A, T, G, C. (C) 3D information surface showing partition information content as a function of potential partition $P_1$ and electron partition $P_2$. Maximum information occurs at balanced partition probabilities. (D) State occupancy distribution for typical genomic composition, showing slight deviation from uniform ($p = 0.25$) due to GC content variation.}
+\label{fig:nucleic_acid_derivation_1}
+\end{figure*}
+
 %==============================================================================
 \section{Cardinal Coordinate Transformation}
 \label{sec:cardinal}
@@ -523,6 +537,13 @@ The ratio: $I_{\text{geometric}}/I_{\text{linear}} = O(n \log n)/O(n) = O(\log n
 \end{proof}
 
 This explains why palindromic sequences, regulatory elements, and structural features are more efficiently detected through coordinate-based analysis than sequential scanning.
+
+\begin{figure*}[!htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{figures/panel_nucleic_acid_derivation_3.pdf}
+\caption{\textbf{Nucleic Acid Derivation: Cardinal Transform and Information Scaling.} (A) Cardinal coordinate transformation: $\phi(\text{A}) = (0, +1)$, $\phi(\text{T}) = (0, -1)$, $\phi(\text{G}) = (+1, 0)$, $\phi(\text{C}) = (-1, 0)$. Complementary bases map to negatives; purines and pyrimidines occupy orthogonal axes. (B) Example sequence trajectory in cardinal coordinates showing path from origin through sequence space. Chargaff's rules ensure complementary strands have opposite trajectories summing to zero. (C) 3D information density surface showing the ratio $I_{\text{geometric}}/I_{\text{linear}}$ as a function of sequence length $n$. Geometric analysis extracts $\Theta(\log n)$ more information than sequential analysis. (D) Information ratio scaling with sequence length, confirming logarithmic enhancement. For $n = 10^7$, geometric analysis provides $\sim$11.6$\times$ more information than linear scanning.}
+\label{fig:nucleic_acid_derivation_3}
+\end{figure*}
 
 %==============================================================================
 \section{Discussion}

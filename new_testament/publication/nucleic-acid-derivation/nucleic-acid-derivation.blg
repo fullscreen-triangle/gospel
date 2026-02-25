@@ -1,0 +1,48 @@
+This is BibTeX, Version 0.99d
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: nucleic-acid-derivation.aux
+Reallocating 'name_of_file' (item size: 1) to 6 items.
+The style file: unsrt.bst
+Reallocating 'name_of_file' (item size: 1) to 11 items.
+Database file #1: references.bib
+You've used 14 entries,
+            1791 wiz_defined-function locations,
+            543 strings with 5848 characters,
+and the built_in function-call counts, 3362 in all, are:
+= -- 315
+> -- 130
+< -- 0
++ -- 50
+- -- 36
+* -- 268
+:= -- 538
+add.period$ -- 42
+call.type$ -- 14
+change.case$ -- 12
+chr.to.int$ -- 0
+cite$ -- 14
+duplicate$ -- 128
+empty$ -- 333
+format.name$ -- 36
+if$ -- 720
+int.to.chr$ -- 0
+int.to.str$ -- 14
+missing$ -- 16
+newline$ -- 73
+num.names$ -- 14
+pop$ -- 25
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 42
+stack$ -- 0
+substring$ -- 318
+swap$ -- 14
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 0
+while$ -- 38
+width$ -- 16
+write$ -- 155

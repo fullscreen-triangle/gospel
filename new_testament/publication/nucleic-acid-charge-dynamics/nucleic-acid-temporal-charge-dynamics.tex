@@ -330,6 +330,13 @@ The barrier height (at $x = 0$) relative to the minima is:
 \Delta V = V(0) - V(\pm a) = 0 - (-V_0) = V_0 \approx 0.4 \text{ eV}
 \end{equation}
 
+\begin{figure*}[!htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{figures/panel_temporal_dynamics_2.pdf}
+\caption{\textbf{Temporal Charge Dynamics: H-Bond Oscillation and Triple Equivalence.} (A) Double-well H-bond potential: proton oscillates between donor and acceptor positions with spring constant $k \approx 30$ N/m, yielding oscillation frequency $\omega = \sqrt{k/m_p} \approx 2 \times 10^{13}$ Hz. (B) Proton oscillation waveform showing categorical state alternation: positive displacement (donor state, red) and negative displacement (acceptor state, blue). Each zero-crossing constitutes a categorical distinction. (C) 3D Triple Equivalence visualization: oscillation axis (continuous motion), categorical axis (discrete state), and partition axis (cumulative distinctions). The three representations are mathematically isomorphic: $T_{\text{osc}} = 2\pi T_{\text{cat}}$. (D) Period relationship: categorical distinction period scales as $T_{\text{cat}} = T_{\text{osc}}/2\pi$, validated to precision $< 10^{-10}$.}
+\label{fig:temporal_dynamics_2}
+\end{figure*}
+
 \subsection{Categorical Binary States}
 
 The partition theory framework interprets the double-well system differently from standard quantum mechanics. Rather than a superposition of donor and acceptor states, the proton occupies exactly one position at each instant:
@@ -610,6 +617,13 @@ This frequency lies within the delta/theta range of neural oscillations (1--8 Hz
 \item Cell cycle checkpoints (longer timescale modulation)
 \end{itemize}
 
+\begin{figure*}[!htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{figures/panel_temporal_dynamics_1.pdf}
+\caption{\textbf{Temporal Charge Dynamics: Capacitance and Time Constants.} (A) DNA capacitance density as a function of effective radius in cylindrical capacitor model. Human genome parameters yield $\sim$140 pF/m, consistent with measured whole-genome capacitance $\sim$300 pF. (B) RC discharge dynamics with time constant $\tau = RC \approx 30$ ms. This timescale couples fast H-bond oscillations ($\sim$10$^{13}$ Hz) to slow metabolic frequencies ($\sim$5 Hz) through charge integration. (C) 3D frequency coupling surface showing coupling strength between H-bond oscillation frequency and RC time constant. Resonant coupling occurs when $f \cdot \tau \sim 1$. (D) Multi-scale timescale hierarchy: H-bond oscillations (10$^{13}$ Hz), molecular dynamics (10$^{10}$ Hz), cellular processes (10$^{6}$ Hz), and metabolic regulation (5 Hz). RC coupling bridges 13 orders of magnitude.}
+\label{fig:temporal_dynamics_1}
+\end{figure*}
+
 \subsection{H-Bond Contribution to Charge Dynamics}
 
 Each hydrogen bond contributes to total charge through proton position. The instantaneous charge contribution from H-bond $i$ is:
@@ -849,6 +863,13 @@ Error:
 \end{equation}
 
 This validates Theorem \ref{thm:temp_equiv} to the limit of double-precision floating-point arithmetic ($\epsilon_{\mathrm{machine}} \approx 2.2 \times 10^{-16}$).
+
+\begin{figure*}[!htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{figures/panel_temporal_dynamics_3.pdf}
+\caption{\textbf{Temporal Charge Dynamics: Measurement Backaction and Phase Coherence.} (A) Measurement backaction comparison: Heisenberg limit (reference), standard quantum measurement ($\sim$0.1$\times$), and categorical measurement ($\sim$2 \times 10^{-6} $\times$). Categorical measurement achieves $4.27 \times 10^5$ backaction reduction by measuring discrete partition states rather than continuous observables. (B) Trajectory ensemble: 50 deterministic trajectories with measurement noise $\sigma_{\text{rel}} \approx 4.67 \times 10^{-7}$. Red line shows noise-free deterministic evolution. Trajectory determinism confirms partition dynamics are fundamentally deterministic. (C) 3D phase coherence surface showing correlation between base pairs as a function of distance and phase. Coherence decays exponentially with characteristic length $\xi \approx 25$ bp. (D) Coherence length decay: $C(d) = \exp(-d/\xi)$ with $\xi = 25$ bp. This scale matches chromatin organization (nucleosome $\sim$147 bp contains $\sim$6 coherence lengths), suggesting partition coherence underlies chromatin structure.}
+\label{fig:temporal_dynamics_3}
+\end{figure*}
 
 \subsection{Error Analysis}
 
