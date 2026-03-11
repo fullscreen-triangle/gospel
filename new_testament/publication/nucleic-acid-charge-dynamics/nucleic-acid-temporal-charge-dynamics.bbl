@@ -1,0 +1,90 @@
+\begin{thebibliography}{13}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Banyay et~al.(2003)Banyay, Sarkar, and
+  Gr{\"a}slund]{banyay2003structural}
+Mikael Banyay, Mahua Sarkar, and Astrid Gr{\"a}slund.
+\newblock A library of ir bands of nucleic acids in solution.
+\newblock \emph{Biophysical Chemistry}, 104:\penalty0 477--488, 2003.
+\newblock \doi{10.1016/S0301-4622(03)00035-8}.
+
+\bibitem[Bloomfield et~al.(2000)Bloomfield, Crothers, and
+  Tinoco~Jr.]{bloomfield1997dna}
+Victor~A. Bloomfield, Donald~M. Crothers, and Ignacio Tinoco~Jr.
+\newblock \emph{Nucleic Acids: Structures, Properties, and Functions}.
+\newblock University Science Books, 2000.
+
+\bibitem[{ENCODE Project Consortium}(2012)]{encode2012}
+{ENCODE Project Consortium}.
+\newblock An integrated encyclopedia of dna elements in the human genome.
+\newblock \emph{Nature}, 489:\penalty0 57--74, 2012.
+\newblock \doi{10.1038/nature11247}.
+
+\bibitem[Genereux and Barton(2010)]{genereux2010mechanisms}
+Joseph~C. Genereux and Jacqueline~K. Barton.
+\newblock Mechanisms for dna charge transport.
+\newblock \emph{Chemical Reviews}, 110\penalty0 (3):\penalty0 1642--1662, 2010.
+\newblock \doi{10.1021/cr900228f}.
+
+\bibitem[Gregory(2005)]{gregory2005c}
+T.~Ryan Gregory.
+\newblock The c-value enigma in plants and animals: a review of parallels and
+  an appeal for partnership.
+\newblock \emph{Annals of Botany}, 95\penalty0 (1):\penalty0 133--146, 2005.
+\newblock \doi{10.1093/aob/mci009}.
+
+\bibitem[Honig and Nicholls(1995)]{honig1995classical}
+Barry Honig and Anthony Nicholls.
+\newblock Classical electrostatics in biology and chemistry.
+\newblock \emph{Science}, 268\penalty0 (5214):\penalty0 1144--1149, 1995.
+\newblock \doi{10.1126/science.7761829}.
+
+\bibitem[Kelley and Barton(1999)]{barton1999electron}
+Shana~O. Kelley and Jacqueline~K. Barton.
+\newblock Electron transfer between bases in double helical dna.
+\newblock \emph{Science}, 283:\penalty0 375--381, 1999.
+\newblock \doi{10.1126/science.283.5400.375}.
+
+\bibitem[L{\"o}wdin(1963)]{lowdin1963proton}
+Per-Olov L{\"o}wdin.
+\newblock Proton tunneling in dna and its biological implications.
+\newblock \emph{Reviews of Modern Physics}, 35\penalty0 (3):\penalty0 724--732,
+  1963.
+\newblock \doi{10.1103/RevModPhys.35.724}.
+
+\bibitem[Poincar{\'e}(1890)]{poincare1890probleme}
+Henri Poincar{\'e}.
+\newblock Sur le probl{\`e}me des trois corps et les {\'e}quations de la
+  dynamique.
+\newblock \emph{Acta Mathematica}, 13:\penalty0 1--270, 1890.
+
+\bibitem[Sachikonye(2025)]{Sachikonye2025_Partition}
+Kundai~Farai Sachikonye.
+\newblock Partition theory: Foundations of bounded phase space dynamics.
+\newblock \emph{arXiv preprint}, 2025.
+
+\bibitem[Takashima et~al.(1984)Takashima, Gabriel, Sheppard, and
+  Grant]{takashima1984frequency}
+Shiro Takashima, Camelia Gabriel, R.~J. Sheppard, and E.~H. Grant.
+\newblock Dielectric behavior of dna solution at radio and microwave
+  frequencies.
+\newblock \emph{Biophysical Journal}, 46:\penalty0 29--34, 1984.
+\newblock \doi{10.1016/S0006-3495(84)83995-8}.
+
+\bibitem[von Hippel and Berg(1989)]{vonhippel2007facilitated}
+Peter~H. von Hippel and Otto~G. Berg.
+\newblock Facilitated target location in biological systems.
+\newblock \emph{Journal of Biological Chemistry}, 264:\penalty0 675--678, 1989.
+
+\bibitem[Watson and Crick(1953)]{watson1953molecular}
+J.~D. Watson and F.~H.~C. Crick.
+\newblock Molecular structure of nucleic acids: A structure for deoxyribose
+  nucleic acid.
+\newblock \emph{Nature}, 171:\penalty0 737--738, 1953.
+\newblock \doi{10.1038/171737a0}.
+
+\end{thebibliography}

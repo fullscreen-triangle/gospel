@@ -7,3 +7,109 @@
 \citation{wang1994complexity}
 \citation{stephens2015big}
 \citation{Sachikonye2025_Partition,poincare1890probleme}
+\@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}{section.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.1}The Computational Paradigm of Genomics}{1}{subsection.1.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.2}Partition Theory and Predetermined Solutions}{1}{subsection.1.2}\protected@file@percent }
+\newlabel{def:s_space}{{1.1}{1}{S-Entropy Coordinate Space}{theorem.1.1}{}}
+\newlabel{thm:preexistence}{{1.2}{2}{Solution Pre-Existence}{theorem.1.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.3}Why Ternary?}{2}{subsection.1.3}\protected@file@percent }
+\newlabel{thm:trit_coord}{{1.3}{2}{Trit-Coordinate Correspondence}{theorem.1.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.4}The Position-Trajectory Duality}{2}{subsection.1.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.5}Contributions}{2}{subsection.1.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.6}Paper Organization}{3}{subsection.1.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2}Ternary Architecture}{3}{section.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Core Types}{3}{subsection.2.1}\protected@file@percent }
+\newlabel{thm:continuous}{{2.5}{3}{Continuous Limit Convergence}{theorem.2.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Cell Hierarchy}{3}{subsection.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Addressing Modes}{3}{subsection.2.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.4}Precision and Resolution}{4}{subsection.2.4}\protected@file@percent }
+\newlabel{prop:resolution}{{2.7}{4}{Resolution Scaling}{theorem.2.7}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Resolution versus trit string length}}{4}{table.1}\protected@file@percent }
+\newlabel{tab:resolution}{{1}{4}{Resolution versus trit string length}{table.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3}Fundamental Operations}{4}{section.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Project}{4}{subsection.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Complete}{4}{subsection.3.2}\protected@file@percent }
+\@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces Trajectory Completion}}{4}{algorithm.1}\protected@file@percent }
+\newlabel{alg:complete}{{1}{4}{Complete}{algorithm.1}{}}
+\newlabel{thm:completion}{{3.5}{4}{Completion Complexity}{theorem.3.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Compose}{5}{subsection.3.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Derived Operations}{5}{subsection.3.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5}Relationship to Boolean Operations}{5}{subsection.3.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4}Genomic Mapping}{5}{section.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Cardinal Coordinate Transformation}{5}{subsection.4.1}\protected@file@percent }
+\newlabel{def:cardinal}{{4.1}{5}{Cardinal Map}{theorem.4.1}{}}
+\newlabel{thm:cardinal_complement}{{4.2}{5}{Complementarity as Inversion}{theorem.4.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Sequence to Trajectory}{5}{subsection.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Nucleotide to Trit Mapping}{6}{subsection.4.3}\protected@file@percent }
+\newlabel{def:nucleotide_trit}{{4.5}{6}{Nucleotide-Trit Correspondence}{theorem.4.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}S-Entropy Coordinates}{6}{subsection.4.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5}Feature Signatures}{6}{subsection.4.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5}Navigation-Based Analysis}{6}{section.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Traditional vs. Navigation Approach}{6}{subsection.5.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Complexity Analysis}{6}{subsection.5.2}\protected@file@percent }
+\newlabel{thm:nav_complexity}{{5.1}{6}{Navigation Complexity}{theorem.5.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces \textbf  {Nucleic Acid Computing: Cardinal Transform and Ternary Encoding.} (A) Cardinal coordinate vectors: A $\rightarrow $ $(0, +1)$, T $\rightarrow $ $(0, -1)$, G $\rightarrow $ $(+1, 0)$, C $\rightarrow $ $(-1, 0)$. A-T and G-C pairs are negatives; purines (A, G) and pyrimidines (T, C) define orthogonal axes. Complementary strands have opposite trajectories. (B) Random sequence trajectory in cardinal coordinates. Color gradient indicates position along sequence. Start (green circle) and end (red square) positions encode sequence composition. Balanced composition returns near origin. (C) 3D trit partitioning: unit cube subdivided by ternary addressing. Each point receives unique k-trit address specifying refinement trajectory. 50 sample points shown with color indicating position. (D) Encoding precision versus depth: position precision (blue, left axis) decays as $3^{-k}$ while information content (red, right axis) grows as $k \log _2 3$ bits. Position and trajectory are dual representations of the same trit string.}}{7}{figure.1}\protected@file@percent }
+\newlabel{fig:computing_2}{{1}{7}{\textbf {Nucleic Acid Computing: Cardinal Transform and Ternary Encoding.} (A) Cardinal coordinate vectors: A $\rightarrow $ $(0, +1)$, T $\rightarrow $ $(0, -1)$, G $\rightarrow $ $(+1, 0)$, C $\rightarrow $ $(-1, 0)$. A-T and G-C pairs are negatives; purines (A, G) and pyrimidines (T, C) define orthogonal axes. Complementary strands have opposite trajectories. (B) Random sequence trajectory in cardinal coordinates. Color gradient indicates position along sequence. Start (green circle) and end (red square) positions encode sequence composition. Balanced composition returns near origin. (C) 3D trit partitioning: unit cube subdivided by ternary addressing. Each point receives unique k-trit address specifying refinement trajectory. 50 sample points shown with color indicating position. (D) Encoding precision versus depth: position precision (blue, left axis) decays as $3^{-k}$ while information content (red, right axis) grows as $k \log _2 3$ bits. Position and trajectory are dual representations of the same trit string}{figure.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}The Empty Dictionary Principle}{7}{subsection.5.3}\protected@file@percent }
+\newlabel{thm:storage}{{5.3}{7}{Storage Reduction}{theorem.5.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4}Multi-Target Navigation}{7}{subsection.5.4}\protected@file@percent }
+\@writefile{loa}{\contentsline {algorithm}{\numberline {2}{\ignorespaces Parallel Multi-Target Navigation}}{7}{algorithm.2}\protected@file@percent }
+\newlabel{alg:multi_nav}{{2}{7}{Multi-Target Navigation}{algorithm.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces \textbf  {Nucleic Acid Computing: Complexity and S-Entropy Space.} (A) Complexity scaling comparison: sequential analysis requires $O(n^2)$ operations while partition-based navigation requires only $O(\log _3 n)$ operations. Green shaded region shows computational savings. (B) Speedup factor as a function of sequence length. For $n = 10^6$, navigation achieves $\sim $10$^{11}\times $ speedup over sequential analysis. Speedup grows superlinearly with sequence length. (C) 3D S-entropy coordinate space with dimensions $S_k$ (knowledge entropy), $S_t$ (temporal entropy), and $S_e$ (evolution entropy). Each point uniquely addresses a position in partition space. Color indicates total entropy $S_k + S_t + S_e$. (D) Partition refinement: number of cells (blue, left axis) and resolution (red, right axis) as functions of trit depth $k$. At depth $k = 20$, resolution reaches $\sim $3 $\times $ 10$^{-10}$, sufficient to address individual nucleotides in any genome.}}{8}{figure.2}\protected@file@percent }
+\newlabel{fig:computing_1}{{2}{8}{\textbf {Nucleic Acid Computing: Complexity and S-Entropy Space.} (A) Complexity scaling comparison: sequential analysis requires $O(n^2)$ operations while partition-based navigation requires only $O(\log _3 n)$ operations. Green shaded region shows computational savings. (B) Speedup factor as a function of sequence length. For $n = 10^6$, navigation achieves $\sim $10$^{11}\times $ speedup over sequential analysis. Speedup grows superlinearly with sequence length. (C) 3D S-entropy coordinate space with dimensions $S_k$ (knowledge entropy), $S_t$ (temporal entropy), and $S_e$ (evolution entropy). Each point uniquely addresses a position in partition space. Color indicates total entropy $S_k + S_t + S_e$. (D) Partition refinement: number of cells (blue, left axis) and resolution (red, right axis) as functions of trit depth $k$. At depth $k = 20$, resolution reaches $\sim $3 $\times $ 10$^{-10}$, sufficient to address individual nucleotides in any genome}{figure.2}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Partition Synthesis Language}{8}{section.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Design Philosophy}{8}{subsection.6.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Lexical Structure}{8}{subsection.6.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.2.1}Trit Literals}{8}{subsubsection.6.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.2.2}Coordinate Literals}{8}{subsubsection.6.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.2.3}Nucleotide Literals}{8}{subsubsection.6.2.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3}Type System}{8}{subsection.6.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.4}Core Operations}{9}{subsection.6.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.4.1}Projection}{9}{subsubsection.6.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.4.2}Completion}{9}{subsubsection.6.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.4.3}Composition}{9}{subsubsection.6.4.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.5}Genome Definition}{9}{subsection.6.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.6}Synthesis}{9}{subsection.6.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.7}Feature Detection}{10}{subsection.6.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.8}Formal Semantics}{10}{subsection.6.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {7}Rust Implementation}{10}{section.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.1}Architecture Overview}{10}{subsection.7.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.2}Core Types}{10}{subsection.7.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.3}S-Coordinate Type}{11}{subsection.7.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.4}Fundamental Operations}{12}{subsection.7.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.5}Genomic Types}{12}{subsection.7.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.6}Navigation Engine}{13}{subsection.7.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.7}Performance Characteristics}{14}{subsection.7.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {8}Applications}{14}{section.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.1}Feature Detection}{14}{subsection.8.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.2}Sequence Comparison}{14}{subsection.8.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.3}Phylogenetic Analysis}{14}{subsection.8.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces \textbf  {Nucleic Acid Computing: Performance Validation.} (A) Task complexity comparison across genomic operations: palindrome detection, motif finding, sequence alignment, and structure prediction. Navigation (green) achieves 3--5 orders of magnitude reduction in operations compared to sequential analysis (coral). (B) Memory scaling: sequential analysis requires $O(n)$ memory (full sequence storage) while navigation requires only $O(\log n)$ memory (coordinate storage). For genome-scale sequences ($n > 10^9$), this represents $>$6 orders of magnitude memory reduction. (C) 3D speedup surface as a function of sequence length $n$ and encoding depth $k$. Optimal speedup occurs at moderate depth ($k \sim 10$--15) for genome-scale sequences. Color indicates $\log _{10}$(speedup). (D) Benchmark results for palindrome detection across sequence sizes from 1 KB to 10 MB. Speedup factors range from $10^{4.4}\times $ (1 KB) to $10^{9.7}\times $ (10 MB), confirming theoretical $O(n^2/\log n)$ scaling.}}{15}{figure.3}\protected@file@percent }
+\newlabel{fig:computing_3}{{3}{15}{\textbf {Nucleic Acid Computing: Performance Validation.} (A) Task complexity comparison across genomic operations: palindrome detection, motif finding, sequence alignment, and structure prediction. Navigation (green) achieves 3--5 orders of magnitude reduction in operations compared to sequential analysis (coral). (B) Memory scaling: sequential analysis requires $O(n)$ memory (full sequence storage) while navigation requires only $O(\log n)$ memory (coordinate storage). For genome-scale sequences ($n > 10^9$), this represents $>$6 orders of magnitude memory reduction. (C) 3D speedup surface as a function of sequence length $n$ and encoding depth $k$. Optimal speedup occurs at moderate depth ($k \sim 10$--15) for genome-scale sequences. Color indicates $\log _{10}$(speedup). (D) Benchmark results for palindrome detection across sequence sizes from 1 KB to 10 MB. Speedup factors range from $10^{4.4}\times $ (1 KB) to $10^{9.7}\times $ (10 MB), confirming theoretical $O(n^2/\log n)$ scaling}{figure.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.4}Structural Prediction}{15}{subsection.8.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {9}Theoretical Foundations}{15}{section.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.1}Backward Trajectory Completion}{15}{subsection.9.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.2}No Free Parameters}{15}{subsection.9.2}\protected@file@percent }
+\citation{adleman1994molecular}
+\citation{nielsen2010quantum}
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.3}Formal Verification}{16}{subsection.9.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.4}Computational Universality}{16}{subsection.9.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {10}Discussion}{16}{section.10}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.1}Paradigm Shift}{16}{subsection.10.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.2}Relationship to DNA Computing}{16}{subsection.10.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.3}Relationship to Quantum Computing}{16}{subsection.10.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.4}Limitations}{16}{subsection.10.4}\protected@file@percent }
+\bibstyle{plainnat}
+\bibdata{references}
+\bibcite{adleman1994molecular}{{1}{1994}{{Adleman}}{{}}}
+\bibcite{altschul1990basic}{{2}{1990}{{Altschul et~al.}}{{Altschul, Gish, Miller, Myers, and Lipman}}}
+\bibcite{needleman1970general}{{3}{1970}{{Needleman and Wunsch}}{{}}}
+\bibcite{nielsen2010quantum}{{4}{2010}{{Nielsen and Chuang}}{{}}}
+\bibcite{poincare1890probleme}{{5}{1890}{{Poincar{\'e}}}{{}}}
+\bibcite{Sachikonye2025_Partition}{{6}{2025}{{Sachikonye}}{{}}}
+\bibcite{smith1981identification}{{7}{1981}{{Smith and Waterman}}{{}}}
+\bibcite{stephens2015big}{{8}{2015}{{Stephens et~al.}}{{Stephens, Lee, Faghri, Campbell, Zhai, Efron, Iyer, Schatz, Sinha, and Robinson}}}
+\bibcite{wang1994complexity}{{9}{1994}{{Wang and Jiang}}{{}}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.5}Future Directions}{17}{subsection.10.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {11}Conclusion}{17}{section.11}\protected@file@percent }
+\gdef \@abspage@last{17}

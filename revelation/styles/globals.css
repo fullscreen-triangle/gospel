@@ -1,0 +1,397 @@
+:root {
+    /* Dark Theme Colors */
+    --bg-primary: #0a0a0a;
+    --bg-secondary: #1a1a1a;
+    --bg-tertiary: #2a2a2a;
+
+    --text-primary: #ffffff;
+    --text-secondary: #b0b0b0;
+    --text-muted: #808080;
+
+    --accent-primary: #f9d77e;
+    --accent-secondary: #0070f3;
+
+    --border-color: #333333;
+    --border-hover: #555555;
+
+    --card-bg: #1a1a1a;
+    --card-hover: #252525;
+}
+
+/* Base Styles */
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+html,
+body {
+    max-width: 100vw;
+    overflow-x: hidden;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+body {
+    color: var(--text-primary);
+    background: var(--bg-primary);
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.cavani_tm_home .job .styles_type__2Teeh {
+  font-weight: 600;
+  color: #333;
+}
+.styles_type__2Teeh::after {
+  font-weight: 400;
+  margin-left: 2px;
+}
+.cavani_tm_mainpart .author_image .jquery-ripples {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-image: url(../public/img/about/3.jpg) !important;
+}
+
+/* ============================================
+   GOSPEL RESEARCH SITE STYLES
+   ============================================ */
+
+/* Home subtitle */
+.home_subtitle {
+    color: #b0adb7;
+    font-size: 16px;
+    line-height: 1.7;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    max-width: 600px;
+}
+
+/* Logo text */
+.logo_text {
+    font-family: 'Poppins', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: #f9d77e;
+    letter-spacing: 2px;
+}
+
+/* Paper sections */
+.paper_meta {
+    margin-bottom: 30px;
+}
+
+.paper_author {
+    color: #b0adb7;
+    font-size: 14px;
+    font-style: italic;
+}
+
+.paper_section {
+    margin-bottom: 40px;
+}
+
+.paper_section p {
+    color: #b0adb7;
+    font-size: 15px;
+    line-height: 1.8;
+    margin-bottom: 15px;
+}
+
+.paper_section_title {
+    color: #edebf3;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 18px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #333;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* D3 Chart containers */
+.d3_chart_container {
+    width: 100%;
+    margin: 20px 0;
+    overflow-x: auto;
+}
+
+.d3_chart_container svg {
+    display: block;
+    margin: 0 auto;
+}
+
+.chart_caption {
+    color: #888 !important;
+    font-size: 13px !important;
+    font-style: italic;
+    text-align: center;
+    margin-top: 8px;
+}
+
+/* Key results grid */
+.key_results_grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.result_card {
+    background: #141420;
+    border: 1px solid #2a2a3a;
+    border-radius: 8px;
+    padding: 24px 20px;
+    text-align: center;
+    transition: border-color 0.3s;
+}
+
+.result_card:hover {
+    border-color: #f9d77e;
+}
+
+.result_value {
+    color: #f9d77e;
+    font-size: 24px;
+    font-weight: 700;
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 8px;
+}
+
+.result_label {
+    color: #b0adb7;
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+/* Code blocks */
+.code_block {
+    background: #0d0d1a;
+    border: 1px solid #2a2a3a;
+    border-radius: 6px;
+    padding: 20px;
+    margin: 15px 0;
+    overflow-x: auto;
+}
+
+.code_block pre {
+    margin: 0;
+}
+
+.code_block code {
+    color: #b0d0b0;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 13px;
+    line-height: 1.6;
+    white-space: pre;
+}
+
+.code_preview {
+    max-height: 200px;
+    overflow: hidden;
+    position: relative;
+}
+
+.code_preview::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 40px;
+    background: linear-gradient(transparent, #0d0d1a);
+}
+
+/* Validation table */
+.validation_table {
+    overflow-x: auto;
+    margin: 20px 0;
+}
+
+.validation_table table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+.validation_table th {
+    background: #141420;
+    color: #f9d77e;
+    padding: 12px 16px;
+    text-align: left;
+    font-weight: 600;
+    border-bottom: 2px solid #333;
+}
+
+.validation_table td {
+    padding: 10px 16px;
+    color: #b0adb7;
+    border-bottom: 1px solid #222;
+}
+
+.validation_table tr:hover td {
+    background: #141420;
+}
+
+/* Requirements grid */
+.requirements_grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin: 15px 0;
+}
+
+.req_card {
+    background: #141420;
+    border: 1px solid #2a2a3a;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.req_card h4 {
+    color: #f9d77e;
+    font-size: 16px;
+    margin-bottom: 8px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.req_card p {
+    color: #b0adb7;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+/* Architecture overview */
+.architecture_overview {
+    margin: 20px 0;
+}
+
+.arch_layer {
+    background: #141420;
+    border: 1px solid #2a2a3a;
+    border-radius: 8px;
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.arch_label {
+    color: #f9d77e;
+    font-weight: 600;
+    font-size: 14px;
+    min-width: 140px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.arch_content {
+    color: #b0adb7;
+    font-size: 14px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.arch_arrow {
+    text-align: center;
+    color: #555;
+    font-size: 20px;
+    padding: 4px 0;
+}
+
+/* Funding section */
+.funding_section {
+    margin: 35px 0;
+}
+
+.funding_grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin: 15px 0;
+}
+
+.funding_card {
+    background: #141420;
+    border: 1px solid #2a2a3a;
+    border-radius: 8px;
+    padding: 24px;
+    transition: border-color 0.3s;
+}
+
+.funding_card:hover {
+    border-color: #f9d77e;
+}
+
+.funding_card h4 {
+    color: #f9d77e;
+    font-size: 16px;
+    margin-bottom: 10px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.funding_card p {
+    color: #b0adb7;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* Service/Framework list overrides */
+.cavani_tm_service .service_list ul li .list_inner {
+    cursor: pointer;
+    transition: border-color 0.3s;
+}
+
+.cavani_tm_service .service_list ul li .list_inner:hover {
+    border-color: #f9d77e;
+}
+
+/* Contact info improvements */
+.cavani_tm_contact .short_info .list_inner {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.cavani_tm_contact .short_info .list_inner strong {
+    color: #f9d77e;
+    display: block;
+    margin-bottom: 4px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .key_results_grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .requirements_grid,
+    .funding_grid {
+        grid-template-columns: 1fr;
+    }
+
+    .arch_layer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .result_value {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .key_results_grid {
+        grid-template-columns: 1fr;
+    }
+
+    .paper_section_title {
+        font-size: 17px;
+    }
+}
