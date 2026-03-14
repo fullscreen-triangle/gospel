@@ -1,0 +1,6 @@
+{
+  "extends": "next/core-web-vitals",
+  "rules": {
+    "react/no-unknown-property": ["error", { "ignore": ["object", "intensity", "position", "castShadow", "shadow-mapSize-width", "shadow-mapSize-height", "angle", "penumbra", "args", "attach", "dispose", "rotation", "scale", "geometry", "material", "map", "transparent", "opacity", "metalness", "roughness", "envMapIntensity", "side", "receiveShadow"] }]
+  }
+}

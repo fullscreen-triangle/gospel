@@ -1,0 +1,16 @@
+{
+  "dna_library_consultation": {
+    "time": "Array shape: (10000,)",
+    "challenge_events": "Array shape: (10000,)",
+    "membrane_resolution": "Array shape: (10000,)",
+    "dna_consultation_events": "Array shape: (10000,)",
+    "resolution_success_rate": 0.9897253840403438,
+    "actual_consultation_rate": 0.010316189713828297,
+    "theoretical_consultation_rate": 0.010000000000000009,
+    "consultation_rate_error": 0.00031618971382828785,
+    "dominant_consultation_frequency": 1.8378162,
+    "consultation_oscillation_amplitude": 0.32414563085131964,
+    "consultation_coherence": 0.24131495149432497,
+    "power_spectrum": "Array shape: (5000,)",
+    "frequencies": "Array shape: (5000,)",
+    "validation_success": 

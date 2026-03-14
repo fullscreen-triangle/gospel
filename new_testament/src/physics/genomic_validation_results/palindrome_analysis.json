@@ -1,0 +1,707 @@
+{
+  "total_palindromes": 99008,
+  "perfect_palindromes": 0,
+  "average_symmetry": 0.7730499377098412,
+  "palindromes": [
+    {
+      "position": 0,
+      "length": 4,
+      "sequence": "ATCA",
+      "symmetry_score": 0.8445436824485197,
+      "is_perfect": false
+    },
+    {
+      "position": 6,
+      "length": 4,
+      "sequence": "GTTA",
+      "symmetry_score": 0.8445436824485197,
+      "is_perfect": false
+    },
+    {
+      "position": 7,
+      "length": 4,
+      "sequence": "TTAT",
+      "symmetry_score": 0.7958758547680684,
+      "is_perfect": false
+    },
+    {
+      "position": 9,
+      "length": 4,
+      "sequence": "ATAA",
+      "symmetry_score": 0.7958758547680684,
+      "is_perfect": false
+    },
+    {
+      "position": 10,
+      "length": 4,
+      "sequence": "TAAA",
+      "symmetry_score": 0.7958758547680684,
+      "is_perfect": false
+    },
+    {
+      "position": 11,
+      "length": 4,
+      "sequence": "AAAT",
+      "symmetry_score": 0.7958758547680684,
+      "is_perfect": false
+    },
+    {
+      "position": 13,
+      "length": 4,
+      "sequence": "ATCA",
+      "symmetry_score": 0.8445436824485197,
+      "is_perfect": false
+    },
+    {
+      "position": 18,
+      "length": 4,
+      "sequence": "ATGA",
+      "symmetry_score": 0.8445436824485197,
+      "is_perfect": false
+    },
+    {
+      "position": 20,
+      "length": 4,
+      "sequence": "GAAA",
+      "symmetry_score": 0.8445436824485197,
+      "is_perfect": false
+    },
+    {
+      "position": 21,
+      "length": 4,
+      "sequence": "AAAG",
+      "symmetry_score": 0.8445436824485197,
+      "is_perfect": false
+    },
+    {
+      "position": 24,
+      "length": 4,
+      "sequence": "GCTG",
+      "symmetry_score": 0.8445436824485197,
+      "is_perfect": false
+    },
+    {
+      "position": 26,
+      "length": 4,
+      "sequence": "TGGC",
+      "symmetry_score": 0.8445436824485197,
+      "is_perfect": false
+    },
+    {
+      "position": 28,
+      "length": 4,
+      "sequence": "GCCG",
+      "symmetry_score": 1.0,
+      "is_perfect": false
+    },
+    {
+      "position": 33,
+      "length": 4,
+      "sequence": "GCTG",
+      "symmetry_score": 0.8445436824485197,
+      "is_perfect": false
+    },
+    {
+      "position": 34,
+      "length": 4,
+      "sequence": "CTGC",
+      "symmetry_score": 0.8445436824485197,
+      "is_perfect": false
+    },
+    {
+      "position": 36,
+      "length": 4,
+      "sequence": "GCCT",
+      "symmetry_score": 0.8445436824485197,
+      "is_perfect": false
+    },
+    {
+      "position": 37,
+      "length": 4,
+      "sequence": "CCTC",
+      "symmetry_score": 0.8445436824485197,
+      "is_perfect": false
+    },
+    {
+      "position": 40,
+      "length": 4,
+      "sequence": "CAAG",
+      "symmetry_score": 0.7958758547680684,
+      "is_perfect": false
+    },
+    {
+      "position": 44,
+      "length": 4,
+      "sequence": "TCCT",
+      "symmetry_score": 1.0,
+      "is_perfect": false
+    },
+    {
+      "position": 47,
+      "length": 4,
+      "sequence": "TGTT",
+      "symmetry_score": 0.8445436824485197,
+      "is_perfect": false
+    },
+    {
+      "position": 0,
+      "length": 5,
+      "sequence": "ATCAG",
+      "symmetry_score": 0.7123356297732706,
+      "is_perfect": false
+    },
+    {
+      "position": 2,
+      "length": 5,
+      "sequence": "CAGAG",
+      "symmetry_score": 0.8367006838144547,
+      "is_perfect": false
+    },
+    {
+      "position": 3,
+      "length": 5,
+      "sequence": "AGAGT",
+      "symmetry_score": 0.8367006838144547,
+      "is_perfect": false
+    },
+    {
+      "position": 4,
+      "length": 5,
+      "sequence": "GAGTT",
+      "symmetry_score": 0.7123356297732706,
+      "is_perfect": false
+    },
+    {
+      "position": 5,
+      "length": 5,
+      "sequence": "AGTTA",
+      "symmetry_score": 0.8756349459588157,
+      "is_perfect": false
+    },
+    {
+      "position": 6,
+      "length": 5,
+      "sequence": "GTTAT",
+      "symmetry_score": 0.7123356297732706,
+      "is_perfect": false
+    },
+    {
+      "position": 7,
+      "length": 5,
+      "sequence": "TTATA",
+      "symmetry_score": 0.8367006838144547,
+      "is_perfect": false
+    },
+    {
+      "position": 8,
+      "length": 5,
+      "sequence": "TATAA",
+      "symmetry_score": 0.8367006838144547,
+      "is_perfect": false
+    },
+    {
+      "position": 9,
+      "length": 5,
+      "sequence": "ATAAA",
+      "symmetry_score": 0.8367006838144547,
+      "is_perfect": false
+    },
+    {
+      "position": 10,
+      "length": 5,
+      "sequence": "TAAAT",
+      "symmetry_score": 1.0,
+      "is_perfect": false
+    },
+    {
+      "position": 11,
+      "length": 5,
+      "sequence": "AAATC",
+      "symmetry_score": 0.7123356297732706,
+      "is_perfect": false
+    },
+    {
+      "position": 12,
+      "length": 5,
+      "sequence": "AATCA",
+      "symmetry_score": 0.8756349459588157,
+      "is_perfect": false
+    },
+    {
+      "position": 13,
+      "length": 5,
+      "sequence": "ATCAC",
+      "symmetry_score": 0.7123356297732706,
+      "is_perfect": false
+    },
+    {
+      "position": 14,
+      "length": 5,
+      "sequence": "TCACA",
+      "symmetry_score": 0.8367006838144547,
+      "is_perfect": false
+    },
+    {
+      "position": 15,
+      "length": 5,
+      "sequence": "CACAT",
+      "symmetry_score": 0.8756349459588157,
+      "is_perfect": false
+    },
+    {
+      "position": 16,
+      "length": 5,
+      "sequence": "ACATG",
+      "symmetry_score": 0.7512698919176316,
+      "is_perfect": false
+    },
+    {
+      "position": 17,
+      "length": 5,
+      "sequence": "CATGA",
+      "symmetry_score": 0.7512698919176316,
+      "is_perfect": false
+    },
+    {
+      "position": 18,
+      "length": 5,
+      "sequence": "ATGAA",
+      "symmetry_score": 0.8367006838144547,
+      "is_perfect": false
+    },
+    {
+      "position": 19,
+      "length": 5,
+      "sequence": "TGAAA",
+      "symmetry_score": 0.7123356297732706,
+      "is_perfect": false
+    },
+    {
+      "position": 20,
+      "length": 5,
+      "sequence": "GAAAG",
+      "symmetry_score": 1.0,
+      "is_perfect": false
+    },
+    {
+      "position": 21,
+      "length": 5,
+      "sequence": "AAAGC",
+      "symmetry_score": 0.7512698919176316,
+      "is_perfect": false
+    },
+    {
+      "position": 22,
+      "length": 5,
+      "sequence": "AAGCT",
+      "symmetry_score": 0.7123356297732706,
+      "is_perfect": false
+    },
+    {
+      "position": 23,
+      "length": 5,
+      "sequence": "AGCTG",
+      "symmetry_score": 0.7512698919176316,
+      "is_perfect": false
+    },
+    {
+      "position": 24,
+      "length": 5,
+      "sequence": "GCTGG",
+      "symmetry_score": 0.8367006838144547,
+      "is_perfect": false
+    },
+    {
+      "position": 25,
+      "length": 5,
+      "sequence": "CTGGC",
+      "symmetry_score": 0.8756349459588157,
+      "is_perfect": false
+    },
+    {
+      "position": 26,
+      "length": 5,
+      "sequence": "TGGCC",
+      "symmetry_score": 0.7123356297732706,
+      "is_perfect": false
+    },
+    {
+      "position": 27,
+      "length": 5,
+      "sequence": "GGCCG",
+      "symmetry_score": 0.8367006838144547,
+      "is_perfect": false
+    },
+    {
+      "position": 28,
+      "length": 5,
+      "sequence": "GCCGA",
+      "symmetry_score": 0.7123356297732706,
+      "is_perfect": false
+    },
+    {
+      "position": 29,
+      "length": 5,
+      "sequence": "CCGAG",
+      "symmetry_score": 0.7123356297732706,
+      "is_perfect": false
+    },
+    {
+      "position": 30,
+      "length": 5,
+      "sequence": "CGAGC",
+      "symmetry_score": 1.0,
+      "is_perfect": false
+    },
+    {
+      "position": 31,
+      "length": 5,
+      "sequence": "GAGCT",
+      "symmetry_score": 0.7512698919176316,
+      "is_perfect": false
+    },
+    {
+      "position": 32,
+      "length": 5,
+      "sequence": "AGCTG",
+      "symmetry_score": 0.7512698919176316,
+      "is_perfect": false
+    },
+    {
+      "position": 34,
+      "length": 5,
+      "sequence": "CTGCC",
+      "symmetry_score": 0.8756349459588157,
+      "is_perfect": false
+    },
+    {
+      "position": 35,
+      "length": 5,
+      "sequence": "TGCCT",
+      "symmetry_score": 0.8367006838144547,
+      "is_perfect": false
+    },
+    {
+      "position": 36,
+      "length": 5,
+      "sequence": "GCCTC",
+      "symmetry_score": 0.7123356297732706,
+      "is_perfect": false
+    },
+    {
+      "position": 37,
+      "length": 5,
+      "sequence": "CCTCA",
+      "symmetry_score": 0.8756349459588157,
+      "is_perfect": false
+    },
+    {
+      "position": 38,
+      "length": 5,
+      "sequence": "CTCAA",
+      "symmetry_score": 0.7123356297732706,
+      "is_perfect": false
+    },
+    {
+      "position": 39,
+      "length": 5,
+      "sequence": "TCAAG",
+      "symmetry_score": 0.7512698919176316,
+      "is_perfect": false
+    },
+    {
+      "position": 40,
+      "length": 5,
+      "sequence": "CAAGT",
+      "symmetry_score": 0.7512698919176316,
+      "is_perfect": false
+    },
+    {
+      "position": 41,
+      "length": 5,
+      "sequence": "AAGTC",
+      "symmetry_score": 0.7123356297732706,
+      "is_perfect": false
+    },
+    {
+      "position": 42,
+      "length": 5,
+      "sequence": "AGTCC",
+      "symmetry_score": 0.7123356297732706,
+      "is_perfect": false
+    },
+    {
+      "position": 43,
+      "length": 5,
+      "sequence": "GTCCT",
+      "symmetry_score": 0.7512698919176316,
+      "is_perfect": false
+    },
+    {
+      "position": 44,
+      "length": 5,
+      "sequence": "TCCTG",
+      "symmetry_score": 0.7512698919176316,
+      "is_perfect": false
+    },
+    {
+      "position": 45,
+      "length": 5,
+      "sequence": "CCTGT",
+      "symmetry_score": 0.7123356297732706,
+      "is_perfect": false
+    },
+    {
+      "position": 46,
+      "length": 5,
+      "sequence": "CTGTT",
+      "symmetry_score": 0.8756349459588157,
+      "is_perfect": false
+    },
+    {
+      "position": 0,
+      "length": 6,
+      "sequence": "ATCAGA",
+      "symmetry_score": 0.7927249099313597,
+      "is_perfect": false
+    },
+    {
+      "position": 5,
+      "length": 6,
+      "sequence": "AGTTAT",
+      "symmetry_score": 0.7602796914777254,
+      "is_perfect": false
+    },
+    {
+      "position": 6,
+      "length": 6,
+      "sequence": "GTTATA",
+      "symmetry_score": 0.7602796914777254,
+      "is_perfect": false
+    },
+    {
+      "position": 8,
+      "length": 6,
+      "sequence": "TATAAA",
+      "symmetry_score": 0.7278344730240913,
+      "is_perfect": false
+    },
+    {
+      "position": 9,
+      "length": 6,
+      "sequence": "ATAAAT",
+      "symmetry_score": 0.7278344730240913,
+      "is_perfect": false
+    },
+    {
+      "position": 10,
+      "length": 6,
+      "sequence": "TAAATC",
+      "symmetry_score": 0.7602796914777254,
+      "is_perfect": false
+    },
+    {
+      "position": 11,
+      "length": 6,
+      "sequence": "AAATCA",
+      "symmetry_score": 0.7602796914777254,
+      "is_perfect": false
+    },
+    {
+      "position": 12,
+      "length": 6,
+      "sequence": "AATCAC",
+      "symmetry_score": 0.7927249099313597,
+      "is_perfect": false
+    },
+    {
+      "position": 13,
+      "length": 6,
+      "sequence": "ATCACA",
+      "symmetry_score": 0.7927249099313597,
+      "is_perfect": false
+    },
+    {
+      "position": 14,
+      "length": 6,
+      "sequence": "TCACAT",
+      "symmetry_score": 0.7927249099313597,
+      "is_perfect": false
+    },
+    {
+      "position": 16,
+      "length": 6,
+      "sequence": "ACATGA",
+      "symmetry_score": 0.7278344730240913,
+      "is_perfect": false
+    },
+    {
+      "position": 17,
+      "length": 6,
+      "sequence": "CATGAA",
+      "symmetry_score": 0.7927249099313597,
+      "is_perfect": false
+    },
+    {
+      "position": 18,
+      "length": 6,
+      "sequence": "ATGAAA",
+      "symmetry_score": 0.7602796914777254,
+      "is_perfect": false
+    },
+    {
+      "position": 19,
+      "length": 6,
+      "sequence": "TGAAAG",
+      "symmetry_score": 0.7927249099313597,
+      "is_perfect": false
+    },
+    {
+      "position": 20,
+      "length": 6,
+      "sequence": "GAAAGC",
+      "symmetry_score": 0.7602796914777254,
+      "is_perfect": false
+    },
+    {
+      "position": 23,
+      "length": 6,
+      "sequence": "AGCTGG",
+      "symmetry_score": 0.7927249099313597,
+      "is_perfect": false
+    },
+    {
+      "position": 25,
+      "length": 6,
+      "sequence": "CTGGCC",
+      "symmetry_score": 0.8963624549656799,
+      "is_perfect": false
+    },
+    {
+      "position": 27,
+      "length": 6,
+      "sequence": "GGCCGA",
+      "symmetry_score": 0.8963624549656799,
+      "is_perfect": false
+    },
+    {
+      "position": 28,
+      "length": 6,
+      "sequence": "GCCGAG",
+      "symmetry_score": 0.7602796914777254,
+      "is_perfect": false
+    },
+    {
+      "position": 29,
+      "length": 6,
+      "sequence": "CCGAGC",
+      "symmetry_score": 0.7602796914777254,
+      "is_perfect": false
+    },
+    {
+      "position": 31,
+      "length": 6,
+      "sequence": "GAGCTG",
+      "symmetry_score": 0.7278344730240913,
+      "is_perfect": false
+    },
+    {
+      "position": 32,
+      "length": 6,
+      "sequence": "AGCTGC",
+      "symmetry_score": 0.7927249099313597,
+      "is_perfect": false
+    },
+    {
+      "position": 33,
+      "length": 6,
+      "sequence": "GCTGCC",
+      "symmetry_score": 0.7602796914777254,
+      "is_perfect": false
+    },
+    {
+      "position": 35,
+      "length": 6,
+      "sequence": "TGCCTC",
+      "symmetry_score": 0.7927249099313597,
+      "is_perfect": false
+    },
+    {
+      "position": 36,
+      "length": 6,
+      "sequence": "GCCTCA",
+      "symmetry_score": 0.7927249099313597,
+      "is_perfect": false
+    },
+    {
+      "position": 39,
+      "length": 6,
+      "sequence": "TCAAGT",
+      "symmetry_score": 0.8639172365120457,
+      "is_perfect": false
+    },
+    {
+      "position": 40,
+      "length": 6,
+      "sequence": "CAAGTC",
+      "symmetry_score": 0.7602796914777254,
+      "is_perfect": false
+    },
+    {
+      "position": 43,
+      "length": 6,
+      "sequence": "GTCCTG",
+      "symmetry_score": 1.0,
+      "is_perfect": false
+    },
+    {
+      "position": 44,
+      "length": 6,
+      "sequence": "TCCTGT",
+      "symmetry_score": 0.7602796914777254,
+      "is_perfect": false
+    },
+    {
+      "position": 1,
+      "length": 7,
+      "sequence": "TCAGAGT",
+      "symmetry_score": 0.8833576312960392,
+      "is_perfect": false
+    },
+    {
+      "position": 2,
+      "length": 7,
+      "sequence": "CAGAGTT",
+      "symmetry_score": 0.7945254498380504,
+      "is_perfect": false
+    },
+    {
+      "position": 3,
+      "length": 7,
+      "sequence": "AGAGTTA",
+      "symmetry_score": 0.7945254498380504,
+      "is_perfect": false
+    },
+    {
+      "position": 4,
+      "length": 7,
+      "sequence": "GAGTTAT",
+      "symmetry_score": 0.8223356370840226,
+      "is_perfect": false
+    },
+    {
+      "position": 5,
+      "length": 7,
+      "sequence": "AGTTATA",
+      "symmetry_score": 0.7945254498380504,
+      "is_perfect": false
+    },
+    {
+      "position": 6,
+      "length": 7,
+      "sequence": "GTTATAA",
+      "symmetry_score": 0.7945254498380504,
+      "is_perfect": false
+    }
+  ]
+}

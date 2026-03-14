@@ -1,0 +1,30 @@
+{
+  "sequences_analyzed": 5,
+  "hierarchies": [
+    {
+      "sequence_id": "random_seq_1",
+      "total_nodes": 25,
+      "max_depth": 3
+    },
+    {
+      "sequence_id": "random_seq_2",
+      "total_nodes": 341,
+      "max_depth": 4
+    },
+    {
+      "sequence_id": "random_seq_3",
+      "total_nodes": 341,
+      "max_depth": 4
+    },
+    {
+      "sequence_id": "random_seq_4",
+      "total_nodes": 341,
+      "max_depth": 4
+    },
+    {
+      "sequence_id": "random_seq_5",
+      "total_nodes": 341,
+      "max_depth": 4
+    }
+  ]
+}

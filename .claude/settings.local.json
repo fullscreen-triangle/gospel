@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python:*)",
+      "Bash(ls -la \"c:\\\\Users\\\\kundai\\\\Documents\\\\bioinformatics\\\\gospel\\\\new_testament\\\\publication\\\\nucleic-acid-derivation\"\" 2>/dev/null || dir \"c:UserskundaiDocumentsbioinformaticsgospelnew_testamentpublicationnucleic-acid-derivation\"\")",
+      "Bash(npm install d3 --save --legacy-peer-deps)",
+      "Bash(npm run build)"
+    ]
+  }
+}

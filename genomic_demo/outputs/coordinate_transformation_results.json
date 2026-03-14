@@ -1,0 +1,62 @@
+[
+  {
+    "name": "Simple Pattern",
+    "sequence": "ATGCATGC",
+    "length": 8,
+    "final_coords": [
+      0.0,
+      0.0
+    ],
+    "s_entropy": {
+      "knowledge": 0.0,
+      "time": 0.0,
+      "entropy": 0.0
+    },
+    "plot_file": "sequence_1_simple_pattern_transformation.png"
+  },
+  {
+    "name": "Repetitive",
+    "sequence": "AAATTTGGGCCC",
+    "length": 12,
+    "final_coords": [
+      0.0,
+      0.0
+    ],
+    "s_entropy": {
+      "knowledge": 0.0,
+      "time": 0.0,
+      "entropy": 0.0
+    },
+    "plot_file": "sequence_2_repetitive_transformation.png"
+  },
+  {
+    "name": "Random Small",
+    "sequence": "AGTAGTATAGTTTTGCATACTCGCCTGACATAAAAGTGACACTTGCTTTG",
+    "length": 50,
+    "final_coords": [
+      1.0,
+      -3.0
+    ],
+    "s_entropy": {
+      "knowledge": 6.17620442043156,
+      "time": 5.0696201911749235,
+      "entropy": 2.48
+    },
+    "plot_file": "sequence_3_random_small_transformation.png"
+  },
+  {
+    "name": "Random Large",
+    "sequence": "TGATATCGTTGTCAGTCTTCCGGCCGCGCCACGCGGCGTAAACCTGATATCTGCGGTCACAAACCATAAAAATTAGAGCCCCTGATGAGGGTGTTAAGTC",
+    "length": 100,
+    "final_coords": [
+      -1.0,
+      1.0
+    ],
+    "s_entropy": {
+      "knowledge": 2.8276107954197616,
+      "time": 4.9587899613095745,
+      "entropy": 0.98
+    },
+    "plot_file": "sequence_4_random_large_transformation.png"
+  }
+]

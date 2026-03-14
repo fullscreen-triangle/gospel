@@ -1,0 +1,1106 @@
+{
+  "analysis_metadata": {
+    "timestamp": "2025-10-13T23:16:10.462734",
+    "cellular_states_analyzed": 100,
+    "framework_version": "1.0.0",
+    "analysis_type": "intracellular_bayesian_network"
+  },
+  "cellular_results": [
+    {
+      "condition_id": 0,
+      "condition_type": "diseased",
+      "network_accuracy": 0.5384370712912219,
+      "atp_cost": 1.4231258574175563,
+      "glycolysis_efficiency": 0.4840728063791664,
+      "processing_frequency": 0.0006052408499355792,
+      "placebo_capacity": 0.26064274415852107,
+      "evidence_processing_capacity": 0.3258841106651232
+    },
+    {
+      "condition_id": 1,
+      "condition_type": "stressed",
+      "network_accuracy": 0.8298594237903851,
+      "atp_cost": 0.8402811524192297,
+      "glycolysis_efficiency": 0.6548907447138962,
+      "processing_frequency": 0.004269743324034458,
+      "placebo_capacity": 0.5434672560539301,
+      "evidence_processing_capacity": 3.5432867346160783
+    },
+    {
+      "condition_id": 2,
+      "condition_type": "diseased",
+      "network_accuracy": 0.6763881935337571,
+      "atp_cost": 1.1472236129324858,
+      "glycolysis_efficiency": 0.4463023843649562,
+      "processing_frequency": 0.0008046758928961325,
+      "placebo_capacity": 0.3018736635304212,
+      "evidence_processing_capacity": 0.544273273576178
+    },
+    {
+      "condition_id": 3,
+      "condition_type": "healthy",
+      "network_accuracy": 0.9600269456399506,
+      "atp_cost": 0.5799461087200988,
+      "glycolysis_efficiency": 0.8588496165023484,
+      "processing_frequency": 0.029754751138621176,
+      "placebo_capacity": 0.8245187740947925,
+      "evidence_processing_capacity": 28.56536285388733
+    },
+    {
+      "condition_id": 4,
+      "condition_type": "regenerating",
+      "network_accuracy": 0.836418930747971,
+      "atp_cost": 0.827162138504058,
+      "glycolysis_efficiency": 0.757006039772446,
+      "processing_frequency": 0.007934554491727489,
+      "placebo_capacity": 0.6331741823562252,
+      "evidence_processing_capacity": 6.636611583932217
+    },
+    {
+      "condition_id": 5,
+      "condition_type": "stressed",
+      "network_accuracy": 0.8770081462006256,
+      "atp_cost": 0.7459837075987488,
+      "glycolysis_efficiency": 0.6506049245935477,
+      "processing_frequency": 0.005149409815203279,
+      "placebo_capacity": 0.570585818826785,
+      "evidence_processing_capacity": 4.516074356058734
+    },
+    {
+      "condition_id": 6,
+      "condition_type": "diseased",
+      "network_accuracy": 0.5554917335603462,
+      "atp_cost": 1.3890165328793076,
+      "glycolysis_efficiency": 0.4391085863777911,
+      "processing_frequency": 0.0005392169922703089,
+      "placebo_capacity": 0.2439211898682322,
+      "evidence_processing_capacity": 0.29953058180142966
+    },
+    {
+      "condition_id": 7,
+      "condition_type": "stressed",
+      "network_accuracy": 0.887664430550656,
+      "atp_cost": 0.724671138898688,
+      "glycolysis_efficiency": 0.6748743030714257,
+      "processing_frequency": 0.0062688191613638694,
+      "placebo_capacity": 0.599061913929168,
+      "evidence_processing_capacity": 5.5646077910971
+    },
+    {
+      "condition_id": 8,
+      "condition_type": "stressed",
+      "network_accuracy": 0.7295516009139106,
+      "atp_cost": 1.0408967981721788,
+      "glycolysis_efficiency": 0.6222844856496584,
+      "processing_frequency": 0.002301261268913129,
+      "placebo_capacity": 0.4539886427295977,
+      "evidence_processing_capacity": 1.6788888428567506
+    },
+    {
+      "condition_id": 9,
+      "condition_type": "healthy",
+      "network_accuracy": 0.9782183466201992,
+      "atp_cost": 0.5435633067596015,
+      "glycolysis_efficiency": 0.8497052386437105,
+      "processing_frequency": 0.031159591895562017,
+      "placebo_capacity": 0.8311972536605723,
+      "evidence_processing_capacity": 30.480884465436837
+    },
+    {
+      "condition_id": 10,
+      "condition_type": "regenerating",
+      "network_accuracy": 0.8693550887601561,
+      "atp_cost": 0.7612898224796878,
+      "glycolysis_efficiency": 0.7385162907389086,
+      "processing_frequency": 0.008435264138422568,
+      "placebo_capacity": 0.6420328954861451,
+      "evidence_processing_capacity": 7.333239803773713
+    },
+    {
+      "condition_id": 11,
+      "condition_type": "diseased",
+      "network_accuracy": 0.7027822702312034,
+      "atp_cost": 1.0944354595375931,
+      "glycolysis_efficiency": 0.46286376248759137,
+      "processing_frequency": 0.0009459699429213917,
+      "placebo_capacity": 0.325292445808786,
+      "evidence_processing_capacity": 0.6648109040567777
+    },
+    {
+      "condition_id": 12,
+      "condition_type": "diseased",
+      "network_accuracy": 0.6669443668505189,
+      "atp_cost": 1.1661112662989621,
+      "glycolysis_efficiency": 0.4703719184659714,
+      "processing_frequency": 0.0008732441884536173,
+      "placebo_capacity": 0.3137119013455512,
+      "evidence_processing_capacity": 0.5824052923740931
+    },
+    {
+      "condition_id": 13,
+      "condition_type": "metabolically_active",
+      "network_accuracy": 0.9663462096871693,
+      "atp_cost": 0.5673075806256613,
+      "glycolysis_efficiency": 0.8658484886287845,
+      "processing_frequency": 0.032368920461192406,
+      "placebo_capacity": 0.8367094051497901,
+      "evidence_processing_capacity": 31.279583599338746
+    },
+    {
+      "condition_id": 14,
+      "condition_type": "stressed",
+      "network_accuracy": 0.8596197890871102,
+      "atp_cost": 0.7807604218257795,
+      "glycolysis_efficiency": 0.6207501119767933,
+      "processing_frequency": 0.003988662048955312,
+      "placebo_capacity": 0.5336090803332911,
+      "evidence_processing_capacity": 3.428732829262726
+    },
+    {
+      "condition_id": 15,
+      "condition_type": "metabolically_active",
+      "network_accuracy": 0.9213112351794279,
+      "atp_cost": 0.6573775296411442,
+      "glycolysis_efficiency": 0.9113279047057669,
+      "processing_frequency": 0.03302553886907996,
+      "placebo_capacity": 0.83961663753795,
+      "evidence_processing_capacity": 30.426800007938265
+    },
+    {
+      "condition_id": 16,
+      "condition_type": "metabolically_active",
+      "network_accuracy": 0.9764930858194746,
+      "atp_cost": 0.5470138283610508,
+      "glycolysis_efficiency": 0.9380732366192713,
+      "processing_frequency": 0.05598427889481997,
+      "placebo_capacity": 0.9160220295510144,
+      "evidence_processing_capacity": 54.66826125538083
+    },
+    {
+      "condition_id": 17,
+      "condition_type": "regenerating",
+      "network_accuracy": 0.9253990485664583,
+      "atp_cost": 0.6492019028670835,
+      "glycolysis_efficiency": 0.7647475455848333,
+      "processing_frequency": 0.013276694227471915,
+      "placebo_capacity": 0.7076966510777388,
+      "evidence_processing_capacity": 12.2862402062103
+    },
+    {
+      "condition_id": 18,
+      "condition_type": "regenerating",
+      "network_accuracy": 0.8993196039042824,
+      "atp_cost": 0.7013607921914351,
+      "glycolysis_efficiency": 0.728182160231003,
+      "processing_frequency": 0.009217337201067991,
+      "placebo_capacity": 0.6548684919091103,
+      "evidence_processing_capacity": 8.289332040716673
+    },
+    {
+      "condition_id": 19,
+      "condition_type": "stressed",
+      "network_accuracy": 0.7414516613401358,
+      "atp_cost": 1.0170966773197283,
+      "glycolysis_efficiency": 0.6612249054467323,
+      "processing_frequency": 0.0029566431715940433,
+      "placebo_capacity": 0.4902663046629539,
+      "evidence_processing_capacity": 2.192207991568372
+    },
+    {
+      "condition_id": 20,
+      "condition_type": "regenerating",
+      "network_accuracy": 0.8111288151005424,
+      "atp_cost": 0.8777423697989153,
+      "glycolysis_efficiency": 0.748384196857416,
+      "processing_frequency": 0.006623811434148876,
+      "placebo_capacity": 0.6070359868369268,
+      "evidence_processing_capacity": 5.372764320030602
+    },
+    {
+      "condition_id": 21,
+      "condition_type": "regenerating",
+      "network_accuracy": 0.8825423464359106,
+      "atp_cost": 0.7349153071281789,
+      "glycolysis_efficiency": 0.746453983292416,
+      "processing_frequency": 0.009469602511013883,
+      "placebo_capacity": 0.6587772499213208,
+      "evidence_processing_capacity": 8.357325219885583
+    },
+    {
+      "condition_id": 22,
+      "condition_type": "regenerating",
+      "network_accuracy": 0.8057061746160044,
+      "atp_cost": 0.8885876507679913,
+      "glycolysis_efficiency": 0.7466081950248327,
+      "processing_frequency": 0.0063773536090937135,
+      "placebo_capacity": 0.6015468327504176,
+      "evidence_processing_capacity": 5.138273180556466
+    },
+    {
+      "condition_id": 23,
+      "condition_type": "stressed",
+      "network_accuracy": 0.7635472960510573,
+      "atp_cost": 0.9729054078978854,
+      "glycolysis_efficiency": 0.6295820254423482,
+      "processing_frequency": 0.0027678781002881585,
+      "placebo_capacity": 0.48071565316885295,
+      "evidence_processing_capacity": 2.1134058392739608
+    },
+    {
+      "condition_id": 24,
+      "condition_type": "healthy",
+      "network_accuracy": 0.9860986277856041,
+      "atp_cost": 0.5278027444287918,
+      "glycolysis_efficiency": 0.8521089122612578,
+      "processing_frequency": 0.03317342306124692,
+      "placebo_capacity": 0.8402634291047101,
+      "evidence_processing_capacity": 32.712266959646904
+    },
+    {
+      "condition_id": 25,
+      "condition_type": "healthy",
+      "network_accuracy": 0.9557952829118689,
+      "atp_cost": 0.5884094341762622,
+      "glycolysis_efficiency": 0.836583006550483,
+      "processing_frequency": 0.025049916022584145,
+      "placebo_capacity": 0.7996020914251808,
+      "evidence_processing_capacity": 23.942591571724368
+    },
+    {
+      "condition_id": 26,
+      "condition_type": "healthy",
+      "network_accuracy": 0.9499427945965356,
+      "atp_cost": 0.6001144108069287,
+      "glycolysis_efficiency": 0.8284058171121995,
+      "processing_frequency": 0.022951676337702516,
+      "placebo_capacity": 0.7869381369675894,
+      "evidence_processing_capacity": 21.802779560912306
+    },
+    {
+      "condition_id": 27,
+      "condition_type": "diseased",
+      "network_accuracy": 0.7315958837119454,
+      "atp_cost": 1.0368082325761092,
+      "glycolysis_efficiency": 0.4445148058825307,
+      "processing_frequency": 0.0009454000190064754,
+      "placebo_capacity": 0.3252052022326739,
+      "evidence_processing_capacity": 0.6916507623663323
+    },
+    {
+      "condition_id": 28,
+      "condition_type": "diseased",
+      "network_accuracy": 0.6983656701126939,
+      "atp_cost": 1.1032686597746122,
+      "glycolysis_efficiency": 0.4677235590930459,
+      "processing_frequency": 0.0009548303838362058,
+      "placebo_capacity": 0.3266420767735092,
+      "evidence_processing_capacity": 0.6668207608517326
+    },
+    {
+      "condition_id": 29,
+      "condition_type": "regenerating",
+      "network_accuracy": 0.86422230393818,
+      "atp_cost": 0.77155539212364,
+      "glycolysis_efficiency": 0.7701740194048358,
+      "processing_frequency": 0.009926695415176384,
+      "placebo_capacity": 0.6656015654833757,
+      "evidence_processing_capacity": 8.578871582196303
+    },
+    {
+      "condition_id": 30,
+      "condition_type": "metabolically_active",
+      "network_accuracy": 0.916098612145751,
+      "atp_cost": 0.6678027757084981,
+      "glycolysis_efficiency": 0.8812143676135094,
+      "processing_frequency": 0.02641421919890917,
+      "placebo_capacity": 0.8072792591736315,
+      "evidence_processing_capacity": 24.198029549034338
+    },
+    {
+      "condition_id": 31,
+      "condition_type": "healthy",
+      "network_accuracy": 0.900604853130258,
+      "atp_cost": 0.6987902937394841,
+      "glycolysis_efficiency": 0.8460293620306623,
+      "processing_frequency": 0.01931143061301961,
+      "placebo_capacity": 0.7619381493355104,
+      "evidence_processing_capacity": 17.391968130973694
+    },
+    {
+      "condition_id": 32,
+      "condition_type": "stressed",
+      "network_accuracy": 0.7232154075098791,
+      "atp_cost": 1.0535691849802418,
+      "glycolysis_efficiency": 0.6821498425358286,
+      "processing_frequency": 0.0030201174249621676,
+      "placebo_capacity": 0.49334127635234915,
+      "evidence_processing_capacity": 2.184195454221701
+    },
+    {
+      "condition_id": 33,
+      "condition_type": "metabolically_active",
+      "network_accuracy": 0.9476031772307463,
+      "atp_cost": 0.6047936455385075,
+      "glycolysis_efficiency": 0.9032335727286146,
+      "processing_frequency": 0.036959067902348965,
+      "placebo_capacity": 0.8559070032991135,
+      "evidence_processing_capacity": 35.02253017175278
+    },
+    {
+      "condition_id": 34,
+      "condition_type": "stressed",
+      "network_accuracy": 0.8070304468282267,
+      "atp_cost": 0.8859391063435467,
+      "glycolysis_efficiency": 0.6291036566728374,
+      "processing_frequency": 0.003335165697938981,
+      "placebo_capacity": 0.5077058051459513,
+      "evidence_processing_capacity": 2.6915802634538704
+    },
+    {
+      "condition_id": 35,
+      "condition_type": "regenerating",
+      "network_accuracy": 0.9198335497311271,
+      "atp_cost": 0.6603329005377458,
+      "glycolysis_efficiency": 0.7079532109488486,
+      "processing_frequency": 0.008986640016095459,
+      "placebo_capacity": 0.6511991150706288,
+      "evidence_processing_capacity": 8.266212986160879
+    },
+    {
+      "condition_id": 36,
+      "condition_type": "diseased",
+      "network_accuracy": 0.5765325127356113,
+      "atp_cost": 1.3469349745287773,
+      "glycolysis_efficiency": 0.4235376743429563,
+      "processing_frequency": 0.0005401939536848575,
+      "placebo_capacity": 0.24418323962714167,
+      "evidence_processing_capacity": 0.3114393774825154
+    },
+    {
+      "condition_id": 37,
+      "condition_type": "metabolically_active",
+      "network_accuracy": 0.9114960725502975,
+      "atp_cost": 0.677007854899405,
+      "glycolysis_efficiency": 0.893573182630828,
+      "processing_frequency": 0.027762932648486373,
+      "placebo_capacity": 0.8144884465042694,
+      "evidence_processing_capacity": 25.305804071573757
+    },
+    {
+      "condition_id": 38,
+      "condition_type": "stressed",
+      "network_accuracy": 0.7332278200165685,
+      "atp_cost": 1.033544359966863,
+      "glycolysis_efficiency": 0.6350763840153546,
+      "processing_frequency": 0.0024944052837551746,
+      "placebo_capacity": 0.46565567259558355,
+      "evidence_processing_capacity": 1.8289673484456166
+    },
+    {
+      "condition_id": 39,
+      "condition_type": "stressed",
+      "network_accuracy": 0.890562898667036,
+      "atp_cost": 0.718874202665928,
+      "glycolysis_efficiency": 0.6151680327098081,
+      "processing_frequency": 0.004400859251244208,
+      "placebo_capacity": 0.5478458263773447,
+      "evidence_processing_capacity": 3.9192419714136832
+    },
+    {
+      "condition_id": 40,
+      "condition_type": "diseased",
+      "network_accuracy": 0.6715634248946858,
+      "atp_cost": 1.1568731502106284,
+      "glycolysis_efficiency": 0.4453215293256059,
+      "processing_frequency": 0.0007891961432920746,
+      "placebo_capacity": 0.29906165141324315,
+      "evidence_processing_capacity": 0.5299952649029029
+    },
+    {
+      "condition_id": 41,
+      "condition_type": "stressed",
+      "network_accuracy": 0.817819028887733,
+      "atp_cost": 0.8643619422245341,
+      "glycolysis_efficiency": 0.6668027483175852,
+      "processing_frequency": 0.004324858753017098,
+      "placebo_capacity": 0.5453239760887589,
+      "evidence_processing_capacity": 3.5369517854690553
+    },
+    {
+      "condition_id": 42,
+      "condition_type": "healthy",
+      "network_accuracy": 0.9299971916701696,
+      "atp_cost": 0.6400056166596608,
+      "glycolysis_efficiency": 0.835445022675143,
+      "processing_frequency": 0.021423211464164284,
+      "placebo_capacity": 0.7769615248827041,
+      "evidence_processing_capacity": 19.923526498228966
+    },
+    {
+      "condition_id": 43,
+      "condition_type": "regenerating",
+      "network_accuracy": 0.8508090835145513,
+      "atp_cost": 0.7983818329708974,
+      "glycolysis_efficiency": 0.7618860656897672,
+      "processing_frequency": 0.00880356866371309,
+      "placebo_capacity": 0.6482195852920181,
+      "evidence_processing_capacity": 7.4901561864311565
+    },
+    {
+      "condition_id": 44,
+      "condition_type": "healthy",
+      "network_accuracy": 0.935357894881722,
+      "atp_cost": 0.6292842102365559,
+      "glycolysis_efficiency": 0.8024777322518143,
+      "processing_frequency": 0.017857129452473856,
+      "placebo_capacity": 0.7506038823285152,
+      "evidence_processing_capacity": 16.702807013296344
+    },
+    {
+      "condition_id": 45,
+      "condition_type": "healthy",
+      "network_accuracy": 0.9748857056006903,
+      "atp_cost": 0.5502285887986194,
+      "glycolysis_efficiency": 0.89649446041145,
+      "processing_frequency": 0.041873465373378944,
+      "placebo_capacity": 0.8739796346053266,
+      "evidence_processing_capacity": 40.821842836472605
+    },
+    {
+      "condition_id": 46,
+      "condition_type": "regenerating",
+      "network_accuracy": 0.844204646237867,
+      "atp_cost": 0.8115907075242661,
+      "glycolysis_efficiency": 0.7592078877621057,
+      "processing_frequency": 0.008371060465681864,
+      "placebo_capacity": 0.6409268263092066,
+      "evidence_processing_capacity": 7.066888139066752
+    },
+    {
+      "condition_id": 47,
+      "condition_type": "regenerating",
+      "network_accuracy": 0.8569979139716503,
+      "atp_cost": 0.7860041720566995,
+      "glycolysis_efficiency": 0.7269647028851107,
+      "processing_frequency": 0.007396422340835078,
+      "placebo_capacity": 0.6230072339035604,
+      "evidence_processing_capacity": 6.338718516948972
+    },
+    {
+      "condition_id": 48,
+      "condition_type": "stressed",
+      "network_accuracy": 0.8452814855331316,
+      "atp_cost": 0.8094370289337367,
+      "glycolysis_efficiency": 0.6234199419160962,
+      "processing_frequency": 0.003809745842945173,
+      "placebo_capacity": 0.5269653346138164,
+      "evidence_processing_capacity": 3.220307625628369
+    },
+    {
+      "condition_id": 49,
+      "condition_type": "healthy",
+      "network_accuracy": 0.9722749143197487,
+      "atp_cost": 0.5554501713605027,
+      "glycolysis_efficiency": 0.8869928660943459,
+      "processing_frequency": 0.03865473841506794,
+      "placebo_capacity": 0.8624009128841085,
+      "evidence_processing_capacity": 37.58303248056248
+    },
+    {
+      "condition_id": 50,
+      "condition_type": "stressed",
+      "network_accuracy": 0.8839753222245469,
+      "atp_cost": 0.7320493555509062,
+      "glycolysis_efficiency": 0.6653031031320203,
+      "processing_frequency": 0.005812120033724527,
+      "placebo_capacity": 0.5881115249681186,
+      "evidence_processing_capacity": 5.137770679619384
+    },
+    {
+      "condition_id": 51,
+      "condition_type": "diseased",
+      "network_accuracy": 0.5791800091455194,
+      "atp_cost": 1.3416399817089613,
+      "glycolysis_efficiency": 0.4622646831247223,
+      "processing_frequency": 0.0006356285417764848,
+      "placebo_capacity": 0.26773446339982726,
+      "evidence_processing_capacity": 0.36814334463925763
+    },
+    {
+      "condition_id": 52,
+      "condition_type": "diseased",
+      "network_accuracy": 0.7022265138064943,
+      "atp_cost": 1.0955469723870115,
+      "glycolysis_efficiency": 0.46424547127920973,
+      "processing_frequency": 0.0009506407714330416,
+      "placebo_capacity": 0.3260054788468524,
+      "evidence_processing_capacity": 0.6675651548057411
+    },
+    {
+      "condition_id": 53,
+      "condition_type": "healthy",
+      "network_accuracy": 0.9098109283050393,
+      "atp_cost": 0.6803781433899214,
+      "glycolysis_efficiency": 0.8510277823857254,
+      "processing_frequency": 0.0210292183370189,
+      "placebo_capacity": 0.7742743767057358,
+      "evidence_processing_capacity": 19.132612656732523
+    },
+    {
+      "condition_id": 54,
+      "condition_type": "stressed",
+      "network_accuracy": 0.8700252298626607,
+      "atp_cost": 0.7599495402746785,
+      "glycolysis_efficiency": 0.6113474931754569,
+      "processing_frequency": 0.003941515418895893,
+      "placebo_capacity": 0.5318877432759382,
+      "evidence_processing_capacity": 3.4292178583321213
+    },
+    {
+      "condition_id": 55,
+      "condition_type": "regenerating",
+      "network_accuracy": 0.8728018058492025,
+      "atp_cost": 0.754396388301595,
+      "glycolysis_efficiency": 0.7773135760120661,
+      "processing_frequency": 0.010847310667837118,
+      "placebo_capacity": 0.6784406928544326,
+      "evidence_processing_capacity": 9.467552339495555
+    },
+    {
+      "condition_id": 56,
+      "condition_type": "regenerating",
+      "network_accuracy": 0.8760334722467118,
+      "atp_cost": 0.7479330555065764,
+      "glycolysis_efficiency": 0.7638596171076958,
+      "processing_frequency": 0.010174188462236292,
+      "placebo_capacity": 0.6691665926838986,
+      "evidence_processing_capacity": 8.912929645865292
+    },
+    {
+      "condition_id": 57,
+      "condition_type": "metabolically_active",
+      "network_accuracy": 0.9546989682285872,
+      "atp_cost": 0.5906020635428255,
+      "glycolysis_efficiency": 0.9054997212168877,
+      "processing_frequency": 0.03921380173652195,
+      "placebo_capacity": 0.864479649577036,
+      "evidence_processing_capacity": 37.43737605817789
+    },
+    {
+      "condition_id": 58,
+      "condition_type": "healthy",
+      "network_accuracy": 0.9778677341650354,
+      "atp_cost": 0.5442645316699293,
+      "glycolysis_efficiency": 0.8695164016570931,
+      "processing_frequency": 0.035548076043076304,
+      "placebo_capacity": 0.8502720335077564,
+      "evidence_processing_capacity": 34.7613165741694
+    },
+    {
+      "condition_id": 59,
+      "condition_type": "metabolically_active",
+      "network_accuracy": 0.8985580060196398,
+      "atp_cost": 0.7028839879607205,
+      "glycolysis_efficiency": 0.9117691337389007,
+      "processing_frequency": 0.02869672687498114,
+      "placebo_capacity": 0.8192774547626809,
+      "evidence_processing_capacity": 25.78567368007326
+    },
+    {
+      "condition_id": 60,
+      "condition_type": "metabolically_active",
+      "network_accuracy": 0.8571708916530489,
+      "atp_cost": 0.7856582166939021,
+      "glycolysis_efficiency": 0.9296178231422979,
+      "processing_frequency": 0.024576725287891225,
+      "placebo_capacity": 0.7968413383594498,
+      "evidence_processing_capacity": 21.066453528933756
+    },
+    {
+      "condition_id": 61,
+      "condition_type": "regenerating",
+      "network_accuracy": 0.8166753838559764,
+      "atp_cost": 0.8666492322880472,
+      "glycolysis_efficiency": 0.761163956429299,
+      "processing_frequency": 0.0073260790229449394,
+      "placebo_capacity": 0.6216238662942315,
+      "evidence_processing_capacity": 5.983028398222775
+    },
+    {
+      "condition_id": 62,
+      "condition_type": "diseased",
+      "network_accuracy": 0.7208786273951925,
+      "atp_cost": 1.058242745209615,
+      "glycolysis_efficiency": 0.47069626772688855,
+      "processing_frequency": 0.001042184568174018,
+      "placebo_capacity": 0.33931487939899946,
+      "evidence_processing_capacity": 0.7512885809977375
+    },
+    {
+      "condition_id": 63,
+      "condition_type": "metabolically_active",
+      "network_accuracy": 0.9571765094845672,
+      "atp_cost": 0.5856469810308655,
+      "glycolysis_efficiency": 0.900944220150081,
+      "processing_frequency": 0.03864452127375634,
+      "placebo_capacity": 0.8623626438835501,
+      "evidence_processing_capacity": 36.98962798351619
+    },
+    {
+      "condition_id": 64,
+      "condition_type": "healthy",
+      "network_accuracy": 0.9155266312337872,
+      "atp_cost": 0.6689467375324256,
+      "glycolysis_efficiency": 0.8798274259182001,
+      "processing_frequency": 0.026092537599098208,
+      "placebo_capacity": 0.8055054393179841,
+      "evidence_processing_capacity": 23.88841304844331
+    },
+    {
+      "condition_id": 65,
+      "condition_type": "healthy",
+      "network_accuracy": 0.927524609002306,
+      "atp_cost": 0.6449507819953879,
+      "glycolysis_efficiency": 0.8357229739570767,
+      "processing_frequency": 0.02115733068076225,
+      "placebo_capacity": 0.775153624653782,
+      "evidence_processing_capacity": 19.623944867206497
+    },
+    {
+      "condition_id": 66,
+      "condition_type": "diseased",
+      "network_accuracy": 0.5929383911188201,
+      "atp_cost": 1.3141232177623599,
+      "glycolysis_efficiency": 0.4581863664432801,
+      "processing_frequency": 0.0006531739576017029,
+      "placebo_capacity": 0.2716762869514566,
+      "evidence_processing_capacity": 0.38729191554106607
+    },
+    {
+      "condition_id": 67,
+      "condition_type": "healthy",
+      "network_accuracy": 0.9210452522604402,
+      "atp_cost": 0.6579094954791196,
+      "glycolysis_efficiency": 0.8606427921536545,
+      "processing_frequency": 0.02388211981376603,
+      "placebo_capacity": 0.7926909576052923,
+      "evidence_processing_capacity": 21.99651306838419
+    },
+    {
+      "condition_id": 68,
+      "condition_type": "regenerating",
+      "network_accuracy": 0.8492762331233507,
+      "atp_cost": 0.8014475337532987,
+      "glycolysis_efficiency": 0.7425438398637189,
+      "processing_frequency": 0.0077960480243270324,
+      "placebo_capacity": 0.6306248352484076,
+      "evidence_processing_capacity": 6.620998299349202
+    },
+    {
+      "condition_id": 69,
+      "condition_type": "metabolically_active",
+      "network_accuracy": 0.8933951530944059,
+      "atp_cost": 0.7132096938111883,
+      "glycolysis_efficiency": 0.8871551116655944,
+      "processing_frequency": 0.023863834607758577,
+      "placebo_capacity": 0.7925800768049684,
+      "evidence_processing_capacity": 21.319834172818055
+    },
+    {
+      "condition_id": 70,
+      "condition_type": "diseased",
+      "network_accuracy": 0.5062546177974622,
+      "atp_cost": 1.4874907644050757,
+      "glycolysis_efficiency": 0.4865828900957023,
+      "processing_frequency": 0.0005482826525049149,
+      "placebo_capacity": 0.24633483505218431,
+      "evidence_processing_capacity": 0.27757062468885446
+    },
+    {
+      "condition_id": 71,
+      "condition_type": "diseased",
+      "network_accuracy": 0.6769282752409969,
+      "atp_cost": 1.1461434495180063,
+      "glycolysis_efficiency": 0.4161594720169934,
+      "processing_frequency": 0.0007000520647369947,
+      "placebo_capacity": 0.28171011361766723,
+      "evidence_processing_capacity": 0.4738850367613125
+    },
+    {
+      "condition_id": 72,
+      "condition_type": "stressed",
+      "network_accuracy": 0.7778879763186761,
+      "atp_cost": 0.9442240473626478,
+      "glycolysis_efficiency": 0.6347027513911313,
+      "processing_frequency": 0.003028188574667436,
+      "placebo_capacity": 0.4937276388435429,
+      "evidence_processing_capacity": 2.355591482259388
+    },
+    {
+      "condition_id": 73,
+      "condition_type": "healthy",
+      "network_accuracy": 0.9512777008502161,
+      "atp_cost": 0.5974445982995678,
+      "glycolysis_efficiency": 0.8294069700742039,
+      "processing_frequency": 0.02328032648960392,
+      "placebo_capacity": 0.7889963555613327,
+      "evidence_processing_capacity": 22.1460554580728
+    },
+    {
+      "condition_id": 74,
+      "condition_type": "healthy",
+      "network_accuracy": 0.9652404049553004,
+      "atp_cost": 0.5695191900893992,
+      "glycolysis_efficiency": 0.8158354337664038,
+      "processing_frequency": 0.023037320980101767,
+      "placebo_capacity": 0.7874773244655667,
+      "evidence_processing_capacity": 22.236553031918668
+    },
+    {
+      "condition_id": 75,
+      "condition_type": "stressed",
+      "network_accuracy": 0.8263419472570124,
+      "atp_cost": 0.8473161054859752,
+      "glycolysis_efficiency": 0.669435836438974,
+      "processing_frequency": 0.004566134899785661,
+      "placebo_capacity": 0.5531829126466086,
+      "evidence_processing_capacity": 3.773188804527086
+    },
+    {
+      "condition_id": 76,
+      "condition_type": "healthy",
+      "network_accuracy": 0.9158193639006088,
+      "atp_cost": 0.6683612721987824,
+      "glycolysis_efficiency": 0.83354988654901,
+      "processing_frequency": 0.019504884396534063,
+      "placebo_capacity": 0.7633811268787389,
+      "evidence_processing_capacity": 17.862950820988733
+    },
+    {
+      "condition_id": 77,
+      "condition_type": "regenerating",
+      "network_accuracy": 0.8152214159683511,
+      "atp_cost": 0.8695571680632979,
+      "glycolysis_efficiency": 0.7190483830300217,
+      "processing_frequency": 0.005735231106478183,
+      "placebo_capacity": 0.5861836409634875,
+      "evidence_processing_capacity": 4.675483223528878
+    },
+    {
+      "condition_id": 78,
+      "condition_type": "metabolically_active",
+      "network_accuracy": 0.911809471178745,
+      "atp_cost": 0.67638105764251,
+      "glycolysis_efficiency": 0.8904017498055323,
+      "processing_frequency": 0.027266553463202014,
+      "placebo_capacity": 0.8118767486268117,
+      "evidence_processing_capacity": 24.861901694149207
+    },
+    {
+      "condition_id": 79,
+      "condition_type": "stressed",
+      "network_accuracy": 0.7110456211197943,
+      "atp_cost": 1.0779087577604114,
+      "glycolysis_efficiency": 0.6890675421297934,
+      "processing_frequency": 0.002950362473282345,
+      "placebo_capacity": 0.48995845848716896,
+      "evidence_processing_capacity": 2.0978423173435776
+    },
+    {
+      "condition_id": 80,
+      "condition_type": "healthy",
+      "network_accuracy": 0.9187411513931727,
+      "atp_cost": 0.6625176972136546,
+      "glycolysis_efficiency": 0.8571074941168072,
+      "processing_frequency": 0.02303455242320564,
+      "placebo_capacity": 0.7874599260125924,
+      "evidence_processing_capacity": 21.162791215122347
+    },
+    {
+      "condition_id": 81,
+      "condition_type": "healthy",
+      "network_accuracy": 0.9149034058871792,
+      "atp_cost": 0.6701931882256416,
+      "glycolysis_efficiency": 0.8794770786624152,
+      "processing_frequency": 0.025936401708626388,
+      "placebo_capacity": 0.8046365746679504,
+      "evidence_processing_capacity": 23.72930225968034
+    },
+    {
+      "condition_id": 82,
+      "condition_type": "diseased",
+      "network_accuracy": 0.5943111771780999,
+      "atp_cost": 1.3113776456438002,
+      "glycolysis_efficiency": 0.44650997942691306,
+      "processing_frequency": 0.0006253132259201797,
+      "placebo_capacity": 0.26536587149497787,
+      "evidence_processing_capacity": 0.3716306394016571
+    },
+    {
+      "condition_id": 83,
+      "condition_type": "metabolically_active",
+      "network_accuracy": 0.9606352314337352,
+      "atp_cost": 0.5787295371325296,
+      "glycolysis_efficiency": 0.89929867783854,
+      "processing_frequency": 0.03905655922929847,
+      "placebo_capacity": 0.863897993513478,
+      "evidence_processing_capacity": 37.51910681424252
+    },
+    {
+      "condition_id": 84,
+      "condition_type": "metabolically_active",
+      "network_accuracy": 0.9798460152018478,
+      "atp_cost": 0.5403079695963044,
+      "glycolysis_efficiency": 0.9090522922392694,
+      "processing_frequency": 0.04701038397672394,
+      "placebo_capacity": 0.8907312661607537,
+      "evidence_processing_capacity": 46.06293741270174
+    },
+    {
+      "condition_id": 85,
+      "condition_type": "diseased",
+      "network_accuracy": 0.6917142630448354,
+      "atp_cost": 1.1165714739103292,
+      "glycolysis_efficiency": 0.4391999503170334,
+      "processing_frequency": 0.0008154599005450338,
+      "placebo_capacity": 0.3038008699628751,
+      "evidence_processing_capacity": 0.5640652441481229
+    },
+    {
+      "condition_id": 86,
+      "condition_type": "metabolically_active",
+      "network_accuracy": 0.957637118490632,
+      "atp_cost": 0.5847257630187359,
+      "glycolysis_efficiency": 0.9184108532054837,
+      "processing_frequency": 0.043502375137727686,
+      "placebo_capacity": 0.8795043230542222,
+      "evidence_processing_capacity": 41.65948917439205
+    },
+    {
+      "condition_id": 87,
+      "condition_type": "metabolically_active",
+      "network_accuracy": 0.8757982375354724,
+      "atp_cost": 0.7484035249290553,
+      "glycolysis_efficiency": 0.9152706755252978,
+      "processing_frequency": 0.02539670260875485,
+      "placebo_capacity": 0.8015924444929571,
+      "evidence_processing_capacity": 22.24238738396003
+    },
+    {
+      "condition_id": 88,
+      "condition_type": "diseased",
+      "network_accuracy": 0.5256523651301761,
+      "atp_cost": 1.4486952697396478,
+      "glycolysis_efficiency": 0.40172778032340556,
+      "processing_frequency": 0.00043003863392620086,
+      "placebo_capacity": 0.21116915786549395,
+      "evidence_processing_capacity": 0.22605082502065746
+    },
+    {
+      "condition_id": 89,
+      "condition_type": "metabolically_active",
+      "network_accuracy": 0.9792419432602586,
+      "atp_cost": 0.5415161134794828,
+      "glycolysis_efficiency": 0.8891539731697354,
+      "processing_frequency": 0.04093460402237946,
+      "placebo_capacity": 0.8706968645443116,
+      "evidence_processing_capacity": 40.084881189464056
+    },
+    {
+      "condition_id": 90,
+      "condition_type": "diseased",
+      "network_accuracy": 0.5629314745735847,
+      "atp_cost": 1.3741370508528306,
+      "glycolysis_efficiency": 0.47940381067890686,
+      "processing_frequency": 0.000645081344107565,
+      "placebo_capacity": 0.26987149406167266,
+      "evidence_processing_capacity": 0.3631365922583816
+    },
+    {
+      "condition_id": 91,
+      "condition_type": "stressed",
+      "network_accuracy": 0.8519112111546181,
+      "atp_cost": 0.7961775776907638,
+      "glycolysis_efficiency": 0.6852742469851913,
+      "processing_frequency": 0.005641290197820099,
+      "placebo_capacity": 0.5837928137222232,
+      "evidence_processing_capacity": 4.805878364899596
+    },
+    {
+      "condition_id": 92,
+      "condition_type": "metabolically_active",
+      "network_accuracy": 0.9795210237218314,
+      "atp_cost": 0.5409579525563373,
+      "glycolysis_efficiency": 0.9099333387246239,
+      "processing_frequency": 0.04719505607104873,
+      "placebo_capacity": 0.8912988354661675,
+      "evidence_processing_capacity": 46.228549637322885
+    },
+    {
+      "condition_id": 93,
+      "condition_type": "stressed",
+      "network_accuracy": 0.724083656856858,
+      "atp_cost": 1.051832686286284,
+      "glycolysis_efficiency": 0.6711893742703248,
+      "processing_frequency": 0.00287072617844412,
+      "placebo_capacity": 0.4859972565651231,
+      "evidence_processing_capacity": 2.0786459091225318
+    },
+    {
+      "condition_id": 94,
+      "condition_type": "regenerating",
+      "network_accuracy": 0.9175867990957663,
+      "atp_cost": 0.6648264018084673,
+      "glycolysis_efficiency": 0.7647028230116636,
+      "processing_frequency": 0.012736310753433065,
+      "placebo_capacity": 0.7016812156267688,
+      "evidence_processing_capacity": 11.686670616531634
+    },
+    {
+      "condition_id": 95,
+      "condition_type": "metabolically_active",
+      "network_accuracy": 0.9449341660779986,
+      "atp_cost": 0.6101316678440027,
+      "glycolysis_efficiency": 0.8776672457515887,
+      "processing_frequency": 0.030761910259423503,
+      "placebo_capacity": 0.8293377669582513,
+      "evidence_processing_capacity": 29.06798001795458
+    },
+    {
+      "condition_id": 96,
+      "condition_type": "diseased",
+      "network_accuracy": 0.5733894770947331,
+      "atp_cost": 1.3532210458105338,
+      "glycolysis_efficiency": 0.4115788753985518,
+      "processing_frequency": 0.0005104873544785156,
+      "placebo_capacity": 0.23599499614801392,
+      "evidence_processing_capacity": 0.2927080772479097
+    },
+    {
+      "condition_id": 97,
+      "condition_type": "regenerating",
+      "network_accuracy": 0.8564316836373456,
+      "atp_cost": 0.7871366327253089,
+      "glycolysis_efficiency": 0.7143900029061966,
+      "processing_frequency": 0.006846659010324997,
+      "placebo_capacity": 0.6118262329626422,
+      "evidence_processing_capacity": 5.863695703503439
+    },
+    {
+      "condition_id": 98,
+      "condition_type": "metabolically_active",
+      "network_accuracy": 0.9373410446073329,
+      "atp_cost": 0.6253179107853342,
+      "glycolysis_efficiency": 0.8875019054786689,
+      "processing_frequency": 0.03130948250678612,
+      "placebo_capacity": 0.831891963172374,
+      "evidence_processing_capacity": 29.347663039025917
+    },
+    {
+      "condition_id": 99,
+      "condition_type": "stressed",
+      "network_accuracy": 0.8192670584454339,
+      "atp_cost": 0.8614658831091322,
+      "glycolysis_efficiency": 0.6313101680186234,
+      "processing_frequency": 0.0035615157803730525,
+      "placebo_capacity": 0.5172116243193102,
+      "evidence_processing_capacity": 2.917832556993225
+    }
+  ],
+  "population_statistics": {
+    "population_statistics": {
+      "network_accuracy": {
+        "mean": 0.8347291998807616,
+        "std": 0.12538370547438316,
+        "median": 0.8714135178559317,
+        "range": [
+          0.5062546177974622,
+          0.9860986277856041
+        ]
+      },
+      "atp_cost": {
+        "mean": 0.8305416002384766,
+        "std": 0.25076741094876637,
+        "median": 0.7571729642881367,
+        "range": [
+          0.5278027444287918,
+          1.4874907644050757
+        ]
+      },
+      "glycolysis_efficiency": {
+        "mean": 0.7187319544106113,
+        "std": 0.16161662742311633,
+        "median": 0.7474961959411244,
+        "range": [
+          0.40172778032340556,
+          0.9380732366192713
+        ]
+      },
+      "processing_frequency": {
+        "mean": 0.014859508629214454,
+        "std": 0.014266253488141721,
+        "median": 0.008403162302052215,
+        "range": [
+          0.00043003863392620086,
+          0.05598427889481997
+        ]
+      },
+      "placebo_capacity": {
+        "mean": 0.6181019246755358,
+        "std": 0.2065144758997206,
+        "median": 0.6414798608976758,
+        "range": [
+          0.21116915786549395,
+          0.9160220295510144
+        ]
+      },
+      "evidence_capacity": {
+        "mean": 13.777819409760689,
+        "std": 13.852906343053915,
+        "median": 7.200063971420233,
+        "range": [
+          0.22605082502065746,
+          54.66826125538083
+        ]
+      }
+    },
+    "condition_analysis": {
+      "regenerating": {
+        "count": 19,
+        "mean_accuracy": 0.8615770683842845,
+        "mean_atp_cost": 0.7768458632314311,
+        "efficiency_score": 1.1090708069170871
+      },
+      "metabolically_active": {
+        "count": 20,
+        "mean_accuracy": 0.9363556086300484,
+        "mean_atp_cost": 0.6272887827399031,
+        "efficiency_score": 1.4927026186251695
+      },
+      "healthy": {
+        "count": 20,
+        "mean_accuracy": 0.9430479869554919,
+        "mean_atp_cost": 0.6139040260890167,
+        "efficiency_score": 1.5361488879024698
+      },
+      "stressed": {
+        "count": 21,
+        "mean_accuracy": 0.8081132123150503,
+        "mean_atp_cost": 0.8837735753698994,
+        "efficiency_score": 0.9143894260210463
+      },
+      "diseased": {
+        "count": 20,
+        "mean_accuracy": 0.6272253159223948,
+        "mean_atp_cost": 1.2455493681552103,
+        "efficiency_score": 0.5035732279735982
+      }
+    },
+    "correlations": {
+      "accuracy_vs_atp_cost": -1.0,
+      "accuracy_vs_glycolysis": 0.8959382827876989,
+      "glycolysis_vs_frequency": 0.8497683977823915,
+      "atp_vs_frequency": -0.7682176170978443
+    }
+  }
+}

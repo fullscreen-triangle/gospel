@@ -1,0 +1,709 @@
+{
+  "total_patterns": 2044,
+  "pattern_types": {
+    "repeat": 1986,
+    "motif": 58
+  },
+  "patterns": [
+    {
+      "type": "repeat",
+      "sequence": "ATC",
+      "frequency": 2,
+      "predicted_function": "structural_repeat",
+      "confidence": 0.2
+    },
+    {
+      "type": "repeat",
+      "sequence": "TCA",
+      "frequency": 3,
+      "predicted_function": "structural_repeat",
+      "confidence": 0.3
+    },
+    {
+      "type": "repeat",
+      "sequence": "GAG",
+      "frequency": 2,
+      "predicted_function": "structural_repeat",
+      "confidence": 0.2
+    },
+    {
+      "type": "repeat",
+      "sequence": "AGT",
+      "frequency": 2,
+      "predicted_function": "structural_repeat",
+      "confidence": 0.2
+    },
+    {
+      "type": "repeat",
+      "sequence": "GTT",
+      "frequency": 2,
+      "predicted_function": "structural_repeat",
+      "confidence": 0.2
+    },
+    {
+      "type": "repeat",
+      "sequence": "AAA",
+      "frequency": 2,
+      "predicted_function": "structural_repeat",
+      "confidence": 0.2
+    },
+    {
+      "type": "repeat",
+      "sequence": "AAG",
+      "frequency": 2,
+      "predicted_function": "structural_repeat",
+      "confidence": 0.2
+    },
+    {
+      "type": "repeat",
+      "sequence": "AGC",
+      "frequency": 2,
+      "predicted_function": "structural_repeat",
+      "confidence": 0.2
+    },
+    {
+      "type": "repeat",
+      "sequence": "GCT",
+      "frequency": 2,
+      "predicted_function": "structural_repeat",
+      "confidence": 0.2
+    },
+    {
+      "type": "repeat",
+      "sequence": "CTG",
+      "frequency": 3,
+      "predicted_function": "structural_repeat",
+      "confidence": 0.3
+    },
+    {
+      "type": "repeat",
+      "sequence": "GCC",
+      "frequency": 2,
+      "predicted_function": "structural_repeat",
+      "confidence": 0.2
+    },
+    {
+      "type": "repeat",
+      "sequence": "CCT",
+      "frequency": 2,
+      "predicted_function": "structural_repeat",
+      "confidence": 0.2
+    },
+    {
+      "type": "repeat",
+      "sequence": "ATCA",
+      "frequency": 2,
+      "predicted_function": "structural_repeat",
+      "confidence": 0.2
+    },
+    {
+      "type": "repeat",
+      "sequence": "AGCT",
+      "frequency": 2,
+      "predicted_function": "structural_repeat",
+      "confidence": 0.2
+    },
+    {
+      "type": "repeat",
+      "sequence": "GCTG",
+      "frequency": 2,
+      "predicted_function": "structural_repeat",
+      "confidence": 0.2
+    },
+    {
+      "type": "repeat",
+      "sequence": "AGCTG",
+      "frequency": 2,
+      "predicted_function": "structural_repeat",
+      "confidence": 0.2
+    },
+    {
+      "type": "motif",
+      "sequence": "TATA",
+      "frequency": 1,
+      "predicted_function": "TATA_box",
+      "confidence": 0.9
+    },
+    {
+      "type": "motif",
+      "sequence": "GC",
+      "frequency": 4,
+      "predicted_function": "GC_box",
+      "confidence": 0.9
+    },
+    {
+      "type": "motif",
+      "sequence": "ATG",
+      "frequency": 1,
+      "predicted_function": "start_codon",
+      "confidence": 0.9
+    },
+    {
+      "type": "motif",
+      "sequence": "TAA",
+      "frequency": 1,
+      "predicted_function": "stop_codon",
+      "confidence": 0.9
+    },
+    {
+      "type": "motif",
+      "sequence": "TGA",
+      "frequency": 1,
+      "predicted_function": "stop_codon",
+      "confidence": 0.9
+    },
+    {
+      "type": "repeat",
+      "sequence": "GTG",
+      "frequency": 5,
+      "predicted_function": "structural_repeat",
+      "confidence": 0.5
+    },
+    {
+      "type": "repeat",
+      "sequence": "TGC",
+      "frequency": 3,
+      "predicted_function": "structural_repeat",
+      "confidence": 0.3
+    },
+    {
+      "type": "repeat",
+      "sequence": "GCC",
+      "frequency": 3,
+      "predicted_function": "structural_repeat",
+      "confidence": 0.3
+    },
+    {
+      "type": "repeat",
+      "sequence": "CCA",
+      "frequency": 6,
+      "predicted_function": "structural_repeat",
+      "confidence": 0.6
+    },
+    {
+      "type": "repeat",
+      "sequence": "CAG",
+      "frequency": 9,
+      "predicted_function": "structural_repeat",
+      "confidence": 0.9
+    },
+    {
+      "type": "repeat",
+      "sequence": "AGG",
+      "frequency": 5,
+      "predicted_function": "structural_repeat",
+      "confidence": 0.5
+    },
+    {
+      "type": "repeat",
+      "sequence": "GGA",
+      "frequency": 8,
+      "predicted_function": "structural_repeat",
+      "confidence": 0.8
+    },
+    {
+      "type": "repeat",
+      "sequence": "GAC",
+      "frequency": 4,
+      "predicted_function": "structural_repeat",
+      "confidence": 0.4
+    },
+    {
+      "type": "repeat",
+      "sequence": "ACC",
+      "frequency": 4,
+      "predicted_function": "structural_repeat",
+      "confidence": 0.4
+    },
+    {
+      "type": "repeat",
+      "sequence": "CCT",
+      "frequency": 7,
+      "predicted_function": "structural_repeat",
+      "confidence": 0.7
+    },
+    {
+      "type": "repeat",
+      "sequence": "CTA",
+      "frequency": 6,
+      "predicted_function": "structural_repeat",
+      "confidence": 0.6
+    },
+    {
+      "type": "repeat",
+      "sequence": "TAC",
+      "frequency": 5,
+      "predicted_function": "structural_repeat",
+      "confidence": 0.5
+    },
+    {
+      "type": "repeat",
+      "sequence": "ACT",
+      "frequency": 2,
+      "predicted_function": "structural_repeat",
+      "confidence": 0.2
+    },
+    {
+      "type": "repeat",
+      "sequence": "CTT",
+      "frequency": 7,
+      "predicted_function": "structural_repeat",
+      "confidence": 0.7
+    },
+    {
+      "type": "repeat",
+      "sequence": "TTG",
+      "frequency": 11,
+      "predicted_function": "structural_repeat",
+      "confidence": 1.0
+    },
+    {
+      "type": "repeat",
+      "sequence": "AGT",
+      "frequency": 14,
+      "predicted_function": "structural_repeat",
+      "confidence": 1.0
+    },
+    {
+      "type": "repeat",
+      "sequence": "GTC",
+      "frequency": 4,
+      "predicted_function": "structural_repeat",
+      "confidence": 0.4
+    },
+    {
+      "type": "repeat",
+      "sequence": "TCC",
+      "frequency": 6,
+      "predicted_function": "structural_repeat",
+      "confidence": 0.6
+    },
+    {
+      "type": "repeat",
+      "sequence": "CTG",
+      "frequency": 4,
+      "predicted_function": "structural_repeat",
+      "confidence": 0.4
+    },
+    {
+      "type": "repeat",
+      "sequence": "TGT",
+      "frequency": 6,
+      "predicted_function": "structural_repeat",
+      "confidence": 0.6
+    },
+    {
+      "type": "repeat",
+      "sequence": "TGA",
+      "frequency": 7,
+      "predicted_function": "structural_repeat",
+      "confidence": 0.7
+    },
+    {
+      "type": "repeat",
+      "sequence": "GAG",
+      "frequency": 9,
+      "predicted_function": "structural_repeat",
+      "confidence": 0.9
+    },
+    {
+      "type": "repeat",
+      "sequence": "AGC",
+      "frequency": 6,
+      "predicted_function": "structural_repeat",
+      "confidence": 0.6
+    },
+    {
+      "type": "repeat",
+      "sequence": "GCT",
+      "frequency": 5,
+      "predicted_function": "structural_repeat",
+      "confidence": 0.5
+    },
+    {
+      "type": "repeat",
+      "sequence": "TGG",
+      "frequency": 7,
+      "predicted_function": "structural_repeat",
+      "confidence": 0.7
+    },
+    {
+      "type": "repeat",
+      "sequence": "GGC",
+      "frequency": 2,
+      "predicted_function": "structural_repeat",
+      "confidence": 0.2
+    },
+    {
+      "type": "repeat",
+      "sequence": "CTC",
+      "frequency": 2,
+      "predicted_function": "structural_repeat",
+      "confidence": 0.2
+    },
+    {
+      "type": "repeat",
+      "sequence": "TCA",
+      "frequency": 6,
+      "predicted_function": "structural_repeat",
+      "confidence": 0.6
+    },
+    {
+      "type": "repeat",
+      "sequence": "CAC",
+      "frequency": 4,
+      "predicted_function": "structural_repeat",
+      "confidence": 0.4
+    },
+    {
+      "type": "repeat",
+      "sequence": "GTT",
+      "frequency": 8,
+      "predicted_function": "structural_repeat",
+      "confidence": 0.8
+    },
+    {
+      "type": "repeat",
+      "sequence": "GTA",
+      "frequency": 7,
+      "predicted_function": "structural_repeat",
+      "confidence": 0.7
+    },
+    {
+      "type": "repeat",
+      "sequence": "TAT",
+      "frequency": 9,
+      "predicted_function": "structural_repeat",
+      "confidence": 0.9
+    },
+    {
+      "type": "repeat",
+      "sequence": "ATT",
+      "frequency": 18,
+      "predicted_function": "structural_repeat",
+      "confidence": 1.0
+    },
+    {
+      "type": "repeat",
+      "sequence": "TTA",
+      "frequency": 13,
+      "predicted_function": "structural_repeat",
+      "confidence": 1.0
+    },
+    {
+      "type": "repeat",
+      "sequence": "TAA",
+      "frequency": 17,
+      "predicted_function": "structural_repeat",
+      "confidence": 1.0
+    },
+    {
+      "type": "repeat",
+      "sequence": "AAA",
+      "frequency": 30,
+      "predicted_function": "structural_repeat",
+      "confidence": 1.0
+    },
+    {
+      "type": "repeat",
+      "sequence": "AAT",
+      "frequency": 15,
+      "predicted_function": "structural_repeat",
+      "confidence": 1.0
+    },
+    {
+      "type": "repeat",
+      "sequence": "ATA",
+      "frequency": 14,
+      "predicted_function": "structural_repeat",
+      "confidence": 1.0
+    },
+    {
+      "type": "repeat",
+      "sequence": "ACA",
+      "frequency": 9,
+      "predicted_function": "structural_repeat",
+      "confidence": 0.9
+    },
+    {
+      "type": "repeat",
+      "sequence": "CAA",
+      "frequency": 4,
+      "predicted_function": "structural_repeat",
+      "confidence": 0.4
+    },
+    {
+      "type": "repeat",
+      "sequence": "AAC",
+      "frequency": 3,
+      "predicted_function": "structural_repeat",
+      "confidence": 0.3
+    },
+    {
+      "type": "repeat",
+      "sequence": "TAG",
+      "frequency": 8,
+      "predicted_function": "structural_repeat",
+      "confidence": 0.8
+    },
+    {
+      "type": "repeat",
+      "sequence": "GAA",
+      "frequency": 12,
+      "predicted_function": "structural_repeat",
+      "confidence": 1.0
+    },
+    {
+      "type": "repeat",
+      "sequence": "AAG",
+      "frequency": 15,
+      "predicted_function": "structural_repeat",
+      "confidence": 1.0
+    },
+    {
+      "type": "repeat",
+      "sequence": "GGG",
+      "frequency": 2,
+      "predicted_function": "structural_repeat",
+      "confidence": 0.2
+    },
+    {
+      "type": "repeat",
+      "sequence": "ATG",
+      "frequency": 3,
+      "predicted_function": "structural_repeat",
+      "confidence": 0.3
+    },
+    {
+      "type": "repeat",
+      "sequence": "GAT",
+      "frequency": 6,
+      "predicted_function": "structural_repeat",
+      "confidence": 0.6
+    },
+    {
+      "type": "repeat",
+      "sequence": "AGA",
+      "frequency": 16,
+      "predicted_function": "structural_repeat",
+      "confidence": 1.0
+    },
+    {
+      "type": "repeat",
+      "sequence": "TTC",
+      "frequency": 9,
+      "predicted_function": "structural_repeat",
+      "confidence": 0.9
+    },
+    {
+      "type": "repeat",
+      "sequence": "TCT",
+      "frequency": 5,
+      "predicted_function": "structural_repeat",
+      "confidence": 0.5
+    },
+    {
+      "type": "repeat",
+      "sequence": "GGT",
+      "frequency": 2,
+      "predicted_function": "structural_repeat",
+      "confidence": 0.2
+    },
+    {
+      "type": "repeat",
+      "sequence": "GCA",
+      "frequency": 3,
+      "predicted_function": "structural_repeat",
+      "confidence": 0.3
+    },
+    {
+      "type": "repeat",
+      "sequence": "CAT",
+      "frequency": 7,
+      "predicted_function": "structural_repeat",
+      "confidence": 0.7
+    },
+    {
+      "type": "repeat",
+      "sequence": "ATC",
+      "frequency": 2,
+      "predicted_function": "structural_repeat",
+      "confidence": 0.2
+    },
+    {
+      "type": "repeat",
+      "sequence": "TTT",
+      "frequency": 22,
+      "predicted_function": "structural_repeat",
+      "confidence": 1.0
+    },
+    {
+      "type": "repeat",
+      "sequence": "TGCC",
+      "frequency": 2,
+      "predicted_function": "structural_repeat",
+      "confidence": 0.2
+    },
+    {
+      "type": "repeat",
+      "sequence": "GCCA",
+      "frequency": 3,
+      "predicted_function": "structural_repeat",
+      "confidence": 0.3
+    },
+    {
+      "type": "repeat",
+      "sequence": "CCAG",
+      "frequency": 3,
+      "predicted_function": "structural_repeat",
+      "confidence": 0.3
+    },
+    {
+      "type": "repeat",
+      "sequence": "CAGG",
+      "frequency": 2,
+      "predicted_function": "structural_repeat",
+      "confidence": 0.2
+    },
+    {
+      "type": "repeat",
+      "sequence": "AGGA",
+      "frequency": 2,
+      "predicted_function": "structural_repeat",
+      "confidence": 0.2
+    },
+    {
+      "type": "repeat",
+      "sequence": "ACCT",
+      "frequency": 3,
+      "predicted_function": "structural_repeat",
+      "confidence": 0.3
+    },
+    {
+      "type": "repeat",
+      "sequence": "CCTA",
+      "frequency": 2,
+      "predicted_function": "structural_repeat",
+      "confidence": 0.2
+    },
+    {
+      "type": "repeat",
+      "sequence": "CTAC",
+      "frequency": 2,
+      "predicted_function": "structural_repeat",
+      "confidence": 0.2
+    },
+    {
+      "type": "repeat",
+      "sequence": "ACTT",
+      "frequency": 2,
+      "predicted_function": "structural_repeat",
+      "confidence": 0.2
+    },
+    {
+      "type": "repeat",
+      "sequence": "CTTG",
+      "frequency": 3,
+      "predicted_function": "structural_repeat",
+      "confidence": 0.3
+    },
+    {
+      "type": "repeat",
+      "sequence": "TTGC",
+      "frequency": 2,
+      "predicted_function": "structural_repeat",
+      "confidence": 0.2
+    },
+    {
+      "type": "repeat",
+      "sequence": "CAGT",
+      "frequency": 5,
+      "predicted_function": "structural_repeat",
+      "confidence": 0.5
+    },
+    {
+      "type": "repeat",
+      "sequence": "AGTC",
+      "frequency": 4,
+      "predicted_function": "structural_repeat",
+      "confidence": 0.4
+    },
+    {
+      "type": "repeat",
+      "sequence": "TCCT",
+      "frequency": 4,
+      "predicted_function": "structural_repeat",
+      "confidence": 0.4
+    },
+    {
+      "type": "repeat",
+      "sequence": "CCTG",
+      "frequency": 3,
+      "predicted_function": "structural_repeat",
+      "confidence": 0.3
+    },
+    {
+      "type": "repeat",
+      "sequence": "CTGT",
+      "frequency": 2,
+      "predicted_function": "structural_repeat",
+      "confidence": 0.2
+    },
+    {
+      "type": "repeat",
+      "sequence": "TGTG",
+      "frequency": 3,
+      "predicted_function": "structural_repeat",
+      "confidence": 0.3
+    },
+    {
+      "type": "repeat",
+      "sequence": "GTGA",
+      "frequency": 2,
+      "predicted_function": "structural_repeat",
+      "confidence": 0.2
+    },
+    {
+      "type": "repeat",
+      "sequence": "TGAG",
+      "frequency": 4,
+      "predicted_function": "structural_repeat",
+      "confidence": 0.4
+    },
+    {
+      "type": "repeat",
+      "sequence": "GAGT",
+      "frequency": 5,
+      "predicted_function": "structural_repeat",
+      "confidence": 0.5
+    },
+    {
+      "type": "repeat",
+      "sequence": "AGCT",
+      "frequency": 4,
+      "predicted_function": "structural_repeat",
+      "confidence": 0.4
+    },
+    {
+      "type": "repeat",
+      "sequence": "GCTA",
+      "frequency": 2,
+      "predicted_function": "structural_repeat",
+      "confidence": 0.2
+    },
+    {
+      "type": "repeat",
+      "sequence": "CCTT",
+      "frequency": 2,
+      "predicted_function": "structural_repeat",
+      "confidence": 0.2
+    },
+    {
+      "type": "repeat",
+      "sequence": "TTGG",
+      "frequency": 3,
+      "predicted_function": "structural_repeat",
+      "confidence": 0.3
+    }
+  ]
+}

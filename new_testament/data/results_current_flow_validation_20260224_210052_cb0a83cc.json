@@ -1,0 +1,98 @@
+{
+  "experiment_metadata": {
+    "experiment_id": "current_flow_20260224_210052_f5cb8379",
+    "timestamp": "2026-02-24T21:00:52.217823",
+    "validation_type": "current_flow_categorical_transport",
+    "paper": "current-flux-mechanism.tex"
+  },
+  "physical_constants": {
+    "boltzmann_constant_J_K": 1.380649e-23,
+    "elementary_charge_C": 1.602176634e-19,
+    "electron_mass_kg": 9.1093837015e-31,
+    "planck_constant_J_s": 6.62607015e-34,
+    "lorenz_number_theory_W_ohm_K2": 2.443004509073667e-08
+  },
+  "metal_properties": {
+    "copper": {
+      "n_density_m3": 8.47e+28,
+      "resistivity_300K_ohm_m": 1.68e-08,
+      "resistivity_77K_ohm_m": 2e-09,
+      "thermal_conductivity_W_m_K": 401,
+      "debye_temperature_K": 343,
+      "fermi_energy_eV": 7.0,
+      "fermi_velocity_m_s": 1569187.0554784182,
+      "scattering_time_300K_s": 2.4938797918024927e-14,
+      "mean_free_path_300K_m": 3.913363887215684e-08,
+      "T_c_K": null
+    },
+    "aluminum": {
+      "n_density_m3": 1.81e+29,
+      "resistivity_300K_ohm_m": 2.65e-08,
+      "resistivity_77K_ohm_m": 3e-09,
+      "thermal_conductivity_W_m_K": 237,
+      "debye_temperature_K": 428,
+      "fermi_energy_eV": 11.7,
+      "fermi_velocity_m_s": 2028703.7302688782,
+      "scattering_time_300K_s": 7.398501383390545e-15,
+      "mean_free_path_300K_m": 1.5009367354883856e-08,
+      "T_c_K": null
+    },
+    "silver": {
+      "n_density_m3": 5.86e+28,
+      "resistivity_300K_ohm_m": 1.59e-08,
+      "resistivity_77K_ohm_m": 2e-09,
+      "thermal_conductivity_W_m_K": 429,
+      "debye_temperature_K": 225,
+      "fermi_energy_eV": 5.5,
+      "fermi_velocity_m_s": 1390935.6605714655,
+      "scattering_time_300K_s": 3.808671076205031e-14,
+      "mean_free_path_300K_m": 5.297616419280679e-08,
+      "T_c_K": null
+    },
+    "gold": {
+      "n_density_m3": 5.9e+28,
+      "resistivity_300K_ohm_m": 2.44e-08,
+      "resistivity_77K_ohm_m": 5e-09,
+      "thermal_conductivity_W_m_K": 318,
+      "debye_temperature_K": 165,
+      "fermi_energy_eV": 5.5,
+      "fermi_velocity_m_s": 1390935.6605714655,
+      "scattering_time_300K_s": 2.4650536180489547e-14,
+      "mean_free_path_300K_m": 3.428730982565004e-08,
+      "T_c_K": null
+    },
+    "iron": {
+      "n_density_m3": 1.7e+29,
+      "resistivity_300K_ohm_m": 9.71e-08,
+      "resistivity_77K_ohm_m": 8e-09,
+      "thermal_conductivity_W_m_K": 80,
+      "debye_temperature_K": 470,
+      "fermi_energy_eV": 11.1,
+      "fermi_velocity_m_s": 1976001.1194111712,
+      "scattering_time_300K_s": 2.149809891890274e-15,
+      "mean_free_path_300K_m": 4.248026752896391e-09,
+      "T_c_K": null
+    },
+    "niobium": {
+      "n_density_m3": 5.56e+28,
+      "resistivity_300K_ohm_m": 1.52e-07,
+      "resistivity_77K_ohm_m": 3e-08,
+      "thermal_conductivity_W_m_K": 54,
+      "debye_temperature_K": 275,
+      "fermi_energy_eV": 5.3,
+      "fermi_velocity_m_s": 1365411.7369564732,
+      "scattering_time_300K_s": 4.19903822953341e-15,
+      "mean_free_path_300K_m": 5.7334160825338475e-09,
+      "T_c_K": 9.25
+    }
+  },
+  "validations": {
+    "newton_cradle": {
+      "copper": {
+        "drift_velocity_m_s": 7.368959946234667e-05,
+        "signal_velocity_m_s": 209854720.6,
+        "velocity_ratio": 2847820074082.909,
+        "log10_ratio": 12.454512547007877,
+        "expected_log10_ratio": 12,
+        "ratio_error_orders": 0.4545125470078766,
+        "validated": 

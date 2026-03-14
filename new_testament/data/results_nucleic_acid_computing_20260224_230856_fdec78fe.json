@@ -1,0 +1,263 @@
+{
+  "experiment_metadata": {
+    "experiment_id": "nucleic_acid_computing_20260224_230856_fdec78fe",
+    "timestamp": "2026-02-24T23:08:56.111632",
+    "validation_type": "ternary_partition_computing",
+    "paper": "nucleic-acid-computing.tex"
+  },
+  "validations": {
+    "complexity_comparison": {
+      "measurements": [
+        {
+          "n": 1000,
+          "sequential_O_n2": 1000000,
+          "navigation_O_log3_n": 6.287709822868153,
+          "speedup_factor": 159040.4182398875,
+          "log10_speedup": 5.201507509149795
+        },
+        {
+          "n": 10000,
+          "sequential_O_n2": 100000000,
+          "navigation_O_log3_n": 8.38361309715754,
+          "speedup_factor": 11928031.36799156,
+          "log10_speedup": 7.076568772541495
+        },
+        {
+          "n": 100000,
+          "sequential_O_n2": 10000000000,
+          "navigation_O_log3_n": 10.479516371446921,
+          "speedup_factor": 954242509.439325,
+          "log10_speedup": 8.97965875953344
+        },
+        {
+          "n": 1000000,
+          "sequential_O_n2": 1000000000000,
+          "navigation_O_log3_n": 12.575419645736305,
+          "speedup_factor": 79520209119.94376,
+          "log10_speedup": 10.900477513485814
+        },
+        {
+          "n": 10000000,
+          "sequential_O_n2": 100000000000000,
+          "navigation_O_log3_n": 14.671322920025691,
+          "speedup_factor": 6816017924566.606,
+          "log10_speedup": 12.833530723855201
+        }
+      ],
+      "speedup_scaling": "exponential in n",
+      "validated": true,
+      "interpretation": "Navigation achieves exponential speedup over sequential analysis. For n=10^6: speedup factor ~10^11."
+    },
+    "s_entropy_space": {
+      "test_states": [
+        {
+          "description": "known, recent, conserved",
+          "S": [
+            0.9,
+            0.9,
+            0.1
+          ]
+        },
+        {
+          "description": "unknown, ancient, variable",
+          "S": [
+            0.1,
+            0.1,
+            0.9
+          ]
+        },
+        {
+          "description": "partial, present, moderate",
+          "S": [
+            0.5,
+            0.5,
+            0.5
+          ]
+        }
+      ],
+      "all_in_valid_range": true,
+      "coordinates_unique": true,
+      "dimensions": {
+        "S_k": "knowledge entropy (known vs unknown)",
+        "S_t": "temporal entropy (recent vs ancient)",
+        "S_e": "evolution entropy (conserved vs variable)"
+      },
+      "validated": true,
+      "interpretation": "S-entropy coordinates uniquely address states in 3D partition space."
+    },
+    "cardinal_transformation": {
+      "transformation": {
+        "A": [
+          "0",
+          "1"
+        ],
+        "T": [
+          "0",
+          "-1"
+        ],
+        "G": [
+          "1",
+          "0"
+        ],
+        "C": [
+          "-1",
+          "0"
+        ]
+      },
+      "AT_sum": [
+        "0",
+        "0"
+      ],
+      "GC_sum": [
+        "0",
+        "0"
+      ],
+      "complementary_sum_to_zero": true,
+      "purines_positive": "True",
+      "pyrimidines_negative": "True",
+      "axes_orthogonal": "True",
+      "validated": "True",
+      "interpretation": "Cardinal transformation preserves biological structure: complementary bases are negatives, AT\u22a5GC."
+    },
+    "trit_correspondence": {
+      "measurements": [
+        {
+          "k": 1,
+          "n_cells": 3,
+          "n_trit_strings": 3,
+          "bijective": true,
+          "resolution": 0.3333333333333333
+        },
+        {
+          "k": 2,
+          "n_cells": 9,
+          "n_trit_strings": 9,
+          "bijective": true,
+          "resolution": 0.1111111111111111
+        },
+        {
+          "k": 3,
+          "n_cells": 27,
+          "n_trit_strings": 27,
+          "bijective": true,
+          "resolution": 0.037037037037037035
+        },
+        {
+          "k": 4,
+          "n_cells": 81,
+          "n_trit_strings": 81,
+          "bijective": true,
+          "resolution": 0.012345679012345678
+        },
+        {
+          "k": 5,
+          "n_cells": 243,
+          "n_trit_strings": 243,
+          "bijective": true,
+          "resolution": 0.00411522633744856
+        },
+        {
+          "k": 10,
+          "n_cells": 59049,
+          "n_trit_strings": 59049,
+          "bijective": true,
+          "resolution": 1.6935087808430286e-05
+        },
+        {
+          "k": 20,
+          "n_cells": 3486784401,
+          "n_trit_strings": 3486784401,
+          "bijective": true,
+          "resolution": 2.8679719907924413e-10
+        }
+      ],
+      "all_bijective": true,
+      "validated": true,
+      "interpretation": "k-trit strings biject with 3^k partition cells. Address IS position."
+    },
+    "position_trajectory_duality": {
+      "target_position": [
+        0.75,
+        0.25,
+        0.5
+      ],
+      "encoding_depth": 10,
+      "S_k_encoding": [
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "S_t_encoding": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "S_e_encoding": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "position_from_encoding": "recoverable by following trit sequence",
+      "trajectory_from_encoding": "sequence of refinements along each axis",
+      "duality": "same encoding specifies both WHERE and HOW",
+      "validated": true,
+      "interpretation": "Trit string simultaneously encodes position (which cell) and trajectory (sequence of refinements)."
+    },
+    "computational_speedup": {
+      "task": "palindrome_detection",
+      "measurements": [
+        {
+          "sequence_length": 1000,
+          "sequential_comparisons": 499500.0,
+          "navigation_steps": 18.86312946860446,
+          "speedup_factor": 26480.22963694127,
+          "log10_speedup": 4.422921746992134
+        },
+        {
+          "sequence_length": 5000,
+          "sequential_comparisons": 12497500.0,
+          "navigation_steps": 23.25805003075824,
+          "speedup_factor": 537340.8339681246,
+          "log10_speedup": 5.730249845022794
+        },
+        {
+          "sequence_length": 10000,
+          "sequential_comparisons": 49995000.0,
+          "navigation_steps": 25.150839291472614,
+          "speedup_factor": 1987806.4274757938,
+          "log10_speedup": 6.298374090538044
+        }
+      ],
+      "average_log10_speedup": 5.483848560850991,
+      "validated": true,
+      "interpretation": "Navigation-based analysis achieves >10^3 speedup for palindrome detection."
+    }
+  },
+  "summary": {
+    "validations_passed": 6,
+    "validations_total": 6,
+    "pass_rate": 1.0,
+    "all_passed": true
+  }
+}

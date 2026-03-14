@@ -1,0 +1,79 @@
+{
+  "sequences_analyzed": 10,
+  "average_information_density": 151.27079694674916,
+  "average_geometric_entropy": 6.298803882505281,
+  "average_charge_balance": 0.12417500266703167,
+  "average_complementarity": 0.2633391873051414,
+  "geometries": [
+    {
+      "sequence_id": "random_seq_1",
+      "information_density": 520.1999999999999,
+      "geometric_entropy": 3.2188758248682006,
+      "charge_balance": 0.0196078431372549,
+      "complementarity_score": 0.13725490196078433
+    },
+    {
+      "sequence_id": "random_seq_2",
+      "information_density": 174.76370510396973,
+      "geometric_entropy": 6.814542897259958,
+      "charge_balance": 0.10697674418604651,
+      "complementarity_score": 0.3023255813953488
+    },
+    {
+      "sequence_id": "random_seq_3",
+      "information_density": 49.44375772558715,
+      "geometric_entropy": 7.27931883541462,
+      "charge_balance": 0.115,
+      "complementarity_score": 0.295
+    },
+    {
+      "sequence_id": "random_seq_4",
+      "information_density": 26.39750283768445,
+      "geometric_entropy": 7.884576510596324,
+      "charge_balance": 0.2668621700879765,
+      "complementarity_score": 0.3489736070381232
+    },
+    {
+      "sequence_id": "random_seq_5",
+      "information_density": 80.75076923076924,
+      "geometric_entropy": 7.671826797878781,
+      "charge_balance": 0.10493827160493827,
+      "complementarity_score": 0.2839506172839506
+    },
+    {
+      "sequence_id": "random_seq_6",
+      "information_density": 210.13879003558716,
+      "geometric_entropy": 6.0330862217988015,
+      "charge_balance": 0.08641975308641975,
+      "complementarity_score": 0.20987654320987653
+    },
+    {
+      "sequence_id": "random_seq_7",
+      "information_density": 91.80802292263608,
+      "geometric_entropy": 7.273092595999522,
+      "charge_balance": 0.12849162011173185,
+      "complementarity_score": 0.35195530726256985
+    },
+    {
+      "sequence_id": "random_seq_8",
+      "information_density": 46.30597465298733,
+      "geometric_entropy": 6.706862336602747,
+      "charge_balance": 0.19855595667870035,
+      "complementarity_score": 0.3285198555956679
+    },
+    {
+      "sequence_id": "random_seq_9",
+      "information_density": 74.46153846153847,
+      "geometric_entropy": 4.663439094112067,
+      "charge_balance": 0.13636363636363635,
+      "complementarity_score": 0.18181818181818182
+    },
+    {
+      "sequence_id": "random_seq_10",
+      "information_density": 238.4379084967321,
+      "geometric_entropy": 5.442417710521793,
+      "charge_balance": 0.07853403141361257,
+      "complementarity_score": 0.193717277486911
+    }
+  ]
+}

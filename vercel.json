@@ -1,0 +1,7 @@
+{
+  "buildCommand": "cd revelation && npm install --legacy-peer-deps && npm run build",
+  "outputDirectory": "revelation/.next",
+  "installCommand": "cd revelation && npm install --legacy-peer-deps",
+  "framework": "nextjs",
+  "rootDirectory": "revelation"
+}

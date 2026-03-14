@@ -41,10 +41,9 @@ public/genome
 *.sublime-workspace
 *.sublime-project
 
-# Project specific
-public/
-!public/visualizations/
-!public/visualizations/*.png
+# Project specific (gospel python package output, NOT revelation/public)
+/public/
+!/revelation/public/
 trained_models/
 network_data/
 network_data_cache/
@@ -52,8 +51,12 @@ network_analysis/
 training_data/
 
 # Data files
-*.json
 *.jsonl
+# Ignore JSON data files but not config files
+!package.json
+!vercel.json
+!tsconfig.json
+!.eslintrc.json
 *.csv
 *.tsv
 *.xlsx
@@ -83,9 +86,10 @@ training_data/
 # Media
 
 !gospel.png
-!public/visualizations/*.png
 *.gif
+# Ignore SVGs in root but not in revelation
 *.svg
+!revelation/public/**/*.svg
 *.mp4
 *.wav
 *.mp3

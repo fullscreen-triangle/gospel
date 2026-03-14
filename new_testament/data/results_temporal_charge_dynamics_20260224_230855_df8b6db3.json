@@ -1,0 +1,89 @@
+{
+  "experiment_metadata": {
+    "experiment_id": "temporal_charge_dynamics_20260224_230855_df8b6db3",
+    "timestamp": "2026-02-24T23:08:55.661599",
+    "validation_type": "charge_oscillation_dynamics",
+    "paper": "nucleic-acid-temporal-charge-dynamics.tex"
+  },
+  "physical_constants": {
+    "boltzmann_constant_J_K": 1.380649e-23,
+    "planck_constant_J_s": 6.62607015e-34,
+    "elementary_charge_C": 1.602176634e-19,
+    "proton_mass_kg": 1.67262192e-27,
+    "temperature_K": 310.15
+  },
+  "validations": {
+    "dna_capacitance": {
+      "capacitance_pF": 300,
+      "n_phosphates": 6400000000.0,
+      "total_charge_C": 1.02539304576e-09,
+      "assumed_voltage_V": 0.1,
+      "Q_from_CV": 3e-11,
+      "charge_per_phosphate_C": 1.602176634e-19,
+      "validated": true,
+      "interpretation": "DNA capacitance ~300 pF stores partition-generated charge. Total charge ~1.03e-09 C from 6.40e+09 phosphates."
+    },
+    "rc_time_constant": {
+      "capacitance_F": 3e-10,
+      "resistance_ohm": 1000000000.0,
+      "tau_RC_s": 0.3,
+      "tau_RC_ms": 300.0,
+      "expected_tau_ms": 30,
+      "relative_error": 9.0,
+      "validated": false,
+      "interpretation": "RC time constant \u03c4 = 300.0 ms couples H-bond oscillations (~10^13 Hz) to metabolic frequencies (~5 Hz)."
+    },
+    "hbond_frequency": {
+      "spring_constant_N_m": 30,
+      "proton_mass_kg": 1.67262192e-27,
+      "angular_frequency_rad_s": 133925024768484.08,
+      "frequency_Hz": 21314829695608.758,
+      "expected_frequency_Hz": 10000000000000.0,
+      "log10_ratio": 0.32868186700647556,
+      "validated": "True",
+      "interpretation": "H-bond proton oscillation frequency ~2.13e+13 Hz matches expected ~10^13 Hz from partition theory."
+    },
+    "triple_equivalence": {
+      "T_osc_s": 4.691569270225125e-14,
+      "T_cat_s": 7.466864402143647e-15,
+      "ratio_T_osc_T_cat": 6.283185307179586,
+      "expected_ratio": 6.283185307179586,
+      "relative_precision": 0.0,
+      "validated": "True",
+      "interpretation": "Triple equivalence T_osc = 2\u03c0 T_cat validated to precision 0.00e+00. Oscillation, categorical distinction, and partition are isomorphic."
+    },
+    "backaction_reduction": {
+      "heisenberg_limit_J_s": 5.272859088230782e-35,
+      "backaction_reduction_factor": 427000.0,
+      "categorical_uncertainty_J_s": 1.2348616131688016e-40,
+      "improvement_factor": 427000.0,
+      "validated": true,
+      "interpretation": "Categorical measurement achieves 4.27e+05\u00d7 backaction reduction vs Heisenberg limit."
+    },
+    "phase_lock_coherence": {
+      "coherence_length_bp": 25,
+      "nucleosome_repeat_bp": 147,
+      "linker_dna_bp": 50,
+      "coherence_fraction_of_nucleosome": 0.17006802721088435,
+      "matches_chromatin_scale": true,
+      "validated": true,
+      "interpretation": "Phase-lock coherence length ~25 bp matches chromatin organization scale (nucleosome ~147 bp)."
+    },
+    "trajectory_determinism": {
+      "n_trajectories": 1000,
+      "mean_position": 1.00000000902807,
+      "std_position": 4.570651390181956e-07,
+      "relative_std": 4.570651348917795e-07,
+      "expected_relative_std": 4.67e-07,
+      "relative_error": 0.021273801088266552,
+      "validated": "True",
+      "interpretation": "Trajectory relative standard deviation 4.57e-07 confirms deterministic proton dynamics with minimal measurement noise."
+    }
+  },
+  "summary": {
+    "validations_passed": 6,
+    "validations_total": 7,
+    "pass_rate": 0.8571428571428571,
+    "all_passed": false
+  }
+}
