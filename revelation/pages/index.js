@@ -8,7 +8,6 @@ import LeftRightBar from "../src/layout/left-right-bar";
 import Mobilemenu from "../src/layout/mobilemenu";
 import Modalbox from "../src/layout/modalbox";
 import TopBar from "../src/layout/top-bar";
-import Service from "../src/components/service/service-default";
 
 const GLBViewer = dynamic(
   () => import("../src/components/model/GLBViewer"),
@@ -49,20 +48,17 @@ export default function Home() {
         <div className="cavani_tm_mainpart">
 
 
-         <GLBViewer className="author_image" />
+         <GLBViewer />
 
           <div className="main_content">
             <HomeDefault ActiveIndex={ActiveIndex} handleOnClick={handleOnClick} />
 
-            <AboutDefault ActiveIndex={ActiveIndex} />
 
             <Dynamics ActiveIndex={ActiveIndex} />
 
             <Computing ActiveIndex={ActiveIndex} />
 
             <Derivation ActiveIndex={ActiveIndex} />
-
-            <Service ActiveIndex={ActiveIndex} />
 
             <ContactDefault ActiveIndex={ActiveIndex} />
           </div>
