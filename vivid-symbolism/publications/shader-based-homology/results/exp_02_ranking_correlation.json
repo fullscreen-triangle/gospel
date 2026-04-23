@@ -1,0 +1,189 @@
+{
+  "experiment": "ranking_correlation",
+  "timestamp": "2026-04-23T14:25:16.603813+00:00",
+  "config": {
+    "n_families": 12,
+    "family_size": 6,
+    "seed_length_dna": 200,
+    "seed_length_protein": 140,
+    "mutation_rates": [
+      0.05,
+      0.1,
+      0.2
+    ],
+    "n_coefficients": 12,
+    "kmer_k_dna": 6,
+    "kmer_k_protein": 3,
+    "top_k_values": [
+      1,
+      5,
+      10
+    ],
+    "n_queries": 12,
+    "random_seed": 20260423
+  },
+  "runs": [
+    {
+      "kind": "dna",
+      "n_sequences": 72,
+      "n_queries": 12,
+      "mutation_rate": 0.05,
+      "seed_length": 200,
+      "n_coefficients": 12,
+      "kmer_k": 6,
+      "embed_time_s_total": 0.007400500006042421,
+      "per_query_embed_s_mean": 0.00010423332181138296,
+      "per_query_sw_s_mean": 2.245146533338508,
+      "per_query_jaccard_s_mean": 0.005853324992737423,
+      "spearman_vs_sw_mean": 0.3751698384158271,
+      "spearman_vs_sw_std": 0.21169560553249325,
+      "spearman_vs_jaccard_mean": 0.3233570368903608,
+      "spearman_vs_jaccard_std": 0.16384285161587492,
+      "recall_embedding_vs_true_family": {
+        "1": 0.20000000000000004,
+        "5": 1.0,
+        "10": 1.0
+      },
+      "recall_jaccard_vs_true_family": {
+        "1": 0.20000000000000004,
+        "5": 1.0,
+        "10": 1.0
+      }
+    },
+    {
+      "kind": "protein",
+      "n_sequences": 72,
+      "n_queries": 12,
+      "mutation_rate": 0.05,
+      "seed_length": 140,
+      "n_coefficients": 12,
+      "kmer_k": 3,
+      "embed_time_s_total": 0.008474200032651424,
+      "per_query_embed_s_mean": 1.8183326271052163e-05,
+      "per_query_sw_s_mean": 1.9164366833186552,
+      "per_query_jaccard_s_mean": 0.006207016665333261,
+      "spearman_vs_sw_mean": 0.048107436448919384,
+      "spearman_vs_sw_std": 0.15009339204931368,
+      "spearman_vs_jaccard_mean": 0.03336874311072297,
+      "spearman_vs_jaccard_std": 0.24529862565609747,
+      "recall_embedding_vs_true_family": {
+        "1": 0.20000000000000004,
+        "5": 1.0,
+        "10": 1.0
+      },
+      "recall_jaccard_vs_true_family": {
+        "1": 0.20000000000000004,
+        "5": 1.0,
+        "10": 1.0
+      }
+    },
+    {
+      "kind": "dna",
+      "n_sequences": 72,
+      "n_queries": 12,
+      "mutation_rate": 0.1,
+      "seed_length": 200,
+      "n_coefficients": 12,
+      "kmer_k": 6,
+      "embed_time_s_total": 0.008963100030086935,
+      "per_query_embed_s_mean": 2.431667720278104e-05,
+      "per_query_sw_s_mean": 3.423684575022586,
+      "per_query_jaccard_s_mean": 0.007686124988443528,
+      "spearman_vs_sw_mean": 0.2488619390440585,
+      "spearman_vs_sw_std": 0.1851669511442547,
+      "spearman_vs_jaccard_mean": 0.29388565115893234,
+      "spearman_vs_jaccard_std": 0.11700561382695025,
+      "recall_embedding_vs_true_family": {
+        "1": 0.20000000000000004,
+        "5": 0.9833333333333334,
+        "10": 1.0
+      },
+      "recall_jaccard_vs_true_family": {
+        "1": 0.20000000000000004,
+        "5": 1.0,
+        "10": 1.0
+      }
+    },
+    {
+      "kind": "protein",
+      "n_sequences": 72,
+      "n_queries": 12,
+      "mutation_rate": 0.1,
+      "seed_length": 140,
+      "n_coefficients": 12,
+      "kmer_k": 3,
+      "embed_time_s_total": 0.007254599942825735,
+      "per_query_embed_s_mean": 1.5875004464760423e-05,
+      "per_query_sw_s_mean": 1.2177096416514057,
+      "per_query_jaccard_s_mean": 0.003845033332860718,
+      "spearman_vs_sw_mean": 0.1998934722866368,
+      "spearman_vs_sw_std": 0.13502457505592855,
+      "spearman_vs_jaccard_mean": 0.2478267771169281,
+      "spearman_vs_jaccard_std": 0.16015665455881598,
+      "recall_embedding_vs_true_family": {
+        "1": 0.20000000000000004,
+        "5": 1.0,
+        "10": 1.0
+      },
+      "recall_jaccard_vs_true_family": {
+        "1": 0.20000000000000004,
+        "5": 1.0,
+        "10": 1.0
+      }
+    },
+    {
+      "kind": "dna",
+      "n_sequences": 72,
+      "n_queries": 12,
+      "mutation_rate": 0.2,
+      "seed_length": 200,
+      "n_coefficients": 12,
+      "kmer_k": 6,
+      "embed_time_s_total": 0.005343899945728481,
+      "per_query_embed_s_mean": 1.6374998570730288e-05,
+      "per_query_sw_s_mean": 2.299067258320671,
+      "per_query_jaccard_s_mean": 0.0056190750425836695,
+      "spearman_vs_sw_mean": 0.25409914812415324,
+      "spearman_vs_sw_std": 0.0944242635392473,
+      "spearman_vs_jaccard_mean": 0.18263679883050996,
+      "spearman_vs_jaccard_std": 0.09840944336996085,
+      "recall_embedding_vs_true_family": {
+        "1": 0.20000000000000004,
+        "5": 0.9500000000000001,
+        "10": 0.9833333333333334
+      },
+      "recall_jaccard_vs_true_family": {
+        "1": 0.20000000000000004,
+        "5": 1.0,
+        "10": 1.0
+      }
+    },
+    {
+      "kind": "protein",
+      "n_sequences": 72,
+      "n_queries": 12,
+      "mutation_rate": 0.2,
+      "seed_length": 140,
+      "n_coefficients": 12,
+      "kmer_k": 3,
+      "embed_time_s_total": 0.0077266000444069505,
+      "per_query_embed_s_mean": 1.554166859326263e-05,
+      "per_query_sw_s_mean": 1.192607316673578,
+      "per_query_jaccard_s_mean": 0.0037784416732999184,
+      "spearman_vs_sw_mean": 0.1446445156683571,
+      "spearman_vs_sw_std": 0.08968707362011008,
+      "spearman_vs_jaccard_mean": 0.12090676520203414,
+      "spearman_vs_jaccard_std": 0.1352973539281939,
+      "recall_embedding_vs_true_family": {
+        "1": 0.20000000000000004,
+        "5": 0.9333333333333335,
+        "10": 1.0
+      },
+      "recall_jaccard_vs_true_family": {
+        "1": 0.20000000000000004,
+        "5": 1.0,
+        "10": 1.0
+      }
+    }
+  ]
+}
