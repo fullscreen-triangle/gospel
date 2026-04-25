@@ -1,0 +1,48 @@
+This is BibTeX, Version 0.99e
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: shader-based-genomic-homology-search.aux
+Reallocating 'name_of_file' (item size: 1) to 9 items.
+The style file: unsrtnat.bst
+Reallocating 'name_of_file' (item size: 1) to 11 items.
+Database file #1: references.bib
+You've used 43 entries,
+            2481 wiz_defined-function locations,
+            846 strings with 12551 characters,
+and the built_in function-call counts, 17859 in all, are:
+= -- 1588
+> -- 885
+< -- 30
++ -- 344
+- -- 258
+* -- 1452
+:= -- 2855
+add.period$ -- 167
+call.type$ -- 43
+change.case$ -- 86
+chr.to.int$ -- 43
+cite$ -- 43
+duplicate$ -- 840
+empty$ -- 1602
+format.name$ -- 335
+if$ -- 3776
+int.to.chr$ -- 1
+int.to.str$ -- 44
+missing$ -- 42
+newline$ -- 260
+num.names$ -- 129
+pop$ -- 296
+preamble$ -- 1
+purify$ -- 43
+quote$ -- 0
+skip$ -- 510
+stack$ -- 0
+substring$ -- 975
+swap$ -- 114
+text.length$ -- 3
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 298
+warning$ -- 0
+while$ -- 158
+width$ -- 0
+write$ -- 638

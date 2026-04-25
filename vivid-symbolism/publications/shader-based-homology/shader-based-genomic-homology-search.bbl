@@ -1,0 +1,321 @@
+\begin{thebibliography}{43}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Needleman and Wunsch(1970)]{needleman1970}
+Saul~B. Needleman and Christian~D. Wunsch.
+\newblock A general method applicable to the search for similarities in the
+  amino acid sequence of two proteins.
+\newblock \emph{Journal of Molecular Biology}, 48\penalty0 (3):\penalty0
+  443--453, 1970.
+\newblock \doi{10.1016/0022-2836(70)90057-4}.
+
+\bibitem[Smith and Waterman(1981)]{smith1981}
+Temple~F. Smith and Michael~S. Waterman.
+\newblock Identification of common molecular subsequences.
+\newblock \emph{Journal of Molecular Biology}, 147\penalty0 (1):\penalty0
+  195--197, 1981.
+\newblock \doi{10.1016/0022-2836(81)90087-5}.
+
+\bibitem[Altschul et~al.(1990)Altschul, Gish, Miller, Myers, and
+  Lipman]{altschul1990}
+Stephen~F. Altschul, Warren Gish, Webb Miller, Eugene~W. Myers, and David~J.
+  Lipman.
+\newblock Basic local alignment search tool.
+\newblock \emph{Journal of Molecular Biology}, 215\penalty0 (3):\penalty0
+  403--410, 1990.
+\newblock \doi{10.1016/S0022-2836(05)80360-2}.
+
+\bibitem[Altschul et~al.(1997)Altschul, Madden, Sch{\"a}ffer, Zhang, Zhang,
+  Miller, and Lipman]{altschul1997}
+Stephen~F. Altschul, Thomas~L. Madden, Alejandro~A. Sch{\"a}ffer, Jinghui
+  Zhang, Zheng Zhang, Webb Miller, and David~J. Lipman.
+\newblock Gapped {BLAST} and {PSI}-{BLAST}: a new generation of protein
+  database search programs.
+\newblock \emph{Nucleic Acids Research}, 25\penalty0 (17):\penalty0 3389--3402,
+  1997.
+\newblock \doi{10.1093/nar/25.17.3389}.
+
+\bibitem[Buchfink et~al.(2015)Buchfink, Xie, and Huson]{buchfink2015}
+Benjamin Buchfink, Chao Xie, and Daniel~H. Huson.
+\newblock Fast and sensitive protein alignment using {DIAMOND}.
+\newblock \emph{Nature Methods}, 12\penalty0 (1):\penalty0 59--60, 2015.
+\newblock \doi{10.1038/nmeth.3176}.
+
+\bibitem[Buchfink et~al.(2021)Buchfink, Reuter, and Drost]{buchfink2021}
+Benjamin Buchfink, Klaus Reuter, and Hajk-Georg Drost.
+\newblock Sensitive protein alignments at tree-of-life scale using {DIAMOND}.
+\newblock \emph{Nature Methods}, 18\penalty0 (4):\penalty0 366--368, 2021.
+\newblock \doi{10.1038/s41592-021-01101-x}.
+
+\bibitem[Steinegger and S{\"o}ding(2017)]{steinegger2017}
+Martin Steinegger and Johannes S{\"o}ding.
+\newblock {MMseqs2} enables sensitive protein sequence searching for the
+  analysis of massive data sets.
+\newblock \emph{Nature Biotechnology}, 35\penalty0 (11):\penalty0 1026--1028,
+  2017.
+\newblock \doi{10.1038/nbt.3988}.
+
+\bibitem[Li(2018)]{li2018}
+Heng Li.
+\newblock Minimap2: pairwise alignment for nucleotide sequences.
+\newblock \emph{Bioinformatics}, 34\penalty0 (18):\penalty0 3094--3100, 2018.
+\newblock \doi{10.1093/bioinformatics/bty191}.
+
+\bibitem[Broder(1997)]{broder1997}
+Andrei~Z. Broder.
+\newblock On the resemblance and containment of documents.
+\newblock In \emph{Proceedings of Compression and Complexity of Sequences},
+  pages 21--29. IEEE, 1997.
+\newblock \doi{10.1109/SEQUEN.1997.666900}.
+
+\bibitem[Ondov et~al.(2016)Ondov, Treangen, Melsted, Mallonee, Bergman, Koren,
+  and Phillippy]{ondov2016}
+Brian~D. Ondov, Todd~J. Treangen, P{\'a}ll Melsted, Adam~B. Mallonee,
+  Nicholas~H. Bergman, Sergey Koren, and Adam~M. Phillippy.
+\newblock Mash: fast genome and metagenome distance estimation using {MinHash}.
+\newblock \emph{Genome Biology}, 17:\penalty0 132, 2016.
+\newblock \doi{10.1186/s13059-016-0997-x}.
+
+\bibitem[Flajolet et~al.(2007)Flajolet, Fusy, Gandouet, and
+  Meunier]{flajolet2007}
+Philippe Flajolet, {\'E}ric Fusy, Olivier Gandouet, and Fr{\'e}d{\'e}ric
+  Meunier.
+\newblock {HyperLogLog}: the analysis of a near-optimal cardinality estimation
+  algorithm.
+\newblock \emph{Discrete Mathematics \& Theoretical Computer Science,
+  Proceedings}, AH:\penalty0 137--156, 2007.
+
+\bibitem[Baker and Langmead(2019)]{baker2019}
+Daniel~N. Baker and Ben Langmead.
+\newblock Dashing: fast and accurate genomic distances with {H}yper{L}og{L}og.
+\newblock \emph{Genome Biology}, 20:\penalty0 265, 2019.
+\newblock \doi{10.1186/s13059-019-1875-0}.
+
+\bibitem[Indyk and Motwani(1998)]{indyk1998}
+Piotr Indyk and Rajeev Motwani.
+\newblock Approximate nearest neighbors: towards removing the curse of
+  dimensionality.
+\newblock In \emph{Proceedings of the 30th Annual ACM Symposium on Theory of
+  Computing (STOC)}, pages 604--613, 1998.
+\newblock \doi{10.1145/276698.276876}.
+
+\bibitem[Andoni and Indyk(2006)]{andoni2006}
+Alexandr Andoni and Piotr Indyk.
+\newblock Near-optimal hashing algorithms for approximate nearest neighbor in
+  high dimensions.
+\newblock In \emph{Proceedings of the 47th IEEE Symposium on Foundations of
+  Computer Science (FOCS)}, pages 459--468, 2006.
+\newblock \doi{10.1109/FOCS.2006.49}.
+
+\bibitem[Vinga and Almeida(2003)]{vinga2003}
+Susana Vinga and Jonas Almeida.
+\newblock Alignment-free sequence comparison—a review.
+\newblock \emph{Bioinformatics}, 19\penalty0 (4):\penalty0 513--523, 2003.
+\newblock \doi{10.1093/bioinformatics/btg005}.
+
+\bibitem[Zielezinski et~al.(2017)Zielezinski, Vinga, Almeida, and
+  Karlowski]{zielezinski2017}
+Andrzej Zielezinski, Susana Vinga, Jonas Almeida, and Wojciech~M. Karlowski.
+\newblock Alignment-free sequence comparison: benefits, applications, and
+  tools.
+\newblock \emph{Genome Biology}, 18:\penalty0 186, 2017.
+\newblock \doi{10.1186/s13059-017-1319-7}.
+
+\bibitem[Pierce et~al.(2019)Pierce, Irber, Reiter, Brooks, and
+  Brown]{pierce2019}
+N.~Tessa Pierce, Luiz Irber, Taylor Reiter, Phillip Brooks, and C.~Titus Brown.
+\newblock Large-scale sequence comparisons with sourmash.
+\newblock \emph{F1000Research}, 8:\penalty0 1006, 2019.
+\newblock \doi{10.12688/f1000research.19675.1}.
+
+\bibitem[Wood et~al.(2019)Wood, Lu, and Langmead]{wood2019}
+Derrick~E. Wood, Jennifer Lu, and Ben Langmead.
+\newblock Improved metagenomic analysis with {K}raken 2.
+\newblock \emph{Genome Biology}, 20:\penalty0 257, 2019.
+\newblock \doi{10.1186/s13059-019-1891-0}.
+
+\bibitem[Anastassiou(2001)]{anastassiou2001}
+Dimitris Anastassiou.
+\newblock Genomic signal processing.
+\newblock \emph{IEEE Signal Processing Magazine}, 18\penalty0 (4):\penalty0
+  8--20, 2001.
+\newblock \doi{10.1109/79.939833}.
+
+\bibitem[Voss(1992)]{voss1992}
+Richard~F. Voss.
+\newblock Evolution of long-range fractal correlations and $1/f$ noise in {DNA}
+  base sequences.
+\newblock \emph{Physical Review Letters}, 68\penalty0 (25):\penalty0
+  3805--3808, 1992.
+\newblock \doi{10.1103/PhysRevLett.68.3805}.
+
+\bibitem[Hoang et~al.(2015)Hoang, Yin, Zheng, Yu, Lucy~He, and Yau]{hoang2015}
+Tung Hoang, Changchuan Yin, Hui Zheng, Chenglong Yu, Rong Lucy~He, and Stephen
+  S.-T. Yau.
+\newblock A new method to cluster {DNA} sequences using {F}ourier power
+  spectrum.
+\newblock \emph{Journal of Theoretical Biology}, 372:\penalty0 135--145, 2015.
+\newblock \doi{10.1016/j.jtbi.2015.02.026}.
+
+\bibitem[Kyte and Doolittle(1982)]{kyte1982}
+Jack Kyte and Russell~F. Doolittle.
+\newblock A simple method for displaying the hydropathic character of a
+  protein.
+\newblock \emph{Journal of Molecular Biology}, 157\penalty0 (1):\penalty0
+  105--132, 1982.
+\newblock \doi{10.1016/0022-2836(82)90515-0}.
+
+\bibitem[Fauch{\`e}re et~al.(1988)Fauch{\`e}re, Charton, Kier, Verloop, and
+  Pliska]{fauchere1988}
+Jean-Luc Fauch{\`e}re, Marvin Charton, Lemont~B. Kier, A.~Verloop, and Vladimir
+  Pliska.
+\newblock Amino acid side chain parameters for correlation studies in biology
+  and pharmacology.
+\newblock \emph{International Journal of Peptide and Protein Research},
+  32\penalty0 (4):\penalty0 269--278, 1988.
+\newblock \doi{10.1111/j.1399-3011.1988.tb01261.x}.
+
+\bibitem[Henikoff and Henikoff(1992)]{henikoff1992}
+Steven Henikoff and Jorja~G. Henikoff.
+\newblock Amino acid substitution matrices from protein blocks.
+\newblock \emph{Proceedings of the National Academy of Sciences}, 89\penalty0
+  (22):\penalty0 10915--10919, 1992.
+\newblock \doi{10.1073/pnas.89.22.10915}.
+
+\bibitem[Dayhoff et~al.(1978)Dayhoff, Schwartz, and Orcutt]{dayhoff1978}
+Margaret~O. Dayhoff, Robert~M. Schwartz, and Bruce~C. Orcutt.
+\newblock A model of evolutionary change in proteins.
+\newblock \emph{Atlas of Protein Sequence and Structure}, 5:\penalty0 345--352,
+  1978.
+
+\bibitem[Oppenheim and Schafer(2009)]{oppenheim2009}
+Alan~V. Oppenheim and Ronald~W. Schafer.
+\newblock \emph{Discrete-Time Signal Processing}.
+\newblock Pearson, 3rd edition, 2009.
+
+\bibitem[Trifonov and Sussman(1980)]{trifonov1980}
+Edward~N. Trifonov and Joel~L. Sussman.
+\newblock The pitch of chromatin {DNA} is reflected in its nucleotide sequence.
+\newblock \emph{Proceedings of the National Academy of Sciences}, 77\penalty0
+  (7):\penalty0 3816--3820, 1980.
+\newblock \doi{10.1073/pnas.77.7.3816}.
+
+\bibitem[Yin and Yau(2015)]{yin2014}
+Changchuan Yin and Stephen S.-T. Yau.
+\newblock An improved model for whole genome phylogenetic analysis by {F}ourier
+  transform.
+\newblock \emph{Journal of Theoretical Biology}, 382:\penalty0 99--110, 2015.
+\newblock \doi{10.1016/j.jtbi.2015.06.033}.
+
+\bibitem[Johnson and Lindenstrauss(1984)]{johnson1984}
+William~B. Johnson and Joram Lindenstrauss.
+\newblock Extensions of {L}ipschitz mappings into a {H}ilbert space.
+\newblock \emph{Contemporary Mathematics}, 26:\penalty0 189--206, 1984.
+\newblock \doi{10.1090/conm/026/737400}.
+
+\bibitem[Rost(1999)]{ungar2005twilight}
+Burkhard Rost.
+\newblock Twilight zone of protein sequence alignments.
+\newblock \emph{Protein Engineering, Design and Selection}, 12\penalty0
+  (2):\penalty0 85--94, 1999.
+\newblock \doi{10.1093/protein/12.2.85}.
+
+\bibitem[Harris et~al.(2020)]{harris2020numpy}
+Charles~R. Harris et~al.
+\newblock Array programming with {NumPy}.
+\newblock \emph{Nature}, 585:\penalty0 357--362, 2020.
+\newblock \doi{10.1038/s41586-020-2649-2}.
+
+\bibitem[Virtanen et~al.(2020)]{virtanen2020scipy}
+Pauli Virtanen et~al.
+\newblock {SciPy} 1.0: fundamental algorithms for scientific computing in
+  {Python}.
+\newblock \emph{Nature Methods}, 17:\penalty0 261--272, 2020.
+\newblock \doi{10.1038/s41592-019-0686-2}.
+
+\bibitem[Hunter(2007)]{hunter2007matplotlib}
+John~D. Hunter.
+\newblock Matplotlib: a {2D} graphics environment.
+\newblock \emph{Computing in Science \& Engineering}, 9\penalty0 (3):\penalty0
+  90--95, 2007.
+\newblock \doi{10.1109/MCSE.2007.55}.
+
+\bibitem[{Khronos Group}(2017)]{webgl2}
+{Khronos Group}.
+\newblock {WebGL 2.0 Specification}, 2017.
+\newblock \url{https://registry.khronos.org/webgl/specs/latest/2.0/}.
+
+\bibitem[{Khronos Group}(2019)]{opengles3}
+{Khronos Group}.
+\newblock {OpenGL ES 3.2 Specification}, 2019.
+\newblock
+  \url{https://registry.khronos.org/OpenGL/specs/es/3.2/es_spec_3.2.pdf}.
+
+\bibitem[Malkov and Yashunin(2020)]{malkov2020}
+Yu.~A. Malkov and D.~A. Yashunin.
+\newblock Efficient and robust approximate nearest neighbor search using
+  hierarchical navigable small world graphs.
+\newblock \emph{IEEE Transactions on Pattern Analysis and Machine
+  Intelligence}, 42\penalty0 (4):\penalty0 824--836, 2020.
+\newblock \doi{10.1109/TPAMI.2018.2889473}.
+
+\bibitem[Johnson et~al.(2021)Johnson, Douze, and J{\'e}gou]{johnson2021}
+Jeff Johnson, Matthijs Douze, and Herv{\'e} J{\'e}gou.
+\newblock Billion-scale similarity search with {GPUs}.
+\newblock \emph{IEEE Transactions on Big Data}, 7\penalty0 (3):\penalty0
+  535--547, 2021.
+\newblock \doi{10.1109/TBDATA.2019.2921572}.
+
+\bibitem[Liu et~al.(2013)Liu, Wirawan, and Schmidt]{liu2013cudasw}
+Yongchao Liu, Adrianto Wirawan, and Bertil Schmidt.
+\newblock {CUDASW}++ 3.0: accelerating {S}mith-{W}aterman protein database
+  search by coupling {CPU} and {GPU} {SIMD} instructions.
+\newblock \emph{BMC Bioinformatics}, 14:\penalty0 117, 2013.
+\newblock \doi{10.1186/1471-2105-14-117}.
+
+\bibitem[Manavski and Valle(2008)]{manavski2008}
+Svetlin~A. Manavski and Giorgio Valle.
+\newblock {CUDA} compatible {GPU} cards as efficient hardware accelerators for
+  {S}mith-{W}aterman sequence alignment.
+\newblock \emph{BMC Bioinformatics}, 9\penalty0 (Suppl 2):\penalty0 S10, 2008.
+\newblock \doi{10.1186/1471-2105-9-S2-S10}.
+
+\bibitem[Rognes(2011)]{rognes2011}
+Torbj{\o}rn Rognes.
+\newblock Faster {S}mith-{W}aterman database searches with inter-sequence
+  {SIMD} parallelisation.
+\newblock \emph{BMC Bioinformatics}, 12:\penalty0 221, 2011.
+\newblock \doi{10.1186/1471-2105-12-221}.
+
+\bibitem[Bepler and Berger(2019)]{bepler2019}
+Tristan Bepler and Bonnie Berger.
+\newblock Learning protein sequence embeddings using information from
+  structure.
+\newblock \emph{International Conference on Learning Representations}, 2019.
+
+\bibitem[Rives et~al.(2021)Rives, Meier, Sercu, Goyal, Lin, Liu, Guo, Ott,
+  Zitnick, Ma, and Fergus]{rives2021}
+Alexander Rives, Joshua Meier, Tom Sercu, Siddharth Goyal, Zeming Lin, Jason
+  Liu, Demi Guo, Myle Ott, C.~Lawrence Zitnick, Jerry Ma, and Rob Fergus.
+\newblock Biological structure and function emerge from scaling unsupervised
+  learning to 250 million protein sequences.
+\newblock \emph{Proceedings of the National Academy of Sciences}, 118\penalty0
+  (15):\penalty0 e2016239118, 2021.
+\newblock \doi{10.1073/pnas.2016239118}.
+
+\bibitem[Elnaggar et~al.(2022)Elnaggar, Heinzinger, Dallago, Rehawi, Wang,
+  Jones, Gibbs, Feher, Angerer, Steinegger, Bhowmik, and Rost]{elnaggar2022}
+Ahmed Elnaggar, Michael Heinzinger, Christian Dallago, Ghalia Rehawi, Yu~Wang,
+  Llion Jones, Tom Gibbs, Tamas Feher, Christoph Angerer, Martin Steinegger,
+  Debsindhu Bhowmik, and Burkhard Rost.
+\newblock {ProtTrans}: toward understanding the language of life through
+  self-supervised learning.
+\newblock \emph{IEEE Transactions on Pattern Analysis and Machine
+  Intelligence}, 44\penalty0 (10):\penalty0 7112--7127, 2022.
+\newblock \doi{10.1109/TPAMI.2021.3095381}.
+
+\end{thebibliography}

@@ -1,0 +1,181 @@
+\relax 
+\providecommand\hyper@newdestlabel[2]{}
+\providecommand\HyField@AuxAddToFields[1]{}
+\providecommand\HyField@AuxAddToCoFields[2]{}
+\bibstyle{unsrtnat}
+\citation{needleman1970}
+\citation{smith1981}
+\citation{altschul1990,altschul1997}
+\citation{buchfink2015,buchfink2021}
+\citation{steinegger2017}
+\citation{li2018}
+\citation{broder1997,ondov2016}
+\citation{flajolet2007,baker2019}
+\citation{indyk1998,andoni2006}
+\citation{vinga2003,zielezinski2017,pierce2019,wood2019}
+\citation{anastassiou2001,voss1992,hoang2015}
+\citation{kyte1982,fauchere1988}
+\@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{2}{section.1}\protected@file@percent }
+\newlabel{sec:intro}{{1}{2}{Introduction}{section.1}{}}
+\citation{kyte1982}
+\citation{henikoff1992,dayhoff1978}
+\citation{oppenheim2009}
+\citation{anastassiou2001,trifonov1980}
+\citation{voss1992,hoang2015,yin2014}
+\@writefile{toc}{\contentsline {paragraph}{Scope.}{3}{section*.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2}Method}{3}{section.2}\protected@file@percent }
+\newlabel{sec:method}{{2}{3}{Method}{section.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Channelised sequence representation}{3}{subsection.2.1}\protected@file@percent }
+\newlabel{sec:method:channels}{{2.1}{3}{Channelised sequence representation}{subsection.2.1}{}}
+\@writefile{toc}{\contentsline {paragraph}{DNA.}{3}{section*.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Protein.}{3}{section*.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Spectral embedding}{3}{subsection.2.2}\protected@file@percent }
+\newlabel{sec:method:embed}{{2.2}{3}{Spectral embedding}{subsection.2.2}{}}
+\newlabel{eq:cos}{{6}{3}{Spectral embedding}{equation.6}{}}
+\@writefile{toc}{\contentsline {paragraph}{Rationale.}{3}{section*.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Fragment-shader similarity kernel}{3}{subsection.2.3}\protected@file@percent }
+\newlabel{sec:method:shader}{{2.3}{3}{Fragment-shader similarity kernel}{subsection.2.3}{}}
+\newlabel{eq:shader:op}{{7}{3}{Fragment-shader similarity kernel}{equation.7}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces \textbf  {Spectral Coordinate Embedding: From Sequence to Shader Input.} (\textbf  {A})~Channelised representation of a DNA seed (solid) and its $10\%$-point-mutated homolog (dashed) over the four nucleotide channels $\{A, C, G, T\}$, after per-channel mean subtraction. Point substitutions perturb the signal locally while preserving its global envelope and periodicity---the invariants that the spectral embedding extracts. (\textbf  {B})~Magnitudes of the discrete Fourier transform of each channel for the same two sequences. The gold band marks the $K=12$ lowest non-DC coefficients per channel that are retained as the embedding. Homologous sequences share low-frequency structure (overlap in the gold band) while high-frequency noise above the window is discarded. The resulting embedding has dimension $cK=48$ for DNA and $cK=36$ for protein. (\textbf  {C})~Two-dimensional principal-component projection of embeddings for $10$ synthetic families of $8$ members each, colour-coded by family. Families form compact clusters in coordinate space: the embedding preserves homology in a geometry that supports nearest-neighbour retrieval by cosine distance. (\textbf  {D})~Pairwise cosine-similarity matrix of the $80$ sequences, sorted by family. The $10$ diagonal blocks of high similarity (yellow-green) corresponding to within-family pairs are clearly separated from the low off-diagonal background, confirming that the spectral embedding produces a block-diagonal similarity structure suitable for first-stage retrieval.}}{4}{figure.caption.7}\protected@file@percent }
+\newlabel{fig:method}{{1}{4}{\textbf {Spectral Coordinate Embedding: From Sequence to Shader Input.} (\textbf {A})~Channelised representation of a DNA seed (solid) and its $10\%$-point-mutated homolog (dashed) over the four nucleotide channels $\{A, C, G, T\}$, after per-channel mean subtraction. Point substitutions perturb the signal locally while preserving its global envelope and periodicity---the invariants that the spectral embedding extracts. (\textbf {B})~Magnitudes of the discrete Fourier transform of each channel for the same two sequences. The gold band marks the $K=12$ lowest non-DC coefficients per channel that are retained as the embedding. Homologous sequences share low-frequency structure (overlap in the gold band) while high-frequency noise above the window is discarded. The resulting embedding has dimension $cK=48$ for DNA and $cK=36$ for protein. (\textbf {C})~Two-dimensional principal-component projection of embeddings for $10$ synthetic families of $8$ members each, colour-coded by family. Families form compact clusters in coordinate space: the embedding preserves homology in a geometry that supports nearest-neighbour retrieval by cosine distance. (\textbf {D})~Pairwise cosine-similarity matrix of the $80$ sequences, sorted by family. The $10$ diagonal blocks of high similarity (yellow-green) corresponding to within-family pairs are clearly separated from the low off-diagonal background, confirming that the spectral embedding produces a block-diagonal similarity structure suitable for first-stage retrieval}{figure.caption.7}{}}
+\citation{johnson1984,indyk1998}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces Fragment-shader first-pass similarity kernel.}}{5}{algorithm.1}\protected@file@percent }
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
+\newlabel{alg:shader}{{1}{5}{Fragment-shader first-pass similarity kernel}{algorithm.1}{}}
+\newlabel{lst:shader}{{1}{5}{GLSL~ES fragment shader implementing Eq.~\ref {eq:shader:op} for $d = 4$. The query is passed as a uniform; the database is a single-channel floating-point texture of size $N_x \times N_y$ with four texels per sequence}{lstlisting.1}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {1}{\ignorespaces GLSL~ES fragment shader implementing Eq.~\ref {eq:shader:op} for $d = 4$. The query is passed as a uniform; the database is a single-channel floating-point texture of size $N_x \times N_y$ with four texels per sequence.}}{5}{lstlisting.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{CPU reference.}{5}{section*.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.4}Hierarchical coordinate addressing}{5}{subsection.2.4}\protected@file@percent }
+\newlabel{sec:method:addr}{{2.4}{5}{Hierarchical coordinate addressing}{subsection.2.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.5}Two-stage pipeline}{5}{subsection.2.5}\protected@file@percent }
+\newlabel{sec:method:pipeline}{{2.5}{5}{Two-stage pipeline}{subsection.2.5}{}}
+\citation{ungar2005twilight,dayhoff1978}
+\citation{broder1997,ondov2016}
+\citation{harris2020numpy}
+\citation{virtanen2020scipy}
+\citation{hunter2007matplotlib}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.6}Complexity}{6}{subsection.2.6}\protected@file@percent }
+\newlabel{sec:method:complex}{{2.6}{6}{Complexity}{subsection.2.6}{}}
+\newlabel{prop:firststage}{{2.1}{6}{First-stage cost}{theorem.2.1}{}}
+\newlabel{prop:endtoend}{{2.2}{6}{End-to-end cost}{theorem.2.2}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3}Experimental setup}{6}{section.3}\protected@file@percent }
+\newlabel{sec:exp:setup}{{3}{6}{Experimental setup}{section.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Synthetic benchmarks}{6}{subsection.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Rationale for synthetic data.}{6}{section*.10}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Baselines}{6}{subsection.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Smith--Waterman.}{6}{section*.11}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{$k$-mer Jaccard.}{6}{section*.12}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Implementation and hardware}{6}{subsection.3.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Reported metrics}{6}{subsection.3.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces \textbf  {Hierarchical Prefix Addressing: Recall vs.\ Filter Trade-off.} Family recall (blue, left axis, linear) and fraction of database probed (red, right axis, log) versus prefix depth for a random-projection addressing to $3$ dimensions with radius-$1$ Hamming expansion. Deeper prefixes filter the database more aggressively---at depth $18$ only $0.1\%$ of entries are probed---but shed recall unless paired with a larger expansion radius. At depth $3$, recall of true homologs is $0.87$ but the filter eliminates only half the database ($1.98\times $ speedup). At depth $6$ and beyond, recall has already dropped below $0.5$. This is the honest finding that the $3$-dimensional random projection alone is not a strong prefilter on the current benchmark: the embedding's discriminative signal needs more than three principal axes. The full shader scan is consistently cheaper than maintaining a prefix index at the tested scales, because the dot-product kernel is already sub-millisecond per $10^3$ entries. Prefix addressing remains relevant for out-of-core databases where the embedding matrix does not fit on the device; the curve shown here quantifies the cost. From \texttt  {exp\_04\_prefix\_addressing.json}.}}{7}{figure.caption.9}\protected@file@percent }
+\newlabel{fig:prefix}{{2}{7}{\textbf {Hierarchical Prefix Addressing: Recall vs.\ Filter Trade-off.} Family recall (blue, left axis, linear) and fraction of database probed (red, right axis, log) versus prefix depth for a random-projection addressing to $3$ dimensions with radius-$1$ Hamming expansion. Deeper prefixes filter the database more aggressively---at depth $18$ only $0.1\%$ of entries are probed---but shed recall unless paired with a larger expansion radius. At depth $3$, recall of true homologs is $0.87$ but the filter eliminates only half the database ($1.98\times $ speedup). At depth $6$ and beyond, recall has already dropped below $0.5$. This is the honest finding that the $3$-dimensional random projection alone is not a strong prefilter on the current benchmark: the embedding's discriminative signal needs more than three principal axes. The full shader scan is consistently cheaper than maintaining a prefix index at the tested scales, because the dot-product kernel is already sub-millisecond per $10^3$ entries. Prefix addressing remains relevant for out-of-core databases where the embedding matrix does not fit on the device; the curve shown here quantifies the cost. From \texttt {exp\_04\_prefix\_addressing.json}}{figure.caption.9}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces \textbf  {Top-$K$ Retrieval Against Smith--Waterman Ground Truth.} (\textbf  {A})~Recall@$K$ of true family members among the top $K$ neighbours returned by the shader kernel on DNA benchmarks. Three substitution rates are shown: $\mu \in \{0.05, 0.10, 0.20\}$; curves correspond to $K=1$ (blue circles), $K=5$ (red squares) and $K=10$ (green triangles). Recall@5 remains above $0.95$ for all tested divergences. Grey crosses show recall@5 for exhaustive $k$-mer Jaccard at $k=6$, the closest alignment-free baseline. (\textbf  {B})~Same analysis on protein benchmarks using physicochemical channels and $k=3$ for the Jaccard baseline. The embedding recovers recall@5 of $0.93$--$1.00$; the small gap to exhaustive Jaccard at $\mu = 0.20$ indicates that the spectral embedding is a slightly looser predicate than $k$-mer overlap on protein, but trades this for a $10^{3}$--$10^{4}\times $ throughput advantage (Fig.~\ref {fig:scaling}). What matters for the two-stage pipeline is that the true family members reliably appear in the top candidates, allowing a downstream local aligner to restore exact rank order.}}{7}{figure.caption.13}\protected@file@percent }
+\newlabel{fig:recall}{{3}{7}{\textbf {Top-$K$ Retrieval Against Smith--Waterman Ground Truth.} (\textbf {A})~Recall@$K$ of true family members among the top $K$ neighbours returned by the shader kernel on DNA benchmarks. Three substitution rates are shown: $\mu \in \{0.05, 0.10, 0.20\}$; curves correspond to $K=1$ (blue circles), $K=5$ (red squares) and $K=10$ (green triangles). Recall@5 remains above $0.95$ for all tested divergences. Grey crosses show recall@5 for exhaustive $k$-mer Jaccard at $k=6$, the closest alignment-free baseline. (\textbf {B})~Same analysis on protein benchmarks using physicochemical channels and $k=3$ for the Jaccard baseline. The embedding recovers recall@5 of $0.93$--$1.00$; the small gap to exhaustive Jaccard at $\mu = 0.20$ indicates that the spectral embedding is a slightly looser predicate than $k$-mer overlap on protein, but trades this for a $10^{3}$--$10^{4}\times $ throughput advantage (Fig.~\ref {fig:scaling}). What matters for the two-stage pipeline is that the true family members reliably appear in the top candidates, allowing a downstream local aligner to restore exact rank order}{figure.caption.13}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Homolog--non-homolog separation, $F = 40$ families of $M = 8$ members. Values from \texttt  {exp\_01\_embedding\_separation.json}.}}{8}{table.caption.15}\protected@file@percent }
+\newlabel{tab:sep}{{1}{8}{Homolog--non-homolog separation, $F = 40$ families of $M = 8$ members. Values from \texttt {exp\_01\_embedding\_separation.json}}{table.caption.15}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Results}{8}{section.4}\protected@file@percent }
+\newlabel{sec:exp}{{4}{8}{Results}{section.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Separation of homologs from non-homologs}{8}{subsection.4.1}\protected@file@percent }
+\newlabel{sec:exp:sep}{{4.1}{8}{Separation of homologs from non-homologs}{subsection.4.1}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Ranking agreement at small scale ($F=12$, $M=6$). Spearman's $\rho $ between shader cosine similarity and Smith--Waterman or $k$-mer Jaccard; recall@5 compared against exhaustive Jaccard.}}{8}{table.caption.16}\protected@file@percent }
+\newlabel{tab:rank}{{2}{8}{Ranking agreement at small scale ($F=12$, $M=6$). Spearman's $\rho $ between shader cosine similarity and Smith--Waterman or $k$-mer Jaccard; recall@5 compared against exhaustive Jaccard}{table.caption.16}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Ranking agreement and recall}{8}{subsection.4.2}\protected@file@percent }
+\newlabel{sec:exp:rank}{{4.2}{8}{Ranking agreement and recall}{subsection.4.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Scaling behaviour}{8}{subsection.4.3}\protected@file@percent }
+\newlabel{sec:exp:scaling}{{4.3}{8}{Scaling behaviour}{subsection.4.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces \textbf  {Homolog vs.\ Non-Homolog Separation Across the Twilight Zone.} (\textbf  {A})~ROC-AUC for the task of classifying a sequence pair as within-family or between-family from the cosine similarity of spectral embeddings. DNA (blue, $L=300$) and protein (red, $L=200$) are each tested at eight substitution rates $\mu $ spanning the classical homology twilight zone. Both alphabets saturate (AUC $=1.000$) for $\mu \le 0.10$ and retain AUC $\ge 0.97$ through $\mu = 0.20$. Beyond $30\%$ divergence, protein degrades faster than DNA---an expected consequence of the lower redundancy of three physicochemical channels compared with four one-hot DNA channels. The grey dotted line marks the chance level (AUC $=0.5$). (\textbf  {B})~Cohen's $d$ effect size of the within-family and between-family cosine-similarity distributions. Effect size is very large by conventional benchmarks ($d \ge 2.6$) through $\mu = 0.20$ and remains large ($d \ge 0.8$) through $\mu = 0.40$. Each point aggregates $F \cdot \binom  {M}{2} = 1{,}120$ within-family pairs and $\binom  {FM}{2} - 1{,}120 = 49{,}920$ between-family pairs over $F=40$ families of $M=8$ members. All values are from \texttt  {exp\_01\_embedding\_separation.json}; no parameter was tuned after the fact.}}{9}{figure.caption.14}\protected@file@percent }
+\newlabel{fig:separation}{{4}{9}{\textbf {Homolog vs.\ Non-Homolog Separation Across the Twilight Zone.} (\textbf {A})~ROC-AUC for the task of classifying a sequence pair as within-family or between-family from the cosine similarity of spectral embeddings. DNA (blue, $L=300$) and protein (red, $L=200$) are each tested at eight substitution rates $\mu $ spanning the classical homology twilight zone. Both alphabets saturate (AUC $=1.000$) for $\mu \le 0.10$ and retain AUC $\ge 0.97$ through $\mu = 0.20$. Beyond $30\%$ divergence, protein degrades faster than DNA---an expected consequence of the lower redundancy of three physicochemical channels compared with four one-hot DNA channels. The grey dotted line marks the chance level (AUC $=0.5$). (\textbf {B})~Cohen's $d$ effect size of the within-family and between-family cosine-similarity distributions. Effect size is very large by conventional benchmarks ($d \ge 2.6$) through $\mu = 0.20$ and remains large ($d \ge 0.8$) through $\mu = 0.40$. Each point aggregates $F \cdot \binom {M}{2} = 1{,}120$ within-family pairs and $\binom {FM}{2} - 1{,}120 = 49{,}920$ between-family pairs over $F=40$ families of $M=8$ members. All values are from \texttt {exp\_01\_embedding\_separation.json}; no parameter was tuned after the fact}{figure.caption.14}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces \textbf  {Scaling of the Shader Kernel from $10^{2}$ to $10^{5}$ Sequences.} (\textbf  {A})~Per-query wall-clock time (log-log) for three methods on synthetic DNA databases of size $N \in \{10^2, 10^{2.5}, 10^3, 10^{3.5}, 10^4, 10^{4.5}, 10^5\}$. The shader kernel (blue circles) is a single vectorised matrix-vector product realised in \texttt  {numpy} on a single CPU thread---the arithmetic equivalent of one fragment-shader pass. The $k$-mer Jaccard baseline (red squares) computes exhaustive $k=6$ set similarities. Smith--Waterman (green triangles) is linearly extrapolated from a $200$-sequence probe; the extrapolation is exact for pure dynamic programming because the algorithm is $\mathcal  {O}(mnN)$ with a constant per-cell cost. At $N=10^5$, the shader runs in $1.1$~ms, Jaccard in $14.8$~s, and extrapolated Smith--Waterman in $8{,}915$~s. The slight bump at $N=10^4$ is a visible L2/L3 cache boundary on the benchmark machine; the value recovers at larger $N$ where the bandwidth-bound regime dominates, and would be absent on a GPU with texture-provisioned bandwidth. (\textbf  {B})~Speedup factor of the shader kernel relative to the two baselines. Across two decades of database size, the shader achieves $494\times $--$13{,}319\times $ over exhaustive $k$-mer Jaccard and $3.7\times 10^{5}$--$8.0\times 10^{6}\times $ over extrapolated Smith--Waterman. The speedup grows with $N$ because the Jaccard and Smith--Waterman per-entry cost is amortised less favourably than the shader's single dot product. Values from \texttt  {exp\_03\_scaling.json}; the one-time embedding build cost of $8.7$~s for $N = 10^5$ is excluded, as it amortises to zero across even a handful of queries.}}{9}{figure.caption.17}\protected@file@percent }
+\newlabel{fig:scaling}{{5}{9}{\textbf {Scaling of the Shader Kernel from $10^{2}$ to $10^{5}$ Sequences.} (\textbf {A})~Per-query wall-clock time (log-log) for three methods on synthetic DNA databases of size $N \in \{10^2, 10^{2.5}, 10^3, 10^{3.5}, 10^4, 10^{4.5}, 10^5\}$. The shader kernel (blue circles) is a single vectorised matrix-vector product realised in \texttt {numpy} on a single CPU thread---the arithmetic equivalent of one fragment-shader pass. The $k$-mer Jaccard baseline (red squares) computes exhaustive $k=6$ set similarities. Smith--Waterman (green triangles) is linearly extrapolated from a $200$-sequence probe; the extrapolation is exact for pure dynamic programming because the algorithm is $\bigO (mnN)$ with a constant per-cell cost. At $N=10^5$, the shader runs in $1.1$~ms, Jaccard in $14.8$~s, and extrapolated Smith--Waterman in $8{,}915$~s. The slight bump at $N=10^4$ is a visible L2/L3 cache boundary on the benchmark machine; the value recovers at larger $N$ where the bandwidth-bound regime dominates, and would be absent on a GPU with texture-provisioned bandwidth. (\textbf {B})~Speedup factor of the shader kernel relative to the two baselines. Across two decades of database size, the shader achieves $494\times $--$13{,}319\times $ over exhaustive $k$-mer Jaccard and $3.7\times 10^{5}$--$8.0\times 10^{6}\times $ over extrapolated Smith--Waterman. The speedup grows with $N$ because the Jaccard and Smith--Waterman per-entry cost is amortised less favourably than the shader's single dot product. Values from \texttt {exp\_03\_scaling.json}; the one-time embedding build cost of $8.7$~s for $N = 10^5$ is excluded, as it amortises to zero across even a handful of queries}{figure.caption.17}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Per-query wall-clock time (means over five queries) on a single CPU thread. Shader: vectorised dot product. Jaccard: exhaustive $k$-mer set computation with $k = 6$. Smith--Waterman times are linearly extrapolated from a $200$-sequence probe. From \texttt  {exp\_03\_scaling.json}.}}{10}{table.caption.18}\protected@file@percent }
+\newlabel{tab:scaling}{{3}{10}{Per-query wall-clock time (means over five queries) on a single CPU thread. Shader: vectorised dot product. Jaccard: exhaustive $k$-mer set computation with $k = 6$. Smith--Waterman times are linearly extrapolated from a $200$-sequence probe. From \texttt {exp\_03\_scaling.json}}{table.caption.18}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Prefix-addressing recall versus database fraction probed, with radius-1 expansion. From \texttt  {exp\_04\_prefix\_addressing.json}.}}{10}{table.caption.19}\protected@file@percent }
+\newlabel{tab:prefix}{{4}{10}{Prefix-addressing recall versus database fraction probed, with radius-1 expansion. From \texttt {exp\_04\_prefix\_addressing.json}}{table.caption.19}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Hierarchical prefix addressing}{10}{subsection.4.4}\protected@file@percent }
+\newlabel{sec:exp:addr}{{4.4}{10}{Hierarchical prefix addressing}{subsection.4.4}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces End-to-end pipeline on a 1000-sequence protein database. Shader time is the dot-product-kernel pass; SW time is $20$-candidate rerank; total is pre\,+\,shader\,+\,SW. Values from \texttt  {exp\_05\_end\_to\_end.json}.}}{10}{table.caption.22}\protected@file@percent }
+\newlabel{tab:e2e}{{5}{10}{End-to-end pipeline on a 1000-sequence protein database. Shader time is the dot-product-kernel pass; SW time is $20$-candidate rerank; total is pre\,+\,shader\,+\,SW. Values from \texttt {exp\_05\_end\_to\_end.json}}{table.caption.22}{}}
+\@writefile{toc}{\contentsline {paragraph}{Honest finding.}{10}{section*.20}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5}End-to-end pipeline}{10}{subsection.4.5}\protected@file@percent }
+\newlabel{sec:exp:e2e}{{4.5}{10}{End-to-end pipeline}{subsection.4.5}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces \textbf  {Speed vs.\ Recall Pareto of the End-to-End Pipeline.} Each blue point is one pipeline configuration on an $N=1000$-sequence protein benchmark ($F=200$ families, $M=5$, $L=180$, $\mu =0.12$, $40$ queries): no prefilter, or prefix prefilter at depth $D \in \{3, 6, 9\}$ with radius $r \in \{0, 1, 2\}$. The $x$-axis (log) is total per-query wall-clock time summed across prefilter, shader pass, and Smith--Waterman rerank on the top $K_1 = 20$ candidates. The $y$-axis is recall@$10$ against true family membership. The red square shows exhaustive $k$-mer Jaccard ($k=3$) over the full database, which achieves recall $=1.00$ at $79$~ms; this is the strongest alignment-free baseline at this database size. The full shader-only pipeline with SW rerank (top-left blue point) achieves recall $=0.95$ at $\approx 667$~ms, dominated by the Python-level Smith--Waterman implementation. Within the pipeline the shader first stage consumes $<0.1$~ms---its contribution is invisible on the log axis. Two conclusions follow. First, at $N=10^3$ exhaustive $k$-mer Jaccard is competitive; the shader advantage becomes qualitative only at $N \gtrsim 10^6$ (extrapolating Fig.~\ref {fig:scaling}). Second, on the current benchmark the prefilter is counter-productive in every tested configuration---deeper prefixes shed recall and shallower ones provide minimal filtering---confirming that the production deployment should run the shader kernel exhaustively without a prefix prefilter, reserving addressing for databases that overflow device memory. Values from \texttt  {exp\_05\_end\_to\_end.json}.}}{11}{figure.caption.21}\protected@file@percent }
+\newlabel{fig:pareto}{{6}{11}{\textbf {Speed vs.\ Recall Pareto of the End-to-End Pipeline.} Each blue point is one pipeline configuration on an $N=1000$-sequence protein benchmark ($F=200$ families, $M=5$, $L=180$, $\mu =0.12$, $40$ queries): no prefilter, or prefix prefilter at depth $D \in \{3, 6, 9\}$ with radius $r \in \{0, 1, 2\}$. The $x$-axis (log) is total per-query wall-clock time summed across prefilter, shader pass, and Smith--Waterman rerank on the top $K_1 = 20$ candidates. The $y$-axis is recall@$10$ against true family membership. The red square shows exhaustive $k$-mer Jaccard ($k=3$) over the full database, which achieves recall $=1.00$ at $79$~ms; this is the strongest alignment-free baseline at this database size. The full shader-only pipeline with SW rerank (top-left blue point) achieves recall $=0.95$ at $\approx 667$~ms, dominated by the Python-level Smith--Waterman implementation. Within the pipeline the shader first stage consumes $<0.1$~ms---its contribution is invisible on the log axis. Two conclusions follow. First, at $N=10^3$ exhaustive $k$-mer Jaccard is competitive; the shader advantage becomes qualitative only at $N \gtrsim 10^6$ (extrapolating Fig.~\ref {fig:scaling}). Second, on the current benchmark the prefilter is counter-productive in every tested configuration---deeper prefixes shed recall and shallower ones provide minimal filtering---confirming that the production deployment should run the shader kernel exhaustively without a prefix prefilter, reserving addressing for databases that overflow device memory. Values from \texttt {exp\_05\_end\_to\_end.json}}{figure.caption.21}{}}
+\citation{webgl2,opengles3}
+\citation{voss1992}
+\citation{malkov2020,johnson2021}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Discussion}{12}{section.5}\protected@file@percent }
+\newlabel{sec:discussion}{{5}{12}{Discussion}{section.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Where the method wins}{12}{subsection.5.1}\protected@file@percent }
+\newlabel{sec:discussion:wins}{{5.1}{12}{Where the method wins}{subsection.5.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Where it loses}{12}{subsection.5.2}\protected@file@percent }
+\newlabel{sec:discussion:limits}{{5.2}{12}{Where it loses}{subsection.5.2}{}}
+\citation{broder1997,ondov2016}
+\citation{flajolet2007,baker2019}
+\citation{pierce2019}
+\citation{voss1992,anastassiou2001,trifonov1980,hoang2015,yin2014}
+\citation{liu2013cudasw,manavski2008,rognes2011}
+\citation{bepler2019,rives2021,elnaggar2022}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Expected GPU throughput}{13}{subsection.5.3}\protected@file@percent }
+\newlabel{sec:discussion:gpu}{{5.3}{13}{Expected GPU throughput}{subsection.5.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4}Relation to prior work}{13}{subsection.5.4}\protected@file@percent }
+\newlabel{sec:related}{{5.4}{13}{Relation to prior work}{subsection.5.4}{}}
+\@writefile{toc}{\contentsline {paragraph}{Alignment-free sketching.}{13}{section*.23}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Genomic signal processing.}{13}{section*.24}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{GPU sequence alignment.}{13}{section*.25}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Deep embeddings.}{13}{section*.26}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.5}Applications}{13}{subsection.5.5}\protected@file@percent }
+\newlabel{sec:apps}{{5.5}{13}{Applications}{subsection.5.5}{}}
+\@writefile{toc}{\contentsline {paragraph}{First-stage filters in classical pipelines.}{13}{section*.27}\protected@file@percent }
+\citation{malkov2020,johnson2021}
+\bibdata{references}
+\bibcite{needleman1970}{{1}{1970}{{Needleman and Wunsch}}{{}}}
+\bibcite{smith1981}{{2}{1981}{{Smith and Waterman}}{{}}}
+\bibcite{altschul1990}{{3}{1990}{{Altschul et~al.}}{{Altschul, Gish, Miller, Myers, and Lipman}}}
+\bibcite{altschul1997}{{4}{1997}{{Altschul et~al.}}{{Altschul, Madden, Sch{\"a}ffer, Zhang, Zhang, Miller, and Lipman}}}
+\@writefile{toc}{\contentsline {paragraph}{Client-side and edge deployments.}{14}{section*.28}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.6}Future work}{14}{subsection.5.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6}Conclusion}{14}{section.6}\protected@file@percent }
+\newlabel{sec:conclusion}{{6}{14}{Conclusion}{section.6}{}}
+\@writefile{toc}{\contentsline {paragraph}{Data and code availability.}{14}{section*.29}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Author contributions.}{14}{section*.30}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Conflicts of interest.}{14}{section*.31}\protected@file@percent }
+\bibcite{buchfink2015}{{5}{2015}{{Buchfink et~al.}}{{Buchfink, Xie, and Huson}}}
+\bibcite{buchfink2021}{{6}{2021}{{Buchfink et~al.}}{{Buchfink, Reuter, and Drost}}}
+\bibcite{steinegger2017}{{7}{2017}{{Steinegger and S{\"o}ding}}{{}}}
+\bibcite{li2018}{{8}{2018}{{Li}}{{}}}
+\bibcite{broder1997}{{9}{1997}{{Broder}}{{}}}
+\bibcite{ondov2016}{{10}{2016}{{Ondov et~al.}}{{Ondov, Treangen, Melsted, Mallonee, Bergman, Koren, and Phillippy}}}
+\bibcite{flajolet2007}{{11}{2007}{{Flajolet et~al.}}{{Flajolet, Fusy, Gandouet, and Meunier}}}
+\bibcite{baker2019}{{12}{2019}{{Baker and Langmead}}{{}}}
+\bibcite{indyk1998}{{13}{1998}{{Indyk and Motwani}}{{}}}
+\bibcite{andoni2006}{{14}{2006}{{Andoni and Indyk}}{{}}}
+\bibcite{vinga2003}{{15}{2003}{{Vinga and Almeida}}{{}}}
+\bibcite{zielezinski2017}{{16}{2017}{{Zielezinski et~al.}}{{Zielezinski, Vinga, Almeida, and Karlowski}}}
+\bibcite{pierce2019}{{17}{2019}{{Pierce et~al.}}{{Pierce, Irber, Reiter, Brooks, and Brown}}}
+\bibcite{wood2019}{{18}{2019}{{Wood et~al.}}{{Wood, Lu, and Langmead}}}
+\bibcite{anastassiou2001}{{19}{2001}{{Anastassiou}}{{}}}
+\bibcite{voss1992}{{20}{1992}{{Voss}}{{}}}
+\bibcite{hoang2015}{{21}{2015}{{Hoang et~al.}}{{Hoang, Yin, Zheng, Yu, Lucy~He, and Yau}}}
+\bibcite{kyte1982}{{22}{1982}{{Kyte and Doolittle}}{{}}}
+\bibcite{fauchere1988}{{23}{1988}{{Fauch{\`e}re et~al.}}{{Fauch{\`e}re, Charton, Kier, Verloop, and Pliska}}}
+\bibcite{henikoff1992}{{24}{1992}{{Henikoff and Henikoff}}{{}}}
+\bibcite{dayhoff1978}{{25}{1978}{{Dayhoff et~al.}}{{Dayhoff, Schwartz, and Orcutt}}}
+\bibcite{oppenheim2009}{{26}{2009}{{Oppenheim and Schafer}}{{}}}
+\bibcite{trifonov1980}{{27}{1980}{{Trifonov and Sussman}}{{}}}
+\bibcite{yin2014}{{28}{2015}{{Yin and Yau}}{{}}}
+\bibcite{johnson1984}{{29}{1984}{{Johnson and Lindenstrauss}}{{}}}
+\bibcite{ungar2005twilight}{{30}{1999}{{Rost}}{{}}}
+\bibcite{harris2020numpy}{{31}{2020}{{Harris et~al.}}{{}}}
+\bibcite{virtanen2020scipy}{{32}{2020}{{Virtanen et~al.}}{{}}}
+\bibcite{hunter2007matplotlib}{{33}{2007}{{Hunter}}{{}}}
+\bibcite{webgl2}{{34}{2017}{{Khronos Group}}{{}}}
+\bibcite{opengles3}{{35}{2019}{{Khronos Group}}{{}}}
+\bibcite{malkov2020}{{36}{2020}{{Malkov and Yashunin}}{{}}}
+\bibcite{johnson2021}{{37}{2021}{{Johnson et~al.}}{{Johnson, Douze, and J{\'e}gou}}}
+\bibcite{liu2013cudasw}{{38}{2013}{{Liu et~al.}}{{Liu, Wirawan, and Schmidt}}}
+\bibcite{manavski2008}{{39}{2008}{{Manavski and Valle}}{{}}}
+\bibcite{rognes2011}{{40}{2011}{{Rognes}}{{}}}
+\bibcite{bepler2019}{{41}{2019}{{Bepler and Berger}}{{}}}
+\bibcite{rives2021}{{42}{2021}{{Rives et~al.}}{{Rives, Meier, Sercu, Goyal, Lin, Liu, Guo, Ott, Zitnick, Ma, and Fergus}}}
+\bibcite{elnaggar2022}{{43}{2022}{{Elnaggar et~al.}}{{Elnaggar, Heinzinger, Dallago, Rehawi, Wang, Jones, Gibbs, Feher, Angerer, Steinegger, Bhowmik, and Rost}}}
+\gdef \@abspage@last{17}
