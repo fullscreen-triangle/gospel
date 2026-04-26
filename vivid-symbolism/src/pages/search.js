@@ -1,10 +1,20 @@
 import Head from "next/head";
 import { useEffect, useMemo, useRef, useState } from "react";
 
-import AnimatedText from "@/components/AnimatedText";
 import Layout from "@/components/Layout";
 import TransitionEffect from "@/components/TransitionEffect";
-import { spectralEmbedding, shaderKernelTopK } from "@/lib/embedding";
+import {
+  spectralEmbedding,
+  spectralEmbeddingDetail,
+  shaderKernelScan,
+  build2DProjection,
+} from "@/lib/embedding";
+
+import SimilarityHistogram from "@/components/charts/SimilarityHistogram";
+import FamilyDistribution from "@/components/charts/FamilyDistribution";
+import RankProfile from "@/components/charts/RankProfile";
+import EmbeddingMap from "@/components/charts/EmbeddingMap";
+import QuerySpectrum from "@/components/charts/QuerySpectrum";
 
 const DEMO_DNA = `ATGCGTACCTGATCGTACGTAGCTAGCTACGATCGATCGATCGTACGTAGCTAGCTACGA
 TCGATCGATCGTACGTAGCTAGCTACGATCGATCGATCGTACGTAGCTAGCTACGATCGA
@@ -34,6 +44,20 @@ function downloadText(name, content) {
   URL.revokeObjectURL(url);
 }
 
+function StatTile({ label, value, sub }) {
+  return (
+    <div className="rounded-lg border-2 border-dark p-3 dark:border-light">
+      <div className="text-xs font-semibold uppercase tracking-wide text-primary dark:text-primaryDark">
+        {label}
+      </div>
+      <div className="mt-1 font-mono text-xl font-bold dark:text-light">{value}</div>
+      {sub ? (
+        <div className="mt-0.5 text-[11px] font-medium text-dark/70 dark:text-light/70">{sub}</div>
+      ) : null}
+    </div>
+  );
+}
+
 export default function Search() {
   const [kind, setKind] = useState("protein");
   const [query, setQuery] = useState(DEMO_PROTEIN);
@@ -43,6 +67,9 @@ export default function Search() {
   const [dbError, setDbError] = useState(null);
   const [results, setResults] = useState(null);
   const [lastTiming, setLastTiming] = useState(null);
+  const [queryDetail, setQueryDetail] = useState(null);
+  const [scoreVec, setScoreVec] = useState(null);
+  const [queryProj, setQueryProj] = useState(null);
   const dbCache = useRef({});
 
   useEffect(() => {
@@ -53,11 +80,8 @@ export default function Search() {
     if (cached) {
       setDb(cached);
       setDbLoading(false);
-      return () => {
-        cancelled = true;
-      };
+      return () => { cancelled = true; };
     }
-
     const url = kind === "dna" ? "/data/sample_db_dna.json" : "/data/sample_db_protein.json";
     fetch(url)
       .then((r) => {
@@ -67,12 +91,15 @@ export default function Search() {
       .then((data) => {
         if (cancelled) return;
         const flat = new Float32Array(data.embeddings_flat);
+        const projector = build2DProjection(flat, data.embed_dim);
         const prepared = {
           kind: data.kind,
           nCoefficients: data.n_coefficients,
           dim: data.embed_dim,
           sequences: data.sequences,
           flat,
+          projection: projector.coords,
+          project: projector.project,
         };
         dbCache.current[kind] = prepared;
         setDb(prepared);
@@ -83,9 +110,7 @@ export default function Search() {
         setDbError(err.message);
         setDbLoading(false);
       });
-    return () => {
-      cancelled = true;
-    };
+    return () => { cancelled = true; };
   }, [kind]);
 
   const cleanedQuery = useMemo(() => cleanSequence(query, kind), [query, kind]);
@@ -93,17 +118,20 @@ export default function Search() {
   const run = () => {
     if (!db || !cleanedQuery || cleanedQuery.length < 10) {
       setResults(null);
+      setScoreVec(null);
+      setQueryDetail(null);
+      setQueryProj(null);
       return;
     }
     const t0 = performance.now();
-    const qv = spectralEmbedding(cleanedQuery, db.nCoefficients, kind);
+    const detail = spectralEmbeddingDetail(cleanedQuery, db.nCoefficients, kind);
     const tEmbed = performance.now() - t0;
 
     const t1 = performance.now();
-    const hits = shaderKernelTopK(db.flat, db.dim, qv, topK);
+    const scan = shaderKernelScan(db.flat, db.dim, detail.vector, topK);
     const tShader = performance.now() - t1;
 
-    const enriched = hits.map((h) => {
+    const enriched = scan.topK.map((h) => {
       const s = db.sequences[h.index];
       return {
         ...h,
@@ -114,232 +142,224 @@ export default function Search() {
         distance: Math.max(0, 1 - h.score),
       };
     });
+    const projected = db.project(detail.vector);
+
     setResults(enriched);
+    setScoreVec(scan.scores);
+    setQueryDetail(detail);
+    setQueryProj(projected);
     setLastTiming({
       embedMs: tEmbed,
       shaderMs: tShader,
       totalMs: tEmbed + tShader,
-      dim: qv.length,
+      dim: detail.vector.length,
       querySeqLen: cleanedQuery.length,
       dbSize: db.sequences.length,
     });
   };
 
-  const pasteDemo = () => {
-    setQuery(kind === "dna" ? DEMO_DNA : DEMO_PROTEIN);
-  };
-
-  const clear = () => {
+  const pasteDemo = () => setQuery(kind === "dna" ? DEMO_DNA : DEMO_PROTEIN);
+  const clearAll = () => {
     setQuery("");
     setResults(null);
+    setScoreVec(null);
+    setQueryDetail(null);
+    setQueryProj(null);
     setLastTiming(null);
   };
+
+  const summaryStats = useMemo(() => {
+    if (!results || !scoreVec) return null;
+    const arr = Array.from(scoreVec);
+    arr.sort((a, b) => a - b);
+    const med = arr[Math.floor(arr.length / 2)];
+    const mean = arr.reduce((a, b) => a + b, 0) / arr.length;
+    const std = Math.sqrt(arr.reduce((s, v) => s + (v - mean) ** 2, 0) / arr.length);
+    const top1 = results[0]?.score ?? 0;
+    const z = std > 0 ? (top1 - mean) / std : 0;
+    const dominant = (() => {
+      const counts = new Map();
+      for (const r of results) counts.set(r.family, (counts.get(r.family) || 0) + 1);
+      const best = [...counts.entries()].sort((a, b) => b[1] - a[1])[0];
+      return best ? { family: best[0], hits: best[1] } : null;
+    })();
+    return { mean, std, med, top1, z, dominant };
+  }, [results, scoreVec]);
 
   return (
     <>
       <Head>
-        <title>Shader Homology Search &middot; Gospel</title>
-        <meta
-          name="description"
-          content="Client-side shader-based homology search over a spectral coordinate embedding. Paste a DNA or protein sequence and scan a sample database in milliseconds."
-        />
+        <title>Search &middot; Gospel Homology</title>
       </Head>
 
       <TransitionEffect />
       <main className="mb-16 flex w-full flex-col items-center justify-center dark:text-light">
-        <Layout className="pt-16">
-          <AnimatedText
-            text="Homology Search"
-            className="mb-12 !text-7xl !leading-tight lg:!text-6xl sm:mb-6 sm:!text-5xl xs:!text-3xl"
-          />
-
-          <p className="mb-8 max-w-3xl text-base font-medium dark:text-light md:text-sm">
-            Paste a DNA or protein sequence, then scan a bundled sample
-            database through the spectral-embedding kernel. The entire search
-            runs in your browser. No data leaves your device.
+        <Layout className="pt-12">
+          <h1 className="text-4xl font-bold sm:text-3xl">Homology search</h1>
+          <p className="mt-2 max-w-3xl text-sm font-medium dark:text-light/80">
+            Paste a sequence, scan a bundled database in your browser, see the
+            full distribution of matches.
           </p>
 
-          <section className="grid grid-cols-12 gap-8 lg:gap-6">
-            <div className="col-span-8 lg:col-span-12">
-              <div className="mb-4 flex items-center gap-4 sm:flex-wrap">
-                <label className="flex items-center gap-2 text-base font-semibold">
+          <section className="mt-8 grid grid-cols-12 gap-6">
+            <div className="col-span-12 lg:col-span-12">
+              <div className="mb-3 flex flex-wrap items-center gap-3">
+                <label className="flex items-center gap-2 text-sm font-semibold">
                   Kind
                   <select
                     value={kind}
                     onChange={(e) => setKind(e.target.value)}
-                    className="rounded-md border-2 border-dark bg-light px-3 py-1 text-base font-medium
+                    className="rounded-md border-2 border-dark bg-light px-2 py-1 font-medium
                       dark:border-light dark:bg-dark dark:text-light"
                   >
                     <option value="protein">protein</option>
                     <option value="dna">DNA</option>
                   </select>
                 </label>
-
-                <label className="flex items-center gap-2 text-base font-semibold">
+                <label className="flex items-center gap-2 text-sm font-semibold">
                   Top
                   <input
-                    type="number"
-                    min={1}
-                    max={50}
-                    value={topK}
+                    type="number" min={1} max={50} value={topK}
                     onChange={(e) => setTopK(parseInt(e.target.value, 10) || 10)}
-                    className="w-20 rounded-md border-2 border-dark bg-light px-3 py-1 text-base font-medium
+                    className="w-16 rounded-md border-2 border-dark bg-light px-2 py-1 font-medium
                       dark:border-light dark:bg-dark dark:text-light"
                   />
                 </label>
-
-                <button
-                  type="button"
-                  onClick={pasteDemo}
-                  className="rounded-md border-2 border-dark px-3 py-1 text-base font-semibold
-                    hover:bg-dark hover:text-light dark:border-light dark:hover:bg-light dark:hover:text-dark"
-                >
-                  Load demo
+                <button type="button" onClick={pasteDemo}
+                  className="rounded-md border-2 border-dark px-3 py-1 text-sm font-semibold
+                    hover:bg-dark hover:text-light dark:border-light dark:hover:bg-light dark:hover:text-dark">
+                  Demo
                 </button>
-                <button
-                  type="button"
-                  onClick={clear}
-                  className="rounded-md border-2 border-dark px-3 py-1 text-base font-semibold
-                    hover:bg-dark hover:text-light dark:border-light dark:hover:bg-light dark:hover:text-dark"
-                >
+                <button type="button" onClick={clearAll}
+                  className="rounded-md border-2 border-dark px-3 py-1 text-sm font-semibold
+                    hover:bg-dark hover:text-light dark:border-light dark:hover:bg-light dark:hover:text-dark">
                   Clear
                 </button>
+                <span className="ml-auto text-xs font-medium text-dark/70 dark:text-light/70">
+                  {dbLoading
+                    ? "loading database..."
+                    : dbError
+                    ? `error: ${dbError}`
+                    : `db: ${db.sequences.length} ${db.kind}, ${db.dim}-dim`}
+                </span>
               </div>
 
               <textarea
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 spellCheck={false}
-                rows={10}
-                className="w-full rounded-xl border-2 border-dark bg-light p-4 font-mono text-sm leading-relaxed
+                rows={6}
+                className="w-full rounded-xl border-2 border-dark bg-light p-3 font-mono text-sm leading-relaxed
                   focus:outline-none focus:ring-2 focus:ring-primary
                   dark:border-light dark:bg-dark dark:text-light"
-                placeholder={kind === "dna" ? "paste a DNA sequence (ACGT)" : "paste a protein sequence (single-letter amino acids)"}
+                placeholder={kind === "dna" ? "paste a DNA sequence (ACGT)" : "paste a protein sequence"}
               />
-
-              <div className="mt-2 flex items-center justify-between text-sm font-medium text-dark/80 dark:text-light/70">
-                <span>
-                  sequence length: <strong>{cleanedQuery.length}</strong>
-                  {cleanedQuery.length < 10 ? " (minimum 10)" : ""}
-                </span>
-                <span>
-                  {dbLoading
-                    ? "loading database..."
-                    : dbError
-                    ? `database error: ${dbError}`
-                    : `database: ${db.sequences.length} ${db.kind} sequences, ${db.dim}-dim embedding`}
-                </span>
-              </div>
-
-              <div className="mt-4 flex gap-3">
-                <button
-                  type="button"
-                  onClick={run}
+              <div className="mt-2 flex items-center justify-between text-xs font-medium text-dark/70 dark:text-light/70">
+                <span>length: <strong>{cleanedQuery.length}</strong>{cleanedQuery.length < 10 ? " (min 10)" : ""}</span>
+                <button type="button" onClick={run}
                   disabled={dbLoading || !db || cleanedQuery.length < 10}
-                  className="rounded-lg bg-dark px-6 py-2 text-lg font-semibold text-light
+                  className="rounded-lg bg-dark px-5 py-2 text-base font-semibold text-light
                     hover:bg-primary disabled:cursor-not-allowed disabled:opacity-40
-                    dark:bg-light dark:text-dark dark:hover:bg-primaryDark"
-                >
+                    dark:bg-light dark:text-dark dark:hover:bg-primaryDark">
                   Run search
                 </button>
               </div>
             </div>
-
-            <aside className="col-span-4 flex flex-col gap-4 rounded-xl border-2 border-dark p-5
-              dark:border-light lg:col-span-12">
-              <h3 className="text-xl font-bold">Pipeline</h3>
-              <ol className="list-decimal space-y-2 pl-5 text-sm font-medium">
-                <li>
-                  channelise the sequence into {kind === "dna" ? "4 one-hot" : "3 physicochemical"} signals
-                </li>
-                <li>
-                  compute the first {db ? db.nCoefficients : 12} non-DC DFT magnitudes per channel
-                </li>
-                <li>
-                  length-normalise and L2-normalise the concatenated coefficients
-                </li>
-                <li>
-                  evaluate cosine similarity against every precomputed database embedding
-                </li>
-                <li>
-                  return the top-{topK} most-similar entries
-                </li>
-              </ol>
-              {lastTiming && (
-                <div className="mt-2 rounded-md bg-dark/5 p-3 text-xs font-mono dark:bg-light/10">
-                  <div>embedding: {lastTiming.embedMs.toFixed(2)} ms</div>
-                  <div>kernel scan: {lastTiming.shaderMs.toFixed(2)} ms</div>
-                  <div>total: {lastTiming.totalMs.toFixed(2)} ms</div>
-                  <div>
-                    {lastTiming.dbSize} db sequences &middot;&nbsp;
-                    {lastTiming.dim}-dim embedding
-                  </div>
-                </div>
-              )}
-            </aside>
           </section>
 
-          <section className="mt-12">
-            <h2 className="text-3xl font-bold">Results</h2>
-            {!results && (
-              <p className="mt-2 text-base font-medium dark:text-light">
-                Run the search to see top-{topK} candidates ranked by cosine similarity.
-              </p>
-            )}
-            {results && (
-              <div className="mt-6 overflow-hidden rounded-xl border-2 border-dark dark:border-light">
-                <table className="w-full border-collapse text-left font-mono text-sm">
-                  <thead className="bg-dark text-light dark:bg-light dark:text-dark">
-                    <tr>
-                      <th className="p-3">rank</th>
-                      <th className="p-3">id</th>
-                      <th className="p-3">family</th>
-                      <th className="p-3">length</th>
-                      <th className="p-3">cosine sim.</th>
-                      <th className="p-3">distance</th>
-                      <th className="p-3">preview</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {results.map((r, i) => (
-                      <tr
-                        key={r.id}
-                        className={`border-t border-dark/40 dark:border-light/40 ${
-                          i % 2 === 0 ? "bg-light/60 dark:bg-dark/60" : ""
-                        }`}
-                      >
-                        <td className="p-3">{i + 1}</td>
-                        <td className="p-3">{r.id}</td>
-                        <td className="p-3">{r.family}</td>
-                        <td className="p-3">{r.length}</td>
-                        <td className="p-3">{r.score.toFixed(4)}</td>
-                        <td className="p-3">{r.distance.toFixed(4)}</td>
-                        <td className="p-3">{r.text.slice(0, 28)}&hellip;</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-                <div className="flex justify-end border-t border-dark/30 p-3 dark:border-light/30">
-                  <button
-                    type="button"
+          {results ? (
+            <>
+              <section className="mt-8 grid grid-cols-4 gap-4 sm:grid-cols-2">
+                <StatTile label="top-1 cosine" value={results[0].score.toFixed(4)}
+                  sub={`distance ${results[0].distance.toFixed(4)}`} />
+                <StatTile label="top-1 z-score" value={summaryStats ? summaryStats.z.toFixed(2) : "-"}
+                  sub="standard deviations above the database mean" />
+                <StatTile label="dominant family"
+                  value={summaryStats?.dominant ? `fam ${summaryStats.dominant.family}` : "-"}
+                  sub={summaryStats?.dominant ? `${summaryStats.dominant.hits} of top-${results.length}` : ""} />
+                <StatTile label="kernel time"
+                  value={lastTiming ? `${lastTiming.shaderMs.toFixed(2)} ms` : "-"}
+                  sub={lastTiming ? `${lastTiming.dbSize} db × ${lastTiming.dim}-dim` : ""} />
+              </section>
+
+              <section className="mt-8 grid grid-cols-2 gap-6 lg:grid-cols-1">
+                <div className="rounded-xl border-2 border-dark p-4 dark:border-light">
+                  <SimilarityHistogram scores={scoreVec} topK={results} />
+                </div>
+                <div className="rounded-xl border-2 border-dark p-4 dark:border-light">
+                  <RankProfile topK={results} />
+                </div>
+                <div className="rounded-xl border-2 border-dark p-4 dark:border-light">
+                  <FamilyDistribution topK={results} />
+                </div>
+                <div className="rounded-xl border-2 border-dark p-4 dark:border-light">
+                  <QuerySpectrum
+                    channelSpectra={queryDetail?.channelSpectra}
+                    channelLabels={queryDetail?.channelLabels}
+                  />
+                </div>
+                <div className="col-span-2 rounded-xl border-2 border-dark p-4 dark:border-light lg:col-span-1">
+                  <EmbeddingMap
+                    coords={db.projection}
+                    topK={results}
+                    queryPosition={queryProj}
+                  />
+                </div>
+              </section>
+
+              <section className="mt-8">
+                <div className="flex items-center justify-between">
+                  <h2 className="text-2xl font-bold">Top hits</h2>
+                  <button type="button"
                     onClick={() => {
                       const tsv = [
                         "rank\tid\tfamily\tlength\tcosine\tdistance",
                         ...results.map((r, i) =>
-                          [i + 1, r.id, r.family, r.length, r.score.toFixed(4), r.distance.toFixed(4)].join("\t")
-                        ),
+                          [i + 1, r.id, r.family, r.length, r.score.toFixed(4), r.distance.toFixed(4)].join("\t")),
                       ].join("\n");
                       downloadText(`homology_results_${Date.now()}.tsv`, tsv);
                     }}
                     className="rounded-md border-2 border-dark px-3 py-1 text-sm font-semibold
-                      hover:bg-dark hover:text-light dark:border-light dark:hover:bg-light dark:hover:text-dark"
-                  >
-                    Download TSV
+                      hover:bg-dark hover:text-light dark:border-light dark:hover:bg-light dark:hover:text-dark">
+                    Export TSV
                   </button>
                 </div>
-              </div>
-            )}
-          </section>
+                <div className="mt-3 overflow-hidden rounded-xl border-2 border-dark dark:border-light">
+                  <table className="w-full border-collapse text-left font-mono text-xs">
+                    <thead className="bg-dark text-light dark:bg-light dark:text-dark">
+                      <tr>
+                        <th className="p-2">rank</th>
+                        <th className="p-2">id</th>
+                        <th className="p-2">family</th>
+                        <th className="p-2">len</th>
+                        <th className="p-2">cosine</th>
+                        <th className="p-2">distance</th>
+                        <th className="p-2">preview</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {results.map((r, i) => (
+                        <tr key={r.id} className={`border-t border-dark/40 dark:border-light/40 ${i % 2 === 0 ? "bg-light/60 dark:bg-dark/60" : ""}`}>
+                          <td className="p-2">{i + 1}</td>
+                          <td className="p-2">{r.id}</td>
+                          <td className="p-2">{r.family}</td>
+                          <td className="p-2">{r.length}</td>
+                          <td className="p-2">{r.score.toFixed(4)}</td>
+                          <td className="p-2">{r.distance.toFixed(4)}</td>
+                          <td className="p-2 truncate">{r.text.slice(0, 36)}&hellip;</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+            </>
+          ) : (
+            <p className="mt-10 text-sm font-medium text-dark/70 dark:text-light/70">
+              Run a search to populate the dashboard. The whole computation runs
+              client-side: nothing leaves your browser.
+            </p>
+          )}
         </Layout>
       </main>
     </>
