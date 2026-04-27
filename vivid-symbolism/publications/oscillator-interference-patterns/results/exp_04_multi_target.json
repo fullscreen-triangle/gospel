@@ -1,0 +1,87 @@
+{
+  "experiment": "multi_target",
+  "timestamp": "2026-04-27T19:52:45.245086+00:00",
+  "config": {
+    "target_length": 200000,
+    "query_length": 100,
+    "n_planted": 8,
+    "min_planted_gap": 5000,
+    "mutation_rates": [
+      0.0,
+      0.05,
+      0.1,
+      0.15,
+      0.2,
+      0.05,
+      0.1,
+      0.3
+    ],
+    "trials": 25,
+    "z_thresholds": [
+      3.0,
+      4.0,
+      5.0,
+      6.0,
+      8.0
+    ],
+    "min_peak_separation": 200,
+    "random_seed": 20260425
+  },
+  "rows": [
+    {
+      "z_threshold": 3.0,
+      "mean_recall": 1.0,
+      "mean_precision": 0.028736683541113802,
+      "mean_f1": 0.05586437261484043,
+      "mean_predictions_per_trial": 279.04,
+      "median_position_error_bp": 0.0,
+      "p95_position_error_bp": 0.0,
+      "trials": 25,
+      "wall_clock_s": 4.397730699973181
+    },
+    {
+      "z_threshold": 4.0,
+      "mean_recall": 1.0,
+      "mean_precision": 0.4143299866344152,
+      "mean_f1": 0.5822513069347329,
+      "mean_predictions_per_trial": 19.88,
+      "median_position_error_bp": 0.0,
+      "p95_position_error_bp": 0.0,
+      "trials": 25,
+      "wall_clock_s": 4.973619000054896
+    },
+    {
+      "z_threshold": 5.0,
+      "mean_recall": 1.0,
+      "mean_precision": 0.9697777777777778,
+      "mean_f1": 0.9837908496732026,
+      "mean_predictions_per_trial": 8.28,
+      "median_position_error_bp": 0.0,
+      "p95_position_error_bp": 0.0,
+      "trials": 25,
+      "wall_clock_s": 5.456427300116047
+    },
+    {
+      "z_threshold": 6.0,
+      "mean_recall": 1.0,
+      "mean_precision": 1.0,
+      "mean_f1": 1.0,
+      "mean_predictions_per_trial": 8.0,
+      "median_position_error_bp": 0.0,
+      "p95_position_error_bp": 0.0,
+      "trials": 25,
+      "wall_clock_s": 5.392370600020513
+    },
+    {
+      "z_threshold": 8.0,
+      "mean_recall": 1.0,
+      "mean_precision": 1.0,
+      "mean_f1": 1.0,
+      "mean_predictions_per_trial": 8.0,
+      "median_position_error_bp": 0.0,
+      "p95_position_error_bp": 0.0,
+      "trials": 25,
+      "wall_clock_s": 5.31987960007973
+    }
+  ]
+}

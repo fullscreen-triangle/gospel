@@ -1,0 +1,84 @@
+{
+  "experiment": "complexity_scaling",
+  "timestamp": "2026-04-27T19:52:07.980846+00:00",
+  "config": {
+    "query_length": 100,
+    "target_lengths": [
+      1000,
+      3162,
+      10000,
+      31622,
+      100000,
+      316227,
+      1000000
+    ],
+    "trials_per_size": 3,
+    "naive_max_target": 31622,
+    "random_seed": 20260425
+  },
+  "rows": [
+    {
+      "target_length": 1000,
+      "query_length": 100,
+      "fft_seconds_mean": 0.0026789666153490543,
+      "fft_seconds_std": 0.0023179343552861714,
+      "naive_seconds_measured": 0.007802000269293785,
+      "naive_seconds_extrapolated": 0.007802000269293785,
+      "speedup_fft_over_naive": 2.9123170944320367
+    },
+    {
+      "target_length": 3162,
+      "query_length": 100,
+      "fft_seconds_mean": 0.0009823666575054328,
+      "fft_seconds_std": 0.0001741524525804751,
+      "naive_seconds_measured": 0.027995199896395206,
+      "naive_seconds_extrapolated": 0.027995199896395206,
+      "speedup_fft_over_naive": 28.497709773135682
+    },
+    {
+      "target_length": 10000,
+      "query_length": 100,
+      "fft_seconds_mean": 0.0068233665854980545,
+      "fft_seconds_std": 0.00040866658003146765,
+      "naive_seconds_measured": 0.15007680002599955,
+      "naive_seconds_extrapolated": 0.15007680002599955,
+      "speedup_fft_over_naive": 21.99453864093469
+    },
+    {
+      "target_length": 31622,
+      "query_length": 100,
+      "fft_seconds_mean": 0.012319733388721943,
+      "fft_seconds_std": 0.0015182469144087644,
+      "naive_seconds_measured": 0.27811799943447113,
+      "naive_seconds_extrapolated": 0.27811799943447113,
+      "speedup_fft_over_naive": 22.575001476011916
+    },
+    {
+      "target_length": 100000,
+      "query_length": 100,
+      "fft_seconds_mean": 0.057220333333437644,
+      "fft_seconds_std": 0.0027802610136409335,
+      "naive_seconds_measured": null,
+      "naive_seconds_extrapolated": 0.9362686762384427,
+      "speedup_fft_over_naive": 16.362516988193054
+    },
+    {
+      "target_length": 316227,
+      "query_length": 100,
+      "fft_seconds_mean": 0.23966003341289857,
+      "fft_seconds_std": 0.003329911032921642,
+      "naive_seconds_measured": null,
+      "naive_seconds_extrapolated": 2.5744855610467154,
+      "speedup_fft_over_naive": 10.742239848607799
+    },
+    {
+      "target_length": 1000000,
+      "query_length": 100,
+      "fft_seconds_mean": 0.5054321666248143,
+      "fft_seconds_std": 0.01018598560448273,
+      "naive_seconds_measured": null,
+      "naive_seconds_extrapolated": 13.243006433213768,
+      "speedup_fft_over_naive": 26.20135263975817
+    }
+  ]
+}
