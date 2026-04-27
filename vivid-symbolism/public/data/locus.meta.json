@@ -1,0 +1,41 @@
+{
+  "name": "synthetic_locus_1Mb",
+  "kind": "dna",
+  "length": 1000000,
+  "window_size": 200,
+  "window_stride": 100,
+  "n_windows": 9999,
+  "embed_dim": 48,
+  "n_coefficients": 12,
+  "starts_first": 0,
+  "starts_last": 999800,
+  "annotations": [
+    {
+      "start": 100000,
+      "end": 105000,
+      "label": "CpG island (GC ~ 0.70)"
+    },
+    {
+      "start": 200000,
+      "end": 220000,
+      "label": "AT-rich heterochromatin (GC ~ 0.20)"
+    },
+    {
+      "start": 350000,
+      "end": 360000,
+      "label": "Tandem repeat (ATATCCG)"
+    },
+    {
+      "start": 500000,
+      "end": 500200,
+      "label": "Planted motif A (canonical)"
+    },
+    {
+      "start": 800000,
+      "end": 800200,
+      "label": "Planted motif A (10% mutated)"
+    }
+  ],
+  "demo_query": "ACTGGGAGGTGCATAACAACACCAGGGAAATGCAAAATGGTCAATACTTATCTCGTTGAGGCGCTGTGATGCCAGCTCTATACTGCTGTGTTCGTTCTTTGCGCCGTTGTGCCGGTTGGACGCGCTAAGCGCGACCTTTCCCAAGCCAACTGACTCGCGGTGTCCTAACGATGCCTTGTTTTCCGGCTGTAGGACTGGTC",
+  "build_seed": 20260425
+}
