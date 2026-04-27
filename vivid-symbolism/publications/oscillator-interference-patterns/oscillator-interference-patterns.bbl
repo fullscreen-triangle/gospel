@@ -1,0 +1,179 @@
+\begin{thebibliography}{25}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Altschul et~al.(1990)Altschul, Gish, Miller, Myers, and
+  Lipman]{altschul1990}
+Stephen~F. Altschul, Warren Gish, Webb Miller, Eugene~W. Myers, and David~J.
+  Lipman.
+\newblock Basic local alignment search tool.
+\newblock \emph{Journal of Molecular Biology}, 215\penalty0 (3):\penalty0
+  403--410, 1990.
+\newblock \doi{10.1016/S0022-2836(05)80360-2}.
+
+\bibitem[Altschul et~al.(1997)Altschul, Madden, Sch{\"a}ffer, Zhang, Zhang,
+  Miller, and Lipman]{altschul1997}
+Stephen~F. Altschul, Thomas~L. Madden, Alejandro~A. Sch{\"a}ffer, Jinghui
+  Zhang, Zheng Zhang, Webb Miller, and David~J. Lipman.
+\newblock Gapped {BLAST} and {PSI}-{BLAST}: a new generation of protein
+  database search programs.
+\newblock \emph{Nucleic Acids Research}, 25\penalty0 (17):\penalty0 3389--3402,
+  1997.
+\newblock \doi{10.1093/nar/25.17.3389}.
+
+\bibitem[Buchfink et~al.(2015)Buchfink, Xie, and Huson]{buchfink2015}
+Benjamin Buchfink, Chao Xie, and Daniel~H. Huson.
+\newblock Fast and sensitive protein alignment using {DIAMOND}.
+\newblock \emph{Nature Methods}, 12\penalty0 (1):\penalty0 59--60, 2015.
+\newblock \doi{10.1038/nmeth.3176}.
+
+\bibitem[Li(2018)]{li2018}
+Heng Li.
+\newblock Minimap2: pairwise alignment for nucleotide sequences.
+\newblock \emph{Bioinformatics}, 34\penalty0 (18):\penalty0 3094--3100, 2018.
+\newblock \doi{10.1093/bioinformatics/bty191}.
+
+\bibitem[Stormo(2000)]{stormo2000}
+Gary~D. Stormo.
+\newblock {DNA} binding sites: representation and discovery.
+\newblock \emph{Bioinformatics}, 16\penalty0 (1):\penalty0 16--23, 2000.
+\newblock \doi{10.1093/bioinformatics/16.1.16}.
+
+\bibitem[Schneider et~al.(1986)Schneider, Stormo, Gold, and
+  Ehrenfeucht]{schneider1986}
+Thomas~D. Schneider, Gary~D. Stormo, Larry Gold, and Andrzej Ehrenfeucht.
+\newblock Information content of binding sites on nucleotide sequences.
+\newblock \emph{Journal of Molecular Biology}, 188\penalty0 (3):\penalty0
+  415--431, 1986.
+\newblock \doi{10.1016/0022-2836(86)90165-8}.
+
+\bibitem[Grant et~al.(2011)Grant, Bailey, and Noble]{grant2011}
+Charles~E. Grant, Timothy~L. Bailey, and William~Stafford Noble.
+\newblock {FIMO}: scanning for occurrences of a given motif.
+\newblock \emph{Bioinformatics}, 27\penalty0 (7):\penalty0 1017--1018, 2011.
+\newblock \doi{10.1093/bioinformatics/btr064}.
+
+\bibitem[Turin(1960)]{turin1960}
+George~L. Turin.
+\newblock An introduction to matched filters.
+\newblock \emph{IRE Transactions on Information Theory}, 6\penalty0
+  (3):\penalty0 311--329, 1960.
+\newblock \doi{10.1109/TIT.1960.1057571}.
+
+\bibitem[North(1963)]{north1963}
+D.~O. North.
+\newblock An analysis of the factors which determine signal/noise
+  discrimination in pulsed-carrier systems.
+\newblock \emph{Proceedings of the IEEE}, 51\penalty0 (7):\penalty0 1016--1027,
+  1963.
+\newblock \doi{10.1109/PROC.1963.2383}.
+\newblock Reprint of 1943 RCA report PTR-6C.
+
+\bibitem[Van~Trees(2001)]{vantrees2001}
+Harry~L. Van~Trees.
+\newblock \emph{Detection, Estimation, and Modulation Theory, Part I}.
+\newblock John Wiley \& Sons, 2nd edition, 2001.
+\newblock \doi{10.1002/0471221082}.
+
+\bibitem[Kay(1998)]{kay1998}
+Steven~M. Kay.
+\newblock \emph{Fundamentals of Statistical Signal Processing, Volume II:
+  Detection Theory}.
+\newblock Prentice Hall, 1998.
+
+\bibitem[Oppenheim and Schafer(2009)]{oppenheim2009}
+Alan~V. Oppenheim and Ronald~W. Schafer.
+\newblock \emph{Discrete-Time Signal Processing}.
+\newblock Pearson, 3rd edition, 2009.
+
+\bibitem[Vander~Lugt(1964)]{vanderlugt1964}
+Anthony Vander~Lugt.
+\newblock Signal detection by complex spatial filtering.
+\newblock \emph{IEEE Transactions on Information Theory}, 10\penalty0
+  (2):\penalty0 139--145, 1964.
+\newblock \doi{10.1109/TIT.1964.1053650}.
+
+\bibitem[Goodman(2005)]{goodman2005}
+Joseph~W. Goodman.
+\newblock \emph{Introduction to Fourier Optics}.
+\newblock Roberts and Company, 3rd edition, 2005.
+
+\bibitem[Kyte and Doolittle(1982)]{kyte1982}
+Jack Kyte and Russell~F. Doolittle.
+\newblock A simple method for displaying the hydropathic character of a
+  protein.
+\newblock \emph{Journal of Molecular Biology}, 157\penalty0 (1):\penalty0
+  105--132, 1982.
+\newblock \doi{10.1016/0022-2836(82)90515-0}.
+
+\bibitem[Neyman and Pearson(1933)]{neyman1933}
+Jerzy Neyman and Egon~S. Pearson.
+\newblock On the problem of the most efficient tests of statistical hypotheses.
+\newblock \emph{Philosophical Transactions of the Royal Society of London A},
+  231\penalty0 (694--706):\penalty0 289--337, 1933.
+\newblock \doi{10.1098/rsta.1933.0009}.
+
+\bibitem[Wiener(1930)]{wiener1930}
+Norbert Wiener.
+\newblock Generalized harmonic analysis.
+\newblock \emph{Acta Mathematica}, 55:\penalty0 117--258, 1930.
+\newblock \doi{10.1007/BF02546511}.
+
+\bibitem[Khinchin(1934)]{khinchin1934}
+Aleksandr Khinchin.
+\newblock Korrelationstheorie der station{\"a}ren stochastischen {P}rozesse.
+\newblock \emph{Mathematische Annalen}, 109:\penalty0 604--615, 1934.
+\newblock \doi{10.1007/BF01449156}.
+
+\bibitem[Harris et~al.(2020)]{harris2020numpy}
+Charles~R. Harris et~al.
+\newblock Array programming with {NumPy}.
+\newblock \emph{Nature}, 585:\penalty0 357--362, 2020.
+\newblock \doi{10.1038/s41586-020-2649-2}.
+
+\bibitem[Virtanen et~al.(2020)]{virtanen2020scipy}
+Pauli Virtanen et~al.
+\newblock {SciPy} 1.0: fundamental algorithms for scientific computing in
+  {Python}.
+\newblock \emph{Nature Methods}, 17:\penalty0 261--272, 2020.
+\newblock \doi{10.1038/s41592-019-0686-2}.
+
+\bibitem[Hunter(2007)]{hunter2007matplotlib}
+John~D. Hunter.
+\newblock Matplotlib: a {2D} graphics environment.
+\newblock \emph{Computing in Science \& Engineering}, 9\penalty0 (3):\penalty0
+  90--95, 2007.
+\newblock \doi{10.1109/MCSE.2007.55}.
+
+\bibitem[Fischer and Paterson(1974)]{fischer1974}
+Michael~J. Fischer and Michael~S. Paterson.
+\newblock String matching and other products.
+\newblock In \emph{Complexity of Computation, SIAM-AMS Proceedings}, volume~7,
+  pages 113--125, 1974.
+
+\bibitem[Moreland and Angel(2003)]{moreland2003}
+Kenneth Moreland and Edward Angel.
+\newblock The {FFT} on a {GPU}.
+\newblock \emph{Proceedings of the ACM SIGGRAPH/EUROGRAPHICS Conference on
+  Graphics Hardware}, pages 112--119, 2003.
+\newblock \doi{10.5555/844174.844191}.
+
+\bibitem[Govindaraju et~al.(2008)Govindaraju, Lloyd, Dotsenko, Smith, and
+  Manferdelli]{govindaraju2008}
+Naga~K. Govindaraju, Brandon Lloyd, Yuri Dotsenko, Burton Smith, and John
+  Manferdelli.
+\newblock High performance discrete {F}ourier transforms on graphics
+  processors.
+\newblock \emph{Proceedings of the ACM/IEEE Conference on Supercomputing},
+  pages 1--12, 2008.
+\newblock \doi{10.1109/SC.2008.5213922}.
+
+\bibitem[{Khronos Group}(2017)]{webgl2}
+{Khronos Group}.
+\newblock {WebGL 2.0 Specification}, 2017.
+\newblock \url{https://registry.khronos.org/webgl/specs/latest/2.0/}.
+
+\end{thebibliography}

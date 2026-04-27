@@ -1,0 +1,48 @@
+This is BibTeX, Version 0.99e
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: oscillator-interference-patterns.aux
+Reallocating 'name_of_file' (item size: 1) to 9 items.
+The style file: unsrtnat.bst
+Reallocating 'name_of_file' (item size: 1) to 11 items.
+Database file #1: references.bib
+You've used 25 entries,
+            2481 wiz_defined-function locations,
+            732 strings with 8424 characters,
+and the built_in function-call counts, 9770 in all, are:
+= -- 912
+> -- 369
+< -- 23
++ -- 156
+- -- 106
+* -- 727
+:= -- 1526
+add.period$ -- 96
+call.type$ -- 25
+change.case$ -- 49
+chr.to.int$ -- 25
+cite$ -- 25
+duplicate$ -- 496
+empty$ -- 927
+format.name$ -- 143
+if$ -- 2093
+int.to.chr$ -- 1
+int.to.str$ -- 26
+missing$ -- 28
+newline$ -- 154
+num.names$ -- 75
+pop$ -- 185
+preamble$ -- 1
+purify$ -- 25
+quote$ -- 0
+skip$ -- 305
+stack$ -- 0
+substring$ -- 564
+swap$ -- 75
+text.length$ -- 4
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 163
+warning$ -- 0
+while$ -- 93
+width$ -- 0
+write$ -- 373
