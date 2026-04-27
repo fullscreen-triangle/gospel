@@ -1,0 +1,37 @@
+\contentsline {section}{\numberline {1}Introduction}{2}{section.1}%
+\contentsline {paragraph}{Why now.}{2}{section*.3}%
+\contentsline {paragraph}{Contributions.}{2}{section*.4}%
+\contentsline {paragraph}{Scope.}{2}{section*.5}%
+\contentsline {section}{\numberline {2}Method}{2}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Channelised representation}{2}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Inner product as interference cross-term}{3}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Multi-channel matched filter}{3}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Normalisation}{3}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.5}Significance and peak picking}{3}{subsection.2.5}%
+\contentsline {subsection}{\numberline {2.6}Relation to magnitude-spectrum sketches}{3}{subsection.2.6}%
+\contentsline {subsection}{\numberline {2.7}Relation to position weight matrices}{4}{subsection.2.7}%
+\contentsline {section}{\numberline {3}Experimental setup}{4}{section.3}%
+\contentsline {paragraph}{Synthetic benchmark.}{6}{section*.8}%
+\contentsline {paragraph}{Reproducibility.}{6}{section*.9}%
+\contentsline {section}{\numberline {4}Results}{6}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Position recovery}{6}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Detection sensitivity}{6}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Phase versus magnitude}{6}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}Multi-target detection}{8}{subsection.4.4}%
+\contentsline {subsection}{\numberline {4.5}Scaling}{8}{subsection.4.5}%
+\contentsline {subsection}{\numberline {4.6}Multi-channel coherent combination}{8}{subsection.4.6}%
+\contentsline {section}{\numberline {5}Discussion}{10}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Position information lives in phase}{10}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}The matched filter as the optimal linear detector}{10}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Where the matched filter loses}{10}{subsection.5.3}%
+\contentsline {paragraph}{Insertions and deletions.}{10}{section*.20}%
+\contentsline {paragraph}{Long-range duplication and rearrangement.}{10}{section*.21}%
+\contentsline {paragraph}{Synthetic-only validation.}{10}{section*.22}%
+\contentsline {paragraph}{Numerical precision.}{10}{section*.23}%
+\contentsline {subsection}{\numberline {5.4}Implementation as a single rendering pass}{10}{subsection.5.4}%
+\contentsline {subsection}{\numberline {5.5}Relation to position weight matrices, BLAST, and sketching}{11}{subsection.5.5}%
+\contentsline {subsection}{\numberline {5.6}Future work}{11}{subsection.5.6}%
+\contentsline {section}{\numberline {6}Conclusion}{11}{section.6}%
+\contentsline {paragraph}{Reproducibility.}{11}{section*.24}%
+\contentsline {paragraph}{Author contributions.}{11}{section*.25}%
+\contentsline {paragraph}{Conflicts of interest.}{11}{section*.26}%
