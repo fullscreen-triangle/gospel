@@ -28,7 +28,7 @@ export default function Home() {
         </div>
 
         <div className="pointer-events-none relative z-10 flex flex-col items-center px-8 text-center">
-          <h1 className="font-mont text-5xl font-bold tracking-tight md:text-3xl sm:text-2xl">
+          <h1 className="text-gray-700 font-mont text-5xl font-bold tracking-tight md:text-3xl sm:text-2xl">
             Gospel
           </h1>
           <p className="mt-4 max-w-md text-base font-medium text-dark/80 dark:text-light/80 md:text-sm">
