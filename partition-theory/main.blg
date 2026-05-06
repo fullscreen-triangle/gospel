@@ -1,0 +1,155 @@
+This is BibTeX, Version 0.99e
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: main.aux
+Reallocating 'name_of_file' (item size: 1) to 26 items.
+A level-1 auxiliary file: frontmatter/titlepage.aux
+Reallocating 'name_of_file' (item size: 1) to 25 items.
+A level-1 auxiliary file: frontmatter/foreword.aux
+Reallocating 'name_of_file' (item size: 1) to 25 items.
+A level-1 auxiliary file: frontmatter/abstract.aux
+Reallocating 'name_of_file' (item size: 1) to 33 items.
+A level-1 auxiliary file: frontmatter/acknowledgements.aux
+Reallocating 'name_of_file' (item size: 1) to 63 items.
+A level-1 auxiliary file: parts/part1_categorical_mechanics/ch01_bounded_phase_space.aux
+Reallocating 'name_of_file' (item size: 1) to 60 items.
+A level-1 auxiliary file: parts/part1_categorical_mechanics/ch02_charge_emergence.aux
+Reallocating 'name_of_file' (item size: 1) to 59 items.
+A level-1 auxiliary file: parts/part1_categorical_mechanics/ch03_partition_depth.aux
+Reallocating 'name_of_file' (item size: 1) to 58 items.
+A level-1 auxiliary file: parts/part1_categorical_mechanics/ch04_sentropy_space.aux
+Reallocating 'name_of_file' (item size: 1) to 46 items.
+A level-1 auxiliary file: parts/part2_paradoxes/ch05_maxwells_demon.aux
+Reallocating 'name_of_file' (item size: 1) to 46 items.
+A level-1 auxiliary file: parts/part2_paradoxes/ch06_orgels_paradox.aux
+Reallocating 'name_of_file' (item size: 1) to 44 items.
+A level-1 auxiliary file: parts/part2_paradoxes/ch07_what_is_life.aux
+Reallocating 'name_of_file' (item size: 1) to 45 items.
+A level-1 auxiliary file: parts/part2_paradoxes/ch08_petos_paradox.aux
+Reallocating 'name_of_file' (item size: 1) to 59 items.
+A level-1 auxiliary file: parts/part3_catalysis_metabolism/ch09_enzymes_topology.aux
+Reallocating 'name_of_file' (item size: 1) to 61 items.
+A level-1 auxiliary file: parts/part3_catalysis_metabolism/ch10_metabolic_computer.aux
+Reallocating 'name_of_file' (item size: 1) to 57 items.
+A level-1 auxiliary file: parts/part3_catalysis_metabolism/ch11_charge_current.aux
+Reallocating 'name_of_file' (item size: 1) to 62 items.
+A level-1 auxiliary file: parts/part3_catalysis_metabolism/ch12_charge_trajectories.aux
+Reallocating 'name_of_file' (item size: 1) to 57 items.
+A level-1 auxiliary file: parts/part3_catalysis_metabolism/ch13_hydrogen_bonds.aux
+Reallocating 'name_of_file' (item size: 1) to 49 items.
+A level-1 auxiliary file: parts/part4_genome/ch14_cardinal_coordinates.aux
+Reallocating 'name_of_file' (item size: 1) to 44 items.
+A level-1 auxiliary file: parts/part4_genome/ch15_dna_capacitance.aux
+Reallocating 'name_of_file' (item size: 1) to 43 items.
+A level-1 auxiliary file: parts/part4_genome/ch16_cvalue_paradox.aux
+Reallocating 'name_of_file' (item size: 1) to 46 items.
+A level-1 auxiliary file: parts/part4_genome/ch17_ternary_computing.aux
+Reallocating 'name_of_file' (item size: 1) to 58 items.
+A level-1 auxiliary file: parts/part5_oscillatory_networks/ch18_metabolic_clock.aux
+Reallocating 'name_of_file' (item size: 1) to 61 items.
+A level-1 auxiliary file: parts/part5_oscillatory_networks/ch19_chromatin_splicing.aux
+Reallocating 'name_of_file' (item size: 1) to 67 items.
+A level-1 auxiliary file: parts/part5_oscillatory_networks/ch20_transcriptional_bursting.aux
+Reallocating 'name_of_file' (item size: 1) to 63 items.
+A level-1 auxiliary file: parts/part5_oscillatory_networks/ch21_nuclear_architecture.aux
+Reallocating 'name_of_file' (item size: 1) to 59 items.
+A level-1 auxiliary file: parts/part6_disease_therapy/ch22_disease_dysregulation.aux
+Reallocating 'name_of_file' (item size: 1) to 60 items.
+A level-1 auxiliary file: parts/part6_disease_therapy/ch23_categorical_immunology.aux
+Reallocating 'name_of_file' (item size: 1) to 51 items.
+A level-1 auxiliary file: parts/part6_disease_therapy/ch24_viral_mimicry.aux
+Reallocating 'name_of_file' (item size: 1) to 50 items.
+A level-1 auxiliary file: parts/part6_disease_therapy/ch25_pharmacology.aux
+Reallocating 'name_of_file' (item size: 1) to 57 items.
+A level-1 auxiliary file: parts/part7_sequences_waves/ch26_shader_spectrometer.aux
+Reallocating 'name_of_file' (item size: 1) to 55 items.
+A level-1 auxiliary file: parts/part7_sequences_waves/ch27_wave_interference.aux
+Reallocating 'name_of_file' (item size: 1) to 47 items.
+A level-1 auxiliary file: parts/part7_sequences_waves/ch28_synthesis.aux
+Reallocating 'name_of_file' (item size: 1) to 31 items.
+A level-1 auxiliary file: appendices/appendix_a_math.aux
+Reallocating 'name_of_file' (item size: 1) to 37 items.
+A level-1 auxiliary file: appendices/appendix_b_validation.aux
+Reallocating 'name_of_file' (item size: 1) to 35 items.
+A level-1 auxiliary file: appendices/appendix_c_software.aux
+Reallocating 'name_of_file' (item size: 1) to 9 items.
+The style file: plainnat.bst
+Reallocating 'name_of_file' (item size: 1) to 13 items.
+Database file #1: bibliography.bib
+Warning--I didn't find a database entry for "TeSlaa2016"
+Warning--I didn't find a database entry for "szilard1929"
+Warning--I didn't find a database entry for "brillouin1951"
+Warning--I didn't find a database entry for "landauer1961"
+Warning--I didn't find a database entry for "bennett1982"
+Warning--I didn't find a database entry for "gilbert1986"
+Warning--I didn't find a database entry for "wachtershauser1988"
+Warning--I didn't find a database entry for "segre2001"
+Warning--I didn't find a database entry for "ray1999"
+Warning--I didn't find a database entry for "belloche2008"
+Warning--I didn't find a database entry for "hollis2000"
+Warning--I didn't find a database entry for "ohtomo2014"
+Warning--I didn't find a database entry for "peto1977"
+Warning--I didn't find a database entry for "abegglen2015"
+Warning--I didn't find a database entry for "vogelstein2013"
+Warning--I didn't find a database entry for "seluanov2009"
+Warning--I didn't find a database entry for "Orth2010"
+Warning--I didn't find a database entry for "Warburg1956"
+Warning--I didn't find a database entry for "Goldman1943"
+Warning--I didn't find a database entry for "Hodgkin1952"
+Warning--I didn't find a database entry for "Hodgkin1952b"
+Warning--I didn't find a database entry for "Walker1994"
+Warning--I didn't find a database entry for "Gatenby2007"
+Warning--I didn't find a database entry for "Mark1995"
+Warning--I didn't find a database entry for "Savas2012"
+Warning--I didn't find a database entry for "Hannum2013"
+Warning--I didn't find a database entry for "Horvath2013"
+Warning--I didn't find a database entry for "Sedivy2013"
+Warning--I didn't find a database entry for "Jack2013"
+Warning--I didn't find a database entry for "Markelz2000"
+Warning--I didn't find a database entry for "Manning1969"
+Warning--I didn't find a database entry for "Porath2004"
+Warning--I didn't find a database entry for "Richard2003"
+Warning--I didn't find a database entry for "Buzsaki2002"
+Warning--I didn't find a database entry for "Widom1992"
+Warning--I didn't find a database entry for "Lowdin1963"
+You've used 16 entries,
+            2773 wiz_defined-function locations,
+            780 strings with 9552 characters,
+and the built_in function-call counts, 5836 in all, are:
+= -- 530
+> -- 242
+< -- 15
++ -- 95
+- -- 72
+* -- 399
+:= -- 937
+add.period$ -- 62
+call.type$ -- 16
+change.case$ -- 71
+chr.to.int$ -- 9
+cite$ -- 32
+duplicate$ -- 313
+empty$ -- 530
+format.name$ -- 96
+if$ -- 1209
+int.to.chr$ -- 8
+int.to.str$ -- 1
+missing$ -- 20
+newline$ -- 102
+num.names$ -- 64
+pop$ -- 138
+preamble$ -- 1
+purify$ -- 56
+quote$ -- 0
+skip$ -- 212
+stack$ -- 0
+substring$ -- 132
+swap$ -- 24
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 156
+warning$ -- 0
+while$ -- 56
+width$ -- 0
+write$ -- 238
+(There were 36 warnings)

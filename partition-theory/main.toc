@@ -1,0 +1,470 @@
+\contentsline {chapter}{Foreword}{iii}{chapter*.1}%
+\contentsline {chapter}{Abstract}{v}{chapter*.2}%
+\contentsline {chapter}{Acknowledgements}{vii}{chapter*.3}%
+\contentsline {part}{I\hspace {1em}Categorical Mechanics}{1}{part.1}%
+\contentsline {chapter}{\numberline {1}The Bounded Phase Space Law}{3}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Two Axioms}{3}{section.1.1}%
+\contentsline {section}{\numberline {1.2}The Triple Equivalence Theorem}{4}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Partition Coordinates and Shell Structure}{5}{section.1.3}%
+\contentsline {section}{\numberline {1.4}Partition Depth and Its Equivalence to Entropy}{6}{section.1.4}%
+\contentsline {section}{\numberline {1.5}Spectroscopic Selection Rules as Partition Adjacency}{7}{section.1.5}%
+\contentsline {section}{\numberline {1.6}Connection to the Birkhoff--Kolmogorov Framework}{8}{section.1.6}%
+\contentsline {section}{\numberline {1.7}Discussion: What This Replaces and Why}{9}{section.1.7}%
+\contentsline {section}{\numberline {1.8}Categorical Distance and the Geometry of State Space}{10}{section.1.8}%
+\contentsline {section}{\numberline {1.9}Existence Cost and Landauer's Bound}{11}{section.1.9}%
+\contentsline {chapter}{\numberline {2}Charge as Emergent Partition Boundary}{13}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Motivation: Charge Without Substance}{13}{section.2.1}%
+\contentsline {section}{\numberline {2.2}The Charge Emergence Theorem}{14}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Nuclear Stability Without a Separate Strong Force}{15}{section.2.3}%
+\contentsline {section}{\numberline {2.4}Chemical Bonds as Partition Completions}{16}{section.2.4}%
+\contentsline {section}{\numberline {2.5}The Cardinal Map and Watson--Crick Complementarity}{16}{section.2.5}%
+\contentsline {section}{\numberline {2.6}DNA Capacitance from Partition-Generated Charge}{17}{section.2.6}%
+\contentsline {section}{\numberline {2.7}The Partition Time and Thermodynamic Irreversibility}{19}{section.2.7}%
+\contentsline {section}{\numberline {2.8}The Strong Force as Partition Depth Gradient}{20}{section.2.8}%
+\contentsline {section}{\numberline {2.9}Electrostatics as Partition Boundary Energy Gradient}{21}{section.2.9}%
+\contentsline {section}{\numberline {2.10}Discussion: A Unified Picture}{21}{section.2.10}%
+\contentsline {section}{\numberline {2.11}The Four-State Partition System: Binary Composition}{22}{section.2.11}%
+\contentsline {section}{\numberline {2.12}Charge Quantization from Partition Discreteness}{23}{section.2.12}%
+\contentsline {section}{\numberline {2.13}Watson--Crick Pairing as a Fixed-Point Theorem}{24}{section.2.13}%
+\contentsline {chapter}{\numberline {3}Partition Depth and the Existence Cost}{27}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Motivation: Depth as the Primary Variable}{27}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Partition Depth: Extended Definition}{28}{section.3.2}%
+\contentsline {section}{\numberline {3.3}The Existence Cost Theorem}{29}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Partition Time and the Residue Principle}{30}{section.3.4}%
+\contentsline {section}{\numberline {3.5}Partition Gradient Flow}{31}{section.3.5}%
+\contentsline {section}{\numberline {3.6}Transition-State Theory from Partition Depth}{32}{section.3.6}%
+\contentsline {section}{\numberline {3.7}The Partition Landscape}{34}{section.3.7}%
+\contentsline {section}{\numberline {3.8}Catalysis as Topological Amendment}{34}{section.3.8}%
+\contentsline {section}{\numberline {3.9}The Partition Landscape as Unified Framework}{35}{section.3.9}%
+\contentsline {section}{\numberline {3.10}Living Systems as Self-Maintaining Landscape Regions}{37}{section.3.10}%
+\contentsline {section}{\numberline {3.11}Computational Implications of the Partition Landscape}{38}{section.3.11}%
+\contentsline {chapter}{\numberline {4}S-Entropy Space and the Double Recursion}{41}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Motivation: A Coordinate System for Biological States}{41}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Definition of S-Entropy Space}{42}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Trit Encoding and the Hierarchical Partition of S-Space}{43}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Nucleotide--Trit Mapping}{44}{section.4.4}%
+\contentsline {section}{\numberline {4.5}The Position--Trajectory Duality}{44}{section.4.5}%
+\contentsline {section}{\numberline {4.6}The Double Recursion Theorem}{45}{section.4.6}%
+\contentsline {section}{\numberline {4.7}Solution Pre-Existence}{46}{section.4.7}%
+\contentsline {section}{\numberline {4.8}Three Computational Primitives}{47}{section.4.8}%
+\contentsline {section}{\numberline {4.9}Navigation Complexity}{48}{section.4.9}%
+\contentsline {section}{\numberline {4.10}The Empty Dictionary Principle}{49}{section.4.10}%
+\contentsline {section}{\numberline {4.11}The Partition Synthesis Language}{50}{section.4.11}%
+\contentsline {section}{\numberline {4.12}Biological Processes as S-Space Navigation}{50}{section.4.12}%
+\contentsline {section}{\numberline {4.13}The Scale-Free Nature of the Framework}{52}{section.4.13}%
+\contentsline {part}{II\hspace {1em}Resolution of Foundational Paradoxes}{55}{part.2}%
+\contentsline {chapter}{\numberline {5}Maxwell's Demon and Phase-Lock Networks}{57}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Historical Background: From Maxwell to Bennett}{57}{section.5.1}%
+\contentsline {subsection}{\numberline {5.1.1}Szilard's Engine}{58}{subsection.5.1.1}%
+\contentsline {subsection}{\numberline {5.1.2}Brillouin's Measurement Cost}{58}{subsection.5.1.2}%
+\contentsline {subsection}{\numberline {5.1.3}Landauer's Erasure Principle}{58}{subsection.5.1.3}%
+\contentsline {subsection}{\numberline {5.1.4}Bennett's Memory Argument}{58}{subsection.5.1.4}%
+\contentsline {subsection}{\numberline {5.1.5}What the Standard Resolution Accepts Uncritically}{59}{subsection.5.1.5}%
+\contentsline {section}{\numberline {5.2}The Phase-Lock Network}{59}{section.5.2}%
+\contentsline {subsubsection}{Van der Waals Interactions}{60}{theorem.5.1}%
+\contentsline {subsubsection}{Dipole-Dipole Interactions}{60}{equation.5.3}%
+\contentsline {subsubsection}{Vibrational Coupling}{60}{equation.5.4}%
+\contentsline {section}{\numberline {5.3}Eleven Independent Proofs of the Demon's Defeat}{61}{section.5.3}%
+\contentsline {subsection}{\numberline {5.3.1}Result 1: Temporal Triviality}{61}{subsection.5.3.1}%
+\contentsline {subsection}{\numberline {5.3.2}Result 2: Phase-Lock Temperature Independence}{62}{subsection.5.3.2}%
+\contentsline {subsection}{\numberline {5.3.3}Result 3: Retrieval Paradox}{62}{subsection.5.3.3}%
+\contentsline {subsection}{\numberline {5.3.4}Result 4: Phase-Lock Kinetic Independence (Formal)}{63}{subsection.5.3.4}%
+\contentsline {subsection}{\numberline {5.3.5}Result 5: Categorical-Physical Distance Non-Equivalence}{63}{subsection.5.3.5}%
+\contentsline {subsection}{\numberline {5.3.6}Result 6: Temperature as Emergent Statistical Observable}{64}{subsection.5.3.6}%
+\contentsline {subsection}{\numberline {5.3.7}Result 7: Information Complementarity}{64}{subsection.5.3.7}%
+\contentsline {subsection}{\numberline {5.3.8}Result 8: Symmetric Entropy Increase}{65}{subsection.5.3.8}%
+\contentsline {subsection}{\numberline {5.3.9}Result 9: Heat-Entropy Decoupling}{66}{subsection.5.3.9}%
+\contentsline {subsection}{\numberline {5.3.10}Result 10: Velocity-Temperature Non-Correspondence}{66}{subsection.5.3.10}%
+\contentsline {subsection}{\numberline {5.3.11}Result 11: Velocity-Entropy Independence}{67}{subsection.5.3.11}%
+\contentsline {section}{\numberline {5.4}Connection to Categorical Mechanics}{68}{section.5.4}%
+\contentsline {section}{\numberline {5.5}S-Entropy Coordinates for Gas Configurations}{68}{section.5.5}%
+\contentsline {section}{\numberline {5.6}The Entropy Balance: A Complete Accounting}{69}{section.5.6}%
+\contentsline {section}{\numberline {5.7}Categorical-Kinetic Orthogonality: The Central Theorem}{70}{section.5.7}%
+\contentsline {section}{\numberline {5.8}Categorical Measurement and Backaction Reduction}{71}{section.5.8}%
+\contentsline {section}{\numberline {5.9}Summary and Broader Implications}{73}{section.5.9}%
+\contentsline {chapter}{\numberline {6}Orgel's Paradox and the Thermodynamic Inevitability of Life}{75}{chapter.6}%
+\contentsline {section}{\numberline {6.1}The Paradox: A Genuine Impossibility}{75}{section.6.1}%
+\contentsline {subsection}{\numberline {6.1.1}The Three Standard Escape Attempts and Their Failures}{76}{subsection.6.1.1}%
+\contentsline {subsubsection}{RNA World}{76}{subsection.6.1.1}%
+\contentsline {subsubsection}{Metabolism-First}{76}{subsection.6.1.1}%
+\contentsline {subsubsection}{Lipid World}{76}{subsection.6.1.1}%
+\contentsline {subsection}{\numberline {6.1.2}The Common Structural Failure}{77}{subsection.6.1.2}%
+\contentsline {section}{\numberline {6.2}Partition Operations as Pre-Biochemical Phenomena}{77}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Theorem: Thermodynamic Inevitability of Partition Operations}{78}{section.6.3}%
+\contentsline {section}{\numberline {6.4}Theorem: Probability Separation}{79}{section.6.4}%
+\contentsline {section}{\numberline {6.5}Theorem: Partition Autocatalysis}{80}{section.6.5}%
+\contentsline {section}{\numberline {6.6}Theorem: Chirality Selection}{82}{section.6.6}%
+\contentsline {section}{\numberline {6.7}Prebiotic Chemistry at Low Temperature}{83}{section.6.7}%
+\contentsline {section}{\numberline {6.8}Membranes as Partition Scaffolding}{84}{section.6.8}%
+\contentsline {section}{\numberline {6.9}Resolution of Orgel's Paradox}{85}{section.6.9}%
+\contentsline {section}{\numberline {6.10}A Quantitative Timeline of Early Earth}{86}{section.6.10}%
+\contentsline {section}{\numberline {6.11}Synthesis: Information, Catalysis, and Metabolism as Partition Triad}{87}{section.6.11}%
+\contentsline {section}{\numberline {6.12}Connection to the Paradox Resolution Programme}{88}{section.6.12}%
+\contentsline {chapter}{\numberline {7}What Is Life? The Categorical Completion Threshold}{91}{chapter.7}%
+\contentsline {section}{\numberline {7.1}The Failure of Traditional Definitions}{91}{section.7.1}%
+\contentsline {subsection}{\numberline {7.1.1}The Metabolism Criterion}{91}{subsection.7.1.1}%
+\contentsline {subsection}{\numberline {7.1.2}The Reproduction Criterion}{92}{subsection.7.1.2}%
+\contentsline {subsection}{\numberline {7.1.3}The Homeostasis, Evolution, and Complexity Criteria}{92}{subsection.7.1.3}%
+\contentsline {section}{\numberline {7.2}Categorical Depth and Hierarchical Completion}{93}{section.7.2}%
+\contentsline {section}{\numberline {7.3}The Categorical Completion Threshold Theorem}{94}{section.7.3}%
+\contentsline {section}{\numberline {7.4}The $D$-Ladder: A Classification of All Known Systems}{96}{section.7.4}%
+\contentsline {subsection}{\numberline {7.4.1}$D = 0$: Pure Chemistry}{96}{subsection.7.4.1}%
+\contentsline {subsection}{\numberline {7.4.2}$D = 1$: Simple Viruses}{97}{subsection.7.4.2}%
+\contentsline {subsection}{\numberline {7.4.3}$D = 2$: Complex Viruses}{97}{subsection.7.4.3}%
+\contentsline {subsection}{\numberline {7.4.4}$D = 3$: Minimal Life --- The Mycoplasma Threshold}{98}{subsection.7.4.4}%
+\contentsline {subsection}{\numberline {7.4.5}$D = 4$: Bacteria and Archaea}{99}{subsection.7.4.5}%
+\contentsline {subsection}{\numberline {7.4.6}$D = 5$: Simple Eukaryotes}{99}{subsection.7.4.6}%
+\contentsline {subsection}{\numberline {7.4.7}$D = 6$: Birds and Reptiles}{100}{subsection.7.4.7}%
+\contentsline {subsection}{\numberline {7.4.8}$D = 7$: Mammals and Humans}{100}{subsection.7.4.8}%
+\contentsline {section}{\numberline {7.5}The Virus Paradox Resolved}{100}{section.7.5}%
+\contentsline {subsection}{\numberline {7.5.1}Quantitative Validation}{101}{subsection.7.5.1}%
+\contentsline {subsection}{\numberline {7.5.2}Why Viral Proteins Evade Immunity}{101}{subsection.7.5.2}%
+\contentsline {section}{\numberline {7.6}The Asymmetry Theorem and Process Direction}{102}{section.7.6}%
+\contentsline {section}{\numberline {7.7}Resolving the Edge Cases}{103}{section.7.7}%
+\contentsline {subsection}{\numberline {7.7.1}Seeds: Dormant Life at $D = 3$}{103}{subsection.7.7.1}%
+\contentsline {subsection}{\numberline {7.7.2}Mules: Life Without Reproduction at $D = 4$}{103}{subsection.7.7.2}%
+\contentsline {subsection}{\numberline {7.7.3}Viruses: High Richness, Low Depth}{104}{subsection.7.7.3}%
+\contentsline {subsection}{\numberline {7.7.4}Prions: $D = 0$, Not Alive}{104}{subsection.7.7.4}%
+\contentsline {subsection}{\numberline {7.7.5}Synthetic Cells: The $D = 3$ Requirement}{104}{subsection.7.7.5}%
+\contentsline {section}{\numberline {7.8}Falsifiable Predictions}{104}{section.7.8}%
+\contentsline {section}{\numberline {7.9}Connection to the Bounded Phase Space Law}{105}{section.7.9}%
+\contentsline {section}{\numberline {7.10}Summary}{106}{section.7.10}%
+\contentsline {chapter}{\numberline {8}Peto's Paradox and Exponential Cancer Suppression}{107}{chapter.8}%
+\contentsline {section}{\numberline {8.1}Peto's Paradox: Statement and Significance}{107}{section.8.1}%
+\contentsline {section}{\numberline {8.2}Framework: N Coupled Oscillators in Configuration Space}{108}{section.8.2}%
+\contentsline {section}{\numberline {8.3}Theorem: Configuration Space Suppression}{108}{section.8.3}%
+\contentsline {section}{\numberline {8.4}Theorem: Spatial Decorrelation}{109}{section.8.4}%
+\contentsline {section}{\numberline {8.5}Theorem: Critical Timescale Scaling}{110}{section.8.5}%
+\contentsline {section}{\numberline {8.6}Theorem: Error Propagation Rate Independence of N}{111}{section.8.6}%
+\contentsline {section}{\numberline {8.7}Quantitative Validation Across Species}{112}{section.8.7}%
+\contentsline {section}{\numberline {8.8}The Two Validated Predictions}{112}{section.8.8}%
+\contentsline {subsection}{\numberline {8.8.1}Naked Mole Rat: $P_{\mathrm {cancer}} < 1\%$}{112}{subsection.8.8.1}%
+\contentsline {subsection}{\numberline {8.8.2}Trees: Essentially Zero Cancer}{113}{subsection.8.8.2}%
+\contentsline {section}{\numberline {8.9}Secondary Suppression: DNA Capacitance Scaling}{113}{section.8.9}%
+\contentsline {section}{\numberline {8.10}Kleiber's Law as a Partition-Theory Consequence}{114}{section.8.10}%
+\contentsline {section}{\numberline {8.11}Resolution and Broader Implications}{114}{section.8.11}%
+\contentsline {part}{III\hspace {1em}Catalysis and Metabolism}{117}{part.3}%
+\contentsline {chapter}{\numberline {9}Enzymes as Partition Topology}{119}{chapter.9}%
+\contentsline {section}{\numberline {9.1}The Traditional View and Its Limitation}{119}{section.9.1}%
+\contentsline {section}{\numberline {9.2}The Ball Game Analogy}{120}{section.9.2}%
+\contentsline {section}{\numberline {9.3}Categorical Distance and Partition Path Length}{121}{section.9.3}%
+\contentsline {section}{\numberline {9.4}Transition Rate Theorem and the Arrhenius Equation}{122}{section.9.4}%
+\contentsline {section}{\numberline {9.5}Partition Equilibrium: Why Enzymes Cannot Change $K_{\mathrm {eq}}$}{123}{section.9.5}%
+\contentsline {section}{\numberline {9.6}Enzyme Rate Enhancement as Topology Modification}{124}{section.9.6}%
+\contentsline {section}{\numberline {9.7}Specificity as Topological Isomorphism}{125}{section.9.7}%
+\contentsline {section}{\numberline {9.8}Transition State Theory from the Partition Perspective}{126}{section.9.8}%
+\contentsline {paragraph}{Transition state analogue drugs.}{126}{equation.9.20}%
+\contentsline {section}{\numberline {9.9}Michaelis--Menten Kinetics from Partition Saturation}{127}{section.9.9}%
+\contentsline {subsection}{\numberline {9.9.1}The Partition Saturation Picture}{127}{subsection.9.9.1}%
+\contentsline {subsection}{\numberline {9.9.2}Partition Interpretation of $k_{\mathrm {cat}}$ and $K_M$}{127}{subsection.9.9.2}%
+\contentsline {subsection}{\numberline {9.9.3}The Diffusion Limit}{128}{subsection.9.9.3}%
+\contentsline {section}{\numberline {9.10}Multi-Substrate Reactions as Multi-Dimensional Partition Topology}{128}{section.9.10}%
+\contentsline {section}{\numberline {9.11}Allosteric Regulation as Remote Partition Topology Perturbation}{129}{section.9.11}%
+\contentsline {section}{\numberline {9.12}Inhibition Types as Topological Operations}{130}{section.9.12}%
+\contentsline {subsection}{\numberline {9.12.1}Competitive Inhibition}{130}{subsection.9.12.1}%
+\contentsline {subsection}{\numberline {9.12.2}Non-Competitive Inhibition}{130}{subsection.9.12.2}%
+\contentsline {subsection}{\numberline {9.12.3}Uncompetitive Inhibition}{130}{subsection.9.12.3}%
+\contentsline {section}{\numberline {9.13}Levinthal's Paradox and Partition Gradient Descent}{130}{section.9.13}%
+\contentsline {section}{\numberline {9.14}Enzyme Rate Enhancement: Quantitative Validation}{131}{section.9.14}%
+\contentsline {section}{\numberline {9.15}Transition State Theory, Enzymes, and the $10^{17}$-Fold Problem}{132}{section.9.15}%
+\contentsline {paragraph}{Why $10^{17}$-fold cannot be explained energetically.}{132}{section.9.15}%
+\contentsline {paragraph}{The correct picture of $\Delta G^\ddagger $.}{132}{equation.9.33}%
+\contentsline {section}{\numberline {9.16}Summary}{133}{section.9.16}%
+\contentsline {chapter}{\numberline {10}The Hierarchical Metabolic Computer}{135}{chapter.10}%
+\contentsline {section}{\numberline {10.1}Metabolism as Categorical Computation}{135}{section.10.1}%
+\contentsline {paragraph}{Metabolic vs.\ electronic computing.}{136}{theorem.10.1}%
+\contentsline {section}{\numberline {10.2}The Five-Level Hierarchy (L1--L5)}{136}{section.10.2}%
+\contentsline {subsection}{\numberline {10.2.1}L1: Substrate Partition---Glucose Entry}{136}{subsection.10.2.1}%
+\contentsline {subsection}{\numberline {10.2.2}L2: Pathway Partition---Glycolysis to Pyruvate}{137}{subsection.10.2.2}%
+\contentsline {subsection}{\numberline {10.2.3}L3: Energy Extraction---The TCA Cycle as a Partition Loop}{137}{subsection.10.2.3}%
+\contentsline {subsection}{\numberline {10.2.4}L4: Gradient Partition---Oxidative Phosphorylation}{138}{subsection.10.2.4}%
+\contentsline {paragraph}{The ATP Ratchet from Partition Theory.}{138}{equation.10.7}%
+\contentsline {subsection}{\numberline {10.2.5}L5: Regulatory Partition---Gene Expression}{139}{subsection.10.2.5}%
+\contentsline {section}{\numberline {10.3}ATP Yield per Level and Its Information Correspondence}{139}{section.10.3}%
+\contentsline {section}{\numberline {10.4}The Information Compression Law}{140}{section.10.4}%
+\contentsline {section}{\numberline {10.5}Hierarchical Depth as a Health Metric}{141}{section.10.5}%
+\contentsline {section}{\numberline {10.6}The Partition Loop: TCA Cycle Topology}{142}{section.10.6}%
+\contentsline {paragraph}{Comparison: linear pathway vs.\ partition loop.}{142}{theorem.10.12}%
+\contentsline {section}{\numberline {10.7}Partition Topology of Metabolic Pathways}{143}{section.10.7}%
+\contentsline {section}{\numberline {10.8}Cascade Failure Propagation}{143}{section.10.8}%
+\contentsline {section}{\numberline {10.9}Disease as Hierarchical Depth Reduction}{144}{section.10.9}%
+\contentsline {subsection}{\numberline {10.9.1}Cancer: Warburg Effect as D = 2 Attractor}{144}{subsection.10.9.1}%
+\contentsline {subsection}{\numberline {10.9.2}Neurodegeneration: L4 Failure}{144}{subsection.10.9.2}%
+\contentsline {subsection}{\numberline {10.9.3}Aging: Monotonic D Reduction}{144}{subsection.10.9.3}%
+\contentsline {subsection}{\numberline {10.9.4}Lithium and Bipolar Disorder: L5 Stabilisation}{145}{subsection.10.9.4}%
+\contentsline {section}{\numberline {10.10}Pharmaceutical Validation: Level-Targeted Interventions}{145}{section.10.10}%
+\contentsline {section}{\numberline {10.11}Metabolic Flux Balance as Partition Depth Minimisation}{146}{section.10.11}%
+\contentsline {section}{\numberline {10.12}The Quantum Foundation of the Metabolic Computer}{146}{section.10.12}%
+\contentsline {section}{\numberline {10.13}Flux Tables: Healthy vs.\ Disease States}{147}{section.10.13}%
+\contentsline {section}{\numberline {10.14}Summary}{147}{section.10.14}%
+\contentsline {chapter}{\numberline {11}Biological Charge Current and Flux}{149}{chapter.11}%
+\contentsline {section}{\numberline {11.1}Charge Current from Partition Boundary Motion}{149}{section.11.1}%
+\contentsline {section}{\numberline {11.2}Ion Channels as Controlled Partition Apertures}{150}{section.11.2}%
+\contentsline {subsection}{\numberline {11.2.1}Gating as Partition Topology Switching}{151}{subsection.11.2.1}%
+\contentsline {section}{\numberline {11.3}The Goldman--Hodgkin--Katz Equation from Partition Theory}{151}{section.11.3}%
+\contentsline {subsection}{\numberline {11.3.1}Deriving the Resting Potential from Partition Topology}{152}{subsection.11.3.1}%
+\contentsline {section}{\numberline {11.4}The Nernst Potential as Partition Depth Difference}{153}{section.11.4}%
+\contentsline {section}{\numberline {11.5}Partition Flux Conservation}{154}{section.11.5}%
+\contentsline {section}{\numberline {11.6}Membrane Potential Dynamics}{154}{section.11.6}%
+\contentsline {section}{\numberline {11.7}Action Potential as a Partition Phase Transition}{155}{section.11.7}%
+\contentsline {section}{\numberline {11.8}ATP Synthase as Partition Converter}{156}{section.11.8}%
+\contentsline {section}{\numberline {11.9}The \ce {Na+}/\ce {K+}-ATPase and Steady-State Partition Maintenance}{157}{section.11.9}%
+\contentsline {section}{\numberline {11.10}Summary}{157}{section.11.10}%
+\contentsline {chapter}{\numberline {12}Cellular Charge Trajectories and Disease States}{159}{chapter.12}%
+\contentsline {section}{\numberline {12.1}The Health Attractor in $\mathcal {S}$-Space}{159}{section.12.1}%
+\contentsline {section}{\numberline {12.2}Disease as Trajectory Deviation}{160}{section.12.2}%
+\contentsline {section}{\numberline {12.3}Cancer: The Warburg Effect as a $S_t$ Deviation}{161}{section.12.3}%
+\contentsline {subsection}{\numberline {12.3.1}Metabolic Timing Disruption}{161}{subsection.12.3.1}%
+\contentsline {subsection}{\numberline {12.3.2}pH as the Partition Depth Carrier of the Warburg Effect}{161}{subsection.12.3.2}%
+\contentsline {subsection}{\numberline {12.3.3}All Three Coordinates Deviate in Advanced Cancer}{162}{subsection.12.3.3}%
+\contentsline {section}{\numberline {12.4}Neurodegeneration: Ion Pump Failure as a $S_k$ Deviation}{162}{section.12.4}%
+\contentsline {subsection}{\numberline {12.4.1}The Na$^+$/K$^+$-ATPase and Knowledge Entropy}{162}{subsection.12.4.1}%
+\contentsline {subsection}{\numberline {12.4.2}The Neurodegenerative Cascade}{163}{subsection.12.4.2}%
+\contentsline {subsection}{\numberline {12.4.3}Alzheimer's Disease}{163}{subsection.12.4.3}%
+\contentsline {subsection}{\numberline {12.4.4}Amyotrophic Lateral Sclerosis}{164}{subsection.12.4.4}%
+\contentsline {section}{\numberline {12.5}Aging: Nuclear Pore Complex Degradation as a $S_e$ Deviation}{164}{section.12.5}%
+\contentsline {subsection}{\numberline {12.5.1}The Nuclear Pore Complex as a Partition Gate}{164}{subsection.12.5.1}%
+\contentsline {subsection}{\numberline {12.5.2}NPC Degradation with Age}{164}{subsection.12.5.2}%
+\contentsline {subsection}{\numberline {12.5.3}Mechanistic Consequences of $S_e$ Elevation}{166}{subsection.12.5.3}%
+\contentsline {section}{\numberline {12.6}$\mathcal {S}$-Space Diagnostics and Predictive Medicine}{166}{section.12.6}%
+\contentsline {subsection}{\numberline {12.6.1}Operationalising $\mathcal {S}$-Space Measurement}{167}{subsection.12.6.1}%
+\contentsline {section}{\numberline {12.7}Summary}{167}{section.12.7}%
+\contentsline {chapter}{\numberline {13}Hydrogen Bonds and the Temperature--Frequency Identity}{169}{chapter.13}%
+\contentsline {section}{\numberline {13.1}Proton Oscillation in Watson--Crick Base Pairs}{169}{section.13.1}%
+\contentsline {section}{\numberline {13.2}DNA as a Capacitor--Resistor Circuit}{170}{section.13.2}%
+\contentsline {subsection}{\numberline {13.2.1}DNA Capacitance from Manning Condensation Theory}{170}{subsection.13.2.1}%
+\contentsline {subsection}{\numberline {13.2.2}DNA Resistance from Debye-Screened Counterion Transport}{171}{subsection.13.2.2}%
+\contentsline {subsection}{\numberline {13.2.3}The RC Time Constant}{172}{subsection.13.2.3}%
+\contentsline {section}{\numberline {13.3}Theorem: Metabolic Coupling Through the RC Time Constant}{172}{section.13.3}%
+\contentsline {section}{\numberline {13.4}The Temperature Triple Equivalence}{173}{section.13.4}%
+\contentsline {section}{\numberline {13.5}Coherence Length of H-Bond Proton Oscillations}{174}{section.13.5}%
+\contentsline {subsection}{\numberline {13.5.1}Derivation from a BCS-Like Theory}{174}{subsection.13.5.1}%
+\contentsline {section}{\numberline {13.6}Theorem: Coherence--Nucleosome Correspondence}{175}{section.13.6}%
+\contentsline {section}{\numberline {13.7}Categorical Measurement and Backaction Reduction}{176}{section.13.7}%
+\contentsline {section}{\numberline {13.8}Watson--Crick Proton Transfer and Tautomeric Mutation}{177}{section.13.8}%
+\contentsline {section}{\numberline {13.9}Summary}{178}{section.13.9}%
+\contentsline {part}{IV\hspace {1em}The Genome from First Principles}{181}{part.4}%
+\contentsline {chapter}{\numberline {14}Cardinal Coordinates and Nucleotide Geometry}{183}{chapter.14}%
+\contentsline {section}{\numberline {14.1}The Electronic Partition of Nucleotide Bases}{183}{section.14.1}%
+\contentsline {section}{\numberline {14.2}The Four-State Derivation Theorem}{184}{section.14.2}%
+\contentsline {section}{\numberline {14.3}The Cardinal Map}{185}{section.14.3}%
+\contentsline {section}{\numberline {14.4}Uniqueness of the Cardinal Map}{185}{section.14.4}%
+\contentsline {section}{\numberline {14.5}Watson--Crick Charge Balance}{186}{section.14.5}%
+\contentsline {section}{\numberline {14.6}Geometric Structure: The Cardinal Walk}{186}{section.14.6}%
+\contentsline {section}{\numberline {14.7}Information Enhancement from Dual-Strand Analysis}{187}{section.14.7}%
+\contentsline {section}{\numberline {14.8}G-C Bond Strength from Partition Depth}{188}{section.14.8}%
+\contentsline {section}{\numberline {14.9}Selection Rules from Partition Adjacency}{189}{section.14.9}%
+\contentsline {section}{\numberline {14.10}Spectroscopic Validation}{190}{section.14.10}%
+\contentsline {section}{\numberline {14.11}The Cardinal Walk as a Genomic Fingerprint}{190}{section.14.11}%
+\contentsline {section}{\numberline {14.12}Connections to Earlier Framework Chapters}{191}{section.14.12}%
+\contentsline {section}{\numberline {14.13}Summary}{191}{section.14.13}%
+\contentsline {chapter}{\numberline {15}DNA Capacitance and Charge Storage}{193}{chapter.15}%
+\contentsline {section}{\numberline {15.1}The Phosphate Backbone as a Charge Source}{193}{section.15.1}%
+\contentsline {section}{\numberline {15.2}Histone Charge Neutralisation}{194}{section.15.2}%
+\contentsline {section}{\numberline {15.3}Manning Condensation and the Effective Charge}{194}{section.15.3}%
+\contentsline {section}{\numberline {15.4}Debye Screening at Physiological Ionic Strength}{195}{section.15.4}%
+\contentsline {section}{\numberline {15.5}Derivation of DNA Capacitance}{195}{section.15.5}%
+\contentsline {section}{\numberline {15.6}Comparison with the ATP Energy Pool}{197}{section.15.6}%
+\contentsline {section}{\numberline {15.7}The RC Time Constant and Metabolic Coupling}{198}{section.15.7}%
+\contentsline {section}{\numberline {15.8}Hydrogen Bond Oscillation Frequency}{198}{section.15.8}%
+\contentsline {section}{\numberline {15.9}Four Genomic Processes Modulated by Charge Oscillations}{199}{section.15.9}%
+\contentsline {subsection}{\numberline {15.9.1}Okazaki Fragment Length}{199}{subsection.15.9.1}%
+\contentsline {subsection}{\numberline {15.9.2}Transcriptional Bursting}{199}{subsection.15.9.2}%
+\contentsline {subsection}{\numberline {15.9.3}Nucleosome Breathing}{200}{subsection.15.9.3}%
+\contentsline {subsection}{\numberline {15.9.4}Alternative Splicing: PKM1/PKM2 Ratio}{200}{subsection.15.9.4}%
+\contentsline {section}{\numberline {15.10}The Charge-Centric Paradigm}{200}{section.15.10}%
+\contentsline {section}{\numberline {15.11}Summary}{201}{section.15.11}%
+\contentsline {chapter}{\numberline {16}The C-Value Paradox: Genome as Capacitor}{203}{chapter.16}%
+\contentsline {section}{\numberline {16.1}The Paradox: Genome Size and Organismal Complexity}{203}{section.16.1}%
+\contentsline {section}{\numberline {16.2}Failed Hypotheses}{204}{section.16.2}%
+\contentsline {subsection}{\numberline {16.2.1}Hypothesis 1: Junk DNA}{204}{subsection.16.2.1}%
+\contentsline {subsection}{\numberline {16.2.2}Hypothesis 2: Nucleotypic Effects}{204}{subsection.16.2.2}%
+\contentsline {subsection}{\numberline {16.2.3}Hypothesis 3: Mutational Equilibrium}{205}{subsection.16.2.3}%
+\contentsline {subsection}{\numberline {16.2.4}Hypothesis 4: Regulatory Complexity}{205}{subsection.16.2.4}%
+\contentsline {section}{\numberline {16.3}The Charge Density Conservation Theorem}{205}{section.16.3}%
+\contentsline {section}{\numberline {16.4}Junk DNA as Charge Scaffolding}{207}{section.16.4}%
+\contentsline {section}{\numberline {16.5}Allometric Scaling and Metabolic Rate}{207}{section.16.5}%
+\contentsline {section}{\numberline {16.6}Four Independent Validations}{208}{section.16.6}%
+\contentsline {subsection}{\numberline {16.6.1}Validation 1: Geometric Information Encoding}{208}{subsection.16.6.1}%
+\contentsline {subsection}{\numberline {16.6.2}Validation 2: Phase-Locked Oscillator Constraint}{208}{subsection.16.6.2}%
+\contentsline {subsection}{\numberline {16.6.3}Validation 3: VDJ Combinatorial Amplification}{209}{subsection.16.6.3}%
+\contentsline {subsection}{\numberline {16.6.4}Validation 4: Sequence Variation Irrelevance}{209}{subsection.16.6.4}%
+\contentsline {section}{\numberline {16.7}Quantitative Predictions and Tests}{210}{section.16.7}%
+\contentsline {section}{\numberline {16.8}The Capacitor Model: A Unified Picture}{210}{section.16.8}%
+\contentsline {section}{\numberline {16.9}Summary}{211}{section.16.9}%
+\contentsline {chapter}{\numberline {17}The Ternary Computing Genome}{213}{chapter.17}%
+\contentsline {section}{\numberline {17.1}The Computational Paradigm Shift}{213}{section.17.1}%
+\contentsline {subsection}{\numberline {17.1.1}The Von Neumann Genome}{213}{subsection.17.1.1}%
+\contentsline {subsection}{\numberline {17.1.2}The Navigation Architecture}{214}{subsection.17.1.2}%
+\contentsline {section}{\numberline {17.2}Three Primitive Operations}{214}{section.17.2}%
+\contentsline {section}{\numberline {17.3}Computational Completeness of PSL Primitives}{215}{section.17.3}%
+\contentsline {section}{\numberline {17.4}Nucleotide-to-Trit Mapping}{216}{section.17.4}%
+\contentsline {section}{\numberline {17.5}The $O(\log _3 n)$ Navigation Complexity Theorem}{216}{section.17.5}%
+\contentsline {section}{\numberline {17.6}The Empty Dictionary Principle}{217}{section.17.6}%
+\contentsline {section}{\numberline {17.7}The Partition Synthesis Language}{218}{section.17.7}%
+\contentsline {subsection}{\numberline {17.7.1}PSL Syntax}{218}{subsection.17.7.1}%
+\contentsline {paragraph}{\textsc {Find} statement (Complete + Projection).}{218}{subsection.17.7.1}%
+\contentsline {paragraph}{\textsc {Complete} statement (Completion).}{218}{subsection.17.7.1}%
+\contentsline {paragraph}{\textsc {Compose} statement (Composition).}{219}{subsection.17.7.1}%
+\contentsline {section}{\numberline {17.8}The Double Helix as a Bidirectional Ternary Computer}{219}{section.17.8}%
+\contentsline {section}{\numberline {17.9}Genomic Address Space}{220}{section.17.9}%
+\contentsline {section}{\numberline {17.10}Implications for Genome Evolution}{220}{section.17.10}%
+\contentsline {section}{\numberline {17.11}The Ternary Code Table}{221}{section.17.11}%
+\contentsline {section}{\numberline {17.12}Connections to Earlier Framework Chapters}{221}{section.17.12}%
+\contentsline {section}{\numberline {17.13}Summary}{222}{section.17.13}%
+\contentsline {part}{V\hspace {1em}Oscillatory Genome Networks}{223}{part.5}%
+\contentsline {chapter}{\numberline {18}The Metabolic Clock and Replication Timing}{225}{chapter.18}%
+\contentsline {section}{\numberline {18.1}Metabolic Oscillations as a Master Clock}{225}{section.18.1}%
+\contentsline {section}{\numberline {18.2}Debye Length Oscillations and Electrostatic Gating}{226}{section.18.2}%
+\contentsline {section}{\numberline {18.3}The Metabolic--Genomic Coupling Theorem}{227}{section.18.3}%
+\contentsline {section}{\numberline {18.4}Okazaki Fragment Length Quantization}{227}{section.18.4}%
+\contentsline {section}{\numberline {18.5}Replication Timing Domains and Charge Density}{229}{section.18.5}%
+\contentsline {subsection}{\numberline {18.5.1}Early- and Late-Replicating Domains}{230}{subsection.18.5.1}%
+\contentsline {section}{\numberline {18.6}Harmonic Locking of Other Genomic Processes}{230}{section.18.6}%
+\contentsline {section}{\numberline {18.7}Quantitative Predictions and Experimental Tests}{231}{section.18.7}%
+\contentsline {section}{\numberline {18.8}The Genome as a Phase-Locked Oscillator Network}{231}{section.18.8}%
+\contentsline {section}{\numberline {18.9}Connection to S-Entropy Temporal Coordinate}{232}{section.18.9}%
+\contentsline {chapter}{\numberline {19}Chromatin Breathing and Splicing as Partition Selection}{233}{chapter.19}%
+\contentsline {section}{\numberline {19.1}Nucleosome Breathing: Observations and Mechanisms}{233}{section.19.1}%
+\contentsline {section}{\numberline {19.2}The Electrostatic Balance of the Nucleosome}{234}{section.19.2}%
+\contentsline {section}{\numberline {19.3}The Nucleosome as a Partition Gate}{235}{section.19.3}%
+\contentsline {section}{\numberline {19.4}Alternative Splicing as Categorical Partition Selection}{235}{section.19.4}%
+\contentsline {subsection}{\numberline {19.4.1}Metabolic Coupling to Splicing}{236}{subsection.19.4.1}%
+\contentsline {section}{\numberline {19.5}Histone Modifications as Partition Depth Markers}{237}{section.19.5}%
+\contentsline {subsection}{\numberline {19.5.1}DNA Methylation as an Additional Depth Increment}{238}{subsection.19.5.1}%
+\contentsline {section}{\numberline {19.6}The Chromatin State Machine}{238}{section.19.6}%
+\contentsline {section}{\numberline {19.7}Experimental Predictions}{239}{section.19.7}%
+\contentsline {chapter}{\numberline {20}Transcriptional Bursting and Charge-Controlled Expression}{241}{chapter.20}%
+\contentsline {section}{\numberline {20.1}Transcriptional Bursting: Phenomenology and Problems}{241}{section.20.1}%
+\contentsline {section}{\numberline {20.2}The Charge Threshold Model of Transcriptional Firing}{242}{section.20.2}%
+\contentsline {section}{\numberline {20.3}Burst Size Distribution and Self-Organised Criticality}{243}{section.20.3}%
+\contentsline {section}{\numberline {20.4}Global Charge State as Master Regulator of Transcription}{243}{section.20.4}%
+\contentsline {section}{\numberline {20.5}Charge Domains and Topological Associating Domains}{244}{section.20.5}%
+\contentsline {section}{\numberline {20.6}The Nuclear Electromagnetic Field}{245}{section.20.6}%
+\contentsline {section}{\numberline {20.7}Transcription Factor Binding as Partition Depth Modulation}{246}{section.20.7}%
+\contentsline {section}{\numberline {20.8}Quantitative Predictions}{246}{section.20.8}%
+\contentsline {chapter}{\numberline {21}Nuclear Architecture and Charge Compartmentalisation}{249}{chapter.21}%
+\contentsline {section}{\numberline {21.1}The Nuclear Envelope as Primary Partition Boundary}{249}{section.21.1}%
+\contentsline {section}{\numberline {21.2}The Nuclear Pore Complex as Partition Filter}{250}{section.21.2}%
+\contentsline {section}{\numberline {21.3}The Importin/Exportin System as Topology-Specific Transport}{251}{section.21.3}%
+\contentsline {section}{\numberline {21.4}Aging as Progressive Partition Boundary Dissolution}{251}{section.21.4}%
+\contentsline {section}{\numberline {21.5}Phase Separation as Categorical Partition Phase Transition}{252}{section.21.5}%
+\contentsline {section}{\numberline {21.6}Heterochromatin as Charge-Isolated Partition}{253}{section.21.6}%
+\contentsline {section}{\numberline {21.7}The Centromere as the Primary Partition Origin of the Chromosome}{254}{section.21.7}%
+\contentsline {section}{\numberline {21.8}Nuclear Bodies as Partition Condensates}{254}{section.21.8}%
+\contentsline {section}{\numberline {21.9}Unified Picture: Nuclear Architecture as Partition Hierarchy}{255}{section.21.9}%
+\contentsline {section}{\numberline {21.10}Quantitative Predictions}{255}{section.21.10}%
+\contentsline {part}{VI\hspace {1em}Disease, Immunity, and Therapy}{257}{part.6}%
+\contentsline {chapter}{\numberline {22}Disease as Charge Dysregulation}{259}{chapter.22}%
+\contentsline {section}{\numberline {22.1}The Charge-Trajectory Perspective on Disease}{259}{section.22.1}%
+\contentsline {section}{\numberline {22.2}Cancer as Partition Depth Collapse: The Warburg Effect}{260}{section.22.2}%
+\contentsline {subsection}{\numberline {22.2.1}The Warburg Observation and Its Standard Explanation}{260}{subsection.22.2.1}%
+\contentsline {subsection}{\numberline {22.2.2}Tumour Microenvironment as a Charge Perturbation}{260}{subsection.22.2.2}%
+\contentsline {subsection}{\numberline {22.2.3}The Warburg Effect as Partition Reconfiguration}{261}{subsection.22.2.3}%
+\contentsline {section}{\numberline {22.3}Neurodegeneration as Ion-Partition Cascade}{263}{section.22.3}%
+\contentsline {subsection}{\numberline {22.3.1}The Energetic Context of the Neuron}{263}{subsection.22.3.1}%
+\contentsline {subsection}{\numberline {22.3.2}Alzheimer's Disease: Partition Propagation of Amyloid Toxicity}{263}{subsection.22.3.2}%
+\contentsline {section}{\numberline {22.4}Aging as Nuclear Pore Complex Degradation}{264}{section.22.4}%
+\contentsline {subsection}{\numberline {22.4.1}NPC Half-Life and Epigenetic Memory}{264}{subsection.22.4.1}%
+\contentsline {subsection}{\numberline {22.4.2}Connection to Other Neurodegenerative Diseases}{265}{subsection.22.4.2}%
+\contentsline {section}{\numberline {22.5}The Unified Pathology Theorem}{265}{section.22.5}%
+\contentsline {section}{\numberline {22.6}Partition-Based Therapeutics}{266}{section.22.6}%
+\contentsline {section}{\numberline {22.7}The Health Attractor and Disease Basins}{268}{section.22.7}%
+\contentsline {chapter}{\numberline {23}Categorical Immunology}{271}{chapter.23}%
+\contentsline {section}{\numberline {23.1}From Molecular Recognition to Categorical Filtering}{271}{section.23.1}%
+\contentsline {section}{\numberline {23.2}Categorical Richness: Definition and Properties}{272}{section.23.2}%
+\contentsline {section}{\numberline {23.3}MHC Molecules as Designed Ambiguous Filters}{273}{section.23.3}%
+\contentsline {subsection}{\numberline {23.3.1}The Standard Description and Its Limitation}{273}{subsection.23.3.1}%
+\contentsline {section}{\numberline {23.4}Self/Non-Self Discrimination as Richness Thresholding}{274}{section.23.4}%
+\contentsline {section}{\numberline {23.5}VDJ Recombination as a $3^k$ Categorical Cascade}{275}{section.23.5}%
+\contentsline {subsection}{\numberline {23.5.1}The Combinatorial Arithmetic}{275}{subsection.23.5.1}%
+\contentsline {subsection}{\numberline {23.5.2}VDJ Recombination as a Ternary Process}{275}{subsection.23.5.2}%
+\contentsline {section}{\numberline {23.6}The Immune Cascade as Categorical Filter Sequence}{276}{section.23.6}%
+\contentsline {section}{\numberline {23.7}MHC Binding Prediction and Therapeutic Implications}{277}{section.23.7}%
+\contentsline {subsection}{\numberline {23.7.1}Predicting Immunogenicity from Categorical Richness}{277}{subsection.23.7.1}%
+\contentsline {subsection}{\numberline {23.7.2}Vaccine Design Implications}{278}{subsection.23.7.2}%
+\contentsline {section}{\numberline {23.8}Complement and the Categorical Opsonisation Cascade}{278}{section.23.8}%
+\contentsline {section}{\numberline {23.9}Natural Killer Cells and Richness-Deficiency Detection}{279}{section.23.9}%
+\contentsline {chapter}{\numberline {24}Viral Mimicry and Categorical Immune Evasion}{281}{chapter.24}%
+\contentsline {section}{\numberline {24.1}The Viral Immune Evasion Paradox}{281}{section.24.1}%
+\contentsline {section}{\numberline {24.2}Quantifying Viral Categorical Richness}{282}{section.24.2}%
+\contentsline {section}{\numberline {24.3}The $\mathcal {M}= 2$ Recognition Theorem}{283}{section.24.3}%
+\contentsline {section}{\numberline {24.4}Case Studies in Categorical Immune Evasion}{284}{section.24.4}%
+\contentsline {subsection}{\numberline {24.4.1}HIV-1: Minimal Assembly Richness Transition}{284}{subsection.24.4.1}%
+\contentsline {subsection}{\numberline {24.4.2}SARS-CoV-2: Spike Protein Richness Tuning}{285}{subsection.24.4.2}%
+\contentsline {section}{\numberline {24.5}Prion Diseases as Categorical Simplification}{285}{section.24.5}%
+\contentsline {section}{\numberline {24.6}The Virus Paradox Revisited}{286}{section.24.6}%
+\contentsline {section}{\numberline {24.7}Innate Immunity as Categorical Anomaly Detection}{287}{section.24.7}%
+\contentsline {section}{\numberline {24.8}Integrated Model: The Three-Layer Evasion Stack}{288}{section.24.8}%
+\contentsline {chapter}{\numberline {25}Pharmaceutical Oscillatory Response}{291}{chapter.25}%
+\contentsline {section}{\numberline {25.1}The Partition Topology View of Drug Action}{291}{section.25.1}%
+\contentsline {section}{\numberline {25.2}The O$_2$--H$^+$ Electromagnetic Coupling Framework}{292}{section.25.2}%
+\contentsline {subsection}{\numberline {25.2.1}O$_2$ Quantum States and H$^+$ Resonance}{292}{subsection.25.2.1}%
+\contentsline {subsection}{\numberline {25.2.2}Drug Modulation of O$_2$--H$^+$ Coupling}{293}{subsection.25.2.2}%
+\contentsline {section}{\numberline {25.3}DNA Palindromes as Partition Fixed Points}{294}{section.25.3}%
+\contentsline {subsection}{\numberline {25.3.1}Palindromes in the Cardinal Coordinate System}{294}{subsection.25.3.1}%
+\contentsline {subsection}{\numberline {25.3.2}Restriction Enzyme Sites as Palindrome Partition Selection}{295}{subsection.25.3.2}%
+\contentsline {section}{\numberline {25.4}Partition-Depth Pharmacology: A Predictive Framework}{296}{section.25.4}%
+\contentsline {section}{\numberline {25.5}The Genome Parser}{296}{section.25.5}%
+\contentsline {section}{\numberline {25.6}Case Studies in Partition-Depth Pharmacology}{297}{section.25.6}%
+\contentsline {subsection}{\numberline {25.6.1}Case Study 1: Warfarin and Partition Topology of Vitamin K Recycling}{297}{subsection.25.6.1}%
+\contentsline {subsection}{\numberline {25.6.2}Case Study 2: Clopidogrel and CYP2C19 Partition Collapse}{297}{subsection.25.6.2}%
+\contentsline {subsection}{\numberline {25.6.3}Case Study 3: Metformin and Complex I Partition Depth}{298}{subsection.25.6.3}%
+\contentsline {section}{\numberline {25.7}Partition-Specific Drug Design}{299}{section.25.7}%
+\contentsline {section}{\numberline {25.8}Pharmacogenomic Population Stratification}{300}{section.25.8}%
+\contentsline {part}{VII\hspace {1em}Sequences as Waves}{303}{part.7}%
+\contentsline {chapter}{\numberline {26}The Fragment-Shader Spectrometer}{305}{chapter.26}%
+\contentsline {section}{\numberline {26.1}The Observation-Computation Identity}{305}{section.26.1}%
+\contentsline {section}{\numberline {26.2}Spectral Embedding of Nucleotide Sequences}{306}{section.26.2}%
+\contentsline {section}{\numberline {26.3}The Fragment Shader as a Physical Spectrometer}{307}{section.26.3}%
+\contentsline {section}{\numberline {26.4}The Hierarchical Spectral Address}{309}{section.26.4}%
+\contentsline {section}{\numberline {26.5}The Empty Dictionary Principle in Frequency Space}{310}{section.26.5}%
+\contentsline {section}{\numberline {26.6}Connection to the Physical Spectrometer: A Formal Identification}{310}{section.26.6}%
+\contentsline {section}{\numberline {26.7}Validated Performance}{311}{section.26.7}%
+\contentsline {section}{\numberline {26.8}From Spectrometer to Category: The Frequency Functor}{312}{section.26.8}%
+\contentsline {section}{\numberline {26.9}Proof of Optimality of the Cosine Kernel}{313}{section.26.9}%
+\contentsline {chapter}{\numberline {27}DNA Matching as Wave Interference}{315}{chapter.27}%
+\contentsline {section}{\numberline {27.1}The Wave Identity for Sequence Matching}{315}{section.27.1}%
+\contentsline {section}{\numberline {27.2}The Matched Filter Cross-Correlation}{316}{section.27.2}%
+\contentsline {section}{\numberline {27.3}Phase-Preserving vs.\ Magnitude-Only Analysis}{317}{section.27.3}%
+\contentsline {section}{\numberline {27.4}Statistical Calibration via z-Score}{318}{section.27.4}%
+\contentsline {section}{\numberline {27.5}Multi-Channel Analysis and Protein Extension}{319}{section.27.5}%
+\contentsline {section}{\numberline {27.6}The Planted Motif Validation}{319}{section.27.6}%
+\contentsline {section}{\numberline {27.7}Validated Performance at All Mutation Rates}{320}{section.27.7}%
+\contentsline {section}{\numberline {27.8}Constructive and Destructive Interference: The Partition Interpretation}{321}{section.27.8}%
+\contentsline {section}{\numberline {27.9}Connection to Optical Interference}{321}{section.27.9}%
+\contentsline {section}{\numberline {27.10}Scaling and Implementation}{322}{section.27.10}%
+\contentsline {section}{\numberline {27.11}The Interference Pattern as a Partition Map}{322}{section.27.11}%
+\contentsline {chapter}{\numberline {28}The Computational Genome: A Synthesis}{325}{chapter.28}%
+\contentsline {section}{\numberline {28.1}Three Identities That Close the Monograph}{325}{section.28.1}%
+\contentsline {subsection}{\numberline {28.1.1}Identity I: Sequences ARE Oscillations}{325}{subsection.28.1.1}%
+\contentsline {subsection}{\numberline {28.1.2}Identity II: Empty Dictionary Search IS Categorical Completion in S-Space}{326}{subsection.28.1.2}%
+\contentsline {subsection}{\numberline {28.1.3}Identity III: Matched Filter Interference IS Partition Boundary Detection}{326}{subsection.28.1.3}%
+\contentsline {section}{\numberline {28.2}The Full Arc: From Two Axioms to the Computational Genome}{327}{section.28.2}%
+\contentsline {section}{\numberline {28.3}New Connections: What Could Not Be Seen Until Now}{328}{section.28.3}%
+\contentsline {subsection}{\numberline {28.3.1}The Genome is a Self-Reading Spectrometer}{328}{subsection.28.3.1}%
+\contentsline {subsection}{\numberline {28.3.2}Maxwell's Demon is the Ribosome}{329}{subsection.28.3.2}%
+\contentsline {subsection}{\numberline {28.3.3}Cancer is a Phase Transition in S-Space}{329}{subsection.28.3.3}%
+\contentsline {section}{\numberline {28.4}What the Framework Does Not Explain}{330}{section.28.4}%
+\contentsline {section}{\numberline {28.5}Open Problems}{330}{section.28.5}%
+\contentsline {section}{\numberline {28.6}The Two Axioms and What They Buy}{331}{section.28.6}%
+\contentsline {section}{\numberline {28.7}The Computational Genome}{332}{section.28.7}%
+\contentsline {section}{\numberline {28.8}Conclusion}{333}{section.28.8}%
+\contentsline {chapter}{Appendix A: Mathematical Prerequisites}{335}{appendix*.26}%
+\contentsline {section}{A.1\enspace Category Theory}{335}{section*.27}%
+\contentsline {section}{A.2\enspace Measure Theory}{336}{theorem.Alph0.8}%
+\contentsline {section}{A.3\enspace Fourier Analysis}{337}{theorem.Alph0.12}%
+\contentsline {section}{A.4\enspace Information Theory}{338}{equation.Alph0.5}%
+\contentsline {chapter}{Appendix B: Validation Tables}{339}{appendix*.28}%
+\contentsline {section}{B.1\enspace Enzyme Kinetics}{339}{section*.29}%
+\contentsline {section}{B.2\enspace C-Value Predictions}{339}{table.Alph0.1}%
+\contentsline {section}{B.3\enspace Spectral Homology AUC}{340}{table.Alph0.2}%
+\contentsline {section}{B.4\enspace Interference Detection}{341}{table.caption.30}%
+\contentsline {section}{B.5\enspace Cancer Suppression}{341}{table.caption.32}%
+\contentsline {section}{B.6\enspace Immunological Comparison}{342}{table.caption.33}%
+\contentsline {section}{B.7\enspace Metabolic Information Flux}{342}{table.caption.34}%
+\contentsline {chapter}{Appendix C: Software Implementations}{345}{appendix*.36}%
+\contentsline {section}{C.1\enspace Partition Synthesis Language}{345}{section*.37}%
+\contentsline {section}{C.2\enspace WebGL Fragment Shader}{346}{ALG@line.4}%
+\contentsline {section}{C.3\enspace Matched Filter Library}{348}{Item.435}%
+\contentsline {section}{C.4\enspace Cardinal Embedding}{349}{table.caption.38}%

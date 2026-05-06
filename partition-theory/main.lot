@@ -1,0 +1,56 @@
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {6.1}{\ignorespaces Comparison of origin-of-life scenarios by probability and key failure mode.}}{81}{table.caption.7}%
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {7.1}{\ignorespaces The $D$-ladder: categorical depth classification of physical systems. $N_{\mathrm {osc}}$ = self-sustained oscillator count; $\mathcal {R}$ = categorical richness; $d\mathcal {C}/dt$ = autonomous categorical rate.}}{101}{table.caption.8}%
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {8.1}{\ignorespaces Peto's paradox: observed and predicted lifetime cancer rates across six orders of magnitude in cell count $N$. Predictions from formula~\eqref {eq:peto_formula} with $p_0$ fitted to the mouse, and $\Omega (N)$ from evolutionary adaptation scaling.}}{112}{table.caption.9}%
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {9.1}{\ignorespaces The Ball-and-Wall Game: correspondence table between game elements and partition-theoretic concepts.}}{121}{table.caption.10}%
+\contentsline {table}{\numberline {9.2}{\ignorespaces Enzymatic rate enhancements and partition depth saved. Uncatalysed rate constants $k_{\mathrm {uncat}}$ from Wolfenden \& Snider (2001); catalysed constants from BRENDA database. $\Delta \mathcal {M}_{\mathrm {saved}}$ computed as $\log _e(\text {rate enhancement})$ in natural partition units ($b = e$). Measured $\log _{10} k_{\mathrm {cat}}$ values correlate with predicted $\log _b b^{\Delta \mathcal {M}_{\mathrm {saved}}}$ at $r = 0.97$ across the full six-order-of-magnitude range.}}{132}{table.caption.11}%
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {10.1}{\ignorespaces ATP yield, timescale, and information compression per level of the metabolic hierarchy for one molecule of glucose in healthy aerobic metabolism. Yields are per glucose; NADH and FADH$_2$ converted to ATP using standard P/O ratios (2.5 per NADH, 1.5 per FADH$_2$).}}{140}{table.caption.12}%
+\contentsline {table}{\numberline {10.2}{\ignorespaces Pharmaceutical interventions as partition depth corrections. $\Delta D = D_{\mathrm {post}} - D_{\mathrm {pre}}$ is the change in hierarchical depth induced by the drug. Primary level is the level directly targeted by the drug's molecular mechanism.}}{145}{table.caption.13}%
+\contentsline {table}{\numberline {10.3}{\ignorespaces Normalised metabolic fluxes across the five levels in three metabolic states. Fluxes are relative to glucose uptake $= 1.0$. Partition depth $\mathcal {M}_i$ is the estimated depth of the inter-level coupling pathway. Values derived from $^{13}$C-metabolic flux analysis data compiled in \citet {TeSlaa2016}.}}{147}{table.caption.14}%
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {11.1}{\ignorespaces Partition depths $\mathcal {M}_X$ (base-$e$ units) corresponding to the GHK permeability ratios in the mammalian resting neuron. Partition depths are computed via $P_X = e^{-\mathcal {M}_X}$, normalised to $\mathcal {M}_K = 0$ for clarity.}}{153}{table.caption.15}%
+\contentsline {table}{\numberline {11.2}{\ignorespaces Nernst potentials and partition depth differences for physiological ions at $T = 310$\,K. Concentrations are representative mammalian neuronal values. $\Delta \mathcal {M}_X$ is in base-$e$ units.}}{154}{table.caption.16}%
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {12.1}{\ignorespaces Measurable proxies for $\mathcal {S}$-entropy coordinates, their correspondence to partition-theoretic quantities, and current clinical feasibility.}}{167}{table.caption.17}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {14.1}{\ignorespaces Cardinal residues $\varphi (X) + \varphi (Y)$ for all 16 possible base pairs. Watson--Crick pairs (zero residue) are marked $\text {$\mathsurround \z@ \mathchar "458$}$.}}{187}{table.caption.18}%
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {15.1}{\ignorespaces Information-centric versus charge-centric interpretation of genomic features. The charge-centric view assigns a primary electrostatic function to each feature that the information-centric view cannot explain.}}{197}{table.caption.19}%
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {16.1}{\ignorespaces C-values, cell type counts, and genome-to-complexity ratios for representative organisms. Complexity is approximated by the number of distinct somatic cell types. Data from the Animal Genome Size Database and Gregory (2005).}}{204}{table.caption.20}%
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {17.1}{\ignorespaces Comparison of genomic search algorithms. For the human genome $n = 3\times 10^9$ bp. Operations counted as atomic string-comparison or partition-descent steps.}}{217}{table.caption.21}%
+\contentsline {table}{\numberline {17.2}{\ignorespaces Ternary encoding of DNA nucleotides in PSL. Each nucleotide is represented as 2 trits ($\mathsf {t}_1$: occupancy dimension; $\mathsf {t}_2$: potential refinement). Cardinal coordinates from Chapter~\ref {chap:cardinal_coordinates}. Complement trits are obtained by swapping $\mathsf {t}_2$: $0 \leftrightarrow 2$.}}{221}{table.caption.22}%
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {18.1}{\ignorespaces Harmonic lock ratios between metabolic oscillation frequency $f_{\mathrm {metabolic}} \approx 0.5\,\text {Hz}$ and major genomic process frequencies. Observed process rates are from published single-cell measurements.}}{230}{table.caption.23}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {22.1}{\ignorespaces Partition depth staging of cancer by metabolite signatures. $\uparrow $ = elevated, $\downarrow $ = reduced relative to matched normal tissue.}}{262}{table.caption.24}%
+\contentsline {table}{\numberline {22.2}{\ignorespaces Major disease classes mapped to S-entropy coordinate deviations and partition depth reductions. $\uparrow $ = elevated above health value; $\downarrow $ = reduced below health value.}}{266}{table.caption.25}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {1}{\ignorespaces Enzyme catalytic parameters and partition depth predictions ($r = 0.97$)}}{339}{table.Alph0.1}%
+\contentsline {table}{\numberline {2}{\ignorespaces C-value predictions vs.\ measured genome sizes ($r^2 = 0.91$)}}{339}{table.Alph0.2}%
+\contentsline {table}{\numberline {3}{\ignorespaces AUC vs.\ mutation rate for three methods (5-family average)}}{340}{table.caption.30}%
+\contentsline {table}{\numberline {4}{\ignorespaces Matched filter position recovery (60 planted positions)}}{341}{table.caption.31}%
+\contentsline {table}{\numberline {5}{\ignorespaces F1 score vs.\ $z$-score threshold at 50\% mutation rate}}{341}{table.caption.32}%
+\contentsline {table}{\numberline {6}{\ignorespaces Cancer suppression: predicted vs.\ observed ($r = 0.94$)}}{341}{table.caption.33}%
+\contentsline {table}{\numberline {7}{\ignorespaces Immunological response: viral vs.\ toxin antigens}}{342}{table.caption.34}%
+\contentsline {table}{\numberline {8}{\ignorespaces Metabolic hierarchy information flux under four conditions}}{342}{table.caption.35}%
+\contentsline {table}{\numberline {9}{\ignorespaces Matched filter library performance (1\,Mb target, JavaScript)}}{349}{table.caption.38}%
