@@ -5,7 +5,14 @@
       "Bash(ls -la \"c:\\\\Users\\\\kundai\\\\Documents\\\\bioinformatics\\\\gospel\\\\new_testament\\\\publication\\\\nucleic-acid-derivation\"\" 2>/dev/null || dir \"c:UserskundaiDocumentsbioinformaticsgospelnew_testamentpublicationnucleic-acid-derivation\"\")",
       "Bash(npm install d3 --save --legacy-peer-deps)",
       "Bash(npm run build)",
-      "Bash(npm install *)"
+      "Bash(npm install *)",
+      "Bash(dir \"c:\\\\Users\\\\kunda\\\\Documents\\\\bioinformatics\\\\gospel\")",
+      "PowerShell(New-Item -ItemType Directory -Path \"c:\\\\Users\\\\kunda\\\\Documents\\\\bioinformatics\\\\gospel\\\\partition-theory\\\\frontmatter\" -Force)",
+      "Bash(dir \"C:\\\\Users\\\\kunda\\\\Documents\\\\bioinformatics\\\\gospel\")",
+      "Bash(grep -n \"\\\\\\\\\\\\\\\\begin{theorem}\\\\|\\\\\\\\\\\\\\\\begin{lemma}\\\\|\\\\\\\\\\\\\\\\begin{proposition}\\\\|\\\\\\\\\\\\\\\\begin{corollary}\\\\|\\\\\\\\\\\\\\\\begin{axiom}\\\\|\\\\\\\\\\\\\\\\begin{definition}\\\\|\\\\\\\\\\\\\\\\begin{chapterbox}\\\\|\\\\\\\\\\\\\\\\begin{keyresult}\\\\|\\\\\\\\\\\\\\\\chapter{\" \"C:\\\\Users\\\\kunda\\\\Documents\\\\bioinformatics\\\\gospel\\\\partition-theory\\\\parts\\\\part1_categorical_mechanics\\\\ch01_bounded_phase_space.tex\")",
+      "Bash(grep -n \"\\\\\\\\\\\\\\\\begin{theorem}\\\\|\\\\\\\\\\\\\\\\begin{lemma}\\\\|\\\\\\\\\\\\\\\\begin{proposition}\\\\|\\\\\\\\\\\\\\\\begin{corollary}\\\\|\\\\\\\\\\\\\\\\begin{axiom}\\\\|\\\\\\\\\\\\\\\\begin{definition}\\\\|\\\\\\\\\\\\\\\\begin{chapterbox}\\\\|\\\\\\\\\\\\\\\\begin{keyresult}\\\\|\\\\\\\\\\\\\\\\chapter{\" \"C:\\\\Users\\\\kunda\\\\Documents\\\\bioinformatics\\\\gospel\\\\partition-theory\\\\parts\\\\part1_categorical_mechanics\\\\ch02_charge_emergence.tex\")",
+      "Bash(grep -n \"begin{theorem}\\\\|begin{lemma}\\\\|begin{proposition}\\\\|begin{corollary}\\\\|begin{axiom}\\\\|begin{definition}\\\\|begin{chapterbox}\\\\|begin{example}\\\\|\\\\\\\\chapter{\" \"C:\\\\Users\\\\kunda\\\\Documents\\\\bioinformatics\\\\gospel\\\\partition-theory\\\\parts\\\\part1_categorical_mechanics\\\\ch01_bounded_phase_space.tex\")",
+      "Bash(grep -n \"begin{theorem}\\\\|begin{lemma}\\\\|begin{proposition}\\\\|begin{corollary}\\\\|begin{axiom}\\\\|begin{definition}\\\\|begin{chapterbox}\\\\|begin{example}\\\\|\\\\\\\\chapter{\" \"C:\\\\Users\\\\kunda\\\\Documents\\\\bioinformatics\\\\gospel\\\\partition-theory\\\\parts\\\\part1_categorical_mechanics\\\\ch02_charge_emergence.tex\")"
     ]
   }
 }

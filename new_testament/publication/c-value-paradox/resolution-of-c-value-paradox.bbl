@@ -1,0 +1,70 @@
+\begin{thebibliography}{10}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[{1000 Genomes Project Consortium}(2015)]{1000genomes2015}
+{1000 Genomes Project Consortium}.
+\newblock A global reference for human genetic variation.
+\newblock \emph{Nature}, 526\penalty0 (7571):\penalty0 68--74, 2015.
+
+\bibitem[Cavalier-Smith(2005)]{cavaliersmith2005economy}
+Thomas Cavalier-Smith.
+\newblock Economy, speed and size matter: evolutionary forces driving nuclear
+  genome miniaturization and expansion.
+\newblock \emph{Annals of Botany}, 95\penalty0 (1):\penalty0 147--175, 2005.
+
+\bibitem[Doolittle and Sapienza(1980)]{doolittle1980selfish}
+W~Ford Doolittle and Carmen Sapienza.
+\newblock Selfish genes, the phenotype paradigm and genome evolution.
+\newblock \emph{Nature}, 284\penalty0 (5757):\penalty0 601--603, 1980.
+
+\bibitem[Gregory(2005)]{gregory2005cvalue}
+T~Ryan Gregory.
+\newblock The {C}-value enigma in plants and animals: a review of parallels and
+  an appeal for partnership.
+\newblock \emph{Annals of Botany}, 95\penalty0 (1):\penalty0 133--146, 2005.
+
+\bibitem[Raj and van Oudenaarden(2008)]{raj2008stochastic}
+Arjun Raj and Alexander van Oudenaarden.
+\newblock Nature, nurture, or chance: stochastic gene expression and its
+  consequences.
+\newblock \emph{Cell}, 135\penalty0 (2):\penalty0 216--226, 2008.
+
+\bibitem[Sachikonye(2025{\natexlab{a}})]{sachikonye2025dualstrand}
+Kundai~F Sachikonye.
+\newblock Dual-strand geometric analysis of {DNA} sequences: Information
+  enhancement through cardinal coordinate transformation.
+\newblock \emph{SSRN}, 2025{\natexlab{a}}.
+\newblock doi: 10.2139/ssrn.5732902.
+
+\bibitem[Sachikonye(2025{\natexlab{b}})]{sachikonye2025immunity}
+Kundai~F Sachikonye.
+\newblock Adaptive immunity as categorical filter cascade: {VDJ} recombination
+  and {MHC} presentation achieve specificity through designed ambiguity.
+\newblock \emph{SSRN}, 2025{\natexlab{b}}.
+\newblock doi: 10.2139/ssrn.5680705.
+
+\bibitem[Sachikonye(2025{\natexlab{c}})]{sachikonye2025mimicry}
+Kundai~F Sachikonye.
+\newblock On the consequences of categorical completion on cellular dynamics:
+  Categorical mimicry as exploitation of intersection ambiguity.
+\newblock \emph{SSRN}, 2025{\natexlab{c}}.
+\newblock doi: 10.2139/ssrn.5680602.
+
+\bibitem[Schwanh{\"a}usser et~al.(2011)Schwanh{\"a}usser, Busse, Li, Dittmar,
+  Schuchhardt, Wolf, Chen, and Selbach]{schwanhausser2011global}
+Bj{\"o}rn Schwanh{\"a}usser, Dorothea Busse, Na~Li, Gunnar Dittmar, Johannes
+  Schuchhardt, Jana Wolf, Wei Chen, and Matthias Selbach.
+\newblock Global quantification of mammalian gene expression control.
+\newblock \emph{Nature}, 473\penalty0 (7347):\penalty0 337--342, 2011.
+
+\bibitem[Swift(1950)]{swift1950constancy}
+Hewson Swift.
+\newblock The constancy of desoxyribose nucleic acid in plant nuclei.
+\newblock \emph{Proceedings of the National Academy of Sciences}, 36\penalty0
+  (11):\penalty0 643--654, 1950.
+
+\end{thebibliography}

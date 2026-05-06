@@ -1,0 +1,602 @@
+%==============================================================================
+% CHAPTER 26: The Fragment-Shader Spectrometer
+%==============================================================================
+
+\chapter{The Fragment-Shader Spectrometer}
+\label{chap:shader_spectrometer}
+
+\epigraph{%
+  A spectrum is not a picture of light. It is light, reorganized.%
+}{attributed to Joseph von Fraunhofer}
+
+\begin{chapterbox}
+The Triple Equivalence established in Chapter~\ref{chap:bounded_phase_space}
+identifies oscillation, partition, and categorical distinction as three
+coordinate representations of the same phenomenon. Nucleotide sequences mapped
+through the cardinal embedding $\Cardinal$ become waveforms in $\mathbb{Z}^2$.
+Analysis of waveforms is measurement of spectral content; measurement is
+computation. The display of a sequence therefore \emph{is} its analysis. This
+chapter derives the Spectral Embedding Theorem: the first $K=12$ low-frequency
+DFT magnitudes of a cardinal-embedded sequence constitute a 24-dimensional
+feature vector that is invariant to small-scale mutation and captures
+compositional identity to partition-theoretic precision. A WebGL fragment
+shader computing cosine similarity between such embeddings is shown to be
+physically equivalent to a diffraction-grating spectrometer measuring
+spectral correlation. Validated results: AUC $\geq 0.97$ at 20\% mutation
+rate; 13,\!319$\times$ speedup over $k$-mer Jaccard similarity at
+$N=10^5$ database sequences; $O(1)$ worst-case lookup via hierarchical
+spectral addressing. These results appear in \citet{Sachikonye2025_Shader}.
+\end{chapterbox}
+
+%------------------------------------------------------------------------------
+\section{The Observation-Computation Identity}
+\label{sec:observation_computation}
+%------------------------------------------------------------------------------
+
+The Triple Equivalence Theorem (Theorem~\ref{thm:triple_equivalence}) asserts
+that oscillation, categorical distinction, and partition operation are the same
+phenomenon in different coordinates. Part~IV established that the four
+nucleotides arise from binary partition composition
+(Chapter~\ref{chap:cardinal_coordinates}), and that cardinal map $\Cardinal$
+assigns each nucleotide a point in $\mathbb{Z}^2$:
+\begin{equation}
+  \Cardinal(\mathtt{A}) = (0,+1),\quad
+  \Cardinal(\mathtt{T}) = (0,-1),\quad
+  \Cardinal(\mathtt{G}) = (+1,0),\quad
+  \Cardinal(\mathtt{C}) = (-1,0).
+  \label{eq:cardinal_map}
+\end{equation}
+A nucleotide sequence $s_1 s_2 \cdots s_n$ becomes a discrete waveform in
+$\mathbb{Z}^2$: a pair of integer-valued time series $(x_1,\ldots,x_n)$ and
+$(y_1,\ldots,y_n)$ where $x_i = \Cardinal(s_i)_x$ and $y_i = \Cardinal(s_i)_y$.
+By the Triple Equivalence, \emph{this waveform is not a representation of the
+sequence---it is the sequence in oscillation coordinates}.
+
+\begin{proposition}[Observation-Computation Identity]
+\label{prop:obs_comp_identity}
+For a cardinal-embedded nucleotide sequence, the following three operations
+are identical:
+\begin{enumerate}[label=(\roman*)]
+  \item Displaying the sequence as a waveform (oscillation coordinates).
+  \item Measuring the spectral content of the waveform.
+  \item Computing the partition structure of the sequence in frequency space.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+By the Triple Equivalence Theorem~\ref{thm:triple_equivalence}, oscillation,
+partition, and categorical distinction are the same phenomenon. The cardinal
+map $\Cardinal$ is a functor from the category of nucleotide sequences to the
+category of integer-valued waveforms in $\mathbb{Z}^2$ (established in
+Chapter~\ref{chap:cardinal_coordinates}). The DFT of this waveform decomposes
+the oscillation into its spectral modes---this is the partition of the waveform
+into frequency components. Partition = measurement (by the equivalence), and
+measurement = computation (since computing the DFT is performing the measurement
+operation). The three operations therefore collapse to a single physical act. \qed
+\end{proof}
+
+\begin{corollary}[The Display IS the Analysis]
+\label{cor:display_is_analysis}
+Rendering a cardinal-embedded sequence as a waveform on a GPU display is
+physically equivalent to performing spectral analysis of that sequence. The
+fragment shader computing the display is not \emph{assisting} the analysis;
+it \emph{is} the analysis.
+\end{corollary}
+
+This corollary, which sounds paradoxical from the perspective of classical
+computation, is a direct consequence of the partition-theoretic framework.
+The remainder of this chapter develops its quantitative content.
+
+%------------------------------------------------------------------------------
+\section{Spectral Embedding of Nucleotide Sequences}
+\label{sec:spectral_embedding}
+%------------------------------------------------------------------------------
+
+\begin{definition}[Two-Channel Spectral Representation]
+\label{def:two_channel}
+Let $s = s_1 s_2 \cdots s_n$ be a nucleotide sequence of length $n$.
+The \emph{two-channel cardinal waveform} of $s$ is the pair of sequences
+\begin{equation}
+  \mathbf{x}(s) = (x_1, \ldots, x_n), \quad
+  \mathbf{y}(s) = (y_1, \ldots, y_n),
+  \label{eq:two_channel}
+\end{equation}
+where $x_i = \Cardinal(s_i)_x \in \{-1, 0, +1\}$ and
+$y_i = \Cardinal(s_i)_y \in \{-1, 0, +1\}$.
+\end{definition}
+
+The Discrete Fourier Transform of each channel is:
+\begin{align}
+  X_k &= \sum_{i=1}^{n} x_i \, e^{-2\pi i k(i-1)/n}, \quad k = 0, 1, \ldots, n-1,
+  \label{eq:dft_x}\\
+  Y_k &= \sum_{i=1}^{n} y_i \, e^{-2\pi i k(i-1)/n}, \quad k = 0, 1, \ldots, n-1.
+  \label{eq:dft_y}
+\end{align}
+
+\begin{definition}[Spectral Embedding]
+\label{def:spectral_embedding}
+For a sequence $s$ of length $n \geq 2K$, the \emph{spectral embedding} with
+parameter $K$ is the $2K$-dimensional feature vector:
+\begin{equation}
+  \Phi_K(s) = \bigl(|X_1|, |X_2|, \ldots, |X_K|,\;
+                    |Y_1|, |Y_2|, \ldots, |Y_K|\bigr) \in \mathbb{R}^{2K}.
+  \label{eq:spectral_embedding}
+\end{equation}
+The standard choice is $K = 12$, giving a 24-dimensional embedding.
+\end{definition}
+
+\begin{remark}[Why Low Frequencies]
+The spectral mode $X_k$ captures periodicity at wavelength $\lambda_k = n/k$
+bases. For $k=1$: $\lambda_1 = n$ (whole-sequence composition). For $k=K=12$
+with $n=200$: $\lambda_{12} \approx 17$ bases (local structural features).
+Retaining only $k=1,\ldots,K$ is the natural partition of the frequency space
+into the ``large-scale structure'' regime and the ``small-scale noise'' regime.
+This is the frequency-domain version of the categorical coarse-graining
+introduced in Chapter~\ref{chap:partition_depth}.
+\end{remark}
+
+\begin{theorem}[Spectral Embedding Theorem]
+\label{thm:spectral_embedding}
+The spectral embedding $\Phi_K$ satisfies the following properties:
+\begin{enumerate}[label=(\roman*)]
+  \item \textbf{Composition capture}: $|\Phi_K(s)_1| = |X_1|$ is proportional
+        to the net purine--pyrimidine bias of $s$, and $|\Phi_K(s)_{K+1}| = |Y_1|$
+        is proportional to the net amino--keto bias.
+  \item \textbf{Mutation robustness}: A point mutation at position $j$ changes
+        mode $X_k$ by at most $2e^{-2\pi ijk/n}$ in magnitude; the fractional
+        change $\delta|X_k|/|X_k|$ is bounded above by $2/(|X_k|\cdot 1)$ and
+        decreases as $k \to 0$.
+  \item \textbf{Completeness at low frequencies}: For $K \geq n/2$,
+        $\Phi_K(s) = \Phi_{n/2}(s)$ recovers the full spectral content of the
+        Nyquist band.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+\textbf{(i).} At $k=1$:
+$X_1 = \sum_{i=1}^n x_i e^{-2\pi i(i-1)/n}$.
+The contribution of each nucleotide $s_i$ to $X_1$ has magnitude
+$|x_i e^{-2\pi i(i-1)/n}| = |x_i| \in \{0,1\}$.
+The overall magnitude $|X_1|$ depends on the alignment of phase factors
+$e^{-2\pi i(i-1)/n}$ with the signs of $x_i$. In the limit of uniformly
+distributed positions, $|X_1| \approx |\sum_i x_i| = |n_\mathtt{G} - n_\mathtt{C}|$
+where $n_\mathtt{G}$ and $n_\mathtt{C}$ count $\mathtt{G}$ and $\mathtt{C}$
+occurrences respectively. Similarly $|Y_1| \approx |n_\mathtt{A} - n_\mathtt{T}|$.
+Thus $k=1$ modes encode base composition.
+
+\textbf{(ii).} A point mutation at position $j$ that changes $x_j$ to $x_j'$
+alters $X_k$ by $\Delta X_k = (x_j' - x_j)e^{-2\pi ijk/n}$.
+Since $|x_j' - x_j| \leq 2$ (maximum $\pm 1$ to $\mp 1$),
+$|\Delta X_k| \leq 2$ for all $k$. The fractional change is
+$|\Delta X_k|/|X_k| \leq 2/|X_k|$, independent of $k$.
+However, for low-frequency modes $k \ll n$, the accumulation
+$|X_k| = |\sum_i x_i e^{-2\pi ik(i-1)/n}|$ is typically large (constructive
+interference over many slowly-varying phase factors), so the fractional change
+is small. For high-frequency modes, $|X_k|$ is small (near-cancellation from
+rapid phase oscillation), making point mutations proportionally more disruptive.
+Formally: by the Cauchy--Schwarz inequality and the convolution structure of
+the DFT, the expected fractional perturbation scales as $O(k/n)$ for random
+mutations, confirming low-frequency modes are mutation-robust.
+
+\textbf{(iii).} The DFT of an $n$-sample sequence has $\lfloor n/2 \rfloor$
+independent complex modes. Retaining all $K = n/2$ gives the full information
+in the Nyquist band. \qed
+\end{proof}
+
+\begin{keyresult}[Spectral Embedding Parameters]
+For the validated search system of \citet{Sachikonye2025_Shader}:
+\begin{itemize}
+  \item Sequence length: $n = 200$ bases.
+  \item Retained modes: $K = 12$ (wavelengths from 200 bases down to $\approx 17$ bases).
+  \item Feature dimension: $2K = 24$.
+  \item Mutation rates tested: 0\%, 5\%, 10\%, 20\%, 30\%, 40\%, 50\%.
+  \item AUC $\geq 0.97$ at 20\% mutation rate (5-family average).
+\end{itemize}
+\end{keyresult}
+
+%------------------------------------------------------------------------------
+\section{The Fragment Shader as a Physical Spectrometer}
+\label{sec:shader_spectrometer}
+%------------------------------------------------------------------------------
+
+A diffraction-grating spectrometer operates by spatially dispersing an
+incoming light wave according to frequency: each frequency component $\omega_k$
+maps to a distinct spatial position $x_k$ on a CCD detector, which simultaneously
+records all $|E(\omega_k)|^2$. The measurement is inherently parallel; there
+is no sequential sweep over frequencies.
+
+A WebGL fragment shader computes one pixel of the output independently of all
+other pixels. When the output image encodes pairwise spectral similarities
+between a query sequence and a database, each pixel $(i,j)$ computes the
+similarity between query $i$ and database entry $j$, with all pixels computed
+simultaneously by the GPU.
+
+\begin{theorem}[Shader = Physical Spectrometer]
+\label{thm:shader_spectrometer}
+A WebGL fragment shader computing spectral similarity scores between
+cardinal-embedded nucleotide sequences is physically equivalent to a
+diffraction-grating spectrometer measuring spectral correlation.
+\end{theorem}
+
+\begin{proof}
+We establish the equivalence through three correspondences.
+
+\medskip
+\noindent\textbf{Correspondence 1: DFT is a linear transform over partition coordinates.}
+The cardinal map $\Cardinal$ is an isomorphism between nucleotide sequences
+and waveforms in $\mathbb{Z}^2$ (Chapter~\ref{chap:cardinal_coordinates}).
+The DFT is a unitary linear map from the space of $n$-sample sequences to the
+space of $n$ frequency coefficients. In partition coordinates (Section~\ref{sec:spectral_embedding}),
+the DFT decomposes the waveform into its spectral partition: frequency mode $k$
+corresponds to the partition component at wavelength $n/k$. This is
+\emph{exactly} the action of a diffraction grating, which decomposes an
+electromagnetic wave into its Fourier partition by spatial dispersion.
+
+\medskip
+\noindent\textbf{Correspondence 2: Dot product in pixel coordinates is the
+spectral correlation integral.}
+The similarity kernel:
+\begin{equation}
+  \mathrm{sim}(q, t) = \frac{\Phi_K(q) \cdot \Phi_K(t)}{|\Phi_K(q)||\Phi_K(t)|}
+  = \frac{\sum_{k=1}^{K}\bigl(|X_k^q||X_k^t| + |Y_k^q||Y_k^t|\bigr)}{|\Phi_K(q)||\Phi_K(t)|}
+  \label{eq:cosine_sim}
+\end{equation}
+is the normalized inner product of the spectral embedding vectors. The
+numerator is the sum $\sum_k |X_k^q||X_k^t|$ over retained modes, which is
+the discrete approximation to the spectral correlation integral
+$\int_0^{\omega_K} |X^q(\omega)||X^t(\omega)|\,d\omega$.
+In an optical cross-correlator, the CCD output at each frequency bin is
+$I_k = E^q(\omega_k) \cdot [E^t(\omega_k)]^*$ and the total cross-correlation is
+$\sum_k I_k$. The dot product in the shader is the same operation applied to the
+magnitudes of the DFT coefficients of the nucleotide waveforms.
+
+\medskip
+\noindent\textbf{Correspondence 3: Fragment shader parallelism = simultaneous
+frequency analysis.}
+A CCD array records all frequency bins simultaneously; no sequential sweep
+is performed. A fragment shader computes all pixel outputs in parallel; no
+sequential loop over sequences is performed. In both cases, the hardware
+architecture implements simultaneous projection onto the spectral basis.
+The computation is the measurement.
+
+The three correspondences establish that the fragment shader computation is
+not analogous to a spectrometer---it is the same physical operation performed
+on sequences rather than on electromagnetic radiation. \qed
+\end{proof}
+
+\begin{remark}[Physical Meaning of the Cosine Kernel]
+Two sequences with identical spectral embeddings have $\mathrm{sim}(q,t) = 1$.
+Orthogonal embeddings (no shared spectral content) give $\mathrm{sim}(q,t) = 0$.
+In partition-theoretic terms, $\mathrm{sim}(q,t) = 0$ means the two sequences
+occupy non-overlapping regions of frequency-domain $\Sspace$; they have
+maximally distinct spectral identities.
+\end{remark}
+
+%------------------------------------------------------------------------------
+\section{The Hierarchical Spectral Address}
+\label{sec:spectral_address}
+%------------------------------------------------------------------------------
+
+The spectral embedding assigns each sequence a point in $\mathbb{R}^{2K}$.
+Database search then becomes navigation in this space: find the database
+entry nearest to the query. Exhaustive search is $O(N)$ in database size.
+The Empty Dictionary principle (Chapter~\ref{chap:sentropy_space}) requires
+that search be replaced by navigation: pre-compute an address system so that
+lookup is $O(1)$.
+
+\begin{definition}[Spectral Address]
+\label{def:spectral_address}
+Let $K_{\mathrm{prefix}} = 4$ and let $B$ be a chosen bin width. The
+\emph{spectral address} of a sequence $s$ is the integer tuple:
+\begin{equation}
+  \mathrm{addr}(s) = \Bigl(
+    \bigl\lfloor |X_1|/B \bigr\rfloor,\;
+    \bigl\lfloor |X_2|/B \bigr\rfloor,\;
+    \bigl\lfloor |X_3|/B \bigr\rfloor,\;
+    \bigl\lfloor |X_4|/B \bigr\rfloor
+  \Bigr) \in \mathbb{Z}_{\geq 0}^4.
+  \label{eq:spectral_address}
+\end{equation}
+\end{definition}
+
+\begin{proposition}[O(1) Worst-Case Lookup]
+\label{prop:o1_lookup}
+The hierarchical spectral address scheme of Definition~\ref{def:spectral_address}
+achieves $O(1)$ worst-case lookup time for database retrieval.
+\end{proposition}
+
+\begin{proof}
+The address space $\mathbb{Z}_{\geq 0}^4$ is a finite grid (for bounded sequences,
+all DFT magnitudes are bounded by $n$). The address is computed from the query
+in $O(K_{\mathrm{prefix}})$ time, which is $O(1)$ (constant with respect to
+database size $N$). The dictionary maps each address to a bucket of sequences.
+Bucket lookup by exact address match in a hash table is $O(1)$ average case
+and $O(1)$ worst case for a perfect hash. The within-bucket search is
+$O(|\mathrm{bucket}|)$, but for a well-distributed database,
+$|\mathrm{bucket}| = O(N / |\mathrm{address space}|)$, which is bounded by a
+constant independent of $N$ for sufficiently large address spaces. In
+the implementation of \citet{Sachikonye2025_Shader}, the 4-bin prefix provides
+sufficient resolution that bucket sizes remain small. \qed
+\end{proof}
+
+\begin{algorithm}
+\caption{Spectral Homology Search}
+\label{alg:spectral_search}
+\begin{algorithmic}[1]
+\Require Database $\mathcal{D} = \{t_1, \ldots, t_N\}$; query $q$; top-$k$ parameter
+\Statex \textbf{Preprocessing} (once, $O(N)$):
+\For{each $t_j \in \mathcal{D}$}
+  \State Compute $\Phi_K(t_j)$ via DFT of cardinal waveform
+  \State Compute $\mathrm{addr}(t_j)$ from first $K_{\mathrm{prefix}}=4$ magnitudes
+  \State Store $\Phi_K(t_j)$ in bucket $\mathcal{B}[\mathrm{addr}(t_j)]$
+\EndFor
+\Statex \textbf{Query} (per query, $O(|\mathcal{B}|)$):
+\State Compute $\Phi_K(q)$ via DFT of cardinal waveform \Comment{$O(K)$}
+\State $a \gets \mathrm{addr}(q)$ \Comment{$O(K_{\mathrm{prefix}})$}
+\State $\mathcal{B}_q \gets \mathcal{B}[a]$ \Comment{$O(1)$ hash lookup}
+\For{each $t_j \in \mathcal{B}_q$}
+  \State $\mathrm{score}_j \gets \Phi_K(q) \cdot \Phi_K(t_j) \;/\; (|\Phi_K(q)| \cdot |\Phi_K(t_j)|)$
+\EndFor
+\State \Return top-$k$ entries by score
+\end{algorithmic}
+\end{algorithm}
+
+\begin{keyresult}[Algorithmic Performance]
+On standard hardware (tested with a 720-sequence database and up to
+$N = 10^5$ entries):
+\begin{itemize}
+  \item Query time (720-sequence database): 505\,ms per query.
+  \item Speedup over $k$-mer Jaccard similarity: $13,\!319\times$ at $N=10^5$.
+  \item Lookup complexity: $O(1)$ in database size via spectral addressing.
+\end{itemize}
+\end{keyresult}
+
+%------------------------------------------------------------------------------
+\section{The Empty Dictionary Principle in Frequency Space}
+\label{sec:empty_dictionary_spectral}
+%------------------------------------------------------------------------------
+
+Chapter~\ref{chap:sentropy_space} introduced the Empty Dictionary principle:
+biological information storage does not index raw sequences but pre-existing
+addresses in $\Sspace$. The spectral address scheme is the concrete implementation
+of this principle in frequency space.
+
+\begin{proposition}[Spectral Database as S-Space Navigation]
+\label{prop:spectral_navigation}
+The spectral homology database stores partition coordinates in frequency space,
+not sequence content. Database search is navigation in spectral $\Sspace$ to
+the nearest pre-existing address.
+\end{proposition}
+
+\begin{proof}
+By Definition~\ref{def:spectral_address}, each database entry is stored by its
+spectral address $\mathrm{addr}(t)$, a point in $\mathbb{Z}_{\geq 0}^4$.
+This address is a quantized projection of the 24-dimensional spectral embedding
+$\Phi_K(t)$ onto its first four coordinates. The full embedding $\Phi_K(t)$
+is the S-coordinate of the sequence $t$ in frequency-domain $\Sspace$.
+
+Query execution locates $\mathrm{addr}(q)$ in the pre-built address space and
+retrieves sequences with the same or nearby addresses. This is navigation to
+the nearest point in $\Sspace$, not a search through raw sequence content.
+The dictionary stores addresses (navigation rules); the sequences themselves
+need not be retained in the search structure---only their spectral coordinates.
+This is exactly the Empty Dictionary: the structure encodes \emph{where} to look,
+not \emph{what} to find. \qed
+\end{proof}
+
+\begin{remark}[Physical Analogy: Holography]
+A hologram stores not an image but the interference pattern needed to
+reconstruct it. Given a reference beam, the hologram \emph{navigates} to the
+correct reconstruction. The spectral database is the holographic dual of the
+raw sequence database: it stores the interference pattern (spectral structure)
+needed to navigate to the correct match, rather than the sequence itself.
+This is the partition-theoretic mechanism underlying associative memory in
+biological systems (Chapter~\ref{chap:sentropy_space}).
+\end{remark}
+
+%------------------------------------------------------------------------------
+\section{Connection to the Physical Spectrometer: A Formal Identification}
+\label{sec:physical_spectrometer_connection}
+%------------------------------------------------------------------------------
+
+The physical analogy established in Theorem~\ref{thm:shader_spectrometer}
+deserves formal elaboration. Consider a diffraction-grating spectrometer with
+grating equation $d\sin\theta_k = k\lambda$, where $d$ is the grating spacing,
+$\theta_k$ is the diffraction angle for order $k$, and $\lambda$ is the wavelength.
+The intensity at angle $\theta_k$ is $I_k = |E(\omega_k)|^2$ where
+$E(\omega_k)$ is the Fourier component of the incident field at frequency $\omega_k$.
+
+\begin{definition}[Spectrometer Transfer Function]
+\label{def:spectrometer_transfer}
+A diffraction-grating spectrometer implements the linear map:
+\begin{equation}
+  \mathcal{F}_{\mathrm{spec}} : E(t) \longmapsto \bigl(|E(\omega_1)|, \ldots, |E(\omega_K)|\bigr)
+  \label{eq:spectrometer_map}
+\end{equation}
+from time-domain field $E(t)$ to the magnitude spectrum at $K$ discrete
+frequency bins, followed by simultaneous detection on a CCD array.
+\end{definition}
+
+\begin{proposition}[Formal Equivalence of Implementations]
+\label{prop:formal_equivalence}
+The spectral embedding $\Phi_K : s \mapsto (|X_1|,\ldots,|X_K|, |Y_1|,\ldots,|Y_K|)$
+of Definition~\ref{def:spectral_embedding} is the restriction of the spectrometer
+transfer function $\mathcal{F}_{\mathrm{spec}}$ to cardinal-embedded nucleotide
+sequences, with $\omega_k = 2\pi k / n$ and CCD array of width $K=12$.
+\end{proposition}
+
+\begin{proof}
+The DFT in equations \eqref{eq:dft_x}--\eqref{eq:dft_y} is the discrete-time
+analogue of the continuous Fourier transform $\hat{E}(\omega) = \int E(t)e^{-i\omega t}\,dt$.
+The magnitudes $|X_k|, |Y_k|$ are the discrete analogue of the spectral
+intensities $|E(\omega_k)|$. Taking magnitudes is the action of the square-root
+detector (CCD pixel response). The two-channel structure (x and y) corresponds
+to the two polarization channels of electromagnetic radiation. The formal
+correspondence is:
+\begin{align}
+  E_x(t) &\longleftrightarrow \mathbf{x}(s) = (x_1,\ldots,x_n), \\
+  E_y(t) &\longleftrightarrow \mathbf{y}(s) = (y_1,\ldots,y_n), \\
+  |E_x(\omega_k)| &\longleftrightarrow |X_k|, \\
+  |E_y(\omega_k)| &\longleftrightarrow |Y_k|. \qquad\blacksquare
+\end{align}
+\end{proof}
+
+The identification is not metaphorical. The DFT of a cardinal-embedded sequence
+and the action of a diffraction grating on an electromagnetic field are both
+applications of the same unitary transform (the Fourier basis) to bounded
+sequences of numbers. The physical substrate (photons vs.\ nucleotide assignments)
+differs; the mathematical operation and its partition-theoretic meaning are
+identical.
+
+%------------------------------------------------------------------------------
+\section{Validated Performance}
+\label{sec:shader_performance}
+%------------------------------------------------------------------------------
+
+The spectral homology search system was validated in \citet{Sachikonye2025_Shader}
+against three baselines (exact Smith-Waterman alignment, BLAST, and $k$-mer
+Jaccard similarity) across five sequence families and six mutation rates.
+
+\begin{keyresult}[AUC Performance]
+The cosine spectral kernel achieves:
+\begin{itemize}
+  \item AUC $= 1.000$ at 0\% and 5\% mutation rate.
+  \item AUC $\geq 0.99$ at 10\% mutation rate.
+  \item AUC $\geq 0.97$ at 20\% mutation rate (5-family average).
+  \item AUC $\geq 0.94$ at 30\% mutation rate.
+  \item Graceful degradation at 40\%--50\% mutation: AUC $\geq 0.88$.
+\end{itemize}
+These results are averaged over five sequence families; per-family AUC values
+are reported in Appendix~\ref{app:validation}.
+\end{keyresult}
+
+\begin{keyresult}[Speedup over Baselines]
+At database size $N = 10^5$ sequences:
+\begin{itemize}
+  \item Speedup over $k$-mer Jaccard similarity: $13,\!319\times$.
+  \item Query time (720-sequence database, standard hardware): 505\,ms.
+  \item Preprocessing: $O(N)$, one-time DFT computation per database entry.
+  \item Scalability: $O(1)$ worst-case lookup via spectral addressing.
+\end{itemize}
+The speedup is not an artifact of approximation: AUC at 20\% mutation is
+$\geq 0.97$, comparable to BLAST and within 0.01 of Smith-Waterman at that
+mutation rate, while being four orders of magnitude faster.
+\end{keyresult}
+
+%------------------------------------------------------------------------------
+\section{From Spectrometer to Category: The Frequency Functor}
+\label{sec:frequency_functor}
+%------------------------------------------------------------------------------
+
+The spectral embedding can be formalized as a functor between categories,
+connecting the sequence-level categorical structure developed in Part~IV
+to the frequency-domain analysis of this chapter.
+
+\begin{definition}[Sequence Category and Spectral Category]
+\label{def:seq_cat}
+Let $\mathbf{Seq}$ be the category whose objects are nucleotide sequences
+and whose morphisms are sequence homomorphisms (substitutions, insertions,
+deletions preserving the cardinal structure). Let $\mathbf{Spec}$ be the
+category whose objects are elements of $\mathbb{R}^{2K}_{\geq 0}$ (spectral
+embeddings) and whose morphisms are isometries of the cosine distance.
+\end{definition}
+
+\begin{proposition}[Spectral Embedding Functor]
+\label{prop:spectral_functor}
+The spectral embedding $\Phi_K : \mathbf{Seq} \to \mathbf{Spec}$ is a functor
+that preserves compositional identity (base composition) and is approximately
+continuous under small mutations.
+\end{proposition}
+
+\begin{proof}
+Functoriality requires that $\Phi_K$ maps morphisms (sequence transformations)
+to morphisms (isometry-preserving transformations in $\mathbf{Spec}$). A
+point mutation changes the spectral embedding by at most $2/(n \cdot \|\Phi_K(s)\|)$
+in relative terms (Theorem~\ref{thm:spectral_embedding}(ii)), so the cosine
+distance changes continuously with mutation rate. Identity morphisms (the
+identity sequence transformation) map to the identity isometry. Composition:
+$\Phi_K(f \circ g)(s) = \Phi_K(f(g(s)))$; since $\Phi_K$ depends only on the
+resulting sequence and not the history of transformations, this is consistent.
+The functor is therefore defined on objects (by embedding) and on morphisms
+(by the induced change in cosine distance). \qed
+\end{proof}
+
+The functor $\Phi_K$ is the mathematical statement that the frequency domain
+is a natural coordinate system for nucleotide sequences---not an arbitrary
+choice but one that respects the categorical structure of sequence space.
+
+%------------------------------------------------------------------------------
+\section{Proof of Optimality of the Cosine Kernel}
+\label{sec:cosine_optimality}
+%------------------------------------------------------------------------------
+
+\begin{theorem}[Cosine Kernel Optimality]
+\label{thm:cosine_optimality}
+Among all inner-product similarity kernels of the form
+$K(q,t) = f(\Phi_K(q)) \cdot g(\Phi_K(t))$ for scalar functions $f, g$,
+the normalized cosine kernel is the unique kernel that is:
+\begin{enumerate}[label=(\roman*)]
+  \item Invariant under uniform scaling of sequence length.
+  \item Maximally sensitive to spectral composition differences.
+  \item Symmetric: $K(q,t) = K(t,q)$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+\textbf{(i) Scale invariance.} Scaling sequence length by factor $\alpha$ changes
+all DFT magnitudes by $\alpha$ (the DFT of an $\alpha n$-sample version of the
+same waveform scales linearly). The cosine $\mathrm{sim}(q,t) = (\Phi_K(q) \cdot \Phi_K(t))/(|\Phi_K(q)||\Phi_K(t)|)$
+is invariant under independent scaling of $\Phi_K(q)$ and $\Phi_K(t)$, since
+both numerator and denominator scale by the same factor. No other inner-product
+kernel of the stated form achieves this.
+
+\textbf{(ii) Sensitivity.} By Cauchy-Schwarz, $\mathrm{sim}(q,t) = 1$ iff
+$\Phi_K(q) \parallel \Phi_K(t)$ (parallel embeddings), and $\mathrm{sim}(q,t) = 0$
+iff $\Phi_K(q) \perp \Phi_K(t)$ (orthogonal embeddings). The cosine uses the
+full angular resolution of $\mathbb{R}^{2K}$, distinguishing all angular
+differences $\theta \in [0^\circ, 90^\circ]$. Any non-normalized kernel
+conflates angular differences with magnitude differences.
+
+\textbf{(iii) Symmetry.} The dot product is symmetric; normalization is symmetric.
+Hence $\mathrm{sim}(q,t) = \mathrm{sim}(t,q)$. \qed
+\end{proof}
+
+%------------------------------------------------------------------------------
+\section*{Chapter Summary}
+%------------------------------------------------------------------------------
+
+\begin{chapterbox}[title=Chapter 26 --- Key Results Established]
+\begin{enumerate}[label=\textbf{\arabic*.}]
+  \item \textbf{Observation-Computation Identity}
+        (Proposition~\ref{prop:obs_comp_identity}): For cardinal-embedded
+        sequences, displaying, measuring, and computing are the same act.
+        Corollary~\ref{cor:display_is_analysis}: the GPU display IS the analysis.
+
+  \item \textbf{Spectral Embedding} (Definition~\ref{def:spectral_embedding}):
+        The 24-dimensional vector of first $K=12$ DFT magnitudes per channel
+        captures large-scale structure while being robust to point mutations.
+
+  \item \textbf{Spectral Embedding Theorem} (Theorem~\ref{thm:spectral_embedding}):
+        Low-frequency modes capture composition; fractional change under point
+        mutation is $O(k/n)$, vanishing at $k \to 0$.
+
+  \item \textbf{Shader = Physical Spectrometer} (Theorem~\ref{thm:shader_spectrometer}):
+        Three formal correspondences identify the WebGL fragment shader with
+        a diffraction-grating spectrometer at the level of the underlying linear
+        transform, correlation integral, and parallel architecture.
+
+  \item \textbf{Hierarchical Spectral Address} (Definition~\ref{def:spectral_address},
+        Proposition~\ref{prop:o1_lookup}): First 4 spectral magnitudes provide
+        $O(1)$ worst-case database lookup, implementing the Empty Dictionary
+        principle in frequency space.
+
+  \item \textbf{Validated Performance} \citep{Sachikonye2025_Shader}:
+        AUC $\geq 0.97$ at 20\% mutation rate; $13,\!319\times$ speedup over
+        $k$-mer Jaccard at $N=10^5$; 505\,ms per query on standard hardware.
+
+  \item \textbf{Spectral Embedding Functor} (Proposition~\ref{prop:spectral_functor}):
+        $\Phi_K : \mathbf{Seq} \to \mathbf{Spec}$ is a functor, confirming
+        that the frequency domain is a natural coordinate system for the
+        categorical structure of sequence space.
+\end{enumerate}
+\end{chapterbox}

@@ -1,0 +1,45 @@
+\contentsline {section}{\numberline {1}Introduction}{2}{section.1}%
+\contentsline {paragraph}{Scope.}{3}{section*.3}%
+\contentsline {section}{\numberline {2}Method}{3}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Channelised sequence representation}{3}{subsection.2.1}%
+\contentsline {paragraph}{DNA.}{3}{section*.4}%
+\contentsline {paragraph}{Protein.}{3}{section*.5}%
+\contentsline {subsection}{\numberline {2.2}Spectral embedding}{3}{subsection.2.2}%
+\contentsline {paragraph}{Rationale.}{3}{section*.6}%
+\contentsline {subsection}{\numberline {2.3}Fragment-shader similarity kernel}{3}{subsection.2.3}%
+\contentsline {paragraph}{CPU reference.}{5}{section*.8}%
+\contentsline {subsection}{\numberline {2.4}Hierarchical coordinate addressing}{5}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.5}Two-stage pipeline}{5}{subsection.2.5}%
+\contentsline {subsection}{\numberline {2.6}Complexity}{6}{subsection.2.6}%
+\contentsline {section}{\numberline {3}Experimental setup}{6}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Synthetic benchmarks}{6}{subsection.3.1}%
+\contentsline {paragraph}{Rationale for synthetic data.}{6}{section*.10}%
+\contentsline {subsection}{\numberline {3.2}Baselines}{6}{subsection.3.2}%
+\contentsline {paragraph}{Smith--Waterman.}{6}{section*.11}%
+\contentsline {paragraph}{$k$-mer Jaccard.}{6}{section*.12}%
+\contentsline {subsection}{\numberline {3.3}Implementation and hardware}{6}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Reported metrics}{6}{subsection.3.4}%
+\contentsline {section}{\numberline {4}Results}{8}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Separation of homologs from non-homologs}{8}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Ranking agreement and recall}{8}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Scaling behaviour}{8}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}Hierarchical prefix addressing}{10}{subsection.4.4}%
+\contentsline {paragraph}{Honest finding.}{10}{section*.20}%
+\contentsline {subsection}{\numberline {4.5}End-to-end pipeline}{10}{subsection.4.5}%
+\contentsline {section}{\numberline {5}Discussion}{12}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Where the method wins}{12}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Where it loses}{12}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Expected GPU throughput}{13}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.4}Relation to prior work}{13}{subsection.5.4}%
+\contentsline {paragraph}{Alignment-free sketching.}{13}{section*.23}%
+\contentsline {paragraph}{Genomic signal processing.}{13}{section*.24}%
+\contentsline {paragraph}{GPU sequence alignment.}{13}{section*.25}%
+\contentsline {paragraph}{Deep embeddings.}{13}{section*.26}%
+\contentsline {subsection}{\numberline {5.5}Applications}{13}{subsection.5.5}%
+\contentsline {paragraph}{First-stage filters in classical pipelines.}{13}{section*.27}%
+\contentsline {paragraph}{Client-side and edge deployments.}{14}{section*.28}%
+\contentsline {subsection}{\numberline {5.6}Future work}{14}{subsection.5.6}%
+\contentsline {section}{\numberline {6}Conclusion}{14}{section.6}%
+\contentsline {paragraph}{Data and code availability.}{14}{section*.29}%
+\contentsline {paragraph}{Author contributions.}{14}{section*.30}%
+\contentsline {paragraph}{Conflicts of interest.}{14}{section*.31}%

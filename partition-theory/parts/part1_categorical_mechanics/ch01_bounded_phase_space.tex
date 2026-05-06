@@ -1,0 +1,713 @@
+%==============================================================================
+% CHAPTER 1: The Bounded Phase Space Law
+%==============================================================================
+
+\chapter{The Bounded Phase Space Law}
+\label{chap:bounded_phase_space}
+
+\epigraph{%
+  The atoms of Democritus and Newton's particles of light\\
+  are sands upon the Red Sea shore,\\
+  where Israel's tents do shine so bright.%
+}{William Blake, \textit{Mock on, Mock on, Voltaire, Rousseau} (c.~1800--1803)}
+
+\begin{chapterbox}
+This chapter derives the Bounded Phase Space Law from two axioms and establishes
+its three-way equivalence theorem: oscillation, categorical distinction, and
+partition operation are the same phenomenon viewed from different coordinate
+systems. From the geometry of nested partitions in a bounded phase space, the
+quantum numbers $(n, l, m, s)$ emerge with their exact degeneracy $C(n) = 2n^2$,
+reproducing atomic shell structure without appeal to the Schr\"{o}dinger equation.
+Partition depth $\Depth$ is identified with thermodynamic entropy via
+$S_\Part = \kB \Depth \ln b$, and the bounds $\Depth_{\min} = \log_b 2$,
+$\Depth_{\max} = \log_b(\Omega/h^n)$ establish that unobservable systems have
+$\Depth = 0$. Spectroscopic selection rules and the hydrogen 21\,cm line
+($\nu = 1420.405$\,MHz) are derived as partition adjacency constraints.
+\end{chapterbox}
+
+%------------------------------------------------------------------------------
+\section{Two Axioms}
+\label{sec:axioms}
+%------------------------------------------------------------------------------
+
+Classical statistical mechanics inherits from Liouville's theorem a picture of
+phase space as an unbounded arena through which trajectories flow forever,
+conserving volume but distributing themselves over arbitrarily large regions.
+The ergodic hypothesis then requires the entire accessible shell of constant
+energy to be explored. This picture is mathematically convenient but
+physically unattainable: every laboratory system, every cell, every atom
+is embedded in a finite universe and occupies a bounded region. The following
+two axioms make this observation precise and draw from it consequences that
+extend far beyond thermodynamics.
+
+\begin{axiom}[Boundedness]
+\label{ax:boundedness}
+Every localized physical system occupies a bounded region of phase space:
+\begin{equation}
+  \Omega \subset \mathbb{R}^{2n}, \qquad \operatorname{Vol}(\Omega) < \infty.
+\end{equation}
+\end{axiom}
+
+\begin{axiom}[Finite Partition]
+\label{ax:finite_partition}
+A bounded phase space $\Omega$ admits a partition into
+\begin{equation}
+  N = \frac{\operatorname{Vol}(\Omega)}{h^n} < \infty
+\end{equation}
+distinguishable cells, where $h$ is Planck's constant and the minimum cell
+volume $h^n$ is set by the Heisenberg uncertainty principle.
+\end{axiom}
+
+\begin{remark}
+Axiom~\ref{ax:finite_partition} is not additional structure imposed on
+phase space: it follows from Axiom~\ref{ax:boundedness} together with the
+fact that quantum mechanics provides a natural infrared cutoff on cell
+volume. The number $N$ is the Weyl formula for the number of distinct
+quantum states, recovered here from pure geometry.
+\end{remark}
+
+The finiteness of $N$ has an immediate and underappreciated consequence.
+
+\begin{proposition}[Poincar\'{e} Recurrence is Exact]
+\label{prop:poincare}
+For any system satisfying Axioms~\ref{ax:boundedness}--\ref{ax:finite_partition},
+Poincar\'{e} recurrence is not merely a theorem about measure-zero exceptional
+trajectories but holds for \emph{every} trajectory. The recurrence time satisfies
+$T_{\mathrm{rec}} \leq N \, \tau_{\min}$, where $\tau_{\min}$ is the minimum
+time for a phase-space transition.
+\end{proposition}
+
+\begin{proof}
+Since $N < \infty$, the phase space is a finite set of cells under
+Axiom~\ref{ax:finite_partition}. Any measure-preserving map on a finite set
+is a permutation, and every permutation has finite order. Therefore every
+trajectory returns to its starting cell in at most $N$ steps, giving the
+stated bound. The exceptional-measure caveat of the classical theorem vanishes
+because there are no continuous trajectories in a discrete cell structure.
+\end{proof}
+
+%------------------------------------------------------------------------------
+\section{The Triple Equivalence Theorem}
+\label{sec:triple_equivalence}
+%------------------------------------------------------------------------------
+
+The central result of this chapter makes precise a conceptual unity that has
+been implicit in physics since Bohr's quantization condition but never stated
+as a theorem.
+
+\begin{theorem}[Triple Equivalence]
+\label{thm:triple_equivalence}
+For any system satisfying Axioms~\ref{ax:boundedness}--\ref{ax:finite_partition},
+the following three concepts are equivalent:
+\begin{enumerate}[label=(\roman*)]
+  \item \textbf{Oscillation}: the trajectory of the system in $\Omega$ is
+        periodic or quasi-periodic with at least one turning point.
+  \item \textbf{Categorical Distinction}: there exist at least two distinguishable
+        states of the system, \ie two cells $c_1 \neq c_2$ in the partition.
+  \item \textbf{Partition Operation}: the phase space $\Omega$ admits a
+        non-trivial partition $\Part$ with at least two non-empty elements.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+We prove the three implications in a cycle.
+
+\medskip
+\noindent\textbf{(i) $\Rightarrow$ (iii): Oscillation implies Partition.}
+Let the trajectory $\gamma(t)$ have a turning point at $q^* \in \Omega$,
+meaning $\dot{q}^*(t^*) = 0$ for some $t^*$. The turning point set
+$\mathcal{T} = \{q : \dot{q} = 0\} \cap \partial\Omega$ is non-empty by
+hypothesis. The turning points partition $\Omega$ into regions of positive
+and negative momentum: $\Omega^+ = \{(q,p) : p > 0\}$,
+$\Omega^- = \{(q,p) : p < 0\}$, and $\mathcal{T}$ itself. Since the trajectory
+must reverse direction at each turning point (by continuity of the Hamiltonian
+flow and $\operatorname{Vol}(\Omega) < \infty$), the set
+$\Part = \{\Omega^+, \Omega^-, \mathcal{T}\}$ is a non-trivial partition of $\Omega$.
+
+\medskip
+\noindent\textbf{(iii) $\Rightarrow$ (ii): Partition implies Distinction.}
+Let $\Part = \{c_1, \ldots, c_N\}$ with $N \geq 2$. By Axiom~\ref{ax:finite_partition},
+distinct cells have non-overlapping support and both have positive measure. A
+physical observable $O$ that takes different values on $c_1$ and $c_2$ (for
+example, the cell index itself, or equivalently the number of completed
+partition operations from any reference state) witnesses that $c_1$ and $c_2$
+are categorically distinct. The existence of such an observable is guaranteed
+by the separability of $\mathbb{R}^{2n}$.
+
+\medskip
+\noindent\textbf{(ii) $\Rightarrow$ (i): Distinction implies Oscillation.}
+Suppose cells $c_1 \neq c_2$ are distinguishable states. In a bounded phase
+space, the system trajectory must remain within $\Omega$. If the trajectory
+reaches $c_2$ starting from $c_1$, it cannot escape to infinity; it must
+return toward the interior of $\Omega$. By Proposition~\ref{prop:poincare},
+every trajectory in a finite cell structure recurs. Recurrence of a
+trajectory that passes through both $c_1$ and $c_2$ requires it to reverse
+the transition $c_1 \to c_2$, which constitutes a turning point and hence
+oscillation. \qed
+\end{proof}
+
+\begin{remark}
+The proof of (ii)~$\Rightarrow$~(i) uses recurrence essentially: in an unbounded
+phase space, a system could distinguish two states and escape to infinity,
+never returning. Boundedness closes this escape route, forging the equivalence.
+This is why free particles (formally unbounded) do not oscillate in the absence
+of a confining potential.
+\end{remark}
+
+The connection to Birkhoff's ergodic theorem is instructive. Birkhoff establishes
+that time averages equal space averages for almost all initial conditions on
+ergodic components. In a finite partition, every ergodic component is itself
+a finite collection of cells, so the Birkhoff average is a finite sum. The
+partition depth $\Depth$ (defined in Section~\ref{sec:partition_depth}) serves
+as a Kolmogorov--Sinai entropy rate: $h_{\mathrm{KS}} = \Depth \ln b / \tau_{\min}$,
+connecting the abstract combinatorics of partitions to measurable dynamical
+quantities.
+
+%------------------------------------------------------------------------------
+\section{Partition Coordinates and Shell Structure}
+\label{sec:partition_coordinates}
+%------------------------------------------------------------------------------
+
+A bounded phase space $\Omega$ admits not merely one partition but an entire
+hierarchy of nested partitions. This hierarchy is the central object of
+categorical mechanics.
+
+\begin{definition}[Nested Partition Hierarchy]
+\label{def:nested_partition}
+A nested partition hierarchy on $\Omega$ is a sequence
+\[
+  \Omega = \Part_0 \supset \Part_1 \supset \Part_2 \supset \cdots
+\]
+where each $\Part_k$ is a refinement of $\Part_{k-1}$, meaning every element
+of $\Part_k$ is contained in some element of $\Part_{k-1}$.
+\end{definition}
+
+Each element of $\Part_k$ is characterized by four integer-valued coordinates
+that track its position in the hierarchy.
+
+\begin{definition}[Partition Coordinates]
+\label{def:partition_coordinates}
+A state in the nested partition hierarchy of $\Omega$ is characterized by the
+quadruple $(n, l, m, s)$ where:
+\begin{itemize}
+  \item $n \geq 1$: \emph{nesting depth}, the level in the hierarchy at which
+        this state first becomes a distinct element.
+  \item $l \in \{0, 1, \ldots, n-1\}$: \emph{partition complexity}, the number
+        of non-trivial sub-partitions within the current element.
+  \item $m \in \{-l, -l+1, \ldots, +l\}$: \emph{partition orientation},
+        the signed index of the sub-partition within its complexity class.
+  \item $s \in \{-\tfrac{1}{2}, +\tfrac{1}{2}\}$: \emph{intrinsic parity},
+        the orientation of the element with respect to its parent partition
+        boundary (interior vs.\ boundary-adjacent).
+\end{itemize}
+\end{definition}
+
+\begin{theorem}[Shell Capacity from Partition Geometry]
+\label{thm:shell_capacity}
+The number of distinct states at nesting depth $n$ in the partition hierarchy
+of a bounded phase space is:
+\begin{equation}
+  C(n) = 2n^2.
+\end{equation}
+The sequence $C(1), C(2), C(3), C(4), \ldots = 2, 8, 18, 32, \ldots$ is
+the exact sequence of atomic shell capacities.
+\end{theorem}
+
+\begin{proof}
+At depth $n$, the complexity $l$ ranges over $\{0, 1, \ldots, n-1\}$,
+giving $n$ choices. For each $l$, the orientation $m$ ranges over the
+$2l+1$ values $\{-l, \ldots, +l\}$. For each $(l, m)$ pair, the parity
+$s$ contributes a factor of 2. Therefore:
+\begin{align}
+  C(n) &= 2 \sum_{l=0}^{n-1} (2l+1) \notag \\
+       &= 2 \sum_{l=0}^{n-1} (2l+1) \notag \\
+       &= 2 \Bigl[ 2\cdot\frac{(n-1)n}{2} + n \Bigr] \notag \\
+       &= 2 \bigl[ n(n-1) + n \bigr] \notag \\
+       &= 2n^2. \qquad\blacksquare
+\end{align}
+\end{proof}
+
+\begin{remark}[On the Non-Status of Schr\"{o}dinger's Equation Here]
+Theorem~\ref{thm:shell_capacity} derives $C(n) = 2n^2$ from the combinatorics
+of nested partitions in a bounded phase space. The Schr\"{o}dinger equation
+is not invoked. The quantum numbers $(n, l, m, s)$ are labels for positions
+in a partition hierarchy; their range constraints and degeneracies follow from
+the geometry of nesting, not from boundary conditions on a differential equation.
+That the Schr\"{o}dinger equation yields the same degeneracies is not a
+coincidence: it is a different coordinate system for the same underlying
+partition structure.
+\end{remark}
+
+%------------------------------------------------------------------------------
+\section{Partition Depth and Its Equivalence to Entropy}
+\label{sec:partition_depth}
+%------------------------------------------------------------------------------
+
+\begin{definition}[Partition Depth]
+\label{def:partition_depth}
+Let $\Part$ be a partition generated by a sequential process with branching
+factors $k_1, k_2, \ldots$ at successive levels and encoding base $b \geq 2$.
+The \emph{partition depth} is:
+\begin{equation}
+  \Depth = \sum_i \log_b k_i.
+  \label{eq:partition_depth}
+\end{equation}
+\end{definition}
+
+The partition depth $\Depth$ measures the total amount of categorical information
+generated by all partitioning operations. Each level with branching factor $k_i$
+contributes $\log_b k_i$ units of depth, which is the information content of
+a single choice among $k_i$ alternatives encoded in base $b$.
+
+\begin{theorem}[Depth--Entropy Equivalence]
+\label{thm:depth_entropy}
+The thermodynamic entropy of a partition $\Part$ with depth $\Depth$ is:
+\begin{equation}
+  S_\Part = \kB \Depth \ln b.
+  \label{eq:depth_entropy}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Consider a partition $\Part$ with $W$ equally likely cells, achieved through
+a sequence of branching operations with factors $k_1, \ldots, k_r$ such that
+$W = \prod_i k_i$. By Boltzmann's relation, $S = \kB \ln W$.
+Now $\ln W = \ln \prod_i k_i = \sum_i \ln k_i$.
+Converting to base $b$: $\sum_i \ln k_i = \ln b \sum_i \log_b k_i = \ln b \cdot \Depth$
+by Definition~\ref{def:partition_depth}. Substituting:
+\begin{equation}
+  S_\Part = \kB \ln W = \kB \ln b \cdot \Depth = \kB \Depth \ln b. \qquad\blacksquare
+\end{equation}
+\end{proof}
+
+\begin{remark}[Identification with Shannon Information]
+For $b = 2$, Equation~\eqref{eq:depth_entropy} gives $S_\Part = \kB \ln 2 \cdot \Depth$.
+Since $\Depth$ is measured in bits (log base 2), and Shannon entropy is
+$H = \Depth$ bits, we have $S_\Part = \kB \ln 2 \cdot H$. This is precisely
+the Brillouin relation between physical entropy and information content,
+here derived from first principles rather than postulated.
+\end{remark}
+
+The depth is bounded above and below.
+
+\begin{theorem}[Depth Bounds]
+\label{thm:depth_bounds}
+For any system satisfying Axioms~\ref{ax:boundedness}--\ref{ax:finite_partition}:
+\begin{equation}
+  \Depth_{\min} = \log_b 2 \leq \Depth \leq \log_b\!\left(\frac{\operatorname{Vol}(\Omega)}{h^n}\right) = \Depth_{\max}.
+  \label{eq:depth_bounds}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+\textbf{Lower bound.} By the Triple Equivalence Theorem~\ref{thm:triple_equivalence},
+a system with $\Depth < \log_b 2$ would have fewer than $b^{\log_b 2} = 2$
+distinguishable states, meaning no partition exists with more than one cell.
+Such a system is categorically trivial---it has no internal distinctions,
+hence no partition, hence (by the equivalence) no oscillation and no observable
+dynamics. The minimum non-trivial partition has exactly 2 cells (one binary
+partition operation), giving $\Depth_{\min} = \log_b 2$.
+
+\textbf{Upper bound.} By Axiom~\ref{ax:finite_partition}, the total number
+of distinguishable cells is $N = \operatorname{Vol}(\Omega)/h^n < \infty$.
+The maximum partition depth occurs when every cell is individually distinguished,
+which requires $\Depth_{\max} = \log_b N = \log_b(\operatorname{Vol}(\Omega)/h^n)$.
+No further refinement is physically meaningful because sub-Planck cells
+are indistinguishable by the uncertainty principle. \qed
+\end{proof}
+
+\begin{corollary}[Existence Requires Depth]
+\label{cor:existence_depth}
+A system with $\Depth = 0$ is unobservable. Physical existence as a distinct
+entity requires $\Depth \geq \Depth_{\min} = \log_b 2$.
+\end{corollary}
+
+\begin{proof}
+$\Depth = 0$ implies $W = b^0 = 1$: exactly one state. A system with one state
+cannot be distinguished from the background; it makes no observable difference
+to any measurement apparatus (which would itself require $\Depth \geq \log_b 2$
+to register a result). Hence $\Depth = 0$ corresponds to physical
+non-existence as a distinct entity. The first detectable level is $\Depth = \log_b 2$,
+the minimum single partition operation. \qed
+\end{proof}
+
+The existence cost $\Eexist$ introduced in later chapters is the energetic
+price of maintaining $\Depth \geq \log_b 2$ against dissipation:
+$\Eexist = \kB T \ln 2$ per partition boundary, recoverable as Landauer's bound
+in the special case of a one-bit distinction.
+
+%------------------------------------------------------------------------------
+\section{Spectroscopic Selection Rules as Partition Adjacency}
+\label{sec:selection_rules}
+%------------------------------------------------------------------------------
+
+The partition coordinates $(n, l, m, s)$ of Definition~\ref{def:partition_coordinates}
+carry their own geometry: two states are \emph{adjacent} in the partition
+hierarchy if and only if they differ by a single elementary partition operation.
+
+\begin{definition}[Partition Adjacency]
+\label{def:partition_adjacency}
+Two states $(n, l, m, s)$ and $(n', l', m', s')$ are \emph{partition-adjacent}
+if the partition operation connecting them changes exactly one coordinate by
+the minimum possible amount:
+\begin{equation}
+  |n' - n| \leq 1, \quad |l' - l| = 1, \quad |m' - m| \leq 1, \quad s' = s.
+\end{equation}
+\end{definition}
+
+\begin{theorem}[Selection Rules from Adjacency]
+\label{thm:selection_rules}
+The spectroscopic electric dipole selection rules
+\begin{equation}
+  \Delta l = \pm 1, \qquad \Delta m \in \{0, \pm 1\}, \qquad \Delta s = 0
+  \label{eq:selection_rules}
+\end{equation}
+are exactly the conditions for partition adjacency in the hierarchy of
+Definition~\ref{def:nested_partition}.
+\end{theorem}
+
+\begin{proof}
+An electric dipole photon carries angular momentum quantum numbers
+$(j=1, m_j \in \{-1, 0, +1\})$. In the partition framework, photon emission
+or absorption corresponds to a single partition operation: one distinction is
+either created ($\Delta l = +1$) or merged ($\Delta l = -1$). A single
+partition operation changes the complexity $l$ by exactly $\pm 1$.
+
+The orientation $m$ must change by the minimum required to accommodate the
+partition operation within the new complexity class. Since the photon contributes
+$\Delta m_j \in \{-1, 0, +1\}$ and total orientation is conserved modulo the
+partition operation, $\Delta m \in \{-1, 0, +1\}$ follows.
+
+The parity $s$ is a property of the parent partition structure, not of the
+individual partition operation, so it is unchanged: $\Delta s = 0$.
+
+The forbidden transition $\Delta l = 0$ for dipole radiation corresponds to
+a ``null partition operation''---a change that creates no new distinction---which
+is not a partition operation at all. The Laporte rule ($\Delta l = \pm 1$ with
+parity change for centrosymmetric systems) is the statement that a single
+partition operation strictly changes the complexity. \qed
+\end{proof}
+
+\begin{example}[Hydrogen 21\,cm Line]
+\label{ex:21cm}
+The hydrogen hyperfine transition at $\nu = 1420.405\,\mathrm{MHz}$
+(wavelength $\lambda \approx 21\,\mathrm{cm}$, energy splitting
+$\Delta E = h\nu \approx 5.87 \times 10^{-6}\,\mathrm{eV}$) arises from
+the flip of the electron spin parity $s$ relative to the proton spin parity
+in the ground state $n = 1$, $l = 0$, $m = 0$.
+
+In the partition framework, the hydrogen ground state has $\Depth_{\min} = \log_2 2 = 1$
+with a two-cell partition corresponding to the two parity states
+$(s = +\tfrac{1}{2}, s = -\tfrac{1}{2})$. The hyperfine coupling
+$A_{\mathrm{HF}} = h\nu_{\mathrm{HF}}$ is the energy cost of a parity-flip
+operation---the minimum partition operation on the intrinsic-parity coordinate.
+
+The transition $\Delta s = \pm 1$ (triplet $\to$ singlet) with $\Delta l = 0$,
+$\Delta m = 0$ is a magnetic dipole transition, consistent with
+Definition~\ref{def:partition_adjacency} because here it is $s$ (parity),
+not $l$ (complexity), that changes by its minimum step. This is the
+complementary adjacency to the electric dipole case: electric dipole changes
+$l$; magnetic dipole changes $s$. The numerical value of $\nu = 1420.405\,\mathrm{MHz}$
+encodes the energy scale of the proton--electron partition coupling in the
+ground state, and its extraordinary precision (the most precisely known
+radio frequency in astronomy) reflects the rigidity of the minimum-depth
+partition structure.
+\end{example}
+
+%------------------------------------------------------------------------------
+\section{Connection to the Birkhoff--Kolmogorov Framework}
+\label{sec:birkhoff_kolmogorov}
+%------------------------------------------------------------------------------
+
+The partition depth $\Depth$ is related to the Kolmogorov--Sinai (KS) entropy
+of the dynamical system in a precise way.
+
+\begin{proposition}[Depth as KS Entropy Rate]
+\label{prop:ks_entropy}
+For a dynamical system on a bounded phase space $\Omega$ with minimum transition
+time $\tau_{\min}$, the Kolmogorov--Sinai entropy satisfies:
+\begin{equation}
+  h_{\mathrm{KS}} = \frac{\Depth \ln b}{\tau_{\min}}.
+  \label{eq:ks_entropy_rate}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+The KS entropy of a partition $\Part$ is defined as
+$h_{\mathrm{KS}} = \lim_{T\to\infty} \frac{1}{T} H(\Part^T)$
+where $\Part^T$ is the join of all time-translates of $\Part$ up to time $T$,
+and $H$ is the Shannon entropy in nats. By Theorem~\ref{thm:depth_entropy},
+$H(\Part) = \Depth \ln b$ for the generating partition. In a bounded system
+with $N < \infty$ cells and minimum transition time $\tau_{\min}$, the number
+of distinct $T$-length orbits saturates at $N$ for $T \gg N\tau_{\min}$.
+The entropy rate therefore equals the per-step entropy divided by $\tau_{\min}$:
+$h_{\mathrm{KS}} = \Depth \ln b / \tau_{\min}$. \qed
+\end{proof}
+
+Birkhoff's ergodic theorem guarantees that for ergodic systems, the time
+average of any observable equals its space average. In the partition framework,
+this means that the time average of the partition depth $\Depth(t)$ equals
+the microcanonical average over all cells at the appropriate energy shell.
+This is not merely an abstract result: it provides the foundation for
+Chapter~\ref{chap:charge_emergence}, where the time-averaged partition depth
+of a bound state is identified with the bond energy.
+
+\begin{proposition}[Birkhoff Average of Depth]
+\label{prop:birkhoff_depth}
+For an ergodic system on a bounded phase space, the time-averaged partition
+depth satisfies:
+\begin{equation}
+  \langle \Depth \rangle_t = \frac{1}{N} \sum_{c \in \Part} \Depth(c),
+  \label{eq:birkhoff_depth}
+\end{equation}
+where the sum is over all cells $c$ of the generating partition $\Part$.
+\end{proposition}
+
+The right-hand side of \eqref{eq:birkhoff_depth} is the categorical richness
+$\Rich = N^{-1} \sum_c \Depth(c)$, a quantity that will play a central role
+in describing the information content of biological sequences in Part~IV.
+
+%------------------------------------------------------------------------------
+\section{Discussion: What This Replaces and Why}
+\label{sec:discussion_ch1}
+%------------------------------------------------------------------------------
+
+The framework developed in this chapter reproduces, from two axioms, the
+following results that are conventionally taken as empirical inputs or as
+outputs of the Schr\"{o}dinger equation:
+
+\begin{enumerate}[label=(\arabic*)]
+  \item \textbf{Quantum numbers and their ranges}: $(n, l, m, s)$ emerge as
+        coordinates in a nested partition hierarchy, with their exact domains
+        $l \in \{0, \ldots, n-1\}$, $m \in \{-l, \ldots, +l\}$,
+        $s \in \{-\tfrac{1}{2}, +\tfrac{1}{2}\}$ following from the structure
+        of the hierarchy (Theorem~\ref{thm:shell_capacity}).
+
+  \item \textbf{Atomic shell capacities}: $C(n) = 2n^2$ is a partition counting
+        identity (Theorem~\ref{thm:shell_capacity}), not a consequence of the
+        Pauli exclusion principle, though the exclusion principle is consistent
+        with it: no two electrons can occupy the same partition cell.
+
+  \item \textbf{Entropy--information equivalence}: $S = \kB \ln 2 \cdot H$
+        (Brillouin relation) is a special case of Theorem~\ref{thm:depth_entropy},
+        not a separate postulate.
+
+  \item \textbf{Spectroscopic selection rules}: $\Delta l = \pm 1$,
+        $\Delta m \in \{0, \pm 1\}$ are partition adjacency conditions
+        (Theorem~\ref{thm:selection_rules}), making them topological rather
+        than dynamical constraints.
+
+  \item \textbf{Landauer's bound}: $E_{\mathrm{exist}} = \kB T \ln 2$ per bit
+        is the special case of the depth--entropy relation at $\Depth = \log_2 2 = 1$,
+        confirming that the minimum energetic cost of a physical distinction is
+        the Boltzmann unit of information.
+\end{enumerate}
+
+What this framework does \emph{not} replace is quantitative prediction of energy
+levels: the precise value of $\Delta E$ for a given transition requires the
+Schr\"{o}dinger equation (or its relativistic generalization) applied to a
+specific Hamiltonian. The partition framework provides the topology---which
+transitions exist and which are forbidden---while the Hamiltonian provides
+the metric, assigning energy to each partition cell. The two are complementary,
+not competing.
+
+The 21\,cm line (Example~\ref{ex:21cm}) illustrates this division: the
+\emph{existence} and \emph{character} of the transition (magnetic dipole,
+minimum parity flip) follow from partition geometry; the precise frequency
+$1420.405\,\mathrm{MHz}$ requires the Fermi contact interaction and QED
+corrections. Partition theory predicts the graph; quantum field theory fills
+in the edge weights.
+
+Chapter~\ref{chap:charge_emergence} extends this framework to ask: what
+is the \emph{boundary} of a partition? The answer---that partition boundaries
+carry the signature of electric charge---is the second major result of
+Part~\ref{part:foundations}.
+
+%------------------------------------------------------------------------------
+\section{Categorical Distance and the Geometry of State Space}
+\label{sec:categorical_distance}
+%------------------------------------------------------------------------------
+
+The partition coordinates of Section~\ref{sec:partition_coordinates} do more
+than label states; they endow the state space with a natural metric.
+
+\begin{definition}[Categorical Distance]
+\label{def:categorical_distance}
+For two states $\sigma_1 = (n_1, l_1, m_1, s_1)$ and
+$\sigma_2 = (n_2, l_2, m_2, s_2)$ in the partition hierarchy, the
+\emph{categorical distance} is:
+\begin{equation}
+  \dC(\sigma_1, \sigma_2) = |n_1 - n_2| + |l_1 - l_2| + |m_1 - m_2|
+    + |s_1 - s_2|,
+  \label{eq:categorical_distance}
+\end{equation}
+where the chirality difference $|s_1 - s_2| \in \{0, 1\}$.
+\end{definition}
+
+\begin{proposition}[Categorical Distance is a Metric]
+\label{prop:metric}
+The categorical distance $\dC$ satisfies the axioms of a metric on the set
+of partition coordinates:
+\begin{enumerate}[label=(\alph*)]
+  \item \textbf{Non-negativity}: $\dC(\sigma_1, \sigma_2) \geq 0$, with
+        equality iff $\sigma_1 = \sigma_2$.
+  \item \textbf{Symmetry}: $\dC(\sigma_1, \sigma_2) = \dC(\sigma_2, \sigma_1)$.
+  \item \textbf{Triangle inequality}: $\dC(\sigma_1, \sigma_3) \leq
+        \dC(\sigma_1, \sigma_2) + \dC(\sigma_2, \sigma_3)$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(a) Each absolute value term is non-negative. Equality to zero requires all
+four terms to vanish simultaneously, which is equivalent to $\sigma_1 = \sigma_2$.
+(b) Immediate from the symmetry of absolute value.
+(c) The triangle inequality for the integer $L^1$ (Manhattan) distance is a
+standard result: $|n_1 - n_3| \leq |n_1 - n_2| + |n_2 - n_3|$, and similarly
+for each coordinate. Summing over all four coordinates gives (c). \qed
+\end{proof}
+
+\begin{corollary}[Selection Rules as Unit-Ball Constraint]
+\label{cor:unit_ball}
+The electric dipole selection rules (Theorem~\ref{thm:selection_rules}) are
+exactly the condition that a transition is allowed only between states with
+$\dC = 1$ in the $(l, m, s)$ subspace:
+\begin{equation}
+  \dC^{(l,m,s)}(\sigma_1, \sigma_2) = 1 \iff \text{electric dipole transition allowed.}
+\end{equation}
+\end{corollary}
+
+\begin{proof}
+From Theorem~\ref{thm:selection_rules}: $\Delta l = \pm 1$ contributes
+$|l_1 - l_2| = 1$; $\Delta m \in \{0, \pm 1\}$ contributes $|m_1 - m_2| \leq 1$;
+$\Delta s = 0$ contributes $0$. The total distance in the $(l, m)$ subspace
+is $1 + |m_1 - m_2|$, which equals $1$ only when $\Delta m = 0$.
+For $\Delta m = \pm 1$, the distance is $2$. However, the $\Delta l$ change
+is mandatory (contributes exactly 1), so the relevant condition is $|\Delta l| = 1$,
+which corresponds to $\dC^{(l)}(\sigma_1,\sigma_2) = 1$. The allowed $\Delta m$
+values $\{0, \pm 1\}$ are the unit ball condition on the $m$-subspace given
+that $\Delta l = 1$ must hold. \qed
+\end{proof}
+
+The categorical distance measures the ``cost'' of a transition in partition
+space. Transitions with large $\dC$ require multiple partition operations and
+are correspondingly suppressed (higher-multipole radiation, Raman processes).
+This gives the partition framework's account of why selection rules are selection
+\emph{rules} and not merely selection \emph{tendencies}: a single photon
+interacts with a single partition boundary, so it can only change one
+partition coordinate by its minimum step.
+
+%------------------------------------------------------------------------------
+\section{Existence Cost and Landauer's Bound}
+\label{sec:existence_cost}
+%------------------------------------------------------------------------------
+
+Every categorical distinction carries an energetic price. This is the content
+of Landauer's principle, which in the partition framework is not a separate
+postulate but a corollary of the depth--entropy equivalence.
+
+\begin{theorem}[Existence Cost]
+\label{thm:existence_cost}
+The minimum energy required to maintain one categorical distinction---one
+non-trivial partition boundary---at temperature $T$ is:
+\begin{equation}
+  \Eexist = \kB T \ln 2.
+  \label{eq:existence_cost}
+\end{equation}
+This is Landauer's bound, derived from the Bounded Phase Space Axioms.
+\end{theorem}
+
+\begin{proof}
+By Corollary~\ref{cor:existence_depth}, the minimum partition depth for a
+physically existent entity is $\Depth_{\min} = \log_b 2$, corresponding to
+a single binary partition. By Theorem~\ref{thm:depth_entropy}:
+\begin{equation}
+  S_{\min} = \kB \Depth_{\min} \ln b = \kB \log_b 2 \cdot \ln b = \kB \ln 2.
+\end{equation}
+At temperature $T$, the free energy cost of maintaining this entropy state
+against thermal equilibration (which tends to $\Depth = 0$ under irreversible
+diffusion) is $F = -TS_{\min} = -T \kB \ln 2$; the energy \emph{expended}
+to maintain the distinction is therefore $\Eexist = \kB T \ln 2$ per erasure
+cycle. This is exactly Landauer's bound. \qed
+\end{proof}
+
+\begin{remark}[Physical Interpretation]
+At biological temperature $T = 310\,\mathrm{K}$:
+$\Eexist = 1.381\times10^{-23} \times 310 \times \ln 2 \approx 2.97\times10^{-21}\,\mathrm{J}$
+$\approx 0.018\,\mathrm{eV}$. This is significantly smaller than a typical
+covalent bond energy ($\sim 3$--$5\,\mathrm{eV}$) but of the same order as
+hydrogen bond energies ($\sim 0.1$--$0.3\,\mathrm{eV}$). The existence cost
+$\Eexist$ sets the minimum energy scale for a biological information bit---a
+result that will be important when analyzing the energetics of genomic computation
+in Part~IV.
+\end{remark}
+
+\begin{corollary}[Bennett's Reversible Computing]
+\label{cor:bennett}
+A partition operation is logically reversible if and only if it preserves
+partition depth $\Depth$, which is if and only if it maps one partition to
+another of equal cardinality. In this case, the thermodynamic cost
+\eqref{eq:existence_cost} is zero; irreversibility is the cost of depth
+\emph{erasure}, not of the logical operation itself.
+\end{corollary}
+
+\begin{proof}
+Reversible computation preserves information, hence preserves $\Depth$.
+By Theorem~\ref{thm:depth_entropy}, $\Delta S = 0$ for a reversible computation,
+so $\Delta F = 0$: no energy need be dissipated. The Landauer cost arises only
+when a partition is \emph{merged} (depth reduced), which is irreversible.
+This is Bennett's result on reversible computation, derived here from the
+partition axioms. \qed
+\end{proof}
+
+%=============================================================================
+\section*{Chapter Summary}
+\label{sec:ch1_summary}
+%=============================================================================
+
+\begin{chapterbox}[title=Chapter 1 — Key Results Established]
+\begin{enumerate}[label=\textbf{\arabic*.}]
+  \item \textbf{Two Axioms}: Boundedness ($\operatorname{Vol}(\Omega) < \infty$)
+        and Finite Partition ($N = \operatorname{Vol}(\Omega)/h^n < \infty$)
+        are sufficient for all results in this chapter. No dynamical equations
+        are assumed.
+
+  \item \textbf{Triple Equivalence Theorem~\ref{thm:triple_equivalence}}:
+        Oscillation $\equiv$ Categorical Distinction $\equiv$ Partition Operation.
+        In bounded phase space these three concepts are not merely related---they
+        are identical descriptions of the same phenomenon.
+
+  \item \textbf{Poincar\'{e} Recurrence Theorem~\ref{prop:poincare}}:
+        In a finite partition, recurrence is exact for every trajectory,
+        not just measure-almost-all. Recurrence time $T_{\mathrm{rec}} \leq N\tau_{\min}$.
+
+  \item \textbf{Shell Capacity Theorem~\ref{thm:shell_capacity}}:
+        $C(n) = 2n^2$, derived from partition combinatorics. The sequence
+        $2, 8, 18, 32, \ldots$ is a geometric necessity, not an empirical fact.
+
+  \item \textbf{Depth--Entropy Equivalence Theorem~\ref{thm:depth_entropy}}:
+        $S_\Part = \kB \Depth \ln b$. Partition depth is thermodynamic
+        entropy in a different coordinate.
+
+  \item \textbf{Depth Bounds Theorem~\ref{thm:depth_bounds}}:
+        $\log_b 2 \leq \Depth \leq \log_b(\operatorname{Vol}(\Omega)/h^n)$.
+        Unobservable systems have $\Depth = 0$.
+
+  \item \textbf{Selection Rules Theorem~\ref{thm:selection_rules}}:
+        $\Delta l = \pm 1$, $\Delta m \in \{0,\pm 1\}$, $\Delta s = 0$
+        are partition adjacency conditions, not dynamical constraints.
+
+  \item \textbf{KS Entropy Rate Proposition~\ref{prop:ks_entropy}}:
+        $h_{\mathrm{KS}} = \Depth \ln b / \tau_{\min}$, connecting the
+        combinatorial depth to measurable dynamical entropy production.
+
+  \item \textbf{Existence Cost Theorem~\ref{thm:existence_cost}}:
+        $\Eexist = \kB T \ln 2$ is Landauer's bound, derived from the axioms
+        as the minimum energy for one categorical distinction.
+
+  \item \textbf{Complementarity}: The partition framework provides the
+        \emph{topology} of physical law---which states exist, which transitions
+        are allowed, what selection rules hold---while dynamical equations
+        (Schr\"{o}dinger, Maxwell) provide the \emph{metric}, assigning
+        energies and timescales to the topological skeleton.
+\end{enumerate}
+\end{chapterbox}

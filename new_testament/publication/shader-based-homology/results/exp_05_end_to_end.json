@@ -1,0 +1,295 @@
+{
+  "experiment": "end_to_end",
+  "timestamp": "2026-04-23T14:40:51.243355+00:00",
+  "config": {
+    "n_families": 200,
+    "family_size": 5,
+    "seed_length": 180,
+    "mutation_rate": 0.12,
+    "n_coefficients": 12,
+    "n_queries": 40,
+    "top_k_shader": 20,
+    "top_k_final": 10,
+    "kmer_k": 3,
+    "random_seed": 20260423,
+    "prefilter_depths": [
+      3,
+      6,
+      9
+    ],
+    "prefilter_radii": [
+      0,
+      1,
+      2
+    ]
+  },
+  "database_size": 1000,
+  "embedding_build_s": 0.17179439996834844,
+  "pipelines": [
+    {
+      "shader_time_s": [
+        8.499999821651728e-05
+      ],
+      "sw_time_s": [
+        0.6669636324921158
+      ],
+      "prefilter_time_s": [
+        8.547486504539848e-06
+      ],
+      "prefilter_fraction": [
+        1.0
+      ],
+      "recall_mean": {
+        "10": 0.95,
+        "20": 0.95
+      },
+      "prefilter_mean_fraction": 1.0,
+      "shader_time_s_mean": 8.499999821651728e-05,
+      "shader_time_s_std": 4.240387830927378e-05,
+      "prefilter_time_s_mean": 8.547486504539848e-06,
+      "sw_time_s_mean": 0.6669636324921158,
+      "name": "shader+SW rerank (no prefilter)"
+    },
+    {
+      "shader_time_s": [
+        4.355499695520848e-05
+      ],
+      "sw_time_s": [
+        0.6726556150009856
+      ],
+      "prefilter_time_s": [
+        0.0001129375072196126
+      ],
+      "prefilter_fraction": [
+        0.147425
+      ],
+      "recall_mean": {
+        "10": 0.4,
+        "20": 0.4
+      },
+      "prefilter_mean_fraction": 0.147425,
+      "shader_time_s_mean": 4.355499695520848e-05,
+      "shader_time_s_std": 1.1514349629698677e-05,
+      "prefilter_time_s_mean": 0.0001129375072196126,
+      "sw_time_s_mean": 0.6726556150009856,
+      "name": "prefilter(d=3,r=0) + shader + SW",
+      "depth": 3,
+      "radius": 0
+    },
+    {
+      "shader_time_s": [
+        8.053499623201787e-05
+      ],
+      "sw_time_s": [
+        0.6812977024848805
+      ],
+      "prefilter_time_s": [
+        0.00011229749652557075
+      ],
+      "prefilter_fraction": [
+        0.527725
+      ],
+      "recall_mean": {
+        "10": 0.8375,
+        "20": 0.8375
+      },
+      "prefilter_mean_fraction": 0.527725,
+      "shader_time_s_mean": 8.053499623201787e-05,
+      "shader_time_s_std": 7.941355279789362e-05,
+      "prefilter_time_s_mean": 0.00011229749652557075,
+      "sw_time_s_mean": 0.6812977024848805,
+      "name": "prefilter(d=3,r=1) + shader + SW",
+      "depth": 3,
+      "radius": 1
+    },
+    {
+      "shader_time_s": [
+        8.144001185428351e-05
+      ],
+      "sw_time_s": [
+        0.7431174074910813
+      ],
+      "prefilter_time_s": [
+        0.00014359500491991639
+      ],
+      "prefilter_fraction": [
+        0.8724000000000001
+      ],
+      "recall_mean": {
+        "10": 0.9375,
+        "20": 0.9375
+      },
+      "prefilter_mean_fraction": 0.8724000000000001,
+      "shader_time_s_mean": 8.144001185428351e-05,
+      "shader_time_s_std": 4.247278157100583e-05,
+      "prefilter_time_s_mean": 0.00014359500491991639,
+      "sw_time_s_mean": 0.7431174074910813,
+      "name": "prefilter(d=3,r=2) + shader + SW",
+      "depth": 3,
+      "radius": 2
+    },
+    {
+      "shader_time_s": [
+        4.247750621289015e-05
+      ],
+      "sw_time_s": [
+        0.5866674050077563
+      ],
+      "prefilter_time_s": [
+        6.145251099951566e-05
+      ],
+      "prefilter_fraction": [
+        0.056525000000000006
+      ],
+      "recall_mean": {
+        "10": 0.13125,
+        "20": 0.13125
+      },
+      "prefilter_mean_fraction": 0.056525000000000006,
+      "shader_time_s_mean": 4.247750621289015e-05,
+      "shader_time_s_std": 1.2702165113382219e-05,
+      "prefilter_time_s_mean": 6.145251099951566e-05,
+      "sw_time_s_mean": 0.5866674050077563,
+      "name": "prefilter(d=6,r=0) + shader + SW",
+      "depth": 6,
+      "radius": 0
+    },
+    {
+      "shader_time_s": [
+        4.99350018799305e-05
+      ],
+      "sw_time_s": [
+        0.6966608100046869
+      ],
+      "prefilter_time_s": [
+        8.909998869057744e-05
+      ],
+      "prefilter_fraction": [
+        0.15350000000000003
+      ],
+      "recall_mean": {
+        "10": 0.325,
+        "20": 0.325
+      },
+      "prefilter_mean_fraction": 0.15350000000000003,
+      "shader_time_s_mean": 4.99350018799305e-05,
+      "shader_time_s_std": 1.9073985257421874e-05,
+      "prefilter_time_s_mean": 8.909998869057744e-05,
+      "sw_time_s_mean": 0.6966608100046869,
+      "name": "prefilter(d=6,r=1) + shader + SW",
+      "depth": 6,
+      "radius": 1
+    },
+    {
+      "shader_time_s": [
+        6.159999757073819e-05
+      ],
+      "sw_time_s": [
+        0.6478239849908277
+      ],
+      "prefilter_time_s": [
+        0.00011840750521514564
+      ],
+      "prefilter_fraction": [
+        0.41
+      ],
+      "recall_mean": {
+        "10": 0.65,
+        "20": 0.65
+      },
+      "prefilter_mean_fraction": 0.41,
+      "shader_time_s_mean": 6.159999757073819e-05,
+      "shader_time_s_std": 1.0347117219461037e-05,
+      "prefilter_time_s_mean": 0.00011840750521514564,
+      "sw_time_s_mean": 0.6478239849908277,
+      "name": "prefilter(d=6,r=2) + shader + SW",
+      "depth": 6,
+      "radius": 2
+    },
+    {
+      "shader_time_s": [
+        4.371499817352742e-05
+      ],
+      "sw_time_s": [
+        0.3688662274944363
+      ],
+      "prefilter_time_s": [
+        4.73425054224208e-05
+      ],
+      "prefilter_fraction": [
+        0.20824999999999996
+      ],
+      "recall_mean": {
+        "10": 0.2,
+        "20": 0.2
+      },
+      "prefilter_mean_fraction": 0.20824999999999996,
+      "shader_time_s_mean": 4.371499817352742e-05,
+      "shader_time_s_std": 1.7164078476537514e-05,
+      "prefilter_time_s_mean": 4.73425054224208e-05,
+      "sw_time_s_mean": 0.3688662274944363,
+      "name": "prefilter(d=9,r=0) + shader + SW",
+      "depth": 9,
+      "radius": 0
+    },
+    {
+      "shader_time_s": [
+        4.043000808451325e-05
+      ],
+      "sw_time_s": [
+        0.6409051250142511
+      ],
+      "prefilter_time_s": [
+        7.300250290427357e-05
+      ],
+      "prefilter_fraction": [
+        0.044825
+      ],
+      "recall_mean": {
+        "10": 0.11875,
+        "20": 0.11875
+      },
+      "prefilter_mean_fraction": 0.044825,
+      "shader_time_s_mean": 4.043000808451325e-05,
+      "shader_time_s_std": 8.022849852035837e-06,
+      "prefilter_time_s_mean": 7.300250290427357e-05,
+      "sw_time_s_mean": 0.6409051250142511,
+      "name": "prefilter(d=9,r=1) + shader + SW",
+      "depth": 9,
+      "radius": 1
+    },
+    {
+      "shader_time_s": [
+        4.962749371770769e-05
+      ],
+      "sw_time_s": [
+        0.7397830349917058
+      ],
+      "prefilter_time_s": [
+        0.0001283199992030859
+      ],
+      "prefilter_fraction": [
+        0.13762500000000003
+      ],
+      "recall_mean": {
+        "10": 0.275,
+        "20": 0.275
+      },
+      "prefilter_mean_fraction": 0.13762500000000003,
+      "shader_time_s_mean": 4.962749371770769e-05,
+      "shader_time_s_std": 1.3060896317333733e-05,
+      "prefilter_time_s_mean": 0.0001283199992030859,
+      "sw_time_s_mean": 0.7397830349917058,
+      "name": "prefilter(d=9,r=2) + shader + SW",
+      "depth": 9,
+      "radius": 2
+    }
+  ],
+  "jaccard_baseline": {
+    "recall_at_k": 1.0,
+    "time_s_mean": 0.07920431750826537,
+    "time_s_std": 0.002131265905463787,
+    "top_k": 10,
+    "kmer_k": 3
+  }
+}

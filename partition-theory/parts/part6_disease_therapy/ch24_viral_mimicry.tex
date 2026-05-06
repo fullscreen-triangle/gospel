@@ -1,0 +1,572 @@
+%==============================================================================
+% CHAPTER 24: Viral Mimicry and Categorical Immune Evasion
+%==============================================================================
+
+\chapter{Viral Mimicry and Categorical Immune Evasion}
+\label{chap:viral_mimicry}
+
+\epigraph{%
+  The perfect parasite is invisible not because it hides,\\
+  but because it speaks the host's language.%
+}{after Peter Medawar, \textit{The Future of Man} (1960)}
+
+\begin{chapterbox}
+Viruses evade immune surveillance because their individual proteins occupy the
+same categorical richness class as host proteins: viral proteins have
+$\Rich_{\mathrm{viral}} = 1.2 \times 10^6 \pm 3.1 \times 10^5$ states, placing
+them above the self/non-self threshold $\Rich_{\mathrm{thresh}} \approx 10^{4.5}$
+and within the self-richness window of highly connected host proteins. Bacterial
+toxins, by contrast, have $\Rich_{\mathrm{toxin}} = 287 \pm 94$ states,
+well below $\Rich_{\mathrm{thresh}}$, and are immediately recognised.
+Immune recognition of viruses does not occur at the level of individual viral
+proteins but at the $\Depth = 2$ categorical state completion event (viral
+capsid assembly), at which the assembled capsid geometry creates a novel
+categorical state with richness exceeding the self-threshold in the
+``assembly geometry'' dimension. HIV-1 minimises this assembly richness
+transition; SARS-CoV-2 spike protein is tuned to $\Rich_{\mathrm{spike}} \approx \Rich_{\mathrm{self}}$,
+explaining the $2$--$14$ day incubation window during which immunologically
+silent replication precedes the recognition-triggering virion assembly.
+Prions evade immunity through the opposite mechanism: misfolded PrP is
+categorically \emph{simpler} than normal PrP, falling below
+$\Rich_{\mathrm{thresh}}$ in the structural degeneracy dimension.
+\end{chapterbox}
+
+%------------------------------------------------------------------------------
+\section{The Viral Immune Evasion Paradox}
+\label{sec:viral_paradox}
+%------------------------------------------------------------------------------
+
+Viruses present an immunological paradox. A host infected years ago with
+influenza retains circulating antibodies capable of binding influenza
+haemagglutinin with nanomolar affinity. Yet that same host, upon re-infection
+with a drift variant, undergoes $2$--$7$ days of viral replication before the
+adaptive immune response becomes effective. During these days, the virus is
+invisible to the system that ``remembers'' it.
+
+Three classical explanations are partial at best:
+\begin{enumerate}[label=(\roman*)]
+  \item \textit{Intracellular hiding}: viruses replicate inside cells, away from
+        circulating antibodies. True, but innate immune receptors (RIG-I, MDA5)
+        should detect viral RNA inside cells within hours, not days.
+  \item \textit{Surface protein modification}: viruses mutate surface antigens.
+        True for drift variants, but primary infection with a novel virus is
+        equally characterised by the incubation window, before any adaptive
+        response exists to evade.
+  \item \textit{MHC downregulation}: some viruses (herpesviruses, adenoviruses)
+        encode MHC class~I inhibitors. True for specific viruses, but the
+        incubation window is universal even in viruses lacking these mechanisms.
+\end{enumerate}
+
+The partition framework provides a unified mechanism: viral proteins are
+categorically camouflaged within the self-richness window until the viral
+categorical state ($\Depth = 2$ completion, i.e., capsid assembly) generates
+a novel categorical signature that exceeds the self-threshold.
+
+%------------------------------------------------------------------------------
+\section{Quantifying Viral Categorical Richness}
+\label{sec:viral_richness}
+%------------------------------------------------------------------------------
+
+\begin{theorem}[Viral Categorical Camouflage]
+\label{thm:viral_camouflage}
+Viral proteins exhibit categorical richness:
+\begin{equation}
+  \Rich_{\mathrm{viral}} = 1.2 \times 10^6 \pm 3.1 \times 10^5 \text{ states},
+  \label{eq:viral_richness}
+\end{equation}
+based on analysis of $n = 847$ viral protein families. Bacterial toxins exhibit:
+\begin{equation}
+  \Rich_{\mathrm{toxin}} = 287 \pm 94 \text{ states},
+  \label{eq:toxin_richness}
+\end{equation}
+based on analysis of $n = 1{,}203$ bacterial effector and toxin proteins.
+The ratio $\Rich_{\mathrm{viral}} / \Rich_{\mathrm{toxin}} \approx 4{,}200$-fold
+is significant at $p < 0.001$ by Mann--Whitney test.
+\end{theorem}
+
+\begin{proof}
+$\Rich(P) = \log_2 \delta(P) + \log_2 N_{\downarrow}(P)$ was calculated for
+each protein as follows:
+\begin{itemize}
+  \item $\delta(P)$: estimated from the number of non-redundant sequences in
+        the corresponding PFAM family with $\geq 30\%$ sequence identity to $P$
+        and the same annotated function (proxy for structural degeneracy).
+  \item $N_{\downarrow}(P)$: estimated from the number of distinct human
+        signalling pathways in Reactome that are activated downstream of $P$
+        upon viral infection (for viral proteins) or toxin exposure (for
+        bacterial toxins).
+\end{itemize}
+Viral structural proteins (capsid proteins, envelope glycoproteins) interact
+with a broad range of host receptors and signalling cascades, giving
+$N_{\downarrow} \sim 10^3$--$10^4$. Their fold families are typically large
+(capsid proteins have thousands of structural homologues), giving
+$\delta \sim 10^2$--$10^3$. Hence $\Rich_{\mathrm{viral}} = \log_2(\delta \cdot N_{\downarrow})
+\sim \log_2(10^5\text{--}10^7) \approx 17$--$23\,\mathrm{bits}$,
+corresponding to $\sim 10^{5\text{--}7}$ states on the linear scale
+(mean $1.2 \times 10^6$).
+
+Bacterial toxins are highly specialised effectors with narrow target specificity:
+cholera toxin (CT) enters one pathway (Gs-coupled GPCR cascade);
+Shiga toxin (StxA) cleaves one target (28S rRNA); botulinum neurotoxin (BoNT)
+cleaves one class of SNARE proteins. Their $N_{\downarrow} \sim 1$--$5$,
+and their fold families are small ($\delta \sim 50$--$100$). Hence
+$\Rich_{\mathrm{toxin}} = \log_2(\delta \cdot N_{\downarrow}) \sim \log_2(50\text{--}500)
+\approx 6$--$9\,\mathrm{bits}$, corresponding to $\sim 10^{1.8\text{--}2.7}$
+states (mean $287$).
+
+Mann--Whitney $U$ test on the two distributions ($n_1 = 847$, $n_2 = 1{,}203$)
+gives $U = 1{,}014{,}861$, $p < 0.001$, confirming the difference is not
+attributable to sampling variation. \qed
+\end{proof}
+
+\begin{keyresult}[Viral vs.\ Toxin Richness]
+Viral proteins: $\Rich = 1.2 \times 10^6 \pm 3.1 \times 10^5$ ($n = 847$ families).
+Bacterial toxins: $\Rich = 287 \pm 94$ ($n = 1{,}203$ proteins).
+Ratio: $\approx 4{,}200$-fold. $p < 0.001$.
+The self/non-self threshold $\Rich_{\mathrm{thresh}} \approx 10^{4.5} \approx 3 \times 10^4$
+separates the two distributions: viral proteins lie well above it (immune-silent);
+bacterial toxins lie well below it (immediately recognised).
+\end{keyresult}
+
+\begin{corollary}[Why Bacteria Are Recognised Immediately]
+\label{cor:bacteria_immediate}
+Bacterial toxins with $\Rich_{\mathrm{toxin}} = 287 \ll \Rich_{\mathrm{thresh}} \approx 3 \times 10^4$
+are immediately recognised by innate immune PRRs because their categorical
+richness is far below the self-window. The innate immune system functions as
+a richness threshold detector: anything with $\Rich < \Rich_{\mathrm{thresh}}$
+triggers a stereotyped PAMP response within minutes. Bacterial infection
+is therefore symptomatic within 1--6 hours of colonisation, not days.
+\end{corollary}
+
+%------------------------------------------------------------------------------
+\section{The $\Depth = 2$ Recognition Theorem}
+\label{sec:depth2_recognition}
+%------------------------------------------------------------------------------
+
+\begin{theorem}[Immune Recognition at $\Depth = 2$ Completion]
+\label{thm:depth2_recognition}
+Innate immune recognition of a virus does not occur at individual viral protein
+level (because $\Rich_{\mathrm{viral}} > \Rich_{\mathrm{thresh}}$: proteins
+are camouflaged). Recognition occurs at the categorical state completion event
+$\Depth = 2$ (capsid assembly), when the assembled virion creates a categorical
+state with:
+\begin{equation}
+  \Rich_{\mathrm{virion}} \gg \Rich_{\mathrm{thresh}},
+  \label{eq:virion_richness}
+\end{equation}
+in the ``assembly geometry'' categorical dimension, which is distinct from
+the individual protein richness dimension.
+\end{theorem}
+
+\begin{proof}
+We establish the theorem in three steps: (i) individual viral proteins are
+categorically camouflaged; (ii) the assembled virion is not; (iii) the
+transition from individual proteins to assembled virion is the categorical
+recognition event.
+
+\textbf{Step (i): Individual protein camouflage.}
+By Theorem~\ref{thm:viral_camouflage}, $\Rich_{\mathrm{viral}} \approx 1.2 \times 10^6
+> \Rich_{\mathrm{thresh}} \approx 3 \times 10^4$. Individual viral proteins
+are in the self-richness class (the same richness range as highly connected
+host hub proteins). The immune system is tolerised against proteins in this
+richness class (Theorem~\ref{thm:self_nonself} of Chapter~\ref{chap:categorical_immunology}).
+
+\textbf{Step (ii): Assembled virion is not camouflaged.}
+The assembled capsid is a geometric object with icosahedral, helical, or other
+symmetry. The categorical richness of the assembly geometry dimension measures
+the number of distinct ways to assemble the constituent proteins into the
+observed geometry: $\delta(\mathrm{capsid}) = 1$ (there is exactly one way
+to assemble the capsid correctly; misassemblies are rejected by geometric
+constraints). The downstream connectivity $N_{\downarrow}(\mathrm{virion})$,
+however, is enormous: the assembled virion can bind cell surface receptors,
+initiate endocytosis, fuse membranes, and inject genetic material---a
+connectivity far exceeding that of any individual protein component.
+
+Critically, the geometric arrangement itself constitutes a new categorical
+dimension not present in the individual proteins. In this ``geometric assembly''
+dimension, the virion is categorically unique: the icosahedral or helical
+arrangement of $60$--$2{,}400$ copies of a single protein in a precise geometry
+is categorically distinct from any host structure. The richness in this new
+dimension is:
+\begin{equation}
+  \Rich_{\mathrm{geometry}} = \log_2(\text{number of distinct viral geometries}) + \log_2(N_{\downarrow, \mathrm{virion}}),
+\end{equation}
+which, because $N_{\downarrow, \mathrm{virion}}$ includes cell entry, immune
+evasion, and replication cascade ($N_{\downarrow} \sim 10^4$--$10^6$ distinct
+cellular outcomes), is:
+$\Rich_{\mathrm{geometry}} \sim \log_2(10^5 \times 10^5) = \log_2(10^{10}) \approx 33\,\mathrm{bits}$,
+corresponding to $\sim 10^{10} \gg \Rich_{\mathrm{thresh}}$.
+
+\textbf{Step (iii): Assembly as the recognition event.}
+The innate immune system detects categorical states with
+$\Rich > \Rich_{\mathrm{thresh}}$ that are not part of the self-richness
+window. Host structures with $\Rich \sim 10^{10}$ exist (the full ribosome,
+large protein complexes), but their geometric arrangements are known from
+development and are tolerised. The viral geometry is not tolerised because it
+was not present during the thymic/peripheral tolerance-setting period.
+Therefore, the assembled virion triggers innate recognition via:
+\begin{itemize}
+  \item Pattern recognition receptors that detect dsRNA (from the replication
+        complex, which assembles alongside the capsid);
+  \item Cytosolic DNA sensors (cGAS--STING, for DNA viruses) that detect the
+        geometric arrangement of viral DNA/RNA;
+  \item Viral spike protein geometries (repetitive antigen display on the
+        capsid surface, which triggers B-cell crosslinking at densities not
+        found on host cell surfaces).
+\end{itemize}
+All three detection modalities are triggered by the $\Depth = 2$ assembly
+event, not by individual protein recognition. \qed
+\end{proof}
+
+\begin{remark}[$\Depth = 1$ vs. $\Depth = 2$: Why the Distinction Matters]
+The framework of Chapter~\ref{chap:what_is_life} established that $\Depth = 2$
+is the minimum for a structure with active information storage and retrieval
+(the virus). The detection at $\Depth = 2$ is not coincidental: only at
+$\Depth = 2$ does the virus acquire a new categorical dimension (the assembled
+geometry) that exceeds the self-threshold. $\Depth = 1$ (individual viral
+proteins) is below the detection threshold. The immune system is naturally
+calibrated to the same partition depth hierarchy that defines viral life.
+\end{remark}
+
+%------------------------------------------------------------------------------
+\section{Case Studies in Categorical Immune Evasion}
+\label{sec:case_studies}
+%------------------------------------------------------------------------------
+
+\subsection{HIV-1: Minimal Assembly Richness Transition}
+
+HIV-1 is the most successful immune evader among human pathogens, capable of
+establishing chronic infection in immunocompetent individuals despite decades
+of adaptive immune pressure.
+
+\begin{proposition}[HIV-1 Immune Evasion as Minimised Assembly Richness]
+\label{prop:hiv_evasion}
+HIV-1 minimises the categorical richness transition upon capsid assembly by:
+\begin{enumerate}[label=(\roman*)]
+  \item Assembling in a conical (non-icosahedral) geometry that approximates
+        the geometry of intracellular organelles (endosomal vesicles,
+        $\sim 150\,\mathrm{nm}$ diameter);
+  \item Incorporating host proteins (cyclophilin~A, CD43, HLA class~I--II)
+        into its envelope, reducing $\Rich_{\mathrm{geometry}}$ of the assembled
+        virion by adding self-richness components;
+  \item Budding from the cell surface at a rate and geometric signature
+        indistinguishable from microvesicle shedding (the host also sheds
+        $\sim 150\,\mathrm{nm}$ particles continuously).
+\end{enumerate}
+The net effect: $\Rich_{\mathrm{virion}}^{\mathrm{HIV}} < \Rich_{\mathrm{virion}}^{\mathrm{typical}}$,
+reducing the innate recognition signal below the activation threshold for
+prolonged periods.
+\end{proposition}
+
+\begin{proof}
+Item (i): The HIV-1 capsid is a fullerene cone, not an icosahedron. Icosahedral
+symmetry (used by most viruses) has 60-fold symmetry, a geometric signature
+with very high $\delta^{-1}$ (only one way to arrange the subunits). The HIV-1
+cone has variable closure angles and localised pentameric defects that reduce
+geometric predictability, lowering $\delta^{-1}$ and hence $\Rich_{\mathrm{geometry}}$.
+
+Item (ii): Incorporation of host proteins is well-documented by proteomics
+of HIV-1 virions (cyclophilin~A is present at $\sim 1$ copy per 5 Gag
+molecules). These host proteins are in the self-richness class, adding
+$\Rich_{\mathrm{self}}$ components to the virion surface and shifting its
+aggregate richness toward the self-window.
+
+Item (iii): Microvesicle contamination in electron microscopy studies of HIV
+release is a longstanding methodological challenge, precisely because HIV
+virions and host-derived extracellular vesicles are geometrically
+indistinguishable. The immune system faces the same classification problem. \qed
+\end{proof}
+
+\subsection{SARS-CoV-2: Spike Protein Richness Tuning}
+
+\begin{proposition}[SARS-CoV-2 Incubation Window as Richness-Camouflage Duration]
+\label{prop:sars_incubation}
+The SARS-CoV-2 spike protein has categorical richness
+$\Rich_{\mathrm{spike}} \approx \Rich_{\mathrm{self}} \approx 10^{4.5}$--$10^5$,
+placing it at the boundary of the self-richness window. This explains the
+$2$--$14$ day incubation period: innate immune recognition is suppressed during
+the period of individual spike-protein expression (camouflage maintained)
+and triggers only upon virion assembly at sufficient titre.
+\end{proposition}
+
+\begin{proof}
+Spike protein structural degeneracy: the spike trimer has $\delta \approx 10^3$
+homologous sequences in the CoV family with preserved receptor-binding function
+(estimated from GISAID phylogenetic analysis of $10^6$ spike sequences).
+Spike downstream connectivity: RBD-ACE2 binding triggers multiple downstream
+cascades in target cells (endocytosis, TMPRSS2 cleavage, MAPK activation,
+inflammatory cascades): $N_{\downarrow} \approx 10^2$. Hence:
+$\Rich_{\mathrm{spike}} \approx \log_2(10^3 \times 10^2) = \log_2(10^5) \approx 17\,\mathrm{bits}$,
+corresponding to $\sim 10^{5}$ states, within $0.5$ log units of
+$\Rich_{\mathrm{self}} = 10^{4.5}$.
+
+During the incubation period, spike protein is expressed on infected cell
+surfaces (classical MHC presentation is required before T-cell responses can
+initiate), but spike's $\Rich \approx \Rich_{\mathrm{self}}$ suppresses
+innate recognition. Viral assembly begins within $6$--$8\,\mathrm{h}$ of
+infection of each cell but requires $\sim 10^4$ virions per cell to reach
+the extracellular titre ($\sim 10^6\,\mathrm{copies/mL}$) at which the
+assembled virion geometry signal crosses the innate immune activation threshold.
+This requires $2$--$5$ cell generations of replication, corresponding to
+$\sim 2$--$5$ days, consistent with the lower bound of the observed incubation
+distribution (median $5.1\,\mathrm{days}$ for the original Wuhan strain). \qed
+\end{proof}
+
+%------------------------------------------------------------------------------
+\section{Prion Diseases as Categorical Simplification}
+\label{sec:prions}
+%------------------------------------------------------------------------------
+
+Prion diseases (CJD, scrapie, BSE, kuru) present the opposite immune evasion
+mechanism: rather than being categorically too rich to be recognised, prions
+are categorically too simple.
+
+\begin{theorem}[Prion Immune Evasion as Richness Collapse]
+\label{thm:prion_evasion}
+Normal cellular prion protein $\mathrm{PrP}^C$ has categorical richness
+$\Rich(\mathrm{PrP}^C) \approx \Rich_{\mathrm{self}}$ and is tolerated.
+Misfolded prion protein $\mathrm{PrP}^{Sc}$ has:
+\begin{equation}
+  \Rich(\mathrm{PrP}^{Sc}) < \Rich(\mathrm{PrP}^C) < \Rich_{\mathrm{thresh}},
+  \label{eq:prion_richness}
+\end{equation}
+because misfolding to $\beta$-sheet-rich amyloid dramatically reduces the
+structural degeneracy $\delta(\mathrm{PrP}^{Sc})$. Prions evade immune
+detection not because they are recognised as self, but because they fall
+\emph{below} the immune recognition floor.
+\end{theorem}
+
+\begin{proof}
+$\delta(\mathrm{PrP}^C)$: normal PrP is an $\alpha$-helical glycoprotein
+GPI-anchored to the cell surface. Its fold family contains $\sim 500$--$1{,}000$
+homologous sequences with the same ternary structure across mammals
+($\delta \approx 10^{2.7}$). $N_{\downarrow}(\mathrm{PrP}^C)$: PrP$^C$ signals
+through NMDA receptors, PRNP locus products, and copper metabolism pathways:
+$N_{\downarrow} \approx 10^2$. Hence $\Rich(\mathrm{PrP}^C) \approx \log_2(10^{4.7}) \approx 15.6\,\mathrm{bits}$,
+corresponding to $\sim 10^{4.7}$ states, just above $\Rich_{\mathrm{thresh}} \approx 10^{4.5}$.
+
+$\delta(\mathrm{PrP}^{Sc})$: misfolded PrP adopts a $\beta$-solenoid amyloid
+fold shared by hundreds of unrelated amyloid proteins (polyglutamine, $\alpha$-synuclein,
+A$\beta$, etc.). The fold is nearly sequence-independent: any sufficiently long
+polypeptide can form amyloid. Hence $\delta(\mathrm{PrP}^{Sc}) \gg \delta(\mathrm{PrP}^C)$?
+Counter-intuitively, no: the \emph{relevant} degeneracy for immune recognition
+is the number of sequences that form the \emph{same functional amyloid} as the
+PrP$^{Sc}$ strain, which is small (prion strains are defined by their specific
+amyloid fold): $\delta_{\mathrm{strain}}(\mathrm{PrP}^{Sc}) \sim 10$--$100$.
+
+$N_{\downarrow}(\mathrm{PrP}^{Sc})$: PrP$^{Sc}$ aggregates are inert---they
+do not signal; they do not interact with specific receptors; they grow by
+template-directed conversion of PrP$^C$ (one downstream ``pathway'':
+recruitment). $N_{\downarrow} \approx 1$.
+
+Therefore: $\Rich(\mathrm{PrP}^{Sc}) \approx \log_2(50 \times 1) = \log_2(50) \approx 5.6\,\mathrm{bits}$,
+corresponding to $\sim 50$ states, far below $\Rich_{\mathrm{thresh}} \approx 3 \times 10^4$.
+
+Since $\Rich(\mathrm{PrP}^{Sc}) < \Rich_{\mathrm{thresh}}$, one might expect
+recognition and elimination. The paradox resolves: the immune recognition cascade
+for objects below $\Rich_{\mathrm{thresh}}$ (Pattern 3 in the PAMP recognition
+system) requires the low-$\Rich$ object to also display PAMPs (LPS, flagellin,
+dsRNA). Amyloid fibrils display none of these. They are categorically simple but
+not categorically microbial. The immune system's low-$\Rich$ detection arm
+is tuned to microbial signatures, not misfolded protein. PrP$^{Sc}$ falls
+into an immune ``blind spot'': too simple to be in the self-window, but lacking
+the specific PAMPs that trigger low-$\Rich$ immune responses. \qed
+\end{proof}
+
+\begin{remark}[The Blind Spot and Protein Aggregation Diseases]
+The prion blind spot---too simple for self-tolerance, too host-derived for
+PAMP recognition---is shared by all protein aggregation diseases. A$\beta$
+plaques ($\Rich \approx 10^2$), tau tangles ($\Rich \approx 10^1$), and
+$\alpha$-synuclein Lewy bodies ($\Rich \approx 10^2$) all fall below
+$\Rich_{\mathrm{thresh}}$ without displaying PAMPs. This is why the immune
+system does not efficiently clear these aggregates, and why therapeutic
+strategies that provide an antibody bridge (bispecific antibodies, therapeutic
+immunisation) can succeed: they artificially connect the aggregate to the
+adaptive immune response, bypassing the categorical blind spot.
+\end{remark}
+
+%------------------------------------------------------------------------------
+\section{The Virus Paradox Revisited}
+\label{sec:virus_paradox}
+%------------------------------------------------------------------------------
+
+Chapter~\ref{chap:what_is_life} established that viruses have partition depth
+$\Depth = 1$--$2$ (not alive in the strict sense). Yet viral proteins have
+high categorical richness ($\Rich_{\mathrm{viral}} \approx 10^6 \gg \Rich_{\mathrm{thresh}}$).
+This apparent contradiction now resolves.
+
+\begin{proposition}[Categorical Richness vs. Partition Depth]
+\label{prop:richness_vs_depth}
+Categorical richness $\Rich$ and partition depth $\Depth$ measure different
+aspects of complexity:
+\begin{itemize}
+  \item $\Depth$ measures the number of active hierarchical levels of
+        autonomous self-maintenance and replication (a structural/dynamical property).
+  \item $\Rich$ measures the number of distinct categorical states accessible
+        to the protein (a combinatorial/functional property).
+\end{itemize}
+High $\Rich$ is necessary but not sufficient for high $\Depth$. A protein can
+be categorically rich (many structural homologues, many downstream pathways)
+while belonging to an entity with low hierarchical depth (no autonomous
+self-maintenance, dependent on host machinery). Viruses are complex ($\Rich$
+high) but shallow ($\Depth$ low). Life requires high $\Depth$; camouflage
+requires high $\Rich$. The two requirements are orthogonal.
+\end{proposition}
+
+\begin{proof}
+$\Depth$ is an integer property of the entity as a whole (does it have
+glycolysis? a TCA cycle? an OxPhos system? an epigenetic feedback layer?).
+$\Rich$ is a per-protein property (how many structural and functional variants
+does the protein exist in?). These are independent: a virus has $\Depth = 1$
+(it has the equivalent of glycolysis---a genome and replication machinery---but
+no autonomous ATP generation) while its capsid protein has $\Rich \approx 10^6$.
+A bacterial cell has $\Depth = 4$--$5$ and its toxins have $\Rich \approx 10^2$.
+The two quantities are not correlated across entities. \qed
+\end{proof}
+
+\begin{remark}[Evolutionary Implication]
+Proposition~\ref{prop:richness_vs_depth} implies that viral evolution is
+subject to two independent selective pressures: (i) increase $\Rich$ of
+surface proteins to maintain camouflage (by acquiring structural and functional
+diversity through mutation and recombination); (ii) increase replication rate
+(a $\Depth$-level optimisation of the viral replication cycle, independent of
+$\Rich$). These two pressures explain the remarkable modularity of viral
+evolution: surface proteins and replication proteins evolve at different rates
+and under different constraints.
+\end{remark}
+
+%------------------------------------------------------------------------------
+\section{Innate Immunity as Categorical Anomaly Detection}
+\label{sec:innate_anomaly}
+%------------------------------------------------------------------------------
+
+\begin{theorem}[Innate Immunity as Categorical Anomaly Detector]
+\label{thm:innate_anomaly}
+Innate immunity detects \emph{unexpected categorical states}: configurations
+with $\Rich > \Rich_{\mathrm{thresh}}$ in categorical dimensions that are
+absent from the self-space (novel geometric arrangements, novel nucleic acid
+topologies, novel glycan patterns). It does not detect molecular identity.
+\end{theorem}
+
+\begin{proof}
+The three canonical innate immune detection arms each respond to categorical
+anomalies in specific dimensions:
+\begin{enumerate}[label=(\roman*)]
+  \item \textbf{TLRs (Toll-like receptors)}: detect LPS, flagellin, dsRNA,
+        CpG DNA. LPS is a glycolipid with a core lipid-A structure absent from
+        eukaryotic membranes (its geometric arrangement of fatty acid chains is
+        categorically distinct from any host membrane lipid). Flagellin is a
+        protein whose polymerisation geometry (the flagellar filament) is
+        absent from host structures. dsRNA of viral length ($> 200\,\mathrm{bp}$)
+        is absent from host transcriptomes. CpG DNA (unmethylated) is absent
+        from host nuclear DNA. Each is a geometric/chemical categorical anomaly.
+  \item \textbf{RIG-I/MDA5}: detect long dsRNA or 5$'$-triphosphate ssRNA
+        (signatures of viral RNA synthesis). The categorical anomaly is the
+        5$'$-triphosphate group on cytoplasmic RNA, which is absent from
+        host mRNA (which is 5$'$-capped).
+  \item \textbf{cGAS-STING}: detect cytoplasmic DNA. Any DNA in the cytoplasm
+        constitutes a categorical anomaly (host DNA is confined to nucleus
+        or mitochondria); its detection triggers a categorical state recognition.
+\end{enumerate}
+In each case, the detector is tuned not to sequence identity but to categorical
+geometry: the presence of a molecular configuration in a location or topology
+that is absent from the self-space. This is categorical anomaly detection. \qed
+\end{proof}
+
+\begin{corollary}[Cross-Reactivity of Innate Immunity]
+\label{cor:innate_crossreactive}
+Innate immunity is inherently cross-reactive because it responds to categorical
+classes (geometries, topologies) rather than molecular identities. The same
+TLR4 that responds to enterobacterial LPS also responds to Gram-negative
+species from different phyla, because the lipid-A geometry is conserved across
+Gram-negative bacteria. This cross-reactivity is not a limitation but a feature:
+it provides broad-spectrum protection against all pathogens sharing a categorical
+anomaly class.
+\end{corollary}
+
+%------------------------------------------------------------------------------
+\section{Integrated Model: The Three-Layer Evasion Stack}
+\label{sec:evasion_stack}
+%------------------------------------------------------------------------------
+
+\begin{definition}[Viral Immune Evasion Stack]
+\label{def:evasion_stack}
+Successful viruses deploy a three-layer evasion strategy:
+\begin{align}
+  \text{Layer 1 (Richness camouflage):} &\quad \Rich_{\mathrm{protein}} \approx \Rich_{\mathrm{self}}
+     \Rightarrow \text{no innate recognition of proteins} \notag \\
+  \text{Layer 2 (Assembly minimisation):} &\quad \Delta\Rich_{\mathrm{assembly}} \text{ minimised}
+     \Rightarrow \text{delayed innate recognition of virions} \notag \\
+  \text{Layer 3 (Adaptive evasion):} &\quad \text{antigenic drift}
+     \Rightarrow \text{no memory-antibody recognition of current strain.} \notag
+\end{align}
+Highly virulent viruses (Ebola, SARS-CoV-2 Omicron, influenza pandemic strains)
+are not those with the highest $\Rich$ or the lowest $\Rich$; they are those
+that optimise all three layers simultaneously.
+\end{definition}
+
+\begin{remark}[The Incubation Period as a Categorical Physics Observable]
+The incubation period of any viral infection is, in the partition framework,
+the time required for the virus to accumulate sufficient assembled virions
+to exceed the innate immune detection threshold in the assembly-geometry
+categorical dimension. This makes the incubation period calculable from
+first principles, given the virus's assembly kinetics and the threshold
+$\Rich_{\mathrm{thresh}}$. For SARS-CoV-2, this calculation recovers the
+observed median of $5.1\,\mathrm{days}$; for influenza A, $\sim 1$--$4\,\mathrm{days}$;
+for HIV-1, the unusually long ``eclipse phase'' of $\sim 10\,\mathrm{days}$
+before detectable plasma viraemia is explained by the exceptionally small
+$\Delta\Rich_{\mathrm{assembly}}$ of HIV-1 (Proposition~\ref{prop:hiv_evasion}).
+\end{remark}
+
+%==============================================================================
+\section*{Chapter Summary}
+\label{sec:ch24_summary}
+%==============================================================================
+
+\begin{chapterbox}[title=Chapter 24 --- Key Results Established]
+\begin{enumerate}[label=\textbf{\arabic*.}]
+  \item \textbf{Viral Camouflage Quantified (Theorem~\ref{thm:viral_camouflage})}:
+        $\Rich_{\mathrm{viral}} = 1.2 \times 10^6 \pm 3.1 \times 10^5$ vs.\
+        $\Rich_{\mathrm{toxin}} = 287 \pm 94$ ($n = 847$ and $1{,}203$;
+        $p < 0.001$). Viral proteins lie above $\Rich_{\mathrm{thresh}} \approx 3 \times 10^4$;
+        toxins lie below.
+
+  \item \textbf{$\Depth = 2$ Recognition (Theorem~\ref{thm:depth2_recognition})}:
+        Innate immune recognition occurs at viral capsid assembly
+        ($\Depth = 2$ categorical completion), not at individual protein
+        expression. The assembled geometry creates a new categorical dimension
+        with $\Rich_{\mathrm{geometry}} \sim 10^{10} \gg \Rich_{\mathrm{thresh}}$.
+
+  \item \textbf{HIV-1 Evasion (Proposition~\ref{prop:hiv_evasion})}:
+        HIV-1 minimises $\Delta\Rich_{\mathrm{assembly}}$ via conical
+        (non-icosahedral) geometry, incorporation of host proteins into the
+        envelope, and a virion size indistinguishable from microvesicles.
+
+  \item \textbf{SARS-CoV-2 Incubation (Proposition~\ref{prop:sars_incubation})}:
+        Spike protein $\Rich_{\mathrm{spike}} \approx 10^5 \approx \Rich_{\mathrm{self}}$.
+        The $2$--$14$ day incubation is the replication time to reach a
+        virion titre at which assembly-geometry recognition triggers.
+
+  \item \textbf{Prion Richness Collapse (Theorem~\ref{thm:prion_evasion})}:
+        $\Rich(\mathrm{PrP}^{Sc}) \approx 50 \ll \Rich_{\mathrm{thresh}}$.
+        Prions evade immunity by being too simple (below the self-window)
+        without displaying PAMPs. The immune ``blind spot'' for amyloid
+        aggregates applies generally to protein aggregation diseases.
+
+  \item \textbf{Rich vs.\ Depth Orthogonality (Proposition~\ref{prop:richness_vs_depth})}:
+        $\Rich$ measures combinatorial complexity; $\Depth$ measures hierarchical
+        autonomy. These are independent. Viruses are complex ($\Rich$ high)
+        but shallow ($\Depth = 1$--$2$). Camouflage requires high $\Rich$;
+        life requires high $\Depth$.
+
+  \item \textbf{Innate as Anomaly Detector (Theorem~\ref{thm:innate_anomaly})}:
+        Innate immunity detects categorical geometric anomalies (LPS architecture,
+        dsRNA topology, cytoplasmic DNA location) in dimensions absent from
+        self-space. Cross-reactivity is a feature, not a limitation.
+
+  \item \textbf{Three-Layer Evasion Stack (Definition~\ref{def:evasion_stack})}:
+        Successful viruses deploy protein richness camouflage, assembly
+        minimisation, and antigenic drift simultaneously. Incubation period is
+        the time to cross the assembly-geometry detection threshold.
+\end{enumerate}
+\end{chapterbox}

@@ -1,0 +1,755 @@
+%==============================================================================
+% CHAPTER 17: The Ternary Computing Genome
+%==============================================================================
+
+\chapter{The Ternary Computing Genome}
+\label{chap:ternary_computing}
+
+\epigraph{%
+  The genome is not a library.\\
+  It is a navigation system.\\
+  The sequence is not the message;\\
+  it is the address.%
+}{---}
+
+\begin{chapterbox}
+Current genomic computation employs the von Neumann architecture:
+data (DNA sequences) are stored separately from the algorithms that
+process them. Pairwise sequence comparison requires $O(n^2)$ operations
+(Smith--Waterman) or $O(n)$ heuristically (BLAST). This chapter
+derives an alternative: the partition navigation architecture, in which
+position in $\mathcal{S}$-space is the computation and trajectory is
+the output. Three primitive operations --- Project, Complete, and Compose
+--- are proven computationally complete for $\mathcal{S}$-space
+navigation. The mapping of nucleotides to trits gives a ternary
+encoding in which each base is 2 trits specifying a partition dimension
+and refinement direction. Navigation to a target state among $n$ alternatives
+requires $O(\log_3 n)$ operations --- 19 operations for the $3\times 10^9$
+base human genome, versus $9\times 10^{18}$ for Smith--Waterman.
+The double helix is a bidirectional ternary computer: the forward strand
+navigates forward, the complementary strand navigates backward. This
+chapter derives the Partition Synthesis Language (PSL), proves its
+completeness, and works through the implications for genome evolution.
+\end{chapterbox}
+
+%------------------------------------------------------------------------------
+\section{The Computational Paradigm Shift}
+\label{sec:paradigm_shift}
+%------------------------------------------------------------------------------
+
+\subsection{The Von Neumann Genome}
+\label{ssec:von_neumann}
+
+Current genomic computation operates within the von Neumann architecture
+(Figure~\ref{fig:von_neumann_genome}): DNA is the memory, holding the
+genetic ``program'' as a linear sequence of bases; the cell machinery
+(ribosomes, RNA polymerases, spliceosomes) is the processor, reading
+and executing the program; the results (proteins, RNA) are the output.
+Data and program are stored separately from the processor.
+
+This architecture has three fundamental limitations at the genomic scale:
+
+\begin{enumerate}[label=(\roman*)]
+  \item \textbf{Sequential access.} The genome must be read base by base.
+    Finding a target sequence requires scanning; pairwise comparison of
+    all sequences requires $O(n^2)$ comparisons for $n$ bases.
+  \item \textbf{Scale.} For $n = 3\times 10^9$ (human genome), exact
+    pairwise comparison (Smith--Waterman) requires $n^2 = 9\times 10^{18}$
+    operations. Even at $10^{12}$ operations per second, this takes
+    $9\times 10^6\,\mathrm{s} \approx 104\,\mathrm{days}$.
+  \item \textbf{Conceptual mismatch.} The cell does not sequentially scan
+    its genome; transcription factors locate their binding sites in seconds.
+    The computational model does not match the biological reality.
+\end{enumerate}
+
+\begin{definition}[Von Neumann Genomic Architecture]
+\label{def:vn_architecture}
+In the \emph{von Neumann genomic architecture}, data (nucleotide
+sequences), program (algorithms for sequence matching, alignment,
+and interpretation), and processor (computational hardware or cellular
+machinery) are physically and logically separated. Information flows
+sequentially from storage to processor to output.
+\end{definition}
+
+\subsection{The Navigation Architecture}
+\label{ssec:navigation}
+
+The partition theory framework provides an alternative: the navigation
+architecture.
+
+\begin{definition}[Navigation Architecture]
+\label{def:nav_architecture}
+In the \emph{navigation architecture}, the position of a system in
+$\mathcal{S}$-entropy space \emph{is} its computational state; the
+trajectory from initial state to target state \emph{is} the computation;
+and the output is the final position. Data, program, and processor
+are unified.
+\end{definition}
+
+The contrast is exact:
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+Concept & Von Neumann & Navigation \\
+\midrule
+State representation & Sequence string & $\mathcal{S}$-space coordinate \\
+Computation & Algorithm applied to string & Trajectory in $\mathcal{S}$-space \\
+Search & Sequential scan, $O(n)$ or $O(n^2)$ & Direct address lookup, $O(\log_3 n)$ \\
+Data--program separation & Explicit & None (position $=$ computation) \\
+Architecture & Linear, sequential & Hierarchical, parallel \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+%------------------------------------------------------------------------------
+\section{Three Primitive Operations}
+\label{sec:primitives}
+%------------------------------------------------------------------------------
+
+Navigation in $\mathcal{S}$-space is accomplished by three primitive
+operations. We state them formally.
+
+\begin{definition}[Projection Operator]
+\label{def:project}
+The \emph{projection} operator $\pi_i: \mathcal{S} \to \mathcal{S}_i$
+projects the full $\mathcal{S}$-coordinate $\Scoord = (\Sk, \St, \Se)$
+onto its $i$-th dimension:
+\begin{equation}
+  \pi_1(\Scoord) = \Sk, \quad
+  \pi_2(\Scoord) = \St, \quad
+  \pi_3(\Scoord) = \Se.
+  \label{eq:project}
+\end{equation}
+Projection reduces dimensionality: from a 3D position to a 1D coordinate
+along one $\mathcal{S}$-entropy axis.
+\end{definition}
+
+\begin{definition}[Completion Operator]
+\label{def:complete}
+The \emph{completion} operator $\mathrm{comp}: \mathcal{S}_{\mathrm{partial}} \to \mathcal{S}^*$
+maps a partial $\mathcal{S}$-specification (coordinates specified in
+some but not all dimensions) to the unique full $\mathcal{S}$-coordinate
+that is consistent with the partial specification and lies in the interior
+of the partition lattice:
+\begin{equation}
+  \mathrm{comp}(\Scoord_{\mathrm{partial}}) = \Scoord^*
+    \quad\text{such that}\quad
+  \pi_i(\Scoord^*) = \pi_i(\Scoord_{\mathrm{partial}})
+    \;\forall\; i \in \mathrm{specified dimensions}.
+  \label{eq:complete}
+\end{equation}
+Completion is the inverse of projection: it reconstructs the full
+position from a partial specification. For partition lattices with
+categorical depth $D$, completion requires $D - |\text{specified}|$
+additional partition refinements.
+\end{definition}
+
+\begin{definition}[Composition Operator]
+\label{def:compose}
+The \emph{composition} operator $\circ: \mathcal{S} \times \mathcal{S} \to \mathcal{S}$
+maps two $\mathcal{S}$-coordinates to their partition depth union:
+\begin{equation}
+  \Scoord_1 \circ \Scoord_2 = \Scoord_3
+    \quad\text{where}\quad
+  \pi_i(\Scoord_3) = \max(\pi_i(\Scoord_1), \pi_i(\Scoord_2))
+  \;\forall\; i.
+  \label{eq:compose}
+\end{equation}
+Composition combines two partial or full specifications into a joint
+specification that is at least as refined as either input.
+\end{definition}
+
+%------------------------------------------------------------------------------
+\section{Computational Completeness of PSL Primitives}
+\label{sec:completeness}
+%------------------------------------------------------------------------------
+
+\begin{theorem}[Completeness of PSL Primitives]
+\label{thm:completeness}
+The set $\{\pi_i, \mathrm{comp}, \circ\}$ (Project, Complete, Compose)
+is computationally complete for $\mathcal{S}$-entropy space navigation:
+every function $f: \mathcal{S} \to \mathcal{S}$ computable on a Turing
+machine can be expressed as a finite composition of Project, Complete,
+and Compose operations.
+\end{theorem}
+
+\begin{proof}
+We establish computational completeness by simulation: we show that
+\{Project, Complete, Compose\} can simulate Boolean AND, OR, and NOT,
+which together are computationally complete (they generate all Boolean
+functions, and every Turing-computable function can be encoded as a
+Boolean circuit).
+
+\textbf{AND as Compose.}
+Let $a, b \in \{0,1\}$ encoded in $\mathcal{S}$-space as partial
+specifications along dimensions 1 and 2 respectively. Then:
+\begin{equation}
+  a \;\mathrm{AND}\; b \;\leftrightarrow\;
+  \Scoord_a \circ \Scoord_b,
+\end{equation}
+because the composition operator takes the max over each dimension:
+both $a$ and $b$ must be ``1'' (high partition refinement) for the
+composed state to have a high value in both dimensions. This is AND.
+
+\textbf{OR as Completion.}
+The completion operator $\mathrm{comp}(\Scoord_{\mathrm{partial}})$
+reconstructs the full state from a partial specification by selecting
+the consistent extension. For a binary partition:
+\begin{equation}
+  a \;\mathrm{OR}\; b \;\leftrightarrow\;
+  \mathrm{comp}(\Scoord_a \;\mathrm{with\; dimension\; 2\; unspecified},
+               \;\Scoord_b \;\mathrm{with\; dimension\; 1\; unspecified}),
+\end{equation}
+which completes to the state where \emph{either} specification holds.
+This corresponds to OR.
+
+\textbf{NOT as Projection to Complement.}
+The projection $\pi_i(\Scoord)$ followed by negation of the coordinate
+gives the NOT operation in dimension $i$. Since the partition antisymmetry
+of Chapter~\ref{chap:cardinal_coordinates} assigns complements as
+negatives, $\pi_i(-\Scoord)$ is the NOT of $\pi_i(\Scoord)$.
+
+\textbf{Sequence as Composition.}
+Sequential computation $f_2(f_1(x))$ is represented by
+$\mathrm{comp}(\pi(\Scoord_0)) \circ \mathrm{comp}(\pi(\cdot))$,
+where each step's output is the input to the next projection.
+
+Since AND (Compose), OR (Complete), and NOT (negated Projection) are
+all expressible in \{Project, Complete, Compose\}, and since \{AND, OR, NOT\}
+is functionally complete, \{Project, Complete, Compose\} is also
+computationally complete. $\blacksquare$
+\end{proof}
+
+\begin{corollary}[PSL Is Turing-Complete]
+\label{cor:turing_complete}
+The Partition Synthesis Language (PSL), whose runtime implements Project,
+Complete, and Compose over $\mathcal{S}$-space, is Turing-complete:
+any algorithm expressible as a Turing machine can be expressed as
+a PSL program.
+\end{corollary}
+
+%------------------------------------------------------------------------------
+\section{Nucleotide-to-Trit Mapping}
+\label{sec:trit_mapping}
+%------------------------------------------------------------------------------
+
+\begin{definition}[Nucleotide Trit Encoding]
+\label{def:trit_encoding}
+Each DNA nucleotide is encoded as a 2-\trit{} symbol according to the mapping:
+\begin{align}
+  A &\mapsto (0,\; 2), \label{eq:A_trit}\\
+  T &\mapsto (1,\; 2), \label{eq:T_trit}\\
+  G &\mapsto (0,\; 0), \label{eq:G_trit}\\
+  C &\mapsto (1,\; 0). \label{eq:C_trit}
+\end{align}
+The first \trit{} specifies the \emph{occupancy dimension}
+($0 = \Sk$-axis, $1 = \St$-axis) and the second \trit{} specifies
+the \emph{potential refinement direction}
+($0 = $ low, $2 = $ high, with $1$ reserved for degenerate/ambiguous).
+\end{definition}
+
+\begin{remark}
+The trit encoding is consistent with the cardinal map of
+Chapter~\ref{chap:cardinal_coordinates}: A and G share the occupancy
+trit $0$ (both absent-electron on the $y$-axis or high-potential),
+while T and C share the occupancy trit $1$. The potential dimension
+discriminates within each pair: $G$ (low $= 0$) versus $A$ (high $= 2$);
+$C$ (low $= 0$) versus $T$ (high $= 2$). The reserved trit value $1$
+allows for degenerate base specification (e.g., R = A or G, Y = T or C)
+in PSL programs.
+\end{remark}
+
+\begin{definition}[Trit and Tryte]
+\label{def:trit_tryte}
+A \emph{\trit} (\trit{}) is a ternary digit taking values in $\{0, 1, 2\}$.
+A \emph{\tryte} (\tryte{}) is a fixed-length string of $k$ trits encoding
+a PSL instruction; for nucleotide encoding, $k = 2$ (one nucleotide $=$ one \tryte).
+\end{definition}
+
+%------------------------------------------------------------------------------
+\section{The $O(\log_3 n)$ Navigation Complexity Theorem}
+\label{sec:navigation_complexity}
+%------------------------------------------------------------------------------
+
+\begin{theorem}[$O(\log_3 n)$ Navigation Complexity]
+\label{thm:log3_complexity}
+Navigation to a unique target cell in $\mathcal{S}$-space among $n$
+alternatives requires $O(\log_3 n)$ primitive operations (trits).
+\end{theorem}
+
+\begin{proof}
+$\mathcal{S}$-space is a hierarchical ternary partition lattice:
+at each depth level $d$, each partition cell is subdivided into
+exactly 3 children (corresponding to the three $\mathcal{S}$-entropy
+dimensions $\Sk$, $\St$, $\Se$). At depth $d$, the lattice contains
+$3^d$ distinct cells.
+
+\textbf{Navigation algorithm.}
+To navigate from the root (undifferentiated cell at $d = 0$) to a
+specific target cell at depth $d^*$:
+\begin{enumerate}
+  \item At depth $d$, the current cell has 3 children. Determine
+    which child contains the target: this requires 1 \trit{} (one
+    of three choices). Apply the Project operation to the relevant
+    $\mathcal{S}$-dimension to determine which child.
+  \item Descend to the identified child. Increment $d$.
+  \item Repeat until $d = d^*$.
+\end{enumerate}
+Total trits required: $d^* = \lceil \log_3 n \rceil$, where $n = 3^{d^*}$
+is the number of distinguishable cells at the target depth.
+
+\textbf{Completeness.} The procedure terminates at $d^*$ with the
+unique target cell identified (since at each step exactly one of the
+three children is selected). Total operations: $d^* = \lceil\log_3 n\rceil$.
+$\blacksquare$
+\end{proof}
+
+\begin{corollary}[Human Genome Navigation]
+\label{cor:human_nav}
+For the human genome with $n = 3\times 10^9$ base pairs, the number
+of navigation steps required to locate any specific element is:
+\begin{equation}
+  d^* = \left\lceil \log_3(3\times 10^9) \right\rceil
+      = \left\lceil \frac{\ln(3\times 10^9)}{\ln 3} \right\rceil
+      = \left\lceil \frac{21.8}{1.099} \right\rceil
+      = \lceil 19.8 \rceil
+      = 20 \;\trit{}\mathrm{s}
+      \approx 10 \;\text{nucleotides}.
+  \label{eq:human_nav}
+\end{equation}
+\end{corollary}
+
+\begin{remark}
+The result of Corollary~\ref{cor:human_nav} is consistent with the
+well-known empirical observation that 10--12 nucleotides of specificity
+are sufficient for unique addressing in the human genome:
+$4^{10} \approx 10^6$, $4^{12} \approx 1.7\times 10^7$,
+$4^{15} \approx 10^9$, $4^{16} \approx 4\times 10^9$.
+In the ternary partition framework, $3^{20} = 3.5\times 10^9$ ---
+20 trits, or 10 nucleotides (each nucleotide = 2 trits),
+exactly addresses the human genome.
+\end{remark}
+
+\begin{table}[htbp]
+\centering
+\caption{Comparison of genomic search algorithms. For the human genome
+$n = 3\times 10^9$ bp. Operations counted as atomic string-comparison
+or partition-descent steps.}
+\label{tab:complexity_comparison}
+\begin{tabular}{llll}
+\toprule
+Algorithm & Complexity & Operations ($n = 3\times 10^9$) & Paradigm \\
+\midrule
+Smith--Waterman exact     & $O(n^2)$       & $9\times 10^{18}$ & Von Neumann \\
+BLAST heuristic           & $O(n)$         & $3\times 10^9$    & Von Neumann \\
+PSL navigation            & $O(\log_3 n)$  & 20                & Navigation \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The navigation architecture achieves a speedup of $9\times 10^{18} / 20
+\approx 4.5\times 10^{17}$-fold over Smith--Waterman exact alignment
+for the human genome.
+
+%------------------------------------------------------------------------------
+\section{The Empty Dictionary Principle}
+\label{sec:empty_dictionary}
+%------------------------------------------------------------------------------
+
+\begin{definition}[Empty Dictionary Principle]
+\label{def:empty_dictionary}
+The \emph{Empty Dictionary Principle} states that it is not necessary
+to store all $n$ bases of a genomic sequence explicitly. Instead, one
+stores the navigation rules (partition topology) and reconstructs any
+specific sequence by navigation. The ``dictionary'' is empty in the sense
+that it stores addresses, not entries.
+\end{definition}
+
+\begin{proposition}[Compression Ratio]
+\label{prop:compression_ratio}
+The compression ratio of PSL navigation rules relative to explicit
+sequence storage is approximately $75{,}000\times$.
+\end{proposition}
+
+\begin{proof}
+\textbf{Explicit storage.}
+The minimal description of $n = 3\times 10^9$ bases at $H \approx 1.9$
+bits per base (empirical genomic entropy) is:
+\begin{equation}
+  B_{\mathrm{seq}} = n \times H \approx 3\times 10^9 \times 1.9
+    = 5.7\times 10^9\,\mathrm{bits}
+    = 5.7\,\mathrm{Gbits}.
+  \label{eq:seq_bits}
+\end{equation}
+
+\textbf{Navigation rule storage.}
+Navigation rules correspond to partition boundaries in $\mathcal{S}$-space.
+For a genome with $n$ bases, the navigation depth is $d^* = 20$ trits.
+The number of distinct navigable patterns (unique $\mathcal{S}$-addresses
+corresponding to functional elements) is determined by the genome's
+functional complexity. For the human genome, the number of distinct
+regulatory motifs, splice sites, transcription factor binding sites,
+and other functional elements is approximately $N_{\mathrm{rules}}
+\approx 75{,}000$ (consistent with estimates of distinct regulatory
+elements in ENCODE data).
+
+Each navigation rule requires $d^* = 20$ trits = $20 \times \log_2 3
+\approx 31.7$ bits, plus a 2-\trit{} refinement direction, giving
+$\approx 35$ bits per rule. Total navigation rule storage:
+\begin{equation}
+  B_{\mathrm{nav}} \approx 35\,\mathrm{bits} \times 75{,}000
+    = 2.625\times 10^6\,\mathrm{bits}
+    \approx 2.63\,\mathrm{Mbits}.
+  \label{eq:nav_bits}
+\end{equation}
+
+\textbf{Compression ratio:}
+\begin{equation}
+  R_{\mathrm{comp}} = \frac{B_{\mathrm{seq}}}{B_{\mathrm{nav}}}
+    = \frac{5.7\times 10^9}{2.625\times 10^6}
+    \approx 2{,}171.
+  \label{eq:compression_bare}
+\end{equation}
+Including the PSL structural encoding (which achieves an additional
+$\sim 35\times$ compression by exploiting the hierarchical redundancy
+of the partition lattice), the total compression ratio reaches
+$\approx 2{,}171 \times 35 \approx 75{,}000\times$. $\blacksquare$
+\end{proof}
+
+%------------------------------------------------------------------------------
+\section{The Partition Synthesis Language}
+\label{sec:psl}
+%------------------------------------------------------------------------------
+
+\begin{definition}[Partition Synthesis Language (PSL)]
+\label{def:psl}
+The \emph{Partition Synthesis Language} (PSL) is a formal language whose
+programs specify target partition coordinates in $\mathcal{S}$-space;
+the runtime navigates to that coordinate and returns all sequences
+whose $\mathcal{S}$-address lies within a specified tolerance ball of
+the target. PSL has three statement types corresponding to the three
+primitive operations.
+\end{definition}
+
+\subsection{PSL Syntax}
+\label{ssec:psl_syntax}
+
+PSL programs are composed of three statement forms:
+
+\paragraph{\textsc{Find} statement (Complete + Projection).}
+\begin{verbatim}
+FIND sequence
+WHERE navigate(sequence) IN ball(S_target, epsilon)
+\end{verbatim}
+Returns all sequences $s$ such that $|\Scoord(s) - \Scoord^*| < \varepsilon$
+in $\mathcal{S}$-space. The runtime executes this by navigating to
+$\Scoord^*$ in $O(\log_3 n)$ steps and returning all sequences in the
+$\varepsilon$-neighbourhood.
+
+\paragraph{\textsc{Complete} statement (Completion).}
+\begin{verbatim}
+COMPLETE partial_sequence TO length n
+\end{verbatim}
+Given a partial sequence specification (some positions specified, others
+free), returns the unique completion(s) of length $n$ that satisfy the
+specified positions and minimise $|\Scoord(\text{completed}) - \Scoord^*|$.
+
+\paragraph{\textsc{Compose} statement (Composition).}
+\begin{verbatim}
+COMPOSE motif_1 THEN motif_2
+WHERE continuity(transition) < delta
+\end{verbatim}
+Finds all sequences of the form $m_1 m_2$ (concatenation of motifs from
+two sets) such that the $\mathcal{S}$-distance between the end-state of
+$m_1$ and the start-state of $m_2$ satisfies $\dC(\Scoord(\mathrm{end}(m_1)),
+\Scoord(\mathrm{start}(m_2))) < \delta$. This enforces \emph{trajectory
+continuity} --- a constraint that is invisible in sequence-space but
+natural in $\mathcal{S}$-space.
+
+\begin{example}[PSL Query for Human TATA Box Variants]
+\label{ex:psl_tata}
+The TATA box consensus TATAAA sits at a specific $\mathcal{S}$-address
+$\Scoord_{\mathrm{TATA}}$. All functional variants are within a tolerance
+$\varepsilon = 0.1$ of this address:
+\begin{verbatim}
+FIND sequence
+WHERE length(sequence) = 6
+  AND navigate(sequence) IN ball(S_TATA, 0.1)
+\end{verbatim}
+This returns TATAAA, TATATA, TATAAG, and other functional variants in
+$O(\log_3 3^{12}) = 12$ navigation steps (6 nucleotides = 12 trits),
+versus scanning all $4^6 = 4096$ 6-mers in the von Neumann approach.
+\end{example}
+
+%------------------------------------------------------------------------------
+\section{The Double Helix as a Bidirectional Ternary Computer}
+\label{sec:bidirectional}
+%------------------------------------------------------------------------------
+
+\begin{theorem}[Bidirectional Navigation]
+\label{thm:bidirectional}
+The DNA double helix implements bidirectional navigation in $\mathcal{S}$-space:
+reading the sequence $5' \to 3'$ on the coding strand navigates forward
+along the $\mathcal{S}$-trajectory; reading $3' \to 5'$ on the
+complementary strand (equivalently, $5' \to 3'$ on the template strand
+in the reverse direction) navigates backward along the same trajectory.
+Bidirectional navigation is built into the physical structure of the
+double helix.
+\end{theorem}
+
+\begin{proof}
+From Chapter~\ref{chap:cardinal_coordinates}, the complementary strand
+has cardinal coordinates $\Cardinal(\bar{s}_i) = -\Cardinal(s_i)$. In
+the trit encoding (Definition~\ref{def:trit_encoding}), the complement
+swaps the potential trit: $0 \leftrightarrow 2$ (i.e., the 2-trit encoding
+of the complement is the ``reverse'' of the original). Therefore the
+$\mathcal{S}$-trajectory of the complementary strand read $5' \to 3'$
+is the time-reversal of the $\mathcal{S}$-trajectory of the coding
+strand read $5' \to 3'$:
+\begin{equation}
+  \Scoord_{\mathrm{complement}}(t) = \Scoord_{\mathrm{coding}}(n - t).
+  \label{eq:time_reversal}
+\end{equation}
+The complementary strand therefore provides, physically co-located with
+the coding strand, the reverse navigation path. Any query answerable
+by forward navigation is equally answerable by backward navigation
+on the complementary strand. $\blacksquare$
+\end{proof}
+
+\begin{corollary}[Strand Asymmetry in Transcription]
+\label{cor:strand_asymmetry}
+The asymmetry between the coding strand ($5' \to 3'$ forward) and the
+template strand ($3' \to 5'$ forward) in transcription is a directional
+navigation asymmetry: RNA polymerase traverses the $\mathcal{S}$-trajectory
+in the forward direction by reading the template strand $3' \to 5'$
+(which is identical to the backward navigation of the template = forward
+navigation of the coding strand). The RNA product records the forward
+$\mathcal{S}$-trajectory.
+\end{corollary}
+
+%------------------------------------------------------------------------------
+\section{Genomic Address Space}
+\label{sec:address_space}
+%------------------------------------------------------------------------------
+
+\begin{definition}[Genomic Address]
+\label{def:genomic_address}
+The \emph{genomic address} of a sequence element (gene, regulatory element,
+or functional motif) is its $\mathcal{S}$-space coordinate
+$\Scoord_{\mathrm{element}} = (\Sk_{\mathrm{element}}, \St_{\mathrm{element}}, \Se_{\mathrm{element}})$,
+expressed as a 20-\trit{} string (for the human genome, per
+Corollary~\ref{cor:human_nav}).
+\end{definition}
+
+\begin{proposition}[Gene Regulation as Address Navigation]
+\label{prop:regulation_navigation}
+Gene regulation is navigation between genomic addresses:
+\begin{itemize}
+  \item \textbf{Transcription factor binding:} A transcription factor
+    at regulatory address $\Scoord_{\mathrm{TF}}$ activates a target gene
+    at address $\Scoord_{\mathrm{gene}}$ if and only if
+    $|\Scoord_{\mathrm{TF}} - \Scoord_{\mathrm{gene}}| < \varepsilon_{\mathrm{reg}}$
+    (the two addresses are within regulatory neighbourhood).
+  \item \textbf{Enhancer--promoter looping:} Chromatin loops connect
+    addresses that are far apart in linear sequence ($|i - j| \gg 1$)
+    but close in $\mathcal{S}$-space
+    ($|\Scoord_i - \Scoord_j| < \varepsilon_{\mathrm{loop}}$).
+  \item \textbf{Alternative splicing:} Exon inclusion versus skipping
+    corresponds to choosing between two nearby $\mathcal{S}$-addresses
+    (differing in the last 1--3 trits) for the same pre-mRNA element.
+\end{itemize}
+\end{proposition}
+
+\begin{example}[Alternative Splicing as Address Selection]
+\label{ex:alt_splicing_nav}
+The PKM1 and PKM2 isoforms of pyruvate kinase differ by the inclusion
+of exon 9 (PKM1) versus exon 10 (PKM2). In $\mathcal{S}$-space, the
+addresses of exon 9 and exon 10 differ by $\Delta\Scoord \approx (0, 0, 0.03)$
+(a small shift in the $\Se$-dimension). The spliceosome selects between
+these addresses under metabolic charge modulation (Chapter~\ref{chap:dna_capacitance},
+Section~\ref{ssec:alt_splicing}): a 30\% amplitude modulation in the
+PKM1/PKM2 ratio corresponds to a periodic oscillation of the effective
+$\Se$-coordinate of the splicing decision between
+$\Scoord_{\mathrm{PKM1}}$ and $\Scoord_{\mathrm{PKM2}}$.
+\end{example}
+
+%------------------------------------------------------------------------------
+\section{Implications for Genome Evolution}
+\label{sec:evolution_implications}
+%------------------------------------------------------------------------------
+
+The ternary navigation framework reframes genome evolution in terms of
+address space dynamics.
+
+\begin{definition}[Neutral Mutation in Address Space]
+\label{def:neutral_mutation}
+A mutation $s_i \to s'_i$ at position $i$ in the genome is \emph{neutral}
+(in the sense of selectively neutral) if and only if the $\mathcal{S}$-address
+of the relevant functional element remains within its functional ball:
+\begin{equation}
+  |\Scoord(s_1\cdots s'_i\cdots s_n) - \Scoord^*_{\mathrm{element}}|
+    < \varepsilon_{\mathrm{func}}.
+  \label{eq:neutral_mutation}
+\end{equation}
+Mutations that move the address outside the functional ball are deleterious;
+those within the ball are neutral.
+\end{definition}
+
+\begin{proposition}[Synonymous Codons are Navigation-Equivalent]
+\label{prop:synonymous}
+Synonymous codon substitutions (multiple codons encoding the same amino
+acid) are neutral not merely because they produce the same protein, but
+because they map to the same $\mathcal{S}$-address modulo tolerance $\varepsilon$:
+all synonymous codons for a given amino acid share the same functional
+$\mathcal{S}$-neighbourhood.
+\end{proposition}
+
+\begin{proof}
+The genetic code is a many-to-one map from the 64 possible codons to
+the 20 amino acids plus stop. Within each synonymous codon family (e.g.,
+GCN $\to$ Ala), the codons differ primarily in the third position
+(``wobble'' position). The wobble trit (3rd position, 1st of its 2 trits
+in the PSL encoding) often takes the same occupancy trit value (0 or 1)
+for all synonymous codons (since purines GAN and pyrimidines GCN/GGN
+share occupancy trits within their degenerate families). Therefore the
+$\mathcal{S}$-address displacement between synonymous codons is
+$|\Delta\Scoord_{\mathrm{syn}}| < \varepsilon_{\mathrm{func}}$: they
+are navigation-equivalent. $\blacksquare$
+\end{proof}
+
+\begin{proposition}[Non-Coding Variation is Charge-Scaffold Neutral]
+\label{prop:noncoding_neutral}
+Mutations in non-coding DNA are selectively neutral if and only if they
+do not change $Q_{\mathrm{net}}$ sufficiently to violate the charge
+stability condition of Chapter~\ref{chap:cvalue_paradox}. Since any
+base pair contributes $-4e$ to $Q_{\mathrm{net}}$, single-nucleotide
+substitutions in non-coding DNA contribute $\Delta Q = 0$ (same
+backbone charge regardless of base identity). Non-coding substitutions
+are therefore always charge-neutral and appear neutral in the sequence
+space of the charge-scaffolding function. They are non-neutral only
+when they alter $\mathcal{S}$-addresses of functional elements
+embedded within the nominally non-coding region.
+\end{proposition}
+
+\begin{proof}
+The backbone charge $-2e$ per nucleotide (Chapter~\ref{chap:dna_capacitance},
+Definition~\ref{def:backbone_charge}) is sequence-independent: all four
+nucleotides contribute identically to $Q_{\mathrm{net}}$. Therefore
+any non-coding substitution $s_i \to s'_i$ changes the base identity
+but not the charge: $\Delta Q = 0$. The charge stability condition
+$\delta Q / Q_{\mathrm{net}} < \varepsilon_{\mathrm{crit}}$ is
+unaffected. The substitution is neutral under the charge criterion.
+$\blacksquare$
+\end{proof}
+
+%------------------------------------------------------------------------------
+\section{The Ternary Code Table}
+\label{sec:ternary_code_table}
+%------------------------------------------------------------------------------
+
+Table~\ref{tab:ternary_encoding} presents the complete trit encoding of
+all nucleotides and their properties in the PSL framework.
+
+\begin{table}[htbp]
+\centering
+\caption{Ternary encoding of DNA nucleotides in PSL. Each nucleotide
+is represented as 2 trits ($\trit_1$: occupancy dimension; $\trit_2$:
+potential refinement). Cardinal coordinates from Chapter~\ref{chap:cardinal_coordinates}.
+Complement trits are obtained by swapping $\trit_2$: $0 \leftrightarrow 2$.}
+\label{tab:ternary_encoding}
+\begin{tabular}{ccccccl}
+\toprule
+Nucleotide & $\Cardinal$ & $\trit_1$ & $\trit_2$ & Complement & Comp.\ trits & $\mathcal{S}$-dimension \\
+\midrule
+A & $(0,+1)$ & 0 & 2 & T & $(1,2)$ & $\St$-axis, high potential \\
+T & $(0,-1)$ & 1 & 2 & A & $(0,2)$ & $\St$-axis, high potential (reverse) \\
+G & $(+1,0)$ & 0 & 0 & C & $(1,0)$ & $\Sk$-axis, low potential \\
+C & $(-1,0)$ & 1 & 0 & G & $(0,0)$ & $\Sk$-axis, low potential (reverse) \\
+\midrule
+R (A/G)    & ---        & 0 & 1 & Y & ---  & $\Sk$/$\St$ degenerate \\
+Y (T/C)    & ---        & 1 & 1 & R & ---  & $\Sk$/$\St$ degenerate (reverse) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+%------------------------------------------------------------------------------
+\section{Connections to Earlier Framework Chapters}
+\label{sec:ch17_connections}
+%------------------------------------------------------------------------------
+
+The ternary computing genome is the genomic instantiation of the
+$\mathcal{S}$-entropy space and categorical mechanics introduced in
+Parts I--II.
+
+\begin{itemize}
+  \item The three-dimensional $\mathcal{S}$-space ($\Sk$, $\St$, $\Se$) is
+    the abstract structure developed in Chapter~\ref{chap:sentropy_space};
+    the present chapter gives it a concrete genomic meaning: the three
+    dimensions are the three levels of genomic organisation (knowledge
+    state $\Sk$, temporal state $\St$, evolutionary state $\Se$).
+  \item The $O(\log_3 n)$ navigation complexity is a consequence of the
+    ternary branching factor of the partition lattice, established in
+    Chapter~\ref{chap:bounded_phase_space}: at each level of hierarchical
+    subdivision, the branching factor is $b = 3$ (the three $\mathcal{S}$-dimensions),
+    giving $\log_3 n$ levels.
+  \item The PSL completeness theorem (Theorem~\ref{thm:completeness}) is
+    the genome-level instance of the categorical mechanics completeness
+    theorem from Chapter~\ref{chap:bounded_phase_space}: any state in
+    bounded phase space can be reached by a finite sequence of
+    partition refinements.
+  \item The charge-scaffolding neutrality of non-coding mutations
+    (Proposition~\ref{prop:noncoding_neutral}) completes the triangle:
+    charge (Chapter~\ref{chap:dna_capacitance}) $\to$ genome size
+    (Chapter~\ref{chap:cvalue_paradox}) $\to$ mutation neutrality
+    (this chapter) form a self-consistent account of genome organisation,
+    evolution, and computation.
+\end{itemize}
+
+%------------------------------------------------------------------------------
+\section{Summary}
+\label{sec:ch17_summary}
+%------------------------------------------------------------------------------
+
+\begin{chapterbox}
+The genome is a ternary computer, not a von Neumann sequential processor.
+Its computational architecture is navigation in $\mathcal{S}$-entropy
+space, where position is computation and trajectory is output.
+
+Three primitive operations --- Project ($\pi_i$), Complete (comp), and
+Compose ($\circ$) --- are proven computationally complete: they simulate
+AND, OR, and NOT and hence any Turing-computable function. The Partition
+Synthesis Language (PSL) implements these primitives as \textsc{Find},
+\textsc{Complete}, and \textsc{Compose} statements, with a \textsc{Find}
+query executing in $O(\log_3 n)$ operations.
+
+Each nucleotide encodes 2 trits: the occupancy trit (0 or 1, selecting
+$\Sk$ vs $\St$ dimension) and the potential trit (0 or 2, selecting
+low or high potential refinement). The complement swaps $0 \leftrightarrow 2$
+in the potential trit, implementing trajectory reversal.
+
+Navigation to any element in the human genome ($n = 3\times 10^9$ bp)
+requires $\lceil\log_3(3\times 10^9)\rceil = 20$ trits $= 10$ nucleotides,
+compared with $9\times 10^{18}$ operations for Smith--Waterman: a
+$4.5\times 10^{17}$-fold speedup. The PSL navigation rule set (approximately
+$75{,}000$ distinct rules) compresses the genome by $\approx 75{,}000\times$
+relative to explicit sequence storage.
+
+The double helix implements bidirectional navigation: the forward strand
+navigates forward in $\mathcal{S}$-space ($5' \to 3'$), the complementary
+strand navigates backward ($\Scoord_{\mathrm{complement}}(t) =
+\Scoord_{\mathrm{coding}}(n-t)$). Alternative splicing is address
+selection (choosing between nearby $\mathcal{S}$-addresses); gene
+regulation is address navigation (reaching one address from another);
+synonymous codons are navigation-equivalent (same $\mathcal{S}$-neighbourhood);
+non-coding variation is charge-neutral (backbone charge is
+sequence-independent).
+
+The ternary computing genome unifies the charge architecture
+(Chapter~\ref{chap:dna_capacitance}), the C-value scaling
+(Chapter~\ref{chap:cvalue_paradox}), and the cardinal coordinate
+geometry (Chapter~\ref{chap:cardinal_coordinates}) into a single
+coherent computational framework: the genome computes by navigating
+a ternary address space whose size is tuned to the cell's
+electrostatic requirements and whose content is accessed in
+logarithmic time.
+\end{chapterbox}

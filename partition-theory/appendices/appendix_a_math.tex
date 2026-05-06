@@ -1,0 +1,302 @@
+%==============================================================================
+% APPENDIX A: Mathematical Prerequisites
+%==============================================================================
+
+\chapter*{Mathematical Prerequisites}
+\addcontentsline{toc}{chapter}{Appendix A: Mathematical Prerequisites}
+\label{app:math}
+
+This appendix collects the mathematical background required for the monograph.
+Each section is self-contained, with definitions and the key results stated
+in the form used in the main text. Proofs of standard results are omitted;
+references to standard textbooks are given in each section.
+
+%------------------------------------------------------------------------------
+\section*{A.1\quad Category Theory}
+\label{app:category_theory}
+\addcontentsline{toc}{section}{A.1\enspace Category Theory}
+%------------------------------------------------------------------------------
+
+Category theory provides the language for expressing the Triple Equivalence
+and the partition-categorical framework. The following covers exactly as much
+as is needed; a comprehensive reference is \citet{mac_lane1971categories}.
+
+\begin{definition}[Category]
+A \emph{category} $\mathcal{C}$ consists of:
+\begin{itemize}
+  \item A collection $\mathrm{ob}(\mathcal{C})$ of \emph{objects}.
+  \item For each pair of objects $A, B$, a set $\mathrm{Hom}(A, B)$ of
+        \emph{morphisms} (arrows) from $A$ to $B$.
+  \item For each object $A$, an identity morphism $\mathrm{id}_A \in \mathrm{Hom}(A,A)$.
+  \item A composition law: for $f \in \mathrm{Hom}(A,B)$ and $g \in \mathrm{Hom}(B,C)$,
+        a morphism $g \circ f \in \mathrm{Hom}(A,C)$.
+\end{itemize}
+Subject to:
+\begin{enumerate}[label=(\roman*)]
+  \item \textbf{Associativity}: $h \circ (g \circ f) = (h \circ g) \circ f$.
+  \item \textbf{Identity}: $f \circ \mathrm{id}_A = f = \mathrm{id}_B \circ f$
+        for $f \in \mathrm{Hom}(A,B)$.
+\end{enumerate}
+\end{definition}
+
+\textbf{Relevant examples.} $\mathbf{Set}$: sets and functions.
+$\mathbf{Seq}$: nucleotide sequences and sequence homomorphisms
+(Chapter~\ref{chap:shader_spectrometer}). $\mathbf{Spec}$: spectral
+embeddings and isometries. $\mathbf{Part}$: partition hierarchies and
+partition refinements.
+
+\begin{definition}[Functor]
+A \emph{functor} $F : \mathcal{C} \to \mathcal{D}$ assigns to each object
+$A \in \mathcal{C}$ an object $F(A) \in \mathcal{D}$, and to each morphism
+$f \in \mathrm{Hom}_\mathcal{C}(A,B)$ a morphism $F(f) \in \mathrm{Hom}_\mathcal{D}(F(A),F(B))$,
+such that:
+\begin{enumerate}[label=(\roman*)]
+  \item $F(\mathrm{id}_A) = \mathrm{id}_{F(A)}$.
+  \item $F(g \circ f) = F(g) \circ F(f)$.
+\end{enumerate}
+\end{definition}
+
+The cardinal map $\Cardinal : \mathbf{Seq} \to \mathbf{Spec}$ of
+Chapter~\ref{chap:cardinal_coordinates} is a functor. The spectral embedding
+$\Phi_K : \mathbf{Seq} \to \mathbf{Spec}$ of Chapter~\ref{chap:shader_spectrometer}
+is also a functor (Proposition~\ref{prop:spectral_functor}).
+
+\begin{definition}[Natural Transformation]
+A \emph{natural transformation} $\eta : F \Rightarrow G$ between functors
+$F, G : \mathcal{C} \to \mathcal{D}$ assigns to each object $A \in \mathcal{C}$
+a morphism $\eta_A : F(A) \to G(A)$ in $\mathcal{D}$ such that for every
+morphism $f : A \to B$ in $\mathcal{C}$:
+\[
+  \eta_B \circ F(f) = G(f) \circ \eta_A.
+\]
+\end{definition}
+
+Natural transformations are the morphisms between functors. In the partition
+framework, the change of spectral embedding dimension (from $K=12$ to $K=24$,
+for example) is a natural transformation between two spectral embedding
+functors---it acts consistently on all sequences simultaneously.
+
+\begin{definition}[Categorical Completion (Colimit)]
+Let $F : \mathcal{J} \to \mathcal{C}$ be a functor. The \emph{colimit}
+$\mathrm{colim}\, F$ is an object $C \in \mathcal{C}$ together with morphisms
+$\iota_j : F(j) \to C$ for each $j \in \mathcal{J}$, universal in the sense
+that any other cocone factors uniquely through $C$.
+\end{definition}
+
+The \emph{Empty Dictionary principle} (Chapter~\ref{chap:sentropy_space}) is
+the statement that database search is a colimit construction in $\mathbf{Seq}$:
+the query sequence is mapped to its colimit in the database's subcategory.
+
+%------------------------------------------------------------------------------
+\section*{A.2\quad Measure Theory}
+\label{app:measure_theory}
+\addcontentsline{toc}{section}{A.2\enspace Measure Theory}
+%------------------------------------------------------------------------------
+
+Measure theory underpins the Birkhoff ergodic theorem, Poincar\'{e} recurrence,
+and the probabilistic statements in Chapters~\ref{chap:bounded_phase_space}
+and \ref{chap:wave_interference}. The standard reference is \citet{rudin1987real}.
+
+\begin{definition}[$\sigma$-Algebra]
+A \emph{$\sigma$-algebra} $\mathcal{F}$ on a set $X$ is a collection of
+subsets of $X$ satisfying:
+\begin{enumerate}[label=(\roman*)]
+  \item $X \in \mathcal{F}$.
+  \item $A \in \mathcal{F} \Rightarrow X \setminus A \in \mathcal{F}$.
+  \item $\{A_n\}_{n \geq 1} \subset \mathcal{F} \Rightarrow \bigcup_n A_n \in \mathcal{F}$.
+\end{enumerate}
+\end{definition}
+
+\begin{definition}[Measure and Lebesgue Measure]
+A \emph{measure} on $(X, \mathcal{F})$ is a function $\mu : \mathcal{F} \to [0,\infty]$
+with $\mu(\varnothing) = 0$ and $\sigma$-additivity:
+$\mu\!\bigl(\bigsqcup_n A_n\bigr) = \sum_n \mu(A_n)$ for pairwise disjoint
+$\{A_n\}$.
+The \emph{Lebesgue measure} on $\mathbb{R}^n$ is the unique translation-invariant
+measure with $\mu([0,1]^n) = 1$.
+\end{definition}
+
+\begin{definition}[Measure-Preserving Map]
+A measurable map $T : (X,\mathcal{F},\mu) \to (X,\mathcal{F},\mu)$ is
+\emph{measure-preserving} if $\mu(T^{-1}(A)) = \mu(A)$ for all $A \in \mathcal{F}$.
+\end{definition}
+
+Hamiltonian flows in phase space are measure-preserving by Liouville's theorem;
+this is the setting for Proposition~\ref{prop:poincare} (Poincar\'{e} recurrence).
+
+\begin{theorem}[Birkhoff Ergodic Theorem]
+Let $T : (X,\mathcal{F},\mu) \to (X,\mathcal{F},\mu)$ be measure-preserving
+with $\mu(X) < \infty$, and let $f \in L^1(\mu)$. Then the time average
+\[
+  \bar{f}(x) = \lim_{N\to\infty} \frac{1}{N}\sum_{n=0}^{N-1} f(T^n x)
+\]
+exists for $\mu$-almost every $x$, $\bar{f} \in L^1(\mu)$, and
+$\int \bar{f}\,d\mu = \int f\,d\mu$.
+If additionally $T$ is \emph{ergodic} (i.e., $T^{-1}(A) = A \Rightarrow \mu(A) \in \{0, \mu(X)\}$),
+then $\bar{f}(x) = \frac{1}{\mu(X)}\int f\,d\mu$ for $\mu$-a.e.\ $x$.
+\end{theorem}
+
+The bounded phase space setting of the monograph (finite partition,
+$\operatorname{Vol}(\Omega) < \infty$) means $\mu(X) < \infty$ and the Birkhoff
+average is a finite sum. Proposition~\ref{prop:birkhoff_depth} applies this
+to partition depth.
+
+%------------------------------------------------------------------------------
+\section*{A.3\quad Fourier Analysis}
+\label{app:fourier}
+\addcontentsline{toc}{section}{A.3\enspace Fourier Analysis}
+%------------------------------------------------------------------------------
+
+Fourier analysis is used in Chapters~\ref{chap:hydrogen_bonds},
+\ref{chap:shader_spectrometer}, and \ref{chap:wave_interference}. The
+reference for the discrete case is \citet{oppenheim1999discrete}; for the
+continuous case, \citet{rudin1987real}.
+
+\begin{definition}[Discrete Fourier Transform]
+For a sequence $x = (x_0, x_1, \ldots, x_{N-1}) \in \mathbb{C}^N$, the
+\emph{Discrete Fourier Transform} (DFT) is:
+\begin{equation}
+  \hat{x}_k = \sum_{n=0}^{N-1} x_n \, e^{-2\pi i kn / N}, \qquad k = 0, 1, \ldots, N-1.
+  \label{eq:dft_def}
+\end{equation}
+The inverse DFT (IDFT) is:
+\begin{equation}
+  x_n = \frac{1}{N} \sum_{k=0}^{N-1} \hat{x}_k \, e^{2\pi i kn / N}.
+  \label{eq:idft_def}
+\end{equation}
+\end{definition}
+
+\begin{theorem}[Convolution Theorem]
+For sequences $x, y \in \mathbb{C}^N$, define the circular convolution
+$(x * y)_n = \sum_{m=0}^{N-1} x_m y_{n-m \bmod N}$. Then:
+\begin{equation}
+  \widehat{x * y} = \hat{x} \cdot \hat{y},
+  \label{eq:convolution_theorem}
+\end{equation}
+where $\cdot$ denotes element-wise multiplication. Equivalently,
+$x * y = \mathrm{IDFT}(\hat{x} \cdot \hat{y})$.
+\end{theorem}
+
+This is used in the matched filter implementation: cross-correlation is
+convolution with the time-reversed (conjugated) query, computed via
+$\mathrm{IDFT}(\overline{\hat{q}} \cdot \hat{t})$ in $O(N \log N)$ operations
+using the Fast Fourier Transform \citep{cooley1965algorithm}.
+
+\begin{theorem}[Parseval's Theorem]
+For $x, y \in \mathbb{C}^N$:
+\begin{equation}
+  \sum_{n=0}^{N-1} x_n \overline{y_n} = \frac{1}{N} \sum_{k=0}^{N-1} \hat{x}_k \overline{\hat{y}_k}.
+  \label{eq:parseval}
+\end{equation}
+In particular, $\sum_n |x_n|^2 = \frac{1}{N}\sum_k |\hat{x}_k|^2$ (Plancherel's theorem).
+\end{theorem}
+
+Parseval's theorem is used to normalize the cross-correlation in
+Definition~\ref{def:normalized_xcorr} and to relate energy in sequence space
+to energy in frequency space.
+
+\begin{theorem}[Wiener--Khinchin Theorem]
+For a wide-sense stationary random process $\{x_n\}$ with autocorrelation
+function $R_x[k] = \mathbb{E}[x_n \overline{x_{n-k}}]$, the power spectral
+density (PSD) is the DFT of the autocorrelation:
+\begin{equation}
+  S_x(\omega_k) = \sum_{n=-\infty}^{\infty} R_x[n] \, e^{-2\pi ikn/N} = |\hat{x}_k|^2.
+  \label{eq:wiener_khinchin}
+\end{equation}
+\end{theorem}
+
+The Wiener--Khinchin theorem connects the spectral density $|\hat{x}_k|^2$
+used in the spectral embedding (Definition~\ref{def:spectral_embedding}) to
+the autocorrelation structure of the sequence---the measure of sequence
+self-similarity. It underlies Proposition~\ref{prop:null_normal}: the
+background cross-correlation values are approximately Gaussian because
+the target sequence has nearly flat PSD (random sequence $\approx$ white noise).
+
+\medskip\noindent\textbf{Nyquist Sampling Theorem.}
+A bandlimited signal with maximum frequency $f_{\max}$ is perfectly
+reconstructed from samples at rate $f_s > 2 f_{\max}$ (Nyquist rate). For
+a sequence of length $N$ sampled at 1 base per sample, $f_{\max} = 1/2$
+(Nyquist frequency), and the minimum resolvable feature has width $1/f_{\max} = 2$
+base pairs. This is the origin of the 2\,bp peak width in Theorem~\ref{thm:phase_localization}.
+
+%------------------------------------------------------------------------------
+\section*{A.4\quad Information Theory}
+\label{app:information_theory}
+\addcontentsline{toc}{section}{A.4\enspace Information Theory}
+%------------------------------------------------------------------------------
+
+Information theory provides the quantitative connection between partition
+depth and thermodynamic entropy. The standard reference is \citet{cover2006elements}.
+
+\begin{definition}[Shannon Entropy]
+For a discrete random variable $X$ with distribution $P(X = x_i) = p_i$, the
+\emph{Shannon entropy} (in bits) is:
+\begin{equation}
+  H(X) = -\sum_i p_i \log_2 p_i.
+  \label{eq:shannon_entropy}
+\end{equation}
+For the uniform distribution on $N$ outcomes: $H = \log_2 N$ bits.
+\end{definition}
+
+\begin{definition}[Mutual Information]
+The \emph{mutual information} between random variables $X$ and $Y$ is:
+\begin{equation}
+  I(X; Y) = H(X) + H(Y) - H(X, Y) = H(X) - H(X|Y),
+  \label{eq:mutual_information}
+\end{equation}
+where $H(X,Y)$ is the joint entropy and $H(X|Y)$ is the conditional entropy.
+$I(X;Y) \geq 0$, with equality iff $X$ and $Y$ are independent.
+\end{definition}
+
+Mutual information appears in Chapter~\ref{chap:metabolic_computer} as the
+measure of information sharing between metabolic subsystems:
+$I_{\mathrm{total}}$ is the total mutual information in the three-level
+metabolic hierarchy.
+
+\begin{definition}[KL Divergence]
+The \emph{Kullback--Leibler divergence} (relative entropy) from distribution
+$Q$ to distribution $P$ is:
+\begin{equation}
+  D_{\mathrm{KL}}(P \| Q) = \sum_x P(x) \log_2 \frac{P(x)}{Q(x)}.
+  \label{eq:kl_divergence}
+\end{equation}
+$D_{\mathrm{KL}}(P\|Q) \geq 0$, with equality iff $P = Q$ (Gibbs' inequality).
+$D_{\mathrm{KL}}$ is not symmetric.
+\end{definition}
+
+\begin{proposition}[Partition Depth as Maximum Entropy]
+\label{prop:max_entropy}
+Among all distributions over $N$ cells of a partition, the uniform distribution
+maximizes Shannon entropy at $H = \log_2 N = \Depth$ (for a binary partition
+hierarchy generating $N = 2^\Depth$ cells). The partition depth $\Depth$ of
+Definition~\ref{def:partition_depth} (main text) is the maximum entropy
+of the uniform distribution over the partition cells.
+\end{proposition}
+
+\begin{proof}
+For a partition generated by $\Depth$ binary splits, $N = 2^\Depth$ cells
+with uniform probability $1/N$ each: $H = -N \cdot (1/N)\log_2(1/N) = \log_2 N = \Depth$.
+By the concavity of entropy, the uniform distribution maximizes $H$ over all
+distributions on $N$ outcomes. \qed
+\end{proof}
+
+\begin{theorem}[Data Processing Inequality]
+For a Markov chain $X \to Y \to Z$ (i.e., $Z$ depends on $X$ only through $Y$):
+\begin{equation}
+  I(X; Z) \leq I(X; Y).
+\end{equation}
+\end{theorem}
+
+The data processing inequality is used in Chapter~\ref{chap:shader_spectrometer}
+to confirm that the spectral embedding $\Phi_K$ cannot increase information:
+$I(\text{sequence}; \text{class}) \geq I(\Phi_K(\text{sequence}); \text{class})$.
+The retained modes at $K=12$ capture the information needed for homology
+classification (AUC $\geq 0.97$), but not all information in the raw sequence.
+
+\begin{remark}[Brillouin Relation]
+The Brillouin relation $S = \kB \ln 2 \cdot H$ (in bits) identifies the Shannon
+entropy $H$ with the thermodynamic entropy $S$ up to the scale factor $\kB \ln 2$.
+In the monograph this is derived as a special case of Theorem~\ref{thm:depth_entropy}:
+$S_\Part = \kB \Depth \ln b$ with $b = 2$ gives $S = \kB H \ln 2$ where
+$H = \Depth$ (bits). The Brillouin relation is therefore a theorem, not an assumption.
+\end{remark}

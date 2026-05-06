@@ -1,0 +1,335 @@
+\section{Spatial Decorrelation and Configuration Space Factorisation}
+\label{sec:spatial_decorrelation}
+
+The configuration space formalism of Section~\ref{sec:configuration_space} established that pathological convergence probability scales inversely with $|\Config| = \Omega^N$. However, this result assumed that the effective dimension of the accessible configuration space remains exponential in $N$. Strong correlations between oscillators could, in principle, confine the system to a low-dimensional subspace, negating the dilution effect.
+
+This section demonstrates that spatial decorrelation---the exponential decay of correlations with distance---preserves the exponential scaling of effective dimension. The key insight is that in physical systems, correlations cannot propagate arbitrarily far; they are bounded by a characteristic correlation length $\xi$. Beyond this length scale, subsystems become approximately independent, and the configuration space factorises into a product of local configuration spaces.
+
+\subsection{Biological Motivation}
+
+In multicellular organisms, cells communicate through multiple mechanisms:
+\begin{enumerate}
+    \item \textbf{Gap junctions}: Direct cytoplasmic connexions allowing the diffusion of small molecules and ions
+    \item \textbf{Paracrine signaling}: Secretion of signalling molecules that diffuse to nearby cells
+    \item \textbf{Mechanical coupling}: Physical forces transmitted through the extracellular matrix and cell-cell adhesions
+    \item \textbf{Synaptic transmission}: In nervous tissue, rapid electrochemical signalling between connected neurons
+\end{enumerate}
+
+All these mechanisms have finite range. Gap junctions connect only directly adjacent cells. Paracrine signals decay with distance due to dilution and degradation. Mechanical coupling attenuates over distances comparable to cell size. Even synaptic connexions, while capable of longer ranges, are sparse and cannot establish correlations between arbitrary cell pairs.
+
+The correlation length $\xi$ represents the characteristic distance over which cellular states remain statistically dependent. For epithelial tissues, $\xi \sim 10$--$100$~cell diameters ($\sim 100~\mu$m--$1$~mm). For loosely coupled tissues (e.g., blood cells), $\xi$ can be as small as a single cell diameter.
+
+\subsection{Correlation Functions}
+
+Consider oscillators embedded in a spatial domain $\mathcal{D} \subset \mathbb{R}^3$ with positions $\{\mathbf{r}_i\}_{i=1}^{N}$. The coupling between oscillators $i$ and $j$ depends on their spatial separation $|\mathbf{r}_i - \mathbf{r}_j|$.
+
+\begin{definition}[Two-Point Correlation Function]
+The two-point correlation function $C(i, j)$ measures the statistical dependence between oscillators $i$ and $j$:
+\begin{equation}
+C(i, j) = \langle \sigma_i \sigma_j \rangle - \langle \sigma_i \rangle \langle \sigma_j \rangle
+\end{equation}
+where $\langle \cdot \rangle$ denotes the ensemble average over the measure $\mu$.
+\end{definition}
+
+The correlation function quantifies how much knowledge of oscillator $i$'s state informs us about oscillator $j$'s state, beyond what is already known from the marginal distribution.
+
+\begin{remark}[Normalisation]
+For oscillators taking values in $\{-1, +1\}$ (Ising-like variables), the correlation function satisfies $|C(i,j)| \leq 1$, with $C(i,j) = 1$ indicating perfect correlation (states always equal) and $C(i,j) = -1$ indicating perfect anticorrelation.
+\end{remark}
+
+For spatially homogeneous systems, the correlation function depends only on the separation:
+\begin{equation}
+C(i, j) = C(|\mathbf{r}_i - \mathbf{r}_j|) \equiv C(r_{ij})
+\end{equation}
+
+\begin{definition}[Higher-Order Correlation Functions]
+The connected $n$-point correlation function (or cumulant) is:
+\begin{equation}
+C^{(n)}(i_1, \ldots, i_n) = \sum_{\pi} (-1)^{|\pi| - 1} (|\pi| - 1)! \prod_{B \in \pi} \langle \prod_{j \in B} \sigma_j \rangle
+\end{equation}
+where the sum is over all partitions $\pi$ of $\{i_1, \ldots, i_n\}$ and $|B|$ denotes the number of blocks in partition $\pi$.
+\end{definition}
+
+The connected correlation functions capture genuine $n$-body correlations that cannot be reduced to products of lower-order correlations.
+
+\subsection{Correlation Length and Decay}
+
+The correlation function typically decays with distance. The nature of this decay depends on the physics of the system.
+
+\begin{definition}[Correlation Length]
+The correlation length $\xi$ is defined by the asymptotic decay of correlations:
+\begin{equation}
+C(r) \sim A \cdot r^{-\eta} \cdot e^{-r/\xi} \quad \text{as } r \to \infty
+\end{equation}
+where $\eta \geq 0$ is a power-law exponent and $A$ is a constant.
+\end{definition}
+
+\begin{proposition}[Exponential Decay for Short-Range Interactions]
+\label{prop:exponential_decay}
+For systems with finite-range interactions (coupling decays faster than any polynomial with distance), the correlation length $\xi$ is finite, and correlations decay exponentially for $r > \xi$.
+\end{proposition}
+
+\begin{proof}
+This is a consequence of the cluster decomposition property of local quantum field theories and statistical mechanical systems \citep{weinberg1995quantum}. For a system with Hamiltonian $H = \sum_{i} h_i + \sum_{i,j} J_{ij} \sigma_i \sigma_j$ where $J_{ij}$ decays exponentially with $|r_i - r_j|$, the transfer matrix formalism shows that the correlation function decays with the same exponential rate. The correlation length is determined by the gap in the transfer matrix spectrum. $\square$
+\end{proof}
+
+\begin{remark}[Critical Systems]
+At critical points (phase transitions), the correlation length diverges: $\xi \to \infty$. Critical systems exhibit power-law correlation decay without the exponential factor: $C(r) \sim r^{-\eta}$. However, biological systems are generically \emph{not} at criticality; they operate in the ordered or disordered phase, with finite correlation length.
+\end{remark}
+
+For $r \gg \xi$, correlations are exponentially suppressed, and distant oscillators become effectively independent.
+
+\begin{lemma}[Asymptotic Independence]
+\label{lemma:independence}
+For oscillators $i$ and $j$ with $r_{ij} \gg \xi$, the joint probability factorises:
+\begin{equation}
+\mu(\sigma_i, \sigma_j) = \mu(\sigma_i) \cdot \mu(\sigma_j) + \mathcal{O}(e^{-r_{ij}/\xi})
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+By the cluster decomposition principle \citep{weinberg1995quantum}, connected correlation functions decay exponentially for systems with finite correlation length. The two-point cumulant satisfies:
+\begin{equation}
+\langle \sigma_i \sigma_j \rangle_c = \langle \sigma_i \sigma_j \rangle - \langle \sigma_i \rangle \langle \sigma_j \rangle = C(r_{ij}) = \mathcal{O}(e^{-r_{ij}/\xi})
+\end{equation}
+The joint probability can be expressed in terms of cumulants via the cumulant expansion \citep{kubo1962generalized}:
+\begin{equation}
+\ln \mu(\sigma_i, \sigma_j) = \ln \mu(\sigma_i) + \ln \mu(\sigma_j) + \sum_{n \geq 2} \frac{1}{n!} \kappa_n(\sigma_i, \sigma_j)
+\end{equation}
+where $\kappa_n$ are the cumulants. For $r_{ij} \gg \xi$, all connected cumulants are exponentially small, yielding the factorisation. $\square$
+\end{proof}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/oscillator_sync.png}
+\caption{\textbf{Kuramoto oscillator synchronization dynamics showing emergence of collective phase coherence and system-size scaling.}
+\textbf{(Top left, Panel A)} Synchronization time evolution showing order parameter $r(t)$ dynamics for three coupling strengths. Vertical axis is Kuramoto order parameter $r = |\langle e^{i\phi_j} \rangle|$ (Equation~\eqref{eq:order_parameter}), measuring phase coherence ($r = 0$ is incoherent, $r = 1$ is perfectly synchronized). Horizontal axis is time in seconds. Three traces represent different coupling strengths: $K = 0.5$ (cyan, weak coupling), $K = 1.0$ (purple, intermediate coupling), $K = 2.0$ (orange, strong coupling). Horizontal dashed line at $r = 0.9$ marks high synchronization threshold. For weak coupling ($K = 0.5$, cyan), order parameter oscillates weakly around $r \sim 0.1$ with damped oscillations, never achieving synchronization. System remains in incoherent state with independent oscillator phases. 
+\textbf{(Top right, Panel B)} Final synchronization versus coupling strength showing critical transition. Vertical axis is final order parameter $r_{\infty}$ (equilibrium value after long time). Horizontal axis is coupling strength $K$. Curve (cyan with circular markers) shows sigmoidal transition from $r \sim 0.05$ at $K = 0$ to $r \sim 0.99$ at $K = 5$. Critical coupling $K_c \sim 2$ (inflection point) marks onset of synchronization. Below $K_c$, $r$ increases slowly (incoherent phase). Above $K_c$, $r$ increases rapidly (synchronized phase).
+\textbf{(Bottom left, Panel C)} Final synchronization versus network size showing weak system-size dependence. Vertical axis is final order parameter $r_{\infty}$. Horizontal axis is number of oscillators $N$ (logarithmic scale, $10^1$ to $10^2$). Curve (magenta with square markers) shows $r_{\infty}$ increases slightly from $\sim 0.05$ at $N = 10$ to $\sim 0.22$ at $N = 100$, then decreases slightly to $\sim 0.13$ at $N = 200$. Non-monotonic behavior indicates competing effects: (1) increased $N$ enhances mean-field averaging, stabilizing collective mode (increases $r$), (2) increased $N$ introduces more frequency heterogeneity, disrupting synchronization (decreases $r$). 
+\textbf{(Bottom right, Panel D)} Synchronization time showing strong coupling dependence. Vertical axis is time to synchronization (number of steps to reach $r > 0.9$). Horizontal axis is coupling strength $K$. Five bars represent $K = 0.1, 0.5, 1.0, 2.0, 5.0$ (all orange). First four bars ($K \leq 2.0$) show $t_{\text{sync}} \sim 1000$ steps (maximum, synchronization not achieved within simulation time). Fifth bar ($K = 5.0$) shows $t_{\text{sync}} \sim 170$ steps (synchronization achieved). Sharp transition between $K = 2.0$ and $K = 5.0$ indicates critical slowing down near $K_c$: synchronization time diverges as $t_{\text{sync}} \propto |K - K_c|^{-\nu}$ with critical exponent $\nu \sim 1$ (mean-field). For $K < K_c$, synchronization never occurs ($t_{\text{sync}} = \infty$). For $K \gg K_c$, synchronization is rapid ($t_{\text{sync}} \sim 1/K$).}
+\label{fig:oscillator_sync}
+\end{figure}
+
+\subsection{Correlation Volumes and Independent Subsystems}
+
+\begin{definition}[Correlation Volume]
+The correlation volume $V_{\xi}$ is the spatial volume over which oscillators remain significantly correlated:
+\begin{equation}
+V_{\xi} = \frac{4\pi}{3} \xi^3
+\end{equation}
+\end{definition}
+
+More precisely, $V_\xi$ is defined such that oscillators within a region of volume $V_\xi$ have correlations of order unity, while oscillators in disjoint regions separated by more than $\xi$ have exponentially suppressed correlations.
+
+\begin{definition}[Number of Independent Correlation Volumes]
+For a system occupying spatial domain $\mathcal{D}$ with volume $V = |\mathcal{D}|$, the number of independent correlation volumes is:
+\begin{equation}
+N_{\xi} = \frac{V}{V_{\xi}} = \frac{3V}{4\pi \xi^3}
+\label{eq:n_xi}
+\end{equation}
+\end{definition}
+
+Each correlation volume contains approximately $n_{\xi} = N / N_{\xi}$ oscillators, where $N$ is the total number of oscillators.
+
+\begin{proposition}[Oscillators per Correlation Volume]
+\label{prop:oscillators_per_volume}
+Let $\rho = N/V$ be the number density of oscillators. The number of oscillators per correlation volume is:
+\begin{equation}
+n_{\xi} = \rho \cdot V_{\xi} = \frac{4\pi}{3} \rho \xi^3
+\end{equation}
+\end{proposition}
+
+\begin{example}[Mammalian Tissue]
+For a tissue with cell density $\rho \approx 10^8$~cells/cm$^3$ and correlation length $\xi \approx 100~\mu$m $= 10^{-2}$~cm:
+\begin{equation}
+n_{\xi} = \frac{4\pi}{3} \times 10^8 \times (10^{-2})^3 = \frac{4\pi}{3} \times 10^{8-6} = \frac{4\pi}{3} \times 10^2 \approx 400
+\end{equation}
+Each correlation volume contains approximately 400 cells.
+\end{example}
+
+\subsection{Factorisation of Configuration Space}
+
+The asymptotic independence of distant oscillators implies a factorisation of the configuration space into approximately independent subsystems.
+
+\begin{theorem}[Configuration Space Factorisation]
+\label{thm:factorisation}
+For a system with spatial extent $L$ satisfying $L \gg \xi$, the configuration space approximately factorises:
+\begin{equation}
+\Config \approx \Config_1 \otimes \Config_2 \otimes \cdots \otimes \Config_{N_{\xi}}
+\end{equation}
+where $\Config_\alpha$ is the configuration space of correlation volume $\alpha$, and the measure factorises as:
+\begin{equation}
+\mu(\mathbf{c}) \approx \prod_{\alpha=1}^{N_{\xi}} \mu_\alpha(\mathbf{c}_\alpha)
+\end{equation}
+up to corrections of order $\mathcal{O}(e^{-L/\xi})$.
+\end{theorem}
+
+\begin{proof}
+Partition the spatial domain $\mathcal{D}$ into $N_{\xi}$ non-overlapping regions $\mathcal{D}_\alpha$, each with a volume of $V_\alpha \approx V_\xi$. Let $\mathbf{c}_\alpha = \{\sigma_i : \mathbf{r}_i \in \mathcal{D}_\alpha\}$ denote the configuration of oscillators in region $\alpha$.
+
+By Lemma~\ref{lemma:independence}, oscillators in different regions satisfy:
+\begin{equation}
+\mu(\mathbf{c}_\alpha, \mathbf{c}_\beta) = \mu(\mathbf{c}_\alpha) \cdot \mu(\mathbf{c}_\beta) + \mathcal{O}(e^{-d_{\alpha\beta}/\xi})
+\end{equation}
+where $d_{\alpha\beta}$ is the minimum distance between regions $\alpha$ and $\beta$. For non-adjacent regions $d_{\alpha\beta} \geq \xi$, the correction is exponentially small.
+
+The factorisation extends by induction. Consider the conditional probability:
+\begin{equation}
+\mu(\mathbf{c}_1, \ldots, \mathbf{c}_{N_\xi}) = \mu(\mathbf{c}_1) \cdot \mu(\mathbf{c}_2 | \mathbf{c}_1) \cdots \mu(\mathbf{c}_{N_\xi} | \mathbf{c}_1, \ldots, \mathbf{c}_{N_\xi - 1})
+\end{equation}
+Each conditional probability $\mu(\mathbf{c}_\alpha | \mathbf{c}_1, \ldots, \mathbf{c}_{\alpha-1})$ depends on distant regions only through exponentially suppressed correlations. For a local region $\alpha$, only the $\sim 26$ adjacent regions (in 3D) contribute non-negligible correlations. The total error from neglecting boundary correlations is:
+\begin{equation}
+\epsilon_{\text{total}} \lesssim N_{\xi} \times 26 \times \mathcal{O}(e^{-1}) = \mathcal{O}(N_\xi)
+\end{equation}
+which is polynomial in the system size, while the main term is exponential. $\square$
+\end{proof}
+
+\begin{corollary}[Effective Dimension]
+\label{cor:effective_dimension}
+Under the factorisation of Theorem~\ref{thm:factorisation}, the effective dimension of the configuration space is:
+\begin{equation}
+d_{\text{eff}} \approx \prod_{\alpha=1}^{N_{\xi}} d_{\text{eff},\alpha}
+\end{equation}
+If each local configuration space has effective dimension $d_{\text{eff},\alpha} = \Omega^{n_\xi}$ (the uncorrelated limit), then:
+\begin{equation}
+d_{\text{eff}} \approx \Omega^{N_\xi \cdot n_\xi} = \Omega^N
+\end{equation}
+recovering the full exponential scaling.
+\end{corollary}
+
+\begin{remark}[Effect of Local Correlations]
+Even if local correlations reduce the effective dimension within each correlation volume to $d_{\text{eff},\alpha} = \Omega^{\alpha n_\xi}$ for some $\alpha < 1$, the global effective dimension remains $d_{\text{eff}} = \Omega^{\alpha N}$, preserving the exponential scaling with $N$.
+\end{remark}
+
+\subsection{Implications for Pathological Convergence}
+
+The factorisation of Theorem~\ref{thm:factorisation} has immediate implications for the probability of pathological trajectory convergence.
+
+\begin{theorem}[Multiplicative Suppression of Global Pathology]
+\label{thm:multiplicative}
+Let $\Attr$ be a pathological subset requiring coordinated configurations in $k$ distinct correlation volumes. The convergence probability satisfies:
+\begin{equation}
+P_{\Attr} \leq \prod_{\alpha=1}^{k} P_{\Attr_\alpha}
+\end{equation}
+where $P_{\Attr_\alpha}$ is the probability of the required configuration in volume $\alpha$.
+\end{theorem}
+
+\begin{proof}
+By Theorem~\ref{thm:factorisation}, the probability of the joint configuration factorises:
+\begin{equation}
+P_{\Attr} = P(\mathbf{c}_1 \in \Attr_1, \ldots, \mathbf{c}_k \in \Attr_k) = \prod_{\alpha=1}^{k} P(\mathbf{c}_\alpha \in \Attr_\alpha) = \prod_{\alpha=1}^{k} P_{\Attr_\alpha}
+\end{equation}
+For $P_{\Attr_\alpha} < 1$, the product decreases exponentially with $k$. $\square$
+\end{proof}
+
+\begin{corollary}[Exponential Suppression with Spatial Extent]
+For a system where pathological convergence requires a fraction $f$ of all correlation volumes to be in specific configurations, each with a probability $p$, the global pathological probability is:
+\begin{equation}
+P_{\Attr} = p^{f \cdot N_\xi} = e^{-f N_\xi \cdot |\ln p|}
+\end{equation}
+For $N_\xi \propto L^3 / \xi^3 \propto N / n_\xi$, this decreases exponentially with system size.
+\end{corollary}
+
+\begin{example}[Metastatic Cancer Requirement]
+Metastatic cancer requires coordinated failure in multiple tissue regions: the primary tumour site, circulation access, and secondary colonisation sites. Consider a minimal model requiring pathological configurations in $k = 3$ independent correlation volumes, each with probability $p = 10^{-6}$:
+\begin{equation}
+P_{\text{metastasis}} = (10^{-6})^3 = 10^{-18}
+\end{equation}
+This is a suppression by 12 orders of magnitude relative to the naive estimate of $p = 10^{-6}$ for a single-site pathology.
+\end{example}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/warburg_effect_charge_crisis.png}
+\caption{\textbf{Warburg Effect as Charge Crisis: Metabolic Reprogramming Drives Genomic Instability and Proliferation.} 
+\textbf{(A)} Glucose consumption (Warburg effect). Glucose concentration (mM) decreases rapidly from 5 mM to 0 mM within 5 hours for cancer cells (red line), while normal cells (blue line) exhibit slower, sustained consumption over 25 hours. 
+\textbf{(B)} Lactate production (aerobic glycolysis). Lactate concentration (mM) spikes from 0 mM to 10 mM within 5 hours for cancer cells (red line), then decays to baseline. 
+\textbf{(C)} ATP levels (inefficient but fast). [ATP] (mM) increases from 0 mM to 600 mM within 5 hours for cancer cells (red line), then plateaus. 
+\textbf{(D)} Glycolytic flux (10$\times$ higher in cancer). Glycolytic flux (mM/h) spikes from 0 to 15 mM/h within 5 hours for cancer cells (red line), then drops to baseline. 
+\textbf{(E)} Intracellular pH (acidic microenvironment). pH decreases from 7.2 to 5.0 within 5 hours for cancer cells (red line), then stabilizes. 
+\textbf{(F)} Charge screening (H$^+$-dependent). Debye length $\lambda_D$ (nm) increases from 0.80 nm to 1.00 nm over 25 hours for both cancer (red line) and normal (blue line) cells. 
+\textbf{(G)} Na$^+$ influx (pH regulation). [Na$^+$] (mM) spikes from 0 mM to 12 mM within 5 hours for cancer cells (red line), then decays. 
+\textbf{(H)} Mg$^{2+}$ release (glycolysis). [Mg$^{2+}$] (mM) decreases from 0.5 mM to $-$2.0 mM over 25 hours for both cancer (red line) and normal (blue line) cells.
+\textbf{(I)} Chromatin opening (H$^+$ protonation). Chromatin accessibility increases from 0.0 to 1.0 within 5 hours for cancer cells (red line), then stabilizes.  
+\textbf{(J)} Oncogene activation (c-Myc, HIF-1$\alpha$). Oncogene expression spikes from 0.0 to 0.4 within 5 hours for cancer cells (red line), then decays. Normal cells (blue line) maintain low expression $\sim$0.05. Cancer cells exhibit 8$\times$ higher oncogene expression. 
+\textbf{(K)} Tumor suppressor loss (p53, PTEN). Tumor suppressor expression remains high ($\sim$1.0) for both cancer (red line) and normal (blue line) cells over 25 hours.
+\textbf{(L)} Proliferation activation. Proliferation signal decreases from 1.0 to 0.0 over 25 hours for normal cells (blue line), while cancer cells (red line) maintain elevated signal $\sim$0.2 at 25 hours. 
+\textbf{(M)} pH vs. accessibility ($r = -0.919$). Chromatin accessibility (vertical axis, 0.0--1.0) exhibits strong negative correlation with pH (horizontal axis, 4--7). Red dashed line: fit curve. Cancer cells (red points) cluster at low pH (4--5) and high accessibility (0.8--1.0). 
+\textbf{(N)} Lactate vs. proliferation ($r = 0.819$). Proliferation signal (vertical axis, 0.0--0.6) exhibits strong positive correlation with lactate concentration (horizontal axis, 0--10 mM). Cancer cells (red points) cluster at high lactate (8--10 mM) and high proliferation (0.4--0.6). 
+\textbf{(O)} Phase space trajectory. 3D trajectory in (pH, lactate, cancer score) space shows metabolic reprogramming from normal (blue, bottom left: pH $\approx$ 7, lactate $\approx$ 0.8 mM, score $\approx$ 0.0) to cancer (red, top right: pH $\approx$ 4, lactate $\approx$ 1.0 mM, score $\approx$ 0.6). Trajectory demonstrates charge crisis pathway: glycolysis $\to$ lactate $\to$ H$^+$ $\to$ pH$\downarrow$ $\to$ chromatin opening $\to$ oncogene activation $\to$ proliferation.}
+\label{fig:warburg_charge_crisis}
+\end{figure}
+
+
+\subsection{Boundary Effects and Finite-Size Corrections}
+
+The factorisation theorem assumes $L \gg \xi$. For finite systems, boundary effects introduce corrections.
+
+\begin{proposition}[Boundary Corrections]
+\label{prop:boundary}
+For a system with $N_\xi$ correlation volumes, the factorisation error scales as:
+\begin{equation}
+\epsilon = \mathcal{O}\left(\frac{N_{\xi}^{2/3}}{N_\xi}\right) = \mathcal{O}(N_\xi^{-1/3})
+\end{equation}
+where $N_\xi^{2/3}$ counts the number of boundary correlation volumes (surface-to-volume ratio).
+\end{proposition}
+
+\begin{proof}
+The number of boundary correlation volumes scales as the surface area divided by the cross-sectional area of a correlation volume:
+\begin{equation}
+N_{\text{boundary}} \sim \frac{L^2}{\xi^2} = \frac{(V/\xi)^{2/3}}{1} = N_\xi^{2/3}
+\end{equation}
+Each boundary volume has non-factorised correlations with its neighbours. The relative error is $N_{\text{boundary}} / N_\xi = N_\xi^{-1/3} \to 0$ as $N_\xi \to \infty$. $\square$
+\end{proof}
+
+\subsection{Dynamic Correlations and Time Scales}
+
+The analysis so far has focused on equal-time correlations. However, the trajectory also exhibits temporal correlations.
+
+\begin{definition}[Dynamic Correlation Function]
+The dynamic correlation function is:
+\begin{equation}
+C(i, j; t, t') = \langle \sigma_i(t) \sigma_j(t') \rangle - \langle \sigma_i(t) \rangle \langle \sigma_j(t') \rangle
+\end{equation}
+\end{definition}
+
+For stationary systems, this depends only on the time difference $\tau = t - t'$:
+\begin{equation}
+C(i, j; \tau) = C(i, j; t, t - \tau)
+\end{equation}
+
+\begin{definition}[Correlation Time]
+The correlation time $\tau_c$ is defined by the decay of temporal correlations:
+\begin{equation}
+C(i, i; \tau) \sim e^{-|\tau| / \tau_c} \quad \text{as } |\tau| \to \infty
+\end{equation}
+\end{definition}
+
+\begin{proposition}[Space-Time Factorisation]
+\label{prop:spacetime}
+For a trajectory of duration $T \gg \tau_c$, the configuration space trajectory factorises in time into $T / \tau_c$ approximately independent samples:
+\begin{equation}
+\{\mathbf{c}(0), \mathbf{c}(\tau_c), \mathbf{c}(2\tau_c), \ldots, \mathbf{c}(T)\}
+\end{equation}
+Combined with spatial factorisation, the total number of independent samples is:
+\begin{equation}
+N_{\text{samples}} = N_\xi \times \frac{T}{\tau_c}
+\end{equation}
+\end{proposition}
+
+This space-time factorisation justifies the random sampling approximation used in deriving the convergence probability (Equation~\ref{eq:convergence_probability} in Section~\ref{sec:configuration_space}).
+
+\subsection{Summary}
+
+Spatial decorrelation ensures that:
+\begin{enumerate}
+    \item Distant cells are statistically independent (Lemma~\ref{lemma:independence})
+    \item The configuration space factorises into a product of local configuration spaces (Theorem~\ref{thm:factorisation})
+    \item The effective dimension remains exponentially large in $N$ (Corollary~\ref{cor:effective_dimension})
+    \item Pathological convergence requiring coordination across multiple correlation volumes is multiplicatively suppressed (Theorem~\ref{thm:multiplicative})
+\end{enumerate}
+
+The correlation length $\xi$ defines the fundamental scale of local coordination. Within a correlation volume, cells can coordinate their states; beyond it, they cannot. This finite correlation length is what transforms a potentially pathological ``domino effect'' into a series of isolated, statistically independent events.
+
+The implications for Peto's paradox are profound: larger organisms have more correlation volumes, and the probability of coordinated pathology across many volumes decreases exponentially. This is not a matter of better defences but of the combinatorial statistics of high-dimensional systems.
+

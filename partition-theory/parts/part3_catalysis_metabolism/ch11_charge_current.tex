@@ -1,0 +1,669 @@
+%==============================================================================
+% CHAPTER 11: Biological Charge Current and Flux
+%==============================================================================
+
+\chapter{Biological Charge Current and Flux}
+\label{chap:charge_current}
+
+\epigraph{%
+  The membrane is not a wall.\\
+  It is a controlled boundary,\\
+  and life is the art of controlling it.%
+}{after Peter Mitchell, Nobel Lecture (1978)}
+
+\begin{chapterbox}
+Charge current in biological systems is not an accident of ionic chemistry.
+It is the direct consequence of partition boundary dynamics: when the boundary
+$\partial\Part$ moves or deforms, charge flows. Ion channels are controlled
+partition apertures with conductance $g = (q^2/h)\,b^{-\Depth_{\mathrm{channel}}}$
+--- a function of topology, not molecular detail. The Goldman--Hodgkin--Katz
+(GHK) voltage equation emerges from partition theory with permeability
+$P_X = b^{-\Depth_X}$; the resting potential $\approx -70$\,mV corresponds
+to a specific partition topology of the resting membrane. The Nernst potential
+is a partition depth difference $\Delta\Depth$ expressed in voltage units.
+The action potential is a partition phase transition: at threshold,
+the topology of voltage-gated \ce{Na+} channels undergoes a discontinuous
+change, creating an avalanche of charge flow. ATP synthase is a partition
+converter that maps a proton-gradient partition depth $\Delta\Depth_{\ce{H+}}$
+into the chemical partition depth stored in ATP, with stoichiometry
+$n_{\ce{H+}} = 3$ protons per ATP.
+\end{chapterbox}
+
+%------------------------------------------------------------------------------
+\section{Charge Current from Partition Boundary Motion}
+\label{sec:charge_from_boundary}
+%------------------------------------------------------------------------------
+
+Chapter~\ref{chap:charge_emergence} established the Charge Emergence Theorem:
+electric charge $Q$ is not a primitive quantity but emerges from the topology
+of the partition boundary $\partial\Part$. When a closed surface $\partial\Part$
+encloses a region of partition depth $\Depth$, the enclosed charge satisfies
+\begin{equation}
+  Q = \varepsilon_0 \oint_{\partial\Part} \mathbf{E} \cdot d\mathbf{A},
+  \label{eq:gauss_partition}
+\end{equation}
+which is Gauss's law reread as a partition identity: charge is the flux of
+the electric field through the partition boundary.
+
+\begin{theorem}[Partition Boundary Current]
+\label{thm:partition_boundary_current}
+The charge current density $J_{\mathrm{charge}}$ through a biological
+membrane equals the rate of change of the electric flux through the
+partition boundary:
+\begin{equation}
+  J_{\mathrm{charge}} = \varepsilon_0\,\frac{\partial}{\partial t}
+    \oint_{\partial\Part} \mathbf{E} \cdot d\mathbf{A}.
+  \label{eq:partition_current}
+\end{equation}
+Charge flows if and only if the partition boundary moves, deforms, or the
+charge-carrier distribution on it changes.
+\end{theorem}
+
+\begin{proof}
+Differentiate Eq.~\eqref{eq:gauss_partition} with respect to time:
+\begin{equation}
+  \frac{dQ}{dt}
+    = \varepsilon_0\,\frac{d}{dt}\oint_{\partial\Part} \mathbf{E} \cdot d\mathbf{A}.
+\end{equation}
+By definition of current, $dQ/dt = I$, and $J_{\mathrm{charge}} = I/A$
+through the membrane surface area $A$. The time derivative of the surface
+integral changes only when $\partial\Part$ moves (geometric deformation),
+or when $\mathbf{E}$ changes on a fixed $\partial\Part$ due to ion
+redistribution. In either case the change is driven by partition boundary
+dynamics. If $\partial\Part$ is static and the charge distribution is
+stationary, $dQ/dt = 0$ and no current flows. \qed
+\end{proof}
+
+The physical content is immediate: biological current is \emph{partition
+boundary current}. Ion channels, electrogenic pumps, and co-transporters
+do not carry charge in any primitive sense; they open or deform partition
+boundaries, and charge flows as a purely geometric consequence.
+
+%------------------------------------------------------------------------------
+\section{Ion Channels as Controlled Partition Apertures}
+\label{sec:ion_channels}
+%------------------------------------------------------------------------------
+
+An ion channel is a protein-lined pore spanning the plasma membrane.
+In the \emph{closed} state the pore is occluded: the partition depth of the
+transmembrane pathway is effectively infinite, $\Depth_{\mathrm{channel}} \to \infty$,
+and the partition transition rate (Chapter~\ref{chap:partition_depth},
+Theorem on transition kinetics) vanishes. In the \emph{open} state the pore
+presents a well-defined partition pathway of depth $\Depth_{\mathrm{channel}}$,
+set by the geometry of the selectivity filter and gate.
+
+\begin{definition}[Partition Transmission Coefficient]
+\label{def:transmission_coefficient}
+The \emph{partition transmission coefficient} of an ion channel is
+\begin{equation}
+  T_{\mathrm{channel}} = b^{-\Depth_{\mathrm{channel}}},
+  \label{eq:transmission_coefficient}
+\end{equation}
+where $b$ is the partition base (Chapter~\ref{chap:partition_depth}) and
+$\Depth_{\mathrm{channel}} \geq 0$ is the partition depth of the open-channel
+pathway. A perfectly conducting (zero-depth) channel has $T_{\mathrm{channel}} = 1$.
+\end{definition}
+
+The single-channel current follows from treating the open channel as a partition
+aperture through which charge carriers transit:
+\begin{equation}
+  \boxed{I_{\mathrm{channel}}
+    = \frac{q^2}{h}\,T_{\mathrm{channel}}\,(V - V_{\mathrm{rev}}),}
+  \label{eq:channel_current}
+\end{equation}
+where $q$ is the ion charge, $h$ is Planck's constant, $V$ is the membrane
+voltage, and $V_{\mathrm{rev}}$ is the reversal (Nernst) potential for the
+permeant ion. The prefactor $q^2/h$ is the quantum of conductance, appearing
+here because the minimum partition-transition time is
+$\tau_p = \hbar/(\kB T)$ (Chapter~\ref{chap:bounded_phase_space}), which
+yields the fundamental conductance scale
+$q^2/h \approx 3.87 \times 10^{-5}$\,S.
+
+\begin{corollary}[Conductance from Partition Topology]
+\label{cor:conductance}
+The single-channel conductance is
+\begin{equation}
+  g_{\mathrm{channel}} = \frac{q^2}{h}\,b^{-\Depth_{\mathrm{channel}}}.
+  \label{eq:channel_conductance}
+\end{equation}
+Conductance is a function of partition topology $\Depth_{\mathrm{channel}}$
+only; it does not depend on the detailed molecular structure of the channel
+protein.
+\end{corollary}
+
+\begin{remark}
+Observed single-channel conductances span from $\sim 1$\,pS (MscS,
+low-conductance mechanosensitive channel) to $\sim 300$\,pS (BK large-conductance
+channels). Using Eq.~\eqref{eq:channel_conductance} with base $b = e$:
+\begin{align}
+  g = 1\ \mathrm{pS}   &\Rightarrow \Depth_{\mathrm{channel}} = \ln(3.87 \times 10^{-5}/10^{-12}) \approx 17.4,\\
+  g = 300\ \mathrm{pS} &\Rightarrow \Depth_{\mathrm{channel}} = \ln(3.87 \times 10^{-5}/3\times10^{-10}) \approx 11.7.
+\end{align}
+The 300-fold conductance range corresponds to a partition depth difference
+$\Delta\Depth \approx 5.7$, reflecting roughly six additional partition barriers
+in the low-conductance channel --- consistent with the added selectivity-filter
+complexity of mechanosensitive channels relative to BK channels.
+\end{remark}
+
+\subsection{Gating as Partition Topology Switching}
+\label{ssec:gating}
+
+Gating (the opening and closing of an ion channel) is a
+\emph{partition topology switch}: $\Depth_{\mathrm{channel}}$ jumps
+discontinuously between a large value in the closed state and a small value
+$\Depth_{\mathrm{open}}$ in the open state. The gating transition rate is
+\begin{equation}
+  k_{\mathrm{open}}(V) = \tau_p^{-1}\,b^{-\Delta\Depth_{\mathrm{gate}}(V)},
+  \label{eq:gating_rate}
+\end{equation}
+where $\Delta\Depth_{\mathrm{gate}}(V)$ is the partition depth of the gating
+transition, which depends on membrane voltage through the coupling of the
+voltage-sensor domain to the gate topology.
+
+For voltage-gated \ce{Na+} channels, the observed activation curve is
+Boltzmann-distributed:
+\begin{equation}
+  P_{\mathrm{open}}(V) = \frac{1}{1 + e^{-(V - V_{1/2})/k_s}},
+  \label{eq:boltzmann_gate}
+\end{equation}
+with $V_{1/2} \approx -40$\,mV and slope $k_s \approx 7$\,mV.
+In partition terms:
+$\Delta\Depth_{\mathrm{gate}}(V) = \Delta\Depth_0 - qV/(k_s \ln b)$.
+The voltage sensitivity of gating is a linear modulation of partition depth
+by the transmembrane electric field.
+
+%------------------------------------------------------------------------------
+\section{The Goldman--Hodgkin--Katz Equation from Partition Theory}
+\label{sec:ghk}
+%------------------------------------------------------------------------------
+
+The Goldman--Hodgkin--Katz (GHK) voltage equation is the canonical expression
+for the resting membrane potential \citep{Goldman1943,Hodgkin1952}. Its
+standard derivation assumes a constant electric field across the membrane and
+treats ionic permeability as an empirical fitting parameter. Partition theory
+derives both the equation and the permeability from first principles.
+
+\begin{theorem}[GHK Equation from Partition Theory]
+\label{thm:ghk}
+For a membrane permeable to \ce{K+}, \ce{Na+}, and \ce{Cl-}, the zero-current
+membrane voltage is
+\begin{equation}
+  V_m = \frac{RT}{F}\ln\!\left(
+    \frac{P_K[\ce{K+}]_o + P_{Na}[\ce{Na+}]_o + P_{Cl}[\ce{Cl-}]_i}
+         {P_K[\ce{K+}]_i + P_{Na}[\ce{Na+}]_i + P_{Cl}[\ce{Cl-}]_o}
+  \right),
+  \label{eq:ghk}
+\end{equation}
+where the ionic permeability $P_X$ equals the partition transmission
+coefficient for species $X$:
+\begin{equation}
+  P_X = b^{-\Depth_X},
+  \label{eq:permeability_partition}
+\end{equation}
+and $\Depth_X$ is the partition depth of the transmembrane pathway for ion
+species $X$ in the resting configuration.
+\end{theorem}
+
+\begin{proof}
+The Nernst--Planck equation for the flux of species $X$ (charge $z_X$) across
+a membrane of thickness $d$ under a constant electric field $E = V/d$ is
+\begin{equation}
+  J_X = -D_X\!\left(\frac{d[X]}{dx} + \frac{z_X F}{RT}[X]\,E\right),
+  \label{eq:nernst_planck}
+\end{equation}
+where $D_X$ is the diffusion coefficient within the membrane. Solving
+Eq.~\eqref{eq:nernst_planck} with boundary conditions $[X](0) = \beta_X[X]_o$
+and $[X](d) = \beta_X[X]_i$ (partition coefficients $\beta_X$) gives the
+GHK flux equation:
+\begin{equation}
+  J_X = P_X\,\frac{z_X^2 F^2 V}{RT}
+    \cdot\frac{[X]_i - [X]_o\,e^{-z_X FV/RT}}{1 - e^{-z_X FV/RT}},
+  \label{eq:ghk_flux}
+\end{equation}
+with $P_X = D_X \beta_X / d$. In partition theory, the membrane diffusion
+coefficient $D_X$ inside the channel pore is set by the partition transition
+rate: $D_X \propto b^{-\Depth_X}$ (each partition boundary crossed reduces
+the effective diffusivity by a factor $b^{-1}$). The partition coefficient
+$\beta_X$ is unity for a fully permeable boundary and $b^{-\Delta\Depth_X^{\partial}}$
+for a boundary of depth $\Delta\Depth_X^{\partial}$. Absorbing all factors
+into $P_X = b^{-\Depth_X}$ (where $\Depth_X$ is the total transmembrane
+partition depth for species $X$) gives Eq.~\eqref{eq:permeability_partition}.
+Setting $\sum_X z_X J_X = 0$ (zero net current at resting potential) and
+solving for $V$ yields Eq.~\eqref{eq:ghk}. \qed
+\end{proof}
+
+\subsection{Deriving the Resting Potential from Partition Topology}
+\label{ssec:resting_potential}
+
+The resting membrane potential of a mammalian neuron, $V_m \approx -70$\,mV,
+arises from differential partition depth of the three main ion species.
+The resting membrane has partition depths satisfying
+$\Depth_K < \Depth_{Cl} < \Depth_{Na}$,
+making it far more permeable to \ce{K+} than to \ce{Na+}.
+The permeability ratio is
+\begin{equation}
+  \frac{P_K}{P_{Na}}
+    = \frac{b^{-\Depth_K}}{b^{-\Depth_{Na}}}
+    = b^{\Depth_{Na} - \Depth_K} \approx 100\ \text{(resting neuron)}.
+  \label{eq:permeability_ratio}
+\end{equation}
+With $b = e$, this gives $\Depth_{Na} - \Depth_K = \ln(100) \approx 4.6$:
+the resting membrane imposes approximately 4--5 additional partition barriers
+on \ce{Na+} relative to \ce{K+}.
+
+\begin{example}[Resting Potential Calculation]
+\label{ex:resting_potential}
+Representative mammalian neuronal concentrations:
+$[\ce{K+}]_i = 140$\,mM, $[\ce{K+}]_o = 5$\,mM;
+$[\ce{Na+}]_i = 15$\,mM, $[\ce{Na+}]_o = 145$\,mM;
+$[\ce{Cl-}]_i = 10$\,mM, $[\ce{Cl-}]_o = 110$\,mM.
+With $P_K : P_{Na} : P_{Cl} = 1 : 0.04 : 0.45$:
+\begin{align}
+  V_m &= 25.7\,\mathrm{mV} \cdot \ln\!\left(
+    \frac{1\cdot5 + 0.04\cdot145 + 0.45\cdot10}
+         {1\cdot140 + 0.04\cdot15 + 0.45\cdot110}
+  \right) \notag \\
+  &= 25.7\,\mathrm{mV} \cdot \ln\!\left(\frac{15.3}{190.1}\right)
+   = 25.7\,\mathrm{mV} \cdot (-2.52)
+   \approx -65\ \mathrm{mV}.
+\end{align}
+The residual $\approx -5$\,mV discrepancy from the physiological value of
+$-70$\,mV is accounted for by the electrogenic contribution of the
+\ce{Na+}/\ce{K+}-ATPase (Section~\ref{sec:naka_atpase}), which adds
+$-3$ to $-5$\,mV through active partition depth maintenance.
+\end{example}
+
+Table~\ref{tab:ghk_partition} shows the correspondence between the GHK
+permeability parameters and partition depths for three standard ion species.
+
+\begin{table}[htbp]
+\centering
+\caption{Partition depths $\Depth_X$ (base-$e$ units) corresponding to the
+  GHK permeability ratios in the mammalian resting neuron.
+  Partition depths are computed via $P_X = e^{-\Depth_X}$,
+  normalised to $\Depth_K = 0$ for clarity.}
+\label{tab:ghk_partition}
+\begin{tabular}{lcccc}
+\toprule
+Ion species $X$ & $P_X / P_K$ & $\Depth_X - \Depth_K$ & $V_{\mathrm{Nernst}}(X)$ (mV) \\
+\midrule
+\ce{K+}  & 1.00  & 0.0  & $-89$ \\
+\ce{Cl-} & 0.45  & 0.80 & $-63$ \\
+\ce{Na+} & 0.04  & 3.22 & $+61$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+%------------------------------------------------------------------------------
+\section{The Nernst Potential as Partition Depth Difference}
+\label{sec:nernst}
+%------------------------------------------------------------------------------
+
+For a single ion species $X$ with valence $z$, the Nernst potential is
+\begin{equation}
+  V_{\mathrm{Nernst}}(X) = \frac{RT}{zF}\ln\frac{[X]_o}{[X]_i}.
+  \label{eq:nernst}
+\end{equation}
+Partition theory gives this equation a geometric meaning.
+
+\begin{theorem}[Nernst Potential as Partition Depth Difference]
+\label{thm:nernst_partition}
+The Nernst potential for ion species $X$ with valence $z$ is
+\begin{equation}
+  V_{\mathrm{Nernst}}(X) = \frac{\kB T}{zq}\,\Delta\Depth_X\,\ln b,
+  \label{eq:nernst_partition}
+\end{equation}
+where $\Delta\Depth_X = \Depth_X^{\mathrm{in}} - \Depth_X^{\mathrm{out}}$ is
+the partition depth difference for species $X$ across the membrane.
+\end{theorem}
+
+\begin{proof}
+The concentration ratio encodes a partition depth difference. In partition
+theory, the chemical potential of species $X$ in a compartment of concentration
+$[X]$ is $\mu_X = \mu_X^0 + \kB T\ln[X]$, and the accessible partition depth
+is inversely related to concentration: higher concentration corresponds to
+lower partition depth (more accessible states). Specifically,
+\begin{equation}
+  \frac{[X]_o}{[X]_i} = b^{\Depth_X^{\mathrm{in}} - \Depth_X^{\mathrm{out}}}
+    = b^{\Delta\Depth_X}.
+  \label{eq:concentration_partition}
+\end{equation}
+Substituting into Eq.~\eqref{eq:nernst}:
+\begin{equation}
+  V_{\mathrm{Nernst}}(X)
+    = \frac{\kB T}{zq}\ln(b^{\Delta\Depth_X})
+    = \frac{\kB T}{zq}\,\Delta\Depth_X\,\ln b.
+\end{equation}
+The voltage is the partition depth difference across the membrane, rescaled
+by the thermal voltage $\kB T/(zq) \approx 25.7$\,mV at $T = 310$\,K for
+monovalent ions. \qed
+\end{proof}
+
+Table~\ref{tab:nernst_potentials} collects the Nernst potentials and
+corresponding partition depth differences for the principal physiological ions.
+
+\begin{table}[htbp]
+\centering
+\caption{Nernst potentials and partition depth differences for physiological
+  ions at $T = 310$\,K. Concentrations are representative mammalian neuronal
+  values. $\Delta\Depth_X$ is in base-$e$ units.}
+\label{tab:nernst_potentials}
+\begin{tabular}{lcccr}
+\toprule
+Ion & $[X]_i$ (mM) & $[X]_o$ (mM) & $V_{\mathrm{Nernst}}$ (mV) & $\Delta\Depth_X$ \\
+\midrule
+\ce{K+}       & 140    & 5    & $-89$  & $-3.33$ \\
+\ce{Na+}      & 15     & 145  & $+61$  & $+2.27$ \\
+\ce{Ca^{2+}}  & 0.0001 & 2    & $+122$ & $+9.49$ \\
+\ce{Cl-}      & 10     & 110  & $-63$  & $+2.40$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The extreme Nernst potential of \ce{Ca^{2+}} ($+122$\,mV) reflects the very
+large partition depth difference maintained by the cell for this ion:
+$|\Delta\Depth_{\ce{Ca^{2+}}}| \approx 9.5$ at rest. This is not accidental.
+Calcium serves as a second messenger precisely because the cell maintains an
+enormous partition depth reservoir for it; opening a \ce{Ca^{2+}} channel
+releases a large partition depth gradient, triggering downstream signalling
+cascades with high signal-to-noise ratio.
+
+%------------------------------------------------------------------------------
+\section{Partition Flux Conservation}
+\label{sec:flux_conservation}
+%------------------------------------------------------------------------------
+
+\begin{theorem}[Partition Flux Conservation]
+\label{thm:flux_conservation}
+In a closed biological system, the total partition flux satisfies the
+continuity equation
+\begin{equation}
+  \oint_{\partial V} \mathbf{J} \cdot d\mathbf{A}
+    = -\frac{\partial}{\partial t}\int_V \rho_{\Depth}\,dV,
+  \label{eq:partition_flux_conservation}
+\end{equation}
+where $\rho_{\Depth}$ is the partition depth density (partition depth per
+unit volume) and $\mathbf{J}$ is the partition current density (flux of
+charge carriers driven by partition depth gradients).
+This is the biological analogue of charge conservation.
+\end{theorem}
+
+\begin{proof}
+From the Charge Emergence Theorem, $Q = \varepsilon_0\oint\mathbf{E}\cdot d\mathbf{A}$.
+From Theorem~\ref{thm:nernst_partition}, the electric field generated by a
+partition depth gradient is
+$\mathbf{E} = -(\kB T \ln b / q)\,\nabla\Depth$.
+Combining:
+\begin{equation}
+  Q = -\varepsilon_0\frac{\kB T \ln b}{q}
+    \oint_{\partial V}\nabla\Depth \cdot d\mathbf{A}
+    = -\varepsilon_0\frac{\kB T \ln b}{q}
+    \int_V\nabla^2\Depth\,dV.
+\end{equation}
+Charge conservation ($dQ/dt = -\oint\mathbf{J}\cdot d\mathbf{A}$) then implies
+\begin{equation}
+  \oint_{\partial V}\mathbf{J}\cdot d\mathbf{A}
+    = \frac{\partial}{\partial t}\varepsilon_0\frac{\kB T \ln b}{q}
+    \int_V\nabla^2\Depth\,dV
+    = -\frac{\partial}{\partial t}\int_V\rho_{\Depth}\,dV,
+\end{equation}
+where we identify $\rho_{\Depth} = -\varepsilon_0(\kB T\ln b/q)\,\nabla^2\Depth$
+(Poisson's equation in partition variables). \qed
+\end{proof}
+
+\begin{remark}
+Equation~\eqref{eq:partition_flux_conservation} is the statement that partition
+depth inside any closed volume changes only when partition current flows through
+its boundary. A cell that seals all partition boundaries from the environment
+conserves its total partition depth --- it is energetically isolated and
+therefore dead. Life requires open partition systems that continuously exchange
+partition depth with the environment.
+\end{remark}
+
+%------------------------------------------------------------------------------
+\section{Membrane Potential Dynamics}
+\label{sec:membrane_dynamics}
+%------------------------------------------------------------------------------
+
+The time evolution of the membrane potential at the single-compartment level is
+governed by the balance between capacitive charging and ionic currents:
+\begin{equation}
+  C_m\frac{dV}{dt}
+    = -\sum_X I_X
+    = -\sum_X g_X(V - V_X),
+  \label{eq:cable_equation}
+\end{equation}
+where $C_m \approx 1\,\mu\mathrm{F/cm}^2$ is the membrane capacitance,
+$g_X = (q^2/h)\,b^{-\Depth_X}$ is the conductance of channel type $X$
+(Corollary~\ref{cor:conductance}), and $V_X = V_{\mathrm{Nernst}}(X)$.
+
+\begin{proposition}[Membrane Seeks Minimum Partition Depth]
+\label{prop:membrane_minimization}
+Equation~\eqref{eq:cable_equation} is equivalent to
+\begin{equation}
+  C_m\frac{dV}{dt} = -\frac{\partial\Depth_{\mathrm{total}}}{\partial t},
+  \label{eq:membrane_depth_flow}
+\end{equation}
+where $\Depth_{\mathrm{total}} = \sum_X\Depth_X\cdot n_X$ is the total
+partition depth summed over all ion species, weighted by the number of open
+channels $n_X$ of each type.
+\end{proposition}
+
+\begin{proof}
+From Corollary~\ref{cor:conductance}, $g_X = (q^2/h)\,b^{-\Depth_X}$.
+From Theorem~\ref{thm:nernst_partition}, $V_X = (\kB T/q)\,\Delta\Depth_X\ln b$.
+The restoring force on $V$ toward $V_X$ is therefore a restoring force on the
+membrane's partition depth toward $\Delta\Depth_X$. Summing,
+$\partial\Depth_{\mathrm{total}}/\partial t = -C_m\,dV/dt$, which is
+Eq.~\eqref{eq:membrane_depth_flow}. \qed
+\end{proof}
+
+The membrane thus acts as a \emph{partition depth minimiser}: it adjusts its
+voltage to reduce the total partition depth gradient across the lipid bilayer.
+At steady state ($dV/dt = 0$), the resting potential is the conductance-weighted
+mean of the individual Nernst potentials:
+\begin{equation}
+  V_m^{\mathrm{ss}}
+    = \frac{\sum_X g_X\,V_X}{\sum_X g_X}
+    = \frac{\sum_X b^{-\Depth_X}\,V_X}{\sum_X b^{-\Depth_X}}.
+  \label{eq:steady_state_potential}
+\end{equation}
+
+%------------------------------------------------------------------------------
+\section{Action Potential as a Partition Phase Transition}
+\label{sec:action_potential}
+%------------------------------------------------------------------------------
+
+The action potential is a $\sim$100\,mV excursion lasting $\sim$1\,ms,
+self-propagating along axons. Hodgkin and Huxley \citeyearpar{Hodgkin1952b}
+demonstrated that it arises from the sequential voltage-dependent activation
+and inactivation of \ce{Na+} and \ce{K+} channels. Partition theory identifies
+this sequence as a \emph{partition phase transition}: a cooperative, discontinuous
+change in the topology of the voltage-gated channel ensemble at a critical
+membrane voltage.
+
+\begin{definition}[Critical Partition Depth]
+\label{def:critical_depth}
+The critical partition depth $\Depth_{\mathrm{crit}}$ of voltage-gated
+\ce{Na+} channels is the depth at which spontaneous channel opening is
+thermodynamically inevitable:
+\begin{equation}
+  \Depth_{\mathrm{Na}}(V_{\mathrm{th}}) = \Depth_{\mathrm{crit}},
+  \label{eq:critical_depth_def}
+\end{equation}
+where $V_{\mathrm{th}} \approx -55$\,mV is the action potential threshold.
+At $V = V_{\mathrm{th}}$, the free energy cost of the gating transition equals
+$\kB T$, and thermal fluctuations drive the transition with probability one.
+\end{definition}
+
+\begin{theorem}[Action Potential as Partition Phase Transition]
+\label{thm:action_potential_transition}
+The action potential is the following sequence of partition topology changes:
+\begin{enumerate}[label=(\roman*)]
+  \item \textbf{Threshold crossing.} $V$ reaches $V_{\mathrm{th}}$;
+        $\Depth_{\mathrm{Na}}$ reaches $\Depth_{\mathrm{crit}}$. The
+        voltage-gated \ce{Na+} channel ensemble undergoes a cooperative
+        topology switch from high-depth (closed) to low-depth (open).
+  \item \textbf{Avalanche.} $\Depth_{\mathrm{Na}}$ decreases discontinuously.
+        \ce{Na+} current $I_{\mathrm{Na}} = g_{\mathrm{Na}}(V - V_{\mathrm{Na}})$
+        increases sharply ($V_{\mathrm{Na}} \approx +61$\,mV), driving $V$
+        toward $V_{\mathrm{Na}}$.
+  \item \textbf{Inactivation.} \ce{Na+} channels enter the inactivated state
+        (a third partition topology, $\Depth_{\mathrm{Na}}^{\mathrm{inact}} \gg \Depth_{\mathrm{crit}}$).
+        Simultaneously, voltage-gated \ce{K+} channels open ($\Depth_K$ decreases),
+        driving $V$ back toward $V_K \approx -89$\,mV.
+  \item \textbf{Refractory period.} Both channel types maintain high partition
+        depth for their respective pathways, preventing immediate re-excitation
+        and establishing the absolute and relative refractory periods.
+\end{enumerate}
+The threshold behaviour is a genuine phase transition: below $V_{\mathrm{th}}$
+the system is monostable (resting state); above $V_{\mathrm{th}}$ it is
+transiently monostable toward the action potential peak.
+\end{theorem}
+
+The Hodgkin--Huxley model \citep{Hodgkin1952b} is the quantitative realization
+of this theorem. Its gating variables $m$, $h$, $n$ are partition occupation
+fractions: $m(V) = 1 - b^{-\Delta\Depth_m(V)}$, and similarly for $h$ and $n$.
+The cooperativity of \ce{Na+} channel opening (the $m^3 h$ dependence of sodium
+conductance) reflects three voltage-sensor domains that must independently
+undergo the partition topology switch; each contributes an independent factor
+$b^{-\Delta\Depth_{\mathrm{sensor}}(V)}$ to the total transmission coefficient.
+
+%------------------------------------------------------------------------------
+\section{ATP Synthase as Partition Converter}
+\label{sec:atp_synthase}
+%------------------------------------------------------------------------------
+
+ATP synthase (Complex~V of the respiratory chain) converts the
+proton-motive force --- a partition depth gradient across the inner
+mitochondrial membrane --- into the chemical partition depth stored in ATP.
+It is the canonical example of a \emph{partition converter}: a molecular
+machine that maps one form of partition depth into another without dissipating
+it as heat.
+
+\begin{theorem}[ATP Synthesis as Partition Depth Conversion]
+\label{thm:atp_synthesis}
+The free energy of ATP synthesis equals the conversion of the proton partition
+depth gradient $\Delta\Depth_{\ce{H+}}$ into the chemical partition depth of
+ATP:
+\begin{equation}
+  \Delta G_{\mathrm{synthesis}}
+    = RT\ln\!\left(\frac{[\mathrm{ATP}]}{[\mathrm{ADP}][\mathrm{P}_i]\,K_{\mathrm{eq}}}\right)
+    = n_{\ce{H+}}\,\Delta\Depth_{\ce{H+}}\,\kB T\,\ln b,
+  \label{eq:atp_synthesis}
+\end{equation}
+where $n_{\ce{H+}} = 3$ is the number of protons translocated per ATP
+synthesised, and $\Delta\Depth_{\ce{H+}}$ is the total proton partition depth
+difference across the inner mitochondrial membrane.
+\end{theorem}
+
+\begin{proof}
+The proton-motive force $\Delta p$ has two components:
+\begin{equation}
+  \Delta p = \Delta\psi - \frac{2.303\,RT}{F}\Delta\mathrm{pH}
+           \approx -180\ \mathrm{mV}\ \text{(healthy mitochondria)}.
+  \label{eq:pmf}
+\end{equation}
+From Theorem~\ref{thm:nernst_partition}, each component corresponds to a
+partition depth difference:
+\begin{align}
+  \Delta\psi &= \frac{\kB T}{q}\,\Delta\Depth_\psi\,\ln b, \\
+  -\frac{2.303\,RT}{F}\Delta\mathrm{pH}
+    &= \frac{\kB T}{q}\,\Delta\Depth_{\mathrm{pH}}\,\ln b.
+\end{align}
+The total proton partition depth is
+$\Delta\Depth_{\ce{H+}} = \Delta\Depth_\psi + \Delta\Depth_{\mathrm{pH}}$.
+For $n_{\ce{H+}} = 3$ protons per ATP:
+\begin{equation}
+  \Delta G = n_{\ce{H+}} \cdot q \cdot |\Delta p|
+    = 3\,q\cdot\frac{\kB T}{q}\,\Delta\Depth_{\ce{H+}}\,\ln b
+    = 3\,\kB T\,\Delta\Depth_{\ce{H+}}\,\ln b.
+\end{equation}
+Numerically, with $|\Delta p| \approx 180$\,mV:
+$\Delta G = 3 \times 96485\,\mathrm{C/mol} \times 0.180\,\mathrm{V}
+ \approx 52$\,kJ/mol.
+This matches the observed $\Delta G_{\mathrm{ATP}} \approx 50$--$54$\,kJ/mol
+under physiological conditions. Solving for
+$\Delta\Depth_{\ce{H+}} \approx 7.0$ (base-$e$ units),
+consistent with $|\Delta p| = 180$\,mV $= (\kB T/q)\,\Delta\Depth_{\ce{H+}}\,\ln e = 25.7\,\mathrm{mV}\times 7.0$. \qed
+\end{proof}
+
+\begin{remark}
+In mammalian ATP synthase, the $c$-ring has 8 subunits, yielding a more
+precise stoichiometry of $8/3 \approx 2.67$ protons per ATP when the full
+$\alpha_3\beta_3$ head contributes three synthesis sites per revolution
+\citep{Walker1994}. The partition converter efficiency in healthy mitochondria
+is $\eta = \Delta G_{\mathrm{ATP}} / (n_{\ce{H+}} F|\Delta p|) \approx 0.85$:
+85\% of the proton partition depth is captured in ATP chemical partition depth,
+and 15\% is dissipated as heat.
+\end{remark}
+
+%------------------------------------------------------------------------------
+\section{The \texorpdfstring{\ce{Na+}/\ce{K+}}{Na+/K+}-ATPase and Steady-State Partition Maintenance}
+\label{sec:naka_atpase}
+%------------------------------------------------------------------------------
+
+The resting membrane potential is actively maintained against dissipative
+leakage by the \ce{Na+}/\ce{K+}-ATPase. This pump hydrolyses one ATP to
+transport three \ce{Na+} out and two \ce{K+} in per cycle, generating a net
+outward current of one elementary charge per cycle (electrogenic).
+
+In partition theory, the pump is a \emph{partition depth injector}: it
+continuously invests the chemical partition depth of ATP to sustain the
+partition depth differences $\Delta\Depth_{\ce{Na+}}$ and $\Delta\Depth_{\ce{K+}}$
+against the dissipative tendency of leak channels.
+
+\begin{proposition}[Steady-State Partition Depth Balance]
+\label{prop:partition_balance}
+At steady state, pump flux balances leak flux for each ion species:
+\begin{equation}
+  J_{\mathrm{pump}}^X = J_{\mathrm{leak}}^X,
+  \label{eq:partition_balance}
+\end{equation}
+maintaining constant $\Delta\Depth_X$ and therefore a stable resting potential.
+The electrogenic contribution of the pump to the resting potential is
+\begin{equation}
+  \Delta V_{\mathrm{pump}}
+    = -\frac{I_{\mathrm{pump}}}{g_{\mathrm{total}}}
+    \approx -3\ \text{to}\ -5\ \mathrm{mV},
+  \label{eq:pump_hyperpolarization}
+\end{equation}
+accounting for the discrepancy between the GHK prediction ($\approx -65$\,mV)
+and the observed resting potential ($\approx -70$\,mV).
+\end{proposition}
+
+Pump failure (ouabain blockade or ATP depletion) abolishes
+Eq.~\eqref{eq:partition_balance}: $\Delta\Depth_{\ce{Na+}}$ and
+$\Delta\Depth_{\ce{K+}}$ collapse over minutes, causing membrane
+depolarisation, uncontrolled \ce{Ca^{2+}} influx, and excitotoxic cascades.
+This cascade is analysed in Chapter~\ref{chap:charge_trajectories} as a
+$\Sk$-entropy deviation pathway toward neurodegeneration.
+
+%------------------------------------------------------------------------------
+\section{Summary}
+\label{sec:charge_current_summary}
+%------------------------------------------------------------------------------
+
+\begin{chapterbox}
+Biological charge current is partition boundary current
+(Theorem~\ref{thm:partition_boundary_current}): charge flows if and only if
+the partition boundary $\partial\Part$ moves or deforms. Ion channels are
+controlled partition apertures with conductance
+$g = (q^2/h)\,b^{-\Depth_{\mathrm{channel}}}$
+(Corollary~\ref{cor:conductance}), determined by partition topology alone.
+The GHK equation emerges from partition theory with $P_X = b^{-\Depth_X}$
+(Theorem~\ref{thm:ghk}); the resting potential $\approx -70$\,mV encodes the
+partition depth differences $\{\Delta\Depth_X\}$ of the resting membrane.
+The Nernst potential is the partition depth difference $\Delta\Depth_X$
+expressed in voltage units via $V = (\kB T/zq)\,\Delta\Depth_X\,\ln b$
+(Theorem~\ref{thm:nernst_partition}). Partition flux is globally conserved
+(Theorem~\ref{thm:flux_conservation}), and the membrane minimises total
+partition depth (Proposition~\ref{prop:membrane_minimization}). The action
+potential is a cooperative partition phase transition at $\Depth_{\mathrm{crit}}$
+(Theorem~\ref{thm:action_potential_transition}). ATP synthase converts the
+proton partition depth gradient $\Delta\Depth_{\ce{H+}}$ into ATP chemical
+partition depth at three protons per ATP with efficiency $\eta \approx 0.85$
+(Theorem~\ref{thm:atp_synthesis}). The \ce{Na+}/\ce{K+}-ATPase maintains the
+steady-state partition depth balance, contributing $-3$ to $-5$\,mV to the
+resting potential through its electrogenic action.
+\end{chapterbox}

@@ -1,0 +1,20 @@
+{
+  "experiment": "method_illustration",
+  "timestamp": "2026-04-23T15:01:35.175302+00:00",
+  "within_family_cos_mean": 0.941059410572052,
+  "between_family_cos_mean": Infinity,
+  "family_sizes": [
+    8,
+    8,
+    8,
+    8,
+    8,
+    8,
+    8,
+    8,
+    8,
+    8
+  ],
+  "n_coefficients": 12,
+  "seq_length": 240
+}

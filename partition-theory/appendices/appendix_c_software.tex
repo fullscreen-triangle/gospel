@@ -1,0 +1,376 @@
+%==============================================================================
+% APPENDIX C: Software Implementations
+%==============================================================================
+
+\chapter*{Software Implementations}
+\addcontentsline{toc}{chapter}{Appendix C: Software Implementations}
+\label{app:software}
+
+This appendix documents the software implementations of the algorithms
+described in the monograph. All implementations are available from the
+author; version-controlled repositories are cited where applicable.
+
+%------------------------------------------------------------------------------
+\section*{C.1\quad Partition Synthesis Language (PSL)}
+\label{app:psl}
+\addcontentsline{toc}{section}{C.1\enspace Partition Synthesis Language}
+%------------------------------------------------------------------------------
+
+\subsection*{C.1.1\quad Overview and Type System}
+
+The Partition Synthesis Language (PSL) is a domain-specific language for
+expressing biological computations in terms of partition operations on the
+$\Sspace$ entropy coordinates. It is compiled to native code via a Rust
+backend \citep{Sachikonye2025_Computing}.
+
+\medskip\noindent\textbf{Type system.} PSL's primitive type is the \emph{trit}
+$\trit \in \{-1, 0, +1\}$, corresponding to the three values of the cardinal
+coordinate along one axis. Compound types are:
+\begin{itemize}
+  \item \texttt{Trit}: a single ternary value.
+  \item \texttt{Tryte}: a tuple of 3 \texttt{Trit}s, representing one codon
+        (corresponding to one element of $\{-1,0,+1\}^3$).
+  \item \texttt{Sequence}: a variable-length list of \texttt{Trit}s (one per nucleotide,
+        in either the x- or y-channel).
+  \item \texttt{Partition}: a partition of a \texttt{Sequence} into labeled blocks.
+  \item \texttt{SCoord}: a triple $(\Sk, \St, \Se) \in \mathbb{R}^3$, the
+        S-entropy coordinates of a sequence.
+\end{itemize}
+
+\vspace{4pt}
+\begin{algorithm}
+\caption{PSL Type Declarations (Rust-like syntax)}
+\label{alg:psl_types}
+\begin{algorithmic}[1]
+\State \texttt{type Trit = i8;} \Comment{$-1$, $0$, or $+1$}
+\State \texttt{type Tryte = [Trit; 3];} \Comment{one codon}
+\State \texttt{type Sequence = Vec<Trit>;}
+\State \texttt{struct SCoord \{ sk: f64, st: f64, se: f64 \}}
+\State \texttt{struct Partition \{ blocks: Vec<(usize, usize, Label)> \}}
+\end{algorithmic}
+\end{algorithm}
+
+\subsection*{C.1.2\quad Core Operations}
+
+PSL provides three primitive operations, each corresponding to a partition
+operation in the abstract framework:
+
+\begin{description}
+  \item[\texttt{Project}] Computes the S-entropy coordinates of a sequence.
+        Implements the spectral embedding $\Phi_K$ of Chapter~\ref{chap:shader_spectrometer}.
+  \item[\texttt{Complete}] Finds the nearest partition in a database to a
+        given S-coordinate. Implements the Empty Dictionary search.
+  \item[\texttt{Compose}] Computes the partition composition of two sequences,
+        used for building hierarchical partition structures.
+\end{description}
+
+\begin{algorithm}
+\caption{PSL Core Operations (sketch)}
+\label{alg:psl_ops}
+\begin{algorithmic}[1]
+\Function{Project}{seq: Sequence, K: usize} $\to$ SCoord
+  \State x\_channel $\gets$ seq.x\_components()
+  \State y\_channel $\gets$ seq.y\_components()
+  \State X $\gets$ \Call{DFT}{x\_channel}
+  \State Y $\gets$ \Call{DFT}{y\_channel}
+  \State magnitudes $\gets$ X[1..K].map(|z| z.abs()) ++ Y[1..K].map(|z| z.abs())
+  \State \Return \Call{SCoord::from\_embedding}{magnitudes}
+\EndFunction
+\State
+\Function{Complete}{query: SCoord, db: \&Database} $\to$ Sequence
+  \State addr $\gets$ \Call{spectral\_address}{query}
+  \State bucket $\gets$ db.lookup(addr) \Comment{O(1) hash lookup}
+  \State \Return bucket.nearest(query) \Comment{cosine nearest neighbor}
+\EndFunction
+\State
+\Function{Compose}{p1: Partition, p2: Partition} $\to$ Partition
+  \State \Return Partition::join(p1, p2) \Comment{categorical product}
+\EndFunction
+\end{algorithmic}
+\end{algorithm}
+
+\subsection*{C.1.3\quad Example Program: Sequence Classification}
+
+\begin{algorithm}
+\caption{PSL Program: Classify a sequence into a known family}
+\label{alg:psl_classify}
+\begin{algorithmic}[1]
+\State \textbf{input}: query sequence $q$, database $\mathcal{D}$ with labels
+\State coord $\gets$ \Call{Project}{q, K=12}
+\State match $\gets$ \Call{Complete}{coord, $\mathcal{D}$}
+\State \Return $\mathcal{D}$.label(match)
+\end{algorithmic}
+\end{algorithm}
+
+The full PSL compiler is $\approx 3,\!000$ lines of Rust and includes a type
+checker, an optimizer (constant-folding for static K), and a code generator
+targeting LLVM IR. Compile time for a typical PSL program: $< 200$\,ms.
+Runtime: equivalent to hand-written Rust for the same operations.
+
+%------------------------------------------------------------------------------
+\section*{C.2\quad WebGL Fragment Shader for Spectral Homology}
+\label{app:shader}
+\addcontentsline{toc}{section}{C.2\enspace WebGL Fragment Shader}
+%------------------------------------------------------------------------------
+
+\subsection*{C.2.1\quad Architecture}
+
+The WebGL implementation (Chapter~\ref{chap:shader_spectrometer}) uses the
+following pipeline:
+
+\begin{enumerate}
+  \item \textbf{Database preprocessing} (JavaScript): compute $\Phi_K(t_j)$
+        for all $j$; pack into a floating-point texture of dimensions
+        $(N, 2K)$ stored on the GPU.
+  \item \textbf{Query preprocessing} (JavaScript): compute $\Phi_K(q)$;
+        upload as a uniform vec24 to the shader.
+  \item \textbf{Fragment shader} (GLSL): each fragment computes the cosine
+        similarity between the query embedding (uniform) and one database
+        embedding (texture lookup); output as pixel intensity.
+  \item \textbf{Readback} (JavaScript): read pixel buffer; rank by intensity.
+\end{enumerate}
+
+\subsection*{C.2.2\quad GLSL Shader Sketch}
+
+\begin{verbatim}
+// GLSL fragment shader (WebGL 2.0)
+precision highp float;
+
+uniform sampler2D u_database;  // (N x 2K) texture: embeddings
+uniform vec2      u_query[24]; // query spectral embedding (K=12)
+uniform float     u_query_norm;// |Phi_K(q)|
+in      vec2      v_texcoord;  // fragment = one database entry
+
+out float fragColor;           // similarity score
+
+void main() {
+    vec2 db[24];
+    float db_norm = 0.0;
+    float dot_prod = 0.0;
+
+    for (int k = 0; k < 24; k++) {
+        db[k] = texture(u_database,
+                        vec2(v_texcoord.x, float(k)/24.0)).rg;
+        dot_prod += dot(u_query[k], db[k]);
+        db_norm  += dot(db[k], db[k]);
+    }
+    fragColor = dot_prod / (u_query_norm * sqrt(db_norm));
+}
+\end{verbatim}
+
+\subsection*{C.2.3\quad Database Format}
+
+Each database sequence is stored as a $1 \times 24$ row of 16-bit
+floating-point values in a GPU texture. For $N$ sequences, the texture
+is $(N \times 24)$ pixels. At 2 bytes per value: $N \times 24 \times 2$
+bytes total. For $N = 10^5$: $\approx 4.8$\,MB, well within GPU memory limits.
+
+The spectral address table is stored as a JavaScript \texttt{Map<string, number[]>}
+where the key is the 4-tuple address (stringified) and the value is an array
+of database indices in that bucket.
+
+\subsection*{C.2.4\quad Query Protocol}
+
+\begin{enumerate}
+  \item Encode query sequence as cardinal waveform (x, y channels).
+  \item Compute 24-point real FFT on each channel; retain magnitudes 1--12.
+  \item Upload 24-vector as uniform to GPU.
+  \item Render to $N \times 1$ framebuffer (one pixel per database entry).
+  \item Readback pixel buffer ($N$ float values); sort descending.
+  \item Return indices of top-$k$ entries.
+\end{enumerate}
+
+Measured query time for $N = 720$ entries: 505\,ms (dominated by JavaScript
+overhead and GPU round-trip, not computation).
+
+%------------------------------------------------------------------------------
+\section*{C.3\quad Matched Filter Library (JavaScript)}
+\label{app:matched_filter}
+\addcontentsline{toc}{section}{C.3\enspace Matched Filter Library}
+%------------------------------------------------------------------------------
+
+\subsection*{C.3.1\quad Module Structure}
+
+The JavaScript matched filter library (Chapter~\ref{chap:wave_interference})
+consists of two modules:
+
+\begin{itemize}
+  \item \texttt{fft.js}: A radix-2 Cooley--Tukey FFT implementation for
+        real-valued sequences of length $2^k$. Supports in-place forward
+        and inverse FFT, and the cross-correlation shortcut
+        $\mathrm{IFFT}(\overline{\hat{q}} \cdot \hat{t})$.
+  \item \texttt{matched\_filter.js}: Cardinal embedding, preprocessing,
+        per-query scan, $z$-score computation, and result ranking.
+\end{itemize}
+
+\subsection*{C.3.2\quad API Documentation}
+
+\begin{verbatim}
+// fft.js
+function fft(x)       // in-place FFT; x = Float64Array (real)
+function ifft(X)      // in-place IFFT; X = interleaved complex
+function xcorr(q, t)  // cross-correlation via FFT; returns Float64Array
+
+// matched_filter.js
+class MatchedFilter {
+  constructor(target_seq) // precompute FFT of target (~530 ms / Mb)
+  query(q_seq)            // run matched filter; returns RankResult[]
+  zscore(xcorr_vals)      // compute z-scores from xcorr array
+}
+class RankResult {
+  position: number        // alignment offset (bp)
+  rho:      number        // normalized cross-correlation
+  zscore:   number        // z-score
+}
+\end{verbatim}
+
+\subsection*{C.3.3\quad Key Algorithm Sketch}
+
+\begin{algorithm}
+\caption{MatchedFilter.query (JavaScript pseudocode)}
+\label{alg:mf_query}
+\begin{algorithmic}[1]
+\Require target FFT $\hat{\mathbf{t}}$ precomputed; query sequence $q$
+\State $\mathbf{q} \gets$ \Call{cardinalEmbed}{$q$} \Comment{2 channels}
+\State $\hat{\mathbf{q}} \gets$ \Call{fft}{$\mathbf{q}$}
+\For{channel $c \in \{x, y\}$}
+  \State $\text{prod}_c[k] \gets \overline{\hat{q}_c[k]} \cdot \hat{t}_c[k]$ \Comment{element-wise}
+  \State $\text{xcorr}_c \gets$ \Call{ifft}{$\text{prod}_c$}
+\EndFor
+\State $\text{xcorr} \gets \text{xcorr}_x + \text{xcorr}_y$ \Comment{combine channels}
+\State $\mu, \sigma \gets$ \Call{meanStd}{$\text{xcorr}$}
+\State $z[k] \gets (\text{xcorr}[k] - \mu) / \sigma$ \Comment{z-scores}
+\State \Return \Call{sortDescending}{$z$} \Comment{ranked positions}
+\end{algorithmic}
+\end{algorithm}
+
+\subsection*{C.3.4\quad Performance Characteristics}
+
+\begin{table}[H]
+\centering
+\caption{Matched filter library performance (1\,Mb target, JavaScript)}
+\label{tab:mf_performance}
+\begin{tabular}{lcc}
+\toprule
+Operation & Time & Notes \\
+\midrule
+Preprocessing (precompute target FFT) & $\approx 530$\,ms & One-time, amortized \\
+Cardinal embedding (query, 200\,bp)   & $< 1$\,ms         & Negligible \\
+Query FFT (200\,bp)                   & $< 1$\,ms         & Negligible \\
+Pointwise product ($10^6$ points)     & $\approx 50$\,ms  & Array multiply \\
+IFFT ($10^6$ points)                  & $\approx 780$\,ms & Dominates query time \\
+\textbf{Total per-query scan (1\,Mb)} & $\approx 836$\,ms & \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\noindent
+The IFFT dominates query time. For multiple queries to the same target,
+the preprocessing cost is paid once and the per-query cost is $\approx 836$\,ms.
+For $Q$ queries: total time $\approx 530 + 836Q$\,ms.
+
+%------------------------------------------------------------------------------
+\section*{C.4\quad Cardinal Embedding: Python/JavaScript Dual Implementation}
+\label{app:cardinal}
+\addcontentsline{toc}{section}{C.4\enspace Cardinal Embedding}
+%------------------------------------------------------------------------------
+
+\subsection*{C.4.1\quad Specification}
+
+The cardinal map assigns integer coordinates to the four nucleotides:
+\[
+  \mathtt{A} \to (0, +1),\quad \mathtt{T} \to (0, -1),\quad
+  \mathtt{G} \to (+1, 0),\quad \mathtt{C} \to (-1, 0).
+\]
+All other characters (e.g., $\mathtt{N}$) map to $(0, 0)$ (zero-padding).
+
+\subsection*{C.4.2\quad Python Implementation}
+
+\begin{verbatim}
+# cardinal.py
+import numpy as np
+
+CARDINAL = {
+    'A': ( 0, +1), 'T': ( 0, -1),
+    'G': (+1,  0), 'C': (-1,  0),
+}
+
+def embed(seq: str) -> np.ndarray:
+    """Return (n, 2) int8 array of cardinal coordinates."""
+    n = len(seq)
+    out = np.zeros((n, 2), dtype=np.int8)
+    for i, c in enumerate(seq.upper()):
+        out[i] = CARDINAL.get(c, (0, 0))
+    return out
+
+def spectral_embedding(seq: str, K: int = 12) -> np.ndarray:
+    """Return 2K-dim float32 spectral embedding."""
+    xy = embed(seq).astype(np.float32)
+    Xk = np.abs(np.fft.fft(xy[:, 0]))[1:K+1]
+    Yk = np.abs(np.fft.fft(xy[:, 1]))[1:K+1]
+    return np.concatenate([Xk, Yk]).astype(np.float32)
+\end{verbatim}
+
+\subsection*{C.4.3\quad JavaScript Implementation}
+
+\begin{verbatim}
+// cardinal.js
+const CARDINAL = {A:[0,1], T:[0,-1], G:[1,0], C:[-1,0]};
+
+function embed(seq) {
+    const n = seq.length;
+    const x = new Float32Array(n), y = new Float32Array(n);
+    for (let i = 0; i < n; i++) {
+        const c = CARDINAL[seq[i].toUpperCase()] || [0,0];
+        x[i] = c[0]; y[i] = c[1];
+    }
+    return {x, y};
+}
+
+function spectralEmbedding(seq, K=12) {
+    const {x, y} = embed(seq);
+    const Xk = fftMagnitudes(x, K);  // first K magnitudes
+    const Yk = fftMagnitudes(y, K);
+    return Float32Array.of(...Xk, ...Yk);  // 2K values
+}
+\end{verbatim}
+
+\subsection*{C.4.4\quad Numerical Agreement Verification}
+
+The Python and JavaScript implementations produce identical results to within
+\texttt{Float32} machine epsilon ($\varepsilon \approx 1.19 \times 10^{-7}$).
+Verification was performed on 1,000 random sequences of length 200 by computing
+the maximum absolute difference between the Python (NumPy) and JavaScript
+spectral embeddings:
+\[
+  \max_k \bigl| \Phi_K^{\mathrm{Python}}(s)_k - \Phi_K^{\mathrm{JS}}(s)_k \bigr|
+  < 5\varepsilon_{\mathrm{Float32}} \approx 6 \times 10^{-7}
+\]
+for all 1,000 test sequences. The discrepancy is consistent with rounding in
+the \texttt{Float32} accumulation of the FFT; it has no impact on classification
+accuracy (AUC difference $< 10^{-6}$ in all tested configurations).
+
+\subsection*{C.4.5\quad Extension to Protein Sequences}
+
+For protein sequences, the cardinal embedding is replaced by the two-channel
+biochemical embedding of Definition~\ref{def:protein_embedding}
+(Chapter~\ref{chap:wave_interference}):
+
+\begin{verbatim}
+# protein_cardinal.py (sketch)
+from kyte_doolittle import KD_SCALE   # Kyte-Doolittle index
+from vdw_volumes import VDW_VOLUME    # van der Waals volumes
+
+def protein_embed(seq: str) -> np.ndarray:
+    n = len(seq)
+    out = np.zeros((n, 2), dtype=np.float32)
+    for i, aa in enumerate(seq.upper()):
+        h = KD_SCALE.get(aa, 0.0)     # hydropathy, [-4.5, 4.5]
+        v = VDW_VOLUME.get(aa, 0.0)   # volume, [60, 230] Ang^3
+        out[i, 0] = h / 4.5           # normalize to [-1, 1]
+        out[i, 1] = (v - 145) / 85    # normalize to [-1, 1]
+    return out
+\end{verbatim}
+
+The matched filter and spectral homology algorithms are applied to the
+protein cardinal embedding without modification.

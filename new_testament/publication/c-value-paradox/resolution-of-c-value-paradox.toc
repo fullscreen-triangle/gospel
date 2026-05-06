@@ -1,0 +1,69 @@
+\contentsline {section}{\numberline {1}Introduction}{3}{section.1}%
+\contentsline {subsection}{\numberline {1.1}The C-Value Paradox: Five Decades Without Resolution}{3}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Failed Resolution Attempts}{4}{subsection.1.2}%
+\contentsline {paragraph}{The ``Junk DNA'' Hypothesis.}{4}{section*.2}%
+\contentsline {paragraph}{The Nucleotypic Hypothesis.}{4}{section*.3}%
+\contentsline {paragraph}{The Mutational Equilibrium Hypothesis.}{4}{section*.4}%
+\contentsline {paragraph}{The Regulatory Complexity Hypothesis.}{5}{section*.5}%
+\contentsline {subsection}{\numberline {1.3}Thesis: DNA as Electrostatic Capacitor}{5}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.4}Electromagnetic Field Stabilization Hypothesis}{6}{subsection.1.4}%
+\contentsline {subsection}{\numberline {1.5}Four Independent Lines of Evidence}{6}{subsection.1.5}%
+\contentsline {paragraph}{(i) Geometric Information Encoding (Section~\ref {sec:geometric_organisation}).}{6}{section*.6}%
+\contentsline {paragraph}{(ii) Phase-Locked Oscillator Constraint (Section~\ref {sec:consultation_model}).}{7}{section*.7}%
+\contentsline {paragraph}{(iii) Combinatorial Amplification (Section~\ref {sec:adaptive_immunity}).}{7}{section*.8}%
+\contentsline {paragraph}{(iv) Sequence Variation Irrelevance (Section~\ref {sec:categorical_mimicry}).}{7}{section*.9}%
+\contentsline {subsection}{\numberline {1.6}Implications and Structure}{7}{subsection.1.6}%
+\contentsline {section}{\numberline {2}Geometric Information Organisation in DNA}{8}{section.2}%
+\contentsline {subsection}{\numberline {2.1}The Traditional Informational View}{8}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Cardinal Coordinate Transformation}{9}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Dual-Strand Geometric Analysis}{9}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Oscillatory Coherence in Coordinate Trajectories}{10}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.5}Length Independence of Information Content}{12}{subsection.2.5}%
+\contentsline {subsection}{\numberline {2.6}Charge Distribution and Geometric Organisation}{13}{subsection.2.6}%
+\contentsline {subsection}{\numberline {2.7}Resolution of the C-Value Paradox}{14}{subsection.2.7}%
+\contentsline {section}{\numberline {3}The Rare Consultation Model: DNA as Electrostatic Capacitor}{14}{section.3}%
+\contentsline {subsection}{\numberline {3.1}The Electrostatic Nature of DNA}{16}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Genomic Similarity Despite Selection Pressure}{18}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}The Emergency Manual Hypothesis}{19}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}The Cytoplasmic Constraint on Parentage}{19}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.5}The SNP Paradox}{20}{subsection.3.5}%
+\contentsline {subsection}{\numberline {3.6}Charge Density Conservation and C-Value}{22}{subsection.3.6}%
+\contentsline {subsection}{\numberline {3.7}Implications for the C-Value Paradox}{22}{subsection.3.7}%
+\contentsline {section}{\numberline {4}Categorical Mimicry and Protein Diversity Constraints}{23}{section.4}%
+\contentsline {subsection}{\numberline {4.1}The Protein Oscillator Ensemble}{23}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Phase-Locked Categorical Exploration}{25}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}The Mimicry Argument}{25}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}High-Categorical-Richness Hub Proteins}{26}{subsection.4.4}%
+\contentsline {subsection}{\numberline {4.5}Cancer as Endogenous Mimicry}{27}{subsection.4.5}%
+\contentsline {subsection}{\numberline {4.6}Autoimmune Targets}{29}{subsection.4.6}%
+\contentsline {subsection}{\numberline {4.7}Implications for the C-Value Paradox}{29}{subsection.4.7}%
+\contentsline {section}{\numberline {5}Adaptive Immunity and Combinatorial Amplification}{30}{section.5}%
+\contentsline {subsection}{\numberline {5.1}VDJ Recombination Mechanism}{30}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Junctional Diversity}{30}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}The Amplification Paradox}{32}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.4}The $3^k$ Recursive Hierarchy}{32}{subsection.5.4}%
+\contentsline {subsection}{\numberline {5.5}Categorical Coverage and Receptor Excess}{33}{subsection.5.5}%
+\contentsline {subsection}{\numberline {5.6}MHC as Categorical Filter}{34}{subsection.5.6}%
+\contentsline {subsection}{\numberline {5.7}Implications for C-Value}{34}{subsection.5.7}%
+\contentsline {subsection}{\numberline {5.8}Summary}{36}{subsection.5.8}%
+\contentsline {section}{\numberline {6}Oscillatory Configuration Space and Charge Capacitance}{36}{section.6}%
+\contentsline {subsection}{\numberline {6.1}The Electrostatic Structure of Chromatin}{37}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}The Nuclear Capacitor Model}{37}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}Comparison to Cellular Energy Pools}{39}{subsection.6.3}%
+\contentsline {subsection}{\numberline {6.4}Capacitance Scaling with C-Value}{39}{subsection.6.4}%
+\contentsline {subsection}{\numberline {6.5}Metabolic Environment Predictions}{39}{subsection.6.5}%
+\contentsline {subsection}{\numberline {6.6}The Function of ``Junk DNA''}{41}{subsection.6.6}%
+\contentsline {subsection}{\numberline {6.7}Charge Density Conservation}{41}{subsection.6.7}%
+\contentsline {subsection}{\numberline {6.8}Summary}{43}{subsection.6.8}%
+\contentsline {section}{\numberline {7}Trajectory Diversity and Charge Conservation}{43}{section.7}%
+\contentsline {subsection}{\numberline {7.1}The Charge Conservation Principle}{44}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Sequence Variation at Constant Charge}{44}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.3}Dual-Strand Charge Analysis}{45}{subsection.7.3}%
+\contentsline {subsection}{\numberline {7.4}Validation Predictions}{47}{subsection.7.4}%
+\contentsline {subsection}{\numberline {7.5}The Complete Resolution}{48}{subsection.7.5}%
+\contentsline {subsection}{\numberline {7.6}Illustrative Examples}{50}{subsection.7.6}%
+\contentsline {subsection}{\numberline {7.7}Concluding Statement}{50}{subsection.7.7}%
+\contentsline {section}{\numberline {8}Discussion}{50}{section.8}%
+\contentsline {subsection}{\numberline {8.1}The Cytoplasmic Constraint on Parentage}{51}{subsection.8.1}%
+\contentsline {subsection}{\numberline {8.2}Empirical Validation}{51}{subsection.8.2}%
+\contentsline {section}{\numberline {9}Conclusion}{52}{section.9}%

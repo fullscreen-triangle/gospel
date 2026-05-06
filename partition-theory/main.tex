@@ -1,0 +1,119 @@
+%==============================================================================
+% PARTITION THEORY OF LIFE
+% From Maxwell's Demon to the Computational Genome
+% A Graduate Monograph
+%
+% Kundai Farai Sachikonye
+% Technical University of Munich
+%==============================================================================
+
+\documentclass[12pt, openright, twoside, a4paper]{book}
+\input{preamble}
+
+\begin{document}
+
+%------------------------------------------------------------------------------
+% FRONT MATTER
+%------------------------------------------------------------------------------
+\frontmatter
+
+\include{frontmatter/titlepage}
+\include{frontmatter/foreword}
+\include{frontmatter/abstract}
+\include{frontmatter/acknowledgements}
+
+\tableofcontents
+\listoffigures
+\listoftables
+
+%------------------------------------------------------------------------------
+% MAIN MATTER
+%------------------------------------------------------------------------------
+\mainmatter
+
+%==============================================================================
+\part{Categorical Mechanics}
+\label{part:foundations}
+%==============================================================================
+
+\include{parts/part1_categorical_mechanics/ch01_bounded_phase_space}
+\include{parts/part1_categorical_mechanics/ch02_charge_emergence}
+\include{parts/part1_categorical_mechanics/ch03_partition_depth}
+\include{parts/part1_categorical_mechanics/ch04_sentropy_space}
+
+%==============================================================================
+\part{Resolution of Foundational Paradoxes}
+\label{part:paradoxes}
+%==============================================================================
+
+\include{parts/part2_paradoxes/ch05_maxwells_demon}
+\include{parts/part2_paradoxes/ch06_orgels_paradox}
+\include{parts/part2_paradoxes/ch07_what_is_life}
+\include{parts/part2_paradoxes/ch08_petos_paradox}
+
+%==============================================================================
+\part{Catalysis and Metabolism}
+\label{part:catalysis}
+%==============================================================================
+
+\include{parts/part3_catalysis_metabolism/ch09_enzymes_topology}
+\include{parts/part3_catalysis_metabolism/ch10_metabolic_computer}
+\include{parts/part3_catalysis_metabolism/ch11_charge_current}
+\include{parts/part3_catalysis_metabolism/ch12_charge_trajectories}
+\include{parts/part3_catalysis_metabolism/ch13_hydrogen_bonds}
+
+%==============================================================================
+\part{The Genome from First Principles}
+\label{part:genome}
+%==============================================================================
+
+\include{parts/part4_genome/ch14_cardinal_coordinates}
+\include{parts/part4_genome/ch15_dna_capacitance}
+\include{parts/part4_genome/ch16_cvalue_paradox}
+\include{parts/part4_genome/ch17_ternary_computing}
+
+%==============================================================================
+\part{Oscillatory Genome Networks}
+\label{part:oscillatory}
+%==============================================================================
+
+\include{parts/part5_oscillatory_networks/ch18_metabolic_clock}
+\include{parts/part5_oscillatory_networks/ch19_chromatin_splicing}
+\include{parts/part5_oscillatory_networks/ch20_transcriptional_bursting}
+\include{parts/part5_oscillatory_networks/ch21_nuclear_architecture}
+
+%==============================================================================
+\part{Disease, Immunity, and Therapy}
+\label{part:disease}
+%==============================================================================
+
+\include{parts/part6_disease_therapy/ch22_disease_dysregulation}
+\include{parts/part6_disease_therapy/ch23_categorical_immunology}
+\include{parts/part6_disease_therapy/ch24_viral_mimicry}
+\include{parts/part6_disease_therapy/ch25_pharmacology}
+
+%==============================================================================
+\part{Sequences as Waves}
+\label{part:sequences}
+%==============================================================================
+
+\include{parts/part7_sequences_waves/ch26_shader_spectrometer}
+\include{parts/part7_sequences_waves/ch27_wave_interference}
+\include{parts/part7_sequences_waves/ch28_synthesis}
+
+%------------------------------------------------------------------------------
+% BACK MATTER
+%------------------------------------------------------------------------------
+\backmatter
+
+\appendix
+\include{appendices/appendix_a_math}
+\include{appendices/appendix_b_validation}
+\include{appendices/appendix_c_software}
+
+\bibliographystyle{plainnat}
+\bibliography{bibliography}
+
+\printindex
+
+\end{document}

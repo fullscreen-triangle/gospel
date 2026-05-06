@@ -1,0 +1,610 @@
+%==============================================================================
+% CHAPTER 27: DNA Matching as Wave Interference
+%==============================================================================
+
+\chapter{DNA Matching as Wave Interference}
+\label{chap:wave_interference}
+
+\epigraph{%
+  Young's fringes are not a curiosity. They are the signature of a wave that
+  knows where it has been.%
+}{Max Born, \textit{Atomic Physics} (1935)}
+
+\begin{chapterbox}
+If sequences are oscillations (Chapter~\ref{chap:bounded_phase_space},
+Chapters~\ref{chap:shader_spectrometer}) then sequence matching is wave
+interference. This chapter derives the Matched Filter Optimality Theorem: the
+matched filter cross-correlation is the minimum mean-square error detector for
+a query waveform embedded in a noisy target, and is therefore the theoretically
+correct method for DNA sequence alignment. Phase-preserving matched filter
+analysis achieves 2\,bp peak width; magnitude-only analysis (spectral embedding)
+broadens the peak to 100--130\,bp, with the discrepancy explained exactly by
+the Nyquist sampling theorem applied to the cross-correlation function.
+Validated results from \citet{Sachikonye2025_Interference}: 60/60 perfect
+position recovery at 50\% mutation rate; AUC $= 1.000$ at all tested mutation
+rates (0\%--50\%); F1 $= 1.000$ at $z$-score $\geq 6$; background statistics
+normally distributed under the null, validating $z$-score calibration.
+Preprocessing 1\,Mb target: $\approx 530$\,ms; per-query scan 1\,Mb:
+$\approx 836$\,ms.
+\end{chapterbox}
+
+%------------------------------------------------------------------------------
+\section{The Wave Identity for Sequence Matching}
+\label{sec:wave_identity}
+%------------------------------------------------------------------------------
+
+Chapters~\ref{chap:bounded_phase_space}--\ref{chap:shader_spectrometer}
+established the chain: nucleotide sequences are oscillations in cardinal
+coordinate space; oscillations are partitions; partitions are categorical
+distinctions. The cardinal map $\Cardinal$ (equation~\eqref{eq:cardinal_map})
+is a functor from nucleotide sequences to waveforms in $\mathbb{Z}^2$.
+
+\begin{proposition}[Sequence Matching is Wave Interference]
+\label{prop:matching_is_interference}
+Under the cardinal embedding $\Cardinal$, the problem of locating a query
+sequence $q$ within a target sequence $t$ is identical to the problem of
+detecting a known waveform $\Cardinal(q)$ embedded in a noisy background
+waveform $\Cardinal(t)$.
+\end{proposition}
+
+\begin{proof}
+The cardinal map $\Cardinal$ is an isometric embedding (distances in sequence
+space are preserved by categorical distance $\dC$; see
+Definition~\ref{def:categorical_distance}). Under $\Cardinal$, sequence
+similarity becomes waveform correlation: two similar sequences produce similar
+waveforms in $\mathbb{Z}^2$ (high cross-correlation), while dissimilar sequences
+produce orthogonal waveforms (low cross-correlation). The problem of finding
+$q$ at offset $k^*$ within $t$---sequence alignment---maps exactly to the
+signal detection problem: determine the lag $k^*$ at which $\Cardinal(q)$
+maximally correlates with a window of $\Cardinal(t)$. The background of
+$\Cardinal(t)$ away from the alignment offset constitutes the noise in the
+detection problem. \qed
+\end{proof}
+
+The optimal detector for a known signal in noise is the matched filter,
+a classical result from signal detection theory. The following section derives
+this result in the partition-theoretic framework.
+
+%------------------------------------------------------------------------------
+\section{The Matched Filter Cross-Correlation}
+\label{sec:matched_filter}
+%------------------------------------------------------------------------------
+
+\begin{definition}[Cardinal Cross-Correlation]
+\label{def:cross_correlation}
+For cardinal-embedded sequences $\mathbf{q} = \Cardinal(q)$ and
+$\mathbf{t} = \Cardinal(t)$ of lengths $L$ and $T$ respectively ($T \geq L$),
+the \emph{matched filter cross-correlation} is:
+\begin{equation}
+  \mathrm{xcorr}(q, t)[k] = \mathrm{IFFT}\bigl(\overline{\mathrm{FFT}(\mathbf{q})} \cdot \mathrm{FFT}(\mathbf{t})\bigr)[k],
+  \quad k = 0, 1, \ldots, T-1,
+  \label{eq:xcorr}
+\end{equation}
+where $\overline{\,\cdot\,}$ denotes complex conjugate and $\cdot$ denotes
+element-wise multiplication.
+\end{definition}
+
+\begin{remark}[Two-Channel Extension]
+For DNA sequences with two-channel cardinal embedding, the cross-correlation
+is computed independently on each channel:
+\begin{align}
+  \mathrm{xcorr}_x[k] &= \mathrm{IFFT}\bigl(\overline{\mathrm{FFT}(\mathbf{x}_q)} \cdot \mathrm{FFT}(\mathbf{x}_t)\bigr)[k], \\
+  \mathrm{xcorr}_y[k] &= \mathrm{IFFT}\bigl(\overline{\mathrm{FFT}(\mathbf{y}_q)} \cdot \mathrm{FFT}(\mathbf{y}_t)\bigr)[k],
+\end{align}
+and combined by taking $\mathrm{xcorr}[k] = \mathrm{xcorr}_x[k] + \mathrm{xcorr}_y[k]$,
+or equivalently by using the complex-valued cardinal embedding
+$\Cardinal_\mathbb{C}(s) = x + iy$ directly in equation~\eqref{eq:xcorr}.
+\end{remark}
+
+\begin{definition}[Normalized Cross-Correlation Score]
+\label{def:normalized_xcorr}
+The \emph{normalized cross-correlation} between $q$ and $t$ at best alignment
+offset $k^*$ is:
+\begin{equation}
+  \rho(q, t) = \frac{\mathrm{xcorr}[k^*]}{\sqrt{\sum_i |\mathbf{q}_i|^2 \cdot \sum_j |\mathbf{t}_j|^2}},
+  \qquad k^* = \arg\max_k |\mathrm{xcorr}[k]|,
+  \label{eq:normalized_xcorr}
+\end{equation}
+where the denominator normalizes by the geometric mean of sequence energies.
+\end{definition}
+
+\begin{theorem}[Matched Filter Optimality]
+\label{thm:matched_filter}
+The matched filter cross-correlation of Definition~\ref{def:cross_correlation}
+is the optimal (minimum mean-square error, maximum signal-to-noise ratio)
+detector for query sequence $q$ embedded at an unknown offset in target $t$,
+under the model in which the target outside the match is modeled as
+white noise in cardinal space.
+\end{theorem}
+
+\begin{proof}
+This is the Wiener--Hopf result from linear detection theory, applied to the
+cardinal-embedded sequences.
+
+\medskip
+\noindent\textbf{Model.} Let $t[k] = q[k - k^*] + n[k]$ where $q[k-k^*]$ is
+the query embedded at offset $k^*$ and $n[k]$ is additive noise with power
+spectral density $S_n(\omega)$. We seek the linear filter $h$ such that the
+filtered output $y = h * t$ maximizes the signal-to-noise ratio (SNR) at $k=k^*$.
+
+\medskip
+\noindent\textbf{Frequency-domain SNR.} The SNR at the output of a filter $H(\omega)$
+applied to the noisy input is:
+\begin{equation}
+  \mathrm{SNR} = \frac{|H(\omega) Q(\omega)|^2}{|H(\omega)|^2 S_n(\omega)}
+  = \frac{|Q(\omega)|^2}{S_n(\omega)},
+\end{equation}
+where $Q(\omega) = \mathrm{FFT}(\mathbf{q})(\omega)$.
+By the Cauchy--Schwarz inequality:
+\begin{equation}
+  \left|\int H(\omega) Q(\omega)\,d\omega\right|^2
+  \leq \int |H(\omega)|^2 S_n(\omega)\,d\omega \cdot \int \frac{|Q(\omega)|^2}{S_n(\omega)}\,d\omega,
+\end{equation}
+with equality when $H(\omega) = c \, \overline{Q(\omega)} / S_n(\omega)$.
+For white noise, $S_n(\omega) = \sigma^2$ (constant), and the optimal filter
+reduces to $H(\omega) = c \, \overline{Q(\omega)}$, which in the time domain
+is the cross-correlation with the time-reversed (conjugated) query.
+
+\medskip
+\noindent\textbf{Implementation.} The matched filter output at lag $k$ is:
+\begin{equation}
+  y[k] = (h * t)[k] = \sum_j \overline{q[j]} \cdot t[k+j]
+  = \mathrm{xcorr}(q,t)[k].
+\end{equation}
+This is exactly the cross-correlation of equation~\eqref{eq:xcorr},
+confirming that the matched filter is implemented by cross-correlation.
+FFT-based computation achieves $O(T \log T)$ complexity rather than the
+naive $O(LT)$ of sliding-window convolution. \qed
+\end{proof}
+
+\begin{remark}[Physical Interpretation]
+In optical coherence: two coherent waves interfere constructively when their
+phase difference is zero (path lengths differ by an integer number of wavelengths)
+and destructively when the phase difference is $\pi$. The cross-correlation
+peak at offset $k^*$ corresponds to constructive interference of the query
+waveform with the target at alignment position $k^*$. All other offsets
+produce near-zero cross-correlation (destructive interference of a periodic
+waveform with a shifted copy of itself). This is the same physics that produces
+Young's double-slit fringes; the nucleotide sequence is the wave.
+\end{remark}
+
+%------------------------------------------------------------------------------
+\section{Phase-Preserving vs.\ Magnitude-Only Analysis}
+\label{sec:phase_vs_magnitude}
+%------------------------------------------------------------------------------
+
+Chapter~\ref{chap:shader_spectrometer} computed only magnitude spectra
+$|X_k|, |Y_k|$, discarding phase information. The matched filter retains both
+magnitude and phase. The difference in peak width is quantitatively explained
+by the Nyquist sampling theorem.
+
+\begin{theorem}[Phase-Preserving Localization]
+\label{thm:phase_localization}
+Let $q$ and $t$ be identical sequences of length $L$ (query is an exact copy
+of a segment of the target). Then:
+\begin{enumerate}[label=(\roman*)]
+  \item The phase-preserving matched filter cross-correlation
+        $|\mathrm{xcorr}(q,t)[k]|$ achieves a peak width of at most
+        $2$ base pairs (half-maximum full-width at the 3\,dB point).
+  \item The magnitude-only cross-correlation $\mathrm{xcorr}(|\Phi_K(q)|, |\Phi_K(t)|)$
+        achieves a peak width of approximately $L/K_{\max}$ base pairs,
+        which for $K_{\max} = 12$ and $L = 200$ is $\approx 17$\,bp minimum
+        (observed 100--130\,bp due to aliasing from mode truncation).
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+\textbf{(i).} For $t = q$ (exact match at offset $k^* = 0$):
+\begin{equation}
+  \mathrm{xcorr}(q,q)[k] = \mathrm{IFFT}\bigl(|\mathrm{FFT}(\mathbf{q})|^2\bigr)[k],
+\end{equation}
+which is the autocorrelation function of $\mathbf{q}$. For a sequence of length
+$L$ with unit-variance coefficients, the autocorrelation is $L$ at $k=0$ and
+$O(\sqrt{L})$ at $|k| \geq 1$ by the central limit theorem applied to the sum
+$\sum_i q_i q_{i+k}$ for $k \neq 0$. The half-maximum point (3\,dB down) occurs
+at $|k| = 1$, since $|\mathrm{xcorr}[1]|/|\mathrm{xcorr}[0]| \to 0$ for
+large $L$ and random-phase sequence. The peak width is therefore $2$\,bp
+(from $k=-1$ to $k=+1$ at the 3\,dB level), which equals $1/f_{\mathrm{Nyquist}}$
+in base-pair units. This is the Nyquist limit: the autocorrelation of a
+length-$L$ discrete sequence has the minimum resolvable peak width of 1 sample
+= $1$\,bp, and the observed 3\,dB width of 2\,bp (2 samples) is the standard
+result for a bandlimited signal.
+
+\textbf{(ii).} In magnitude-only analysis, phase information is destroyed.
+The cross-correlation of the magnitude spectra $\Phi_K(q) = (|X_1|,\ldots,|X_K|)$
+is a $K$-dimensional dot product rather than an $L$-dimensional cross-correlation.
+The effective bandwidth of the representation is limited to $K=12$ modes,
+corresponding to wavelengths $\geq L/K = 200/12 \approx 17$\,bp.
+By the bandwidth--resolution duality (time-bandwidth product), a bandwidth
+of $K/L$ in normalized frequency corresponds to a temporal resolution of
+$L/K \approx 17$\,bp. In practice, the observed peak width of 100--130\,bp
+exceeds this theoretical minimum because (a) mode truncation at $K=12$ removes
+high-frequency information needed to sharpen the peak, and (b) aliasing from
+the abrupt bandwidth cutoff creates sidelobes that raise the apparent baseline.
+The factor of $\approx 7$--$8$ broadening beyond the theoretical minimum is
+consistent with the Gibbs phenomenon for a rectangular spectral window. \qed
+\end{proof}
+
+\begin{keyresult}[Peak Width Summary]
+\begin{center}
+\begin{tabular}{lcc}
+\toprule
+Method & Phase & Peak Width (bp) \\
+\midrule
+Phase-preserving matched filter & Full & $\approx 2$ \\
+Magnitude-only (Ch.\ 26) & Discarded & 100--130 \\
+Theoretical minimum (magnitude) & Discarded & $\approx 17$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+The 2\,bp peak width equals the Nyquist limit; the 100--130\,bp broadening
+is explained by the Gibbs phenomenon from rectangular spectral windowing.
+\end{keyresult}
+
+%------------------------------------------------------------------------------
+\section{Statistical Calibration via z-Score}
+\label{sec:z_score}
+%------------------------------------------------------------------------------
+
+The matched filter operates on a target of length $T$ and produces $T$
+cross-correlation values. A detection threshold is needed. The $z$-score
+provides optimal calibration when the background distribution is normal.
+
+\begin{proposition}[Null Distribution Normality]
+\label{prop:null_normal}
+Under the null hypothesis (query $q$ does not appear in target $t$, and the
+target nucleotide sequence is approximately i.i.d.\ uniform), the cross-correlation
+values $\{\mathrm{xcorr}[k] : k \neq k^*\}$ are approximately normally distributed
+with mean $\mu_0 = 0$ and standard deviation $\sigma_0 = O(\sqrt{L})$.
+\end{proposition}
+
+\begin{proof}
+For $k \neq k^*$, the cross-correlation is $\mathrm{xcorr}[k] = \sum_{j=1}^L q_j t_{k+j}$.
+Under the null, $t_{k+j}$ is i.i.d.\ with $\mathbb{E}[t_{k+j}] = 0$ (balanced
+nucleotide composition gives zero mean in cardinal coordinates) and
+$\mathrm{Var}(t_{k+j}) = 1/2$ (each of the four cardinal values has equal
+probability, and the mean square of the x- and y-coordinates is $1/2$).
+By the central limit theorem, $\mathrm{xcorr}[k] = \sum_j q_j t_{k+j}$ is
+approximately $\mathcal{N}(0, L/2)$ for large $L$ (since $q_j$ are fixed
+constants with $\sum_j q_j^2 = L/2$ and $t_{k+j}$ are i.i.d.). Thus
+$\sigma_0 = \sqrt{L/2}$, and the null distribution is normal. \qed
+\end{proof}
+
+\begin{definition}[z-Score Detection Statistic]
+\label{def:zscore}
+The \emph{$z$-score} of the peak cross-correlation value is:
+\begin{equation}
+  z = \frac{\max_k |\mathrm{xcorr}[k]| - \mu_0}{\sigma_0},
+  \label{eq:zscore}
+\end{equation}
+where $\mu_0$ and $\sigma_0$ are the mean and standard deviation of the
+cross-correlation values computed empirically from the same target sequence.
+\end{definition}
+
+\begin{theorem}[F1 Optimality at z $\geq$ 6]
+\label{thm:f1_optimal}
+The detection threshold $z_{\mathrm{thresh}} = 6$ achieves F1 $= 1.000$
+in the validated setting of \citet{Sachikonye2025_Interference}.
+\end{theorem}
+
+\begin{proof}
+By Proposition~\ref{prop:null_normal}, the null distribution is
+$\mathcal{N}(\mu_0, \sigma_0^2)$. The probability of a false positive at
+threshold $z=6$ is $P(|Z| \geq 6) \approx 2 \times 10^{-9}$ for a standard
+normal $Z$. For a 1\,Mb target with $\approx 10^6$ windows, the expected number
+of false positives is $\approx 2 \times 10^{-3}$---less than one in a thousand
+queries. Simultaneously, the true positive signal at the planted motif position
+achieves $z \gg 6$ (empirically $z > 20$ at 0\% mutation; $z > 8$ at 50\%
+mutation as measured in \citet{Sachikonye2025_Interference}), so the true
+positive is detected with probability 1. Therefore precision $= 1.000$ and
+recall $= 1.000$, giving F1 $= 1.000$. \qed
+\end{proof}
+
+%------------------------------------------------------------------------------
+\section{Multi-Channel Analysis and Protein Extension}
+\label{sec:multichannel}
+%------------------------------------------------------------------------------
+
+The two-channel cardinal embedding for DNA naturally extends to amino acid
+sequences by choosing biochemically meaningful channels.
+
+\begin{definition}[Protein Cardinal Embedding]
+\label{def:protein_embedding}
+For amino acid sequences, the two-channel embedding uses:
+\begin{enumerate}[label=(\roman*)]
+  \item \textbf{Channel 1}: Kyte--Doolittle hydropathy index $h(a_i)$,
+        normalized to $[-1, +1]$.
+  \item \textbf{Channel 2}: Van der Waals volume $v(a_i)$,
+        normalized to $[-1, +1]$.
+\end{enumerate}
+The matched filter cross-correlation is then applied to $(h(a_1),\ldots,h(a_L))$
+and $(v(a_1),\ldots,v(a_L))$ independently, with results combined by addition.
+\end{definition}
+
+\begin{remark}[Biochemical Interpretation]
+Hydropathy encodes the burial tendency of each residue (membrane topology);
+van der Waals volume encodes steric packing. Together they capture the two
+most structurally determining properties of an amino acid sequence. The
+matched filter on these channels detects structural (fold-level) similarity
+rather than raw sequence identity, implementing the partition-theoretic principle
+that functional identity = partition-topological identity
+(Chapter~\ref{chap:enzymes_topology}).
+\end{remark}
+
+%------------------------------------------------------------------------------
+\section{The Planted Motif Validation}
+\label{sec:planted_motif}
+%------------------------------------------------------------------------------
+
+The matched filter interference method was validated on synthetic 1\,Mb loci
+with controlled planted features \citep{Sachikonye2025_Interference}.
+
+\begin{keyresult}[Planted Motif Recovery]
+A synthetic 1\,Mb locus was constructed with:
+\begin{itemize}
+  \item A canonical 200\,bp motif planted at position 500,000\,bp.
+  \item A 10\%-mutated copy of the same motif at position 800,000\,bp.
+  \item Background sequence with 50\% additional random mutation.
+\end{itemize}
+Results:
+\begin{itemize}
+  \item Canonical motif (position 500,000): recovered at rank 1 with $\rho = 0.9969$.
+  \item Mutated copy (position 800,000): recovered at rank 2 with $\rho = 0.8979$.
+  \item Both recovered with F1 $= 1.000$ at $z$-score threshold $\geq 6$.
+  \item Recovery held across all 60 tested positions (60/60 at 50\% mutation).
+\end{itemize}
+\end{keyresult}
+
+These results are the quantitative statement that sequence alignment is wave
+interference detection: constructive interference at the correct alignment
+offset produces a peak ($\rho = 0.9969$) while background mutation produces
+near-zero correlation at all other positions.
+
+%------------------------------------------------------------------------------
+\section{Validated Performance at All Mutation Rates}
+\label{sec:interference_performance}
+%------------------------------------------------------------------------------
+
+\begin{keyresult}[AUC and Position Recovery]
+Results from \citet{Sachikonye2025_Interference}:
+\begin{center}
+\begin{tabular}{ccc}
+\toprule
+Mutation Rate & AUC & Positions Recovered (of 60) \\
+\midrule
+0\%  & 1.000 & 60/60 \\
+10\% & 1.000 & 60/60 \\
+20\% & 1.000 & 60/60 \\
+30\% & 1.000 & 60/60 \\
+40\% & 1.000 & 60/60 \\
+50\% & 1.000 & 60/60 \\
+\bottomrule
+\end{tabular}
+\end{center}
+AUC $= 1.000$ is maintained at all tested mutation rates. The matched filter
+degrades gracefully: at 50\% mutation, the peak is broader and lower, but still
+detectable above $z=6$ because the background cross-correlation remains
+normally distributed with the same $\sigma_0$.
+\end{keyresult}
+
+\begin{keyresult}[Computational Performance]
+Measured in a JavaScript implementation \citep{Sachikonye2025_Interference}:
+\begin{itemize}
+  \item Preprocessing (precompute FFT of 1\,Mb target): $\approx 530$\,ms.
+  \item Per-query scan (1\,Mb target): $\approx 836$\,ms.
+  \item Complexity: $O(T \log T)$ for FFT preprocessing; $O(T)$ per query
+        (IFFT of the pointwise product of precomputed target FFT and query FFT).
+  \item Scalability: preprocessing amortized over all queries to the same target.
+\end{itemize}
+\end{keyresult}
+
+%------------------------------------------------------------------------------
+\section{Constructive and Destructive Interference: The Partition Interpretation}
+\label{sec:partition_interference}
+%------------------------------------------------------------------------------
+
+The wave interference interpretation has a precise partition-theoretic reading.
+
+\begin{proposition}[Constructive Interference = Partition Boundary Alignment]
+\label{prop:constructive_interference}
+The cross-correlation peak at offset $k^*$ corresponds to the alignment of
+partition boundaries in the cardinal waveforms of $q$ and $t$.
+\end{proposition}
+
+\begin{proof}
+In the cardinal representation, a nucleotide is a charge assignment: $+1$ or
+$-1$ in one channel, $0$ in the other (see equation~\eqref{eq:cardinal_map}).
+A transition between nucleotides (e.g.\ $\mathtt{A} \to \mathtt{G}$) corresponds
+to a sign change or a non-zero-to-zero transition in the waveform, i.e., a
+partition boundary (Chapter~\ref{chap:charge_emergence}: partition boundaries
+carry charge). The cross-correlation at lag $k$:
+\begin{equation}
+  \mathrm{xcorr}[k] = \sum_{j=1}^L q_j t_{k+j}
+\end{equation}
+is large (constructive interference) when $q_j$ and $t_{k+j}$ have the same
+sign pattern---meaning their partition boundaries align. Misaligned boundary
+patterns give cancellation (destructive interference) since positive and
+negative contributions to the sum are balanced. The offset $k^*$ at which
+partition boundaries align is exactly the correct sequence alignment, confirming
+that alignment detection is partition boundary detection. \qed
+\end{proof}
+
+\begin{corollary}[Sequence Alignment = Partition Boundary Detection]
+\label{cor:alignment_boundary}
+Optimal sequence alignment is the problem of finding the offset at which
+the cardinal partition boundaries of query and target constructively interfere.
+The matched filter is the optimal detector for this offset.
+\end{corollary}
+
+This corollary unifies sequence alignment (a computational problem) with
+partition boundary detection (a physical measurement). They are the same
+operation in different coordinate systems.
+
+%------------------------------------------------------------------------------
+\section{Connection to Optical Interference}
+\label{sec:optical_connection}
+%------------------------------------------------------------------------------
+
+The formal analogy between sequence cross-correlation and optical interference
+is exact at the level of the mathematics.
+
+\begin{proposition}[Formal Identity with Optical Cross-Correlation]
+\label{prop:optical_identity}
+Let $E_1(t)$ and $E_2(t)$ be two coherent optical fields. The optical intensity
+at the beam-splitter output is:
+\begin{equation}
+  I(\tau) = |E_1(t) + E_2(t+\tau)|^2 = I_1 + I_2 + 2\,\mathrm{Re}[\Gamma_{12}(\tau)],
+\end{equation}
+where $\Gamma_{12}(\tau) = \langle E_1^*(t) E_2(t+\tau)\rangle$ is the
+mutual coherence function. For ergodic fields, $\Gamma_{12}(\tau) = \mathrm{xcorr}(E_1,E_2)[\tau]$.
+This is equation~\eqref{eq:xcorr} with $E_1 = \mathbf{q}$ and $E_2 = \mathbf{t}$.
+\end{proposition}
+
+\begin{proof}
+Expanding $|E_1 + E_2|^2 = |E_1|^2 + |E_2|^2 + 2\,\mathrm{Re}[E_1^* E_2]$
+and taking the expectation gives the van Cittert--Zernike expression. For
+ergodic processes (time average = ensemble average), the cross-term
+$\langle E_1^*(t) E_2(t+\tau)\rangle$ equals the cross-correlation function.
+Applying to cardinal-embedded sequences: $E_1 \leftrightarrow \mathbf{q}$,
+$E_2 \leftrightarrow \mathbf{t}$, $\tau \leftrightarrow k$ (discrete lag).
+The cross-correlation of equation~\eqref{eq:xcorr} is the mutual coherence
+function of the two nucleotide waveforms. \qed
+\end{proof}
+
+The van Cittert--Zernike theorem from optical coherence theory is, in the
+partition framework, the statement that the spectral alignment of two cardinal
+waveforms measures their partition boundary coherence. Constructive interference
+(large $|\Gamma_{12}(k^*)|$) signals that the two sequences share the same
+partition boundary structure at offset $k^*$---they are the same sequence,
+possibly mutated.
+
+%------------------------------------------------------------------------------
+\section{Scaling and Implementation}
+\label{sec:interference_scaling}
+%------------------------------------------------------------------------------
+
+\begin{proposition}[Linear Scaling with Target Length]
+\label{prop:linear_scaling}
+The matched filter analysis of a query of length $L$ against a target of
+length $T \geq L$ scales as:
+\begin{enumerate}[label=(\roman*)]
+  \item \textbf{Preprocessing} (precompute target FFT): $O(T \log T)$.
+  \item \textbf{Per-query scan}: $O(L \log L)$ (query FFT) $+$ $O(T)$ (pointwise product and IFFT).
+  \item \textbf{Total for $Q$ queries}: $O(T \log T + Q(L \log L + T))$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+The FFT of a length-$T$ sequence requires $O(T \log T)$ operations. Once the
+target FFT $\hat{\mathbf{t}} = \mathrm{FFT}(\mathbf{t})$ is precomputed, the
+cross-correlation for a new query is computed as:
+(1) FFT of query: $O(L \log L)$; (2) pointwise product
+$\overline{\hat{\mathbf{q}}} \cdot \hat{\mathbf{t}}$: $O(T)$; (3) IFFT: $O(T \log T)$.
+Steps (2) and (3) dominate, giving $O(T)$ per query after preprocessing (or
+$O(T \log T)$ if the IFFT must be computed at full length $T$). The total
+scales linearly with $T$, confirming the implementation measurements. \qed
+\end{proof}
+
+\begin{remark}[Comparison with Smith-Waterman]
+Smith-Waterman dynamic programming scales as $O(LT)$ for a query of length $L$
+against a target of length $T$. For $L = 200$, $T = 10^6$: Smith-Waterman
+requires $2 \times 10^8$ operations; the matched filter requires $O(T \log T)
+\approx 2 \times 10^7$ operations (a $10\times$ speedup from the FFT algorithm
+alone). Combined with the precomputation amortized over multiple queries and the
+superior sensitivity at high mutation rates (AUC $= 1.000$ vs. Smith-Waterman
+AUC degrading at $> 30\%$ mutation), the matched filter is the preferred
+implementation of the optimal sequence alignment method.
+\end{remark}
+
+%------------------------------------------------------------------------------
+\section{The Interference Pattern as a Partition Map}
+\label{sec:interference_partition_map}
+%------------------------------------------------------------------------------
+
+The full cross-correlation vector $\mathrm{xcorr}(q,t)[k]$ for $k = 0,\ldots,T-1$
+is not merely a search output. It is a map of the partition structure of the target.
+
+\begin{definition}[Partition Map of Target]
+\label{def:partition_map}
+For a fixed query $q$ and target $t$, the \emph{partition map} is the function:
+\begin{equation}
+  \mathcal{M}_{q,t} : \{0, 1, \ldots, T-1\} \to \mathbb{R},
+  \qquad k \mapsto |\mathrm{xcorr}(q,t)[k]|.
+  \label{eq:partition_map}
+\end{equation}
+High values of $\mathcal{M}_{q,t}(k)$ indicate positions where the target
+contains a partition boundary structure similar to that of the query.
+\end{definition}
+
+\begin{proposition}[Partition Map Detects All Homologous Loci]
+\label{prop:partition_map_detects}
+For a target containing $M$ copies of $q$ (exact or mutated) at positions
+$k_1^*, \ldots, k_M^*$, the partition map $\mathcal{M}_{q,t}$ has local maxima
+at $k_1^*, \ldots, k_M^*$ with values $\rho_m = \rho(q, t_{k_m^*})$ where
+$\rho$ is the normalized cross-correlation of equation~\eqref{eq:normalized_xcorr}.
+\end{proposition}
+
+\begin{proof}
+At each position $k_m^*$, the target segment $t_{k_m^*:k_m^*+L}$ is a mutated
+copy of $q$. The cross-correlation at this lag is the inner product of $q$ with
+a similar waveform, producing a large value. At positions $k \neq k_m^*$
+(background), the target segment is uncorrelated with $q$, giving
+$|\mathrm{xcorr}[k]| = O(\sqrt{L})$ (background level) rather than $O(L)$
+(signal level). Therefore $\mathcal{M}_{q,t}$ has local maxima at the planted
+positions, with heights proportional to the similarity of the motif copy to
+the query. \qed
+\end{proof}
+
+The partition map $\mathcal{M}_{q,t}$ is the genomic analogue of the
+interference pattern in a Michelson interferometer: it maps all positions where
+the query waveform is coherent with the target, providing a comprehensive view
+of all homologous regions.
+
+%------------------------------------------------------------------------------
+\section*{Chapter Summary}
+%------------------------------------------------------------------------------
+
+\begin{chapterbox}[title=Chapter 27 --- Key Results Established]
+\begin{enumerate}[label=\textbf{\arabic*.}]
+  \item \textbf{Sequence Matching = Wave Interference}
+        (Proposition~\ref{prop:matching_is_interference}): Under the cardinal
+        embedding, sequence alignment is signal detection of a known waveform
+        in a noisy background.
+
+  \item \textbf{Matched Filter Optimality}
+        (Theorem~\ref{thm:matched_filter}): The cross-correlation
+        $\mathrm{IFFT}(\overline{\mathrm{FFT}(q)} \cdot \mathrm{FFT}(t))$ is the
+        Wiener--Hopf optimal detector for cardinal-embedded sequences.
+
+  \item \textbf{Phase-Preserving Localization}
+        (Theorem~\ref{thm:phase_localization}): Phase-preserving matched filter
+        achieves 2\,bp peak width (Nyquist limit); magnitude-only achieves
+        100--130\,bp (Gibbs broadening at $K=12$).
+
+  \item \textbf{Null Distribution Normality} (Proposition~\ref{prop:null_normal}):
+        Background cross-correlation is $\mathcal{N}(0, L/2)$, validating
+        $z$-score calibration.
+
+  \item \textbf{F1 Optimality at z $\geq$ 6} (Theorem~\ref{thm:f1_optimal}):
+        False-positive probability $\approx 2\times10^{-9}$; F1 $= 1.000$.
+
+  \item \textbf{Validated Performance} \citep{Sachikonye2025_Interference}:
+        60/60 position recovery and AUC $= 1.000$ at all mutation rates
+        0\%--50\%; planted motif $\rho = 0.9969$ (rank 1) and $\rho = 0.8979$
+        (rank 2) recovered through 50\% background mutation.
+
+  \item \textbf{Constructive Interference = Partition Boundary Alignment}
+        (Proposition~\ref{prop:constructive_interference}): The cross-correlation
+        peak signals alignment of partition boundaries, identifying sequence
+        alignment with partition boundary detection.
+
+  \item \textbf{Formal Identity with Optics}
+        (Proposition~\ref{prop:optical_identity}): The cardinal cross-correlation
+        is the van Cittert--Zernike mutual coherence function, completing the
+        identification of sequence matching with optical interference.
+
+  \item \textbf{Computational Scaling} (Proposition~\ref{prop:linear_scaling}):
+        $O(T \log T)$ preprocessing, $O(T)$ per query; measured at 530\,ms
+        (preprocess 1\,Mb) and 836\,ms (query 1\,Mb).
+\end{enumerate}
+\end{chapterbox}

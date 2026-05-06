@@ -1,0 +1,204 @@
+%==============================================================================
+% PREAMBLE — Partition Theory of Life
+%==============================================================================
+
+%--- Typography and encoding ---------------------------------------------------
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[expansion=false, final]{microtype}
+
+%--- Page geometry -------------------------------------------------------------
+\usepackage[
+    a4paper,
+    top=25mm, bottom=30mm,
+    inner=30mm, outer=20mm,
+    headsep=10mm, footskip=15mm,
+    marginparwidth=18mm
+]{geometry}
+
+%--- Mathematics ---------------------------------------------------------------
+\usepackage{amsmath, amssymb, amsfonts, amsthm}
+\usepackage{mathtools}
+\usepackage{bm}
+\usepackage{physics}
+\usepackage{siunitx}
+\usepackage{tensor}
+
+%--- Graphics and tables -------------------------------------------------------
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage[font=small, labelfont=bf]{caption}
+\usepackage{subcaption}
+\usepackage{xcolor}
+\definecolor{theoryblue}{RGB}{0,70,127}
+\definecolor{proofgray}{RGB}{80,80,80}
+
+%--- Diagrams ------------------------------------------------------------------
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{arrows.meta, positioning, calc, decorations.pathreplacing,
+                shapes.geometric, fit, backgrounds, matrix}
+
+%--- Chemistry -----------------------------------------------------------------
+\usepackage[version=4]{mhchem}
+
+%--- Algorithms ----------------------------------------------------------------
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+%--- Lists ---------------------------------------------------------------------
+\usepackage{enumitem}
+\setlist[enumerate]{itemsep=2pt, parsep=2pt}
+\setlist[itemize]{itemsep=2pt, parsep=2pt}
+
+%--- Headers and footers -------------------------------------------------------
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE]{\small\leftmark}
+\fancyhead[RO]{\small\rightmark}
+\fancyfoot[C]{\small\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+%--- Cross-references ----------------------------------------------------------
+\usepackage[numbers, sort&compress]{natbib}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\hypersetup{
+    colorlinks  = true,
+    linkcolor   = theoryblue,
+    citecolor   = theoryblue,
+    urlcolor    = theoryblue,
+    pdftitle    = {De Onere Electrico in Systematibus Biologicis},
+    pdfauthor   = {Kundai Farai Sachikonye},
+    pdfsubject  = {On the Electric Burden in Biological Systems},
+    pdfkeywords = {partition theory, categorical mechanics, bounded phase space,
+                   thermodynamics, genomics, catalysis, life, charge}
+}
+
+%--- Index ---------------------------------------------------------------------
+\usepackage{makeidx}
+\makeindex
+
+%--- Epigraphs -----------------------------------------------------------------
+\usepackage{epigraph}
+\setlength{\epigraphwidth}{0.62\textwidth}
+\renewcommand{\epigraphflush}{center}
+
+%--- Chapter style -------------------------------------------------------------
+\usepackage{titlesec}
+\titleformat{\chapter}[display]
+  {\normalfont\huge\bfseries\color{theoryblue}}
+  {\chaptertitlename\ \thechapter}
+  {16pt}
+  {\Huge}
+\titlespacing{\chapter}{0pt}{-20pt}{40pt}
+
+%--- Part style ----------------------------------------------------------------
+\titleformat{\part}[display]
+  {\normalfont\Huge\bfseries\centering\color{theoryblue}}
+  {Part \thepart}
+  {16pt}
+  {\Huge}
+
+%==============================================================================
+% THEOREM ENVIRONMENTS
+%==============================================================================
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{axiom}{Axiom}[chapter]
+\newtheorem{example}[theorem]{Example}
+\newtheorem{principle}[theorem]{Principle}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{note}[theorem]{Note}
+
+%--- Proof style ---------------------------------------------------------------
+\renewcommand{\qedsymbol}{$\blacksquare$}
+
+%==============================================================================
+% CUSTOM COMMANDS — framework notation
+%==============================================================================
+
+% Core quantities
+\newcommand{\kB}{k_{\mathrm{B}}}
+\newcommand{\Depth}{\mathcal{M}}          % partition depth
+\newcommand{\Part}{\mathcal{P}}           % partition
+\newcommand{\Cat}{\mathcal{C}}            % categorical space
+\newcommand{\Osc}{\mathcal{O}}            % oscillation
+
+% S-entropy space
+\newcommand{\Sspace}{\mathcal{S}}
+\newcommand{\Scoord}{\mathbf{S}}
+\newcommand{\Sk}{S_k}                     % knowledge entropy
+\newcommand{\St}{S_t}                     % temporal entropy
+\newcommand{\Se}{S_e}                     % evolution entropy
+
+% Ternary computing
+\newcommand{\trit}{\mathsf{t}}
+\newcommand{\tryte}{\mathsf{T}}
+
+% Biological quantities
+\newcommand{\kcat}{k_{\mathrm{cat}}}
+\newcommand{\Km}{K_{\mathrm{M}}}
+\newcommand{\dC}{d_{\mathrm{C}}}          % categorical distance
+\newcommand{\Eexist}{E_{\mathrm{exist}}}  % existence cost
+\newcommand{\Mfree}{\Depth_{\mathrm{free}}}
+\newcommand{\Mbound}{\Depth_{\mathrm{bound}}}
+\newcommand{\Rich}{\mathcal{R}}           % categorical richness
+
+% Genomics
+\newcommand{\Cardinal}{\varphi}           % cardinal map
+\newcommand{\Cval}{C_{\mathrm{val}}}      % C-value
+
+% Phase-lock
+\newcommand{\phaselockgraph}{\mathcal{G}}
+
+% Van der Waals
+\newcommand{\vdW}{\text{vdW}}
+
+% Shorthand
+\newcommand{\ie}{\textit{i.e.}\xspace}
+\newcommand{\eg}{\textit{e.g.}\xspace}
+\newcommand{\cf}{\textit{cf.}\xspace}
+\newcommand{\etc}{\textit{etc.}\xspace}
+
+%--- Chapter summary box -------------------------------------------------------
+\usepackage{tcolorbox}
+\tcbuselibrary{breakable, skins}
+
+\newtcolorbox{chapterbox}[1][]{
+    breakable,
+    enhanced,
+    colback=theoryblue!5,
+    colframe=theoryblue,
+    fonttitle=\bfseries,
+    title=Chapter Summary,
+    #1
+}
+
+\newtcolorbox{keyresult}[1][]{
+    breakable,
+    enhanced,
+    colback=gray!8,
+    colframe=proofgray,
+    fonttitle=\bfseries,
+    title=Key Result,
+    #1
+}

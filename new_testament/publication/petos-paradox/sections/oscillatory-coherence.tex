@@ -1,0 +1,411 @@
+\section{Hierarchical Oscillatory Coupling and Allometric Scaling}
+\label{sec:oscillatory_coherence}
+
+The preceding sections developed the mathematical framework for error suppression in coupled oscillator networks. This section extends the analysis to hierarchically organised oscillator networks—the natural architecture of multicellular organisms—and derives the quarter-power scaling laws that characterise biological systems. The hierarchical structure introduces additional protection mechanisms and connects the abstract mathematical framework to empirically observed allometric relationships.
+
+\subsection{Biological Motivation: Multi-Scale Organisation}
+
+Multicellular organisms exhibit oscillatory dynamics across an extraordinary range of timescales:
+\begin{itemize}
+    \item \textbf{Molecular scale} ($10^{-15}$--$10^{-9}$ s): Bond vibrations, protein conformational fluctuations
+    \item \textbf{Enzymatic scale} ($10^{-6}$--$10^{-3}$ s): Catalytic cycles, allosteric transitions
+    \item \textbf{Cellular scale} ($10^{-3}$--$10^{0}$ s): Calcium oscillations, action potentials
+    \item \textbf{Metabolic scale} ($10^{0}$--$10^{3}$ s): Glycolytic oscillations, redox cycles
+    \item \textbf{Circadian scale} ($10^{4}$--$10^{5}$ s): Daily rhythms
+    \item \textbf{Physiological scale} ($10^{5}$--$10^{7}$ s): Cell cycle, tissue renewal
+\end{itemize}
+
+These scales are not independent but are coupled through regulatory networks, creating a hierarchy of oscillators where faster scales are modulated by slower scales and vice versa.
+
+\begin{remark}[Frequency Span]
+The frequency spans from molecular vibrations ($\sim 10^{15}$ Hz) to circadian rhythms ($\sim 10^{-5}$ Hz) and covers 20 orders of magnitude. This is comparable to the ratio of the Planck time to the age of the universe. Biological systems maintain coherent coordination across this entire span.
+\end{remark}
+
+\subsection{Multi-Scale Oscillator Hierarchy}
+
+We formalise the hierarchical structure mathematically.
+
+\begin{definition}[Hierarchical Oscillator Network]
+A hierarchical oscillator network consists of $M$ scales with:
+\begin{itemize}
+    \item Scale $m$ characteristic frequency: $\omega_m$
+    \item Scale ordering: $\omega_1 > \omega_2 > \cdots > \omega_M$
+    \item Coupling between adjacent scales: $g_{m,m+1}$
+    \item Number of oscillators at scale $m$: $N_m$
+    \item Branching ratio: $b = N_{m+1}/N_m$ (typically constant)
+\end{itemize}
+The total number of degrees of freedom is $N = \sum_{m=1}^{M} N_m$.
+\end{definition}
+
+\begin{example}[Cardiovascular Hierarchy]
+The cardiovascular system exemplifies hierarchical oscillatory organisation:
+\begin{itemize}
+    \item Scale 1 (fastest): Cardiac myocyte action potentials ($\sim 1$ Hz)
+    \item Scale 2: Sinoatrial node pacemaker activity ($\sim 1$ Hz)
+    \item Scale 3: Heart rate variability ($\sim 0.1$ Hz)
+    \item Scale 4: Blood pressure rhythms ($\sim 0.01$ Hz)
+    \item Scale 5: Circadian cardiovascular modulation ($\sim 10^{-5}$ Hz)
+\end{itemize}
+Perturbations at any scale propagate through the hierarchy.
+\end{example}
+
+\begin{definition}[Hierarchical Coupling Matrix]
+The coupling matrix $\mathbf{J}$ for a hierarchical network has block structure:
+\begin{equation}
+\mathbf{J} = \begin{pmatrix}
+\mathbf{J}_{11} & \mathbf{G}_{12} & 0 & \cdots & 0 \\
+\mathbf{G}_{21} & \mathbf{J}_{22} & \mathbf{G}_{23} & \cdots & 0 \\
+0 & \mathbf{G}_{32} & \mathbf{J}_{33} & \cdots & 0 \\
+\vdots & \vdots & \vdots & \ddots & \mathbf{G}_{M-1,M} \\
+0 & 0 & 0 & \mathbf{G}_{M,M-1} & \mathbf{J}_{MM}
+\end{pmatrix}
+\end{equation}
+where $\mathbf{J}_{mm}$ describes intra-scale coupling and $\mathbf{G}_{m,m+1}$ describes inter-scale coupling.
+\end{definition}
+
+\subsection{Coupling Constraints and Energy Flow}
+
+For coherent dynamics across scales, the coupling strength must satisfy matching conditions that ensure energy is transmitted efficiently without dissipation into incoherent modes.
+
+\begin{definition}[Inter-Scale Energy Transfer]
+The energy transferred between scales $m$ and $m+1$ per unit time is:
+\begin{equation}
+\dot{E}_{m \to m+1} = g_{m,m+1} \cdot A_m \cdot A_{m+1} \cdot |\omega_m - \omega_{m+1}|
+\end{equation}
+where $A_m$ is the characteristic oscillation amplitude at scale $m$ and $g_{m,m+1}$ is the coupling strength.
+\end{definition}
+
+\begin{theorem}[Energy Conservation in Hierarchies]
+\label{thm:energy_conservation}
+For a stationary hierarchical oscillator network, the net energy flow across any cut of the hierarchy vanishes:
+\begin{equation}
+\sum_{m=1}^{M-1} \dot{E}_{m \to m+1} = 0
+\end{equation}
+In the absence of external driving, this requires detailed balance:
+\begin{equation}
+\dot{E}_{m \to m+1} = -\dot{E}_{m+1 \to m} \quad \forall m
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+In the stationary state, the energy at each scale is constant: $dE_m/dt = 0$ for all $m$. The energy at scale $m$ changes due to influx from scale $m-1$, efflux to scale $m+1$, and internal dissipation $D_m$:
+\begin{equation}
+\frac{dE_m}{dt} = \dot{E}_{m-1 \to m} - \dot{E}_{m \to m+1} - D_m = 0
+\end{equation}
+Summing over all scales and using the boundary conditions $\dot{E}_{0 \to 1} = \dot{E}_{M \to M+1} = 0$:
+\begin{equation}
+\sum_{m=1}^{M} D_m = 0
+\end{equation}
+For a conservative system ($D_m = 0$), the energy flows must sum to zero at each interface. $\square$
+\end{proof}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/hierarchical_coupling.png}
+\caption{\textbf{Hierarchical oscillatory coupling across frequency scales showing multi-scale synchronization in biological systems.}
+\textbf{(Left, Panel I)} Hierarchical frequency levels showing temporal scales of biological oscillatory processes. Horizontal axis is logarithmic frequency $\log_{10}(f / \text{Hz})$, spanning $-5$ to $+15$ (20 orders of magnitude). Vertical axis lists nine hierarchical scales from bottom (slowest) to top (fastest): environmental coupling ($\sim 10^{-5}$ Hz, seasonal/annual cycles, yellow bar), circadian rhythms ($\sim 10^{-5}$ Hz, 24-hour period, lime green bar), action potentials ($\sim 10^{3}$ Hz, millisecond timescale, green bar), synaptic transmission ($\sim 10^{4}$ Hz, sub-millisecond, teal bar), enzyme catalysis ($\sim 10^{6}$ Hz, microsecond turnover, cyan bar), ion channel gating ($\sim 10^{7}$ Hz, nanosecond transitions, blue bar), protein conformational changes ($\sim 10^{12}$ Hz, picosecond dynamics, dark blue bar), quantum coherence ($\sim 10^{15}$ Hz, femtosecond decoherence, deep purple bar). Bar length indicates frequency range for each process. 
+\textbf{(Right, Panel J)} Multi-scale synchronization showing temporal evolution of phase coherence across hierarchical levels. Horizontal axis is time step (arbitrary units, 0--500). Vertical axis is synchronization order parameter $r$ (0 = incoherent, 1 = perfectly synchronized). Multiple colored traces represent different hierarchical scales: enzyme catalysis (orange), synaptic transmission (purple), action potentials (blue), circadian rhythms (gray), global coherence (black, thick line). Traces fluctuate around $r \sim 0.2$ (horizontal dashed line), indicating weak phase-locking consistent with biological systems operating near criticality. Enzyme catalysis (orange) shows highest-frequency fluctuations (rapid oscillations), reflecting fast timescale ($\sim 10^{6}$ Hz from Panel I). }
+\label{fig:hierarchical_coupling}
+\end{figure}
+
+\subsection{Allometric Scaling Laws}
+
+Empirical observations of biological systems reveal remarkably universal scaling relationships known as allometric laws \citep{west1997general, kleiber1932body, banavar1999size}.
+
+\begin{definition}[Allometric Scaling]
+A quantity $Y$ exhibits allometric scaling with mass $M$ if:
+\begin{equation}
+Y = Y_0 M^\alpha
+\end{equation}
+where $\alpha$ is the allometric exponent and $Y_0$ is a normalisation constant.
+\end{definition}
+
+\begin{theorem}[Quarter-Power Scaling Laws]
+\label{thm:quarter_power}
+Biological systems exhibit the following allometric relationships:
+\begin{align}
+B &\propto M^{3/4} \quad &\text{(metabolic rate)} \label{eq:metabolic_scaling} \\
+f_H &\propto M^{-1/4} \quad &\text{(heart rate, breathing rate)} \label{eq:frequency_scaling} \\
+T_{\text{life}} &\propto M^{1/4} \quad &\text{(lifespan)} \label{eq:lifespan_scaling} \\
+\tau_c &\propto M^{1/4} \quad &\text{(characteristic times)} \label{eq:timescale_scaling}
+\end{align}
+These relationships hold across 21 orders of magnitude in mass, from bacteria to whales \citep{west1997general}.
+\end{theorem}
+
+\begin{remark}[Theoretical Derivation]
+The quarter-power exponents are not empirical coincidences but emerge from fundamental constraints on space-filling distribution networks \citep{west1997general, banavar1999size}. The key insight is that:
+\begin{enumerate}
+    \item Organisms must distribute resources (e.g., oxygen, nutrients) to all cells
+    \item Distribution networks must be space-filling (reach all tissue volumes)
+    \item Energy dissipation in the network must be minimised
+\end{enumerate}
+These constraints uniquely determine the network geometry, which in turn determines the quarter-power scaling.
+\end{remark}
+
+\begin{proposition}[Derivation Sketch]
+For a fractal distribution network with a branching ratio $b$ and a scale factor $\gamma$ between levels, the total cross-sectional area scales as:
+\begin{equation}
+A_{\text{total}} \propto b^k \gamma^{2k}
+\end{equation}
+where $k$ is the number of branching levels. Space-filling requires $b\gamma^3 = 1$ (volume conservation). Minimising flow resistance subject to space-filling gives the optimal scaling $\gamma = b^{-1/3}$, leading to quarter-power exponents.
+\end{proposition}
+
+\subsection{Correlation Time Scaling}
+
+The correlation time $\tau_c$ of the slowest collective mode determines the timescale over which the system ``remembers'' perturbations. This is the critical parameter that controls error propagation.
+
+\begin{theorem}[Correlation Time Scaling]
+\label{thm:correlation_time}
+For a hierarchically coupled oscillator network with $M$ scales and allometric frequency scaling $\omega_M \propto N^{-1/4}$:
+\begin{equation}
+\tau_c = \frac{2\pi}{\omega_M} \propto N^{1/4}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+The slowest collective mode is associated with the lowest frequency scale $M$. The correlation time is set by the period of this mode:
+\begin{equation}
+\tau_c = \frac{2\pi}{\omega_M}
+\end{equation}
+
+From the allometric scaling \eqref{eq:frequency_scaling}, $\omega_M \propto M^{-1/4}$. For a system of $N$ oscillators (cells) with approximately constant mass per cell, total mass $M \propto N$, yielding:
+\begin{equation}
+\omega_M \propto N^{-1/4}
+\end{equation}
+Therefore:
+\begin{equation}
+\tau_c = \frac{2\pi}{\omega_M} \propto N^{1/4}
+\end{equation}
+$\square$
+\end{proof}
+
+\begin{corollary}[Correlation Time Values]
+\label{cor:correlation_time_values}
+For typical mammalian parameters:
+\begin{itemize}
+    \item Mouse ($N \approx 10^{10}$): $\tau_c \sim (10^{10})^{1/4} = 10^{2.5} \approx 300$ (arbitrary units)
+    \item Human ($N \approx 3.7 \times 10^{13}$): $\tau_c \sim (3.7 \times 10^{13})^{1/4} \approx 2500$
+    \item Whale ($N \approx 10^{15}$): $\tau_c \sim (10^{15})^{1/4} = 10^{3.75} \approx 5600$
+\end{itemize}
+The correlation time increases by about a factor of 20 from mouse to whale.
+\end{corollary}
+
+\subsection{Critical Timescale and System Size}
+
+Combining the correlation time scaling with the reset dynamics analysis of Section~\ref{sec:division_cycles}:
+
+\begin{theorem}[Critical Period Scaling]
+\label{thm:critical_period}
+The critical reset period $\tau^*$ scales with system size as:
+\begin{equation}
+\tau^* = c \cdot \tau_c \propto N^{1/4}
+\end{equation}
+where $c \approx 0.35$ is the numerical factor from the optimal reset analysis.
+\end{theorem}
+
+\begin{proof}
+From Definition~\ref{sec:division_cycles} (Critical Reset Period), $\tau^* = c \cdot \tau_c$ where $c = \ln(2)/2 \approx 0.35$. Substituting the correlation time scaling:
+\begin{equation}
+\tau^* = c \cdot \tau_c \propto N^{1/4}
+\end{equation}
+$\square$
+\end{proof}
+
+\begin{corollary}[Regime Classification by System Size]
+For a fixed reset period $\tau$ (e.g., determined by cell cycle duration):
+\begin{equation}
+\frac{\tau}{\tau^*(N)} = \frac{\tau}{c \cdot N^{1/4}}
+\end{equation}
+\begin{itemize}
+    \item Small systems ($N < N_{\text{crit}}$): $\tau/\tau^* > 1$ (supercritical, error accumulation)
+    \item Large systems ($N > N_{\text{crit}}$): $\tau/\tau^* < 1$ (subcritical, error dilution)
+\end{itemize}
+where $N_{\text{crit}} = (c\tau)^4$ is the crossover size.
+\end{corollary}
+
+The profound implication is that larger systems are naturally pushed toward the error-dilution regime, even with the same intrinsic reset period.
+
+\subsection{Error Dilution Enhancement in Large Systems}
+
+We now derive the error rate suppression for systems of different sizes.
+
+\begin{theorem}[Error Dilution Enhancement]
+\label{thm:dilution_enhancement}
+Consider two systems with oscillator counts $N_1$ and $N_2 = \lambda N_1$ ($\lambda > 1$), maintaining the same tissue type (same $\Omega$, $\xi$, $\tau$). The relative error propagation rates satisfy:
+\begin{equation}
+\frac{\Gamma_2}{\Gamma_1} = \lambda \cdot \Omega^{-(\lambda-1)N_{\xi,1}} \cdot \frac{f(\tau/\tau_2^*)}{f(\tau/\tau_1^*)}
+\end{equation}
+where $\tau_k^* \propto N_k^{1/4}$ and $f$ is the propagation function from Theorem~\ref{thm:main}.
+\end{theorem}
+
+\begin{proof}
+From the main theorem (Theorem~\ref{thm:main}):
+\begin{equation}
+\Gamma = \frac{N \cdot p_{\text{local}}}{\tau} \cdot \Omega^{-N_\xi} \cdot f\left(\frac{\tau}{\tau^*}\right)
+\end{equation}
+Taking the ratio:
+\begin{equation}
+\frac{\Gamma_2}{\Gamma_1} = \frac{N_2}{N_1} \cdot \frac{\Omega^{-N_{\xi,2}}}{\Omega^{-N_{\xi,1}}} \cdot \frac{f(\tau/\tau_2^*)}{f(\tau/\tau_1^*)}
+\end{equation}
+
+The oscillators per correlation volume scale as $N_\xi \propto N$ (assuming a constant correlation length $\xi$), so $N_{\xi,2} = \lambda N_{\xi,1}$:
+\begin{equation}
+\frac{\Gamma_2}{\Gamma_1} = \lambda \cdot \Omega^{N_{\xi,1} - \lambda N_{\xi,1}} \cdot \frac{f(\tau/\tau_2^*)}{f(\tau/\tau_1^*)} = \lambda \cdot \Omega^{-((\lambda - 1) N_{\xi,1})} \cdot \frac{f(\tau/\tau_2^*)}{f(\tau/\tau_1^*)}
+\end{equation}
+$\square$
+\end{proof}
+
+\begin{proposition}[Analysis of the Ratio Terms]
+\label{prop:ratio_analysis}
+The ratio $\frac{\Gamma_2}{\Gamma_1}$ contains three factors:
+\begin{enumerate}
+    \item \textbf{Linear factor}: $\lambda > 1$ (favours an increased error rate in larger systems)
+    \item \textbf{Exponential factor}: $\Omega^{-(\lambda-1)N_{\xi,1}} \ll 1$ (strongly favours decreased error rate)
+    \item \textbf{$f$-ratio factor}: $\frac{f(\tau/\tau_2^*)}{f(\tau/\tau_1^*)}$
+\end{enumerate}
+The $f$-ratio requires careful analysis. Since $\tau_2^* > \tau_1^*$ (from Theorem~\ref{thm:critical_period}), we have $\tau/\tau_2^* < \tau/\tau_1^*$. The function $f$ is monotonically decreasing, so:
+\begin{equation}
+f(\tau/\tau_2^*) > f(\tau/\tau_1^*)
+\end{equation}
+The $f$-ratio is greater than 1, slightly counteracting the exponential suppression. However, the $f$-ratio is bounded:
+\begin{equation}
+\frac{f(\tau/\tau_2^*)}{f(\tau/\tau_1^*)} \leq \frac{f(0)}{f(\infty)} = \mathcal{O}(1)
+\end{equation}
+since both $f(0)$ and $f(\infty)$ are finite (order unity).
+\end{proposition}
+
+\begin{corollary}[Net Suppression]
+The exponential factor $\Omega^{-(\lambda-1)N_{\xi,1}}$ dominates both the linear factor $\lambda$ and the bounded $f$-ratio, yielding:
+\begin{equation}
+\frac{\Gamma_2}{\Gamma_1} < 1 \quad \text{for all } \lambda > 1 + \frac{\ln \lambda}{N_{\xi,1} \ln \Omega}
+\end{equation}
+For typical parameters ($\Omega \sim 10^5$, $N_{\xi,1} \sim 10^3$), this condition is satisfied for essentially all $\lambda > 1$.
+\end{corollary}
+
+\subsection{Phase-Lock Maintenance Across Scales}
+
+The multi-scale hierarchy maintains coherent oscillatory relationships through phase-locking.
+
+\begin{definition}[Phase-Lock Order Parameter]
+The phase-lock order parameter at scale $m$ is:
+\begin{equation}
+r_m = \left| \frac{1}{N_m} \sum_{i=1}^{N_m} e^{i\phi_{m,i}} \right|
+\end{equation}
+where $\phi_{m,i}$ is the phase of oscillator $i$ at scale $m$.
+\end{definition}
+
+The order parameter satisfies $0 \leq r_m \leq 1$, with $r_m = 1$ indicating perfect phase-lock (all oscillators at the same phase) and $r_m = 0$ indicating complete incoherence (phases uniformly distributed).
+
+\begin{theorem}[Kuramoto Transition]
+\label{thm:kuramoto}
+For an oscillator population with intrinsic frequency distribution $g(\omega)$ and mean-field coupling strength $K$, there exists a critical coupling $K_c$ such that:
+\begin{equation}
+r = \begin{cases}
+0 & K < K_c \\
+\sqrt{1 - K_c/K} & K > K_c
+\end{cases}
+\end{equation}
+where $K_c = 2/(\pi g(\omega_0))$ and $\omega_0$ is the mean frequency \citep{kuramoto1984chemical}.
+\end{theorem}
+
+\begin{proposition}[Phase-Lock Stability in Large Systems]
+For coupling strength exceeding the critical value:
+\begin{equation}
+g_{m,m+1} > g_c = \frac{\sigma_\omega}{\sqrt{N_m}}
+\end{equation}
+where $\sigma_\omega$ is the intrinsic frequency dispersion, the phase-locked state is stable.
+\end{proposition}
+
+\begin{proof}
+In the mean-field limit, the effective coupling seen by each oscillator is:
+\begin{equation}
+K_{\text{eff}} = g_{m,m+1} \cdot N_m \cdot r_m
+\end{equation}
+For the phase-locked state ($r_m \approx 1$), stability requires $K_{\text{eff}} > K_c \propto \sigma_\omega$. Solving:
+\begin{equation}
+g_{m,m+1} \cdot N_m > c \cdot \sigma_\omega
+\end{equation}
+for some constant $c$. Rearranging:
+\begin{equation}
+g_{m,m+1} > \frac{c \cdot \sigma_\omega}{N_m}
+\end{equation}
+The $1/N_m$ dependence shows that larger systems require weaker per-oscillator coupling. $\square$
+\end{proof}
+
+\begin{corollary}[Robustness of Large Systems]
+The critical coupling scales as $g_c \propto N_m^{-1/2}$. This implies that large systems can maintain phase-lock with arbitrarily weak individual coupling, as long as the total coupling $g_c \cdot N_m \propto \sqrt{N_m}$ remains sufficient. Large systems are more robust against coupling disruptions.
+\end{corollary}
+
+\subsection{Connection to Lifespan Scaling}
+
+The allometric scaling of lifespan provides an independent cheque on the theory.
+
+\begin{theorem}[Lifespan-Error Rate Relationship]
+\label{thm:lifespan}
+If lifespan $T_{\text{life}}$ is determined by accumulated pathological probability reaching a threshold $P_{\text{th}}$:
+\begin{equation}
+\Gamma \cdot T_{\text{life}} = P_{\text{th}} = \text{const.}
+\end{equation}
+then the lifespan scaling follows from the error rate scaling.
+\end{theorem}
+
+\begin{proof}
+From Theorem~\ref{thm:main}, $\Gamma \propto N / \Omega^{N_\xi}$. For the ratio $N / \Omega^{N_\xi}$ to remain approximately constant across different species (invariant error rate), we require:
+\begin{equation}
+\frac{N}{\Omega^{N_\xi}} \approx \text{const.}
+\end{equation}
+This is achieved when the configuration space dilution exactly compensates for the increased cell count.
+
+Given constant error rate $\Gamma$, constant $P_{\text{th}}$ implies constant $T_{\text{life}}$. However, the observed scaling $T_{\text{life}} \propto M^{1/4} \propto N^{1/4}$ indicates that error rate scales as $\Gamma \propto N^{-1/4}$, providing additional suppression beyond configuration space dilution alone. This additional suppression arises from the correlation time scaling. $\square$
+\end{proof}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/hardware_mapping.png}
+\caption{\textbf{Hardware process to cellular dynamics mapping showing structural correspondence between computational and biological oscillatory systems.}
+\textbf{(Top left, Panel A)} Hardware process mapping showing temporal, categorical, and oscillatory representations of computational operations. Radar chart displays eight hardware processes (vertices): CPU clock, bus arbitration, cache coherence, interrupt handling, pipeline state, register file, ALU operations, signal response. 
+\textbf{(Top center, Panel B)} Cellular process equivalents showing biological counterparts to hardware operations. Radar chart displays eight cellular processes: quantum scale, enzyme scale, network scale, cell retr[ieval], phase lock, resource allocation, signal response, oscillator phase, reaction cascade, catalytic transform, configuration state.
+\textbf{(Top right, Panel C)} Hardware-cellular mapping matrix showing correspondence strength between specific hardware and cellular processes. Heatmap displays mapping strength (color scale: dark green = strong correspondence, light yellow = weak correspondence, orange/red = moderate correspondence). Rows are hardware processes (CPU clock, memory, cache, bus arbitration, interrupt, pipeline, register, ALU operations). 
+\textbf{(Bottom left, Panel D)} Frequency domain comparison showing characteristic timescales of hardware (blue bars) and cellular (purple bars) processes. Vertical axis is logarithmic frequency (Hz). Horizontal axis is process index (0--7, corresponding to processes in Panels A--B).
+\textbf{(Bottom center, Panel E)} Hardware-cellular gear ratios showing frequency mismatches between corresponding processes. Horizontal axis is logarithmic gear ratio $\log_{10}(\omega_{\text{hardware}}/\omega_{\text{cellular}})$. Positive values (red bars) indicate hardware is faster than cellular equivalent. Negative values (green bars) indicate cellular is faster.  
+\textbf{(Bottom right, Panel F)} Hardware harvesting flow showing conceptual pipeline for extracting biological insights from computational systems. Three boxes: Hardware Processes (blue, left) represents source domain, Cellular Dynamics (purple, right) represents target domain, Categorical Instrument (orange, center) represents mapping mechanism. Arrow labeled "Harvest" flows from hardware to instrument, indicating extraction of structural patterns (partition classes, attractor basins, reset dynamics).}
+\label{fig:hardware_mapping}
+\end{figure}
+
+\subsection{Synthesis: Complete Protection Mechanism}
+
+The hierarchical oscillatory structure introduces multiple protective mechanisms that combine synergistically:
+
+\begin{enumerate}
+    \item \textbf{Configuration space expansion}: $|\Config| = \Omega^N$ grows exponentially with $N$, diluting the probability of any specific pathological configuration.
+    
+    \item \textbf{Spatial decorrelation}: The configuration space factorises into independent correlation volumes, converting additive error probabilities into multiplicative (exponentially suppressed) probabilities.
+    
+    \item \textbf{Reset dynamics}: Cell division acts as an error-correction mechanism, resetting trajectory deviations and preventing accumulation.
+    
+    \item \textbf{Critical period lengthening}: $\tau^* \propto N^{1/4}$ increases with $N$, pushing larger systems deeper into the error-dilution regime.
+    
+    \item \textbf{Phase-lock robustness}: Large oscillator populations maintain coherence with weaker per-unit coupling, reducing susceptibility to phase disruption.
+\end{enumerate}
+
+\begin{theorem}[Combined Suppression Factor]
+\label{thm:combined}
+The combined suppression factor for a system of size $N_2 = \lambda N_1$ relative to size $N_1$ is:
+\begin{equation}
+\frac{\Gamma_2}{\Gamma_1} = \lambda \cdot \Omega^{-(\lambda-1)N_{\xi,1}} \cdot \lambda^{-1/4} \cdot \mathcal{O}(1)
+\end{equation}
+where the $\lambda^{-1/4}$ factor arises from the correlation time scaling and the $\mathcal{O}(1)$ factor captures the bounded $f$-ratio.
+\end{theorem}
+
+For $\lambda = 10^5$ (mouse to whale), $\Omega = 10^5$, $N_{\xi,1} = 10^3$:
+\begin{equation}
+\frac{\Gamma_{\text{whale}}}{\Gamma_{\text{mouse}}} \approx 10^5 \cdot 10^{-5 \times 10^8} \cdot 10^{-1.25} \approx 10^{-5 \times 10^8}
+\end{equation}
+The suppression is dominated by the configuration space term and is effectively infinite on any biological scale.
+
+\subsection{Summary}
+
+The hierarchical oscillatory framework reveals that Peto's paradox is not a paradox at all but an inevitable consequence of high-dimensional coupled oscillator dynamics. The exponential growth of configuration space with system size, combined with the quarter-power scaling of timescales, ensures that larger organisms are exponentially better protected against pathological convergence---despite having exponentially more cells at risk.
+
+This resolution does not invoke special tumour suppressor genes, immune surveillance, or physiological adaptations. It is a purely statistical-mechanical consequence of the structure of coupled oscillator networks embedded in spatial domains with finite correlation lengths. The protection is automatic, arising from the mathematics of high-dimensional probability spaces.
+

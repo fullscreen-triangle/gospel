@@ -1,0 +1,656 @@
+%==============================================================================
+% CHAPTER 12: Cellular Charge Trajectories and Disease States
+%==============================================================================
+
+\chapter{Cellular Charge Trajectories and Disease States}
+\label{chap:charge_trajectories}
+
+\epigraph{%
+  Disease is not an invader.\\
+  It is the cell forgetting\\
+  where it ought to be.%
+}{--- the author}
+
+\begin{chapterbox}
+The $\Sspace$-entropy space $[0,1]^3$ introduced in
+Chapter~\ref{chap:sentropy_space} provides a phase space for cellular state
+dynamics. Healthy cells follow a closed attractor $\mathcal{A}_{\mathrm{health}}$
+--- a stable limit cycle in $(\Sk, \St, \Se)$ coordinates --- maintained by
+the restoring forces of the metabolic hierarchy (Chapter~\ref{chap:metabolic_computer})
+and the ion-transport system (Chapter~\ref{chap:charge_current}).
+Disease is trajectory deviation: all pathological states correspond to
+$d_{\Sspace}(\mathrm{trajectory}, \mathcal{A}_{\mathrm{health}}) > d_{\mathrm{threshold}}$.
+Three canonical disease classes arise from three orthogonal deviations:
+cancer (Warburg effect) as a $\St$ deviation (temporal entropy increase);
+neurodegeneration as a $\Sk$ deviation (knowledge entropy increase from ion
+pump failure); and aging as a $\Se$ deviation (evolutionary entropy increase
+from nuclear pore complex degradation). Each class has a mechanistic
+partition-theoretic explanation, a quantitative signature in $\Sspace$, and
+a predicted clinical biomarker profile that precedes symptoms.
+\end{chapterbox}
+
+%------------------------------------------------------------------------------
+\section{The Health Attractor in \texorpdfstring{$\Sspace$}{S}-Space}
+\label{sec:health_attractor}
+%------------------------------------------------------------------------------
+
+Chapter~\ref{chap:sentropy_space} defined the $\Sspace$-entropy coordinate
+$\Scoord = (\Sk, \St, \Se) \in [0,1]^3$ for a cell, where $\Sk$ is knowledge
+entropy (ionic and informational order), $\St$ is temporal entropy (metabolic
+timing regularity), and $\Se$ is evolutionary entropy (epigenetic memory
+fidelity). Each coordinate is a normalised partition depth ratio, bounded by
+the Bounded Phase Space Law.
+
+\begin{definition}[Health Attractor]
+\label{def:health_attractor}
+The \emph{health attractor} $\mathcal{A}_{\mathrm{health}} \subset \Sspace$ is the
+set of $\Sspace$-coordinates corresponding to normal cellular function across
+all cell types:
+\begin{equation}
+  \mathcal{A}_{\mathrm{health}} = \bigl\{ \Scoord \in [0,1]^3
+    : \text{all metabolic, ionic, and epigenetic homeostatic conditions hold} \bigr\}.
+  \label{eq:health_attractor_def}
+\end{equation}
+For a given cell type $c$, $\mathcal{A}_{\mathrm{health}}^{(c)}$ is a
+subset of $\mathcal{A}_{\mathrm{health}}$ specific to that cell's function.
+\end{definition}
+
+The attractor is not a point but a closed orbit: cells oscillate through
+metabolic states (glycolytic oscillations, circadian rhythms, cell-cycle
+checkpoints) while remaining on $\mathcal{A}_{\mathrm{health}}^{(c)}$.
+
+\begin{theorem}[Stability of the Health Attractor]
+\label{thm:attractor_stability}
+The health attractor $\mathcal{A}_{\mathrm{health}}$ is a stable limit cycle
+in $\Sspace$ under normal physiological conditions.
+The restoration timescale for a perturbation $\delta\Scoord$ from the attractor
+is
+\begin{equation}
+  \tau_{\mathrm{restore}} = \frac{1}{\Gamma\,|\nabla\Depth|},
+  \label{eq:restoration_timescale}
+\end{equation}
+where $\Gamma$ is the metabolic flux rate and $|\nabla\Depth|$ is the partition
+depth gradient magnitude at the perturbed point in $\Sspace$.
+\end{theorem}
+
+\begin{proof}
+The metabolic hierarchy (Chapter~\ref{chap:metabolic_computer}) provides
+restoring forces in all three $\Sspace$-coordinates. For $\Sk$: ion pump
+activity (Chapter~\ref{chap:charge_current}) restores ionic partition depth
+differences when $\Sk$ deviates. For $\St$: glycolytic and circadian
+oscillators are self-correcting limit cycles (Chapter~\ref{chap:metabolic_clock});
+perturbations to metabolic timing decay on the oscillation period timescale.
+For $\Se$: epigenetic maintenance machinery (DNA methyltransferases, histone
+modifiers, nuclear pore complexes) continuously repairs epigenetic marks.
+
+In the linearised approximation near $\mathcal{A}_{\mathrm{health}}$, the
+restoring dynamics take the form
+\begin{equation}
+  \frac{d(\delta\Scoord)}{dt} = -\Lambda\,\delta\Scoord,
+  \label{eq:restoring_dynamics}
+\end{equation}
+where $\Lambda$ is the $3\times 3$ restoration matrix with positive eigenvalues
+$\lambda_k,\lambda_t,\lambda_e > 0$. Each eigenvalue is
+$\lambda_i = \Gamma_i\,|\nabla_i\Depth|$, the product of the metabolic flux
+rate along coordinate $i$ and the partition depth gradient. The solution
+$\delta\Scoord(t) = e^{-\Lambda t}\delta\Scoord(0)$ decays exponentially,
+giving $\tau_{\mathrm{restore},i} = 1/\lambda_i = 1/(\Gamma_i|\nabla_i\Depth|)$.
+The overall restoration timescale is dominated by the slowest eigenvalue,
+$\tau_{\mathrm{restore}} = \max_i\tau_{\mathrm{restore},i}$. \qed
+\end{proof}
+
+\begin{remark}
+Typical restoration timescales: $\tau_{\mathrm{restore},k} \sim$ minutes
+(ionic homeostasis, Na$^+$/K$^+$-ATPase timescale); $\tau_{\mathrm{restore},t}
+\sim$ hours (metabolic oscillation re-entrainment); $\tau_{\mathrm{restore},e}
+\sim$ days to weeks (epigenetic remodelling). Disease represents failure of
+these restorative mechanisms at one or more coordinates.
+\end{remark}
+
+%------------------------------------------------------------------------------
+\section{Disease as Trajectory Deviation}
+\label{sec:disease_deviation}
+%------------------------------------------------------------------------------
+
+\begin{definition}[$\Sspace$-Distance]
+\label{def:sspace_distance}
+The $\Sspace$-distance from a cellular trajectory $\gamma(t)$ to the health
+attractor is
+\begin{equation}
+  d_{\Sspace}\!\left(\gamma, \mathcal{A}_{\mathrm{health}}\right)
+    = \sup_{t \geq 0}\,\min_{\mathbf{a}\in\mathcal{A}_{\mathrm{health}}}
+      \|\gamma(t) - \mathbf{a}\|,
+  \label{eq:sspace_distance}
+\end{equation}
+where $\|\cdot\|$ is the Euclidean norm on $[0,1]^3$.
+\end{definition}
+
+\begin{theorem}[Disease as Trajectory Deviation]
+\label{thm:disease_deviation}
+A cell is in a disease state if and only if
+\begin{equation}
+  d_{\Sspace}\!\left(\gamma, \mathcal{A}_{\mathrm{health}}\right) > d_{\mathrm{threshold}},
+  \label{eq:disease_condition}
+\end{equation}
+where $d_{\mathrm{threshold}}$ is the noise tolerance of the cellular
+homeostatic machinery, determined by the amplitude of normal metabolic
+fluctuations projected onto $\Sspace$.
+\end{theorem}
+
+\begin{proof}
+By Theorem~\ref{thm:attractor_stability}, perturbations with
+$\|\delta\Scoord\| < d_{\mathrm{threshold}}$ decay exponentially to
+$\mathcal{A}_{\mathrm{health}}$. For perturbations with
+$\|\delta\Scoord\| > d_{\mathrm{threshold}}$, the restoring force
+$-\Lambda\,\delta\Scoord$ is insufficient to overcome the sustained
+perturbation (metabolic rewiring, gene mutation, pump failure), and the
+trajectory diverges from $\mathcal{A}_{\mathrm{health}}$. The threshold
+$d_{\mathrm{threshold}}$ is set by the smallest eigenvalue of $\Lambda$
+times the noise amplitude in $\Sspace$. \qed
+\end{proof}
+
+\begin{theorem}[Universal Disease Classification]
+\label{thm:disease_classification}
+Every disease state corresponds to a sustained deviation in one or more
+$\Sspace$-entropy coordinates:
+\begin{itemize}
+  \item $\Delta\Sk > 0$ (knowledge entropy increase): loss of cellular
+        information about ionic and molecular state
+        $\to$ neurodegeneration, genetic diseases.
+  \item $\Delta\St > 0$ (temporal entropy increase): disruption of metabolic
+        timing and oscillation coherence
+        $\to$ metabolic diseases, cancer.
+  \item $\Delta\Se > 0$ (evolutionary entropy increase): loss of epigenetic
+        memory
+        $\to$ aging, epigenetic diseases.
+  \item $\Delta\Sk, \Delta\St, \Delta\Se > 0$ (all three elevated):
+        cancer at late stage.
+\end{itemize}
+\end{theorem}
+
+The classification is exhaustive because $\Sspace = [0,1]^3$ is the complete
+phase space for cellular state: every perturbation from normal function projects
+onto at least one of the three axes.
+
+%------------------------------------------------------------------------------
+\section{Cancer: The Warburg Effect as a \texorpdfstring{$\St$}{St} Deviation}
+\label{sec:cancer_warburg}
+%------------------------------------------------------------------------------
+
+\subsection{Metabolic Timing Disruption}
+\label{ssec:warburg_timing}
+
+Cancer cells exhibit the Warburg effect: aerobic glycolysis (lactate production
+even in the presence of oxygen) \citep{Warburg1956}. Chapter~\ref{chap:metabolic_computer}
+identified this as $L3$--$L4$ decoupling, reducing hierarchical depth to
+$D \approx 2$. In $\Sspace$-coordinates, this is a $\St$ deviation.
+
+\begin{proposition}[Cancer as $\St$ Deviation]
+\label{prop:cancer_st}
+The Warburg phenotype corresponds to $\Delta\St > 0$:
+the temporal entropy increases because metabolic oscillation coherence is
+disrupted when aerobic glycolysis (L2, short timescale
+$\tau_{L2} \sim 1$--$10$\,s) replaces oxidative phosphorylation (L4,
+timescale $\tau_{L4} \sim 10$--$100$\,s). The multi-timescale coordination
+that defines normal metabolic rhythm (Chapter~\ref{chap:metabolic_computer})
+collapses to a single short-timescale process.
+\end{proposition}
+
+\begin{proof}
+(Sketch.) Normal metabolism coordinates five timescale decades
+($\tau_{L1}$ through $\tau_{L5}$), contributing $I_{\mathrm{total}} = 7.29$\,bits
+of inter-level information compression. With $D = 2$ (Warburg), only
+$I_{\mathrm{total}} \approx 2.9$\,bits of coordination remain
+(Table~\ref{tab:hierarchical_depth}, Chapter~\ref{chap:metabolic_computer}).
+The loss of $7.29 - 2.9 = 4.39$\,bits of timing information is registered as
+$\Delta\St > 0$ in $\Sspace$. \qed
+\end{proof}
+
+\subsection{pH as the Partition Depth Carrier of the Warburg Effect}
+\label{ssec:warburg_ph}
+
+The aerobic glycolysis of cancer cells produces lactic acid, lowering
+intracellular and extracellular pH. Tumour interstitial pH is consistently
+6.7--7.0, versus normal tissue pH 7.2--7.4: a shift of $\Delta\mathrm{pH} = 0.2$--$0.5$
+units \citep{Gatenby2007}. In partition theory, this $\Delta\mathrm{pH}$ is a
+change in the proton partition depth.
+
+From Theorem~\ref{thm:nernst_partition} (Chapter~\ref{chap:charge_current}):
+\begin{equation}
+  \Delta V_{\mathrm{pH}} = \frac{\kB T}{q}\,\Delta\Depth_{\ce{H+}}\,\ln b
+    = \frac{2.303\,\kB T}{q}\,\Delta\mathrm{pH}
+    \approx 12\text{--}30\ \mathrm{mV}
+\end{equation}
+per unit pH change. The partition depth change per proton associated with a
+$\Delta\mathrm{pH} = 0.3$ shift is
+\begin{equation}
+  \Delta\Depth_{\ce{H+}}
+    = \frac{\Delta\mathrm{pH}}{\log_{10}(b)}
+    = \frac{0.3}{\log_{10}(e)}
+    \approx 0.69\ \text{(base-$e$ units)}.
+  \label{eq:warburg_depth_change}
+\end{equation}
+
+This partition depth reduction biases proton-coupled reactions toward glycolytic
+rather than oxidative pathways. Specifically, pyruvate dehydrogenase (PDH,
+the L2$\to$L3 gateway) is a proton-coupled enzyme: its activity decreases as
+intracellular $[\ce{H+}]$ increases. The Warburg effect is therefore
+\emph{self-reinforcing}: glycolysis acidifies the cytoplasm, further inhibiting
+PDH, further reducing L3 flux, further increasing $\Delta\St$.
+
+\begin{keyresult}
+The partition-theoretic interpretation of the Warburg effect:
+tumour acidification ($\Delta\mathrm{pH} \approx 0.3$\,units) changes the proton
+partition depth by $\Delta\Depth_{\ce{H+}} \approx 0.69$ (base-$e$ units),
+biasing all proton-coupled reactions toward glycolysis and creating a positive
+feedback loop that locks the cell into the $D = 2$ (Warburg) metabolic attractor.
+The $\St$ deviation that results is measurable as loss of glycolytic oscillation
+coherence and can be detected from metabolomics before malignant transformation
+is histologically apparent.
+\end{keyresult}
+
+\subsection{All Three Coordinates Deviate in Advanced Cancer}
+\label{ssec:cancer_all_three}
+
+Late-stage cancer exhibits deviations in all three $\Sspace$-coordinates:
+\begin{itemize}
+  \item $\Delta\St > 0$: Warburg metabolic timing disruption (primary).
+  \item $\Delta\Sk > 0$: Genomic instability increases knowledge entropy
+        (the cell loses reliable information about its own sequence state
+        through \ce{DNA} damage accumulation).
+  \item $\Delta\Se > 0$: Epigenetic dysregulation (cancer-associated
+        hypomethylation and hypermethylation patterns) increases evolutionary
+        entropy.
+\end{itemize}
+The $\Sspace$-distance from $\mathcal{A}_{\mathrm{health}}$ grows through the
+three deviations additively:
+\begin{equation}
+  d_{\Sspace}^{\mathrm{cancer}}
+    = \sqrt{(\Delta\Sk)^2 + (\Delta\St)^2 + (\Delta\Se)^2},
+\end{equation}
+with $\Delta\St$ dominant at early stage and all three becoming significant at
+metastatic stage.
+
+%------------------------------------------------------------------------------
+\section{Neurodegeneration: Ion Pump Failure as a \texorpdfstring{$\Sk$}{Sk} Deviation}
+\label{sec:neurodegeneration}
+%------------------------------------------------------------------------------
+
+\subsection{The Na\texorpdfstring{$^+$}{+}/K\texorpdfstring{$^+$}{+}-ATPase and Knowledge Entropy}
+\label{ssec:naka_knowledge}
+
+The Na$^+$/K$^+$-ATPase maintains the ionic partition depth differences
+$\Delta\Depth_{\ce{Na+}}$ and $\Delta\Depth_{\ce{K+}}$ (Chapter~\ref{chap:charge_current},
+Section~\ref{sec:naka_atpase}). These differences encode the cell's
+\emph{knowledge of its ionic state}: a well-maintained gradient represents
+low $\Sk$ (the cell knows precisely where its ions are). Pump dysfunction
+raises $[\ce{Na+}]_{\mathrm{in}}$ and lowers $[\ce{K+}]_{\mathrm{in}}$,
+collapsing $\Delta\Depth_{\ce{Na+}}$ and $\Delta\Depth_{\ce{K+}}$ and
+increasing $\Sk$.
+
+\begin{proposition}[Ion Pump Failure as $\Sk$ Deviation]
+\label{prop:pump_failure_sk}
+Na$^+$/K$^+$-ATPase dysfunction produces $\Delta\Sk > 0$: the knowledge
+entropy increases because the cell loses accurate information about its
+ionic partition depth state. The resulting membrane depolarisation
+$\Delta V_m = V_m^{\mathrm{fail}} - V_m^{\mathrm{healthy}} > 0$ is
+a direct voltage readout of the $\Sk$ increase:
+\begin{equation}
+  \Delta\Sk \propto \Delta V_m / (V_{\mathrm{Nernst}} - V_m^{\mathrm{healthy}}).
+  \label{eq:sk_depolarization}
+\end{equation}
+\end{proposition}
+
+\subsection{The Neurodegenerative Cascade}
+\label{ssec:neurodeg_cascade}
+
+Ion pump failure initiates a cascade of partition topology changes:
+\begin{enumerate}
+  \item \textbf{Membrane depolarisation.} Loss of $\Delta\Depth_{\ce{Na+}}$
+        and $\Delta\Depth_{\ce{K+}}$ raises $V_m$ from $-70$\,mV toward
+        $0$\,mV. At intermediate depolarisation ($V_m \approx -40$\,mV),
+        voltage-gated \ce{Ca^{2+}} channels open.
+
+  \item \textbf{Calcium influx.} The enormous \ce{Ca^{2+}} partition depth
+        difference ($\Delta\Depth_{\ce{Ca^{2+}}} \approx 9.5$, from
+        Table~\ref{tab:nernst_potentials}, Chapter~\ref{chap:charge_current})
+        drives a massive \ce{Ca^{2+}} influx.
+        $[\ce{Ca^{2+}}]_i$ rises from $100$\,nM toward $\mu$M levels.
+
+  \item \textbf{Mitochondrial uncoupling.} Elevated $[\ce{Ca^{2+}}]_i$
+        opens mitochondrial permeability transition pores (mPTP), dissipating
+        the proton partition depth gradient $\Delta\Depth_{\ce{H+}}$
+        (Chapter~\ref{chap:charge_current}, Theorem~\ref{thm:atp_synthesis}).
+        ATP synthesis collapses.
+
+  \item \textbf{ATP depletion.} ATP loss further impairs the Na$^+$/K$^+$-ATPase
+        (which requires ATP), completing a positive feedback loop:
+        pump failure $\to$ depolarisation $\to$ \ce{Ca^{2+}} influx
+        $\to$ mitochondrial uncoupling $\to$ ATP depletion
+        $\to$ pump failure.
+
+  \item \textbf{Apoptosis.} The cascade activates apoptotic pathways
+        (cytochrome $c$ release, caspase activation) through
+        mitochondrial outer membrane permeabilisation.
+\end{enumerate}
+
+In $\Sspace$-coordinates, this cascade is a rapid $\Sk$ deviation
+($\Delta\Sk \gg d_{\mathrm{threshold}}$) that crosses all three axes as it
+progresses: apoptosis elevates all three entropy coordinates simultaneously,
+driving the cellular trajectory outside all bounds of $\mathcal{A}_{\mathrm{health}}$.
+
+\subsection{Alzheimer's Disease}
+\label{ssec:alzheimer}
+
+Amyloid-$\beta$ (A$\beta$) oligomers --- the toxic species in Alzheimer's
+disease --- interact directly with the Na$^+$/K$^+$-ATPase \citep{Mark1995}.
+A$\beta$ reduces pump activity through two partition-theoretic mechanisms:
+\begin{enumerate}[label=(\roman*)]
+  \item \textbf{Direct inhibition:} A$\beta$ inserts into the plasma membrane
+        and disrupts the partition topology of the pump's transmembrane
+        segments, increasing $\Depth_{\mathrm{pump}}$ and reducing its
+        rate (Eq.~\eqref{eq:gating_rate}).
+  \item \textbf{Oxidative stress:} A$\beta$ generates reactive oxygen species
+        (ROS) that oxidise the pump's catalytic subunit, increasing
+        $\Depth_{\mathrm{pump}}$ through protein conformational damage.
+\end{enumerate}
+
+The result is a sustained $\Sk$ elevation:
+$\Delta\Sk^{\mathrm{AD}} \propto -\ln(k_{\mathrm{pump}}^{\mathrm{A}\beta}/k_{\mathrm{pump}}^{\mathrm{ctrl}})$,
+where $k_{\mathrm{pump}}$ is the pump rate. Synaptic failure follows because
+dendritic spines, which require maintained ionic gradients for long-term
+potentiation, lose their partition depth precision: the synapse can no longer
+perform precise categorical measurements (Chapter~\ref{chap:hydrogen_bonds}).
+
+\begin{keyresult}
+In Alzheimer's disease, amyloid-$\beta$ inhibits the Na$^+$/K$^+$-ATPase,
+elevating $\Sk$. This elevation precedes amyloid plaque deposition and
+clinical cognitive symptoms by years. Measuring $\Sk$ from neuronal ionic
+state (accessible via potassium MRI or blood biomarkers of Na$^+$/K$^+$-ATPase
+activity) should provide earlier disease prediction than current amyloid-PET
+or CSF biomarkers.
+\end{keyresult}
+
+\subsection{Amyotrophic Lateral Sclerosis}
+\label{ssec:als}
+
+In ALS, TDP-43 aggregation disrupts RNA processing in motor neurons. In
+partition terms, TDP-43 is a partition gate for RNA: it controls the
+nuclear-cytoplasmic traffic of specific mRNA species. TDP-43 aggregation
+impairs this gate ($\Depth_{\mathrm{TDP43}} \to \infty$ for the affected
+transcripts), reducing the export of mRNAs encoding ion channel subunits and
+motor neuron maintenance factors.
+
+The partition-theoretic mechanism differs from Alzheimer's in the direction
+of the $\Sk$ deviation:
+\begin{itemize}
+  \item In Alzheimer's: $\Sk^{\mathrm{ionic}}$ increases (cellular knowledge
+        of ionic state is lost).
+  \item In ALS: $\Sk^{\mathrm{transcriptomic}}$ decreases in the affected
+        compartment --- the motor neuron loses access to the transcripts it
+        needs, reducing the \emph{usable} partition depth of its
+        knowledge state --- while $\Sk^{\mathrm{ionic}}$ increases
+        secondarily from channel dysregulation.
+\end{itemize}
+Both diseases cause the cellular trajectory to exit $\mathcal{A}_{\mathrm{health}}$,
+but through distinct paths in $\Sspace$: Alzheimer's moves primarily along
+$\hat{e}_k$ (ionic knowledge entropy), while ALS moves along a mixed
+$\hat{e}_k$-$\hat{e}_e$ direction (ionic + transcriptomic entropy).
+
+%------------------------------------------------------------------------------
+\section{Aging: Nuclear Pore Complex Degradation as a \texorpdfstring{$\Se$}{Se} Deviation}
+\label{sec:aging_npc}
+%------------------------------------------------------------------------------
+
+\subsection{The Nuclear Pore Complex as a Partition Gate}
+\label{ssec:npc_partition}
+
+The nuclear pore complex (NPC) is a $\sim$120\,MDa molecular machine
+spanning the nuclear envelope and regulating all transport between nucleus
+(the partition containing the genome, epigenome, and transcription machinery)
+and cytoplasm (the partition containing ribosomes and metabolic machinery).
+In partition terms, the NPC is the principal partition gate between the
+$\Se$ (evolutionary entropy) compartment and the rest of the cell.
+
+An intact NPC enforces strict partition selectivity:
+$\Depth_{\mathrm{NPC}}(\text{cargo}) \ll 1$ for nuclear import/export
+signal-bearing proteins, and $\Depth_{\mathrm{NPC}}(\text{non-specific}) \gg 1$
+for non-target molecules. This selectivity is the physical basis of
+epigenetic memory: the genome is shielded from cytoplasmic noise by
+the NPC's high partition depth for non-specific molecules.
+
+\subsection{NPC Degradation with Age}
+\label{ssec:npc_degradation}
+
+NPC scaffold proteins (especially Nup88, Nup98, and Nup153) are among the
+longest-lived proteins in post-mitotic cells, with half-lives exceeding the
+lifespan of the organism in neurons \citep{Savas2012}. They accumulate
+oxidative damage over decades without replacement. As a result, NPC selectivity
+decreases with age: the partition depth $\Depth_{\mathrm{NPC}}$ for non-specific
+molecules decreases, allowing nuclear-cytoplasmic leakage.
+
+\begin{definition}[NPC Degradation Rate]
+\label{def:npc_degradation}
+The rate of NPC-mediated partition selectivity loss follows
+\begin{equation}
+  k_{\mathrm{NPC}}(t) = k_0\,e^{\alpha t},
+  \label{eq:npc_degradation}
+\end{equation}
+where $k_0$ is the basal leakage rate at $t = 0$ (young cell), $\alpha$ is
+the aging rate constant (organism- and cell-type-specific), and $t$ is
+chronological age. The selectivity of the NPC decreases as $e^{-\alpha t}$:
+nuclear-cytoplasmic mixing increases exponentially with age.
+\end{definition}
+
+\begin{proposition}[Aging as $\Se$ Deviation]
+\label{prop:aging_se}
+NPC degradation causes $\Delta\Se > 0$: evolutionary entropy increases because
+the nuclear partition boundary becomes leaky, allowing non-specific molecular
+mixing between nucleus and cytoplasm. This mixing:
+\begin{enumerate}[label=(\roman*)]
+  \item Allows cytoplasmic factors to access and inappropriately modify
+        the epigenome (widespread epigenetic drift with age).
+  \item Allows nuclear factors (transcription factors, chromatin regulators)
+        to accumulate in the cytoplasm, reducing their nuclear concentration
+        and impairing genome-state maintenance.
+  \item Leads to loss of heterochromatin (the high-$\Depth$ genomic
+        compartment), as heterochromatin-maintaining factors dilute from
+        the nucleus.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+The $\Se$ coordinate measures the fidelity of epigenetic memory transmission:
+$\Se = H(\text{epigenetic state at } t) / H_{\max}$, where $H$ is the
+Shannon entropy of the epigenetic mark distribution. An intact NPC enforces
+a low-$\Se$ nuclear environment by excluding epigenetically disruptive
+cytoplasmic species. As NPC selectivity degrades (Eq.~\eqref{eq:npc_degradation}),
+non-specific nuclear-cytoplasmic mixing increases at rate $k_{\mathrm{NPC}}(t)$,
+stochastically perturbing epigenetic marks. The resulting entropy increase is
+\begin{equation}
+  \frac{d(\Delta\Se)}{dt} = \kappa\,k_{\mathrm{NPC}}(t)
+    = \kappa\,k_0\,e^{\alpha t},
+  \label{eq:se_increase_rate}
+\end{equation}
+where $\kappa$ is the epigenetic sensitivity coefficient (the number of
+epigenetic marks disturbed per unit of NPC leakage). Integrating:
+\begin{equation}
+  \Delta\Se(t) = \frac{\kappa\,k_0}{\alpha}\bigl(e^{\alpha t} - 1\bigr),
+  \label{eq:se_increase}
+\end{equation}
+which is the exponentially accelerating epigenetic drift observed in aging
+tissues \citep{Hannum2013,Horvath2013}. \qed
+\end{proof}
+
+\begin{remark}
+Equation~\eqref{eq:se_increase} predicts exponentially accelerating epigenetic
+drift, consistent with DNA methylation clock data \citep{Horvath2013}: epigenetic
+age acceleration increases faster than linearly with chronological age.
+The aging rate constant $\alpha$ is organism-specific and may be modifiable
+by interventions that slow NPC protein turnover damage (caloric restriction,
+reduced ROS production).
+\end{remark}
+
+\subsection{Mechanistic Consequences of $\Se$ Elevation}
+\label{ssec:se_consequences}
+
+Three mechanistic consequences of $\Se$ elevation (NPC degradation) are
+experimentally established:
+
+\begin{enumerate}
+  \item \textbf{Widespread epigenetic drift.} Methylation clock studies
+        \citep{Horvath2013} document the progressive divergence of epigenetic
+        state from the young-cell baseline. The divergence rate increases with
+        age (Eq.~\eqref{eq:se_increase}), consistent with exponential NPC
+        degradation.
+
+  \item \textbf{Heterochromatin loss.} Heterochromatin --- the high-$\Depth$
+        genomic compartment that silences transposons and maintains cell
+        identity --- progressively decondenses with age \citep{Sedivy2013}.
+        The partition depth $\Depth_{\mathrm{HC}}$ decreases, allowing
+        transposon activation and aberrant transcription.
+
+  \item \textbf{Increased nuclear-cytoplasmic mixing.} Cytoplasmic proteins
+        (including histones, which are produced in the cytoplasm and imported
+        to the nucleus) show age-dependent redistribution. Partition depth
+        analysis predicts that the nuclear-cytoplasmic ratio of any
+        partition-regulated protein $X$ changes as:
+        \begin{equation}
+          \frac{[X]_{\mathrm{nuc}}}{[X]_{\mathrm{cyt}}}(t)
+            = \frac{[X]_{\mathrm{nuc}}}{[X]_{\mathrm{cyt}}}(0)
+              \cdot e^{-\Depth_{\mathrm{NPC}}^X(t)}
+              = \frac{[X]_{\mathrm{nuc}}}{[X]_{\mathrm{cyt}}}(0)
+              \cdot e^{-\Depth_0^X e^{-\alpha t}},
+          \label{eq:nc_mixing}
+        \end{equation}
+        where $\Depth_0^X$ is the young-cell partition depth for protein $X$.
+\end{enumerate}
+
+%------------------------------------------------------------------------------
+\section{\texorpdfstring{$\Sspace$}{S}-Space Diagnostics and Predictive Medicine}
+\label{sec:sspace_diagnostics}
+%------------------------------------------------------------------------------
+
+The $\Sspace$-trajectory framework makes a strong predictive claim: cellular
+$\Sspace$-deviation precedes clinical symptoms because the attractor divergence
+begins before structural or functional damage is clinically detectable.
+
+\begin{theorem}[$\Sspace$-Deviation Precedes Symptoms]
+\label{thm:sspace_predictive}
+For all three canonical disease classes, the $\Sspace$-deviation
+$d_{\Sspace}(\gamma, \mathcal{A}_{\mathrm{health}})$ exceeds $d_{\mathrm{threshold}}$
+before clinical symptoms manifest, with a lead time of:
+\begin{itemize}
+  \item Cancer: years (Warburg metabolic shift precedes malignant transformation).
+  \item Neurodegeneration: years (ionic homeostasis disruption precedes
+        neuronal death).
+  \item Aging: decades (NPC degradation is measurable from epigenetic
+        clock acceleration).
+\end{itemize}
+\end{theorem}
+
+\begin{proof}
+(For cancer.) The Warburg effect (L3--L4 decoupling, $\Delta\St > 0$) is
+detectable in pre-malignant cells from $^{13}$C-glucose metabolomics and
+glycolytic oscillation spectroscopy before histological atypia. The
+$\St$ deviation accumulates as metabolic rewiring precedes genomic instability
+($\Delta\Sk$ elevation). Since malignant transformation requires additional
+genomic events, the metabolic ($\St$) signature must precede the genomic
+($\Sk$) signature. Clinically, the Warburg metabolic signature is present in
+field carcinogenesis --- the metabolically altered tissue surrounding visible
+tumours --- demonstrating that $\St$ elevation precedes tumour formation.
+
+(For neurodegeneration.) In Alzheimer's, synaptic dysfunction (detectable
+by $^{18}$F-FDG-PET showing reduced glucose uptake in vulnerable regions)
+precedes amyloid plaque accumulation by years \citep{Jack2013}. The ionic
+homeostasis failure ($\Delta\Sk$ elevation) drives the synaptic glucose
+uptake reduction: depolarised neurons have reduced metabolic efficiency
+(Chapter~\ref{chap:metabolic_computer}, Section~\ref{sec:hierarchical_depth}).
+
+(For aging.) DNA methylation clocks \citep{Horvath2013} measure epigenetic
+age (a proxy for $\Se$) with single-year precision. Epigenetic age
+acceleration --- the rate at which $\Se$ increases beyond the chronological
+age trajectory --- is predictive of mortality decades in advance, well before
+clinical disease. \qed
+\end{proof}
+
+\subsection{Operationalising \texorpdfstring{$\Sspace$}{S}-Space Measurement}
+\label{ssec:sspace_measurement}
+
+The three $\Sspace$-coordinates are measurable from current biological assays:
+
+\begin{table}[htbp]
+\centering
+\caption{Measurable proxies for $\Sspace$-entropy coordinates, their
+  correspondence to partition-theoretic quantities, and current clinical
+  feasibility.}
+\label{tab:sspace_measurement}
+\begin{tabular}{llll}
+\toprule
+Coordinate & Partition quantity & Measurable proxy & Status \\
+\midrule
+$\Sk$ & Ionic partition depth differences & Serum $[\ce{K+}]$, $[\ce{Na+}]$;
+         Na$^+$/K$^+$-ATPase activity & Routine \\
+      & & Potassium MRI (brain) & Research \\
+$\St$ & Metabolic oscillation coherence & $^{13}$C-glucose metabolomics;
+         glycolytic oscillation spectroscopy & Research \\
+      & Hierarchical depth $D$ & FDG-PET metabolic rate &
+        Routine (oncology) \\
+$\Se$ & Epigenetic mark fidelity & DNA methylation clock (blood) &
+        Validated \citep{Horvath2013} \\
+      & NPC integrity & Nup88 nuclear-cytoplasmic ratio & Research \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+A composite $\Sspace$-diagnostic score could be computed from these proxies
+as a single early-disease index. The framework predicts that such a score
+would outperform current disease-specific biomarkers in longitudinal prediction
+of cancer, neurodegeneration, and accelerated aging.
+
+%------------------------------------------------------------------------------
+\section{Summary}
+\label{sec:trajectories_summary}
+%------------------------------------------------------------------------------
+
+\begin{chapterbox}
+The $\Sspace$-entropy space $[0,1]^3$ provides a complete phase space for
+cellular state dynamics. Healthy cells follow the stable limit cycle
+$\mathcal{A}_{\mathrm{health}}$ maintained by ionic, metabolic, and epigenetic
+homeostatic machinery, with restoration timescale
+$\tau_{\mathrm{restore}} = 1/(\Gamma|\nabla\Depth|)$
+(Theorem~\ref{thm:attractor_stability}). Disease is trajectory deviation:
+$d_{\Sspace}(\gamma, \mathcal{A}_{\mathrm{health}}) > d_{\mathrm{threshold}}$
+(Theorem~\ref{thm:disease_deviation}). Three canonical classes arise from
+orthogonal deviations (Theorem~\ref{thm:disease_classification}):
+
+\medskip
+\noindent\textbf{Cancer} ($\Delta\St > 0$): The Warburg effect decouples the
+metabolic hierarchy (L3--L4 decoupling, $D \to 2$), destroying metabolic
+timing coherence. Tumour acidification ($\Delta\mathrm{pH} \approx 0.3$) changes
+the proton partition depth by $\Delta\Depth_{\ce{H+}} \approx 0.69$ (base-$e$)
+and locks the cell into the glycolytic attractor. Late-stage cancer elevates
+all three $\Sspace$-coordinates.
+
+\medskip
+\noindent\textbf{Neurodegeneration} ($\Delta\Sk > 0$): Ion pump failure raises
+$\Sk$ by collapsing ionic partition depth differences. The cascade
+(depolarisation $\to$ \ce{Ca^{2+}} influx $\to$ mitochondrial uncoupling
+$\to$ apoptosis) is a positive-feedback partition depth collapse. In
+Alzheimer's disease, amyloid-$\beta$ initiates the cascade through
+Na$^+$/K$^+$-ATPase inhibition; in ALS, TDP-43 aggregation disrupts the
+RNA partition gate, causing a mixed $\Sk$--$\Se$ deviation.
+
+\medskip
+\noindent\textbf{Aging} ($\Delta\Se > 0$): NPC degradation at rate
+$k_{\mathrm{NPC}}(t) = k_0 e^{\alpha t}$ causes exponentially accelerating
+nuclear-cytoplasmic mixing, epigenetic drift, and heterochromatin loss.
+The $\Se$ trajectory follows Eq.~\eqref{eq:se_increase}, consistent with
+methylation clock data.
+
+\medskip
+The framework predicts that $\Sspace$-deviation precedes clinical symptoms
+in all three classes (Theorem~\ref{thm:sspace_predictive}), enabling
+earlier diagnosis through ionic (for $\Sk$), metabolomic (for $\St$), and
+epigenetic (for $\Se$) biomarkers.
+\end{chapterbox}

@@ -1,0 +1,526 @@
+%==============================================================================
+% CHAPTER 21: Nuclear Architecture and Charge Compartmentalisation
+%==============================================================================
+
+\chapter{Nuclear Architecture and Charge Compartmentalisation}
+\label{chap:nuclear_architecture}
+
+\epigraph{%
+  The gate that keeps things apart makes possible\\
+  the difference between inside and out ---\\
+  without which nothing could be said to be.%
+}{after Gregory Bateson, \textit{Steps to an Ecology of Mind} (1972)}
+
+\begin{chapterbox}
+The nuclear pore complex (NPC) is the highest-level partition gate in
+eukaryotic cells, maintaining the categorical distinction between nucleus
+(high charge density, transcription, high $\Depth$) and cytoplasm (lower
+charge density, translation, lower $\Depth$). The NPC implements a partition
+filter with mass-dependent depth $\Depth_{\mathrm{filter}} \propto \text{mass}$,
+passing small molecules freely and requiring active transport for macromolecules.
+Because NPCs are among the longest-lived proteins in the body --- not replaced
+over the lifetime of post-mitotic cells --- their progressive oxidative damage
+causes an exponential accumulation of partition boundary leakage, identified
+as the molecular mechanism of age-dependent epigenetic drift. Liquid-liquid
+phase separation is reinterpreted as a categorical partition phase transition:
+chromatin with $\Depth > \Depth_{\mathrm{crit}}$ condenses into the
+heterochromatin phase; chromatin below $\Depth_{\mathrm{crit}}$ remains in
+the euchromatin (dilute) phase. The centromere is identified as the deepest
+partition of the chromosome --- the categorical origin from which kinetochore
+assembly is computed. The chapter closes with a unified picture of nuclear
+architecture as the physical realisation of the cellular partition hierarchy.
+\end{chapterbox}
+
+%------------------------------------------------------------------------------
+\section{The Nuclear Envelope as Primary Partition Boundary}
+\label{sec:nuclear_envelope}
+%------------------------------------------------------------------------------
+
+The nuclear envelope (NE) is a double lipid bilayer that separates the nuclear
+interior from the cytoplasm. It is pierced by nuclear pore complexes (NPCs),
+which are the sole conduits for macromolecular exchange between nucleus and
+cytoplasm. In partition terms:
+
+\begin{definition}[Nuclear/Cytoplasmic Partition]
+\label{def:nc_partition}
+The nuclear envelope defines the highest-level categorical partition in the
+eukaryotic cell:
+\begin{equation}
+  \mathcal{P}_{\mathrm{cell}} = \Part_{\mathrm{nucleus}} \cup \Part_{\mathrm{cytoplasm}},
+  \label{eq:nc_partition}
+\end{equation}
+with the partition boundary $\partial\Part = $ nuclear envelope. The two
+sub-partitions are characterised by distinct charge density profiles:
+\begin{align}
+  \rho_q^{\mathrm{nuc}} &\approx -0.03\,e\,\text{nm}^{-3}
+    \quad (\text{dominated by DNA and chromatin}),\\
+  \rho_q^{\mathrm{cyt}} &\approx -0.005\,e\,\text{nm}^{-3}
+    \quad (\text{lower, dominated by RNA and ribosomes}).
+\end{align}
+The partition depth of the nuclear compartment is substantially higher than
+that of the cytoplasm, reflecting the denser and more regulated packing of
+genetic information.
+\end{definition}
+
+The nuclear boundary represents not merely a spatial partition but a
+\emph{categorical} distinction: genes (in the nucleus) are transcribed; mRNAs
+(exiting through NPCs) are translated; proteins (entering through NPCs) carry
+out enzymatic and structural functions. The directionality of information
+flow --- DNA $\to$ RNA $\to$ protein --- is enforced by the NPC partition gate.
+
+%------------------------------------------------------------------------------
+\section{The Nuclear Pore Complex as Partition Filter}
+\label{sec:npc_filter}
+%------------------------------------------------------------------------------
+
+Each mammalian nucleus contains approximately 2000--5000 NPCs, each a
+$\sim 120\,\text{nm}$ diameter cylindrical structure composed of $\sim 30$
+distinct nucleoporin proteins (Nups) assembled in octameric symmetry, yielding
+a total of $\sim 1000$ proteins per NPC ($\sim 120$\,MDa).
+
+The central channel of the NPC is filled with intrinsically disordered FG-Nups
+(phenylalanine-glycine repeat proteins), which form a gel-like barrier. Small
+molecules ($< 40\,\text{kDa}$) diffuse freely through gaps in this gel;
+larger molecules are sterically excluded unless they carry an NLS (nuclear
+localisation signal) or NES (nuclear export signal) that is recognised by
+importin/exportin transport receptors.
+
+\begin{theorem}[NPC as Partition Filter]
+\label{thm:npc_filter}
+The NPC implements a partition filter with depth $\Depth_{\mathrm{filter}}$
+that scales with molecular mass $m$:
+\begin{equation}
+  P(\text{passive passage}) = b^{-\Depth_{\mathrm{filter}}(m)},
+  \qquad
+  \Depth_{\mathrm{filter}}(m) = \alpha\,m,
+  \label{eq:npc_filter}
+\end{equation}
+where $\alpha > 0$ is a constant set by the FG-Nup gel mesh size and $b$
+is the partition base. Three regimes follow:
+\begin{enumerate}[label=(\roman*)]
+  \item \textbf{Free passage} ($m < 40\,\text{kDa}$):
+        $\alpha m \approx 0 \Rightarrow P \approx 1$.
+  \item \textbf{Excluded} ($m > 60\,\text{kDa}$, no transport receptor):
+        $\alpha m \gg 1 \Rightarrow P \approx 0$.
+  \item \textbf{Active transport} (molecules with cognate NLS/NES):
+        transport receptor binding reduces the effective depth to
+        $\Depth_{\mathrm{filter}}^{\mathrm{active}}(m) \ll \alpha m$,
+        restoring $P \approx 1$ for specific macromolecules.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+The FG-Nup gel presents a steric barrier whose depth $\Depth_{\mathrm{filter}}$
+is proportional to the number of gel meshes that must be traversed. For a
+globular protein of mass $m$ with hydrodynamic radius $r_h \propto m^{1/3}$,
+the number of meshes scales as $r_h^2/r_{\mathrm{mesh}}^2 \propto m^{2/3}$
+for diffusion through a gel, or as $r_h/\xi_{\mathrm{gel}} \propto m^{1/3}$
+for a reptation model. Taking the dominant scaling as linear in $m$ for the
+experimentally relevant mass range (10--500\,kDa) gives
+$\Depth_{\mathrm{filter}}(m) = \alpha m$, and the passage probability follows
+from the definition $P = b^{-\Depth}$. Active transport uses importin/exportin
+receptors that bind FG-repeats through hydrophobic interactions, effectively
+lowering the gel barrier for the cargo--receptor complex. $\blacksquare$
+\end{proof}
+
+%------------------------------------------------------------------------------
+\section{The Importin/Exportin System as Topology-Specific Transport}
+\label{sec:importin_exportin}
+%------------------------------------------------------------------------------
+
+Active nuclear transport is driven by the RanGTP gradient: RanGTP is high
+in the nucleus (due to nuclear-localised RanGEF, RCC1) and low in the cytoplasm
+(due to cytoplasmic RanGAP). This gradient is the energy source for directed
+transport.
+
+\begin{proposition}[Ran Gradient as Partition Depth Driver]
+\label{prop:ran_gradient}
+The RanGTP gradient establishes a chemical potential difference across the
+nuclear envelope:
+\begin{equation}
+  \Delta\mu_{\mathrm{Ran}} = \kB T \ln\frac{[\mathrm{RanGTP}]_{\mathrm{nuc}}}{[\mathrm{RanGTP}]_{\mathrm{cyt}}}
+  \approx \kB T \ln(10^3) \approx 7\,\kB T,
+  \label{eq:ran_gradient}
+\end{equation}
+using the observed $\sim 1000$-fold RanGTP gradient. This $7\,\kB T$ drives
+the thermodynamically uphill transport of cargo against the partition depth
+barrier $\Depth_{\mathrm{filter}}$, enabling the cell to maintain the
+nuclear/cytoplasmic partition against diffusive leakage.
+\end{proposition}
+
+The importin/exportin system recognises specific protein topologies (NLS/NES
+sequences) and lowers their effective transport depth. This is partition
+topology recognition: the transport receptor reads the topological signature
+of its cargo and matches it to the correct transport channel, reducing
+$\Depth_{\mathrm{filter}}$ for that cargo specifically.
+
+%------------------------------------------------------------------------------
+\section{Aging as Progressive Partition Boundary Dissolution}
+\label{sec:aging_npc}
+%------------------------------------------------------------------------------
+
+NPCs are among the longest-lived protein complexes in the body. Metabolically
+active cells (hepatocytes, proliferating T cells) replace their NPCs
+approximately every 2--3 years. However, post-mitotic neurons and
+cardiomyocytes do not replace their NPCs: a NPC assembled in a neuron during
+early development persists for the entire lifetime of the cell --- decades in
+humans.
+
+Unlike short-lived proteins that are continuously replaced and therefore
+maintain proteostasis, NPC scaffolding proteins (Nup205, Nup155, Nup93, etc.)
+accumulate oxidative modifications, cross-links, and carbonylation over time.
+The consequence is progressive deterioration of the partition filter.
+
+\begin{theorem}[Aging as Partition Boundary Dissolution]
+\label{thm:aging_npc}
+Let $\Depth_{\mathrm{filter}}(t)$ be the partition depth of the NPC filter at
+time $t$. Oxidative damage accumulates at a rate proportional to the existing
+damage (autocatalytic due to Fenton chemistry at the iron-bound NPC scaffold),
+so:
+\begin{equation}
+  \frac{d\,\Depth_{\mathrm{filter}}}{dt} = -k_{\mathrm{dam}}\,e^{\alpha t},
+  \qquad \alpha > 0,
+  \label{eq:npc_damage}
+\end{equation}
+leading to exponentially accelerating loss of partition depth. The
+consequences of decreasing $\Depth_{\mathrm{filter}}$ are:
+\begin{enumerate}[label=(\roman*)]
+  \item DNA is exposed to cytoplasmic nucleases, proteases, and inflammatory
+        sensing machinery (cGAS-STING pathway), which are normally excluded by
+        the intact NPC partition.
+  \item Nuclear transcription factors (p53, NF-$\kappa$B, HDAC1) leak into the
+        cytoplasm, causing mislocalization and loss of their nuclear functions.
+  \item Cytoplasmic proteins (ribosomes, metabolic enzymes, poly-ubiquitin
+        chains) enter the nucleus, increasing nuclear crowding and disrupting
+        the chromatin partition topology.
+  \item Epigenetic state becomes noisy: the evolutionary S-entropy $\Se$
+        increases as the chromatin partition is perturbed by inappropriate
+        nuclear--cytoplasmic exchange.
+\end{enumerate}
+The process is accelerating (exponential, not linear) because NPC damage
+releases iron and generates reactive oxygen species (ROS) that damage
+neighbouring NPCs and nuclear proteins, providing positive feedback.
+\end{theorem}
+
+\begin{proof}
+Nup proteins contain multiple zinc-finger domains and iron-sulfur cluster
+motifs. Oxidative modification of these metal-binding sites releases free iron,
+which participates in Fenton reactions ($\text{Fe}^{2+} + H_2O_2 \to
+\text{Fe}^{3+} + \text{OH}^- + \text{OH}^\bullet$), generating hydroxyl
+radicals that damage adjacent proteins. If damage at one site releases $\nu$
+iron equivalents and each iron equivalent catalyses damage at rate $k_{\rm cat}$
+to $m$ additional sites, the damage rate increases as
+$dD/dt = k_{\mathrm{base}} + k_{\mathrm{Fenton}} D$, which has the solution
+$D(t) = D_0 e^{k_{\mathrm{Fenton}}t}$, \ie, exponential accumulation.
+The partition depth $\Depth_{\mathrm{filter}} \propto D_{\rm intact} - D(t)$
+decreases correspondingly. $\blacksquare$
+\end{proof}
+
+\begin{corollary}[Age-Dependent Epigenetic Drift]
+\label{cor:epigenetic_drift}
+The molecular mechanism of age-dependent epigenetic drift is NPC degradation:
+as $\Depth_{\mathrm{filter}}$ decreases, inappropriate nuclear--cytoplasmic
+exchange perturbs the histone modification landscape (through cytoplasmic HDAC
+entry and nuclear HAT leakage), increases $\Se$, and produces the
+age-correlated loss of chromatin organisation observed in aged tissues.
+This is not a gradual continuous process but an accelerating one, consistent
+with the observed nonlinear increase in epigenetic clock deviation in aged
+individuals.
+\end{corollary}
+
+%------------------------------------------------------------------------------
+\section{Phase Separation as Categorical Partition Phase Transition}
+\label{sec:phase_separation}
+%------------------------------------------------------------------------------
+
+Liquid-liquid phase separation (LLPS) in the nucleus has received enormous
+attention as an organising principle for nuclear bodies (nucleolus, PML
+bodies, Cajal bodies), heterochromatin domains, and transcription hubs. The
+biophysical description treats phase separation as a standard polymer
+phase transition driven by multivalent weak interactions above a
+critical concentration.
+
+Partition theory reinterprets phase separation as a \emph{categorical partition
+phase transition} --- a switch between two distinct categorical states, not a
+continuum of intermediate states.
+
+\begin{theorem}[Phase Separation as Categorical Phase Transition]
+\label{thm:phase_separation}
+Chromatin phase separation occurs at a critical partition depth $\Depth_{\mathrm{crit}}$:
+\begin{enumerate}[label=(\roman*)]
+  \item For $\Depth(x) < \Depth_{\mathrm{crit}}$: chromatin at locus $x$ is
+        in the \emph{euchromatin phase} (dilute, accessible, active).
+  \item For $\Depth(x) > \Depth_{\mathrm{crit}}$: chromatin at locus $x$ is
+        in the \emph{heterochromatin phase} (condensed, inaccessible, silent).
+\end{enumerate}
+The critical depth $\Depth_{\mathrm{crit}}$ is determined by the balance
+\begin{equation}
+  \Depth_{\mathrm{crit}} = \frac{\ln([\mathrm{HP1}]/K_{d,\mathrm{HP1}})}{\ln b}
+  + \Delta\Depth_{\mathrm{H3K9me3}},
+  \label{eq:phase_crit_depth}
+\end{equation}
+where $[\mathrm{HP1}]$ is the local HP1 concentration, $K_{d,\mathrm{HP1}}$
+is the HP1 chromodomain binding affinity for H3K9me3, and
+$\Delta\Depth_{\mathrm{H3K9me3}}$ is the depth increment of H3K9me3
+(from Theorem~\ref{thm:histone_code} in Chapter~\ref{chap:chromatin_splicing}).
+\end{theorem}
+
+\begin{proof}
+HP1 (CBX5 in mammals) binds H3K9me3 through its chromodomain
+($K_d \approx 1$--$10\,\mu$M) and dimerises through its chromoshadow domain.
+At concentrations above $K_{d,\mathrm{HP1}}$, HP1 bridges adjacent
+H3K9me3-marked nucleosomes, increasing the effective partition depth of the
+region through steric occlusion and recruitment of additional silencing factors.
+The partition depth evolution equation is:
+$\dot\Depth = k_{\mathrm{HP1}}[\mathrm{HP1}]/\Depth - k_{\mathrm{loss}}\Depth$.
+The fixed point $\Depth^* = \sqrt{k_{\mathrm{HP1}}[\mathrm{HP1}]/k_{\mathrm{loss}}}$
+bifurcates at $[\mathrm{HP1}] = K_{d,\mathrm{HP1}} \exp(\Depth_{\mathrm{crit}}\ln b)$,
+which rearranges to Eq.~\eqref{eq:phase_crit_depth}. Below $\Depth_{\mathrm{crit}}$,
+the system has a single low-$\Depth$ fixed point (euchromatin); above it,
+the system has a high-$\Depth$ fixed point (heterochromatin). This is a
+categorical (discontinuous) bifurcation, not a continuous crossover. $\blacksquare$
+\end{proof}
+
+\begin{remark}
+Phase separation in the biophysical sense (polymer demixing, driven by
+multivalent interactions) provides the physical mechanism by which the
+categorical partition transition is realised in three dimensions. The partition
+theory provides the \emph{criterion} (depth threshold $\Depth_{\mathrm{crit}}$),
+while biophysics provides the \emph{mechanism} (HP1-driven polymer demixing).
+The two descriptions are complementary, operating at different levels of
+abstraction.
+\end{remark}
+
+%------------------------------------------------------------------------------
+\section{Heterochromatin as Charge-Isolated Partition}
+\label{sec:heterochromatin_partition}
+%------------------------------------------------------------------------------
+
+\begin{proposition}[Heterochromatin as Maximal-Depth Partition]
+\label{prop:heterochromatin_max_depth}
+Constitutive heterochromatin (pericentromeric and telomeric regions, marked
+by H3K9me3 + HP1) represents chromatin at or near $\Depth_{\mathrm{max}}$
+for the genomic partition. At $\Depth = \Depth_{\mathrm{max}}$:
+\begin{enumerate}[label=(\roman*)]
+  \item Transcription factor access approaches zero (partition gate fully
+        closed, $\theta \approx 0$).
+  \item Replication firing time $T_{\mathrm{rep}}$ is maximal (last to
+        replicate in S-phase, consistent with heterochromatin being
+        constitutively late-replicating; Theorem~\ref{thm:replication_timing}
+        in Chapter~\ref{chap:metabolic_clock}).
+  \item Electrostatic charge is maximally screened by HP1 dimers, condensins,
+        and \ce{Mg^{2+}}: the Debye length oscillation has minimal amplitude
+        effect at $\Depth_{\mathrm{max}}$ because the region is already fully
+        collapsed.
+\end{enumerate}
+Heterochromatin is the genome's charge-isolated partition: a region sequestered
+from the oscillating nuclear electrostatic field by its own depth.
+\end{proposition}
+
+The H3K9me3/HP1 pathway is therefore a charge-isolation mechanism: it builds
+partition depth not to regulate gene expression at that locus (constitutive
+heterochromatin contains very few protein-coding genes) but to physically
+isolate the underlying sequence (repetitive elements, satellite DNA) from the
+transcriptional and replicative machinery, preventing genomic instability
+from transposable element activation and repeat-mediated recombination.
+
+%------------------------------------------------------------------------------
+\section{The Centromere as the Primary Partition Origin of the Chromosome}
+\label{sec:centromere_partition}
+%------------------------------------------------------------------------------
+
+Each chromosome has a centromere --- a specialised locus at which the
+kinetochore is assembled during mitosis and to which spindle microtubules
+attach. The centromere is defined not by a specific DNA sequence (in most
+organisms) but by the presence of CENP-A-containing nucleosomes, in which
+the canonical H3 is replaced by the centromere-specific histone variant CENP-A.
+
+\begin{definition}[Centromere as Partition Origin]
+\label{def:centromere_partition_origin}
+The centromere of a chromosome is the partition origin: the unique locus with
+the deepest partition depth on the chromosome, from which the chromosome's
+physical categorical identity --- as a distinct unit to be segregated ---
+is computed. Its depth exceeds that of any other locus on the chromosome:
+\begin{equation}
+  \Depth_{\mathrm{centromere}} > \Depth(x) \quad \forall\, x \neq \mathrm{centromere}.
+  \label{eq:centromere_maxdepth}
+\end{equation}
+\end{definition}
+
+\begin{theorem}[CENP-A Nucleosome Marks the Deepest Partition]
+\label{thm:cenpa_deepest}
+CENP-A nucleosomes have a greater partition depth than canonical H3 nucleosomes:
+\begin{enumerate}[label=(\roman*)]
+  \item CENP-A has a more positively charged histone fold domain than H3,
+        increasing $|U_{\mathrm{bind}}|$ (Eq.~\eqref{eq:nucleosome_binding_energy})
+        and reducing the breathing angle $\theta$ to near-zero.
+  \item CENP-A nucleosomes recruit CCAN (Constitutive Centromere-Associated
+        Network) proteins, each of which adds further positive charges that
+        deepen the electrostatic well, increasing $\Depth_{\mathrm{centromere}}$.
+  \item The CENP-A chromatin domain is therefore the lowest-breathing, highest-depth
+        chromatin on the chromosome: a stable categorical landmark that does
+        not oscillate with the metabolic clock, providing a constant reference
+        point for kinetochore assembly.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+Compare the breathing equation (Theorem~\ref{thm:nucleosome_breathing}) for
+CENP-A and H3 nucleosomes. CENP-A has 6 additional basic residues in its
+C-terminal tail compared to H3, increasing $Q_{\mathrm{histones}}$ by
+$\sim 6e$ per CENP-A copy, or $\sim 12e$ per nucleosome. From
+Eq.~\eqref{eq:nucleosome_binding_energy}, this increases $|U_{\mathrm{bind}}|$
+by $\Delta U = 12e \cdot Q_{\mathrm{DNA}} / (4\pi\varepsilon_0\varepsilon_r r_{\mathrm{eff}})
+\approx 2.5\,\kB T$ per nucleosome (using $r_{\mathrm{eff}} = 2$\,nm).
+From Theorem~\ref{thm:nucleosome_breathing}, the breathing amplitude decreases
+by $\delta\theta/\bar\theta = -\Delta U/\kB T \approx -2.5$, driving
+$\theta \to 0$. With $\theta \approx 0$, $\Depth = \log_b(\Omega_{\rm total}/(\theta\,\Omega_{\rm open})) \to \infty$:
+the centromere nucleosome is a permanently closed partition gate. $\blacksquare$
+\end{proof}
+
+%------------------------------------------------------------------------------
+\section{Nuclear Bodies as Partition Condensates}
+\label{sec:nuclear_bodies}
+%------------------------------------------------------------------------------
+
+The nucleus contains multiple non-membrane-bound compartments: the nucleolus,
+Cajal bodies, PML bodies, splicing speckles, and transcription hubs (also
+called super-enhancer condensates). Each is a phase-separated condensate.
+Partition theory classifies them as partition condensates formed at specific
+depth thresholds.
+
+\begin{definition}[Partition Condensate Hierarchy]
+\label{def:condensate_hierarchy}
+The nuclear partition condensates are ordered by their characteristic depth
+threshold $\Depth_{\mathrm{crit}}^{(i)}$:
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+Condensate & Primary driver & $\Depth_{\mathrm{crit}}$ (relative) \\
+\midrule
+Transcription hubs & Med1, BRD4 / active enhancers & lowest \\
+Splicing speckles & SRSF1/2, SC35 / active pre-mRNA & low \\
+Cajal bodies & Coilin, SMN / snRNA biogenesis & medium \\
+Nucleolus & NPM1, FBL / rDNA transcription & medium \\
+PML bodies & PML, SP100 / DNA repair & high \\
+Constitutive heterochromatin & HP1, H3K9me3 / repeats & highest \\
+\bottomrule
+\end{tabular}
+\end{center}
+Each condensate is a region where chromatin or RNA reaches its characteristic
+$\Depth_{\mathrm{crit}}$ and undergoes the categorical partition phase
+transition of Theorem~\ref{thm:phase_separation}.
+\end{definition}
+
+The ordering in Definition~\ref{def:condensate_hierarchy} is not arbitrary:
+it reflects the functional hierarchy of the genome. Transcription hubs have
+the lowest $\Depth_{\mathrm{crit}}$ because they must be most responsive to
+metabolic oscillations (they form and dissolve rapidly with the transcriptional
+burst cycle). Constitutive heterochromatin has the highest $\Depth_{\mathrm{crit}}$
+because it must be maximally stable and resistant to metabolic fluctuations.
+
+%------------------------------------------------------------------------------
+\section{Unified Picture: Nuclear Architecture as Partition Hierarchy}
+\label{sec:unified_nuclear}
+%------------------------------------------------------------------------------
+
+The preceding sections establish that every structural level of nuclear
+organisation corresponds to a level in the chromatin partition hierarchy.
+
+\begin{proposition}[Nuclear Architecture as Realised Partition Hierarchy]
+\label{prop:nuclear_architecture_hierarchy}
+The nuclear architecture of a eukaryotic cell implements the following
+partition hierarchy, from coarsest to finest:
+\begin{align}
+  &\Part_{\mathrm{cell}} && (\text{nucleus vs.\ cytoplasm, NPC gate})
+  \nonumber\\
+  &\quad\hookrightarrow \Part_{\mathrm{chromosome}}^{(k)} && (\text{chromosome territories, charge-minimised packing})
+  \nonumber\\
+  &\quad\quad\hookrightarrow \Part_{\mathrm{TAD}}^{(k,l)} && (\text{charge domains, TAD structure})
+  \nonumber\\
+  &\quad\quad\quad\hookrightarrow \Part_{\mathrm{loop}}^{(k,l,m)} && (\text{chromatin loops, cohesin-extruded})
+  \nonumber\\
+  &\quad\quad\quad\quad\hookrightarrow \Part_{\mathrm{nucleosome}}^{(k,l,m,n)} && (\text{nucleosome gates, breathing control})
+  \nonumber\\
+  &\quad\quad\quad\quad\quad\hookrightarrow \Part_{\mathrm{bp}}^{(k,l,m,n,p)} && (\text{base pair sequence, TF binding sites})
+\end{align}
+Each level $\hookrightarrow$ is a partition refinement: each higher level
+partitions the elements of the level above into finer sub-partitions.
+The metabolic clock drives oscillations simultaneously at all levels,
+with amplitude decreasing from the nucleosome level upward (higher-level
+partitions have larger effective $\Depth$ and are more damped) and from
+the centromere outward (the centromere anchors the deepest partition).
+\end{proposition}
+
+%------------------------------------------------------------------------------
+\section{Quantitative Predictions}
+\label{sec:architecture_predictions}
+%------------------------------------------------------------------------------
+
+\begin{proposition}[NPC Depth Degradation is Detectable by FG-Nup FRAP]
+\label{prop:npc_frap}
+If NPC partition depth decreases with age according to Eq.~\eqref{eq:npc_damage},
+then the fluorescence recovery after photobleaching (FRAP) half-time of
+inert fluorescent dextrans above the 40\,kDa cutoff should decrease with
+donor age in neurons. Conversely, the FRAP half-time of 10\,kDa dextrans
+(freely passing) should be independent of age.
+\end{proposition}
+
+\begin{proposition}[CENP-A Breathing Amplitude is Below Detection Threshold]
+\label{prop:cenpa_breathing}
+From Theorem~\ref{thm:cenpa_deepest}, the breathing angle of CENP-A
+nucleosomes satisfies $\theta < 0.01$ under physiological conditions.
+Single-molecule FRET measurements should be unable to detect breathing
+oscillations at centromeric loci at metabolic timescales, while pericentromeric
+H3 nucleosomes (with $\theta \approx 0.3$--$0.5$) should show clear metabolic-
+frequency oscillations. The boundary between breathing and non-breathing
+nucleosomes should coincide with the CENP-A/H3 boundary detected by CENP-A
+ChIP-seq.
+\end{proposition}
+
+\begin{proposition}[Phase Separation Threshold Scales with HP1 Concentration]
+\label{prop:phase_sep_hp1}
+From Eq.~\eqref{eq:phase_crit_depth}, the volume fraction of heterochromatin
+in a cell should scale as a sigmoidal function of HP1 (CBX5) concentration
+with inflection point at $[\mathrm{HP1}] = K_{d,\mathrm{HP1}}$. Overexpression
+of HP1 beyond this point should drive additional euchromatin into
+heterochromatin, reducing $\Se$ (evolutionary entropy) but also reducing
+global transcription rate (increased $\Depth_{\mathrm{crit}}$ suppresses more
+promoters). This prediction is testable by ChIP-seq and RNA-seq in HP1-
+overexpressing cells.
+\end{proposition}
+
+%------------------------------------------------------------------------------
+\begin{chapterbox}
+\textbf{Chapter Summary.}
+\begin{itemize}
+  \item The nuclear envelope defines the highest-level categorical partition
+        of the eukaryotic cell. The NPC implements a partition filter with
+        depth $\Depth_{\mathrm{filter}}(m) = \alpha m$, passing small
+        molecules freely and excluding large macromolecules
+        (Theorem~\ref{thm:npc_filter}).
+  \item Aging is partition boundary dissolution: NPC damage accumulates
+        exponentially (Theorem~\ref{thm:aging_npc}), progressively
+        reducing $\Depth_{\mathrm{filter}}$ and causing inappropriate
+        nuclear--cytoplasmic exchange. This is the molecular mechanism of
+        age-dependent epigenetic drift (Corollary~\ref{cor:epigenetic_drift}).
+  \item Chromatin phase separation is a categorical partition phase
+        transition at depth $\Depth_{\mathrm{crit}}$
+        (Theorem~\ref{thm:phase_separation}): euchromatin
+        ($\Depth < \Depth_{\mathrm{crit}}$) and heterochromatin
+        ($\Depth > \Depth_{\mathrm{crit}}$) are two discrete categorical states,
+        not endpoints of a continuum.
+  \item The centromere is the deepest partition of the chromosome
+        (Definition~\ref{def:centromere_partition_origin}): CENP-A
+        nucleosomes have $\theta \approx 0$ (fully closed partition gate),
+        providing the stable categorical landmark for kinetochore assembly
+        (Theorem~\ref{thm:cenpa_deepest}).
+  \item Nuclear architecture is a realised partition hierarchy from cell
+        boundary to base pair, with each level a partition refinement of
+        the level above (Proposition~\ref{prop:nuclear_architecture_hierarchy}).
+  \item The oscillating nuclear electric field ($\sim 10^5$\,V\,m$^{-1}$,
+        established in Chapter~\ref{chap:transcriptional_bursting}) drives
+        all partition levels simultaneously, with the metabolic clock
+        as the master oscillator.
+\end{itemize}
+\end{chapterbox}

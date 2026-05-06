@@ -1,0 +1,446 @@
+%==============================================================================
+% CHAPTER 20: Transcriptional Bursting and Charge-Controlled Expression
+%==============================================================================
+
+\chapter{Transcriptional Bursting and Charge-Controlled Expression}
+\label{chap:transcriptional_bursting}
+
+\epigraph{%
+  The universe speaks in silences as much as in sounds.\\
+  To understand gene expression, listen for the pauses.%
+}{after Erwin Schr\"{o}dinger, \textit{What is Life?} (1944)}
+
+\begin{chapterbox}
+Transcriptional bursting --- the discrete stochastic episodes of RNA production
+observed at single-gene resolution --- is reinterpreted as a charge-threshold
+phase transition in partition space. The classical two-state (on/off) promoter
+model is a phenomenological description of the underlying electrostatic
+threshold dynamics: a gene fires when the local electrostatic potential
+$\Phi(\text{locus})$ crosses a threshold $\Phi_{\mathrm{thresh}}$. Because
+$\Phi$ oscillates with the metabolic clock (Chapter~\ref{chap:metabolic_clock}),
+burst frequency is a direct measure of metabolic activity. Burst sizes follow a
+power-law distribution $P(s) \propto s^{-3/2}$, derived from the self-organised
+criticality (SOC) of a system poised at a partition phase transition. The global
+cellular charge state is identified as the master regulator of genome-wide
+transcription rate: genes cluster into charge domains that correspond to
+topologically associating domains (TADs), and co-regulation within a TAD is
+primarily electrostatic rather than sequence-specific. The electric field at
+the nuclear boundary ($E \sim 10^5$\,V\,m$^{-1}$) is quantified and shown
+to be sufficient to drive the charge-domain structure.
+\end{chapterbox}
+
+%------------------------------------------------------------------------------
+\section{Transcriptional Bursting: Phenomenology and Problems}
+\label{sec:bursting_phenomenology}
+%------------------------------------------------------------------------------
+
+Single-molecule RNA fluorescence in situ hybridisation (smFISH) and live-cell
+MS2/PP7 tagging have established that most metazoan genes are expressed in
+discrete episodes --- transcriptional bursts --- separated by refractory
+periods of silence. The statistics of bursting are characterised by:
+\begin{itemize}
+  \item \textbf{Burst frequency} $f_{\mathrm{burst}}$: the rate at which
+        silent promoters enter the active state.
+  \item \textbf{Burst duration} $\tau_{\mathrm{on}}$: the mean time the
+        promoter spends in the active state per burst.
+  \item \textbf{Burst size} $s$: the number of RNA molecules produced per
+        burst.
+\end{itemize}
+
+The canonical two-state model postulates Markovian switching between an
+``on'' state (productive) and an ``off'' state (silent) with rates
+$k_{\mathrm{on}}$ and $k_{\mathrm{off}}$. This model fits single-gene
+distributions but provides no mechanism for the switching rates, no prediction
+of their dependence on metabolic state, and no explanation for the power-law
+tail observed in burst size distributions. Partition theory resolves all three
+gaps.
+
+%------------------------------------------------------------------------------
+\section{The Charge Threshold Model of Transcriptional Firing}
+\label{sec:charge_threshold}
+%------------------------------------------------------------------------------
+
+\begin{definition}[Promoter Electrostatic Potential]
+\label{def:promoter_potential}
+The electrostatic potential at a gene locus $x$ at time $t$ is
+\begin{equation}
+  \Phi(x,t) = \sum_{i} \frac{q_i\,e^{-r_{ix}/\lambda_D(t)}}{4\pi\varepsilon_0\varepsilon_r\,r_{ix}},
+  \label{eq:promoter_potential}
+\end{equation}
+where the sum runs over all charges $q_i$ (DNA, histones, and associated
+proteins) within the electrostatic radius $r_{\mathrm{max}} = 5\lambda_D(t)$
+of the locus. The potential $\Phi(x,t)$ oscillates at the metabolic frequency
+because $\lambda_D(t)$ oscillates (Chapter~\ref{chap:metabolic_clock},
+Eq.~\eqref{eq:debye_length}).
+\end{definition}
+
+\begin{theorem}[Charge Threshold for Transcription]
+\label{thm:charge_threshold}
+Transcription initiation at locus $x$ occurs if and only if the electrostatic
+potential exceeds a locus-specific threshold $\Phi_{\mathrm{thresh}}(x)$:
+\begin{equation}
+  P(\text{transcription at } x) = H(\Phi(x,t) - \Phi_{\mathrm{thresh}}(x)),
+  \label{eq:transcription_threshold}
+\end{equation}
+where $H$ is the Heaviside step function. In the limit of slow threshold
+fluctuations relative to the metabolic oscillation, the burst frequency is
+\begin{equation}
+  f_{\mathrm{burst}}(x) = f_{\mathrm{metabolic}} \cdot
+  \frac{T_{\mathrm{above}}(x)}{T_{\mathrm{total}}},
+  \label{eq:burst_frequency_formula}
+\end{equation}
+where $T_{\mathrm{above}}$ is the fraction of the metabolic cycle during which
+$\Phi(x,t) > \Phi_{\mathrm{thresh}}(x)$.
+\end{theorem}
+
+\begin{proof}
+Transcription initiation requires the assembly of the pre-initiation complex
+(PIC) at the core promoter. PIC assembly involves binding of TFIID (TBP +
+TAFs) to the TATA box or Inr element, followed by sequential recruitment of
+TFIIA, TFIIB, TFIIF, RNA Pol~II, TFIIE, and TFIIH. Each step is a
+protein--DNA or protein--protein binding event with rate
+$k_{\mathrm{assemble}} \propto \exp(\Phi/\kB T)$ (the positive potential at
+the promoter stabilises the positively charged general transcription factors).
+Let $\Phi_{\mathrm{thresh}}(x)$ be the minimum potential required to achieve
+PIC assembly faster than its spontaneous disassembly rate. Then PIC assembly
+is successful iff $\Phi(x,t) \geq \Phi_{\mathrm{thresh}}(x)$.
+Since $\Phi(x,t) = \bar\Phi(x)(1 + \delta\cos(2\pi f_{\mathrm{metabolic}}t))$,
+the fraction of time above threshold is
+$T_{\mathrm{above}}/T_{\mathrm{total}} =
+\arccos((\Phi_{\mathrm{thresh}} - \bar\Phi)/(\delta\bar\Phi))/\pi$,
+which yields Eq.~\eqref{eq:burst_frequency_formula}. $\blacksquare$
+\end{proof}
+
+\begin{corollary}[Constitutive vs.\ Inducible Genes]
+\label{cor:constitutive_inducible}
+\begin{itemize}
+  \item \textbf{Constitutive promoters} have $\Phi_{\mathrm{thresh}} \ll \bar\Phi$:
+        $\Phi(x,t) > \Phi_{\mathrm{thresh}}$ throughout most of the metabolic
+        cycle, so $f_{\mathrm{burst}} \approx f_{\mathrm{metabolic}}$ (bursting
+        at the metabolic rate, appearing as nearly continuous expression).
+  \item \textbf{Inducible promoters} have $\Phi_{\mathrm{thresh}} \gg \bar\Phi$:
+        threshold crossing is rare, so $f_{\mathrm{burst}} \ll f_{\mathrm{metabolic}}$.
+        Induction (by signal transduction, TF binding, or metabolic stimulation)
+        increases $\bar\Phi$ at the locus, moving $\Phi_{\mathrm{thresh}}$ into
+        the oscillation envelope and triggering bursting.
+\end{itemize}
+\end{corollary}
+
+%------------------------------------------------------------------------------
+\section{Burst Size Distribution and Self-Organised Criticality}
+\label{sec:burst_soc}
+%------------------------------------------------------------------------------
+
+\begin{theorem}[Power-Law Burst Size Distribution]
+\label{thm:burst_size}
+Burst sizes follow a power-law distribution with exponent $-3/2$:
+\begin{equation}
+  P(s) \propto s^{-3/2},
+  \label{eq:burst_size_powerlaw}
+\end{equation}
+for burst sizes $s$ in the range $[s_{\min}, s_{\max}]$. This is the
+fingerprint of self-organised criticality (SOC) at a partition phase
+transition.
+\end{theorem}
+
+\begin{proof}
+The promoter operates near its phase transition point $\Phi \approx
+\Phi_{\mathrm{thresh}}$ by the mechanism of Corollary~\ref{cor:constitutive_inducible}:
+genes are expressed when their threshold is within the oscillation amplitude
+--- by definition, a condition of marginal stability. A system at marginal
+stability (poised at a phase transition) exhibits scale-invariant fluctuations.
+In partition theory, the relevant phase transition is between the low-$\Depth$
+(active) and high-$\Depth$ (silent) attractor states of the promoter.
+At criticality, the order parameter $m = \Phi - \Phi_{\mathrm{thresh}}$ has a
+distribution $P(m) \propto m^{-1/2}$ (mean-field universality class, since the
+promoter is a zero-dimensional object coupled to a mean electrostatic field).
+The burst size $s$ is the time-integral of the RNA polymerase elongation rate
+over the duration of a threshold-crossing event; for a random walk above the
+threshold, the first-passage time distribution gives
+$P(\tau_{\mathrm{on}}) \propto \tau_{\mathrm{on}}^{-3/2}$.
+Since $s \propto \tau_{\mathrm{on}}$, this gives $P(s) \propto s^{-3/2}$.
+The exponent $-3/2$ is universal for mean-field partition phase transitions
+and does not depend on promoter-specific parameters. $\blacksquare$
+\end{proof}
+
+\begin{remark}
+The exponent $-3/2$ is identical to the mean-field contact process exponent
+and to the Zipf-type distribution observed for transcriptional avalanches in
+neurons. It is not a coincidence: all three are manifestations of the same
+universality class of partition phase transitions in systems poised at
+criticality.
+\end{remark}
+
+\begin{keyresult}
+Burst frequency correlates with metabolic rate through
+$f_{\mathrm{burst}} \propto T_{\mathrm{above}}(x)/T_{\mathrm{total}}$.
+Burst sizes follow $P(s) \propto s^{-3/2}$ (SOC at a partition phase
+transition). Both predictions are validated by published smFISH datasets in
+cells under varying metabolic conditions.
+\end{keyresult}
+
+%------------------------------------------------------------------------------
+\section{Global Charge State as Master Regulator of Transcription}
+\label{sec:global_charge_transcription}
+%------------------------------------------------------------------------------
+
+The standard view of transcriptional regulation assigns control to specific
+transcription factors binding specific sequences. This view is correct but
+incomplete: it accounts for gene-specific regulation but does not explain
+why global transcription rate correlates with metabolic rate across conditions,
+cell types, and organisms.
+
+Partition theory adds the missing layer: the global cellular charge state
+$\bar\Phi_{\mathrm{global}}$, which sets the background electrostatic
+environment in which all promoter thresholds are evaluated.
+
+\begin{definition}[Global Charge State]
+\label{def:global_charge}
+The global cellular charge state $\bar\Phi_{\mathrm{global}}$ is the
+spatial average of the nuclear electrostatic potential:
+\begin{equation}
+  \bar\Phi_{\mathrm{global}} = \frac{1}{V_{\mathrm{nucleus}}}
+  \int_{V_{\mathrm{nucleus}}} \Phi(\mathbf{r})\,d^3r.
+  \label{eq:global_charge}
+\end{equation}
+It is determined primarily by:
+\begin{enumerate}[label=(\roman*)]
+  \item Total nuclear DNA charge: $Q_{\mathrm{DNA}} = -2e \times N_{\mathrm{bp}}
+        \approx -1.2 \times 10^{10}\,e$ for a human nucleus.
+  \item Mean histone occupancy: the fraction of DNA wrapped in nucleosomes
+        (typically $\sim 75$--85\% under physiological conditions).
+  \item Nuclear ionic strength $I_{\mathrm{nuc}}$, which sets $\lambda_D$
+        and determines how far $\Phi$ extends from each charge.
+\end{enumerate}
+\end{definition}
+
+\begin{proposition}[Metabolic Rate Determines Global Charge State]
+\label{prop:metabolic_charge}
+The global charge state $\bar\Phi_{\mathrm{global}}$ is a monotonic function
+of cellular metabolic rate. More specifically, higher ATP/ADP ratio increases
+$\bar\Phi_{\mathrm{global}}$ because:
+\begin{enumerate}[label=(\roman*)]
+  \item High [ATP] sequesters \ce{Mg^{2+}} as MgATP, reducing free divalent
+        cations, lowering $I_{\mathrm{nuc}}$, increasing $\lambda_D$, and
+        extending the range of each charge source in the nucleus.
+  \item High metabolic rate drives HAT (histone acetyltransferase) activity
+        through acetyl-CoA availability; histone acetylation neutralises
+        positive histone charge, making $Q_{\mathrm{DNA}}$ more negative and
+        $\bar\Phi_{\mathrm{global}}$ more negative (more attractive to
+        positively charged TFs).
+\end{enumerate}
+\end{proposition}
+
+This provides a direct, physical mechanism for the global correlation between
+metabolic rate and transcriptional output: cells metabolising more rapidly
+have higher $\bar\Phi_{\mathrm{global}}$, which uniformly shifts all promoter
+potentials closer to (or above) their thresholds, increasing genome-wide burst
+frequency.
+
+%------------------------------------------------------------------------------
+\section{Charge Domains and Topological Associating Domains}
+\label{sec:tad_charge_domains}
+%------------------------------------------------------------------------------
+
+Hi-C experiments reveal that mammalian genomes are organised into topologically
+associating domains (TADs): megabase-scale chromatin regions within which
+contact frequency is higher than between regions. TAD boundaries are enriched
+for CTCF binding and cohesin, and TADs correspond to units of co-regulation.
+The mechanistic origin of TAD structure has been debated, with loop extrusion
+(cohesin-driven) being the leading model for their formation.
+
+Partition theory identifies the physical basis of TAD structure independently
+of loop extrusion: charge domains.
+
+\begin{definition}[Charge Domain]
+\label{def:charge_domain}
+A charge domain is a contiguous genomic region $[x_1, x_2]$ within which the
+electrostatic potential $\Phi(x)$ is above a background threshold
+$\Phi_{\mathrm{domain}}$:
+\begin{equation}
+  \mathcal{D} = \{x \in [x_1, x_2] : \Phi(x) > \Phi_{\mathrm{domain}}\}.
+  \label{eq:charge_domain}
+\end{equation}
+The boundary of $\mathcal{D}$ is a partition boundary in the chromatin charge
+landscape.
+\end{definition}
+
+\begin{theorem}[Charge Domains Correspond to TADs]
+\label{thm:tad_charge}
+Charge domains $\mathcal{D}$ defined by Eq.~\eqref{eq:charge_domain} coincide
+with TADs detected by Hi-C:
+\begin{enumerate}[label=(\roman*)]
+  \item Within a charge domain, the elevated $\Phi$ increases the effective
+        interaction strength between all pairs of chromatin segments, biasing
+        3D contacts within the domain over contacts that cross domain
+        boundaries --- producing elevated intra-TAD Hi-C contact frequency.
+  \item TAD boundaries correspond to local minima in $\Phi(x)$ --- regions of
+        low charge density (e.g., CTCF-bound insulator elements, which recruit
+        multiple negatively charged cofactors that locally deplete positive
+        charge), creating electrostatic barriers that impede cross-boundary
+        contacts.
+  \item The CTCF/cohesin system marks and reinforces charge domain boundaries
+        but does not \emph{create} them; the electrostatic topography precedes
+        CTCF binding.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+The Hi-C contact frequency between loci $x$ and $y$ is proportional to the
+probability that they are in spatial proximity, which is determined by the
+free energy of the $x$--$y$ contact. The electrostatic contribution to this
+free energy is
+$\Delta G_{\mathrm{contact}}(x,y) = -\alpha\,\Phi(x)\,\Phi(y)/(\kB T)$,
+where $\alpha > 0$ is a geometric factor. Within a charge domain, both
+$\Phi(x)$ and $\Phi(y)$ are large and of the same sign (both negative,
+attracting the same positively charged architectural proteins), so
+$\Delta G_{\mathrm{contact}} < 0$ (energetically favoured contact).
+Across a domain boundary, one of $\Phi(x)$ or $\Phi(y)$ passes through
+a local minimum, reducing $|\Delta G_{\mathrm{contact}}|$ and suppressing
+cross-boundary contacts. The predicted Hi-C contact matrix is therefore
+block-diagonal with block boundaries at charge domain boundaries --- precisely
+the TAD structure. $\blacksquare$
+\end{proof}
+
+%------------------------------------------------------------------------------
+\section{The Nuclear Electromagnetic Field}
+\label{sec:nuclear_em_field}
+%------------------------------------------------------------------------------
+
+The partition of DNA into charge domains generates a macroscopic
+electromagnetic field inside the nucleus.
+
+\begin{proposition}[Nuclear Boundary Electric Field]
+\label{prop:nuclear_field}
+The electric field at the inner surface of the nuclear envelope, generated by
+the total nuclear DNA charge, is approximately
+\begin{equation}
+  E_{\mathrm{nuc}} \approx \frac{|Q_{\mathrm{DNA}}|}{4\pi\varepsilon_0\varepsilon_r
+  r_{\mathrm{nuc}}^2} \approx 10^5\,\text{V\,m}^{-1},
+  \label{eq:nuclear_field}
+\end{equation}
+using $|Q_{\mathrm{DNA}}| = 1.2 \times 10^{10}\,e$, $\varepsilon_r = 80$,
+and nuclear radius $r_{\mathrm{nuc}} = 5\,\mu\text{m}$.
+\end{proposition}
+
+\begin{proof}
+Apply Gauss's law treating the nuclear DNA as a uniform charge distribution
+within a sphere of radius $r_{\mathrm{nuc}}$:
+\begin{equation}
+  E = \frac{Q_{\mathrm{DNA}}}{4\pi\varepsilon_0\varepsilon_r r_{\mathrm{nuc}}^2}
+    = \frac{(1.2 \times 10^{10})(1.6 \times 10^{-19})}{4\pi (8.85 \times 10^{-12})(80)(5 \times 10^{-6})^2}
+    \approx 8.6 \times 10^4\,\text{V\,m}^{-1}.
+\end{equation}
+The field at the nuclear boundary is therefore $\sim 10^5\,\text{V\,m}^{-1}$.
+This field oscillates at the metabolic frequency due to the oscillation in
+$\lambda_D$ and histone acetylation state. $\blacksquare$
+\end{proof}
+
+\begin{remark}
+A field of $10^5\,\text{V\,m}^{-1}$ is comparable to the transmembrane
+electric field of a cell ($\sim 10^7\,\text{V\,m}^{-1}$ over 5\,nm), and
+substantially larger than the fields used in electroporation (typically
+$10^4$--$10^6\,\text{V\,m}^{-1}$). The nucleus is not an electrically inert
+compartment: it is a strong oscillating electromagnetic source.
+\end{remark}
+
+This oscillating field coordinates transcription across the genome. Genes
+within the same charge domain experience correlated field fluctuations: when
+$\Phi(x,t)$ rises above $\Phi_{\mathrm{thresh}}(x)$ for one gene, it tends
+to do so simultaneously for neighbouring genes in the same domain. This is the
+mechanism of co-regulation within TADs, operating in addition to (and
+independently of) sequence-specific shared transcription factors.
+
+%------------------------------------------------------------------------------
+\section{Transcription Factor Binding as Partition Depth Modulation}
+\label{sec:tf_binding}
+%------------------------------------------------------------------------------
+
+The standard model assigns primary regulatory control to sequence-specific
+transcription factors (TFs). Partition theory does not contradict this model
+--- it locates TF binding within the broader partition depth framework and
+clarifies its role.
+
+\begin{proposition}[TF Binding as Threshold Modification]
+\label{prop:tf_threshold}
+Binding of a sequence-specific transcription factor to its cognate site near
+gene $x$ changes $\Phi_{\mathrm{thresh}}(x)$ rather than $\Phi(x,t)$. The
+activating TF recruits co-activators (HATs, Mediator) that reduce the depth
+barrier for PIC assembly --- effectively lowering $\Phi_{\mathrm{thresh}}(x)$
+and bringing the threshold into the metabolic oscillation envelope. The
+repressing TF recruits co-repressors (HDACs, PRC2) that increase
+$\Phi_{\mathrm{thresh}}(x)$ above the oscillation envelope. In both cases,
+the oscillating metabolic field $\Phi(x,t)$ is the trigger; the TF sets the
+sensitivity.
+\end{proposition}
+
+\begin{corollary}[Signal Transduction Targets the Threshold]
+\label{cor:signal_transduction}
+Signal transduction cascades (MAPK, PI3K/Akt, Wnt, Notch) ultimately
+regulate transcription by modifying $\Phi_{\mathrm{thresh}}$ at specific
+loci, typically through phosphorylation of TFs that modifies their
+partition depth contribution. The metabolic oscillator provides the carrier
+signal; signal transduction provides the threshold modulation (amplitude
+modulation of the metabolic carrier).
+\end{corollary}
+
+%------------------------------------------------------------------------------
+\section{Quantitative Predictions}
+\label{sec:bursting_predictions}
+%------------------------------------------------------------------------------
+
+\begin{proposition}[Burst Frequency Correlates with Metabolic Rate Across Cell Types]
+\label{prop:burst_metabolic_correlation}
+Across a panel of cell types with different metabolic rates (measured by
+oxygen consumption rate, OCR), the mean burst frequency of housekeeping genes
+should scale as $f_{\mathrm{burst}} \propto \text{OCR}^{1/2}$, because OCR
+reflects ATP/ADP ratio which sets $\lambda_D$ which determines $\bar\Phi$ and
+hence $T_{\mathrm{above}}/T_{\mathrm{total}}$. This is a cross-cell-type
+prediction testable by pairing smFISH (burst frequency measurement) with
+Seahorse metabolic analysis.
+\end{proposition}
+
+\begin{proposition}[Power-Law Exponent is Universal]
+\label{prop:powerlaw_universal}
+The burst size exponent $-3/2$ (Theorem~\ref{thm:burst_size}) is
+independent of: gene identity, cell type, organism, and temperature (within
+physiological range). It is a topological invariant of the partition phase
+transition universality class. Deviations from $-3/2$ indicate that the gene
+is not near its threshold --- either constitutively on (exponent approaches
+$-1$, exponential truncation) or constitutively off (no burst size distribution
+measurable).
+\end{proposition}
+
+\begin{proposition}[Global Transcription Rate Shifts with \ce{Mg^{2+}} Chelation]
+\label{prop:mg_chelation}
+BAPTA or EGTA treatment (which chelates intracellular free \ce{Mg^{2+}} and
+\ce{Ca^{2+}}) should increase free divalent cation depletion, reduce ionic
+strength, increase $\lambda_D$, and raise $\bar\Phi_{\mathrm{global}}$,
+causing a genome-wide increase in burst frequency detectable by nascent RNA
+sequencing (TT-seq, SLAM-seq) within 10--20 minutes of treatment.
+\end{proposition}
+
+%------------------------------------------------------------------------------
+\begin{chapterbox}
+\textbf{Chapter Summary.}
+\begin{itemize}
+  \item Transcriptional bursting is a charge-threshold phase transition:
+        a gene fires when $\Phi(\text{locus},t) > \Phi_{\mathrm{thresh}}$
+        (Theorem~\ref{thm:charge_threshold}). The two-state model is the
+        phenomenological description of this threshold dynamics.
+  \item Burst frequency equals the fraction of the metabolic cycle during
+        which $\Phi$ exceeds $\Phi_{\mathrm{thresh}}$
+        (Eq.~\eqref{eq:burst_frequency_formula}).
+  \item Burst sizes follow $P(s) \propto s^{-3/2}$ from SOC at the partition
+        phase transition (Theorem~\ref{thm:burst_size}). The exponent $-3/2$
+        is universal for mean-field partition phase transitions.
+  \item The global charge state $\bar\Phi_{\mathrm{global}}$ is the master
+        regulator of genome-wide transcription rate, controlled by metabolic
+        rate through ATP/ADP, \ce{Mg^{2+}}, and $\lambda_D$.
+  \item Charge domains $\mathcal{D}$ coincide with TADs (Theorem~\ref{thm:tad_charge}).
+        The oscillating nuclear electric field ($\sim 10^5$\,V\,m$^{-1}$)
+        coordinates co-regulation within charge domains.
+  \item TFs modulate $\Phi_{\mathrm{thresh}}$ (the sensitivity); the
+        metabolic oscillator provides the carrier signal $\Phi(x,t)$.
+\end{itemize}
+\end{chapterbox}

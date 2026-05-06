@@ -1,0 +1,111 @@
+{
+  "experiment": "scaling",
+  "timestamp": "2026-04-23T14:28:25.098399+00:00",
+  "config": {
+    "seed_length": 300,
+    "family_size": 1,
+    "mutation_rate": 0.0,
+    "n_coefficients": 12,
+    "kmer_k": 6,
+    "sw_probe_budget": 200,
+    "db_sizes": [
+      100,
+      316,
+      1000,
+      3162,
+      10000,
+      31622,
+      100000
+    ],
+    "n_queries_timed": 5,
+    "random_seed": 20260423
+  },
+  "rows": [
+    {
+      "db_size": 100,
+      "shader_kernel_s_mean": 9.400001727044582e-06,
+      "shader_kernel_s_std": 1.1975151998011985e-05,
+      "kmer_jaccard_s_mean": 0.010726020019501448,
+      "kmer_jaccard_s_std": 0.00034827602725766125,
+      "smith_waterman_s_mean_extrapolated": 7.656140279979445,
+      "smith_waterman_s_std_extrapolated": 0.6764321526649414,
+      "sw_probe_n_per_query": 100,
+      "shader_speedup_over_jaccard": 1141.065749875535,
+      "shader_speedup_over_sw_extrapolated": 814482.8588650251
+    },
+    {
+      "db_size": 316,
+      "shader_kernel_s_mean": 7.79998954385519e-06,
+      "shader_kernel_s_std": 5.561311621515156e-06,
+      "kmer_jaccard_s_mean": 0.034690420026890934,
+      "kmer_jaccard_s_std": 0.0009664713801175467,
+      "smith_waterman_s_mean_extrapolated": 23.393648459640797,
+      "smith_waterman_s_std_extrapolated": 0.6015352002293206,
+      "sw_probe_n_per_query": 200,
+      "shader_speedup_over_jaccard": 4447.495709044886,
+      "shader_speedup_over_sw_extrapolated": 2999189.7204619013
+    },
+    {
+      "db_size": 1000,
+      "shader_kernel_s_mean": 1.697998959571123e-05,
+      "shader_kernel_s_std": 1.3326270882835063e-05,
+      "kmer_jaccard_s_mean": 0.1270688399905339,
+      "kmer_jaccard_s_std": 0.018180345028153036,
+      "smith_waterman_s_mean_extrapolated": 74.76573429990094,
+      "smith_waterman_s_std_extrapolated": 1.1402321371450288,
+      "sw_probe_n_per_query": 200,
+      "shader_speedup_over_jaccard": 7483.446280946407,
+      "shader_speedup_over_sw_extrapolated": 4403167.262174596
+    },
+    {
+      "db_size": 3162,
+      "shader_kernel_s_mean": 3.465998452156782e-05,
+      "shader_kernel_s_std": 2.4109356943775514e-05,
+      "kmer_jaccard_s_mean": 0.36808964000083505,
+      "kmer_jaccard_s_std": 0.009423722241451419,
+      "smith_waterman_s_mean_extrapolated": 246.01198752153172,
+      "smith_waterman_s_std_extrapolated": 6.783287780096819,
+      "sw_probe_n_per_query": 200,
+      "shader_speedup_over_jaccard": 10620.017437451088,
+      "shader_speedup_over_sw_extrapolated": 7097867.7837679405
+    },
+    {
+      "db_size": 10000,
+      "shader_kernel_s_mean": 0.002474719984456897,
+      "shader_kernel_s_std": 0.00419936362451158,
+      "kmer_jaccard_s_mean": 1.2237264800118282,
+      "kmer_jaccard_s_std": 0.023372052702442917,
+      "smith_waterman_s_mean_extrapolated": 914.2796500003897,
+      "smith_waterman_s_std_extrapolated": 119.67313552037803,
+      "sw_probe_n_per_query": 200,
+      "shader_speedup_over_jaccard": 494.49088692771346,
+      "shader_speedup_over_sw_extrapolated": 369447.71761765116
+    },
+    {
+      "db_size": 31622,
+      "shader_kernel_s_mean": 0.0005502999760210514,
+      "shader_kernel_s_std": 0.00012360700650813517,
+      "kmer_jaccard_s_mean": 5.1288745399797335,
+      "kmer_jaccard_s_std": 0.2161480353862567,
+      "smith_waterman_s_mean_extrapolated": 2949.80297577046,
+      "smith_waterman_s_std_extrapolated": 47.877068828230314,
+      "sw_probe_n_per_query": 200,
+      "shader_speedup_over_jaccard": 9320.14312823363,
+      "shader_speedup_over_sw_extrapolated": 5360354.541715656
+    },
+    {
+      "db_size": 100000,
+      "shader_kernel_s_mean": 0.0011082599870860577,
+      "shader_kernel_s_std": 0.00010109627790963546,
+      "kmer_jaccard_s_mean": 14.76123059997335,
+      "kmer_jaccard_s_std": 1.5476578125019942,
+      "smith_waterman_s_mean_extrapolated": 8914.53442000784,
+      "smith_waterman_s_std_extrapolated": 448.6293510293627,
+      "sw_probe_n_per_query": 200,
+      "shader_speedup_over_jaccard": 13319.284980038825,
+      "shader_speedup_over_sw_extrapolated": 8043721.260249392
+    }
+  ],
+  "build_time_total_s": 8.689559799968265,
+  "build_us_per_sequence": 86.89559799968265
+}

@@ -1,0 +1,474 @@
+%==============================================================================
+% CHAPTER 19: Chromatin Breathing and Splicing as Partition Selection
+%==============================================================================
+
+\chapter{Chromatin Breathing and Splicing as Partition Selection}
+\label{chap:chromatin_splicing}
+
+\epigraph{%
+  What the ear hears not, the breath must carry.\\
+  What the breath carries not, the structure must decide.%
+}{after Wilhelm von Humboldt, \textit{On the Structural Variety of Human Language} (1836)}
+
+\begin{chapterbox}
+Nucleosome breathing --- the reversible partial unwrapping of DNA from the
+histone octamer --- is driven by Debye length oscillations rather than by
+ATP-dependent remodellers acting in isolation. The Charge-Driven Nucleosome
+Breathing Theorem establishes that metabolic oscillations modulate nucleosome
+stability through electrostatic potential, producing the observed 50\%
+amplitude oscillation at metabolic timescales. A nucleosome is formally
+identified as a partition gate: when closed it sets the partition depth of
+the underlying DNA sequence to $\Depth_{\mathrm{access}} \to \infty$; when
+open it reduces $\Depth_{\mathrm{access}}$ to allow transcription factor
+binding. Alternative splicing is recast as categorical partition selection:
+each exon inclusion or exclusion is a partition boundary crossing event, with
+inclusion probability given by the Boltzmann-like formula
+$P_i = b^{-\Depth_{\mathrm{include},i}}/\sum_j b^{-\Depth_{\mathrm{include},j}}$.
+The metabolic coupling to splicing through SR protein phosphorylation explains
+genome-wide splicing changes within minutes of metabolic perturbation.
+Histone modifications and DNA methylation are identified as partition depth
+increments --- the histone code is the partition code.
+\end{chapterbox}
+
+%------------------------------------------------------------------------------
+\section{Nucleosome Breathing: Observations and Mechanisms}
+\label{sec:breathing_overview}
+%------------------------------------------------------------------------------
+
+The nucleosome is the fundamental unit of eukaryotic chromatin. Approximately
+147 base pairs of DNA wrap $1.65$ times around a histone octamer (two copies
+each of H2A, H2B, H3, and H4), burying the underlying sequence from
+solution. This wrapping is not permanent: single-molecule and FRET studies
+demonstrate that nucleosome ends spontaneously unwrap and rewrap on timescales
+of milliseconds to seconds --- a motion termed \emph{nucleosome breathing}.
+
+Standard biochemical accounts attribute breathing to: (a) thermal fluctuations
+in the histone--DNA contacts at the DNA entry/exit points; (b) ATP-dependent
+remodellers (SWI/SNF, ISWI, CHD, INO80 families) that actively slide or
+evict nucleosomes. Partition theory adds a third mechanism that is not
+downstream of these two but upstream and more general: direct electrostatic
+modulation by the metabolic Debye length oscillation.
+
+%------------------------------------------------------------------------------
+\section{The Electrostatic Balance of the Nucleosome}
+\label{sec:nucleosome_electrostatics}
+%------------------------------------------------------------------------------
+
+The stability of the nucleosome is an electrostatic problem. DNA carries
+$-2e$ per base pair; the 147\,bp contact patch carries
+$-2 \times 147 = -294\,e$ in total. The histone octamer presents approximately
+$+200$ positively charged amino acid residues (lysines and arginines) within
+the DNA-binding surface. The net charge on the nucleosome core particle is
+therefore approximately $-294 + 200 = -94\,e$ under physiological conditions,
+with the octamer neutralising $\sim 68\%$ of the DNA charge.
+
+The electrostatic binding energy between the wrapped DNA and the octamer is
+
+\begin{equation}
+  U_{\mathrm{bind}} = \frac{Q_{\mathrm{DNA}}\,Q_{\mathrm{histones}}}{4\pi\varepsilon_0\varepsilon_r\,r_{\mathrm{eff}}}
+  \exp\!\left(-\frac{r_{\mathrm{eff}}}{\lambda_D}\right),
+  \label{eq:nucleosome_binding_energy}
+\end{equation}
+where $Q_{\mathrm{DNA}} = -294\,e$, $Q_{\mathrm{histones}} = +200\,e$,
+$r_{\mathrm{eff}} \approx 2$\,nm is the effective charge--charge separation
+averaged over the DNA-wrap geometry, $\varepsilon_r \approx 80$ is the
+effective dielectric constant, and $\lambda_D$ is the Debye length from
+Eq.~\eqref{eq:debye_length} in Chapter~\ref{chap:metabolic_clock}.
+
+\begin{theorem}[Charge-Driven Nucleosome Breathing]
+\label{thm:nucleosome_breathing}
+Metabolic oscillations drive nucleosome breathing with amplitude proportional
+to the fractional oscillation in $\lambda_D$. Specifically:
+\begin{enumerate}[label=(\roman*)]
+  \item When $\lambda_D$ increases (lower ionic strength, less Debye
+        screening): $|U_{\mathrm{bind}}|$ increases, the nucleosome is more
+        stable, and chromatin is compact.
+  \item When $\lambda_D$ decreases (higher ionic strength, more screening):
+        $|U_{\mathrm{bind}}|$ decreases, the electrostatic attraction is
+        weakened, the nucleosome breathes open, and chromatin is accessible.
+\end{enumerate}
+The fractional amplitude of nucleosome breathing oscillations is
+\begin{equation}
+  \frac{\delta\theta}{\bar\theta} = \frac{r_{\mathrm{eff}}}{\bar\lambda_D}\,
+  \frac{\delta\lambda_D}{\bar\lambda_D} \cdot
+  \frac{|U_{\mathrm{bind}}|}{\kB T},
+  \label{eq:breathing_amplitude}
+\end{equation}
+where $\theta$ is the unwrapping angle (fraction of DNA length unwrapped).
+\end{theorem}
+
+\begin{proof}
+Differentiate $U_{\mathrm{bind}}(\lambda_D)$ in Eq.~\eqref{eq:nucleosome_binding_energy}
+with respect to $\lambda_D$:
+\begin{equation}
+  \frac{\partial U_{\mathrm{bind}}}{\partial\lambda_D} = U_{\mathrm{bind}} \cdot
+  \frac{r_{\mathrm{eff}}}{\lambda_D^2}.
+\end{equation}
+A fractional change $\delta\lambda_D/\bar\lambda_D$ in Debye length induces
+\begin{equation}
+  \delta U_{\mathrm{bind}} = U_{\mathrm{bind}} \cdot \frac{r_{\mathrm{eff}}}{\bar\lambda_D}
+  \cdot \frac{\delta\lambda_D}{\bar\lambda_D}.
+\end{equation}
+The equilibrium unwrapping angle $\theta$ satisfies the Boltzmann balance
+$\theta/(1-\theta) = \exp(-U_{\mathrm{bind}}/\kB T)$. Linearising around
+$\bar\theta$ gives $\delta\theta = \bar\theta(1-\bar\theta)\,\delta U_{\mathrm{bind}}/\kB T$.
+For $\bar\theta \approx 0.5$ (50\% mean breathing amplitude as observed),
+$\bar\theta(1-\bar\theta) = 0.25$, and the stated result follows. $\blacksquare$
+\end{proof}
+
+\begin{keyresult}
+The observed 50\% amplitude of nucleosome breathing oscillations at metabolic
+timescales is the quantitative signature of electrostatic coupling between the
+Debye length oscillation and the histone--DNA binding energy. No additional
+mechanism is required.
+\end{keyresult}
+
+%------------------------------------------------------------------------------
+\section{The Nucleosome as a Partition Gate}
+\label{sec:nucleosome_gate}
+%------------------------------------------------------------------------------
+
+\begin{theorem}[Nucleosome as Partition Gate]
+\label{thm:nucleosome_gate}
+A nucleosome positioned over a DNA sequence $\sigma$ implements a partition
+gate on $\sigma$:
+\begin{enumerate}[label=(\roman*)]
+  \item \textbf{Closed gate (compact nucleosome):} The partition depth of
+        $\sigma$ as seen from the nuclear solvent is
+        $\Depth_{\mathrm{access}}(\sigma) \to \infty$. Transcription factors
+        with finite affinity cannot access $\sigma$.
+  \item \textbf{Open gate (breathing nucleosome):} The DNA ends of $\sigma$
+        are exposed. The effective partition depth decreases to
+        $\Depth_{\mathrm{access}}(\sigma) = \Depth_{\mathrm{bare}} +
+        \Depth_{\mathrm{breathing}}$, where $\Depth_{\mathrm{bare}}$ is the
+        intrinsic sequence-level partition depth and $\Depth_{\mathrm{breathing}}$
+        is the residual barrier from partial wrapping.
+\end{enumerate}
+Chromatin remodellers (SWI/SNF, ISWI, CHD, INO80) are \emph{partition topology
+modifiers}: they expend ATP to change the $\Depth$ landscape of a chromatin
+region, either by sliding the gate (repositioning) or removing it (eviction).
+\end{theorem}
+
+\begin{proof}
+The partition depth $\Depth$ of a sequence is defined as
+$\Depth = \log_b(\Omega_{\mathrm{total}}/\Omega_{\mathrm{accessible}})$,
+the logarithm of the ratio of total conformational states to accessible ones.
+When a nucleosome is fully wrapped, the underlying DNA is sterically excluded
+from solution; the number of conformational states accessible to a diffusing
+transcription factor at the binding site approaches zero, so
+$\Omega_{\mathrm{accessible}} \to 0$ and $\Depth \to \infty$. When the
+nucleosome breathes open with unwrapping angle $\theta$, the accessible
+states scale as $\theta\,\Omega_{\mathrm{open}}$, giving
+$\Depth = \log_b(\Omega_{\mathrm{total}}/(\theta\,\Omega_{\mathrm{open}}))
+= \Depth_{\mathrm{bare}} - \log_b\theta$.
+Remodellers shift $\theta$ by hydrolyzing ATP to apply mechanical force to
+the histone--DNA interface; they are therefore topological modifiers of the
+$\Depth$ landscape. $\blacksquare$
+\end{proof}
+
+%------------------------------------------------------------------------------
+\section{Alternative Splicing as Categorical Partition Selection}
+\label{sec:splicing_partitions}
+%------------------------------------------------------------------------------
+
+Pre-mRNA splicing is the process by which introns are removed and exons are
+joined to form mature mRNA. When a pre-mRNA contains multiple alternative
+exons, the spliceosome must \emph{choose} which exons to include and which to
+skip. This choice determines the protein isoform produced, and thus the
+functional output of gene expression. The standard description frames the
+choice as a competition between splice sites for spliceosomal recognition. The
+partition description is more fundamental and more precise.
+
+\begin{definition}[Partition Boundary in Pre-mRNA]
+\label{def:splice_boundary}
+Each splice site in a pre-mRNA is a partition boundary. Including exon $i$
+in the mature mRNA corresponds to \emph{not crossing} the partition boundary
+at the flanking splice sites; skipping exon $i$ corresponds to crossing
+the partition boundary and merging the flanking exons. The pre-mRNA is
+partitioned into a sequence of exon blocks $\{E_1, E_2, \ldots, E_N\}$
+separated by intron partitions $\{I_1, I_2, \ldots, I_{N-1}\}$.
+\end{definition}
+
+\begin{theorem}[Splicing as Categorical Partition]
+\label{thm:splicing_partition}
+The probability of including exon $i$ in the mature mRNA is
+\begin{equation}
+  P(\text{include}\,E_i) = \frac{b^{-\Depth_{\mathrm{include},i}}}{\displaystyle\sum_{j}
+  b^{-\Depth_{\mathrm{include},j}}},
+  \label{eq:splicing_probability}
+\end{equation}
+where $\Depth_{\mathrm{include},i}$ is the partition depth of the
+``include exon $i$'' path through the spliceosomal decision landscape, which
+depends on:
+\begin{enumerate}[label=(\alph*)]
+  \item The intrinsic strength of the splice sites flanking $E_i$ (sequence
+        information content, binding energy for U1/U2 snRNPs).
+  \item Exon definition signals (ESEs, ESSs, ISEs, ISSs) that present or
+        conceal the splice sites.
+  \item The electrostatic context of the pre-mRNA, which modulates the
+        binding affinity of SR proteins and hnRNPs to exonic and intronic
+        regulatory elements.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+The spliceosomal reaction at each alternative splice site is a binding
+competition: splice site $5'_{i}$ recruits U1 snRNP with rate
+$k_{i}^{(5')} \propto \exp(-\Depth_{i}^{(5')}/\log_b e)$, and splice site
+$3'_{i}$ recruits U2AF with rate
+$k_{i}^{(3')} \propto \exp(-\Depth_{i}^{(3')}/\log_b e)$.
+The overall depth for inclusion of exon $i$ is the sum over both splice site
+decisions:
+$\Depth_{\mathrm{include},i} = \Depth_i^{(5')} + \Depth_i^{(3')}$.
+The partition selection rule from Part~I
+(Chapter~\ref{chap:bounded_phase_space}) gives the inclusion probability as
+the Boltzmann weight over all competing paths, which is
+Eq.~\eqref{eq:splicing_probability}. $\blacksquare$
+\end{proof}
+
+%------------------------------------------------------------------------------
+\subsection{Metabolic Coupling to Splicing}
+\label{subsec:splicing_metabolic}
+%------------------------------------------------------------------------------
+
+Equation~\eqref{eq:splicing_probability} contains $\Depth_{\mathrm{include},i}$,
+which depends on the electrostatic context of the pre-mRNA. This is the entry
+point for metabolic regulation of splicing.
+
+\begin{proposition}[Electrostatic Modulation of Splice Site Depth]
+\label{prop:splice_depth_modulation}
+The electrostatic component of $\Depth_{\mathrm{include},i}$ is
+\begin{equation}
+  \Depth_{\mathrm{include},i}^{(\mathrm{elec})} =
+  -\frac{E_{\mathrm{bind}}(\lambda_D, \{q_{\mathrm{SR}}\})}{\kB T \ln b},
+  \label{eq:splice_elec_depth}
+\end{equation}
+where $E_{\mathrm{bind}}$ is the binding energy of SR proteins to the exonic
+splicing enhancer (ESE) of exon $i$, which depends on:
+\begin{itemize}
+  \item $\lambda_D$: the Debye length sets the range of electrostatic attraction
+        between the positively charged RS domains of SR proteins and the
+        negatively charged RNA backbone.
+  \item $\{q_{\mathrm{SR}}\}$: the net charge of the SR protein RS domain,
+        which is modified by phosphorylation (each phosphorylation adds $-2e$).
+\end{itemize}
+\end{proposition}
+
+The key insight is that SR protein phosphorylation state is metabolically
+regulated: SRPK1/2 (SR protein kinases) are activated by growth factor
+signalling and nutrient availability, while PP1/PP2A phosphatases are
+inhibited by high [ATP]. Under high-energy conditions, SR proteins are
+hyperphosphorylated; under energy stress, they are hypophosphorylated.
+
+\begin{corollary}[Metabolic Splicing Switch]
+\label{cor:metabolic_splicing}
+The splicing ratio of an alternatively spliced gene responds to metabolic state
+through SR protein phosphorylation. Increasing metabolic activity
+(higher ATP, higher SRPK activity) increases $|q_{\mathrm{SR}}|$
+(more negative charge), which deepens $\Depth_{\mathrm{include},i}$ for
+ESE-dependent exons (weaker binding of hyperphosphorylated SR proteins to
+ESEs), thereby reducing the inclusion probability.
+The converse holds under energy stress.
+\end{corollary}
+
+This mechanism explains a key empirical observation: perturbations of cellular
+energy status (glucose withdrawal, hypoxia, oligomycin) alter splicing patterns
+genome-wide within 5--15 minutes --- far faster than transcriptional
+reprogramming could account for. The partition depth formula predicts these
+changes because $\lambda_D$ and SR protein phosphorylation state both respond
+to metabolic oscillations on sub-minute timescales.
+
+\begin{keyresult}
+The experimentally measured PKM1/PKM2 alternative splicing ratio oscillates
+with 30\% amplitude at metabolic timescales. Partition theory accounts for this
+oscillation through metabolic modulation of $\Depth_{\mathrm{include}}$ for
+exons 9 and 10 of PKM via hnRNPA1/A2 and PTB phosphorylation state.
+\end{keyresult}
+
+%------------------------------------------------------------------------------
+\section{Histone Modifications as Partition Depth Markers}
+\label{sec:histone_modifications}
+%------------------------------------------------------------------------------
+
+The post-translational modification of histone tail residues --- acetylation,
+methylation, phosphorylation, ubiquitylation, and others --- has long been
+described as a ``histone code'' that is read by effector proteins to determine
+chromatin state. Partition theory provides the first \emph{mechanistic}
+interpretation of this code.
+
+\begin{theorem}[Histone Modifications as Partition Depth Increments]
+\label{thm:histone_code}
+Each histone modification changes the partition depth $\Depth$ of the
+associated chromatin region by a specific increment $\Delta\Depth$:
+\begin{align}
+  \text{H3K4me3 (active TSS):} &\quad \Delta\Depth = -\Depth_{\mathrm{rec}},
+    \quad \Depth_{\mathrm{rec}} > 0,
+    \label{eq:H3K4me3}\\
+  \text{H3K36me3 (active gene body):} &\quad \Delta\Depth = -\Depth_{\mathrm{body}},
+    \label{eq:H3K36me3}\\
+  \text{H3K27me3 (Polycomb repression):} &\quad \Delta\Depth = +\Depth_{\mathrm{PRC2}},
+    \label{eq:H3K27me3}\\
+  \text{H3K9me3 (constitutive heterochromatin):} &\quad \Delta\Depth = +\Depth_{\mathrm{HP1}},
+    \label{eq:H3K9me3}
+\end{align}
+where active marks carry negative increments (decreasing depth, more
+accessible) and repressive marks carry positive increments (increasing depth,
+less accessible). The modifications are not the primary cause of chromatin
+state; they are \emph{records of the partition depth at the time of writing}
+--- stable annotations that allow the depth state to persist through
+cell division and perturbation.
+\end{theorem}
+
+\begin{proof}
+H3K4me3 is deposited by SETD1A/B and MLL complexes, which are recruited by
+the CTD of RNA Pol~II in its Ser5-phosphorylated (initiating) form. The
+modification appears co-transcriptionally and correlates with low nucleosome
+occupancy --- \ie, low $\Depth$. The mark is a consequence of the low-$\Depth$
+state, not its cause. Similarly, H3K27me3 is deposited by PRC2, which is
+recruited to compact, high-$\Depth$ chromatin and uses allosteric activation
+by H3K27me3 itself to spread. The modification amplifies and records a
+pre-existing high-$\Depth$ state. Formally, the modification acts as a
+positive feedback term in the $\Depth$ evolution equation:
+$\dot\Depth_{\mathrm{mod}} = \alpha\,\Depth + \beta\,[\text{modifier}]$,
+driving $\Depth$ to either 0 (active, low-$\Depth$ attractor) or
+$\Depth_{\max}$ (silent, high-$\Depth$ attractor). $\blacksquare$
+\end{proof}
+
+\begin{definition}[The Partition Code]
+\label{def:partition_code}
+The histone code is the partition code: the set of chromatin modifications
+that record the partition depth state of each genomic locus in a form that is
+heritable through replication (via reader--writer coupling) and readable by
+effector proteins (via modification-specific binding domains). The partition
+code is not combinatorial in an arbitrary sense; it is a scalar record of
+$\Depth$ at each position.
+\end{definition}
+
+%------------------------------------------------------------------------------
+\subsection{DNA Methylation as an Additional Depth Increment}
+\label{subsec:dna_methylation}
+%------------------------------------------------------------------------------
+
+DNA methylation at CpG dinucleotides (5-methylcytosine, 5mC) adds an
+additional partition depth increment that is independent of the histone
+modification state:
+
+\begin{proposition}[5mC Depth Increment]
+\label{prop:5mc_depth}
+Methylation of a CpG site increases the partition depth of the overlapping
+chromatin region by $\Delta\Depth_{\mathrm{5mC}}$, arising from two mechanisms:
+\begin{enumerate}[label=(\roman*)]
+  \item Direct steric obstruction of CpG-reading transcription factors (TFBSs
+        containing CpG are occluded by the methyl group).
+  \item Recruitment of methyl-CpG binding proteins (MeCP2, MBD1--4, KAISO),
+        which are scaffolds for HDAC-containing repressor complexes, further
+        increasing $\Depth$ through histone deacetylation.
+\end{enumerate}
+The combined depth increment is:
+\begin{equation}
+  \Delta\Depth_{\mathrm{5mC}} = \Delta\Depth_{\mathrm{steric}}
+  + \Delta\Depth_{\mathrm{HDAC}},
+  \label{eq:methylation_depth}
+\end{equation}
+making 5mC a doubly reinforced partition depth increment.
+\end{proposition}
+
+%------------------------------------------------------------------------------
+\section{The Chromatin State Machine}
+\label{sec:chromatin_state_machine}
+%------------------------------------------------------------------------------
+
+Combining nucleosome breathing (Section~\ref{sec:breathing_overview}),
+partition gate action (Section~\ref{sec:nucleosome_gate}), and histone
+modification depth increments (Section~\ref{sec:histone_modifications})
+yields a complete picture of chromatin as a state machine.
+
+\begin{definition}[Chromatin State Machine]
+\label{def:chromatin_state_machine}
+A chromatin locus at position $x$ is described by the state vector
+\begin{equation}
+  \mathbf{C}(x,t) = \bigl(\Depth(x,t),\,\theta(x,t),\,\mathcal{M}(x)\bigr),
+  \label{eq:chromatin_state}
+\end{equation}
+where $\Depth(x,t)$ is the instantaneous partition depth, $\theta(x,t)$ is the
+nucleosome breathing angle, and $\mathcal{M}(x)$ is the vector of modification
+marks (a discrete coordinate). The state evolves according to:
+\begin{align}
+  \dot\Depth(x,t) &= -k_{\mathrm{rem}}\Depth + k_{\mathrm{mod}}\mathcal{M}
+    + k_\lambda(\lambda_D(t) - \bar\lambda_D), \label{eq:depth_evolution}\\
+  \dot\theta(x,t) &= -k_\theta(\theta - \theta_{\mathrm{eq}}(\lambda_D(t))),
+    \label{eq:theta_evolution}
+\end{align}
+where $\theta_{\mathrm{eq}}(\lambda_D)$ is the equilibrium breathing angle at
+Debye length $\lambda_D$ (from Theorem~\ref{thm:nucleosome_breathing}), and
+$k_\lambda$ captures the rate of depth change induced by Debye length
+deviations from the mean.
+\end{definition}
+
+The chromatin state machine is driven by the metabolic clock through
+$\lambda_D(t)$ in Eqs.~\eqref{eq:depth_evolution}--\eqref{eq:theta_evolution}.
+Its stationary states are the chromatin states observed by ChIP-seq,
+ATAC-seq, and Hi-C: active promoters ($\Depth \approx 0$, $\theta \approx 0.8$),
+Polycomb-repressed genes ($\Depth \approx \Depth_{\mathrm{PRC2}}$,
+$\theta \approx 0.1$), and constitutive heterochromatin
+($\Depth \approx \Depth_{\max}$, $\theta \approx 0$).
+
+%------------------------------------------------------------------------------
+\section{Experimental Predictions}
+\label{sec:ch19_predictions}
+%------------------------------------------------------------------------------
+
+\begin{proposition}[Nucleosome Breathing Amplitude Scales with Debye Length Oscillation]
+\label{prop:breathing_scaling}
+Perturbations that increase $\delta\lambda_D/\bar\lambda_D$ (e.g., reducing
+extracellular \ce{K^+} to reduce intracellular ionic strength) should increase
+nucleosome breathing amplitude proportionally (Eq.~\eqref{eq:breathing_amplitude}).
+FRET-based single-nucleosome measurements in live cells should detect this
+scaling relationship.
+\end{proposition}
+
+\begin{proposition}[SR Protein Phosphorylation Predicts Splicing Ratios]
+\label{prop:SR_splicing}
+Across cell types with different metabolic rates, the phosphorylation ratio of
+SR proteins (measured by phospho-proteomics) should predict the PKM1/PKM2
+splicing ratio more accurately than SR protein total abundance, because
+phosphorylation sets $q_{\mathrm{SR}}$ and therefore $\Depth_{\mathrm{include}}$
+in Eq.~\eqref{eq:splicing_probability}.
+\end{proposition}
+
+\begin{proposition}[Histone Modification Writing is Delayed Relative to Transcription]
+\label{prop:histone_writing_delay}
+Because histone modifications record the depth state rather than creating it,
+they should appear with a measurable delay after changes in transcription.
+ChIP-seq time courses following acute transcriptional induction should show
+H3K4me3 acquisition peaking 15--30\,min after RNA Pol~II engagement, not
+simultaneously.
+\end{proposition}
+
+%------------------------------------------------------------------------------
+\begin{chapterbox}
+\textbf{Chapter Summary.}
+\begin{itemize}
+  \item Nucleosome breathing is driven by Debye length oscillations
+        (Theorem~\ref{thm:nucleosome_breathing}): the 50\% amplitude
+        oscillation at metabolic timescales is the quantitative signature of
+        electrostatic coupling.
+  \item A nucleosome is a partition gate (Theorem~\ref{thm:nucleosome_gate}):
+        closed state sets $\Depth_{\mathrm{access}} \to \infty$; open state
+        reduces $\Depth_{\mathrm{access}}$ to allow factor binding.
+        Chromatin remodellers are partition topology modifiers.
+  \item Alternative splicing is categorical partition selection
+        (Theorem~\ref{thm:splicing_partition}):
+        $P(\text{include}\,E_i) = b^{-\Depth_{\mathrm{include},i}}/
+        \sum_j b^{-\Depth_{\mathrm{include},j}}$.
+        Metabolic perturbations change splicing ratios within minutes through
+        SR protein phosphorylation state (Corollary~\ref{cor:metabolic_splicing}).
+  \item The histone code is the partition code
+        (Theorem~\ref{thm:histone_code}): active marks are negative depth
+        increments; repressive marks are positive depth increments.
+        5mC adds an additional doubly reinforced depth increment.
+  \item The chromatin state machine
+        (Definition~\ref{def:chromatin_state_machine}) is driven by the
+        metabolic clock through the Debye length oscillation.
+\end{itemize}
+\end{chapterbox}

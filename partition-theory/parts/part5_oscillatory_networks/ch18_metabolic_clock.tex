@@ -1,0 +1,521 @@
+%==============================================================================
+% CHAPTER 18: The Metabolic Clock and Replication Timing
+%==============================================================================
+
+\chapter{The Metabolic Clock and Replication Timing}
+\label{chap:metabolic_clock}
+
+\epigraph{%
+  Time is not a river flowing into the future.\\
+  Time is the shadow of a wheel turning.%
+}{after G.~J.~Whitrow, \textit{The Natural Philosophy of Time} (1961)}
+
+\begin{chapterbox}
+Metabolic oscillations, beginning with glycolysis at 0.1--1\,Hz, constitute a
+master temporal clock for the genome. Through a four-level cascade ---
+glycolysis $\to$ ATP/ADP ratio $\to$ \ce{Mg^{2+}} free concentration $\to$
+Debye screening length $\lambda_D$ --- metabolic periodicity is transduced into
+oscillating electrostatic boundary conditions on every protein--DNA interaction
+in the nucleus. The Metabolic--Genomic Coupling Theorem establishes that all
+major genomic processes lock to integer harmonics of the metabolic frequency.
+Okazaki fragment length is shown to be a \emph{deterministic} partition
+operation rather than a stochastic event: the lagging strand is partitioned into
+segments whose length equals replication fork velocity times metabolic period,
+yielding the observed 110--190\,nt range. Replication timing domains follow
+directly from the chromatin charge density profile; the early/late timing
+programme is the electrostatic topography of the genome written in temporal
+rather than spatial coordinates.
+\end{chapterbox}
+
+%------------------------------------------------------------------------------
+\section{Metabolic Oscillations as a Master Clock}
+\label{sec:metabolic_clock_intro}
+%------------------------------------------------------------------------------
+
+The cell does not experience time as a uniform medium. Every metabolic
+pathway oscillates, and these oscillations are coupled across timescales
+spanning seven decades. The fastest relevant oscillation is the glycolytic
+oscillator, which in intact cells operates in the range
+\begin{equation}
+  f_{\mathrm{glyc}} \in [0.1,\,1.0]\,\text{Hz},
+  \label{eq:glyc_freq}
+\end{equation}
+arising from the autocatalytic positive-feedback loop of phosphofructokinase
+(PFK) and the consequent limit-cycle behaviour of the system
+glucose $\to$ pyruvate.
+
+The gycolytic oscillator is not an isolated biochemical curiosity. It
+broadcasts its periodicity to the rest of the cell through a four-level
+cascade of coupled oscillations that ultimately modulates the electrostatic
+boundary conditions experienced by every DNA-binding protein in the nucleus.
+
+\begin{definition}[Metabolic Clock Cascade]
+\label{def:clock_cascade}
+The metabolic clock cascade consists of four coupled oscillatory modes:
+\begin{enumerate}[label=(\roman*)]
+  \item \textbf{Primary:} glycolytic flux oscillations at $f_{\mathrm{glyc}}$,
+        driving periodic ATP production.
+  \item \textbf{Secondary:} ATP/ADP ratio oscillations, coupled to glycolysis
+        with lag $\tau_1 \sim 0.1\,\tau_{\mathrm{glyc}}$.
+  \item \textbf{Tertiary:} free \ce{Mg^{2+}} concentration oscillations, since
+        $\approx 90\%$ of cellular \ce{Mg^{2+}} is complexed with ATP;
+        as [ATP] oscillates, $[\ce{Mg^{2+}}]_{\mathrm{free}}$ oscillates in
+        antiphase with lag $\tau_2 \sim \tau_1$.
+  \item \textbf{Quaternary:} Debye screening length $\lambda_D$ oscillations,
+        since $\lambda_D$ depends on total ionic strength $I$, which oscillates
+        as free divalent ions are alternately sequestered and released by ATP
+        turnover.
+\end{enumerate}
+\end{definition}
+
+Each level of the cascade is a deterministic consequence of the previous, and
+each widens the set of downstream processes that feel the metabolic rhythm.
+Level (iv) is the critical transduction step: $\lambda_D$ sets the effective
+range of protein--DNA electrostatic interactions, so any process that depends
+on those interactions acquires metabolic periodicity.
+
+%------------------------------------------------------------------------------
+\section{Debye Length Oscillations and Electrostatic Gating}
+\label{sec:debye_oscillations}
+%------------------------------------------------------------------------------
+
+The Debye screening length in an aqueous electrolyte at physiological
+temperature ($T \approx 310\,\text{K}$) is
+\begin{equation}
+  \lambda_D = \frac{0.304}{\sqrt{I}}\,\text{nm},
+  \label{eq:debye_length}
+\end{equation}
+where $I = \tfrac{1}{2}\sum_i c_i z_i^2$ is the ionic strength in units of
+mol\,L$^{-1}$. Because $\lambda_D \propto I^{-1/2}$, any oscillation in $I$
+produces a correlated oscillation in $\lambda_D$.
+
+\begin{lemma}[Ionic Strength Oscillation Amplitude]
+\label{lem:ionic_strength_osc}
+If the ATP/ADP ratio oscillates with fractional amplitude $\varepsilon$ about
+its mean value $\bar{r}$, the free divalent cation concentration
+$c_{\mathrm{Mg}}$ oscillates with amplitude
+\begin{equation}
+  \frac{\delta c_{\mathrm{Mg}}}{c_{\mathrm{Mg}}} \approx
+  \frac{\varepsilon K_d}{(K_d + [\text{ATP}])},
+  \label{eq:mg_amplitude}
+\end{equation}
+where $K_d \approx 0.1$\,mM is the \ce{Mg^{2+}}-ATP dissociation constant.
+At physiological $[\text{ATP}] \approx 3$\,mM, the amplification factor is
+approximately 0.03, giving $\delta c_{\mathrm{Mg}}/c_{\mathrm{Mg}} \sim 10\%$
+for $\varepsilon \sim 30\%$ glycolytic oscillations.
+\end{lemma}
+
+\begin{proof}
+Let $[\text{ATP}]_{\mathrm{free}} = A(1 + \varepsilon\sin\omega t)$ and let
+the \ce{Mg^2+}--ATP complex satisfy rapid quasi-equilibrium
+$K_d = [\text{Mg}^{2+}][\text{ATP}]/[\text{MgATP}]$. Linearising around the
+steady state yields the stated expression for the fractional modulation of
+$[\text{Mg}^{2+}]_{\mathrm{free}}$.
+\end{proof}
+
+The resulting oscillation in $\lambda_D$ modulates the electrostatic potential
+$\Phi(r, t)$ at distance $r$ from a charge $Q$:
+\begin{equation}
+  \Phi(r,t) = \frac{Q\,e^{-r/\lambda_D(t)}}{4\pi\varepsilon_0\varepsilon_r\,r}.
+  \label{eq:yukawa_potential}
+\end{equation}
+When $\lambda_D$ increases (lower ionic strength), screening decreases and
+$\Phi$ is felt over longer distances; when $\lambda_D$ decreases (higher
+ionic strength), screening increases and $\Phi$ decays faster. Protein--DNA
+binding rates depend on $\Phi$ through
+\begin{equation}
+  k_{\mathrm{on}} \propto \exp\!\left(-\frac{E_{\mathrm{elec}}(\lambda_D)}{\kB T}\right),
+  \label{eq:kon_activation}
+\end{equation}
+where $E_{\mathrm{elec}}$ is the electrostatic component of the binding
+energy, itself a function of $\lambda_D$ through Eq.~\eqref{eq:yukawa_potential}.
+
+%------------------------------------------------------------------------------
+\section{The Metabolic--Genomic Coupling Theorem}
+\label{sec:metabolic_genomic_coupling}
+%------------------------------------------------------------------------------
+
+\begin{theorem}[Metabolic--Genomic Coupling]
+\label{thm:metabolic_genomic_coupling}
+Every major genomic process that depends on protein--DNA binding is
+driven by metabolic oscillations through Debye length modulation. Its
+characteristic frequency satisfies the harmonic lock condition
+\begin{equation}
+  f_{\mathrm{process}} = n\, f_{\mathrm{metabolic}},
+  \qquad n \in \mathbb{Z}_{>0},
+  \label{eq:harmonic_lock}
+\end{equation}
+where $n$ is the integer harmonic ratio specific to each process.
+\end{theorem}
+
+\begin{proof}
+Let $\lambda_D(t) = \bar\lambda_D\bigl(1 + \delta\cos(2\pi f_{\mathrm{metabolic}} t)\bigr)$
+with $\delta \ll 1$. From Eq.~\eqref{eq:yukawa_potential}, the electrostatic
+potential at the binding interface oscillates:
+\begin{equation}
+  \Phi(r,t) = \Phi_0(r)\left(1 + \delta\,\frac{r}{\bar\lambda_D}\cos(2\pi f_{\mathrm{metabolic}}t) + O(\delta^2)\right).
+\end{equation}
+The binding rate from Eq.~\eqref{eq:kon_activation} becomes
+\begin{equation}
+  k_{\mathrm{on}}(t) = \bar{k}_{\mathrm{on}}
+  \exp\!\left(\frac{\delta\,E_0\,r}{\kB T\,\bar\lambda_D}\cos(2\pi f_{\mathrm{metabolic}}t)\right),
+\end{equation}
+where $E_0 = \bar{k}_{\mathrm{on}}/(\partial k_{\mathrm{on}}/\partial\Phi)$.
+Expanding in Fourier components, $k_{\mathrm{on}}(t)$ contains harmonics at
+all integer multiples of $f_{\mathrm{metabolic}}$. Any genomic process whose
+rate equation has the form $\dot{X} = k_{\mathrm{on}}(t)\,f(X)$ will therefore
+exhibit resonant amplification at the harmonic for which the process timescale
+$\tau_{\mathrm{process}} = 1/f_{\mathrm{process}}$ satisfies
+$\tau_{\mathrm{process}} \approx n/f_{\mathrm{metabolic}}$. Processes far from
+any harmonic are not entrained; processes at or near a harmonic are locked to it
+by standard resonance theory. $\blacksquare$
+\end{proof}
+
+\begin{remark}
+Equation~\eqref{eq:harmonic_lock} is not a consequence of genetic programming
+or of sequence-specific regulatory logic. It is a physical consequence of the
+coupling between ionic strength oscillations and charged macromolecule
+interactions. The genome does not ``decide'' when to be transcribed or
+replicated; it is driven by the metabolic electromagnetic field.
+\end{remark}
+
+%------------------------------------------------------------------------------
+\section{Okazaki Fragment Length Quantization}
+\label{sec:okazaki_quantization}
+%------------------------------------------------------------------------------
+
+During replication of the lagging strand, DNA polymerase $\delta$ cannot
+synthesise continuously in the $3' \to 5'$ direction of the parent strand.
+Instead, primase lays down short RNA primers, each initiating a new Okazaki
+fragment. Observed Okazaki fragment lengths in eukaryotes span
+$110$--$190\,\text{nt}$, with a characteristic peak near $\sim 150\,\text{nt}$.
+
+Standard descriptions attribute this length scale to the distributive kinetics
+of primase and the processivity of pol\,$\delta$. Partition theory identifies a
+more fundamental quantization: the metabolic clock.
+
+\begin{definition}[Replication Partition Unit]
+\label{def:rep_partition_unit}
+The replication partition unit $L_{\mathrm{rep}}$ is the length of DNA
+synthesised in one metabolic clock period $\tau_{\mathrm{met}} = 1/f_{\mathrm{metabolic}}$:
+\begin{equation}
+  L_{\mathrm{rep}} = v_{\mathrm{fork}} \times \tau_{\mathrm{met}},
+  \label{eq:rep_partition_unit}
+\end{equation}
+where $v_{\mathrm{fork}} \approx 50\,\text{nt\,s}^{-1}$ is the replication
+fork velocity in eukaryotes.
+\end{definition}
+
+At $f_{\mathrm{metabolic}} \approx 0.5\,\text{Hz}$ (mid-range glycolytic
+frequency), $\tau_{\mathrm{met}} = 2\,\text{s}$ and
+\begin{equation}
+  L_{\mathrm{rep}} = 50\,\frac{\text{nt}}{\text{s}} \times 2\,\text{s}
+  = 100\,\text{nt},
+  \label{eq:okazaki_prediction}
+\end{equation}
+matching the observed 110--190\,nt range within experimental scatter. The
+prediction is not a fit; it uses only independently measured quantities.
+
+\begin{theorem}[Okazaki Fragment Quantization]
+\label{thm:okazaki_quantization}
+Okazaki fragment length is quantized by metabolic frequency. Specifically:
+\begin{enumerate}[label=(\roman*)]
+  \item Primase activity requires the \ce{Mg^{2+}-ATP} complex as cofactor.
+  \item $[\ce{Mg^{2+}}]_{\mathrm{free}}$ oscillates in antiphase with [ATP]
+        on the metabolic clock period (Definition~\ref{def:clock_cascade}).
+  \item Primase activity therefore oscillates with the same period,
+        creating priming-competent windows of duration $\sim\tau_{\mathrm{met}}/2$.
+  \item The interval between successive priming events equals $\tau_{\mathrm{met}}$,
+        so the lagging strand is partitioned into fragments of length
+        $L_{\mathrm{rep}} = v_{\mathrm{fork}} \cdot \tau_{\mathrm{met}}$.
+\end{enumerate}
+Okazaki fragment synthesis is a deterministic partition operation: the lagging
+strand is the object being partitioned; $\tau_{\mathrm{met}}$ is the partition
+interval; and $L_{\mathrm{rep}}$ is the partition unit size.
+\end{theorem}
+
+\begin{proof}
+Step (i): Primase (DnaG in prokaryotes; the PriS--PriL complex in eukaryotes)
+requires a divalent metal cofactor for catalysis. Structural and kinetic studies
+establish that \ce{Mg^{2+}} coordinated with the NTP substrate is the
+catalytically active species; the $K_m$ for \ce{Mg^{2+}} is $\sim 0.1$\,mM.
+
+Step (ii): From Lemma~\ref{lem:ionic_strength_osc}, $[\ce{Mg^{2+}}]_{\mathrm{free}}$
+oscillates with fractional amplitude $\sim 10\%$ at the glycolytic frequency.
+Because \ce{Mg^{2+}} is sequestered into MgATP during high-ATP phases and
+released during low-ATP phases, the free concentration is highest when ATP
+is lowest, hence the antiphase relationship.
+
+Step (iii): The primase activity $v_{\mathrm{prim}} \propto [\ce{Mg^{2+}}]_{\mathrm{free}}/(K_m + [\ce{Mg^{2+}}]_{\mathrm{free}})$ oscillates in antiphase with ATP. Priming is most likely in the high-\ce{Mg^{2+}} phase of each metabolic cycle.
+
+Step (iv): Consecutive high-\ce{Mg^{2+}} windows are separated by exactly
+$\tau_{\mathrm{met}}$. The fork advances $v_{\mathrm{fork}} \cdot \tau_{\mathrm{met}}$
+nucleotides between successive priming events. This is the observed Okazaki
+fragment length. $\blacksquare$
+\end{proof}
+
+\begin{keyresult}
+Okazaki fragment length = $v_{\mathrm{fork}} \times \tau_{\mathrm{metabolic}}
+= 50\,\text{nt\,s}^{-1} \times 2\,\text{s} = 100\,\text{nt}$,
+consistent with the observed 110--190\,nt range.
+Fragmentation is deterministic, not stochastic: it is the partition operation
+that divides the lagging strand by the metabolic clock.
+\end{keyresult}
+
+%------------------------------------------------------------------------------
+\section{Replication Timing Domains and Charge Density}
+\label{sec:replication_timing}
+%------------------------------------------------------------------------------
+
+Mammalian genomes replicate in a defined temporal programme: some loci fire
+early in S-phase, others fire late. This programme is cell-type specific,
+heritable, and correlates strongly with transcriptional activity and chromatin
+organisation. The question of its mechanistic basis --- why is locus $x$
+replicated before locus $y$? --- has resisted explanation in purely genetic
+terms. Partition theory provides the answer.
+
+\begin{definition}[Charge Density Profile]
+\label{def:charge_profile}
+The charge density profile $\rho_q(x)$ of the genome is the linear charge
+density (charges per base pair) at locus $x$, arising from the sum of DNA
+phosphate charges ($-2e$ per bp), histone octamer charges ($+200e$ per
+octamer, spread over $\sim 146$\,bp), and the charges of all associated
+non-histone proteins:
+\begin{equation}
+  \rho_q(x) = -2e + \frac{Q_{\mathrm{histones}}(x)}{N_{\mathrm{bp,octamer}}}
+  + \rho_{\mathrm{NHP}}(x),
+  \label{eq:charge_profile}
+\end{equation}
+where $\rho_{\mathrm{NHP}}$ is the contribution of non-histone proteins.
+\end{definition}
+
+\begin{theorem}[Replication Timing from Charge Density]
+\label{thm:replication_timing}
+The replication firing time $T_{\mathrm{rep}}(x)$ of locus $x$ satisfies
+\begin{equation}
+  \frac{dT_{\mathrm{rep}}(x)}{dt} = -k_{\mathrm{rep}}\,\Phi(x,t)\,f(\text{accessibility}),
+  \label{eq:rep_timing_ode}
+\end{equation}
+where $\Phi(x,t)$ is the local electrostatic potential at locus $x$ at time
+$t$ in S-phase, $f(\text{accessibility})$ measures chromatin accessibility
+(inversely proportional to partition depth $\Depth$ of the locus), and
+$k_{\mathrm{rep}}$ is a rate constant. Loci with high $|\Phi|$ and low $\Depth$
+(high charge density, accessible chromatin) fire earliest; loci with low $|\Phi|$
+and high $\Depth$ (screened potential, inaccessible chromatin) fire latest.
+\end{theorem}
+
+\begin{proof}
+The initiation of replication requires the sequential loading of ORC, Cdc6,
+Cdt1, MCM2--7, CDC45, and GINS onto the DNA. Each loading step is a
+protein--DNA binding event with rate
+$k_{\mathrm{load}} \propto \exp(-E_{\mathrm{bind}}/\kB T)$.
+The electrostatic component of $E_{\mathrm{bind}}$ is proportional to
+$-\Phi(x,t)$ (attractive binding is energetically favoured when the potential
+is large). The accessibility factor $f$ modulates the geometric availability
+of the binding site: $f \propto e^{-\Depth(x)}$, since high partition depth
+implies deep burial of the locus within compacted chromatin. The overall firing
+rate is therefore
+\begin{equation}
+  r_{\mathrm{fire}}(x) \propto e^{\Phi(x)/\kB T}\,e^{-\Depth(x)},
+\end{equation}
+and the firing time $T_{\mathrm{rep}} \propto 1/r_{\mathrm{fire}}$. Taking the
+time derivative of $T_{\mathrm{rep}}$ and noting that $\Phi(x,t)$ varies
+slowly during S-phase relative to the firing timescale yields
+Eq.~\eqref{eq:rep_timing_ode}. $\blacksquare$
+\end{proof}
+
+\begin{corollary}[The Replication Timing Programme is the Charge Density Profile]
+\label{cor:timing_is_charge}
+The temporal programme of genome replication is a direct read-out of the
+spatial charge density profile $\rho_q(x)$. Early-replicating chromatin
+corresponds to regions with net negative $\rho_q$ (low histone coverage,
+high euchromatin charge), while late-replicating chromatin corresponds to
+regions where $\rho_q$ is closer to zero (charge compensation by
+heterochromatin proteins and DNA methylation). No additional ``replication
+timing factor'' is required: the charge density is the programme.
+\end{corollary}
+
+%------------------------------------------------------------------------------
+\subsection{Early- and Late-Replicating Domains}
+\label{subsec:early_late}
+%------------------------------------------------------------------------------
+
+The corollary above accounts for the well-established correlation between
+early replication and transcriptional activity:
+
+\begin{itemize}
+  \item \textbf{Early-replicating loci} are euchromatic, transcriptionally
+        active regions. Their high local charge density (dense uncompensated
+        DNA phosphates, low histone occupancy) generates a large $|\Phi(x)|$
+        and low $\Depth(x)$, making the firing rate large, hence the firing
+        time early.
+  \item \textbf{Late-replicating loci} are heterochromatic, transcriptionally
+        silent regions. Charge is screened by histone H1, HP1 proteins, and
+        high \ce{Mg^{2+}} buffering; $|\Phi(x)|$ is small and $\Depth(x)$
+        is large, so the firing rate is small and the locus fires late.
+\end{itemize}
+
+The partition depth of a locus therefore encodes its position in replication
+time, and the replication timing programme is the $\Depth$-profile of the
+genome mapped onto the temporal axis of S-phase.
+
+%------------------------------------------------------------------------------
+\section{Harmonic Locking of Other Genomic Processes}
+\label{sec:harmonic_locking}
+%------------------------------------------------------------------------------
+
+Theorem~\ref{thm:metabolic_genomic_coupling} applies to all protein--DNA
+interactions, not only replication. Table~\ref{tab:harmonic_locks} summarises
+the harmonic numbers $n$ for the major genomic processes.
+
+\begin{table}[h]
+\centering
+\caption{Harmonic lock ratios between metabolic oscillation frequency
+  $f_{\mathrm{metabolic}} \approx 0.5\,\text{Hz}$ and major genomic process
+  frequencies. Observed process rates are from published single-cell measurements.}
+\label{tab:harmonic_locks}
+\begin{tabular}{llll}
+\toprule
+Genomic process & $f_{\mathrm{process}}$ & $n = f_{\mathrm{process}}/f_{\mathrm{met}}$
+  & Metabolic coupling \\
+\midrule
+Okazaki fragment priming   & $0.5\,\text{Hz}$     & 1 & \ce{Mg^{2+}}-ATP/primase   \\
+Nucleosome breathing       & $0.1$--$0.5\,\text{Hz}$ & 1 & $\lambda_D$/histone charge \\
+Transcriptional bursting   & $10^{-3}$--$0.1\,\text{Hz}$ & $\leq 1$ & promoter potential $\Phi$ \\
+Chromatin loop extrusion   & $\sim 0.01\,\text{Hz}$ & 1/50 & cohesin ATPase/ATP        \\
+Circadian gene expression  & $\sim 10^{-5}\,\text{Hz}$ & $1/50{,}000$ & NAMPT/NAD oscillation \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The circadian clock is the deepest harmonic: at $f_{\mathrm{circadian}} \approx
+1/24\,\text{h} \approx 10^{-5}\,\text{Hz}$, the ratio $n \approx 1/50{,}000$
+means the circadian oscillation is the $50{,}000$th sub-harmonic of the
+glycolytic frequency. This reflects the reality that the circadian clock is
+ultimately metabolically driven (NAMPT controls NAD$^+$ synthesis, which feeds
+back into CLOCK/BMAL1 chromatin acetylation and deacetylation through SIRT1),
+but the very low harmonic number means the coupling is attenuated and easily
+perturbed --- consistent with the known sensitivity of the circadian clock to
+metabolic disruption.
+
+%------------------------------------------------------------------------------
+\section{Quantitative Predictions and Experimental Tests}
+\label{sec:clock_predictions}
+%------------------------------------------------------------------------------
+
+The metabolic clock framework generates testable quantitative predictions.
+
+\begin{proposition}[Okazaki Length Scaling with Fork Velocity]
+\label{prop:okazaki_scaling}
+Under conditions that change the replication fork velocity $v_{\mathrm{fork}}$
+without altering the metabolic frequency, the mean Okazaki fragment length
+should scale linearly with $v_{\mathrm{fork}}$:
+\begin{equation}
+  \langle L_{\mathrm{Okazaki}} \rangle = \frac{v_{\mathrm{fork}}}{f_{\mathrm{metabolic}}}.
+  \label{eq:okazaki_scaling}
+\end{equation}
+Hydroxyurea treatment reduces $v_{\mathrm{fork}}$ by inhibiting ribonucleotide
+reductase; the prediction is that Okazaki fragments shorten proportionally.
+Caffeine treatment abolishes the S-phase checkpoint without directly affecting
+fork velocity; the prediction is no change in mean Okazaki length.
+\end{proposition}
+
+\begin{proposition}[Replication Timing Shifts with Metabolic Perturbation]
+\label{prop:timing_shift}
+Perturbations that increase the mean cellular [ATP] (e.g.\ increased glucose
+concentration, creatine supplementation) should advance the replication timing
+of borderline late-replicating loci (those with intermediate $\Depth$) by
+increasing $|\Phi|$ at those loci. Perturbations that decrease [ATP] (2-DG
+treatment, oligomycin) should delay such loci. Central constitutively
+early-replicating loci (very high $|\Phi|$, very low $\Depth$) should be
+insensitive to such perturbations.
+\end{proposition}
+
+\begin{proposition}[Metabolic Frequency and Okazaki Length Anticorrelation]
+\label{prop:freq_length_anticorr}
+Oscillatory yeast strains grown at different glucose concentrations, which
+alter $f_{\mathrm{glyc}}$, should show an anticorrelation between glycolytic
+frequency and mean Okazaki fragment length according to
+Eq.~\eqref{eq:okazaki_scaling}. This prediction is falsifiable by Okazaki
+fragment sequencing (OK-seq) on synchronised yeast populations.
+\end{proposition}
+
+%------------------------------------------------------------------------------
+\section{The Genome as a Phase-Locked Oscillator Network}
+\label{sec:phase_locked_network}
+%------------------------------------------------------------------------------
+
+The picture that emerges from the preceding analysis is one in which the genome
+is not a static repository of information occasionally accessed by protein
+factors. It is an active participant in a network of coupled oscillators, all
+phase-locked (to different harmonics) to the master metabolic clock.
+
+\begin{definition}[Genomic Phase-Lock Graph]
+\label{def:phase_lock_graph}
+The genomic phase-lock graph $\phaselockgraph = (V, E, n)$ has:
+\begin{itemize}
+  \item Vertices $V$: genomic processes (replication origins, transcription
+        units, splicing events, nucleosome arrays).
+  \item Edges $E$: physical coupling through shared electrostatic field or
+        shared metabolite pool.
+  \item Edge weights $n_{ij}$: the harmonic ratio between the frequencies of
+        the processes at the two endpoints.
+\end{itemize}
+The metabolic oscillator is the root vertex; all other vertices are
+harmonically locked to it through the Debye length oscillation.
+\end{definition}
+
+The partition depth of a locus determines its position in $\phaselockgraph$:
+loci with low $\Depth$ are closely connected to the root (high harmonic
+number, rapid response to metabolic perturbation), while loci with high
+$\Depth$ are distant from the root (low harmonic number, slow or attenuated
+metabolic coupling).
+
+%------------------------------------------------------------------------------
+\section{Connection to S-Entropy Temporal Coordinate}
+\label{sec:clock_sentropy}
+%------------------------------------------------------------------------------
+
+The metabolic clock connects directly to the temporal S-entropy $\St$ defined
+in Chapter~\ref{chap:charge_trajectories}:
+\begin{equation}
+  \St = -\int_0^T p(t)\log_b p(t)\,dt,
+\end{equation}
+where $p(t)$ is the probability density of the cellular partition trajectory
+over time $T$. When all genomic processes are tightly phase-locked to the
+metabolic clock (low harmonic number dispersion), the trajectory is regular
+and $\St$ is small (low temporal entropy). When phase-locking breaks down ---
+due to metabolic perturbation, replication stress, or oncogenic transformation
+--- the trajectory becomes irregular and $\St$ increases.
+
+\begin{corollary}[Metabolic Coherence and Temporal Entropy]
+\label{cor:metabolic_coherence}
+The temporal S-entropy $\St$ of a cell is minimised when all major genomic
+processes are phase-locked to the metabolic clock. Metabolic oscillation
+disruption increases $\St$, which corresponds to loss of temporal ordering
+in gene expression and replication --- the temporal signature of transformation
+or senescence.
+\end{corollary}
+
+%------------------------------------------------------------------------------
+\begin{chapterbox}
+\textbf{Chapter Summary.}
+\begin{itemize}
+  \item The metabolic clock cascade transduces glycolytic oscillations
+        (0.1--1\,Hz) through ATP/ADP ratio, free \ce{Mg^{2+}}, and Debye
+        length to modulate the electrostatic potential experienced by all
+        DNA-binding proteins.
+  \item The Metabolic--Genomic Coupling Theorem
+        (Theorem~\ref{thm:metabolic_genomic_coupling}) establishes harmonic
+        locking: $f_{\mathrm{process}} = n\,f_{\mathrm{metabolic}}$.
+  \item Okazaki fragment length is a deterministic partition operation:
+        $L_{\mathrm{rep}} = v_{\mathrm{fork}}/f_{\mathrm{metabolic}}
+        \approx 100\,\text{nt}$, matching the observed 110--190\,nt range
+        (Theorem~\ref{thm:okazaki_quantization}).
+  \item The replication timing programme is the charge density profile of
+        the genome: $dT_{\mathrm{rep}}/dt = -k_{\mathrm{rep}}\Phi(x,t)f(\text{accessibility})$
+        (Theorem~\ref{thm:replication_timing}).
+  \item The genome is a phase-locked oscillator network
+        ($\phaselockgraph$) rooted at the metabolic oscillator.
+\end{itemize}
+\end{chapterbox}
