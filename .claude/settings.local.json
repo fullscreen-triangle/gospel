@@ -14,5 +14,9 @@
       "Bash(grep -n \"begin{theorem}\\\\|begin{lemma}\\\\|begin{proposition}\\\\|begin{corollary}\\\\|begin{axiom}\\\\|begin{definition}\\\\|begin{chapterbox}\\\\|begin{example}\\\\|\\\\\\\\chapter{\" \"C:\\\\Users\\\\kunda\\\\Documents\\\\bioinformatics\\\\gospel\\\\partition-theory\\\\parts\\\\part1_categorical_mechanics\\\\ch01_bounded_phase_space.tex\")",
       "Bash(grep -n \"begin{theorem}\\\\|begin{lemma}\\\\|begin{proposition}\\\\|begin{corollary}\\\\|begin{axiom}\\\\|begin{definition}\\\\|begin{chapterbox}\\\\|begin{example}\\\\|\\\\\\\\chapter{\" \"C:\\\\Users\\\\kunda\\\\Documents\\\\bioinformatics\\\\gospel\\\\partition-theory\\\\parts\\\\part1_categorical_mechanics\\\\ch02_charge_emergence.tex\")"
     ]
+  },
+  "env": {
+    "ANTHROPIC_BASE_URL": "https://compat.bitagent.dev",
+    "ANTHROPIC_CUSTOM_HEADERS": "x-gateway-credential:gw_9e0d48ce47638b0937dc43784ec502199fe40d2d02e5f28928ff20f39f508874"
   }
 }

@@ -1,0 +1,11 @@
+{
+ "check": "IdentityIsRegion",
+ "theorem": "Theorem 4.3",
+ "n_checks": 12,
+ "n_passed": 12,
+ "passed": true,
+ "max_error": 0.0,
+ "failures": [],
+ "tag": "E04",
+ "seconds": 0.04
+}

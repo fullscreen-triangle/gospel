@@ -1,0 +1,11 @@
+{
+ "check": "PathwayContactGraphs",
+ "theorem": "Assumption 5.1 / Theorem 3.2",
+ "n_checks": 77,
+ "n_passed": 77,
+ "passed": true,
+ "max_error": 0.0,
+ "failures": [],
+ "tag": "E11",
+ "seconds": 0.147
+}

@@ -1,0 +1,611 @@
+{
+ "provenance": "solved steady-state contact maps, vendored for self-contained validation",
+ "pathways": [
+  {
+   "pathway": "Glycolysis",
+   "species": [
+    {
+     "id": "Glucose",
+     "name": "D-Glucose",
+     "mu_kJ_mol": -930.66,
+     "Sk": 0.9985,
+     "St": 0.921,
+     "Se": 0.7713,
+     "compartment": "cytoplasm"
+    },
+    {
+     "id": "G6P",
+     "name": "Glucose 6-phosphate",
+     "mu_kJ_mol": -1342.22,
+     "Sk": 1.0,
+     "St": 1.0,
+     "Se": 0.554,
+     "compartment": "cytoplasm"
+    },
+    {
+     "id": "F6P",
+     "name": "Fructose 6-phosphate",
+     "mu_kJ_mol": -1349.46,
+     "Sk": 0.0058,
+     "St": 0.0808,
+     "Se": 0.5502,
+     "compartment": "cytoplasm"
+    },
+    {
+     "id": "FBP",
+     "name": "Fructose 1,6-bisphosphate",
+     "mu_kJ_mol": -2228.76,
+     "Sk": 0.0053,
+     "St": 0.0023,
+     "Se": 0.086,
+     "compartment": "cytoplasm"
+    },
+    {
+     "id": "G3P",
+     "name": "Glyceraldehyde 3-phosphate",
+     "mu_kJ_mol": -1313.02,
+     "Sk": 0.0064,
+     "St": 0.0023,
+     "Se": 0.5694,
+     "compartment": "cytoplasm"
+    },
+    {
+     "id": "BPG13",
+     "name": "1,3-Bisphosphoglycerate",
+     "mu_kJ_mol": -2391.61,
+     "Sk": 0.006,
+     "St": 0.0022,
+     "Se": 0.0,
+     "compartment": "cytoplasm"
+    },
+    {
+     "id": "3PG",
+     "name": "3-Phosphoglycerate",
+     "mu_kJ_mol": -1525.27,
+     "Sk": 0.0009,
+     "St": 0.0735,
+     "Se": 0.4574,
+     "compartment": "cytoplasm"
+    },
+    {
+     "id": "2PG",
+     "name": "2-Phosphoglycerate",
+     "mu_kJ_mol": -1523.84,
+     "Sk": 0.0014,
+     "St": 0.0751,
+     "Se": 0.4581,
+     "compartment": "cytoplasm"
+    },
+    {
+     "id": "PEP",
+     "name": "Phosphoenolpyruvate",
+     "mu_kJ_mol": -1296.53,
+     "Sk": 0.0215,
+     "St": 0.0116,
+     "Se": 0.5781,
+     "compartment": "cytoplasm"
+    },
+    {
+     "id": "Pyruvate",
+     "name": "Pyruvate",
+     "mu_kJ_mol": -497.47,
+     "Sk": 0.0204,
+     "St": 0.0097,
+     "Se": 1.0,
+     "compartment": "cytoplasm"
+    }
+   ],
+   "edges": [
+    {
+     "source": "Glucose",
+     "target": "G6P",
+     "cost": 0.231201,
+     "conductance": 0.46559631,
+     "flux": 191.622144
+    },
+    {
+     "source": "G6P",
+     "target": "F6P",
+     "cost": 1.354019,
+     "conductance": 0.03993264,
+     "flux": 0.28923
+    },
+    {
+     "source": "F6P",
+     "target": "FBP",
+     "cost": 0.470822,
+     "conductance": 0.00093119,
+     "flux": 0.818793
+    },
+    {
+     "source": "FBP",
+     "target": "G3P",
+     "cost": 0.483462,
+     "conductance": 0.0002165,
+     "flux": -0.198259
+    },
+    {
+     "source": "G3P",
+     "target": "BPG13",
+     "cost": 0.569437,
+     "conductance": 0.00095835,
+     "flux": 1.033668
+    },
+    {
+     "source": "BPG13",
+     "target": "3PG",
+     "cost": 0.462936,
+     "conductance": 0.00014356,
+     "flux": -0.124371
+    },
+    {
+     "source": "3PG",
+     "target": "2PG",
+     "cost": 0.001789,
+     "conductance": 0.03701491,
+     "flux": -0.052822
+    },
+    {
+     "source": "2PG",
+     "target": "PEP",
+     "cost": 0.137268,
+     "conductance": 0.00093119,
+     "flux": -0.211674
+    },
+    {
+     "source": "PEP",
+     "target": "Pyruvate",
+     "cost": 0.421862,
+     "conductance": 0.00490816,
+     "flux": -3.921878
+    }
+   ]
+  },
+  {
+   "pathway": "TCA Cycle",
+   "species": [
+    {
+     "id": "AcCoA",
+     "name": "Acetyl-CoA",
+     "mu_kJ_mol": -399.05,
+     "Sk": 0.961,
+     "St": 0.1101,
+     "Se": 1.0,
+     "compartment": "mito_matrix"
+    },
+    {
+     "id": "Citrate",
+     "name": "Citrate",
+     "mu_kJ_mol": -1185.92,
+     "Sk": 0.9075,
+     "St": 0.2299,
+     "Se": 0.0002,
+     "compartment": "mito_matrix"
+    },
+    {
+     "id": "Isocit",
+     "name": "Isocitrate",
+     "mu_kJ_mol": -1186.1,
+     "Sk": 0.0468,
+     "St": 0.1418,
+     "Se": 0.0,
+     "compartment": "mito_matrix"
+    },
+    {
+     "id": "aKG",
+     "name": "\u03b1-Ketoglutarate",
+     "mu_kJ_mol": -824.84,
+     "Sk": 0.0967,
+     "St": 0.0259,
+     "Se": 0.459,
+     "compartment": "mito_matrix"
+    },
+    {
+     "id": "SucCoA",
+     "name": "Succinyl-CoA",
+     "mu_kJ_mol": -534.52,
+     "Sk": 0.0724,
+     "St": 0.0257,
+     "Se": 0.8279,
+     "compartment": "mito_matrix"
+    },
+    {
+     "id": "Succ",
+     "name": "Succinate",
+     "mu_kJ_mol": -710.91,
+     "Sk": 0.0748,
+     "St": 0.0673,
+     "Se": 0.6038,
+     "compartment": "mito_matrix"
+    },
+    {
+     "id": "Fum",
+     "name": "Fumarate",
+     "mu_kJ_mol": -630.84,
+     "Sk": 0.6956,
+     "St": 0.2941,
+     "Se": 0.7055,
+     "compartment": "mito_matrix"
+    },
+    {
+     "id": "Malate",
+     "name": "Malate",
+     "mu_kJ_mol": -863.71,
+     "Sk": 1.0,
+     "St": 1.0,
+     "Se": 0.4096,
+     "compartment": "mito_matrix"
+    },
+    {
+     "id": "OAA",
+     "name": "Oxaloacetate",
+     "mu_kJ_mol": -823.43,
+     "Sk": 0.4106,
+     "St": 0.7733,
+     "Se": 0.4608,
+     "compartment": "mito_matrix"
+    }
+   ],
+   "edges": [
+    {
+     "source": "AcCoA",
+     "target": "Citrate",
+     "cost": 1.008341,
+     "conductance": 0.00388773,
+     "flux": 3.059117
+    },
+    {
+     "source": "Citrate",
+     "target": "Isocit",
+     "cost": 0.865209,
+     "conductance": 0.00512156,
+     "flux": 0.000923
+    },
+    {
+     "source": "Isocit",
+     "target": "aKG",
+     "cost": 0.476014,
+     "conductance": 0.00043456,
+     "flux": -0.156987
+    },
+    {
+     "source": "aKG",
+     "target": "SucCoA",
+     "cost": 0.369664,
+     "conductance": 0.000582,
+     "flux": -0.168963
+    },
+    {
+     "source": "SucCoA",
+     "target": "Succ",
+     "cost": 0.227945,
+     "conductance": 0.0004268,
+     "flux": 0.075279
+    },
+    {
+     "source": "Succ",
+     "target": "Fum",
+     "cost": 0.668675,
+     "conductance": 0.00221158,
+     "flux": -0.177071
+    },
+    {
+     "source": "Fum",
+     "target": "Malate",
+     "cost": 0.823734,
+     "conductance": 0.00931193,
+     "flux": 2.16842
+    },
+    {
+     "source": "Malate",
+     "target": "OAA",
+     "cost": 0.633568,
+     "conductance": 0.02987576,
+     "flux": -1.203365
+    },
+    {
+     "source": "OAA",
+     "target": "AcCoA",
+     "cost": 1.016583,
+     "conductance": 0.0004268,
+     "flux": -0.181121
+    }
+   ]
+  },
+  {
+   "pathway": "OxPhos",
+   "species": [
+    {
+     "id": "NADH",
+     "name": "NADH",
+     "mu_kJ_mol": -55.74,
+     "Sk": 0.0908,
+     "St": 0.0859,
+     "Se": 0.9897,
+     "compartment": "mito_matrix"
+    },
+    {
+     "id": "CoQ",
+     "name": "Ubiquinone (CoQ10)",
+     "mu_kJ_mol": -52.02,
+     "Sk": 0.0594,
+     "St": 0.8148,
+     "Se": 0.991,
+     "compartment": "mito_IMM"
+    },
+    {
+     "id": "CytC",
+     "name": "Cytochrome c",
+     "mu_kJ_mol": -32.59,
+     "Sk": 0.0639,
+     "St": 1.0,
+     "Se": 0.9981,
+     "compartment": "mito_IMS"
+    },
+    {
+     "id": "O2",
+     "name": "Molecular oxygen",
+     "mu_kJ_mol": -27.31,
+     "Sk": 0.016,
+     "St": 0.2722,
+     "Se": 1.0,
+     "compartment": "mito_matrix"
+    },
+    {
+     "id": "H2O",
+     "name": "Water",
+     "mu_kJ_mol": -226.65,
+     "Sk": 0.0105,
+     "St": 0.013,
+     "Se": 0.9277,
+     "compartment": "mito_matrix"
+    },
+    {
+     "id": "ADP",
+     "name": "ADP",
+     "mu_kJ_mol": -1923.13,
+     "Sk": 0.7608,
+     "St": 0.2044,
+     "Se": 0.312,
+     "compartment": "mito_matrix"
+    },
+    {
+     "id": "Pi",
+     "name": "Inorganic phosphate",
+     "mu_kJ_mol": -1070.87,
+     "Sk": 0.3289,
+     "St": 0.0474,
+     "Se": 0.6213,
+     "compartment": "mito_matrix"
+    },
+    {
+     "id": "ATP",
+     "name": "ATP",
+     "mu_kJ_mol": -2782.81,
+     "Sk": 1.0,
+     "St": 0.24,
+     "Se": 0.0,
+     "compartment": "mito_matrix"
+    }
+   ],
+   "edges": [
+    {
+     "source": "NADH",
+     "target": "CoQ",
+     "cost": 0.729565,
+     "conductance": 0.01939985,
+     "flux": -0.072187
+    },
+    {
+     "source": "CoQ",
+     "target": "CytC",
+     "cost": 0.185372,
+     "conductance": 0.19399846,
+     "flux": -3.768817
+    },
+    {
+     "source": "CytC",
+     "target": "O2",
+     "cost": 0.729352,
+     "conductance": 0.06789946,
+     "flux": -0.35844
+    },
+    {
+     "source": "O2",
+     "target": "H2O",
+     "cost": 0.26922,
+     "conductance": 0.00339497,
+     "flux": 0.676745
+    },
+    {
+     "source": "ADP",
+     "target": "ATP",
+     "cost": 0.39476,
+     "conductance": 0.0504396,
+     "flux": 43.361833
+    },
+    {
+     "source": "NADH",
+     "target": "ADP",
+     "cost": 0.960282,
+     "conductance": 0.00310398,
+     "flux": 5.79633
+    },
+    {
+     "source": "ATP",
+     "target": "Pi",
+     "cost": 0.93456,
+     "conductance": 0.0124159,
+     "flux": -21.255238
+    }
+   ]
+  },
+  {
+   "pathway": "EGFR/MAPK",
+   "species": [
+    {
+     "id": "EGF",
+     "name": "Epidermal Growth Factor",
+     "mu_kJ_mol": -103.41,
+     "Sk": 0.9977,
+     "St": 0.998,
+     "Se": 0.0,
+     "compartment": "extracellular"
+    },
+    {
+     "id": "EGFR",
+     "name": "EGFR",
+     "mu_kJ_mol": -81.54,
+     "Sk": 1.0,
+     "St": 1.0,
+     "Se": 0.3783,
+     "compartment": "membrane"
+    },
+    {
+     "id": "GRB2",
+     "name": "GRB2",
+     "mu_kJ_mol": -67.39,
+     "Sk": 0.0007,
+     "St": 0.0035,
+     "Se": 0.6231,
+     "compartment": "cytoplasm"
+    },
+    {
+     "id": "SOS",
+     "name": "SOS1",
+     "mu_kJ_mol": -66.54,
+     "Sk": 0.0001,
+     "St": 0.0025,
+     "Se": 0.6378,
+     "compartment": "cytoplasm"
+    },
+    {
+     "id": "RAS",
+     "name": "KRAS",
+     "mu_kJ_mol": -57.39,
+     "Sk": 0.0002,
+     "St": 0.001,
+     "Se": 0.7961,
+     "compartment": "membrane"
+    },
+    {
+     "id": "RAF",
+     "name": "BRAF",
+     "mu_kJ_mol": -53.71,
+     "Sk": 0.0009,
+     "St": 0.0034,
+     "Se": 0.8598,
+     "compartment": "cytoplasm"
+    },
+    {
+     "id": "MEK",
+     "name": "MEK1/2",
+     "mu_kJ_mol": -47.14,
+     "Sk": 0.002,
+     "St": 0.0204,
+     "Se": 0.9735,
+     "compartment": "cytoplasm"
+    },
+    {
+     "id": "ERK",
+     "name": "ERK1/2",
+     "mu_kJ_mol": -45.61,
+     "Sk": 0.0042,
+     "St": 0.022,
+     "Se": 1.0,
+     "compartment": "cytoplasm"
+    },
+    {
+     "id": "MYC",
+     "name": "c-MYC",
+     "mu_kJ_mol": -55.48,
+     "Sk": 0.0014,
+     "St": 0.003,
+     "Se": 0.8293,
+     "compartment": "nucleus"
+    },
+    {
+     "id": "CycD",
+     "name": "Cyclin D1",
+     "mu_kJ_mol": -48.33,
+     "Sk": 0.0,
+     "St": 0.0,
+     "Se": 0.9529,
+     "compartment": "nucleus"
+    }
+   ],
+   "edges": [
+    {
+     "source": "EGF",
+     "target": "EGFR",
+     "cost": 0.378346,
+     "conductance": 0.000388,
+     "flux": -0.008485
+    },
+    {
+     "source": "EGFR",
+     "target": "GRB2",
+     "cost": 1.432288,
+     "conductance": 3.9e-07,
+     "flux": -5e-06
+    },
+    {
+     "source": "GRB2",
+     "target": "SOS",
+     "cost": 0.014782,
+     "conductance": 9.7e-07,
+     "flux": -1e-06
+    },
+    {
+     "source": "SOS",
+     "target": "RAS",
+     "cost": 0.158268,
+     "conductance": 2e-08,
+     "flux": -0.0
+    },
+    {
+     "source": "RAS",
+     "target": "RAF",
+     "cost": 0.06377,
+     "conductance": 3.9e-07,
+     "flux": -1e-06
+    },
+    {
+     "source": "RAF",
+     "target": "MEK",
+     "cost": 0.114976,
+     "conductance": 9.3e-07,
+     "flux": -6e-06
+    },
+    {
+     "source": "MEK",
+     "target": "ERK",
+     "cost": 0.026616,
+     "conductance": 6.98e-06,
+     "flux": -1.1e-05
+    },
+    {
+     "source": "ERK",
+     "target": "MYC",
+     "cost": 0.171808,
+     "conductance": 1.16e-06,
+     "flux": 1.1e-05
+    },
+    {
+     "source": "MYC",
+     "target": "CycD",
+     "cost": 0.123705,
+     "conductance": 0.0,
+     "flux": -0.0
+    },
+    {
+     "source": "ERK",
+     "target": "EGFR",
+     "cost": 1.527928,
+     "conductance": 3.9e-07,
+     "flux": 1.4e-05
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,344 @@
+\begin{thebibliography}{44}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Needleman and Wunsch(1970)]{needleman1970}
+Saul~B. Needleman and Christian~D. Wunsch.
+\newblock A general method applicable to the search for similarities in the
+  amino acid sequence of two proteins.
+\newblock \emph{Journal of Molecular Biology}, 48\penalty0 (3):\penalty0
+  443--453, 1970.
+\newblock \doi{10.1016/0022-2836(70)90057-4}.
+
+\bibitem[Smith and Waterman(1981)]{smith1981}
+Temple~F. Smith and Michael~S. Waterman.
+\newblock Identification of common molecular subsequences.
+\newblock \emph{Journal of Molecular Biology}, 147\penalty0 (1):\penalty0
+  195--197, 1981.
+\newblock \doi{10.1016/0022-2836(81)90087-5}.
+
+\bibitem[Altschul et~al.(1990)Altschul, Gish, Miller, Myers, and
+  Lipman]{altschul1990}
+Stephen~F. Altschul, Warren Gish, Webb Miller, Eugene~W. Myers, and David~J.
+  Lipman.
+\newblock Basic local alignment search tool.
+\newblock \emph{Journal of Molecular Biology}, 215\penalty0 (3):\penalty0
+  403--410, 1990.
+\newblock \doi{10.1016/S0022-2836(05)80360-2}.
+
+\bibitem[Altschul et~al.(1997)Altschul, Madden, Sch{\"a}ffer, Zhang, Zhang,
+  Miller, and Lipman]{altschul1997}
+Stephen~F. Altschul, Thomas~L. Madden, Alejandro~A. Sch{\"a}ffer, Jinghui
+  Zhang, Zheng Zhang, Webb Miller, and David~J. Lipman.
+\newblock Gapped {BLAST} and {PSI-BLAST}: a new generation of protein database
+  search programs.
+\newblock \emph{Nucleic Acids Research}, 25\penalty0 (17):\penalty0 3389--3402,
+  1997.
+\newblock \doi{10.1093/nar/25.17.3389}.
+
+\bibitem[Henikoff and Henikoff(1992)]{henikoff1992}
+Steven Henikoff and Jorja~G. Henikoff.
+\newblock Amino acid substitution matrices from protein blocks.
+\newblock \emph{Proceedings of the National Academy of Sciences}, 89\penalty0
+  (22):\penalty0 10915--10919, 1992.
+\newblock \doi{10.1073/pnas.89.22.10915}.
+
+\bibitem[Eddy(1998)]{eddy1998}
+Sean~R. Eddy.
+\newblock Profile hidden {M}arkov models.
+\newblock \emph{Bioinformatics}, 14\penalty0 (9):\penalty0 755--763, 1998.
+\newblock \doi{10.1093/bioinformatics/14.9.755}.
+
+\bibitem[Kimchi-Sarfaty et~al.(2007)Kimchi-Sarfaty, Oh, Kim, Sauna, Calcagno,
+  Ambudkar, and Gottesman]{kimchi2007}
+Chava Kimchi-Sarfaty, Jung~Mi Oh, In-Wha Kim, Zuben~E. Sauna, Anna~Maria
+  Calcagno, Suresh~V. Ambudkar, and Michael~M. Gottesman.
+\newblock A ``silent'' polymorphism in the {MDR1} gene changes substrate
+  specificity.
+\newblock \emph{Science}, 315\penalty0 (5811):\penalty0 525--528, 2007.
+\newblock \doi{10.1126/science.1135308}.
+
+\bibitem[Sauna and Kimchi-Sarfaty(2011)]{sauna2011}
+Zuben~E. Sauna and Chava Kimchi-Sarfaty.
+\newblock Understanding the contribution of synonymous mutations to human
+  disease.
+\newblock \emph{Nature Reviews Genetics}, 12\penalty0 (10):\penalty0 683--691,
+  2011.
+\newblock \doi{10.1038/nrg3051}.
+
+\bibitem[Plotkin and Kudla(2011)]{plotkin2011}
+Joshua~B. Plotkin and Grzegorz Kudla.
+\newblock Synonymous but not the same: the causes and consequences of codon
+  bias.
+\newblock \emph{Nature Reviews Genetics}, 12\penalty0 (1):\penalty0 32--42,
+  2011.
+\newblock \doi{10.1038/nrg2899}.
+
+\bibitem[Galperin et~al.(1998)Galperin, Walker, and Koonin]{galperin1998}
+Michael~Y. Galperin, D.~Roland Walker, and Eugene~V. Koonin.
+\newblock Analogous enzymes: independent inventions in enzyme evolution.
+\newblock \emph{Genome Research}, 8\penalty0 (8):\penalty0 779--790, 1998.
+\newblock \doi{10.1101/gr.8.8.779}.
+
+\bibitem[Omelchenko et~al.(2010)Omelchenko, Galperin, Wolf, and
+  Koonin]{omelchenko2010}
+Marina~V. Omelchenko, Michael~Y. Galperin, Yuri~I. Wolf, and Eugene~V. Koonin.
+\newblock Non-homologous isofunctional enzymes: a systematic analysis of
+  alternative solutions in enzyme evolution.
+\newblock \emph{Biology Direct}, 5:\penalty0 31, 2010.
+\newblock \doi{10.1186/1745-6150-5-31}.
+
+\bibitem[Doolittle(1994)]{doolittle1994}
+Russell~F. Doolittle.
+\newblock Convergent evolution: the need to be explicit.
+\newblock \emph{Trends in Biochemical Sciences}, 19\penalty0 (1):\penalty0
+  15--18, 1994.
+\newblock \doi{10.1016/0968-0004(94)90167-8}.
+
+\bibitem[Watson and Crick(1953)]{watson1953}
+James~D. Watson and Francis H.~C. Crick.
+\newblock Molecular structure of nucleic acids: a structure for deoxyribose
+  nucleic acid.
+\newblock \emph{Nature}, 171\penalty0 (4356):\penalty0 737--738, 1953.
+\newblock \doi{10.1038/171737a0}.
+
+\bibitem[Chargaff(1950)]{chargaff1950}
+Erwin Chargaff.
+\newblock Chemical specificity of nucleic acids and mechanism of their
+  enzymatic degradation.
+\newblock \emph{Experientia}, 6\penalty0 (6):\penalty0 201--209, 1950.
+\newblock \doi{10.1007/BF02173653}.
+
+\bibitem[Diestel(2017)]{diestel2017}
+Reinhard Diestel.
+\newblock \emph{Graph Theory}.
+\newblock Springer, 5 edition, 2017.
+\newblock \doi{10.1007/978-3-662-53622-3}.
+
+\bibitem[Ford and Fulkerson(1956)]{fordfulkerson1956}
+L.~R. Ford and D.~R. Fulkerson.
+\newblock Maximal flow through a network.
+\newblock \emph{Canadian Journal of Mathematics}, 8:\penalty0 399--404, 1956.
+\newblock \doi{10.4153/CJM-1956-045-5}.
+
+\bibitem[Stoer and Wagner(1997)]{stoer1997}
+Mechthild Stoer and Frank Wagner.
+\newblock A simple min-cut algorithm.
+\newblock \emph{Journal of the ACM}, 44\penalty0 (4):\penalty0 585--591, 1997.
+\newblock \doi{10.1145/263867.263872}.
+
+\bibitem[Gomory and Hu(1961)]{gomory1961}
+R.~E. Gomory and T.~C. Hu.
+\newblock Multi-terminal network flows.
+\newblock \emph{Journal of the Society for Industrial and Applied Mathematics},
+  9\penalty0 (4):\penalty0 551--570, 1961.
+\newblock \doi{10.1137/0109047}.
+
+\bibitem[Beard et~al.(2002)Beard, Liang, and Qian]{beard2002}
+Daniel~A. Beard, Shou-dan Liang, and Hong Qian.
+\newblock Energy balance for analysis of complex metabolic networks.
+\newblock \emph{Biophysical Journal}, 83\penalty0 (1):\penalty0 79--86, 2002.
+\newblock \doi{10.1016/S0006-3495(02)75150-3}.
+
+\bibitem[Qian and Beard(2005)]{qian2005}
+Hong Qian and Daniel~A. Beard.
+\newblock Thermodynamics of stoichiometric biochemical networks in living
+  systems far from equilibrium.
+\newblock \emph{Biophysical Chemistry}, 114\penalty0 (2-3):\penalty0 213--220,
+  2005.
+\newblock \doi{10.1016/j.bpc.2004.12.001}.
+
+\bibitem[Orth et~al.(2010)Orth, Thiele, and Palsson]{orth2010}
+Jeffrey~D. Orth, Ines Thiele, and Bernhard~{\O}. Palsson.
+\newblock What is flux balance analysis?
+\newblock \emph{Nature Biotechnology}, 28\penalty0 (3):\penalty0 245--248,
+  2010.
+\newblock \doi{10.1038/nbt.1614}.
+
+\bibitem[Kanehisa and Goto(2000)]{kanehisa2000}
+Minoru Kanehisa and Susumu Goto.
+\newblock {KEGG}: {Kyoto Encyclopedia of Genes and Genomes}.
+\newblock \emph{Nucleic Acids Research}, 28\penalty0 (1):\penalty0 27--30,
+  2000.
+\newblock \doi{10.1093/nar/28.1.27}.
+
+\bibitem[Jassal et~al.(2020)Jassal, Matthews, Viteri, Gong, Lorente, Fabregat,
+  Sidiropoulos, Cook, Gillespie, Haw, et~al.]{jassal2020}
+Bijay Jassal, Lisa Matthews, Guilherme Viteri, Chuqiao Gong, Pascual Lorente,
+  Antonio Fabregat, Konstantinos Sidiropoulos, Justin Cook, Marc Gillespie,
+  Robin Haw, et~al.
+\newblock The reactome pathway knowledgebase.
+\newblock \emph{Nucleic Acids Research}, 48\penalty0 (D1):\penalty0 D498--D503,
+  2020.
+\newblock \doi{10.1093/nar/gkz1031}.
+
+\bibitem[Schomburg et~al.(2002)Schomburg, Chang, and Schomburg]{schomburg2002}
+Ida Schomburg, Antje Chang, and Dietmar Schomburg.
+\newblock {BRENDA}, enzyme data and metabolic information.
+\newblock \emph{Nucleic Acids Research}, 30\penalty0 (1):\penalty0 47--49,
+  2002.
+\newblock \doi{10.1093/nar/30.1.47}.
+
+\bibitem[Landauer(1961)]{landauer1961}
+Rolf Landauer.
+\newblock Irreversibility and heat generation in the computing process.
+\newblock \emph{IBM Journal of Research and Development}, 5\penalty0
+  (3):\penalty0 183--191, 1961.
+\newblock \doi{10.1147/rd.53.0183}.
+
+\bibitem[Bennett(1982)]{bennett1982}
+Charles~H. Bennett.
+\newblock The thermodynamics of computation---a review.
+\newblock \emph{International Journal of Theoretical Physics}, 21\penalty0
+  (12):\penalty0 905--940, 1982.
+\newblock \doi{10.1007/BF02084158}.
+
+\bibitem[Parrondo et~al.(2015)Parrondo, Horowitz, and Sagawa]{parrondo2015}
+Juan M.~R. Parrondo, Jordan~M. Horowitz, and Takahiro Sagawa.
+\newblock Thermodynamics of information.
+\newblock \emph{Nature Physics}, 11\penalty0 (2):\penalty0 131--139, 2015.
+\newblock \doi{10.1038/nphys3230}.
+
+\bibitem[{GTEx Consortium}(2020)]{gtex2020}
+{GTEx Consortium}.
+\newblock The {GTEx} consortium atlas of genetic regulatory effects across
+  human tissues.
+\newblock \emph{Science}, 369\penalty0 (6509):\penalty0 1318--1330, 2020.
+\newblock \doi{10.1126/science.aaz1776}.
+
+\bibitem[Cooper et~al.(2013)Cooper, Krawczak, F{\"o}rster-Gibson, and
+  Antonarakis]{cooper2013}
+David~N. Cooper, Michael Krawczak, Cynthia F{\"o}rster-Gibson, and Stylianos~E.
+  Antonarakis.
+\newblock Where genotype is not predictive of phenotype: towards an
+  understanding of the molecular basis of reduced penetrance in human inherited
+  disease.
+\newblock \emph{Human Genetics}, 132\penalty0 (10):\penalty0 1077--1130, 2013.
+\newblock \doi{10.1007/s00439-013-1331-2}.
+
+\bibitem[Lehner(2011)]{lehner2011}
+Ben Lehner.
+\newblock Molecular mechanisms of epistasis within and between genes.
+\newblock \emph{Trends in Genetics}, 27\penalty0 (8):\penalty0 323--331, 2011.
+\newblock \doi{10.1016/j.tig.2011.05.007}.
+
+\bibitem[Domingo et~al.(2019)Domingo, Baeza-Centurion, and Lehner]{domingo2019}
+Juli{\`a} Domingo, Pablo Baeza-Centurion, and Ben Lehner.
+\newblock The causes and consequences of genetic interactions (epistasis).
+\newblock \emph{Annual Review of Genomics and Human Genetics}, 20:\penalty0
+  433--460, 2019.
+\newblock \doi{10.1146/annurev-genom-083118-014857}.
+
+\bibitem[Costanzo et~al.(2016)Costanzo, VanderSluis, Koch, Baryshnikova, Pons,
+  Tan, Wang, Usaj, Hanchard, Lee, et~al.]{costanzo2016}
+Michael Costanzo, Benjamin VanderSluis, Elizabeth~N. Koch, Anastasia
+  Baryshnikova, Carles Pons, Guihong Tan, Wen Wang, Matej Usaj, Julia Hanchard,
+  Susan~D. Lee, et~al.
+\newblock A global genetic interaction network maps a wiring diagram of
+  cellular function.
+\newblock \emph{Science}, 353\penalty0 (6306), 2016.
+\newblock \doi{10.1126/science.aaf1420}.
+
+\bibitem[Manolio et~al.(2009)Manolio, Collins, Cox, Goldstein, Hindorff,
+  Hunter, McCarthy, Ramos, Cardon, Chakravarti, et~al.]{manolio2009}
+Teri~A. Manolio, Francis~S. Collins, Nancy~J. Cox, David~B. Goldstein, Lucia~A.
+  Hindorff, David~J. Hunter, Mark~I. McCarthy, Erin~M. Ramos, Lon~R. Cardon,
+  Aravinda Chakravarti, et~al.
+\newblock Finding the missing heritability of complex diseases.
+\newblock \emph{Nature}, 461\penalty0 (7265):\penalty0 747--753, 2009.
+\newblock \doi{10.1038/nature08494}.
+
+\bibitem[Boyle et~al.(2017)Boyle, Li, and Pritchard]{boyle2017}
+Evan~A. Boyle, Yang~I. Li, and Jonathan~K. Pritchard.
+\newblock An expanded view of complex traits: from polygenic to omnigenic.
+\newblock \emph{Cell}, 169\penalty0 (7):\penalty0 1177--1186, 2017.
+\newblock \doi{10.1016/j.cell.2017.05.038}.
+
+\bibitem[Richards et~al.(2015)Richards, Aziz, Bale, Bick, Das, Gastier-Foster,
+  Grody, Hegde, Lyon, Spector, Voelkerding, and Rehm]{richards2015}
+Sue Richards, Nazneen Aziz, Sherri Bale, David Bick, Soma Das, Julie
+  Gastier-Foster, Wayne~W. Grody, Madhuri Hegde, Elaine Lyon, Elaine Spector,
+  Karl Voelkerding, and Heidi~L. Rehm.
+\newblock Standards and guidelines for the interpretation of sequence variants:
+  a joint consensus recommendation of the {American College of Medical Genetics
+  and Genomics} and the {Association for Molecular Pathology}.
+\newblock \emph{Genetics in Medicine}, 17\penalty0 (5):\penalty0 405--424,
+  2015.
+\newblock \doi{10.1038/gim.2015.30}.
+
+\bibitem[Landrum et~al.(2018)Landrum, Lee, Benson, Brown, Chao, Chitipiralla,
+  Gu, Hart, Hoffman, Jang, et~al.]{landrum2018}
+Melissa~J. Landrum, Jennifer~M. Lee, Mark Benson, Garth~R. Brown, Chen Chao,
+  Shanmuga Chitipiralla, Baoshan Gu, Jennifer Hart, Douglas Hoffman, Wonhee
+  Jang, et~al.
+\newblock {ClinVar}: improving access to variant interpretations and supporting
+  evidence.
+\newblock \emph{Nucleic Acids Research}, 46\penalty0 (D1):\penalty0
+  D1062--D1067, 2018.
+\newblock \doi{10.1093/nar/gkx1153}.
+
+\bibitem[Hoffman-Andrews(2017)]{hoffman2019}
+Lily Hoffman-Andrews.
+\newblock The known unknown: the challenges of genetic variants of uncertain
+  significance in clinical practice.
+\newblock \emph{Journal of Law and the Biosciences}, 4\penalty0 (3):\penalty0
+  648--657, 2017.
+\newblock \doi{10.1093/jlb/lsx038}.
+
+\bibitem[Harris et~al.(2020)Harris, Millman, van~der Walt, Gommers, Virtanen,
+  Cournapeau, Wieser, Taylor, Berg, Smith, et~al.]{harris2020}
+Charles~R. Harris, K.~Jarrod Millman, St{\'e}fan~J. van~der Walt, Ralf Gommers,
+  Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, Sebastian Berg,
+  Nathaniel~J. Smith, et~al.
+\newblock Array programming with {NumPy}.
+\newblock \emph{Nature}, 585\penalty0 (7825):\penalty0 357--362, 2020.
+\newblock \doi{10.1038/s41586-020-2649-2}.
+
+\bibitem[Virtanen et~al.(2020)Virtanen, Gommers, Oliphant, Haberland, Reddy,
+  Cournapeau, Burovski, Peterson, Weckesser, Bright, et~al.]{virtanen2020}
+Pauli Virtanen, Ralf Gommers, Travis~E. Oliphant, Matt Haberland, Tyler Reddy,
+  David Cournapeau, Evgeni Burovski, Pearu Peterson, Warren Weckesser, Jonathan
+  Bright, et~al.
+\newblock {SciPy} 1.0: fundamental algorithms for scientific computing in
+  {Python}.
+\newblock \emph{Nature Methods}, 17\penalty0 (3):\penalty0 261--272, 2020.
+\newblock \doi{10.1038/s41592-019-0686-2}.
+
+\bibitem[Hagberg et~al.(2008)Hagberg, Schult, and Swart]{hagberg2008}
+Aric~A. Hagberg, Daniel~A. Schult, and Pieter~J. Swart.
+\newblock Exploring network structure, dynamics, and function using {NetworkX}.
+\newblock In \emph{Proceedings of the 7th Python in Science Conference}, pages
+  11--15, 2008.
+
+\bibitem[Barab{\'a}si and Oltvai(2004)]{barabasi2004}
+Albert-L{\'a}szl{\'o} Barab{\'a}si and Zolt{\'a}n~N. Oltvai.
+\newblock Network biology: understanding the cell's functional organization.
+\newblock \emph{Nature Reviews Genetics}, 5\penalty0 (2):\penalty0 101--113,
+  2004.
+\newblock \doi{10.1038/nrg1272}.
+
+\bibitem[Rehm et~al.(2015)Rehm, Berg, Brooks, Bustamante, Evans, Landrum,
+  Ledbetter, Maglott, Martin, Nussbaum, et~al.]{rehm2015}
+Heidi~L. Rehm, Jonathan~S. Berg, Lisa~D. Brooks, Carlos~D. Bustamante, James~P.
+  Evans, Melissa~J. Landrum, David~H. Ledbetter, Donna~R. Maglott, Christa~L.
+  Martin, Robert~L. Nussbaum, et~al.
+\newblock {ClinGen}---the clinical genome resource.
+\newblock \emph{New England Journal of Medicine}, 372\penalty0 (23):\penalty0
+  2235--2242, 2015.
+\newblock \doi{10.1056/NEJMsr1406261}.
+
+\bibitem[Quine(1960)]{quine1960}
+Willard Van~Orman Quine.
+\newblock \emph{Word and Object}.
+\newblock MIT Press, 1960.
+
+\bibitem[Putnam(1975)]{putnam1975}
+Hilary Putnam.
+\newblock The meaning of `meaning'.
+\newblock \emph{Minnesota Studies in the Philosophy of Science}, 7:\penalty0
+  131--193, 1975.
+
+\end{thebibliography}

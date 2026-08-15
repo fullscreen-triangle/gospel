@@ -1,0 +1,11 @@
+{
+ "check": "FalseFriendAndConverse",
+ "theorem": "Theorem 7.3 / Corollary 7.4",
+ "n_checks": 18,
+ "n_passed": 18,
+ "passed": true,
+ "max_error": 0.7205882352941178,
+ "failures": [],
+ "tag": "E10",
+ "seconds": 0.003
+}

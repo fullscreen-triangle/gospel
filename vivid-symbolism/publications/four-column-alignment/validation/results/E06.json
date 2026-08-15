@@ -1,0 +1,11 @@
+{
+ "check": "ReceiverRelativity",
+ "theorem": "Theorem 5.5 / Corollary 5.6",
+ "n_checks": 201,
+ "n_passed": 201,
+ "passed": true,
+ "max_error": 0.0,
+ "failures": [],
+ "tag": "E06",
+ "seconds": 0.063
+}

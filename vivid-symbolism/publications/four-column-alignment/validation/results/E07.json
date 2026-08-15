@@ -1,0 +1,11 @@
+{
+ "check": "DistanceToFloor",
+ "theorem": "Proposition 6.2",
+ "n_checks": 3000,
+ "n_passed": 3000,
+ "passed": true,
+ "max_error": 0.0,
+ "failures": [],
+ "tag": "E07",
+ "seconds": 0.337
+}

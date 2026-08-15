@@ -1,0 +1,11 @@
+{
+ "check": "PathwayInvariance",
+ "theorem": "Theorem 4.2",
+ "n_checks": 740,
+ "n_passed": 740,
+ "passed": true,
+ "max_error": 0.0,
+ "failures": [],
+ "tag": "E12",
+ "seconds": 7.697
+}

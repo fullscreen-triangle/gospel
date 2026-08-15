@@ -1,0 +1,20 @@
+{
+ "check": "ResponseIndependence",
+ "theorem": "Assumption 7.5 / Construction 9.2",
+ "n_checks": 1,
+ "n_passed": 1,
+ "passed": true,
+ "max_error": 0.3065939089416056,
+ "failures": [],
+ "tag": "E13",
+ "seconds": 1.412,
+ "measurements": {
+  "n_comparisons": 35,
+  "theta": 0.01,
+  "max_discrepancy": 0.3065939089416056,
+  "mean_discrepancy": 0.07003420295553416,
+  "median_discrepancy": 0.05786207948444422,
+  "fraction_within_theta": 0.2857142857142857,
+  "assumption_holds_at_theta": false
+ }
+}

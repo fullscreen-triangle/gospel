@@ -1,0 +1,11 @@
+{
+ "check": "SkeletonPersists",
+ "theorem": "Proposition 5.2",
+ "n_checks": 1400,
+ "n_passed": 1400,
+ "passed": true,
+ "max_error": 0.0,
+ "failures": [],
+ "tag": "E05",
+ "seconds": 0.471
+}

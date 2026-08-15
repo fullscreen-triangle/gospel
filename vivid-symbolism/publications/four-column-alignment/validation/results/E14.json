@@ -1,0 +1,17 @@
+{
+ "check": "PathwayFourColumn",
+ "theorem": "Theorem 7.3 / Definition 7.2",
+ "n_checks": 9,
+ "n_passed": 9,
+ "passed": true,
+ "max_error": 0.0,
+ "failures": [],
+ "tag": "E14",
+ "seconds": 1.11,
+ "measurements": {
+  "verdicts": {
+   "CORRESPOND": 0,
+   "DIVERGE": 4
+  }
+ }
+}

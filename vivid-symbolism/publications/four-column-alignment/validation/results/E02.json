@@ -1,0 +1,11 @@
+{
+ "check": "IntrinsicFloor",
+ "theorem": "Lemma 3.6 / Remark 3.7 / Theorem 3.8",
+ "n_checks": 2162,
+ "n_passed": 2162,
+ "passed": true,
+ "max_error": 0.0,
+ "failures": [],
+ "tag": "E02",
+ "seconds": 0.018
+}

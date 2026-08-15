@@ -1,0 +1,11 @@
+{
+ "check": "RelaxationDichotomy",
+ "theorem": "Theorem 6.7 / Theorem 6.8",
+ "n_checks": 801,
+ "n_passed": 801,
+ "passed": true,
+ "max_error": 0.0,
+ "failures": [],
+ "tag": "E08",
+ "seconds": 0.013
+}

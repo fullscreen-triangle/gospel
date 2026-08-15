@@ -1,0 +1,11 @@
+{
+ "check": "CutInvariance",
+ "theorem": "Theorem 4.2 / Corollary 4.4",
+ "n_checks": 1098,
+ "n_passed": 1098,
+ "passed": true,
+ "max_error": 0.0,
+ "failures": [],
+ "tag": "E03",
+ "seconds": 0.321
+}

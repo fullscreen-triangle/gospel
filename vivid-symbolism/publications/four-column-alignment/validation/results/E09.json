@@ -1,0 +1,11 @@
+{
+ "check": "QuiescenceBlind",
+ "theorem": "Theorem 6.9 / Theorem 6.10",
+ "n_checks": 150,
+ "n_passed": 150,
+ "passed": true,
+ "max_error": 0.42857142857142855,
+ "failures": [],
+ "tag": "E09",
+ "seconds": 0.014
+}
