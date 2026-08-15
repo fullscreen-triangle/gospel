@@ -1,0 +1,965 @@
+% =====================================================================
+% references.bib -- synopsis-genomic-scripting.tex
+%
+% External literature only. This manuscript is deliberately
+% self-contained: the theory it needs is derived in the body, and
+% nothing here is cited to supply a result the paper depends on
+% logically. Entries fall into six groups:
+%
+%   1. Graph cuts, flows and submodularity
+%   2. Sequence comparison and homology search
+%   3. Signal processing and matched filtering
+%   4. Programming language theory, types and DSL design
+%   5. Genomics: annotation, variant interpretation, function
+%   6. Reproducibility, provenance and scientific software
+% =====================================================================
+
+
+% ---------------------------------------------------------------------
+% 1. Graph cuts, flows, submodularity
+% ---------------------------------------------------------------------
+
+@article{ford1956maximal,
+  author  = {Ford, L. R. and Fulkerson, D. R.},
+  title   = {Maximal Flow Through a Network},
+  journal = {Canadian Journal of Mathematics},
+  volume  = {8},
+  pages   = {399--404},
+  year    = {1956},
+  doi     = {10.4153/CJM-1956-045-5}
+}
+
+@article{stoer1997simple,
+  author  = {Stoer, Mechthild and Wagner, Frank},
+  title   = {A Simple Min-Cut Algorithm},
+  journal = {Journal of the ACM},
+  volume  = {44},
+  number  = {4},
+  pages   = {585--591},
+  year    = {1997},
+  doi     = {10.1145/263867.263872}
+}
+
+@article{gomory1961multi,
+  author  = {Gomory, R. E. and Hu, T. C.},
+  title   = {Multi-Terminal Network Flows},
+  journal = {Journal of the Society for Industrial and Applied Mathematics},
+  volume  = {9},
+  number  = {4},
+  pages   = {551--570},
+  year    = {1961},
+  doi     = {10.1137/0109047}
+}
+
+@article{karger1996new,
+  author  = {Karger, David R. and Stein, Clifford},
+  title   = {A New Approach to the Minimum Cut Problem},
+  journal = {Journal of the ACM},
+  volume  = {43},
+  number  = {4},
+  pages   = {601--640},
+  year    = {1996},
+  doi     = {10.1145/234533.234534}
+}
+
+@article{boykov2004experimental,
+  author  = {Boykov, Yuri and Kolmogorov, Vladimir},
+  title   = {An Experimental Comparison of Min-Cut/Max-Flow Algorithms
+             for Energy Minimization in Vision},
+  journal = {IEEE Transactions on Pattern Analysis and Machine Intelligence},
+  volume  = {26},
+  number  = {9},
+  pages   = {1124--1137},
+  year    = {2004},
+  doi     = {10.1109/TPAMI.2004.60}
+}
+
+@book{schrijver2003combinatorial,
+  author    = {Schrijver, Alexander},
+  title     = {Combinatorial Optimization: Polyhedra and Efficiency},
+  publisher = {Springer},
+  address   = {Berlin},
+  year      = {2003}
+}
+
+@article{fiedler1973algebraic,
+  author  = {Fiedler, Miroslav},
+  title   = {Algebraic Connectivity of Graphs},
+  journal = {Czechoslovak Mathematical Journal},
+  volume  = {23},
+  number  = {2},
+  pages   = {298--305},
+  year    = {1973}
+}
+
+@article{shi2000normalized,
+  author  = {Shi, Jianbo and Malik, Jitendra},
+  title   = {Normalized Cuts and Image Segmentation},
+  journal = {IEEE Transactions on Pattern Analysis and Machine Intelligence},
+  volume  = {22},
+  number  = {8},
+  pages   = {888--905},
+  year    = {2000},
+  doi     = {10.1109/34.868688}
+}
+
+@article{lovasz1983submodular,
+  author  = {Lov{\'a}sz, L{\'a}szl{\'o}},
+  title   = {Submodular Functions and Convexity},
+  journal = {Mathematical Programming: The State of the Art},
+  pages   = {235--257},
+  year    = {1983},
+  doi     = {10.1007/978-3-642-68874-4_10}
+}
+
+@article{tarjan1972depth,
+  author  = {Tarjan, Robert},
+  title   = {Depth-First Search and Linear Graph Algorithms},
+  journal = {SIAM Journal on Computing},
+  volume  = {1},
+  number  = {2},
+  pages   = {146--160},
+  year    = {1972},
+  doi     = {10.1137/0201010}
+}
+
+
+% ---------------------------------------------------------------------
+% 2. Sequence comparison and homology search
+% ---------------------------------------------------------------------
+
+@article{needleman1970general,
+  author  = {Needleman, Saul B. and Wunsch, Christian D.},
+  title   = {A General Method Applicable to the Search for Similarities
+             in the Amino Acid Sequence of Two Proteins},
+  journal = {Journal of Molecular Biology},
+  volume  = {48},
+  number  = {3},
+  pages   = {443--453},
+  year    = {1970},
+  doi     = {10.1016/0022-2836(70)90057-4}
+}
+
+@article{smith1981identification,
+  author  = {Smith, T. F. and Waterman, M. S.},
+  title   = {Identification of Common Molecular Subsequences},
+  journal = {Journal of Molecular Biology},
+  volume  = {147},
+  number  = {1},
+  pages   = {195--197},
+  year    = {1981},
+  doi     = {10.1016/0022-2836(81)90087-5}
+}
+
+@article{altschul1990basic,
+  author  = {Altschul, Stephen F. and Gish, Warren and Miller, Webb and
+             Myers, Eugene W. and Lipman, David J.},
+  title   = {Basic Local Alignment Search Tool},
+  journal = {Journal of Molecular Biology},
+  volume  = {215},
+  number  = {3},
+  pages   = {403--410},
+  year    = {1990},
+  doi     = {10.1016/S0022-2836(05)80360-2}
+}
+
+@article{altschul1997gapped,
+  author  = {Altschul, Stephen F. and Madden, Thomas L. and
+             Sch{\"a}ffer, Alejandro A. and Zhang, Jinghui and
+             Zhang, Zheng and Miller, Webb and Lipman, David J.},
+  title   = {Gapped {BLAST} and {PSI-BLAST}: A New Generation of Protein
+             Database Search Programs},
+  journal = {Nucleic Acids Research},
+  volume  = {25},
+  number  = {17},
+  pages   = {3389--3402},
+  year    = {1997},
+  doi     = {10.1093/nar/25.17.3389}
+}
+
+@article{eddy2011accelerated,
+  author  = {Eddy, Sean R.},
+  title   = {Accelerated Profile {HMM} Searches},
+  journal = {PLoS Computational Biology},
+  volume  = {7},
+  number  = {10},
+  pages   = {e1002195},
+  year    = {2011},
+  doi     = {10.1371/journal.pcbi.1002195}
+}
+
+@article{henikoff1992amino,
+  author  = {Henikoff, S. and Henikoff, J. G.},
+  title   = {Amino Acid Substitution Matrices from Protein Blocks},
+  journal = {Proceedings of the National Academy of Sciences},
+  volume  = {89},
+  number  = {22},
+  pages   = {10915--10919},
+  year    = {1992},
+  doi     = {10.1073/pnas.89.22.10915}
+}
+
+@article{katoh2013mafft,
+  author  = {Katoh, Kazutaka and Standley, Daron M.},
+  title   = {{MAFFT} Multiple Sequence Alignment Software Version 7:
+             Improvements in Performance and Usability},
+  journal = {Molecular Biology and Evolution},
+  volume  = {30},
+  number  = {4},
+  pages   = {772--780},
+  year    = {2013},
+  doi     = {10.1093/molbev/mst010}
+}
+
+@article{steinegger2017mmseqs2,
+  author  = {Steinegger, Martin and S{\"o}ding, Johannes},
+  title   = {{MMseqs2} Enables Sensitive Protein Sequence Searching for
+             the Analysis of Massive Data Sets},
+  journal = {Nature Biotechnology},
+  volume  = {35},
+  number  = {11},
+  pages   = {1026--1028},
+  year    = {2017},
+  doi     = {10.1038/nbt.3988}
+}
+
+@article{buchfink2015fast,
+  author  = {Buchfink, Benjamin and Xie, Chao and Huson, Daniel H.},
+  title   = {Fast and Sensitive Protein Alignment Using {DIAMOND}},
+  journal = {Nature Methods},
+  volume  = {12},
+  number  = {1},
+  pages   = {59--60},
+  year    = {2015},
+  doi     = {10.1038/nmeth.3176}
+}
+
+@book{durbin1998biological,
+  author    = {Durbin, Richard and Eddy, Sean R. and Krogh, Anders and
+               Mitchison, Graeme},
+  title     = {Biological Sequence Analysis: Probabilistic Models of
+               Proteins and Nucleic Acids},
+  publisher = {Cambridge University Press},
+  year      = {1998}
+}
+
+@article{jaccard1912distribution,
+  author  = {Jaccard, Paul},
+  title   = {The Distribution of the Flora in the Alpine Zone},
+  journal = {New Phytologist},
+  volume  = {11},
+  number  = {2},
+  pages   = {37--50},
+  year    = {1912},
+  doi     = {10.1111/j.1469-8137.1912.tb05611.x}
+}
+
+@article{ondov2016mash,
+  author  = {Ondov, Brian D. and Treangen, Todd J. and Melsted, P{\'a}ll and
+             Mallonee, Adam B. and Bergman, Nicholas H. and Koren, Sergey and
+             Phillippy, Adam M.},
+  title   = {{Mash}: Fast Genome and Metagenome Distance Estimation Using
+             {MinHash}},
+  journal = {Genome Biology},
+  volume  = {17},
+  number  = {1},
+  pages   = {132},
+  year    = {2016},
+  doi     = {10.1186/s13059-016-0997-x}
+}
+
+
+% ---------------------------------------------------------------------
+% 3. Signal processing, matched filtering, spectral representation
+% ---------------------------------------------------------------------
+
+@article{cooley1965algorithm,
+  author  = {Cooley, James W. and Tukey, John W.},
+  title   = {An Algorithm for the Machine Calculation of Complex Fourier
+             Series},
+  journal = {Mathematics of Computation},
+  volume  = {19},
+  number  = {90},
+  pages   = {297--301},
+  year    = {1965},
+  doi     = {10.1090/S0025-5718-1965-0178586-1}
+}
+
+@book{turin1960introduction,
+  author    = {Turin, George L.},
+  title     = {An Introduction to Matched Filters},
+  publisher = {IRE Transactions on Information Theory},
+  year      = {1960},
+  note      = {vol.\ 6, no.\ 3, pp.\ 311--329}
+}
+
+@book{oppenheim2009discrete,
+  author    = {Oppenheim, Alan V. and Schafer, Ronald W.},
+  title     = {Discrete-Time Signal Processing},
+  edition   = {3},
+  publisher = {Pearson},
+  year      = {2009}
+}
+
+@article{voss1992evolution,
+  author  = {Voss, Richard F.},
+  title   = {Evolution of Long-Range Fractal Correlations and $1/f$ Noise
+             in {DNA} Base Sequences},
+  journal = {Physical Review Letters},
+  volume  = {68},
+  number  = {25},
+  pages   = {3805--3808},
+  year    = {1992},
+  doi     = {10.1103/PhysRevLett.68.3805}
+}
+
+@article{anastassiou2001genomic,
+  author  = {Anastassiou, Dimitris},
+  title   = {Genomic Signal Processing},
+  journal = {IEEE Signal Processing Magazine},
+  volume  = {18},
+  number  = {4},
+  pages   = {8--20},
+  year    = {2001},
+  doi     = {10.1109/79.939833}
+}
+
+@article{kyte1982simple,
+  author  = {Kyte, Jack and Doolittle, Russell F.},
+  title   = {A Simple Method for Displaying the Hydropathic Character of a
+             Protein},
+  journal = {Journal of Molecular Biology},
+  volume  = {157},
+  number  = {1},
+  pages   = {105--132},
+  year    = {1982},
+  doi     = {10.1016/0022-2836(82)90515-0}
+}
+
+@article{zamyatnin1972protein,
+  author  = {Zamyatnin, A. A.},
+  title   = {Protein Volume in Solution},
+  journal = {Progress in Biophysics and Molecular Biology},
+  volume  = {24},
+  pages   = {107--123},
+  year    = {1972},
+  doi     = {10.1016/0079-6107(72)90005-3}
+}
+
+@article{johnson1984extensions,
+  author  = {Johnson, William B. and Lindenstrauss, Joram},
+  title   = {Extensions of {Lipschitz} Mappings into a {Hilbert} Space},
+  journal = {Contemporary Mathematics},
+  volume  = {26},
+  pages   = {189--206},
+  year    = {1984}
+}
+
+@article{bentley1975multidimensional,
+  author  = {Bentley, Jon Louis},
+  title   = {Multidimensional Binary Search Trees Used for Associative
+             Searching},
+  journal = {Communications of the ACM},
+  volume  = {18},
+  number  = {9},
+  pages   = {509--517},
+  year    = {1975},
+  doi     = {10.1145/361002.361007}
+}
+
+@inproceedings{indyk1998approximate,
+  author    = {Indyk, Piotr and Motwani, Rajeev},
+  title     = {Approximate Nearest Neighbors: Towards Removing the Curse of
+               Dimensionality},
+  booktitle = {Proceedings of the 30th Annual ACM Symposium on Theory of
+               Computing},
+  pages     = {604--613},
+  year      = {1998},
+  doi       = {10.1145/276698.276876}
+}
+
+@article{morton1966computer,
+  author  = {Morton, Guy M.},
+  title   = {A Computer Oriented Geodetic Data Base and a New Technique in
+             File Sequencing},
+  journal = {IBM Ltd.\ Technical Report},
+  year    = {1966}
+}
+
+
+% ---------------------------------------------------------------------
+% 4. Programming languages, type systems, DSL design
+% ---------------------------------------------------------------------
+
+@book{pierce2002types,
+  author    = {Pierce, Benjamin C.},
+  title     = {Types and Programming Languages},
+  publisher = {MIT Press},
+  year      = {2002}
+}
+
+@article{hudak1996building,
+  author  = {Hudak, Paul},
+  title   = {Building Domain-Specific Embedded Languages},
+  journal = {ACM Computing Surveys},
+  volume  = {28},
+  number  = {4es},
+  pages   = {196},
+  year    = {1996},
+  doi     = {10.1145/242224.242477}
+}
+
+@article{mernik2005when,
+  author  = {Mernik, Marjan and Heering, Jan and Sloane, Anthony M.},
+  title   = {When and How to Develop Domain-Specific Languages},
+  journal = {ACM Computing Surveys},
+  volume  = {37},
+  number  = {4},
+  pages   = {316--344},
+  year    = {2005},
+  doi     = {10.1145/1118890.1118892}
+}
+
+@book{fowler2010domain,
+  author    = {Fowler, Martin},
+  title     = {Domain-Specific Languages},
+  publisher = {Addison-Wesley},
+  year      = {2010}
+}
+
+@article{kennedy1997relational,
+  author  = {Kennedy, Andrew J.},
+  title   = {Relational Parametricity and Units of Measure},
+  journal = {Proceedings of the 24th ACM SIGPLAN-SIGACT Symposium on
+             Principles of Programming Languages},
+  pages   = {442--455},
+  year    = {1997},
+  doi     = {10.1145/263699.263761}
+}
+
+@article{wadler1990linear,
+  author  = {Wadler, Philip},
+  title   = {Linear Types Can Change the World!},
+  journal = {Programming Concepts and Methods},
+  year    = {1990}
+}
+
+@inproceedings{freeman1991refinement,
+  author    = {Freeman, Tim and Pfenning, Frank},
+  title     = {Refinement Types for {ML}},
+  booktitle = {Proceedings of the ACM SIGPLAN Conference on Programming
+               Language Design and Implementation},
+  pages     = {268--277},
+  year      = {1991},
+  doi       = {10.1145/113445.113468}
+}
+
+@article{turner1995total,
+  author  = {Turner, D. A.},
+  title   = {Elementary Strong Functional Programming},
+  journal = {Functional Programming Languages in Education},
+  pages   = {1--13},
+  year    = {1995},
+  doi     = {10.1007/3-540-60675-0_35}
+}
+
+@article{cousot1977abstract,
+  author  = {Cousot, Patrick and Cousot, Radhia},
+  title   = {Abstract Interpretation: A Unified Lattice Model for Static
+             Analysis of Programs by Construction or Approximation of
+             Fixpoints},
+  journal = {Proceedings of the 4th ACM SIGACT-SIGPLAN Symposium on
+             Principles of Programming Languages},
+  pages   = {238--252},
+  year    = {1977},
+  doi     = {10.1145/512950.512973}
+}
+
+@article{milner1978theory,
+  author  = {Milner, Robin},
+  title   = {A Theory of Type Polymorphism in Programming},
+  journal = {Journal of Computer and System Sciences},
+  volume  = {17},
+  number  = {3},
+  pages   = {348--375},
+  year    = {1978},
+  doi     = {10.1016/0022-0000(78)90014-4}
+}
+
+@book{floyd1967assigning,
+  author    = {Floyd, Robert W.},
+  title     = {Assigning Meanings to Programs},
+  publisher = {Proceedings of Symposia in Applied Mathematics},
+  year      = {1967},
+  note      = {vol.\ 19, pp.\ 19--32}
+}
+
+@article{hoare1969axiomatic,
+  author  = {Hoare, C. A. R.},
+  title   = {An Axiomatic Basis for Computer Programming},
+  journal = {Communications of the ACM},
+  volume  = {12},
+  number  = {10},
+  pages   = {576--580},
+  year    = {1969},
+  doi     = {10.1145/363235.363259}
+}
+
+@article{plotkin2004structural,
+  author  = {Plotkin, Gordon D.},
+  title   = {A Structural Approach to Operational Semantics},
+  journal = {Journal of Logic and Algebraic Programming},
+  volume  = {60--61},
+  pages   = {17--139},
+  year    = {2004},
+  doi     = {10.1016/j.jlap.2004.05.001}
+}
+
+@article{kleene1938notation,
+  author  = {Kleene, S. C.},
+  title   = {On Notation for Ordinal Numbers},
+  journal = {The Journal of Symbolic Logic},
+  volume  = {3},
+  number  = {4},
+  pages   = {150--155},
+  year    = {1938},
+  doi     = {10.2307/2267778}
+}
+
+@article{lakin2011design,
+  author  = {Lakin, Matthew R. and Youssef, Simon and Polo, Filippo and
+             Emmott, Stephen and Phillips, Andrew},
+  title   = {Visual {DSD}: A Design and Analysis Tool for {DNA} Strand
+             Displacement Systems},
+  journal = {Bioinformatics},
+  volume  = {27},
+  number  = {22},
+  pages   = {3211--3213},
+  year    = {2011},
+  doi     = {10.1093/bioinformatics/btr543}
+}
+
+@article{pedersen2009towards,
+  author  = {Pedersen, Michael and Plotkin, Gordon},
+  title   = {A Language for Biochemical Systems: Design and Formal
+             Specification},
+  journal = {Transactions on Computational Systems Biology},
+  volume  = {12},
+  pages   = {77--145},
+  year    = {2010},
+  doi     = {10.1007/978-3-642-11712-1_3}
+}
+
+@article{hucka2003systems,
+  author  = {Hucka, M. and Finney, A. and Sauro, H. M. and others},
+  title   = {The Systems Biology Markup Language ({SBML}): A Medium for
+             Representation and Exchange of Biochemical Network Models},
+  journal = {Bioinformatics},
+  volume  = {19},
+  number  = {4},
+  pages   = {524--531},
+  year    = {2003},
+  doi     = {10.1093/bioinformatics/btg015}
+}
+
+
+% ---------------------------------------------------------------------
+% 5. Genomics: annotation, variants, function
+% ---------------------------------------------------------------------
+
+@article{lander2001initial,
+  author  = {Lander, Eric S. and others},
+  title   = {Initial Sequencing and Analysis of the Human Genome},
+  journal = {Nature},
+  volume  = {409},
+  number  = {6822},
+  pages   = {860--921},
+  year    = {2001},
+  doi     = {10.1038/35057062}
+}
+
+@article{richards2015standards,
+  author  = {Richards, Sue and Aziz, Nazneen and Bale, Sherri and others},
+  title   = {Standards and Guidelines for the Interpretation of Sequence
+             Variants},
+  journal = {Genetics in Medicine},
+  volume  = {17},
+  number  = {5},
+  pages   = {405--424},
+  year    = {2015},
+  doi     = {10.1038/gim.2015.30}
+}
+
+@article{mclaren2016ensembl,
+  author  = {McLaren, William and Gil, Laurent and Hunt, Sarah E. and others},
+  title   = {The {Ensembl} Variant Effect Predictor},
+  journal = {Genome Biology},
+  volume  = {17},
+  number  = {1},
+  pages   = {122},
+  year    = {2016},
+  doi     = {10.1186/s13059-016-0974-4}
+}
+
+@article{kircher2014general,
+  author  = {Kircher, Martin and Witten, Daniela M. and Jain, Preti and
+             O'Roak, Brian J. and Cooper, Gregory M. and Shendure, Jay},
+  title   = {A General Framework for Estimating the Relative Pathogenicity
+             of Human Genetic Variants},
+  journal = {Nature Genetics},
+  volume  = {46},
+  number  = {3},
+  pages   = {310--315},
+  year    = {2014},
+  doi     = {10.1038/ng.2892}
+}
+
+@article{plotkin2011synonymous,
+  author  = {Plotkin, Joshua B. and Kudla, Grzegorz},
+  title   = {Synonymous but Not the Same: The Causes and Consequences of
+             Codon Bias},
+  journal = {Nature Reviews Genetics},
+  volume  = {12},
+  number  = {1},
+  pages   = {32--42},
+  year    = {2011},
+  doi     = {10.1038/nrg2899}
+}
+
+@article{sauna2011silent,
+  author  = {Sauna, Zuben E. and Kimchi-Sarfaty, Chava},
+  title   = {Understanding the Contribution of Synonymous Mutations to
+             Human Disease},
+  journal = {Nature Reviews Genetics},
+  volume  = {12},
+  number  = {10},
+  pages   = {683--691},
+  year    = {2011},
+  doi     = {10.1038/nrg3051}
+}
+
+@article{kimchi2007silent,
+  author  = {Kimchi-Sarfaty, Chava and Oh, Jung Mi and Kim, In-Wha and
+             others},
+  title   = {A ``Silent'' Polymorphism in the {MDR1} Gene Changes Substrate
+             Specificity},
+  journal = {Science},
+  volume  = {315},
+  number  = {5811},
+  pages   = {525--528},
+  year    = {2007},
+  doi     = {10.1126/science.1135308}
+}
+
+@article{galperin2010divergence,
+  author  = {Galperin, Michael Y. and Koonin, Eugene V.},
+  title   = {Divergence and Convergence in Enzyme Evolution},
+  journal = {Journal of Biological Chemistry},
+  volume  = {287},
+  number  = {1},
+  pages   = {21--28},
+  year    = {2012},
+  doi     = {10.1074/jbc.R111.241976}
+}
+
+@article{omelchenko2010nonhomologous,
+  author  = {Omelchenko, Marina V. and Galperin, Michael Y. and Wolf, Yuri I.
+             and Koonin, Eugene V.},
+  title   = {Non-Homologous Isofunctional Enzymes: A Systematic Analysis of
+             Alternative Solutions in Enzyme Evolution},
+  journal = {Biology Direct},
+  volume  = {5},
+  pages   = {31},
+  year    = {2010},
+  doi     = {10.1186/1745-6150-5-31}
+}
+
+@article{gerlt2003mechanistically,
+  author  = {Gerlt, John A. and Babbitt, Patricia C.},
+  title   = {Mechanistically Diverse Enzyme Superfamilies: The Importance of
+             Chemistry in the Evolution of Catalysis},
+  journal = {Current Opinion in Chemical Biology},
+  volume  = {2},
+  number  = {5},
+  pages   = {607--612},
+  year    = {1998},
+  doi     = {10.1016/S1367-5931(98)80091-4}
+}
+
+@article{schnoes2009annotation,
+  author  = {Schnoes, Alexandra M. and Brown, Shoshana D. and
+             Dodevski, Igor and Babbitt, Patricia C.},
+  title   = {Annotation Error in Public Databases: Misannotation of
+             Molecular Function in Enzyme Superfamilies},
+  journal = {PLoS Computational Biology},
+  volume  = {5},
+  number  = {12},
+  pages   = {e1000605},
+  year    = {2009},
+  doi     = {10.1371/journal.pcbi.1000605}
+}
+
+@article{radivojac2013large,
+  author  = {Radivojac, Predrag and Clark, Wyatt T. and others},
+  title   = {A Large-Scale Evaluation of Computational Protein Function
+             Prediction},
+  journal = {Nature Methods},
+  volume  = {10},
+  number  = {3},
+  pages   = {221--227},
+  year    = {2013},
+  doi     = {10.1038/nmeth.2340}
+}
+
+@article{jumper2021highly,
+  author  = {Jumper, John and Evans, Richard and Pritzel, Alexander and
+             others},
+  title   = {Highly Accurate Protein Structure Prediction with
+             {AlphaFold}},
+  journal = {Nature},
+  volume  = {596},
+  number  = {7873},
+  pages   = {583--589},
+  year    = {2021},
+  doi     = {10.1038/s41586-021-03819-2}
+}
+
+@article{ashburner2000gene,
+  author  = {Ashburner, Michael and Ball, Catherine A. and others},
+  title   = {Gene Ontology: Tool for the Unification of Biology},
+  journal = {Nature Genetics},
+  volume  = {25},
+  number  = {1},
+  pages   = {25--29},
+  year    = {2000},
+  doi     = {10.1038/75556}
+}
+
+@article{kanehisa2000kegg,
+  author  = {Kanehisa, Minoru and Goto, Susumu},
+  title   = {{KEGG}: {Kyoto} Encyclopedia of Genes and Genomes},
+  journal = {Nucleic Acids Research},
+  volume  = {28},
+  number  = {1},
+  pages   = {27--30},
+  year    = {2000},
+  doi     = {10.1093/nar/28.1.27}
+}
+
+@article{barabasi2004network,
+  author  = {Barab{\'a}si, Albert-L{\'a}szl{\'o} and Oltvai, Zoltan N.},
+  title   = {Network Biology: Understanding the Cell's Functional
+             Organization},
+  journal = {Nature Reviews Genetics},
+  volume  = {5},
+  number  = {2},
+  pages   = {101--113},
+  year    = {2004},
+  doi     = {10.1038/nrg1272}
+}
+
+@article{costanzo2016global,
+  author  = {Costanzo, Michael and VanderSluis, Benjamin and others},
+  title   = {A Global Genetic Interaction Network Maps a Wiring Diagram of
+             Cellular Function},
+  journal = {Science},
+  volume  = {353},
+  number  = {6306},
+  pages   = {aaf1420},
+  year    = {2016},
+  doi     = {10.1126/science.aaf1420}
+}
+
+@article{dixit2016perturb,
+  author  = {Dixit, Atray and Parnas, Oren and Li, Biyu and others},
+  title   = {Perturb-Seq: Dissecting Molecular Circuits with Scalable
+             Single-Cell {RNA} Profiling of Pooled Genetic Screens},
+  journal = {Cell},
+  volume  = {167},
+  number  = {7},
+  pages   = {1853--1866},
+  year    = {2016},
+  doi     = {10.1016/j.cell.2016.11.038}
+}
+
+@article{replogle2022mapping,
+  author  = {Replogle, Joseph M. and Saunders, Reuben A. and others},
+  title   = {Mapping Information-Rich Genotype-Phenotype Landscapes with
+             Genome-Scale {Perturb-seq}},
+  journal = {Cell},
+  volume  = {185},
+  number  = {14},
+  pages   = {2559--2575},
+  year    = {2022},
+  doi     = {10.1016/j.cell.2022.05.013}
+}
+
+@article{watson1953molecular,
+  author  = {Watson, J. D. and Crick, F. H. C.},
+  title   = {Molecular Structure of Nucleic Acids: A Structure for
+             Deoxyribose Nucleic Acid},
+  journal = {Nature},
+  volume  = {171},
+  number  = {4356},
+  pages   = {737--738},
+  year    = {1953},
+  doi     = {10.1038/171737a0}
+}
+
+@article{crick1970central,
+  author  = {Crick, Francis},
+  title   = {Central Dogma of Molecular Biology},
+  journal = {Nature},
+  volume  = {227},
+  number  = {5258},
+  pages   = {561--563},
+  year    = {1970},
+  doi     = {10.1038/227561a0}
+}
+
+@article{relling2015pharmacogenomics,
+  author  = {Relling, Mary V. and Evans, William E.},
+  title   = {Pharmacogenomics in the Clinic},
+  journal = {Nature},
+  volume  = {526},
+  number  = {7573},
+  pages   = {343--350},
+  year    = {2015},
+  doi     = {10.1038/nature15817}
+}
+
+
+% ---------------------------------------------------------------------
+% 6. Reproducibility, provenance, scientific software
+% ---------------------------------------------------------------------
+
+@article{baker2016reproducibility,
+  author  = {Baker, Monya},
+  title   = {1,500 Scientists Lift the Lid on Reproducibility},
+  journal = {Nature},
+  volume  = {533},
+  number  = {7604},
+  pages   = {452--454},
+  year    = {2016},
+  doi     = {10.1038/533452a}
+}
+
+@article{ioannidis2005why,
+  author  = {Ioannidis, John P. A.},
+  title   = {Why Most Published Research Findings Are False},
+  journal = {PLoS Medicine},
+  volume  = {2},
+  number  = {8},
+  pages   = {e124},
+  year    = {2005},
+  doi     = {10.1371/journal.pmed.0020124}
+}
+
+@article{simmons2011false,
+  author  = {Simmons, Joseph P. and Nelson, Leif D. and Simonsohn, Uri},
+  title   = {False-Positive Psychology: Undisclosed Flexibility in Data
+             Collection and Analysis Allows Presenting Anything as
+             Significant},
+  journal = {Psychological Science},
+  volume  = {22},
+  number  = {11},
+  pages   = {1359--1366},
+  year    = {2011},
+  doi     = {10.1177/0956797611417632}
+}
+
+@article{gelman2013garden,
+  author  = {Gelman, Andrew and Loken, Eric},
+  title   = {The Garden of Forking Paths},
+  journal = {Department of Statistics, Columbia University},
+  year    = {2013}
+}
+
+@article{sandve2013ten,
+  author  = {Sandve, Geir Kjetil and Nekrutenko, Anton and Taylor, James and
+             Hovig, Eivind},
+  title   = {Ten Simple Rules for Reproducible Computational Research},
+  journal = {PLoS Computational Biology},
+  volume  = {9},
+  number  = {10},
+  pages   = {e1003285},
+  year    = {2013},
+  doi     = {10.1371/journal.pcbi.1003285}
+}
+
+@article{wilkinson2016fair,
+  author  = {Wilkinson, Mark D. and Dumontier, Michel and others},
+  title   = {The {FAIR} Guiding Principles for Scientific Data Management
+             and Stewardship},
+  journal = {Scientific Data},
+  volume  = {3},
+  pages   = {160018},
+  year    = {2016},
+  doi     = {10.1038/sdata.2016.18}
+}
+
+@article{difrancesco2015nextflow,
+  author  = {Di Tommaso, Paolo and Chatzou, Maria and Floden, Evan W. and
+             others},
+  title   = {Nextflow Enables Reproducible Computational Workflows},
+  journal = {Nature Biotechnology},
+  volume  = {35},
+  number  = {4},
+  pages   = {316--319},
+  year    = {2017},
+  doi     = {10.1038/nbt.3820}
+}
+
+@article{koster2012snakemake,
+  author  = {K{\"o}ster, Johannes and Rahmann, Sven},
+  title   = {Snakemake---A Scalable Bioinformatics Workflow Engine},
+  journal = {Bioinformatics},
+  volume  = {28},
+  number  = {19},
+  pages   = {2520--2522},
+  year    = {2012},
+  doi     = {10.1093/bioinformatics/bts480}
+}
+
+@article{moreau2011provenance,
+  author  = {Moreau, Luc and Clifford, Ben and Freire, Juliana and others},
+  title   = {The Open Provenance Model Core Specification (v1.1)},
+  journal = {Future Generation Computer Systems},
+  volume  = {27},
+  number  = {6},
+  pages   = {743--756},
+  year    = {2011},
+  doi     = {10.1016/j.future.2010.07.005}
+}
+
+@book{shannon1949mathematical,
+  author    = {Shannon, Claude E. and Weaver, Warren},
+  title     = {The Mathematical Theory of Communication},
+  publisher = {University of Illinois Press},
+  year      = {1949}
+}
+
+@article{griesemer1989institutional,
+  author  = {Star, Susan Leigh and Griesemer, James R.},
+  title   = {Institutional Ecology, `Translations' and Boundary Objects},
+  journal = {Social Studies of Science},
+  volume  = {19},
+  number  = {3},
+  pages   = {387--420},
+  year    = {1989},
+  doi     = {10.1177/030631289019003001}
+}
+
+@book{griesbach1776synopsis,
+  author    = {Griesbach, Johann Jakob},
+  title     = {Synopsis Evangeliorum Matthaei, Marci et Lucae},
+  publisher = {Halle},
+  year      = {1776}
+}
+
+@book{throckmorton1949gospel,
+  author    = {Throckmorton, Burton H.},
+  title     = {Gospel Parallels: A Synopsis of the First Three Gospels},
+  publisher = {Thomas Nelson},
+  year      = {1949}
+}

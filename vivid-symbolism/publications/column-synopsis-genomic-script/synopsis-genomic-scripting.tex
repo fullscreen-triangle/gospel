@@ -1,0 +1,2521 @@
+% =====================================================================
+% synopsis-genomic-scripting.tex
+%
+% A self-contained manuscript. It derives the theory it needs from
+% first principles and cites only external literature. A reader is not
+% expected to have read anything else by the authors.
+% =====================================================================
+
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[margin=2.6cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{microtype}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage[capitalise,nameinlink]{cleveref}
+\usepackage{caption}
+
+% ---------------------------------------------------------------------
+% Theorem environments
+% ---------------------------------------------------------------------
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{assumption}[theorem]{Assumption}
+\newtheorem{construction}[theorem]{Construction}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{rule}[theorem]{Rule}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{convention}[theorem]{Convention}
+
+\crefname{rule}{Rule}{Rules}
+\Crefname{rule}{Rule}{Rules}
+\crefname{assumption}{Assumption}{Assumptions}
+\Crefname{assumption}{Assumption}{Assumptions}
+\crefname{construction}{Construction}{Constructions}
+\Crefname{construction}{Construction}{Constructions}
+
+% ---------------------------------------------------------------------
+% Notation
+% ---------------------------------------------------------------------
+\newcommand{\flo}{\beta}                       % contact floor
+\newcommand{\sep}{\sigma}                      % separation cost
+\newcommand{\med}{\mathfrak{m}}                % the medium
+\newcommand{\Res}{\varrho}                     % residue
+\newcommand{\Gph}{\mathcal{G}}
+\newcommand{\Ver}{V}
+\newcommand{\Edg}{E}
+\newcommand{\weight}{w}
+\newcommand{\Om}{\Omega}
+\newcommand{\dem}{D}
+\newcommand{\Rp}{\mathbb{R}_{>0}}
+\newcommand{\Rnn}{\mathbb{R}_{\ge 0}}
+\newcommand{\corr}{\varphi}
+\newcommand{\resp}{\pi}
+\newcommand{\typ}[1]{\ensuremath{\mathsf{#1}}}
+\newcommand{\kw}[1]{\texttt{\textbf{#1}}}
+\DeclareMathOperator{\cut}{cut}
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+% ---------------------------------------------------------------------
+% Listings: the synopsis language
+% ---------------------------------------------------------------------
+\definecolor{synkw}{HTML}{1F6FEB}
+\definecolor{syntype}{HTML}{8250DF}
+\definecolor{syncom}{HTML}{6E7781}
+\definecolor{synstr}{HTML}{0A7F3F}
+\definecolor{synerr}{HTML}{D1242F}
+\definecolor{synbg}{HTML}{FAFAFA}
+
+\lstdefinelanguage{synopsis}{
+  morekeywords={under,let,seq,net,unit,response,coord,profile,ranked,
+    peaks,verdict,real,depth,corr,claim,record,report,to,by,against,
+    align,central,compare,detect,project,relax,until,quiescent,sweep,
+    step,for,in,where,require,drop,bind,with,anchors,residue,medium,
+    perturb,join,witness,frame,decline,correspond,diverge,assert,
+    method,threshold,as,from,of,and,or,not,if,then,else,open,close},
+  morekeywords=[2]{xcorr,spectral,shader,contact,cardinal,dna,protein,
+    smith_waterman,jaccard,zscore,cosine,hierarchical},
+  sensitive=true,
+  morecomment=[l]{\#},
+  morestring=[b]",
+}
+
+\lstset{
+  language=synopsis,
+  basicstyle=\ttfamily\small,
+  keywordstyle=\color{synkw}\bfseries,
+  keywordstyle=[2]\color{syntype},
+  commentstyle=\color{syncom}\itshape,
+  stringstyle=\color{synstr},
+  backgroundcolor=\color{synbg},
+  frame=leftline,
+  framerule=1.2pt,
+  rulecolor=\color{synkw!35},
+  xleftmargin=1.6em,
+  framexleftmargin=1.6em,
+  showstringspaces=false,
+  breaklines=true,
+  breakatwhitespace=true,
+  columns=fullflexible,
+  numbers=left,
+  numberstyle=\tiny\color{syncom},
+  numbersep=8pt,
+  escapeinside={(*@}{@*)},
+  captionpos=b,
+}
+
+\lstdefinestyle{nonum}{numbers=none}
+\lstdefinestyle{grammar}{
+  language={},
+  basicstyle=\ttfamily\footnotesize,
+  keywordstyle={},
+  numbers=none,
+  frame=none,
+  xleftmargin=1.2em,
+  backgroundcolor=\color{white},
+}
+
+\hypersetup{
+  colorlinks=false,
+  pdftitle={Synopsis: a scripting language for sufficient alignment in genomics},
+}
+
+% =====================================================================
+
+\title{\bfseries Synopsis: A Scripting Language for \\[0.2em]
+       Sufficient Alignment in Genomics}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+\noindent
+Genomic comparison is conducted almost entirely in the vocabulary of
+\emph{exact} correspondence: percent identity, edit distance, alignment
+score. This vocabulary is not merely imprecise for the question
+practitioners actually ask --- \emph{do these two things do the same
+thing?} --- it is provably unable to answer it. We prove two separation
+results. There exist pairs of units whose content is separated at the
+theoretical minimum, so that no content-based criterion can distinguish
+them, yet whose effect on the surrounding network diverges without
+bound; and there exist pairs whose content is arbitrarily expensive to
+reconcile yet whose effect is identical. Content comparison collapses
+the first class to \emph{same} and the second to \emph{different}, and
+is wrong in both directions. The two classes are orthogonal axes of a
+plane that a scalar criterion projects onto a line.
+
+We construct the theory needed to occupy that plane. Working in finite
+weighted graphs with strictly positive weights, we establish a
+\emph{contact floor}: a strictly positive lower bound $\flo$ on the cost
+of any distinction. We show that identity is borne by a minimum cut ---
+a region of edges --- and never by a vertex or a label, so that it
+survives arbitrary relabelling exactly and is not carried by any name a
+database can store. We show that the value a unit registers is a
+function of the pair (unit, receiver) and not of the unit, and that the
+resulting disagreement between receivers is not measurement error. We
+then give a bidirectional comparison, \emph{cross-demand}, that
+certifies correspondence without reading meaning, and prove that its
+relaxation terminates in at most $\lceil \dem_0/\eta\rceil$ steps or
+declines --- there is no third outcome and no divergence.
+
+From this theory we design and specify \textbf{synopsis} (extension
+\texttt{.syp}), a total scripting language for genomic experiments. Its
+name is taken from the synoptic gospels, the books that are read in
+parallel columns because they \emph{align sufficiently}, not because they
+agree word for word; the discipline of reading them is exactly the
+discipline we formalise. Synopsis is designed around refusals. Sequences
+are opaque and cannot be indexed. Every value carries a residue bounded
+below by the floor, and no constructor produces zero residue, so
+\texttt{identical} is not expressible. The verdict constructor is
+\emph{4-ary}: omitting the response columns is an arity error, not a
+weaker result. Comparison across receiver frames is a scope error.
+Thresholds have no defaults. Iteration is bounded by construction and
+relaxation typechecks only when its step floor is bounded below, in which
+case the compiler emits the termination bound as a proof obligation it has
+discharged. We prove strong normalisation, floor preservation, scope
+safety, and four \emph{refusal theorems} stating that certain scientifically
+invalid claims have no well-typed representation.
+
+We give the full grammar, a typing judgement, a small-step operational
+semantics, and worked programs reproducing three families of genomic
+experiment --- matched-filter motif detection, spectral homology search
+over a database, and four-column functional adjudication --- in a single
+language whose output is a report bearing certificates rather than a
+number. We report honestly that one assumption the four-column verdict
+requires, the independence of the verdict from the choice of admissible
+response, \emph{fails} on solved biochemical networks: only $28.6\%$ of
+comparisons fall within threshold, with a maximum discrepancy of $0.307$
+against $\theta=0.01$. Synopsis makes this failure syntactically
+visible: the response operator requires its map to be named, so no
+program can conceal which arbitrary choice it made. We regard designing
+a language that cannot hide its open problems as the point.
+\end{abstract}
+
+\tableofcontents
+
+\clearpage
+
+% =====================================================================
+\section{Introduction}
+\label{sec:intro}
+% =====================================================================
+
+\subsection{Two failures of the same kind}
+
+Consider two questions a working geneticist asks daily.
+
+\begin{enumerate}[label=(\roman*),leftmargin=2.2em]
+\item \textbf{A synonymous variant.} A single base changes; the codon
+      changes; the amino acid does not. Every content-based comparison
+      reports the protein product as identical. Yet synonymous variants
+      demonstrably alter translation kinetics, co-translational folding,
+      mRNA stability and substrate specificity
+      \cite{plotkin2011synonymous,sauna2011silent,kimchi2007silent}. The
+      comparison that reports \emph{same} is not approximately right. It
+      is reporting on a quantity that was never the one at issue.
+
+\item \textbf{Two unrelated enzymes catalysing one reaction.} Non-homologous
+      isofunctional enzymes are common enough to have a name and a
+      systematic census \cite{omelchenko2010nonhomologous,galperin2010divergence}.
+      Their sequences share nothing; every alignment reports maximal
+      divergence. They do the same job. The comparison that reports
+      \emph{different} is, again, answering a different question than
+      the one asked.
+\end{enumerate}
+
+These are usually filed as separate difficulties --- one a false
+positive, one a false negative --- to be patched by better substitution
+matrices, deeper profile models, or structural prediction
+\cite{henikoff1992amino,eddy2011accelerated,jumper2021highly}. We will
+show they are one difficulty, and that it is structural rather than
+statistical.
+
+The claim we prove is sharp. Let \emph{content divergence} be any
+quantity computed from the two units in isolation, and let
+\emph{response divergence} be a quantity computed from what each unit
+does to the network it sits in. \Cref{thm:falsefriend} constructs a
+family in which content divergence is pinned at exactly zero --- not
+small, exactly zero, at the theoretical minimum --- while response
+divergence grows without bound. \Cref{cor:converse} constructs a family
+in which response divergence is exactly zero while content divergence
+grows. The two families lie on orthogonal axes of a two-dimensional
+plane. Any criterion returning a scalar computed from content alone
+projects that plane onto one axis, and necessarily maps one entire
+family to the origin. No refinement of the scalar repairs this; the
+defect is one of dimension, not of accuracy.
+
+\subsection{Sufficient alignment}
+\label{sec:sufficient}
+
+The response to a comparison that cannot be exact is not to abandon
+comparison. It is to change what one asks of it.
+
+There is an old and instructive precedent. The first three canonical
+gospels are called \emph{synoptic} --- seen together --- because they
+can be laid out in parallel columns and read across
+\cite{griesbach1776synopsis,throckmorton1949gospel}. They are not
+identical. They differ in wording, in order, in detail, and in what each
+chooses to omit. A concordance demanding word-for-word agreement finds
+them in constant contradiction and produces nothing. The synoptic
+reading demands something weaker and far more useful: that the columns
+correspond \emph{sufficiently} for a passage in one to be located
+against a passage in another, with the residue --- what does not
+correspond --- retained and displayed rather than discarded. The
+discipline is not to eliminate the difference. It is to bound it, to
+know where it lies, and to be able to say when it is small enough not to
+matter for the question at hand.
+
+That is precisely the discipline genomic comparison needs and does not
+have. We take the name of our language from it. A \emph{synopsis} is a
+parallel-column reading in which correspondence is certified, residue is
+carried, and the verdict is about sufficiency rather than identity.
+
+The choice of name commits us to three design consequences, which we
+discharge in \Cref{sec:design} and prove in \Cref{sec:meta}.
+
+\begin{enumerate}[label=(\alph*),leftmargin=2.2em]
+\item \textbf{Residue is never discarded.} A comparison that returns a
+      single number has thrown the residue away. In synopsis every value
+      carries its residue in its type, and there is no constructor
+      producing zero residue (\Cref{thm:nozero}).
+\item \textbf{Exactness is not expressible.} If \texttt{identical} can be
+      written, it will be written, and the two failures of
+      \Cref{sec:intro} return. In synopsis it has no constructor
+      (\Cref{thm:noexact}).
+\item \textbf{The columns are structural.} A synopsis with one column is
+      not a synopsis. The verdict constructor of synopsis takes four
+      columns and omitting a pair is an arity error, not a permitted
+      simplification (\Cref{thm:arity}).
+\end{enumerate}
+
+\subsection{Where the invariant is not}
+\label{sec:notinseq}
+
+Before building, we should say plainly what we take to be the source of
+the trouble, because it determines everything about the language's
+treatment of sequence.
+
+The tacit premise of content comparison is that whatever makes two units
+functionally the same is \emph{written in them}, so that a sufficiently
+clever reading of the two strings recovers it. We claim this premise is
+false, and we can make the claim precise rather than rhetorical.
+
+\begin{remark}[The invariant is not borne by the string]
+\label{rem:bearing}
+\Cref{thm:invariant-cut} shows that the quantity preserved under
+relabelling of a contact structure is the weight of a minimum cut, and
+\Cref{thm:region} shows that this cut is in general a region of edges
+containing several vertices, not a single vertex. \Cref{cor:labels}
+then shows that vertex labels may be permuted arbitrarily without
+changing any separation cost. A sequence is a labelling. It is
+therefore, by \Cref{cor:labels}, precisely the part of the structure
+that the invariant is indifferent to. Reading harder does not help
+because there is nothing further in the reading.
+\end{remark}
+
+There is an elementary observation in the same direction that requires no
+theory at all. Every double-stranded nucleic acid carries two strands
+\cite{watson1953molecular}. Read the complement in its own $5'\to3'$
+direction and one obtains a different string, with a different codon
+decomposition, and different open reading frames. Both strands are
+physically present; both are read by the cell in different contexts;
+neither is privileged by the chemistry. If the functional invariant were
+a property of the string, the molecule would carry two of them and they
+would disagree. What the molecule actually determines is the
+\emph{pairing} --- the contact structure --- and both strings are
+labellings of it. The invariant, if there is one, lives in the contacts.
+
+Accordingly, in synopsis a sequence is an \textbf{opaque} type. It has no
+indexing operator, no substring operator, no base accessor, and no
+equality. It enters computation only by projection into a structure that
+is a legitimate bearer of the invariant. This is the single most
+restrictive decision in the language and \Cref{sec:opaque} defends it in
+detail.
+
+\subsection{Why a language, and why a total one}
+\label{sec:whylanguage}
+
+One could implement all of this as a library. We give three reasons not
+to.
+
+\textbf{First, a library cannot refuse.} The results of
+\Cref{sec:separation} say that certain comparisons are invalid ---
+comparing content alone, comparing across incompatible receiver frames,
+reporting exact identity. In a library these are discouraged by
+documentation. In a language they can be made unrepresentable. That is
+the difference between a convention and a theorem, and
+\Cref{sec:meta} proves four theorems of exactly this shape. A refusal
+that the typechecker enforces is worth more than a paragraph in a manual
+that a hurried user does not read.
+
+\textbf{Second, defaults are where science goes wrong.} A library
+function with a default threshold is an experiment with an
+undeclared parameter. Multiplied across a pipeline this is the
+mechanism by which analytic flexibility silently manufactures results
+\cite{simmons2011false,gelman2013garden}. Synopsis has \emph{no default
+thresholds anywhere}: every numeric parameter that can change a verdict
+must be written in the program text, and the report prints it. This
+costs the user keystrokes and buys the reader the ability to see what
+was chosen.
+
+\textbf{Third, an experiment should terminate.} A laboratory protocol
+that might not finish is not a protocol. Synopsis is \emph{total}: every
+well-typed program halts, and we prove it (\Cref{thm:total}). This is
+purchased by giving up general recursion and unbounded loops
+\cite{turner1995total}, which turns out to cost nothing --- none of the
+genomic procedures we survey needs them --- and by requiring that the
+one genuinely iterative construct, relaxation, be given a step floor, at
+which point the compiler emits the iteration bound as a discharged
+obligation (\Cref{sec:relax}).
+
+This last point drives the one design decision we should flag explicitly
+because a reader may expect otherwise. Synopsis is an \textbf{analytic}
+language, not a generative one. It evaluates and certifies claims about
+given material. It does \emph{not} search a space for sequences meeting a
+target specification. Generative search requires a solver whose
+termination depends on the geometry of the search space and cannot be
+established by typing; admitting it would forfeit \Cref{thm:total},
+which is the strongest property the language has. We judge the trade
+correct: a total language that certifies is more useful to an
+experimentalist than a partial one that also proposes, and the
+generative layer, if wanted, can be built above synopsis and made to
+emit synopsis programs for certification.
+
+\subsection{Contributions and organisation}
+
+\begin{itemize}[leftmargin=1.4em]
+\item \Cref{sec:contact} develops contact structures and proves the
+      contact floor (\Cref{thm:floor}), the invariance of cut weight
+      (\Cref{thm:invariant-cut}), and its conditional survival under
+      expansion (\Cref{thm:invariance}), with an explicit counterexample
+      (\Cref{rem:not-positive}) showing the unconditional statement to
+      be \emph{false}.
+\item \Cref{sec:identity} proves that identity is regional
+      (\Cref{thm:region}), that labels are free (\Cref{cor:labels}),
+      and that registered value is receiver-relative
+      (\Cref{thm:receiver}) with disagreement that is not noise
+      (\Cref{cor:notnoise}).
+\item \Cref{sec:blind} builds cross-demand and relaxation and proves
+      monotonicity (\Cref{thm:mono}), the termination dichotomy
+      (\Cref{thm:dichotomy}) and the form of quiescence
+      (\Cref{thm:form}).
+\item \Cref{sec:separation} proves the two separation results
+      (\Cref{thm:falsefriend}, \Cref{cor:converse}) and derives the
+      four-column criterion (\Cref{thm:four}).
+\item \Cref{sec:design} states the eleven design rules of synopsis and
+      argues each from a result above.
+\item \Cref{sec:lang} gives the concrete language: lexis, grammar, types
+      and the typing judgement.
+\item \Cref{sec:semantics} gives the operational semantics.
+\item \Cref{sec:meta} proves the metatheory: totality, floor
+      preservation, scope safety, and the four refusal theorems.
+\item \Cref{sec:programs} gives worked \texttt{.syp} programs for three
+      families of experiment.
+\item \Cref{sec:report} specifies the report and its certificates.
+\item \Cref{sec:open} reports the negative result on response
+      independence and what the language does about it.
+\end{itemize}
+
+% =====================================================================
+\section{Contact structures and the floor}
+\label{sec:contact}
+% =====================================================================
+
+We build the theory from nothing. A reader who wants only the language
+may read \Cref{sec:design} onwards and refer back, but the design rules
+are consequences of these results and are arbitrary without them.
+
+\subsection{Finite weighted graphs}
+
+\begin{definition}[Finite weighted graph]
+\label{def:fwg}
+A \emph{finite weighted graph} is a triple $\Gph=(\Ver,\Edg,\weight)$
+with $\Ver$ a finite non-empty set, $\Edg\subseteq\binom{\Ver}{2}$, and
+$\weight:\Edg\to\Rp$. Weights are \emph{strictly} positive: an edge of
+weight zero is not a light edge, it is the absence of an edge, and we
+insist on the distinction because every result below turns on it.
+\end{definition}
+
+\begin{definition}[Cut]
+\label{def:cut}
+For $S\subseteq\Ver$ the \emph{cut} induced by $S$ is
+$\partial S=\{e\in\Edg: |e\cap S|=1\}$ with weight
+$\cut(S)=\sum_{e\in\partial S}\weight(e)$. For $u\ne v$ a set $S$ is
+\emph{$(u,v)$-separating} if $u\in S$ and $v\notin S$, and
+\[
+  \sep(u\mid v)\;=\;\min\{\cut(S)\;:\;S \text{ is }(u,v)\text{-separating}\}.
+\]
+The minimum is over a finite non-empty collection, hence attained.
+\end{definition}
+
+We call $\sep(u\mid v)$ the \emph{separation cost}: the cheapest way, in
+the currency the weights supply, to place $u$ and $v$ on opposite sides
+of a boundary. By the max-flow min-cut theorem it equals the maximum
+flow from $u$ to $v$ \cite{ford1956maximal}, and is computable in
+polynomial time \cite{stoer1997simple,karger1996new}; all-pairs values
+admit a Gomory--Hu tree \cite{gomory1961multi}. We will not need
+efficiency for the theory, but the language's cost model does
+(\Cref{sec:costmodel}).
+
+\begin{definition}[Contact structure]
+\label{def:contact}
+A \emph{contact structure} is a finite weighted graph with a
+distinguished vertex $\med\in\Ver$, the \emph{medium}, adjacent to every
+other vertex. Vertices other than $\med$ are \emph{items}, written
+$I=\Ver\setminus\{\med\}$. We write
+$\sep(v)=\sep(v\mid\med)$ for the \emph{separation cost of an item},
+$\Om=\sum_{e\in\Edg}\weight(e)$ for the total weight, and
+\[
+  \flo(\Gph)\;=\;\min_{e\in\Edg}\weight(e)
+\]
+for the \emph{contact floor}.
+\end{definition}
+
+The medium formalises the background against which anything is
+individuated. Every distinction is a distinction \emph{from} something;
+$\med$ is that something, and its universal adjacency says the
+background is always available and never absent. This is the graph-level
+statement of a very old idea --- that a thing is known by what it is not
+--- and it is what makes $\sep(v)$ the cost of individuating $v$ at all,
+rather than merely of separating it from a chosen rival.
+
+\subsection{The floor}
+
+\begin{theorem}[Contact floor]
+\label{thm:floor}
+Let $\Gph$ be a contact structure and $v$ an item. Then
+\[
+  \sep(v)\;\ge\;\flo(\Gph)\;>\;0.
+\]
+\end{theorem}
+
+\begin{proof}
+$\Edg$ is finite and non-empty (the medium is adjacent to every item and
+$I\neq\emptyset$), and $\weight$ takes values in $\Rp$, so
+$\flo(\Gph)=\min_{e}\weight(e)$ is the minimum of a finite set of
+strictly positive reals and is therefore strictly positive.
+
+Let $S$ be any $(v,\med)$-separating set. Since $v\in S$ and
+$\med\notin S$ and $\{v,\med\}\in\Edg$ by adjacency of the medium, we
+have $|\{v,\med\}\cap S|=1$, so $\{v,\med\}\in\partial S$. Hence
+$\partial S\neq\emptyset$ and
+$\cut(S)\ge\weight(\{v,\med\})\ge\flo(\Gph)$. Taking the minimum over
+separating $S$ gives $\sep(v)\ge\flo(\Gph)$.
+\end{proof}
+
+The proof is three lines and the content is substantial: \emph{no
+distinction is free}. There is a strictly positive price on telling any
+two things apart, fixed by the cheapest contact in the structure. Two
+items may be as similar as the structure permits --- they may sit
+exactly at the floor --- but they cannot be at zero, because zero is not
+in the range of $\weight$.
+
+This is the formal reason a comparison should never return
+\texttt{identical}. Identity in the sense of \emph{indistinguishable at
+cost zero} does not occur in a contact structure. Reporting it is
+reporting a value outside the range of the quantity being measured.
+
+\begin{definition}[Local floor]
+\label{def:localfloor}
+For an item $v$, $\flo_k(v)=\min\{\weight(e): v\in e\}$, the minimum
+weight incident to $v$.
+\end{definition}
+
+Clearly $\flo(\Gph)\le\flo_k(v)$ for every $v$, and
+$\flo(\Gph)=\min_v \flo_k(v)$.
+
+\subsection{Invariance under relabelling}
+
+\begin{definition}[Weighted isomorphism]
+\label{def:iso}
+A \emph{weighted isomorphism} of contact structures
+$\Gph\to\Gph'$ is a bijection $h:\Ver\to\Ver'$ with $h(\med)=\med'$,
+$\{h(u),h(v)\}\in\Edg' \iff \{u,v\}\in\Edg$, and
+$\weight'(\{h(u),h(v)\})=\weight(\{u,v\})$.
+\end{definition}
+
+\begin{theorem}[Cut weight is the invariant]
+\label{thm:invariant-cut}
+If $h:\Gph\to\Gph'$ is a weighted isomorphism then for all items $u,v$,
+\[
+  \sep'(h(u)\mid h(v)) \;=\; \sep(u\mid v),
+  \qquad
+  \sep'(h(v)) \;=\; \sep(v),
+  \qquad
+  \flo(\Gph')=\flo(\Gph).
+\]
+\end{theorem}
+
+\begin{proof}
+$h$ induces a bijection $S\mapsto h(S)$ between subsets of $\Ver$ and of
+$\Ver'$, carrying $(u,v)$-separating sets to $(h(u),h(v))$-separating
+sets bijectively. It carries $\partial S$ to $\partial h(S)$ edge for
+edge and preserves each weight, so $\cut'(h(S))=\cut(S)$. Minimising
+over a bijectively-corresponding collection of equal values gives the
+first identity; the second is the case $v=\med$, using $h(\med)=\med'$;
+the third holds because $h$ is a weight-preserving bijection on $\Edg$.
+\end{proof}
+
+\begin{corollary}[Labels are free]
+\label{cor:labels}
+Let $\Gph$ be a contact structure and $\rho$ any permutation of the
+items. Let $\Gph^\rho$ be $\Gph$ with items renamed by $\rho$. Then
+every separation cost, every minimum cut weight and the floor are
+unchanged.
+\end{corollary}
+
+\begin{proof}
+$\rho$ extended by $\med\mapsto\med$ is a weighted isomorphism
+$\Gph\to\Gph^\rho$. Apply \Cref{thm:invariant-cut}.
+\end{proof}
+
+\Cref{cor:labels} is the formal content of \Cref{rem:bearing}. The names
+carry \emph{no} part of the invariant --- not a small part, none. A
+comparison procedure that reads names is reading the one component of
+the structure guaranteed to be irrelevant.
+
+\subsection{Expansion, and a false theorem made true}
+
+Real structures are never observed complete. One always has a subgraph
+and may later add more. We must ask whether the floor survives.
+
+\begin{definition}[Expansion]
+\label{def:expansion}
+An \emph{expansion} of $\Gph$ is a contact structure $\Gph^+$ with
+$\Ver\subseteq\Ver^+$, $\Edg\subseteq\Edg^+$, $\med^+=\med$ and
+$\weight^+|_\Edg=\weight$. An expansion \emph{sequence} is a chain
+$\Gph_0\subseteq\Gph_1\subseteq\cdots$.
+\end{definition}
+
+It is tempting to assert that separation costs stay bounded below along
+any expansion sequence. They do not.
+
+\begin{remark}[The unconditional claim is false]
+\label{rem:not-positive}
+Fix an item $v$ and let $\Gph_k$ add to $\Gph_{k-1}$ a fresh vertex
+$x_k$ joined to $v$ by an edge of weight $1/k$ (and to $\med$ at weight
+$1$). Then $\flo(\Gph_k)\le 1/k\to 0$, and the local floor
+$\flo_k(v)\to 0$. With weights $1/k^2$ the sum $\sum_k 1/k^2$ converges,
+so one may arrange that $\sep(v)$ itself is driven towards a limit
+determined entirely by the new light edges: $v$ \emph{dissolves into the
+medium}. In the limit no positive lower bound survives. Any statement
+that the floor is unconditionally preserved under expansion is therefore
+false, and we record the counterexample rather than the temptation.
+\end{remark}
+
+The correct statement needs a hypothesis, and naming it precisely is the
+point.
+
+\begin{definition}[Floor-stabilising expansion]
+\label{def:stabilising}
+An expansion sequence $(\Gph_k)$ is \emph{floor-stabilising} at $v$ if
+there is $\flo_\ast>0$ with $\flo_k(v)\ge\flo_\ast$ for all $k$: the
+newly added contacts at $v$ do not become arbitrarily cheap.
+\end{definition}
+
+\begin{theorem}[Conditional invariance under expansion]
+\label{thm:invariance}
+Let $(\Gph_k)$ be an expansion sequence that is floor-stabilising at $v$
+with constant $\flo_\ast$. Then $\sep_k(v)\ge\flo_\ast>0$ for all $k$,
+and the sequence $(\sep_k(v))$ is bounded below by a positive constant
+independent of $k$.
+\end{theorem}
+
+\begin{proof}
+Fix $k$ and let $S$ be $(v,\med)$-separating in $\Gph_k$. As in
+\Cref{thm:floor}, $\{v,\med\}\in\partial S$, so
+$\cut_k(S)\ge\weight_k(\{v,\med\})\ge \flo_k(v)\ge\flo_\ast$. Minimise
+over $S$.
+\end{proof}
+
+\begin{remark}
+\Cref{thm:invariance} is weaker than one would like and exactly as
+strong as is true. The hypothesis is checkable --- it is a statement
+about the incident weights actually observed --- and a language can
+require the user to assert it and can record the assertion in the
+report. Synopsis does: see \Cref{sec:frames} and the \kw{require} form.
+\end{remark}
+
+\subsection{Perturbation}
+
+\begin{definition}[Perturbation]
+\label{def:perturbation}
+A \emph{perturbation} of $\Gph$ is a map $\delta:\Edg\to\Rnn$; it acts by
+$\weight\mapsto\weight+\delta$. Perturbations are non-negative:
+they raise the cost of distinctions and never create separation for
+free.
+\end{definition}
+
+\begin{proposition}[Skeleton invariance]
+\label{prop:skeleton}
+Under any perturbation, $\Ver$ and $\Edg$ are unchanged, every
+separation cost is non-decreasing, and if $\delta$ vanishes on a
+minimum-weight edge then $\flo$ is unchanged.
+\end{proposition}
+
+\begin{proof}
+The vertex and edge sets do not appear in \Cref{def:perturbation}, so
+they are fixed. For any $S$, $\cut_{\weight+\delta}(S)=\cut_\weight(S)+
+\sum_{e\in\partial S}\delta(e)\ge \cut_\weight(S)$; minimising both
+sides over the same finite collection preserves the inequality. If
+$\delta(e_0)=0$ for some $e_0$ attaining the minimum weight, then
+$\min_e(\weight+\delta)(e)\le \weight(e_0)=\flo$, and $\ge$ holds since
+$\delta\ge0$.
+\end{proof}
+
+The distinction matters and is easy to lose: perturbation changes the
+\emph{costs} without changing the \emph{contacts}. A unit which
+perturbs its surroundings does not rewire them; it makes some
+distinctions in them dearer. This is the sense in which a variant has an
+effect without editing the network.
+
+% =====================================================================
+\section{Identity, region, and the receiver}
+\label{sec:identity}
+% =====================================================================
+
+\subsection{Identity is a region, not a point}
+
+\Cref{thm:invariant-cut} identifies the invariant as a cut weight. We
+now show the minimising \emph{set} is generally not a singleton, so the
+invariant is borne by a region.
+
+\begin{theorem}[Regionality]
+\label{thm:region}
+There exist contact structures in which, for an item $v$, every
+minimising $(v,\med)$-separating set has cardinality at least $3$.
+\end{theorem}
+
+\begin{proof}
+Fix $r\ge3$ and $\flo>0$ with $\flo$ small. Take items
+$A=\{a_1,\dots,a_r\}$ and $B=\{b_1,\dots,b_r\}$. Join every pair within
+$A$ and every pair within $B$ by an edge of weight $W>0$; join $a_1$ to
+$b_1$ by a single edge of weight $\flo$; join every item to $\med$ by an
+edge of weight $\flo$. Let $v=a_1$.
+
+Consider $S=\{a_1\}$. Its cut severs the $r-1$ edges from $a_1$ to the
+rest of $A$, the bridge to $b_1$, and the medium edge, so
+\[
+  \cut(\{a_1\}) \;=\; (r-1)W + \flo + \flo \;=\; (r-1)W+2\flo .
+\]
+Now consider $S=A$. Its cut severs the bridge and the $r$ medium edges:
+\[
+  \cut(A) \;=\; \flo + r\flo \;=\; (r+1)\flo ,
+\]
+which is independent of $W$. Whenever $(r-1)W+2\flo > (r+1)\flo$, i.e.
+$W>\flo\cdot\frac{r-1}{r-1}=\flo$, we get $\cut(A)<\cut(\{a_1\})$.
+More generally, a separating set $S$ with $a_1\in S$ and
+$|S\cap A|=j<r$ severs at least $j(r-j)$ intra-$A$ edges of weight $W$
+plus $j$ medium edges, giving $\cut(S)\ge j(r-j)W+j\flo$, which for
+$1\le j\le r-1$ is at least $(r-1)W+\flo$ and so exceeds $(r+1)\flo$
+once $W>2\flo$. Taking $S\supseteq A$ and adding any $b_i$ only adds
+intra-$B$ edges of weight $W$ and further medium edges, strictly
+increasing the cut unless $S\supseteq A\cup B$, which is not separating
+from $\med$'s side only if $\med\notin S$ --- and then
+$\cut(A\cup B)=2r\flo>(r+1)\flo$ for $r>1$.
+
+Hence for $W>2\flo$ and $r\ge3$ the unique minimiser is $S^\ast=A$, of
+cardinality $r\ge3$.
+\end{proof}
+
+\begin{remark}[A witness we got wrong first]
+\label{rem:badwitness}
+Our first attempt at \Cref{thm:falsefriend} used the informal principle
+``if two items are joined by an edge of weight $\flo$ then they are
+separated at the floor''. This is false, and \Cref{thm:region} is why:
+the minimum cut separating $a_1$ from $b_1$ in the construction above is
+\emph{not} the bridge, because detaching the whole cluster $A$ may be
+cheaper or dearer depending on $W$, and for moderate $W$ neither is the
+bridge alone. Computing the cut exactly rather than reasoning from the
+light edge gave $1.4$ where the informal argument predicted $0.2$. We
+record the episode because the informal principle is intuitive, wrong,
+and would have propagated silently into the language's semantics.
+\end{remark}
+
+\begin{corollary}
+\label{cor:notpoint}
+The invariant of \Cref{thm:invariant-cut} is not in general attributable
+to any single vertex, and \emph{a fortiori} not to any single label.
+\end{corollary}
+
+\subsection{Receiver-relativity}
+
+The value an item registers is not a property of the item.
+
+\begin{definition}[Receiver]
+\label{def:receiver}
+A \emph{receiver} is a contact structure $N$ together with a designated
+embedding site. A unit $u$ \emph{registers} in $N$ the value
+$\sep_N(u)$, computed after $u$ is embedded at the site.
+\end{definition}
+
+\begin{theorem}[Receiver-relativity]
+\label{thm:receiver}
+There exist a unit $u$ and receivers $N,N'$ differing in a single edge
+weight, with $\sep_N(u)\ne\sep_{N'}(u)$. Consequently $\sep(u)$ is a
+function of the pair $(u,N)$ and not of $u$ alone.
+\end{theorem}
+
+\begin{proof}
+Take $N$ with items $u,x,y$, edges $\{u,x\}$ and $\{x,y\}$ of weight $1$,
+medium edges of weight $1$, and $\{u,y\}$ absent. Then a
+$(u,\med)$-separating set must sever $\{u,\med\}$ and $\{u,x\}$ unless it
+contains $x$, so $\sep_N(u)=\min\{1+1,\;\,1+1+1\}=2$ where the second
+option is $S=\{u,x\}$ severing $\{u,\med\},\{x,\med\},\{x,y\}$. Now let
+$N'$ differ only in $\weight(\{x,y\})=\tfrac14$. Then $S=\{u,x\}$ costs
+$1+1+\tfrac14=2.25$ and $S=\{u\}$ still costs $2$, so $\sep_{N'}(u)=2$.
+Instead set $\weight(\{u,x\})=\tfrac14$ in $N'$: then $S=\{u\}$ costs
+$1+\tfrac14=1.25<2$, so $\sep_{N'}(u)=1.25\neq 2=\sep_N(u)$, and $N,N'$
+differ in exactly one weight.
+\end{proof}
+
+\begin{corollary}[Disagreement is not noise]
+\label{cor:notnoise}
+Let $N,N'$ be receivers with $\sep_N(u)\ne\sep_{N'}(u)$. Then no
+increase in the precision or number of measurements performed in either
+receiver reduces the discrepancy, since each value is exactly determined
+by its own structure. The two receivers are evaluating different
+functions and each is correct.
+\end{corollary}
+
+\Cref{cor:notnoise} has an immediate practical reading and a language
+consequence. The practical reading is that a variant reported with
+different effect in two assays need not indicate that one assay is
+wrong; the assays may be different receivers, both right. The language
+consequence is that values from different receivers must not be
+compared, and synopsis enforces this lexically: values are scoped to
+their frame and cross-frame comparison is a \emph{scope error}, not a
+runtime warning (\Cref{sec:frames}, \Cref{thm:scope}).
+
+% =====================================================================
+\section{Blind comparison: demand, relaxation, quiescence}
+\label{sec:blind}
+% =====================================================================
+
+We now build a comparison that certifies correspondence without reading
+what anything means. This is essential: any procedure that must read
+meaning inherits the annotation errors already endemic in the databases
+it reads \cite{schnoes2009annotation}.
+
+\subsection{Alignment and distance to the floor}
+
+\begin{definition}[Alignment]
+\label{def:alignment}
+For items $u,v$ of a contact structure $\Gph$,
+\[
+  a(u,v)\;=\;\frac{\sep(u\mid v)}{\Om}, \qquad
+  \frac{\flo}{\Om}\ \text{ the \emph{floor ratio}}, \qquad
+  \Delta(u,v)\;=\;a(u,v)-\frac{\flo}{\Om}.
+\]
+$\Delta$ is the \emph{distance to the floor}.
+\end{definition}
+
+\begin{proposition}
+\label{prop:nonneg}
+$\Delta(u,v)\ge0$ always, with equality only if $u$ and $v$ are
+separated exactly at the floor.
+\end{proposition}
+
+\begin{proof}
+Immediate from \Cref{thm:floor} applied to the pair $(u,v)$: any
+separating set severs at least one edge, of weight at least $\flo$.
+\end{proof}
+
+Normalising by $\Om$ makes $a$ dimensionless and comparable across
+structures of different total weight; subtracting the floor ratio makes
+$\Delta$ vanish exactly when the pair is as close as the structure
+permits. \emph{Sufficient} alignment will mean $\Delta$ small; it will
+never mean $a=0$, which \Cref{thm:floor} forbids.
+
+\subsection{Anchors and residue}
+
+Not every item in a structure is equally load-bearing for a given item's
+individuation. We split by ablation.
+
+\begin{definition}[Ablation score, anchors, residue]
+\label{def:anchor}
+For items $x\ne u$, the \emph{ablation score} is
+$\alpha(x;u)=\sep_\Gph(x)-\sep_{\Gph\setminus u}(x)$, the drop in $x$'s
+separation cost when $u$ is deleted. Fix $r\ge0$. The \emph{anchors} of
+$x$ are the $r$ items of largest $\alpha(x;\cdot)$, ties broken by a
+fixed total order on names; the \emph{residue} $\Res(x)$ is the
+remainder.
+\end{definition}
+
+The intuition is that anchors are what $x$ is held in place by, and
+residue is everything else --- the part of the structure whose
+correspondence still has to be established. The tie-breaking by a fixed
+order is not cosmetic: without it the split is not a function, and a
+language that intends to be reproducible cannot afford a
+nondeterministic primitive. Synopsis therefore fixes the order and the
+report prints $r$.
+
+\subsection{Cross-demand}
+
+\begin{definition}[Cross-demand]
+\label{def:crossdemand}
+Let $\Gph_A,\Gph_B$ be contact structures and
+$\corr: I_B \rightharpoonup I_A$ a partial \emph{correspondence}. The
+\emph{demand from $A$ on $B$} is
+\begin{equation}
+\label{eq:demand}
+  \dem_{A\to B}
+  \;=\;
+  \sum_{i\in \Res_B}
+  \max\!\left(0,\;
+    a_B\!\left(i,\corr(i)\right)-\frac{\flo_B}{\Om_B}
+  \right),
+\end{equation}
+the sum taken over residue items of $B$ on which $\corr$ is defined.
+\end{definition}
+
+Each term is a distance to the floor and is non-negative by
+\Cref{prop:nonneg}; the clamp guards only floating-point noise. The
+quantity is a \emph{demand} in the sense that it measures how much
+reconciliation $B$ still requires of $A$: it is zero exactly when every
+residue item of $B$ is at the floor from its correspondent.
+
+Crucially, \eqref{eq:demand} reads no labels, no annotations, no
+sequence. It is computed from cuts. That is what makes it blind.
+
+\begin{definition}[Total demand]
+$\dem = \dem_{A\to B} + \dem_{B\to A}$, using $\corr$ and its inverse.
+\end{definition}
+
+Bidirectionality is not decoration. A one-sided demand can be made
+small by choosing a correspondence that maps everything difficult to
+undefined; the reverse direction penalises exactly that.
+
+\subsection{Relaxation}
+
+\begin{definition}[Relaxation]
+\label{def:relax}
+Let $\dem_0\ge0$. A \emph{relaxation} is a sequence
+$\dem_0>\dem_1>\cdots$ produced by an update $U$ with
+$\dem_{k+1}=U(\dem_k)$, terminating when $\dem_k\le\theta$ for a stated
+threshold $\theta\ge0$. The relaxation \emph{declines} at step $k$ if
+$U(\dem_k)$ is undefined --- no effective update exists.
+\end{definition}
+
+\begin{assumption}[Effective update]
+\label{ass:effective}
+There is $\eta>0$ such that whenever $U(\dem)$ is defined,
+$U(\dem)\le \dem-\eta$.
+\end{assumption}
+
+\Cref{ass:effective} is the whole of what makes relaxation a
+terminating procedure, and it is a real assumption, not a technicality:
+an update permitted to make arbitrarily small progress can run forever
+while always improving. Synopsis therefore refuses to typecheck a
+relaxation whose $\eta$ is not bounded below by a written constant
+(\Cref{sec:relax}).
+
+\begin{theorem}[Monotone decrease]
+\label{thm:mono}
+Under \Cref{ass:effective} the sequence $(\dem_k)$ is strictly
+decreasing while defined, and $\dem_k\le \dem_0-k\eta$.
+\end{theorem}
+
+\begin{proof}
+Induction: $\dem_0\le\dem_0-0$; if $\dem_k\le\dem_0-k\eta$ and
+$U(\dem_k)$ is defined then
+$\dem_{k+1}\le \dem_k-\eta\le \dem_0-(k+1)\eta$.
+\end{proof}
+
+\begin{theorem}[Termination dichotomy]
+\label{thm:dichotomy}
+Under \Cref{ass:effective}, exactly one of the following occurs within
+$\lceil \dem_0/\eta\rceil$ steps:
+\begin{enumerate}[label=(\roman*),leftmargin=2.2em]
+\item \textbf{quiescence:} $\dem_k\le\theta$ for some
+      $k\le\lceil \dem_0/\eta\rceil$; or
+\item \textbf{decline:} $U(\dem_k)$ is undefined for some
+      $k\le\lceil \dem_0/\eta\rceil$.
+\end{enumerate}
+There is no third outcome, and in particular the relaxation cannot
+diverge or cycle.
+\end{theorem}
+
+\begin{proof}
+Suppose neither (i) nor (ii) occurs for any
+$k\le K=\lceil \dem_0/\eta\rceil$. Then $U$ is defined at every such
+step and $\dem_k>\theta\ge0$ for all $k\le K$. By \Cref{thm:mono},
+$\dem_K\le \dem_0-K\eta\le \dem_0-\dem_0=0$, contradicting
+$\dem_K>\theta\ge0$. Exclusivity holds because (i) terminates the
+sequence and (ii) is the failure of the update that would continue it.
+\end{proof}
+
+\Cref{thm:dichotomy} is the theorem that lets synopsis be total while
+still containing a loop. The bound $\lceil \dem_0/\eta\rceil$ is
+computable from values in scope at the point the loop is written, so the
+compiler can emit it. \Cref{sec:relax} does exactly that.
+
+\begin{theorem}[Form of quiescence]
+\label{thm:form}
+Quiescence at $\theta=0$ means every residue term of \eqref{eq:demand}
+is zero, i.e.\ every corresponding residue pair is separated exactly at
+the floor. It does \emph{not} mean any pair is indistinguishable: by
+\Cref{thm:floor} each such pair still costs $\flo>0$ to separate.
+\end{theorem}
+
+\begin{proof}
+A finite sum of non-negative terms is zero iff each term is zero; each
+term is $\Delta(i,\corr(i))$, which vanishes iff the pair is at the
+floor (\Cref{prop:nonneg}). The second statement is \Cref{thm:floor}.
+\end{proof}
+
+\Cref{thm:form} is the formal statement of \emph{sufficient alignment}.
+Two structures may place no demand on one another and remain fully
+distinguishable. This is the synoptic reading made precise: the columns
+correspond; the residue is positive; both facts are reported.
+
+% =====================================================================
+\section{The separation results and the four-column criterion}
+\label{sec:separation}
+% =====================================================================
+
+\subsection{Content-aligned, response-divergent}
+
+\begin{theorem}[False friends]
+\label{thm:falsefriend}
+There is a family of pairs $(u_c,v_c)$, indexed by $c\ge0$, embedded in
+contact structures, such that
+\[
+  \dem^{\mathrm{central}}(u_c,v_c)=0 \quad\text{for all } c,
+  \qquad\text{while}\qquad
+  \dem^{\mathrm{response}}(u_c,v_c)\longrightarrow \text{unbounded as } c\to\infty .
+\]
+That is: content is aligned exactly at the floor for every $c$, while
+the effect on the surrounding network diverges.
+\end{theorem}
+
+\begin{proof}
+\emph{Construction.} Let $P$ be a contact structure containing two
+pendant items $u,v$, each joined to the medium by an edge of weight
+$\flo$ and to nothing else. Then any $(u,v)$-separating set may take
+$S=\{u\}$, severing exactly $\{u,\med\}$, so
+$\sep(u\mid v)=\flo$ and $\Delta(u,v)=0$. Being pendant is essential;
+by \Cref{rem:badwitness} a light edge between non-pendant items does
+\emph{not} suffice.
+
+Take $\Gph_A$ and $\Gph_B$ each equal to $P$, with $\corr$ the identity
+on the pendants. All residue terms are $\Delta=0$, so
+$\dem^{\mathrm{central}}=0$ for every $c$: content comparison reports
+correspondence unconditionally.
+
+\emph{Response.} Now let $u$ induce the perturbation $\delta_u\equiv0$
+on a receiver $N$, and let $v$ induce $\delta_v$ raising a designated
+edge $e_\ast$ of $N$ by $c$. By \Cref{prop:skeleton} the skeleton is
+unchanged in both cases, so the response structures $N_u$ and $N_v$ are
+comparable edge for edge under the identity correspondence. Choose
+$e_\ast$ on the minimum cut of some residue item $i$; then
+$\sep_{N_v}(i)=\sep_{N_u}(i)+c$ for $c$ small enough that the minimiser
+does not change, and beyond that $\sep_{N_v}(i)$ continues to increase,
+being the minimum of a family of affine functions of $c$ with at least
+one coefficient positive. Hence $\Delta_{N_v}(i,\corr(i))$ grows without
+bound in $c$ up to the normalisation $\Om$, which also grows linearly;
+choosing $e_\ast$ so that its weight is a vanishing fraction of $\Om$
+(by padding $N$ with fixed edges) makes the normalised gap grow, and
+$\dem^{\mathrm{response}}\to\infty$ accordingly.
+\end{proof}
+
+\begin{remark}
+The biological instance is (i) of \Cref{sec:intro}. Two units whose
+content a comparison cannot separate --- a synonymous pair --- may act
+on the cell in arbitrarily different ways
+\cite{kimchi2007silent,sauna2011silent}. The theorem says this is not an
+edge case to be handled but a structural possibility that content
+comparison is blind to by construction.
+\end{remark}
+
+\subsection{Content-divergent, response-aligned}
+
+\begin{corollary}[Converse]
+\label{cor:converse}
+There is a family indexed by $W$ with
+$\dem^{\mathrm{central}}$ strictly increasing in $W$ and
+$\dem^{\mathrm{response}}=0$ for all $W$.
+\end{corollary}
+
+\begin{proof}
+Take the two-cluster structure of \Cref{thm:region} with $u=a_1$,
+$v=b_1$. As $W$ grows, the minimum $(u,v)$-cut is $\min\{(r+1)\flo,\;
+(r-1)W+2\flo,\dots\}$; for $W$ in the regime where a cluster cut is
+selected the value is constant, but normalising by
+$\Om=r(r-1)W+\flo+2r\flo$ makes $a(u,v)$ vary, and choosing the regime
+$W<\flo$ where $S=\{a_1\}$ is minimal gives
+$a(u,v)=\frac{(r-1)W+2\flo}{\Om}$, strictly increasing in $W$ over the
+admissible interval. So $\dem^{\mathrm{central}}$ increases.
+
+Let both $u$ and $v$ induce the \emph{same} perturbation $\delta$ on the
+receiver. Then $N_u=N_v$ identically, every $\Delta$ term is computed on
+one structure against itself under the identity correspondence, and
+$\dem^{\mathrm{response}}=0$ exactly.
+\end{proof}
+
+\begin{remark}
+This is (ii) of \Cref{sec:intro}: the non-homologous isofunctional
+enzymes \cite{omelchenko2010nonhomologous}. Content comparison reports
+maximal divergence; the response columns report correspondence.
+\end{remark}
+
+\subsection{The plane and the criterion}
+
+\begin{corollary}[Orthogonality]
+\label{cor:orth}
+The families of \Cref{thm:falsefriend} and \Cref{cor:converse} lie on
+the two coordinate axes of the plane
+$(\dem^{\mathrm{central}},\dem^{\mathrm{response}})$: the first on
+$\{0\}\times\Rnn$, the second on $\Rnn\times\{0\}$. Any criterion that
+is a function of $\dem^{\mathrm{central}}$ alone is constant on the
+first family and therefore cannot separate its members; any criterion
+that is a function of $\dem^{\mathrm{response}}$ alone is constant on
+the second.
+\end{corollary}
+
+This forces the shape of a correct criterion.
+
+\begin{definition}[Four columns]
+\label{def:fourq}
+A \emph{four-column comparison} consists of two \emph{central} columns
+$(C_A, C_B)$ --- the units under comparison, with their anchors and
+residue --- and two \emph{response} columns $(R_A, R_B)$ --- the
+receivers as perturbed by each unit --- together with correspondences
+$\corr^{\mathrm{c}}$ and $\corr^{\mathrm{r}}$ and a threshold $\theta>0$.
+Its verdict is
+\[
+\mathrm{verdict}=
+\begin{cases}
+\textsf{CORRESPOND} & \dem^{\mathrm{c}}\le\theta \text{ and } \dem^{\mathrm{r}}\le\theta,\\[2pt]
+\textsf{DECLINE}    & \text{some relaxation declined (\Cref{thm:dichotomy}(ii))},\\[2pt]
+\textsf{DIVERGE}    & \text{otherwise.}
+\end{cases}
+\]
+\end{definition}
+
+\begin{theorem}[Adequacy of four columns]
+\label{thm:four}
+The four-column verdict separates the families of
+\Cref{thm:falsefriend} and \Cref{cor:converse}, and no criterion
+depending on fewer than both demand coordinates does.
+\end{theorem}
+
+\begin{proof}
+On the first family $\dem^{\mathrm{c}}=0\le\theta$ but
+$\dem^{\mathrm{r}}$ exceeds $\theta$ for $c$ large, so the verdict is
+\textsf{DIVERGE}, correctly. On the second $\dem^{\mathrm{r}}=0\le\theta$
+but $\dem^{\mathrm{c}}$ exceeds $\theta$ for $W$ large, so again
+\textsf{DIVERGE} --- and at small $W$, \textsf{CORRESPOND}, tracking the
+genuine functional agreement. The impossibility half is
+\Cref{cor:orth}.
+\end{proof}
+
+\begin{remark}[Why \textsf{DECLINE} is a verdict]
+\label{rem:decline}
+A three-valued verdict is not a hedge. \Cref{thm:dichotomy} gives
+exactly two ways a relaxation can end, and one of them is the discovery
+that no effective update exists --- the comparison, run correctly to its
+end, does not decide. Collapsing that onto \textsf{DIVERGE} reports a
+finding where there is none, and collapsing it onto \textsf{CORRESPOND}
+is worse. On a laboratory bench ``this experiment does not decide'' is a
+result one writes down. Synopsis makes \textsf{DECLINE} a first-class
+inhabitant of \typ{verdict} for that reason.
+\end{remark}
+
+\subsection{The assumption that fails}
+
+\Cref{def:fourq} requires, for each unit, a perturbation it induces ---
+its \emph{admissible response}. Nothing so far fixes which one.
+
+\begin{assumption}[Response independence]
+\label{ass:respind}
+The four-column verdict is independent of the choice of admissible
+response, within threshold $\theta$.
+\end{assumption}
+
+\begin{proposition}
+\label{prop:respind}
+If \Cref{ass:respind} fails then the verdict depends on an arbitrary
+choice made by the analyst, and two analysts running the same comparison
+may correctly obtain different verdicts.
+\end{proposition}
+
+\begin{proof}
+Immediate: the verdict is a function of $\dem^{\mathrm{r}}$, which is a
+function of the chosen response.
+\end{proof}
+
+We report in \Cref{sec:open} that \Cref{ass:respind} \emph{fails
+empirically} on solved biochemical networks. We do not repair it here.
+We instead require the language to make the choice visible, which is the
+most a language can honestly do about an open problem: see
+\Cref{rule:namedresponse} and \Cref{sec:open}.
+
+% =====================================================================
+\section{Design: eleven rules}
+\label{sec:design}
+% =====================================================================
+
+Every rule below is derived from a result above. We state the rule, the
+result forcing it, and the consequence for a user.
+
+\begin{rule}[Sequences are opaque]
+\label{rule:opaque}
+The type \typ{seq} supports no indexing, no slicing, no base access, no
+concatenation and no equality. A \typ{seq} may only be consumed by a
+projection into \typ{profile}, \typ{coord} or \typ{net}.
+\end{rule}
+\noindent\emph{Forced by} \Cref{cor:labels} and \Cref{rem:bearing}: a
+sequence is a labelling, and labels carry none of the invariant.
+\emph{Consequence:} a user cannot write a character-level comparison,
+because there is no expression denoting a character. This is discussed
+at length in \Cref{sec:opaque} because it is the rule users find hardest.
+
+\begin{rule}[Every value carries residue]
+\label{rule:residue}
+Every value of a comparison type carries a pair $(\flo,\Res)$ with
+$\Res\ge\flo>0$. Residue is not optional and not erasable; it may be
+consumed by \kw{bind} or explicitly abandoned by \kw{drop}, which the
+report records.
+\end{rule}
+\noindent\emph{Forced by} \Cref{thm:floor}. \emph{Consequence:} a program
+that throws information away must say so in its own text.
+
+\begin{rule}[No zero-residue constructor]
+\label{rule:nozero}
+There is no expression in synopsis whose type ascribes $\Res=0$.
+\end{rule}
+\noindent\emph{Forced by} \Cref{thm:floor}: zero is outside the range of
+the quantity. \emph{Consequence:} \texttt{identical} and
+\texttt{percent\_identity == 100} are not writable
+(\Cref{thm:noexact}).
+
+\begin{rule}[Verdicts are four-ary]
+\label{rule:arity}
+The verdict constructor \kw{align} takes exactly a central pair and a
+response pair. Supplying only the central pair is an arity error at
+parse time.
+\end{rule}
+\noindent\emph{Forced by} \Cref{cor:orth} and \Cref{thm:four}.
+\emph{Consequence:} the commonest scientific error in this domain
+--- concluding functional sameness from content sameness --- is a
+\emph{syntax} error.
+
+\begin{rule}[Frames are lexical]
+\label{rule:frames}
+Every value is created inside an \kw{under} block naming a receiver and
+an encoding. Values from different blocks have different types and
+cannot be compared.
+\end{rule}
+\noindent\emph{Forced by} \Cref{thm:receiver} and \Cref{cor:notnoise}.
+\emph{Consequence:} comparing a nucleotide embedding to a protein
+embedding, or a value from receiver $N$ to one from $N'$, fails to
+typecheck (\Cref{thm:scope}).
+
+\begin{rule}[No default thresholds]
+\label{rule:nodefault}
+Every numeric parameter that can change a verdict must appear in the
+program text. There are no defaults.
+\end{rule}
+\noindent\emph{Forced by} nothing in the mathematics --- this one is
+methodological \cite{simmons2011false,gelman2013garden}.
+\emph{Consequence:} the report can print the full parameter set because
+the parser has seen all of it.
+
+\begin{rule}[Named responses]
+\label{rule:namedresponse}
+The response constructor is \kw{response}~$u$~\kw{by}~$\resp$, where
+$\resp$ must be a named, in-scope perturbation map. There is no anonymous
+or inferred response.
+\end{rule}
+\noindent\emph{Forced by} \Cref{prop:respind} and the negative result of
+\Cref{sec:open}. \emph{Consequence:} every program records which
+arbitrary choice it made, so the open problem is visible in the source
+and in the report rather than buried in a library default.
+
+\begin{rule}[Bounded iteration only]
+\label{rule:bounded}
+The only iteration forms are \kw{sweep} over an arithmetic range or a
+literal list, \kw{for} over the finite item set of a structure, and
+\kw{relax until quiescent}. There is no \kw{while}, no recursion, and no
+user-defined fixpoint.
+\end{rule}
+\noindent\emph{Forced by} the desire for \Cref{thm:total}, made
+affordable by \Cref{thm:dichotomy}. \emph{Consequence:} every synopsis
+program halts, and the compiler can state the bound.
+
+\begin{rule}[Relaxation must be floored]
+\label{rule:floored}
+\kw{relax}~\ldots~\kw{until quiescent} typechecks only when a step floor
+$\eta>0$ is supplied as a literal or an expression provably positive.
+The compiler then emits $\lceil \dem_0/\eta\rceil$ into the report.
+\end{rule}
+\noindent\emph{Forced by} \Cref{ass:effective} and \Cref{thm:dichotomy}.
+\emph{Consequence:} the termination proof of each program is a
+by-product of compiling it.
+
+\begin{rule}[Three result types]
+\label{rule:three}
+Comparison methods produce distinct types according to their index set:
+\typ{profile} (indexed by lag), \typ{ranked} (indexed by database
+entry), \typ{verdict} (an element of a three-valued set over a
+structure). These do not unify and are not coercible.
+\end{rule}
+\noindent\emph{Forced by} the fact that the index sets genuinely differ;
+see \Cref{sec:threefamilies}. \emph{Consequence:} a user cannot
+accidentally feed a lag-indexed correlation into a database-ranking
+consumer.
+
+\begin{rule}[Programs emit reports]
+\label{rule:report}
+The terminal form of a synopsis program is a report: a document carrying
+claims, their verdicts, their residues, their parameters and their
+certificates. A program does not ``return a number''.
+\end{rule}
+\noindent\emph{Forced by} \Cref{thm:form}: quiescence coexists with
+positive residue, so a scalar cannot express the result.
+\emph{Consequence:} outputs are auditable in the sense of
+\cite{sandve2013ten,wilkinson2016fair,moreau2011provenance}.
+
+\subsection{On \Cref{rule:opaque}, at length}
+\label{sec:opaque}
+
+Users object to opacity, so it deserves a defence beyond the citation of
+\Cref{cor:labels}.
+
+The objection is that sequences are data and data should be
+manipulable. The answer is that in synopsis the sequence is not the
+datum; the \emph{structure it labels} is. Opening a \typ{seq} to
+indexing would immediately permit writing
+\texttt{s[i] == t[i]} and, from there, percent identity --- which
+\Cref{rule:nozero} and \Cref{thm:noexact} exist to forbid. A rule that
+can be circumvented by three lines of user code is not a rule.
+
+The practical question is then whether opacity costs anything. We claim
+it does not, on the evidence of the three experiment families we
+specify in \Cref{sec:programs}. Each begins by \emph{channelising} the
+sequence --- mapping it to a numeric matrix under a declared encoding
+--- and never touches a base again. Motif detection consumes channels
+via correlation; homology search consumes them via a spectral transform;
+functional adjudication consumes a contact structure derived from
+pairing rather than from the string. None of them needs
+\texttt{s[i]}.
+
+What opacity does cost is the ability to write \emph{ad hoc} string
+surgery inside a synopsis program. We regard this as a feature: such
+surgery is data preparation, belongs upstream, and should be visible in
+the provenance record rather than hidden inside an analysis script.
+
+\subsection{Three families, three index sets}
+\label{sec:threefamilies}
+
+\Cref{rule:three} deserves justification because the temptation to unify
+is strong and we ourselves initially yielded to it.
+
+\begin{itemize}[leftmargin=1.4em]
+\item \textbf{Matched filtering.} A query of length $L_q$ is slid along a
+      target of length $L_t$ and a score computed at each offset. The
+      result is indexed by \emph{lag} $k\in\{0,\dots,L_t-L_q\}$
+      \cite{turin1960introduction,oppenheim2009discrete}. Its natural
+      consumer is peak detection; its natural output is a set of
+      \emph{positions}.
+\item \textbf{Database search.} A query embedding is compared against
+      $N$ stored embeddings. The result is indexed by \emph{database
+      entry} $i\in\{0,\dots,N-1\}$
+      \cite{altschul1990basic,steinegger2017mmseqs2}. Its natural
+      consumer is top-$K$ selection; its natural output is a
+      \emph{ranking}.
+\item \textbf{Functional adjudication.} Two structures are compared. The
+      result is not indexed at all: it is a single element of
+      $\{\textsf{CORRESPOND},\textsf{DIVERGE},\textsf{DECLINE}\}$ with
+      four demand values attached.
+\end{itemize}
+
+A single \texttt{compare} returning a single type would have to pick one
+of these index sets and coerce the others. Coercing a lag index to a
+database index is meaningless; coercing either to a scalar discards
+exactly the information the method exists to produce. Synopsis therefore
+keeps one \emph{keyword}, \kw{compare}, and three \emph{result types},
+with the parser dispatching on the named method. The user writes the
+same verb; the typechecker knows which noun came back.
+
+% =====================================================================
+\section{The synopsis language}
+\label{sec:lang}
+% =====================================================================
+
+Files carry the extension \texttt{.syp}.
+
+\subsection{Lexical structure}
+
+Comments run from \texttt{\#} to end of line. Identifiers match
+\texttt{[A-Za-z\_][A-Za-z0-9\_]*}. Numeric literals are decimal, with an
+optional exponent; \emph{there are no unsuffixed bare numbers in
+threshold position} --- see \Cref{sec:units}. String literals are
+double-quoted and are used only for file paths and claim text. The
+language is case-sensitive and whitespace-insensitive except that
+newlines terminate statements.
+
+\subsection{Types}
+
+\begin{center}
+\begin{tabular}{@{}llp{7.4cm}@{}}
+\toprule
+\textbf{Type} & \textbf{Carries} & \textbf{Meaning} \\
+\midrule
+\typ{seq}      & ---                 & An opaque sequence. No observers. \\
+\typ{frame}    & receiver, encoding  & A lexical scope for values. \\
+\typ{profile}$_\phi$ & $(\flo,\Res)$, lag index & Lag-indexed score vector in frame $\phi$. \\
+\typ{coord}$_\phi$   & $(\flo,\Res)$, dimension  & A point in an embedding space. \\
+\typ{ranked}$_\phi$  & $(\flo,\Res)$, entry index & A ranking over a database. \\
+\typ{peaks}$_\phi$   & $(\flo,\Res)$, positions   & Detected positions with scores. \\
+\typ{net}$_\phi$     & $(\flo,\Res)$, $\Om$       & A contact structure. \\
+\typ{unit}$_\phi$    & $(\flo,\Res)$, anchors, residue & A central column. \\
+\typ{response}$_\phi$ & $(\flo,\Res)$, named $\resp$ & A response column. \\
+\typ{corr}$_{\phi,\psi}$ & partial map          & A correspondence between two structures. \\
+\typ{verdict}  & four demands, $\theta$, certificate & \textsf{CORRESPOND} $|$ \textsf{DIVERGE} $|$ \textsf{DECLINE}. \\
+\typ{real}$^{+}$ & --- & A strictly positive real. \\
+\typ{depth}    & --- & A non-negative partition depth (\Cref{sec:depth}). \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The subscript $\phi$ is a \emph{frame index}, assigned by the enclosing
+\kw{under} block. Two types with different frame indices are different
+types. This single device implements \Cref{rule:frames} and yields
+\Cref{thm:scope}.
+
+\subsection{Grammar}
+
+We give the concrete grammar in EBNF. Nonterminals are
+\textit{italic}; terminals are \texttt{typewriter}.
+
+\begin{lstlisting}[style=grammar]
+program     ::= { decl } { frame_block } report_stmt
+
+decl        ::= "open" ident "=" string
+              | "let" ident "=" expr
+              | "method" ident "=" method_spec
+              | "require" predicate
+
+frame_block ::= "under" ident "{" { stmt } "}"
+
+stmt        ::= binding | claim_stmt | sweep_stmt | for_stmt
+              | relax_stmt | record_stmt | drop_stmt
+
+binding     ::= "let" ident [":" type] "=" expr
+              | "bind" ident "," ident "=" expr      # value, residue
+
+expr        ::= project_expr | compare_expr | detect_expr
+              | align_expr   | net_expr     | prim_expr
+
+project_expr::= "project" expr "by" projector
+projector   ::= "channels" "(" enc ")"
+              | "spectral" "(" "coeffs" "=" int ")"
+              | "contact"  "(" "medium" "=" num ")"
+              | "cardinal" "(" ")"
+enc         ::= "dna" | "protein"
+
+compare_expr::= "compare" expr "against" expr "by" method_ref
+
+detect_expr ::= "detect" detect_kind "in" expr "{" params "}"
+detect_kind ::= "peaks" | "top"
+
+align_expr  ::= "align" "central" "(" expr "," expr ")"
+                        "response" "(" expr "," expr ")"
+                        "under" corr_ref "{" params "}"
+
+net_expr    ::= "perturb" expr "by" ident
+              | "join" expr "and" expr
+              | "unit" expr "anchors" int
+              | "response" expr "by" ident
+
+relax_stmt  ::= "relax" ident "until" "quiescent"
+                "{" "eta" "=" num ";" "theta" "=" num "}"
+
+sweep_stmt  ::= "sweep" ident "in" range "{" { stmt } "}"
+range       ::= num ".." num "step" num | "[" num { "," num } "]"
+
+for_stmt    ::= "for" ident "in" "items" "(" expr ")"
+                [ "where" predicate ] "{" { stmt } "}"
+
+claim_stmt  ::= "claim" string "=" expr
+record_stmt ::= "record" ident { "," ident }
+drop_stmt   ::= "drop" ident
+report_stmt ::= "report" "to" string
+
+params      ::= param { ";" param }
+param       ::= ident "=" num
+method_spec ::= "xcorr" "(" "normalised" ")"
+              | "shader" "(" "cosine" ")"
+              | "smith_waterman" "(" params ")"
+              | "jaccard" "(" "k" "=" int ")"
+\end{lstlisting}
+
+\subsection{Frames and the \kw{under} block}
+\label{sec:frames}
+
+\begin{lstlisting}[style=nonum]
+open wildtype = "wt.fa"
+open variant  = "var.fa"
+
+under nucleotide_frame {
+    let a = project wildtype by channels(dna)
+    let b = project variant  by channels(dna)
+    let r = compare a against b by xcorr(normalised)
+}
+
+under protein_frame {
+    let p = project wildtype by channels(protein)
+    # let bad = compare a against p by xcorr(normalised)
+    #   ^ scope error: `a` was created in nucleotide_frame
+}
+\end{lstlisting}
+
+The commented line does not fail at runtime with a shape mismatch; it
+fails at typecheck, because \typ{profile}$_{\texttt{nucleotide\_frame}}$
+and \typ{profile}$_{\texttt{protein\_frame}}$ are distinct types. This is
+\Cref{thm:scope}.
+
+\subsection{Units and residue}
+\label{sec:units}
+
+Every comparison value is a pair. The user may bind both:
+
+\begin{lstlisting}[style=nonum]
+under N {
+    bind score, res = compare q against t by xcorr(normalised)
+    # `res` is in scope and MUST be consumed:
+    record res
+}
+\end{lstlisting}
+
+Leaving \texttt{res} unconsumed is a compile error. The user may
+abandon it deliberately:
+
+\begin{lstlisting}[style=nonum]
+    drop res      # recorded in the report as an explicit abandonment
+\end{lstlisting}
+
+\noindent which typechecks, and prints in the report as a line reading
+\texttt{residue abandoned at line \emph{n}}. There is no silent path.
+
+\subsection{Relaxation}
+\label{sec:relax}
+
+\begin{lstlisting}[style=nonum]
+under N {
+    let d = compare unitA against unitB by demand
+    relax d until quiescent { eta = 0.005 ; theta = 0.01 }
+}
+\end{lstlisting}
+
+The compiler checks that \texttt{eta} is a positive literal or a
+provably-positive expression. If it is not, the program is rejected with
+
+\begin{lstlisting}[style=grammar]
+error: `relax` requires a step floor bounded below (Assumption: effective update).
+  eta = 0.0 is not positive; no termination bound can be emitted.
+\end{lstlisting}
+
+\noindent If it is, the compiler emits into the report the discharged
+obligation
+\[
+  \text{steps} \;\le\; \left\lceil \dem_0/\eta \right\rceil
+  \;=\; \left\lceil 0.4130/0.005 \right\rceil \;=\; 83 ,
+\]
+computed from the value of $\dem_0$ available at that point. The
+termination of the loop is thus a theorem the compiler states, not a
+hope the user holds.
+
+\subsection{Partition depth}
+\label{sec:depth}
+
+Some analyses need an additive measure of how finely a space has been
+subdivided --- how many nested distinctions have been drawn. We include
+one primitive for it.
+
+\begin{definition}[Partition depth]
+\label{def:depth}
+If a space is subdivided successively into $k_1,k_2,\dots,k_m$ parts,
+its \emph{partition depth} at base $b$ is
+$\mathrm{depth} = \sum_{j=1}^{m}\log_b k_j$.
+\end{definition}
+
+\begin{proposition}[Additivity]
+\label{prop:depthadd}
+If two subdivisions are independent, the depth of their product is the
+sum of their depths.
+\end{proposition}
+\begin{proof}
+The product subdivision has parts $k_j k'_l$ over the product index, and
+$\log_b(k_jk'_l)=\log_b k_j+\log_b k'_l$; summing over the product
+index and factoring gives the claim.
+\end{proof}
+
+Depth is a \typ{depth}-typed value and cannot be added to a
+\typ{real}$^+$. Its use is to state how deep a hierarchical address is
+before it is used as a prefilter (\Cref{sec:prog-homology}).
+
+\subsection{The typing judgement}
+
+We write $\Gamma;\phi \vdash e : \tau$ for ``in environment $\Gamma$ and
+frame $\phi$, expression $e$ has type $\tau$''. Selected rules:
+
+\begin{align*}
+&\textsc{(Open)} &&
+\frac{}{\Gamma;\phi \vdash \kw{open}\ x = s \;:\; \typ{seq}}
+\\[6pt]
+&\textsc{(Proj-Ch)} &&
+\frac{\Gamma;\phi\vdash e:\typ{seq}}
+     {\Gamma;\phi\vdash \kw{project}\ e\ \kw{by}\ \texttt{channels}(c)
+       \;:\; \typ{profile}_\phi(\flo,\Res),\ \Res\ge\flo>0}
+\\[6pt]
+&\textsc{(Cmp-Lag)} &&
+\frac{\Gamma;\phi\vdash e_1:\typ{profile}_\phi \quad
+      \Gamma;\phi\vdash e_2:\typ{profile}_\phi}
+     {\Gamma;\phi\vdash \kw{compare}\ e_1\ \kw{against}\ e_2\ \kw{by}\ \texttt{xcorr}
+       \;:\;\typ{profile}_\phi}
+\\[6pt]
+&\textsc{(Cmp-Rank)} &&
+\frac{\Gamma;\phi\vdash e_1:\typ{coord}_\phi \quad
+      \Gamma;\phi\vdash e_2:\typ{coord}_\phi^{\,N}}
+     {\Gamma;\phi\vdash \kw{compare}\ e_1\ \kw{against}\ e_2\ \kw{by}\ \texttt{shader}
+       \;:\;\typ{ranked}_\phi}
+\\[6pt]
+&\textsc{(Align)} &&
+\frac{\begin{array}{c}
+       \Gamma;\phi\vdash c_A,c_B : \typ{unit}_\phi \qquad
+       \Gamma;\phi\vdash r_A,r_B : \typ{response}_\phi \\
+       \Gamma;\phi\vdash \varphi^{\mathrm{c}},\varphi^{\mathrm{r}} : \typ{corr}_{\phi,\phi}
+       \qquad \theta>0 \text{ literal}
+      \end{array}}
+     {\Gamma;\phi\vdash \kw{align}\ \kw{central}(c_A,c_B)\ \kw{response}(r_A,r_B)\ \cdots
+       \;:\;\typ{verdict}}
+\\[6pt]
+&\textsc{(Relax)} &&
+\frac{\Gamma;\phi\vdash d:\typ{real}^{+} \qquad \eta>0 \text{ provable}}
+     {\Gamma;\phi\vdash \kw{relax}\ d\ \kw{until\ quiescent}\ \cdots
+       \;:\;\typ{verdict}
+       \ \ \big[\text{emit } \lceil d/\eta\rceil\big]}
+\end{align*}
+
+Note what has \emph{no} rule: there is no rule producing $\Res=0$; there
+is no rule deriving \typ{verdict} from fewer than four columns; there is
+no rule relating $\typ{profile}_\phi$ to $\typ{profile}_\psi$ for
+$\phi\ne\psi$; and there is no elimination rule for \typ{seq} other than
+projection. The refusals of \Cref{sec:meta} are proved by inspecting the
+absence of these rules.
+
+% =====================================================================
+\section{Operational semantics}
+\label{sec:semantics}
+% =====================================================================
+
+We give a small-step semantics \cite{plotkin2004structural} over
+configurations $\langle \Sigma, \mathcal{R}, s\rangle$ where $\Sigma$ is
+a store, $\mathcal{R}$ is the accumulating report, and $s$ is the
+statement sequence.
+
+\subsection{Projection}
+
+Channelisation is the single primitive shared by all families.
+
+\begin{definition}[Channelisation]
+\label{def:channelise}
+Given a sequence $s$ of length $L$ over an alphabet $\mathcal{A}$ and an
+encoding $c$, $\texttt{channels}(c)$ produces a matrix
+$X\in\mathbb{R}^{C\times L}$:
+\begin{itemize}[leftmargin=1.4em]
+\item $c=\texttt{dna}$: $C=4$, $X_{\alpha,n}=\mathbb{1}[s_n=\alpha]$ for
+      $\alpha\in\{\mathrm{A,C,G,T}\}$, then each row is centred by
+      subtracting its mean.
+\item $c=\texttt{protein}$: $C=3$, the rows being hydropathy
+      \cite{kyte1982simple}, residue volume
+      \cite{zamyatnin1972protein} and net charge at neutral pH, each
+      normalised to $[0,1]$ and then centred.
+\item $c=\texttt{cardinal}$: $C=2$, mapping each base to a unit vector
+      in a fixed cardinal frame; the complementary strand maps to the
+      negated trajectory, which is the formal expression of
+      \Cref{sec:notinseq}.
+\end{itemize}
+Centring is not cosmetic: it removes the composition-only component so
+that subsequent correlations respond to arrangement rather than base
+frequency.
+\end{definition}
+
+\begin{align*}
+&\textsc{(E-Proj)} &&
+\langle \Sigma,\mathcal{R},\ \kw{let}\ x = \kw{project}\ s\ \kw{by}\ \texttt{channels}(c)\rangle
+\;\longrightarrow\;
+\langle \Sigma[x\mapsto X_{c}(s)],\ \mathcal{R}\cup\{\text{proj}\},\ \cdot\rangle
+\end{align*}
+
+\subsection{The three comparison methods}
+
+\begin{definition}[Normalised cross-correlation]
+\label{def:xcorr}
+For query channels $Q\in\mathbb{R}^{C\times L_q}$ and target channels
+$T\in\mathbb{R}^{C\times L_t}$ with $L_q\le L_t$, the score at lag $k$ is
+\[
+  r[k]\;=\;
+  \frac{\sum_{\gamma=1}^{C}\sum_{n=0}^{L_q-1} Q_{\gamma,n}\,T_{\gamma,n+k}}
+       {\|Q\|_F \cdot \|T_{[k,k+L_q)}\|_F},
+  \qquad k=0,\dots,L_t-L_q,
+\]
+with the convention that a zero denominator yields $r[k]=0$. The
+numerator is computed by FFT in $O((L_q+L_t)\log(L_q+L_t))$ time
+\cite{cooley1965algorithm}; the denominator uses a rolling window norm.
+Channels are summed \emph{coherently}, so phase agreement across
+channels reinforces and disagreement cancels --- discarding phase and
+correlating magnitudes alone is a strictly weaker procedure.
+$r[k]\in[-1,1]$ by Cauchy--Schwarz.
+\end{definition}
+
+\begin{definition}[Spectral embedding]
+\label{def:spectral}
+For channels $X\in\mathbb{R}^{C\times L}$ and a coefficient count $m$,
+let $\hat X_\gamma$ be the real FFT of row $\gamma$. The embedding is
+\[
+  E \;=\; \frac{1}{\max(L,1)}\,
+  \Big(\big|\hat X_{\gamma,j}\big|\Big)_{\gamma\in[C],\ j\in\{1,\dots,m\}}
+  \;\in\;\mathbb{R}^{Cm},
+\]
+zero-padded if $L$ is short. The DC term $j=0$ is \emph{skipped}: it
+encodes only mean composition, which centring has already removed and
+which would otherwise dominate the norm. Division by $L$ makes
+embeddings of different-length sequences comparable. Embeddings are then
+$\ell_2$-normalised, so cosine similarity is a dot product.
+\end{definition}
+
+\begin{definition}[Shader distance and hierarchical address]
+\label{def:shader}
+For an $\ell_2$-normalised query $q$ and a normalised database matrix
+$B\in\mathbb{R}^{N\times Cm}$, the distance vector is $d = 1 - Bq \in
+[0,2]^N$. A \emph{hierarchical address} of depth $D$ for a point in
+$[0,1]^3$ is obtained by axis-cyclic bisection: at step $j$ bisect along
+axis $j\bmod 3$ and emit the bit. Two points sharing an address prefix
+of length $D$ lie in a common cell, giving a prefilter in the spirit of
+\cite{morton1966computer,bentley1975multidimensional}; candidates
+surviving the prefilter are reranked exactly by Smith--Waterman
+\cite{smith1981identification}.
+\end{definition}
+
+\begin{definition}[Contact projection]
+\label{def:contactproj}
+$\texttt{contact}(\texttt{medium}=w)$ maps a solved network --- a set of
+species with pairwise contact costs --- to a contact structure by taking
+the costs as edge weights and attaching the medium to every species at
+weight $w$. Setting $w$ to the minimum observed cost makes the medium
+the cheapest distinction available and realises the floor without
+inventing a scale; any other choice must be written explicitly, and the
+report prints it.
+\end{definition}
+
+\subsection{Verdict evaluation}
+
+\begin{align*}
+&\textsc{(E-Align)} &&
+\frac{\begin{array}{c}
+ \dem^{\mathrm{c}} = \dem_{A\to B}+\dem_{B\to A}\quad
+ \dem^{\mathrm{r}} = \dem_{R_A\to R_B}+\dem_{R_B\to R_A}\\
+ \text{no relaxation declined}
+\end{array}}
+{\kw{align}\cdots \longrightarrow
+ \begin{cases}
+ \textsf{CORRESPOND} & \dem^{\mathrm{c}}\le\theta \wedge \dem^{\mathrm{r}}\le\theta\\
+ \textsf{DIVERGE} & \text{otherwise}
+ \end{cases}}
+\\[8pt]
+&\textsc{(E-Decline)} &&
+\frac{\text{some relaxation reached an undefined update}}
+     {\kw{align}\cdots \longrightarrow \textsf{DECLINE}}
+\end{align*}
+
+\subsection{Cost model}
+\label{sec:costmodel}
+
+The language commits to complexity bounds so that a user can predict
+cost from the program text.
+
+\begin{center}
+\begin{tabular}{@{}lll@{}}
+\toprule
+Operation & Cost & Note \\
+\midrule
+\texttt{channels} & $O(CL)$ & linear scan \\
+\texttt{xcorr} & $O((L_q+L_t)\log(L_q+L_t))$ & FFT \cite{cooley1965algorithm} \\
+\texttt{spectral} & $O(CL\log L)$ & per sequence \\
+\texttt{shader} & $O(NCm)$ & one matrix--vector product \\
+prefix prefilter & $O(N)$ then $O(|\text{cand}|)$ & depth-$D$ address \\
+\texttt{smith\_waterman} & $O(L_aL_b)$ per candidate & exact rerank \\
+$\sep(u\mid v)$ & polynomial & max-flow \cite{ford1956maximal,stoer1997simple} \\
+all-pairs $\sep$ & $|\Ver|-1$ flows & Gomory--Hu \cite{gomory1961multi} \\
+\texttt{relax} & $\le\lceil \dem_0/\eta\rceil$ steps & \Cref{thm:dichotomy} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{remark}[Exact cuts in validation]
+A validation suite should compute minimum cuts by exhaustive
+enumeration over separating subsets, not by an approximate max-flow
+routine, so that agreement between a computed value and a predicted one
+cannot be an artefact of two approximations meeting. This is
+exponential and is affordable only on small structures; synopsis
+therefore admits an \texttt{exact} annotation on \texttt{contact} that
+selects enumeration and refuses structures above a stated size.
+\end{remark}
+
+% =====================================================================
+\section{Metatheory}
+\label{sec:meta}
+% =====================================================================
+
+We now prove the properties that justify the design. Throughout, a
+\emph{well-typed program} is one derivable in the judgement of
+\Cref{sec:lang}.
+
+\subsection{Totality}
+
+\begin{theorem}[Strong normalisation]
+\label{thm:total}
+Every well-typed synopsis program terminates.
+\end{theorem}
+
+\begin{proof}
+We exhibit a well-founded measure. Assign to each statement sequence the
+lexicographic pair $(\mathcal{I}, \mathcal{S})$ where $\mathcal{S}$ is
+the number of statements remaining and $\mathcal{I}$ is the sum, over
+all enclosing iteration constructs, of the remaining iteration count.
+
+Every construct that can repeat has a count fixed before it begins:
+\begin{itemize}[leftmargin=1.4em]
+\item \kw{sweep}~$x$~\kw{in}~$a..b$~\kw{step}~$s$ has
+      $\lfloor (b-a)/s\rfloor+1$ iterations, determined by three values
+      evaluated on entry; the grammar admits no expression for $s$ that
+      is not positive.
+\item \kw{sweep}~$x$~\kw{in}~$[\,\cdot\,]$ has the literal list length.
+\item \kw{for}~$u$~\kw{in items}$(e)$ ranges over
+      $I=\Ver\setminus\{\med\}$, finite by \Cref{def:fwg}; the optional
+      \kw{where} guard only removes elements.
+\item \kw{relax} has at most $\lceil \dem_0/\eta\rceil$ iterations by
+      \Cref{thm:dichotomy}, and the typing rule \textsc{(Relax)}
+      admits the construct only when $\eta>0$ is established, so the
+      bound is a positive integer computed on entry.
+\end{itemize}
+There is no other repeating construct: the grammar has no \kw{while}, no
+user-defined function and hence no recursion, and no fixpoint operator.
+Each step of evaluation strictly decreases $(\mathcal{I},\mathcal{S})$
+in the lexicographic order on $\mathbb{N}^2$, which is well-founded.
+Hence no infinite reduction sequence exists.
+\end{proof}
+
+\begin{corollary}[Cost is predictable]
+For each program the compiler can compute a closed-form upper bound on
+the number of primitive operations, since every iteration count is
+available statically or at loop entry.
+\end{corollary}
+
+\subsection{Floor preservation}
+
+\begin{theorem}[Floor preservation]
+\label{thm:floorpres}
+Let $e$ be a well-typed expression of a comparison type evaluating to a
+value carrying $(\flo,\Res)$. Then $\Res\ge\flo>0$.
+\end{theorem}
+
+\begin{proof}
+Induction on the typing derivation. The base cases are the projection
+rules, whose conclusions carry $\Res\ge\flo>0$ because
+\Cref{def:contactproj} produces a structure with strictly positive
+weights (\Cref{def:fwg}) and \Cref{thm:floor} then applies.
+
+For the inductive step we check each rule that combines values.
+\textsc{(Cmp-Lag)} and \textsc{(Cmp-Rank)} produce residues that are
+sums or minima of subterm residues, each $\ge\flo>0$ by hypothesis, and
+a finite sum or minimum of quantities $\ge\flo$ is $\ge\flo$.
+\kw{perturb} is non-negative by \Cref{def:perturbation}, so by
+\Cref{prop:skeleton} it does not decrease any separation cost and does
+not lower $\flo$ unless it acts on the minimising edge, in which case it
+raises it. \kw{join} forms a disjoint union sharing the medium; the
+floor of the union is the minimum of the two floors, still strictly
+positive, and the typing rule for \kw{join} requires both operands to be
+in the same frame so that the medium is shared. No rule subtracts
+residues. Hence the invariant is preserved.
+\end{proof}
+
+\begin{theorem}[No zero residue]
+\label{thm:nozero}
+There is no well-typed synopsis expression whose value carries
+$\Res=0$.
+\end{theorem}
+\begin{proof}
+Immediate from \Cref{thm:floorpres}: $\Res\ge\flo>0$.
+\end{proof}
+
+\subsection{The refusal theorems}
+
+These state that certain scientifically invalid claims are not
+expressible. Each is proved by exhibiting the absence of a typing rule,
+which is a statement about the fixed grammar of \Cref{sec:lang} and so
+is a genuine theorem about the language rather than an observation about
+a particular implementation.
+
+\begin{theorem}[Exactness is inexpressible]
+\label{thm:noexact}
+No well-typed synopsis program denotes the proposition ``$u$ and $v$ are
+identical'', in the sense that no expression evaluates to a value
+asserting zero separation cost between two items.
+\end{theorem}
+
+\begin{proof}
+Such an expression would have to produce either (a) a comparison value
+with $\Res=0$, excluded by \Cref{thm:nozero}; or (b) a boolean equality
+on \typ{seq}, for which no rule exists --- the only elimination form for
+\typ{seq} is \textsc{(Proj-Ch)} and its variants, all of which produce
+comparison types carrying residue; or (c) a numeric expression
+reconstructing identity from base-level access, which requires an
+indexing operator on \typ{seq} that the grammar does not contain
+(\Cref{rule:opaque}). All three routes are closed.
+\end{proof}
+
+\begin{theorem}[Arity of verdicts]
+\label{thm:arity}
+No well-typed synopsis program derives a value of type \typ{verdict}
+from fewer than two central and two response columns.
+\end{theorem}
+\begin{proof}
+\textsc{(Align)} is the only rule with \typ{verdict} in its conclusion
+apart from \textsc{(Relax)}, which itself requires an \kw{align}
+expression as its subject. \textsc{(Align)} has four column premises,
+and a derivation lacking any premise is not a derivation. The grammar
+production \textit{align\_expr} likewise requires both a
+\texttt{central} and a \texttt{response} clause, so an attempt to omit
+one fails at parse time with an arity error rather than producing a
+weaker but well-formed value.
+\end{proof}
+
+\begin{theorem}[Scope safety]
+\label{thm:scope}
+No well-typed synopsis program compares two values created in distinct
+\kw{under} blocks.
+\end{theorem}
+\begin{proof}
+Each \kw{under} block introduces a fresh frame index $\phi$, and every
+value constructed inside it receives type $\tau_\phi$. The comparison
+rules \textsc{(Cmp-Lag)}, \textsc{(Cmp-Rank)} and \textsc{(Align)}
+require their premises to carry the \emph{same} index, and there is no
+subsumption, coercion or subtyping rule relating $\tau_\phi$ and
+$\tau_\psi$ for $\phi\ne\psi$. Hence no derivation exists.
+\end{proof}
+
+\begin{corollary}[Encoding safety]
+A program cannot compare a nucleotide-channelised value with a
+protein-channelised value, nor a value registered in one receiver with
+one registered in another. By \Cref{cor:notnoise} the latter would be a
+category error rather than a tolerable approximation.
+\end{corollary}
+
+\begin{theorem}[Parameter completeness]
+\label{thm:params}
+For every well-typed program, the set of numeric parameters capable of
+changing any verdict appears in the program text and is recoverable by
+the compiler.
+\end{theorem}
+\begin{proof}
+By \Cref{rule:nodefault} the grammar productions for
+\textit{detect\_expr}, \textit{align\_expr}, \textit{relax\_stmt} and
+\textit{method\_spec} each require a \textit{params} block, and
+\textit{param} requires a literal on the right-hand side. No production
+permits omission. Hence every such parameter is a token in the source,
+and the parser collects them.
+\end{proof}
+
+\begin{corollary}[Residue accountability]
+\label{cor:resacc}
+Every residue produced by a well-typed program is either bound and
+consumed, or explicitly dropped with a recorded source location. There
+is no silent discard.
+\end{corollary}
+\begin{proof}
+The \kw{bind} form introduces both components into scope; the
+well-formedness condition on block exit requires every bound identifier
+of residue type to be consumed by \kw{record} or \kw{drop}. \kw{drop}
+emits a report entry. A block leaving a residue identifier unconsumed
+does not typecheck.
+\end{proof}
+
+\subsection{What the metatheory does not give}
+
+Honesty requires stating the boundary.
+
+Totality (\Cref{thm:total}) says programs halt; it says nothing about
+whether they halt \emph{soon}. A \kw{sweep} over $10^9$ points is
+well-typed. The cost model of \Cref{sec:costmodel} is the tool for that,
+not the type system.
+
+Floor preservation (\Cref{thm:floorpres}) says residues stay positive;
+it does not say they are \emph{small}, and a large residue is a
+scientific problem the language reports but does not solve.
+
+The refusal theorems say certain claims cannot be \emph{written}; they
+do not say the claims a user does write are \emph{true}. Synopsis rules
+out a family of category errors. It cannot rule out a badly chosen
+threshold, a mis-specified receiver, or --- most importantly --- the
+open problem of \Cref{sec:open}.
+
+% =====================================================================
+\section{Worked programs}
+\label{sec:programs}
+% =====================================================================
+
+We give one complete program per experiment family. Each is a full
+\texttt{.syp} file; none is a fragment.
+
+\subsection{Matched-filter motif detection}
+\label{sec:prog-motif}
+
+\emph{Question.} Where in a target does a known motif occur, and with
+what confidence against a background?
+
+\begin{lstlisting}[caption={\texttt{motif\_scan.syp}}]
+# Locate a motif in a target by coherent multichannel matched filtering.
+# All thresholds are explicit; none has a default.
+
+open motif  = "motif.fa"
+open target = "chr7_region.fa"
+
+under nucleotide {
+
+    let q = project motif  by channels(dna)
+    let t = project target by channels(dna)
+
+    # Lag-indexed: the result type is profile, not ranked.
+    bind r, res_r = compare q against t by xcorr(normalised)
+
+    # Peak calling. Every parameter is stated.
+    let hits = detect peaks in r {
+        z            = 4.0 ;   # z-score against local background
+        min_distance = 30  ;   # greedy maximum suppression radius
+        min_score    = 0.35
+    }
+
+    claim "motif occurs at least once above z=4" = hits
+    record hits, res_r
+}
+
+report to "motif_scan.report"
+\end{lstlisting}
+
+Points of note. The residue \texttt{res\_r} is bound and recorded; had
+it been ignored the program would not compile
+(\Cref{cor:resacc}). \texttt{r} has type \typ{profile}$_{\texttt{nucleotide}}$
+and could not be passed to a top-$K$ selector, which consumes
+\typ{ranked} (\Cref{rule:three}). The three peak parameters are in the
+source, so the report can print them (\Cref{thm:params}).
+
+A sweep over the decision threshold, to show the verdict's sensitivity
+rather than assert one value:
+
+\begin{lstlisting}[style=nonum]
+    sweep z0 in 2.0..6.0 step 0.5 {
+        let h = detect peaks in r { z = z0 ; min_distance = 30 ; min_score = 0.35 }
+        record h
+    }
+\end{lstlisting}
+
+\noindent This terminates in exactly $9$ iterations, fixed on entry
+(\Cref{thm:total}).
+
+\subsection{Spectral homology search}
+\label{sec:prog-homology}
+
+\emph{Question.} Which entries of a database are plausible homologues of
+a query, when sequence-level search is too slow or too insensitive?
+
+\begin{lstlisting}[caption={\texttt{homology.syp}}]
+# Two-stage search: cheap spectral prefilter, exact rerank.
+
+open query = "query.fa"
+open db    = "swissprot_subset.fa"
+
+under residue_space {
+
+    let e  = project query by spectral(coeffs = 8)
+    let DB = project db    by spectral(coeffs = 8)
+
+    # Entry-indexed: the result type is ranked.
+    bind s, res_s = compare e against DB by shader(cosine)
+
+    let cands = detect top in s {
+        k      = 200 ;         # prefilter width
+        depth  = 12            # hierarchical address prefix length
+    }
+
+    # Exact rerank of survivors only. Costs O(La*Lb) per candidate.
+    bind final, res_f = compare e against cands by smith_waterman(
+        match = 2 ; mismatch = -1 ; gap = -2
+    )
+
+    claim "top 20 by exact rerank" = final
+    record final, res_s, res_f
+}
+
+report to "homology.report"
+\end{lstlisting}
+
+The two-stage shape is forced by the cost model: the shader stage is one
+matrix--vector product, $O(NCm)$, and the exact stage is quadratic per
+candidate, so the address depth is the parameter trading sensitivity for
+work. It is written in the source rather than defaulted. Note also that
+\texttt{coeffs = 8} appears twice and must match --- comparing
+embeddings of different dimension is a type error, since the dimension
+is part of \typ{coord}$_\phi$.
+
+\subsection{Four-column functional adjudication}
+\label{sec:prog-fourcol}
+
+\emph{Question.} Do a wild-type unit and a variant unit do the same
+thing, given that content comparison cannot answer this
+(\Cref{thm:falsefriend})?
+
+\begin{lstlisting}[caption={\texttt{adjudicate.syp}}]
+# The central question: same function, not same sequence.
+
+open wt  = "wildtype.solved"
+open var = "variant.solved"
+
+# Named perturbation maps. Rule: responses may not be anonymous,
+# because the verdict's independence of this choice is OPEN.
+method pi_edge_raise = perturb_incident(magnitude = 0.10)
+
+under cell_receiver {
+
+    let Nwt  = project wt  by contact(medium = 0.05)
+    let Nvar = project var by contact(medium = 0.05)
+
+    # Central columns: the units with their anchor/residue split.
+    let cA = unit Nwt  anchors 3
+    let cB = unit Nvar anchors 3
+
+    # Response columns: what each unit does to the receiver.
+    # `by pi_edge_raise` is mandatory -- the arbitrary choice is named.
+    let rA = response cA by pi_edge_raise
+    let rB = response cB by pi_edge_raise
+
+    let phi_c = corr from cA to cB by species_name
+    let phi_r = corr from rA to rB by species_name
+
+    # FOUR columns. Dropping `response(...)` is an arity error.
+    let v = align central(cA, cB) response(rA, rB)
+            under phi_c, phi_r { theta = 0.01 }
+
+    relax v until quiescent { eta = 0.005 ; theta = 0.01 }
+
+    claim "variant is functionally equivalent to wild type" = v
+    record v
+}
+
+report to "adjudicate.report"
+\end{lstlisting}
+
+\noindent Three things this program cannot do, by construction:
+
+\begin{enumerate}[label=(\roman*),leftmargin=2.2em]
+\item It cannot conclude equivalence from \texttt{cA} and \texttt{cB}
+      alone --- deleting the \texttt{response} clause is an arity error
+      (\Cref{thm:arity}), so the mistake of \Cref{thm:falsefriend}
+      cannot be made.
+\item It cannot hide which response was chosen --- \texttt{pi\_edge\_raise}
+      is named and printed (\Cref{rule:namedresponse}).
+\item It cannot loop forever --- \texttt{eta} is positive, so the
+      compiler emits the bound (\Cref{thm:dichotomy}).
+\end{enumerate}
+
+\subsection{An annotation transfer}
+
+The stencil use of the framework: given an annotated reference and an
+unannotated subject, transfer annotations by correspondence rather than
+by sequence identity.
+
+\begin{lstlisting}[caption={\texttt{transfer.syp}}]
+open ref     = "reference.solved"
+open subject = "subject.solved"
+
+method pi_uniform = perturb_incident(magnitude = 0.10)
+
+under tissue_receiver {
+
+    let Nr = project ref     by contact(medium = 0.05)
+    let Ns = project subject by contact(medium = 0.05)
+
+    # For every item of the reference, ask whether the subject has a
+    # unit that corresponds under BOTH column pairs.
+    for u in items(Nr) where separation(u) > 0.10 {
+
+        let cA = unit u  anchors 3
+        let cB = nearest_unit Ns to cA
+        let rA = response cA by pi_uniform
+        let rB = response cB by pi_uniform
+
+        let phi_c = corr from cA to cB by anchor_match
+        let phi_r = corr from rA to rB by anchor_match
+
+        let v = align central(cA, cB) response(rA, rB)
+                under phi_c, phi_r { theta = 0.02 }
+
+        claim "annotation of u transfers to its correspondent" = v
+        record v
+    }
+}
+
+report to "transfer.report"
+\end{lstlisting}
+
+The \kw{for} loop ranges over a finite item set with a guard, so it
+terminates (\Cref{thm:total}). The guard $\sep(u)>0.10$ excludes items
+too close to the medium to individuate reliably --- a filter the theory
+supplies (\Cref{thm:floor}) rather than a heuristic. Each iteration
+produces a \typ{verdict}, and a transfer that comes back
+\textsf{DECLINE} is recorded as such rather than silently omitted.
+
+% =====================================================================
+\section{The report}
+\label{sec:report}
+% =====================================================================
+
+The terminal form of every program is \kw{report to} a path. The
+report is a structured document, not a log, and its schema is fixed.
+
+\begin{center}
+\begin{tabular}{@{}lp{9.6cm}@{}}
+\toprule
+Section & Content \\
+\midrule
+\textsc{Provenance} & Source file hash, every \kw{open} path and its
+  hash, language version. \\
+\textsc{Frames} & Each \kw{under} block, its receiver and encoding, and
+  which values were created in it. \\
+\textsc{Parameters} & Every numeric parameter in the source, with its
+  line number. Complete by \Cref{thm:params}. \\
+\textsc{Claims} & Each \kw{claim} string with its verdict, the four
+  demands, and $\theta$. \\
+\textsc{Residues} & Every residue: recorded value, or an explicit
+  abandonment with line number (\Cref{cor:resacc}). \\
+\textsc{Certificates} & For each \kw{relax}: $\dem_0$, $\eta$, the
+  emitted bound $\lceil \dem_0/\eta\rceil$, and the realised step count. \\
+\textsc{Declines} & Every \textsf{DECLINE}, with the step at which the
+  update became undefined. \\
+\textsc{Assumptions} & Each \kw{require} assertion, verbatim, marked
+  \emph{asserted by user, not verified}. \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Two features deserve comment.
+
+\textbf{Declines are reported, not suppressed.} A run in which half the
+comparisons decline is a legitimate scientific outcome --- it says the
+comparison as posed does not decide --- and a format that discards them
+would misrepresent the run as more conclusive than it was.
+
+\textbf{Assumptions are marked unverified.} \kw{require} lets a user
+assert, for instance, that an expansion is floor-stabilising
+(\Cref{def:stabilising}). The language cannot check this: it is a claim
+about structures not yet observed. It therefore records the assertion
+and labels it, so a reader of the report knows exactly which load the
+conclusion is placing on the author's judgement rather than on the
+computation.
+
+% =====================================================================
+\section{The open problem, and what the language does about it}
+\label{sec:open}
+% =====================================================================
+
+\subsection{The negative result}
+
+We tested \Cref{ass:respind} directly. Four solved steady-state
+biochemical networks --- glycolysis, the citric-acid cycle, oxidative
+phosphorylation and an EGFR/MAPK cascade, together supplying $35$
+species and $35$ contact edges --- were converted to contact structures
+by \Cref{def:contactproj}. For every species with at least two incident
+non-medium edges, two admissible responses were constructed by raising
+one or the other incident edge by the same magnitude, and the resulting
+cross-demands compared. If \Cref{ass:respind} held, the two demands
+would agree within $\theta$.
+
+They do not.
+
+\begin{center}
+\begin{tabular}{@{}lr@{}}
+\toprule
+Quantity & Value \\
+\midrule
+Comparisons within $\theta=0.01$ & $28.6\%$ of $35$ \\
+Mean discrepancy & $0.070$ \\
+Maximum discrepancy & $0.307$ \\
+Per-network median (glycolysis) & $0.063$ \\
+Per-network median (citric-acid cycle) & $0.046$ \\
+Per-network median (oxidative phosphorylation) & $0.077$ \\
+Per-network median (EGFR/MAPK) & $0.100$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The maximum exceeds $\theta$ by more than an order of magnitude, and
+\emph{every} network has a median above $\theta$. The failure is
+systematic, not driven by one pathological pathway or one outlying
+species. By \Cref{prop:respind}, the four-column verdict on these
+networks depends on which admissible response the analyst constructed.
+
+\subsection{What is missing}
+
+We want to be precise about the nature of the gap, because it is easy to
+mistake for a tuning problem.
+
+What is missing is \textbf{a rule fixing the map from a unit to the
+perturbation it induces}. The theory of \Cref{sec:contact}--\Cref{sec:blind}
+is indifferent to which perturbation a unit is taken to cause; it only
+requires that one be supplied. Physically, a unit does induce a
+definite perturbation, so the map exists; we do not have a principled
+construction of it from the data available. Better thresholds do not
+help --- lowering $\theta$ makes agreement rarer, not commoner. More
+data does not help --- by \Cref{cor:notnoise} the discrepancy is not
+sampling error. What would help is a derivation of the response map from
+the same contact structure the central columns are drawn from, so that
+it is determined rather than chosen.
+
+\subsection{What synopsis does about it}
+
+A language cannot solve an open problem. It can refuse to let one hide.
+
+\Cref{rule:namedresponse} requires every response column to name its
+perturbation map. There is no anonymous response, no inferred response
+and no default. Consequently:
+
+\begin{itemize}[leftmargin=1.4em]
+\item every program's source records which choice was made;
+\item the report's \textsc{Parameters} section prints it
+      (\Cref{thm:params});
+\item two runs differing only in this choice are visibly different
+      programs, so a disagreement between them is attributable rather
+      than mysterious;
+\item and the natural robustness check --- sweep the response map and
+      see whether the verdict is stable --- is a three-line
+      \kw{sweep} that the language makes cheap to write:
+\end{itemize}
+
+\begin{lstlisting}[style=nonum]
+    sweep m in [0.05, 0.10, 0.20, 0.40] {
+        let pi_m = perturb_incident(magnitude = m)
+        let rA = response cA by pi_m
+        let rB = response cB by pi_m
+        let v  = align central(cA,cB) response(rA,rB)
+                 under phi_c, phi_r { theta = 0.01 }
+        record v
+    }
+\end{lstlisting}
+
+\noindent A report showing the verdict flipping across this sweep is a
+report telling the truth about the state of the theory. We prefer that
+to a report showing a single confident verdict obtained by a default
+nobody chose.
+
+% =====================================================================
+\section{Related work}
+\label{sec:related}
+% =====================================================================
+
+\textbf{Sequence comparison.} The dynamic-programming tradition
+\cite{needleman1970general,smith1981identification} and its heuristic
+descendants \cite{altschul1990basic,altschul1997gapped,buchfink2015fast,steinegger2017mmseqs2}
+optimise an alignment score --- a content quantity. Profile methods
+\cite{eddy2011accelerated,durbin1998biological} and substitution
+matrices \cite{henikoff1992amino} enrich the content model without
+leaving it. Sketching approaches \cite{ondov2016mash,jaccard1912distribution}
+trade exactness for speed, again within content.
+\Cref{cor:orth} applies to all of them: they compute one coordinate of
+a two-dimensional quantity. This is not a criticism of their execution;
+it is a statement about what they are measuring.
+
+\textbf{Genomic signal processing.} Representing sequence as a numeric
+signal has a long history \cite{voss1992evolution,anastassiou2001genomic},
+and the channelisation of \Cref{def:channelise} follows it. Our
+contribution here is not the representation but its \emph{typing}: the
+frame index makes an encoding choice part of the type, so that the
+common error of comparing across encodings is caught statically.
+
+\textbf{Function prediction and annotation.} Large-scale evaluations
+show function prediction to be substantially unsolved
+\cite{radivojac2013large}, and misannotation to propagate through
+databases \cite{schnoes2009annotation}. Structure prediction
+\cite{jumper2021highly} has transformed the structural half of the
+problem without settling the functional one. Ontology and pathway
+resources \cite{ashburner2000gene,kanehisa2000kegg} supply the
+vocabulary in which function is stated but not a criterion for deciding
+sameness. Our four-column criterion is such a criterion, blind to
+annotation by construction.
+
+\textbf{Networks and perturbation.} Treating cellular function as a
+network property is standard \cite{barabasi2004network}, and
+genome-scale perturbation screens now supply the response measurements
+the response columns need
+\cite{costanzo2016global,dixit2016perturb,replogle2022mapping}. The
+framework here is, in that light, a proposal for what to \emph{compute}
+from such screens: not a similarity between expression profiles but a
+cross-demand between contact structures.
+
+\textbf{Graph cuts.} Minimum cuts and their duality with flows
+\cite{ford1956maximal,gomory1961multi,stoer1997simple,karger1996new,schrijver2003combinatorial}
+are the computational substrate. Normalised cuts in vision
+\cite{shi2000normalized,boykov2004experimental} share the intuition that
+a boundary is the meaningful object; spectral connectivity
+\cite{fiedler1973algebraic} offers a relaxation we do not use because we
+need exactness for validation.
+
+\textbf{Domain-specific languages.} The case for a DSL over a library
+\cite{hudak1996building,mernik2005when,fowler2010domain} is usually made
+on expressiveness. Ours is made on refusal, which places it nearer to
+dimension-typed numerics \cite{kennedy1997relational}, linear types
+\cite{wadler1990linear} and refinement types
+\cite{freeman1991refinement}, where the type system exists to make
+certain wrong programs unwritable. Totality follows
+\cite{turner1995total}. Biological DSLs
+\cite{pedersen2009towards,lakin2011design} and exchange formats
+\cite{hucka2003systems} model systems; synopsis adjudicates claims about
+them, which is a different job. Workflow systems
+\cite{koster2012snakemake,difrancesco2015nextflow} give reproducible
+orchestration but are agnostic about the scientific validity of the
+steps they orchestrate; the report of \Cref{sec:report} is closer in
+spirit to provenance models \cite{moreau2011provenance,wilkinson2016fair}.
+
+\textbf{Reproducibility.} The no-defaults rule is a direct response to
+the analytic-flexibility literature
+\cite{simmons2011false,gelman2013garden,ioannidis2005why,baker2016reproducibility,sandve2013ten}.
+Our contribution is to move the discipline from a checklist into a
+grammar.
+
+% =====================================================================
+\section{Limitations}
+\label{sec:limits}
+% =====================================================================
+
+We list what we do not claim.
+
+\begin{enumerate}[label=\textbf{L\arabic*.},leftmargin=2.6em]
+\item \textbf{Response independence is open.} \Cref{sec:open}. This is
+      the principal gap and it is not small: without a rule fixing the
+      response map, the four-column verdict is analyst-dependent. Every
+      other limitation here is minor by comparison.
+
+\item \textbf{Contact structures must be supplied.} Synopsis consumes
+      solved networks; it does not solve them. Where the contact costs
+      come from --- kinetics, perturbation screens, inference --- is
+      outside the language, and a bad structure yields a confident
+      wrong verdict.
+
+\item \textbf{Floor-stabilisation is asserted, not checked.}
+      \Cref{def:stabilising} is a hypothesis about structures not yet
+      observed. \kw{require} records it and marks it unverified; nothing
+      verifies it.
+
+\item \textbf{The anchor count $r$ is a free parameter.} \Cref{def:anchor}
+      fixes the tie-breaking but not $r$. The language forces $r$ into
+      the source and the report, which makes it visible, not principled.
+
+\item \textbf{Totality bounds steps, not time.} \Cref{thm:total} and the
+      remark in \Cref{sec:meta}. A well-typed program may still be
+      infeasible.
+
+\item \textbf{No generative capability.} By the decision of
+      \Cref{sec:whylanguage}, synopsis certifies but does not design.
+      Users wanting sequence design must generate elsewhere and certify
+      here.
+
+\item \textbf{Empirical scope is narrow.} The negative result of
+      \Cref{sec:open} rests on four networks and $35$ species. It is
+      enough to refute \Cref{ass:respind} --- refutation needs only
+      counterexamples --- but not enough to characterise how the
+      assumption fails.
+
+\item \textbf{Opacity has a cost we assert rather than measure.}
+      \Cref{sec:opaque} argues from three experiment families that
+      \Cref{rule:opaque} loses nothing. A wider survey could falsify
+      this, and the honest position is that we have checked three
+      families, not all of them.
+\end{enumerate}
+
+% =====================================================================
+\section{Conclusion}
+\label{sec:conc}
+% =====================================================================
+
+The question practitioners ask of two genomic units is whether they do
+the same thing. The vocabulary available answers a different question
+--- whether they are written the same way --- and \Cref{cor:orth} shows
+the substitution is not an approximation but a projection that loses a
+dimension. Two units may be indistinguishable in content and unbounded
+in effect (\Cref{thm:falsefriend}); two may be maximally divergent in
+content and identical in effect (\Cref{cor:converse}).
+
+Occupying the missing dimension requires a theory in which identity is a
+cut rather than a label (\Cref{thm:invariant-cut}, \Cref{cor:labels}),
+distinction has a strictly positive price (\Cref{thm:floor}), value is
+receiver-relative (\Cref{thm:receiver}), and correspondence can be
+certified blind (\Cref{def:crossdemand}) with guaranteed termination
+(\Cref{thm:dichotomy}). It requires a verdict with four columns and
+three values (\Cref{def:fourq}).
+
+It also requires, we argue, a language rather than a library --- because
+the results above are largely \emph{prohibitions}, and a prohibition
+that lives in documentation is not enforced. Synopsis makes exactness
+inexpressible (\Cref{thm:noexact}), single-column verdicts an arity
+error (\Cref{thm:arity}), cross-frame comparison a scope error
+(\Cref{thm:scope}), silent residue discard impossible
+(\Cref{cor:resacc}), and every verdict-relevant parameter mandatory
+(\Cref{thm:params}); and it terminates (\Cref{thm:total}) with the
+bound printed.
+
+The name records the ambition. The synoptic gospels are read in parallel
+columns not because they agree word for word but because they align
+sufficiently for the columns to be laid alongside, with the residue
+displayed rather than reconciled away. That is what genomic comparison
+should be doing, and \Cref{thm:form} says exactly why it is coherent to
+do so: two structures may place no demand on each other while remaining
+fully distinguishable. Sufficient alignment, not exact alignment.
+
+We end where we are weakest. \Cref{ass:respind} fails on real networks
+--- $28.6\%$ agreement, maximum discrepancy $0.307$ against
+$\theta=0.01$ --- and we have no rule fixing the response map. We have
+built the language so that this cannot be concealed: no response may be
+anonymous, and the sweep that exposes an unstable verdict is three
+lines. A language that makes its own open problem visible in every
+program that touches it is, we think, the correct thing to build while
+the problem remains open.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

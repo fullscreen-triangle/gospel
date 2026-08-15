@@ -1,13 +1,13 @@
 # Fdb version 4
-["bibtex four-column-alignment"] 1786792552.21801 "four-column-alignment.aux" "four-column-alignment.bbl" "four-column-alignment" 1786792556.00082 0
+["bibtex four-column-alignment"] 1786794774.41788 "four-column-alignment.aux" "four-column-alignment.bbl" "four-column-alignment" 1786794801.50263 0
   "./references.bib" 1786676115.13322 20257 17f40576d45f63faae130efe49c8f1f9 ""
   "C:/Users/kunda/AppData/Local/Programs/MiKTeX/bibtex/bst/natbib/unsrtnat.bst" 1284455456 24550 a41a6405f4de768c43e871d9fbce2bc8 ""
-  "four-column-alignment.aux" 1786792554.46547 22270 3c5ede1e1418b044faf91748f1cd0956 "pdflatex"
+  "four-column-alignment.aux" 1786794795.80021 49451 13d8a1fc75ae4d2da5cf416778a2cfcd "pdflatex"
   (generated)
   "four-column-alignment.bbl"
   "four-column-alignment.blg"
   (rewritten before read)
-["pdflatex"] 1786792552.76801 "four-column-alignment.tex" "four-column-alignment.pdf" "four-column-alignment" 1786792556.00243 0
+["pdflatex"] 1786794778.54452 "four-column-alignment.tex" "four-column-alignment.pdf" "four-column-alignment" 1786794801.50956 0
   "C:/Users/kunda/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1786677676.60274 82188 90cd578fc3cfbdcc7c37bb6a895e60cf ""
   "C:/Users/kunda/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1774027875.46369 13333849 2cb8fe6563010d464c83c36a921c76e2 ""
   "C:/Users/kunda/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc" 1256929440 2375 baa924870cfb487815765f9094cf3728 ""
@@ -84,6 +84,7 @@
   "C:/Users/kunda/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmcsc10.pfb" 1256929440 116427 4a5b1ccaa7cce719091920a86b58608d ""
   "C:/Users/kunda/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmex10.pfb" 1256929440 23055 2e5b42921de910eaa97b85df04ca4891 ""
   "C:/Users/kunda/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi10.pfb" 1256929440 30388 702fae6a5f0e6e9c48a1d872b442ffcf ""
+  "C:/Users/kunda/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi7.pfb" 1256929440 30789 be3ebdf20b6442cc4aaf81a81e17daf4 ""
   "C:/Users/kunda/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi8.pfb" 1256929440 30635 833ec815d446ec453a4913fc26d24cbc ""
   "C:/Users/kunda/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb" 1256929440 119235 f35b44530a1d90eb90fe15d9cba67ea0 ""
   "C:/Users/kunda/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr12.pfb" 1256929440 113634 f99c44d58bae0863375faf0e1d74d612 ""
@@ -183,11 +184,18 @@
   "C:/Users/kunda/AppData/Local/Programs/MiKTeX/tex/latex/tools/bm.sty" 1761901070 13389 9f718787b5d641dbc0271856c125f004 ""
   "C:/Users/kunda/AppData/Local/Programs/MiKTeX/tex/latex/tools/calc.sty" 1761901070 10374 2ffd4f27c7f90b8a300608069537743c ""
   "C:/Users/kunda/AppData/Local/Programs/MiKTeX/tex/latex/url/url.sty" 1388490452 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
-  "four-column-alignment.aux" 1786792554.46547 22270 3c5ede1e1418b044faf91748f1cd0956 "pdflatex"
-  "four-column-alignment.bbl" 1786792552.66336 15432 e7c0b7dace164ccca371c95f2b07618b "bibtex four-column-alignment"
-  "four-column-alignment.out" 1786792554.47936 5630 a7918513800740a284bd88e66839658b "pdflatex"
-  "four-column-alignment.tex" 1786792531.95548 67929 ac6e12a5f8fef1908b40394fe66ab03e ""
-  "four-column-alignment.toc" 1786792554.48313 3181 f73336ec46a49baf863e880d2093d940 "pdflatex"
+  "figures/alignment-captions.tex" 1786794586.6951 14483 ac3adf7f946b2c6a4d4e65f2b3d46708 ""
+  "figures/panel_1_floor.png" 1786793426.51331 241777 9242e7189c78149f59818d884f1a1447 ""
+  "figures/panel_2_identity.png" 1786793471.31144 163017 050749ce2c8e6a3ae423748880fe9704 ""
+  "figures/panel_3_receiver.png" 1786793508.42378 359080 c46d914f87127fe2869eb80ca770f9f0 ""
+  "figures/panel_4_relaxation.png" 1786793552.27411 319097 d0f2b7372dcf70debc49819d6491f026 ""
+  "figures/panel_5_classes.png" 1786793583.53907 319570 ff2243b07124cb7537da464edc4d5844 ""
+  "figures/panel_6_pathways.png" 1786793619.12176 205743 68e26421f8fe1968693b69c65aaaaadb ""
+  "four-column-alignment.aux" 1786794795.80021 49451 13d8a1fc75ae4d2da5cf416778a2cfcd "pdflatex"
+  "four-column-alignment.bbl" 1786794777.98538 15432 e7c0b7dace164ccca371c95f2b07618b "bibtex four-column-alignment"
+  "four-column-alignment.out" 1786794795.83112 5630 a7918513800740a284bd88e66839658b "pdflatex"
+  "four-column-alignment.tex" 1786794721.86093 69472 1c8ef3a1dd73b8c907742235d32700f3 ""
+  "four-column-alignment.toc" 1786794795.83666 3181 f73336ec46a49baf863e880d2093d940 "pdflatex"
   (generated)
   "four-column-alignment.aux"
   "four-column-alignment.log"
