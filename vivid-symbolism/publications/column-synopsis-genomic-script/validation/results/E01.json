@@ -1,0 +1,17 @@
+{
+  "name": "E01",
+  "claim": "Thm 2.5 (contact floor): sigma(v) >= beta > 0",
+  "n": 894,
+  "passed": 894,
+  "ok": true,
+  "max_err": 0.0,
+  "failures": [],
+  "extra": {
+    "n_ratios": 894,
+    "ratio_min": 1.0,
+    "ratio_median": 12.930378587298668,
+    "ratio_max": 104.92543958089809
+  },
+  "kind": "assertion",
+  "elapsed_seconds": 0.082
+}

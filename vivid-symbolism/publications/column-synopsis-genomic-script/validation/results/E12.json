@@ -1,0 +1,12 @@
+{
+  "name": "E12",
+  "claim": "Def 4.3: anchor/residue split is deterministic",
+  "n": 180,
+  "passed": 180,
+  "ok": true,
+  "max_err": 0.0,
+  "failures": [],
+  "extra": {},
+  "kind": "assertion",
+  "elapsed_seconds": 0.055
+}

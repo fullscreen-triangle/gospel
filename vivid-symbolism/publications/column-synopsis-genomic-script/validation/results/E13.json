@@ -1,0 +1,16 @@
+{
+  "name": "E13",
+  "claim": "Thm 4.7/4.8: monotone decrease, bound never exceeded",
+  "n": 780,
+  "passed": 780,
+  "ok": true,
+  "max_err": 0.0,
+  "failures": [],
+  "extra": {
+    "n_runs": 260,
+    "max_steps": 612,
+    "n_at_or_below_bound": 260
+  },
+  "kind": "assertion",
+  "elapsed_seconds": 0.018
+}

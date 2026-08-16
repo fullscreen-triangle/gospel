@@ -1,0 +1,12 @@
+{
+  "name": "E02",
+  "claim": "Def 2.1: non-positive weights are refused",
+  "n": 4,
+  "passed": 4,
+  "ok": true,
+  "max_err": 0.0,
+  "failures": [],
+  "extra": {},
+  "kind": "assertion",
+  "elapsed_seconds": 0.0
+}

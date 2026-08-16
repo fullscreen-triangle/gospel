@@ -1,0 +1,24 @@
+{
+  "name": "E30",
+  "claim": "Thm 9.7/Sec 11: parameters and responses are printed",
+  "n": 10,
+  "passed": 10,
+  "ok": true,
+  "max_err": 0.0,
+  "failures": [],
+  "extra": {
+    "adjudicate_parameters": {
+      "contact.medium": 0.05,
+      "align.theta": 0.01,
+      "relax.eta": 0.005,
+      "relax.theta": 0.01
+    },
+    "motif_parameters": {
+      "peaks.z": 4.0,
+      "peaks.min_distance": 30.0,
+      "peaks.min_score": 0.35
+    }
+  },
+  "kind": "assertion",
+  "elapsed_seconds": 0.001
+}

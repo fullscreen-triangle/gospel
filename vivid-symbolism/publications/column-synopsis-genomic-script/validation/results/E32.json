@@ -1,0 +1,22 @@
+{
+  "name": "E32",
+  "claim": "Assumption 5.8 (MEASUREMENT): response independence",
+  "n": 1,
+  "passed": 1,
+  "ok": true,
+  "max_err": 0.0,
+  "failures": [],
+  "extra": {
+    "status": "MEASUREMENT -- not an assertion; a violation is a finding",
+    "theta": 0.01,
+    "n_comparisons": 361,
+    "fraction_within_theta": 0.778393351800554,
+    "mean_discrepancy": 0.005548073113532555,
+    "median_discrepancy": 0.0045138421061443335,
+    "max_discrepancy": 0.03602661100479854,
+    "assumption_holds_at_theta": false,
+    "verdict": "FAILS -- the verdict depends on which admissible response was constructed (open problem)"
+  },
+  "kind": "measurement",
+  "elapsed_seconds": 0.047
+}

@@ -1,0 +1,12 @@
+{
+  "name": "E07",
+  "claim": "Prop 2.14: perturbation preserves the skeleton",
+  "n": 591,
+  "passed": 591,
+  "ok": true,
+  "max_err": 0.0,
+  "failures": [],
+  "extra": {},
+  "kind": "assertion",
+  "elapsed_seconds": 0.039
+}

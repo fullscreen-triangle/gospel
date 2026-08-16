@@ -1,0 +1,22 @@
+{
+  "name": "E09",
+  "claim": "Cor 3.3: region beats point above a crossover",
+  "n": 23,
+  "passed": 23,
+  "ok": true,
+  "max_err": 0.0,
+  "failures": [],
+  "extra": {
+    "crossover_W": 0.25526315789473686,
+    "point_cost_range": [
+      0.55,
+      6.4
+    ],
+    "region_cost_range": [
+      1.0,
+      1.0
+    ]
+  },
+  "kind": "assertion",
+  "elapsed_seconds": 0.016
+}

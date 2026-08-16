@@ -1,0 +1,12 @@
+{
+  "name": "E23",
+  "claim": "Def 8.4: shader distance in [0,2]",
+  "n": 121,
+  "passed": 121,
+  "ok": true,
+  "max_err": 0.0,
+  "failures": [],
+  "extra": {},
+  "kind": "assertion",
+  "elapsed_seconds": 0.003
+}

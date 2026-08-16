@@ -1,0 +1,15 @@
+{
+  "name": "E29",
+  "claim": "Thm 9.4/9.3: exactness is inexpressible; no zero residue",
+  "n": 5,
+  "passed": 5,
+  "ok": true,
+  "max_err": 0.0,
+  "failures": [],
+  "extra": {
+    "abandonment_note": "residue abandoned at line 9",
+    "n_zero_floor": 0
+  },
+  "kind": "assertion",
+  "elapsed_seconds": 0.003
+}

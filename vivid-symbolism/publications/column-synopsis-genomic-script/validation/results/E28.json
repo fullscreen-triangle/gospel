@@ -1,0 +1,128 @@
+{
+  "name": "E28",
+  "claim": "Thms 9.4-9.8: the negative corpus is refused",
+  "n": 16,
+  "passed": 16,
+  "ok": true,
+  "max_err": 0.0,
+  "failures": [],
+  "extra": {
+    "programs": {
+      "align_without_response": {
+        "rejected": true,
+        "error_class": "ArityError",
+        "expected_class": "ArityError",
+        "matched": true,
+        "message": "arity error: `align` requires four columns: central(a,b) AND response(a,b). There is no two-column form, so a verdict cannot be reached from content alone (see the false-friend separation). (line 12)"
+      },
+      "align_one_correspondence": {
+        "rejected": true,
+        "error_class": "ArityError",
+        "expected_class": "ArityError",
+        "matched": true,
+        "message": "arity error: `align` needs two correspondences (central and response), got 1 (line 13)"
+      },
+      "cross_frame_reference": {
+        "rejected": true,
+        "error_class": "ScopeError",
+        "expected_class": "ScopeError",
+        "matched": true,
+        "message": "scope error: `a` has type frame_nucleotide_frame but the enclosing frame is `protein_frame`; frame_nucleotide_frame and frame_protein_frame are distinct types (line 12)"
+      },
+      "relax_zero_eta": {
+        "rejected": true,
+        "error_class": "TerminationError",
+        "expected_class": "TerminationError",
+        "matched": true,
+        "message": "termination error: `relax` requires a step floor bounded below (Assumption: effective update).\n  eta = 0.0 is not positive; no termination bound can be emitted. (line 6)"
+      },
+      "relax_negative_eta": {
+        "rejected": true,
+        "error_class": "TerminationError",
+        "expected_class": "TerminationError",
+        "matched": true,
+        "message": "termination error: `relax` requires a step floor bounded below (Assumption: effective update).\n  eta = -0.01 is not positive; no termination bound can be emitted. (line 6)"
+      },
+      "unconsumed_residue": {
+        "rejected": true,
+        "error_class": "ResidueError",
+        "expected_class": "ResidueError",
+        "matched": true,
+        "message": "residue error: residue `res` is bound but never recorded or dropped; every comparison value carries (beta, varrho) and the residue must be accounted for (line 7)"
+      },
+      "peaks_missing_parameter": {
+        "rejected": true,
+        "error_class": "ParameterError",
+        "expected_class": "ParameterError",
+        "matched": true,
+        "message": "parameter error: `peaks` requires ['min_distance', 'min_score', 'z']; missing ['min_score']. There are no defaults (Rule: no default thresholds) -- state the value or the report cannot print it. (line 8)"
+      },
+      "align_missing_theta": {
+        "rejected": true,
+        "error_class": "ParameterError",
+        "expected_class": "ParameterError",
+        "matched": true,
+        "message": "parameter error: `align` requires ['theta']; missing ['theta']. There are no defaults (Rule: no default thresholds) -- state the value or the report cannot print it. (line 14)"
+      },
+      "anonymous_response": {
+        "rejected": true,
+        "error_class": "ParameterError",
+        "expected_class": "ParameterError",
+        "matched": true,
+        "message": "parameter error: a response must name its perturbation map (`response X by <method>`); anonymous responses are rejected because the verdict's independence of this choice is an open problem (line 9)"
+      },
+      "undeclared_response_method": {
+        "rejected": true,
+        "error_class": "ScopeError",
+        "expected_class": "ScopeError",
+        "matched": true,
+        "message": "scope error: response method `never_declared` is not declared (line 6)"
+      },
+      "profile_into_topk": {
+        "rejected": true,
+        "error_class": "TypeError_",
+        "expected_class": "TypeError_",
+        "matched": true,
+        "message": "type error: `detect top` consumes ranked (entry-indexed), got profile_N (line 8)"
+      },
+      "ranked_into_peaks": {
+        "rejected": true,
+        "error_class": "TypeError_",
+        "expected_class": "TypeError_",
+        "matched": true,
+        "message": "type error: `detect peaks` consumes profile (lag-indexed), got ranked_N (line 8)"
+      },
+      "dimension_mismatch": {
+        "rejected": true,
+        "error_class": "TypeError_",
+        "expected_class": "TypeError_",
+        "matched": true,
+        "message": "type error: embedding dimensions differ: 8 vs 16; the dimension is part of coord_phi (line 7)"
+      },
+      "sequence_indexing": {
+        "rejected": true,
+        "error_class": "ParseError",
+        "expected_class": "SynopsisError",
+        "matched": true,
+        "message": "parse error: unexpected statement '[' (line 4)"
+      },
+      "no_report": {
+        "rejected": true,
+        "error_class": "ParseError",
+        "expected_class": "ParseError",
+        "matched": true,
+        "message": "parse error: every program must end with `report to <file>` (Rule 6.11: programs emit reports) (line 7)"
+      },
+      "undefined_variable": {
+        "rejected": true,
+        "error_class": "ScopeError",
+        "expected_class": "ScopeError",
+        "matched": true,
+        "message": "scope error: `nonexistent` is not in scope (line 4)"
+      }
+    },
+    "n_programs": 16
+  },
+  "kind": "assertion",
+  "elapsed_seconds": 0.003
+}

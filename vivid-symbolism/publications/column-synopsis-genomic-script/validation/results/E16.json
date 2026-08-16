@@ -1,0 +1,27 @@
+{
+  "name": "E16",
+  "claim": "Thm 5.1: aligned content, divergent response",
+  "n": 4,
+  "passed": 4,
+  "ok": true,
+  "max_err": 0.0,
+  "failures": [],
+  "extra": {
+    "central_distance_to_floor": 0.0,
+    "response_at_cmin": 0.023809523809523808,
+    "response_at_cmax": 0.2560975609756098,
+    "response_curve": [
+      0.023809523809523808,
+      0.07446808510638296,
+      0.11538461538461539,
+      0.14912280701754388,
+      0.1774193548387097,
+      0.20149253731343286,
+      0.22222222222222224,
+      0.24025974025974026,
+      0.2560975609756098
+    ]
+  },
+  "kind": "assertion",
+  "elapsed_seconds": 0.001
+}

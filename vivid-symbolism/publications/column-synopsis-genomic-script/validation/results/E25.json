@@ -1,0 +1,12 @@
+{
+  "name": "E25",
+  "claim": "Sec 8.5: hierarchical address is prefix-consistent",
+  "n": 240,
+  "passed": 240,
+  "ok": true,
+  "max_err": 0.0,
+  "failures": [],
+  "extra": {},
+  "kind": "assertion",
+  "elapsed_seconds": 0.002
+}

@@ -1,0 +1,12 @@
+{
+  "name": "E14",
+  "claim": "Thm 4.8: quiescence or decline, no third outcome",
+  "n": 122,
+  "passed": 122,
+  "ok": true,
+  "max_err": 0.0,
+  "failures": [],
+  "extra": {},
+  "kind": "assertion",
+  "elapsed_seconds": 0.001
+}

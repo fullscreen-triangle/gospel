@@ -1,0 +1,15 @@
+{
+  "name": "E21",
+  "claim": "Def 8.2: xcorr in [-1,1]; FFT agrees with direct",
+  "n": 121,
+  "passed": 121,
+  "ok": true,
+  "max_err": 1.887379141862766e-15,
+  "failures": [],
+  "extra": {
+    "max_fft_vs_direct_deviation": 1.887379141862766e-15,
+    "self_correlation": 1.0000000000000002
+  },
+  "kind": "assertion",
+  "elapsed_seconds": 0.043
+}

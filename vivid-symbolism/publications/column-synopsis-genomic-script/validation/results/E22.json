@@ -1,0 +1,14 @@
+{
+  "name": "E22",
+  "claim": "Def 8.3: spectral embedding skips DC and is l2-normed",
+  "n": 121,
+  "passed": 121,
+  "ok": true,
+  "max_err": 1.1102230246251565e-15,
+  "failures": [],
+  "extra": {
+    "dc_offset_deviation": 1.1102230246251565e-15
+  },
+  "kind": "assertion",
+  "elapsed_seconds": 0.002
+}

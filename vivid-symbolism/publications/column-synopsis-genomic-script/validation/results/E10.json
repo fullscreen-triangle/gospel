@@ -1,0 +1,20 @@
+{
+  "name": "E10",
+  "claim": "Thm 3.5/Cor 3.6: registered value is receiver-relative",
+  "n": 2,
+  "passed": 2,
+  "ok": true,
+  "max_err": 0.0,
+  "failures": [],
+  "extra": {
+    "n_pairs": 150,
+    "n_disagreeing": 26,
+    "fraction_disagreeing": 0.17333333333333334,
+    "mean_abs_difference": 0.09547274190489549,
+    "max_abs_difference": 1.0,
+    "min_substantial_difference": 0.05624065772256337,
+    "note": "a background edge moves sigma(u) only when it crosses u's minimising cut, so the disagreement rate is a minority by construction; the claim is that the value depends on the receiver, not that it usually does"
+  },
+  "kind": "assertion",
+  "elapsed_seconds": 0.022
+}

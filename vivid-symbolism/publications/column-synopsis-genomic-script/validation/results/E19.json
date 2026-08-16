@@ -1,0 +1,17 @@
+{
+  "name": "E19",
+  "claim": "Thm 5.6/Def 5.5: four-column verdict is 3-valued",
+  "n": 4,
+  "passed": 4,
+  "ok": true,
+  "max_err": 0.0,
+  "failures": [],
+  "extra": {
+    "identity_verdict": "CORRESPOND",
+    "declined_verdict": "DECLINE",
+    "central_demand": 0.0,
+    "response_demand": 0.0
+  },
+  "kind": "assertion",
+  "elapsed_seconds": 0.0
+}

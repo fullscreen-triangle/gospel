@@ -1,0 +1,12 @@
+{
+  "name": "E20",
+  "claim": "Prop 7.11: partition depth is additive",
+  "n": 101,
+  "passed": 101,
+  "ok": true,
+  "max_err": 1.7763568394002505e-15,
+  "failures": [],
+  "extra": {},
+  "kind": "assertion",
+  "elapsed_seconds": 0.003
+}

@@ -1,0 +1,17 @@
+{
+  "name": "E06",
+  "claim": "Rem 2.12/Thm 2.11: floor preservation is conditional",
+  "n": 5,
+  "passed": 5,
+  "ok": true,
+  "max_err": 0.0,
+  "failures": [],
+  "extra": {
+    "steps": 40,
+    "local_floor_1_over_k": 0.025,
+    "local_floor_1_over_k2": 0.000625,
+    "local_floor_stabilising": 1.0
+  },
+  "kind": "assertion",
+  "elapsed_seconds": 0.0
+}

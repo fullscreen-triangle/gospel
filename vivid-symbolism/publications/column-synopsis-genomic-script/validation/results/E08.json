@@ -1,0 +1,26 @@
+{
+  "name": "E08",
+  "claim": "Thm 3.1: minimising sets are regions, not points",
+  "n": 9,
+  "passed": 9,
+  "ok": true,
+  "max_err": 0.0,
+  "failures": [],
+  "extra": {
+    "minimiser_sizes": [
+      3,
+      3,
+      3,
+      4,
+      4,
+      4,
+      5,
+      5,
+      5
+    ],
+    "min_size": 3,
+    "max_size": 5
+  },
+  "kind": "assertion",
+  "elapsed_seconds": 0.015
+}

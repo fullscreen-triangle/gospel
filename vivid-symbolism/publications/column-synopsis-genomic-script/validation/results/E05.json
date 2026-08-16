@@ -1,0 +1,12 @@
+{
+  "name": "E05",
+  "claim": "Def 2.7: isomorphisms must fix the medium",
+  "n": 2,
+  "passed": 2,
+  "ok": true,
+  "max_err": 0.0,
+  "failures": [],
+  "extra": {},
+  "kind": "assertion",
+  "elapsed_seconds": 0.0
+}

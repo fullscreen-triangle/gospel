@@ -1,0 +1,16 @@
+{
+  "name": "E11",
+  "claim": "Prop 4.2: distance to floor is non-negative",
+  "n": 796,
+  "passed": 796,
+  "ok": true,
+  "max_err": 0.0,
+  "failures": [],
+  "extra": {
+    "n_pairs": 796,
+    "min_delta": 0.0,
+    "median_delta": 0.22020575954683355
+  },
+  "kind": "assertion",
+  "elapsed_seconds": 0.04
+}

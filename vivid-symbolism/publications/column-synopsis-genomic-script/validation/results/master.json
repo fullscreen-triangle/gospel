@@ -1,0 +1,334 @@
+{
+  "suite": "synopsis-genomic-scripting",
+  "seed": 20260816,
+  "n_categories": 32,
+  "n_assertions": 31,
+  "n_measurements": 1,
+  "n_categories_failed": 0,
+  "total_checks": 5622,
+  "total_passed": 5622,
+  "all_passed": true,
+  "elapsed_seconds": 0.655,
+  "categories": [
+    {
+      "tag": "E01",
+      "claim": "Thm 2.5 (contact floor): sigma(v) >= beta > 0",
+      "kind": "assertion",
+      "n": 894,
+      "passed": 894,
+      "ok": true,
+      "max_err": 0.0,
+      "elapsed_seconds": 0.082
+    },
+    {
+      "tag": "E02",
+      "claim": "Def 2.1: non-positive weights are refused",
+      "kind": "assertion",
+      "n": 4,
+      "passed": 4,
+      "ok": true,
+      "max_err": 0.0,
+      "elapsed_seconds": 0.0
+    },
+    {
+      "tag": "E03",
+      "claim": "Thm 2.5: beta decreases with size but stays > 0",
+      "kind": "assertion",
+      "n": 421,
+      "passed": 421,
+      "ok": true,
+      "max_err": 0.0,
+      "elapsed_seconds": 0.029
+    },
+    {
+      "tag": "E04",
+      "claim": "Thm 2.9/Cor 2.10: sigma invariant under relabelling",
+      "kind": "assertion",
+      "n": 685,
+      "passed": 685,
+      "ok": true,
+      "max_err": 0.0,
+      "elapsed_seconds": 0.124
+    },
+    {
+      "tag": "E05",
+      "claim": "Def 2.7: isomorphisms must fix the medium",
+      "kind": "assertion",
+      "n": 2,
+      "passed": 2,
+      "ok": true,
+      "max_err": 0.0,
+      "elapsed_seconds": 0.0
+    },
+    {
+      "tag": "E06",
+      "claim": "Rem 2.12/Thm 2.11: floor preservation is conditional",
+      "kind": "assertion",
+      "n": 5,
+      "passed": 5,
+      "ok": true,
+      "max_err": 0.0,
+      "elapsed_seconds": 0.0
+    },
+    {
+      "tag": "E07",
+      "claim": "Prop 2.14: perturbation preserves the skeleton",
+      "kind": "assertion",
+      "n": 591,
+      "passed": 591,
+      "ok": true,
+      "max_err": 0.0,
+      "elapsed_seconds": 0.039
+    },
+    {
+      "tag": "E08",
+      "claim": "Thm 3.1: minimising sets are regions, not points",
+      "kind": "assertion",
+      "n": 9,
+      "passed": 9,
+      "ok": true,
+      "max_err": 0.0,
+      "elapsed_seconds": 0.015
+    },
+    {
+      "tag": "E09",
+      "claim": "Cor 3.3: region beats point above a crossover",
+      "kind": "assertion",
+      "n": 23,
+      "passed": 23,
+      "ok": true,
+      "max_err": 0.0,
+      "elapsed_seconds": 0.016
+    },
+    {
+      "tag": "E10",
+      "claim": "Thm 3.5/Cor 3.6: registered value is receiver-relative",
+      "kind": "assertion",
+      "n": 2,
+      "passed": 2,
+      "ok": true,
+      "max_err": 0.0,
+      "elapsed_seconds": 0.022
+    },
+    {
+      "tag": "E11",
+      "claim": "Prop 4.2: distance to floor is non-negative",
+      "kind": "assertion",
+      "n": 796,
+      "passed": 796,
+      "ok": true,
+      "max_err": 0.0,
+      "elapsed_seconds": 0.04
+    },
+    {
+      "tag": "E12",
+      "claim": "Def 4.3: anchor/residue split is deterministic",
+      "kind": "assertion",
+      "n": 180,
+      "passed": 180,
+      "ok": true,
+      "max_err": 0.0,
+      "elapsed_seconds": 0.055
+    },
+    {
+      "tag": "E13",
+      "claim": "Thm 4.7/4.8: monotone decrease, bound never exceeded",
+      "kind": "assertion",
+      "n": 780,
+      "passed": 780,
+      "ok": true,
+      "max_err": 0.0,
+      "elapsed_seconds": 0.018
+    },
+    {
+      "tag": "E14",
+      "claim": "Thm 4.8: quiescence or decline, no third outcome",
+      "kind": "assertion",
+      "n": 122,
+      "passed": 122,
+      "ok": true,
+      "max_err": 0.0,
+      "elapsed_seconds": 0.001
+    },
+    {
+      "tag": "E15",
+      "claim": "Thm 4.9: quiescence coexists with positive residue",
+      "kind": "assertion",
+      "n": 80,
+      "passed": 80,
+      "ok": true,
+      "max_err": 0.0,
+      "elapsed_seconds": 0.02
+    },
+    {
+      "tag": "E16",
+      "claim": "Thm 5.1: aligned content, divergent response",
+      "kind": "assertion",
+      "n": 4,
+      "passed": 4,
+      "ok": true,
+      "max_err": 0.0,
+      "elapsed_seconds": 0.001
+    },
+    {
+      "tag": "E17",
+      "claim": "Cor 5.2: divergent content, aligned response",
+      "kind": "assertion",
+      "n": 2,
+      "passed": 2,
+      "ok": true,
+      "max_err": 0.0,
+      "elapsed_seconds": 0.011
+    },
+    {
+      "tag": "E18",
+      "claim": "Cor 5.3: the two classes are orthogonal",
+      "kind": "assertion",
+      "n": 32,
+      "passed": 32,
+      "ok": true,
+      "max_err": 0.0,
+      "elapsed_seconds": 0.007
+    },
+    {
+      "tag": "E19",
+      "claim": "Thm 5.6/Def 5.5: four-column verdict is 3-valued",
+      "kind": "assertion",
+      "n": 4,
+      "passed": 4,
+      "ok": true,
+      "max_err": 0.0,
+      "elapsed_seconds": 0.0
+    },
+    {
+      "tag": "E20",
+      "claim": "Prop 7.11: partition depth is additive",
+      "kind": "assertion",
+      "n": 101,
+      "passed": 101,
+      "ok": true,
+      "max_err": 1.7763568394002505e-15,
+      "elapsed_seconds": 0.003
+    },
+    {
+      "tag": "E21",
+      "claim": "Def 8.2: xcorr in [-1,1]; FFT agrees with direct",
+      "kind": "assertion",
+      "n": 121,
+      "passed": 121,
+      "ok": true,
+      "max_err": 1.887379141862766e-15,
+      "elapsed_seconds": 0.043
+    },
+    {
+      "tag": "E22",
+      "claim": "Def 8.3: spectral embedding skips DC and is l2-normed",
+      "kind": "assertion",
+      "n": 121,
+      "passed": 121,
+      "ok": true,
+      "max_err": 1.1102230246251565e-15,
+      "elapsed_seconds": 0.002
+    },
+    {
+      "tag": "E23",
+      "claim": "Def 8.4: shader distance in [0,2]",
+      "kind": "assertion",
+      "n": 121,
+      "passed": 121,
+      "ok": true,
+      "max_err": 0.0,
+      "elapsed_seconds": 0.003
+    },
+    {
+      "tag": "E24",
+      "claim": "Sec 1: complementary strand negates the trajectory",
+      "kind": "assertion",
+      "n": 40,
+      "passed": 40,
+      "ok": true,
+      "max_err": 0.0,
+      "elapsed_seconds": 0.016
+    },
+    {
+      "tag": "E25",
+      "claim": "Sec 8.5: hierarchical address is prefix-consistent",
+      "kind": "assertion",
+      "n": 240,
+      "passed": 240,
+      "ok": true,
+      "max_err": 0.0,
+      "elapsed_seconds": 0.002
+    },
+    {
+      "tag": "E26",
+      "claim": "Sec 10: the four worked programs typecheck",
+      "kind": "assertion",
+      "n": 4,
+      "passed": 4,
+      "ok": true,
+      "max_err": 0.0,
+      "elapsed_seconds": 0.003
+    },
+    {
+      "tag": "E27",
+      "claim": "Thm 9.1: bounded iteration; trip count fixed on entry",
+      "kind": "assertion",
+      "n": 5,
+      "passed": 5,
+      "ok": true,
+      "max_err": 0.0,
+      "elapsed_seconds": 0.001
+    },
+    {
+      "tag": "E28",
+      "claim": "Thms 9.4-9.8: the negative corpus is refused",
+      "kind": "assertion",
+      "n": 16,
+      "passed": 16,
+      "ok": true,
+      "max_err": 0.0,
+      "elapsed_seconds": 0.003
+    },
+    {
+      "tag": "E29",
+      "claim": "Thm 9.4/9.3: exactness is inexpressible; no zero residue",
+      "kind": "assertion",
+      "n": 5,
+      "passed": 5,
+      "ok": true,
+      "max_err": 0.0,
+      "elapsed_seconds": 0.003
+    },
+    {
+      "tag": "E30",
+      "claim": "Thm 9.7/Sec 11: parameters and responses are printed",
+      "kind": "assertion",
+      "n": 10,
+      "passed": 10,
+      "ok": true,
+      "max_err": 0.0,
+      "elapsed_seconds": 0.001
+    },
+    {
+      "tag": "E31",
+      "claim": "Sec 7.6: emitted termination bound is correct",
+      "kind": "assertion",
+      "n": 201,
+      "passed": 201,
+      "ok": true,
+      "max_err": 0.0,
+      "elapsed_seconds": 0.003
+    },
+    {
+      "tag": "E32",
+      "claim": "Assumption 5.8 (MEASUREMENT): response independence",
+      "kind": "measurement",
+      "n": 1,
+      "passed": 1,
+      "ok": true,
+      "max_err": 0.0,
+      "elapsed_seconds": 0.047
+    }
+  ]
+}

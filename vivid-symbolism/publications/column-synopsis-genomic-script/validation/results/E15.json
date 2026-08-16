@@ -1,0 +1,16 @@
+{
+  "name": "E15",
+  "claim": "Thm 4.9: quiescence coexists with positive residue",
+  "n": 80,
+  "passed": 80,
+  "ok": true,
+  "max_err": 0.0,
+  "failures": [],
+  "extra": {
+    "trials": 80,
+    "n_zero_demand": 80,
+    "n_positive_separation": 80
+  },
+  "kind": "assertion",
+  "elapsed_seconds": 0.02
+}

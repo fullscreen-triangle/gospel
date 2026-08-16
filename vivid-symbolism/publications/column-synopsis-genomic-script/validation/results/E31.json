@@ -1,0 +1,18 @@
+{
+  "name": "E31",
+  "claim": "Sec 7.6: emitted termination bound is correct",
+  "n": 201,
+  "passed": 201,
+  "ok": true,
+  "max_err": 0.0,
+  "failures": [],
+  "extra": {
+    "worked_example": {
+      "D0": 0.413,
+      "eta": 0.005,
+      "bound": 83
+    }
+  },
+  "kind": "assertion",
+  "elapsed_seconds": 0.003
+}

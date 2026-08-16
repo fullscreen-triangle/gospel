@@ -1,0 +1,14 @@
+{
+  "name": "E24",
+  "claim": "Sec 1: complementary strand negates the trajectory",
+  "n": 40,
+  "passed": 40,
+  "ok": true,
+  "max_err": 0.0,
+  "failures": [],
+  "extra": {
+    "max_deviation": 0.0
+  },
+  "kind": "assertion",
+  "elapsed_seconds": 0.016
+}

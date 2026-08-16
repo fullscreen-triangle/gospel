@@ -1,0 +1,15 @@
+{
+  "name": "E04",
+  "claim": "Thm 2.9/Cor 2.10: sigma invariant under relabelling",
+  "n": 685,
+  "passed": 685,
+  "ok": true,
+  "max_err": 0.0,
+  "failures": [],
+  "extra": {
+    "n_items": 685,
+    "max_abs_deviation": 0.0
+  },
+  "kind": "assertion",
+  "elapsed_seconds": 0.124
+}

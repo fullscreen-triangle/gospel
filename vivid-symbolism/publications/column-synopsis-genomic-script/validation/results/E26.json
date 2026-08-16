@@ -1,0 +1,75 @@
+{
+  "name": "E26",
+  "claim": "Sec 10: the four worked programs typecheck",
+  "n": 4,
+  "passed": 4,
+  "ok": true,
+  "max_err": 0.0,
+  "failures": [],
+  "extra": {
+    "accepted": {
+      "motif_scan.syp": {
+        "frames": [
+          "nucleotide"
+        ],
+        "n_parameters": 3,
+        "n_claims": 1,
+        "residues_recorded": [
+          "hits",
+          "res_r"
+        ],
+        "responses_named": [],
+        "bounds": {}
+      },
+      "homology.syp": {
+        "frames": [
+          "residue_space"
+        ],
+        "n_parameters": 5,
+        "n_claims": 1,
+        "residues_recorded": [
+          "final",
+          "res_f",
+          "res_s"
+        ],
+        "responses_named": [],
+        "bounds": {}
+      },
+      "adjudicate.syp": {
+        "frames": [
+          "cell_receiver"
+        ],
+        "n_parameters": 4,
+        "n_claims": 1,
+        "residues_recorded": [
+          "v"
+        ],
+        "responses_named": [
+          "pi_edge_raise"
+        ],
+        "bounds": {
+          "v": {
+            "eta": 0.005,
+            "theta": 0.01
+          }
+        }
+      },
+      "transfer.syp": {
+        "frames": [
+          "tissue_receiver"
+        ],
+        "n_parameters": 3,
+        "n_claims": 1,
+        "residues_recorded": [
+          "v"
+        ],
+        "responses_named": [
+          "pi_uniform"
+        ],
+        "bounds": {}
+      }
+    }
+  },
+  "kind": "assertion",
+  "elapsed_seconds": 0.003
+}
