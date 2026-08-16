@@ -1319,9 +1319,145 @@ analyzer = GospelAnalyzer(
 )
 ```
 
-## 8. Future Directions
+## 8. Synopsis: A Language for Stated Genomic Method
 
-### 8.1 Advanced Environmental Noise Modeling
+### 8.1 Motivation
+
+A genomic analysis is reproducible only insofar as its method is recoverable from its record. In practice the record is a script whose behaviour depends on library defaults, on the order in which parameters were tried, and on whatever the analyst adjusted between the run that failed and the run that was published. None of these are recorded, and none are recoverable after the fact. The result is a class of irreproducibility that no amount of care in the surrounding process can remove, because the information required to reproduce the analysis was never written down.
+
+Synopsis addresses this by removing the operations through which such information escapes. It is a small declarative language for describing genomic comparisons in which the constructs that permit an unstated method are absent from the grammar. The name is taken from the synoptic tradition: texts that are read together because they *align*, and whose value lies in the correspondence between them rather than in their identity. Alignment in this sense — sufficient correspondence to carry a conclusion across, not exact agreement — is the operation the language is organised around.
+
+Three properties follow from the grammar's shape rather than from any analysis performed on programs written in it.
+
+**Every program terminates.** The grammar contains no `while` production, no conditional, no recursion, and no user-defined function. Iteration is available only as `for u in items(N) where <guard>`, which ranges over a collection that already exists. A non-terminating program cannot be written, so termination requires no proof obligation on the author and no timeout in the runtime.
+
+**No result can be reached by hand.** There is no indexing production: `q[3]` does not parse. A language in which a sequence position can be read is a language in which a result can be tuned toward a desired answer one coordinate at a time. Excluding indexing from the grammar makes the shortcut unwriteable rather than merely discouraged.
+
+**No parameter is supplied silently.** The language has no defaults anywhere. A `detect peaks` block that omits `min_score` is refused rather than completed from a table of reasonable values, because a default chosen by an implementer becomes part of a published result without appearing in it, and no reader of that result can tell it was not chosen by the author.
+
+To these the language adds a fourth requirement, which is a matter of accounting rather than of grammar. Every comparison binds two names — a result and a *residue*, the part of the comparison the method did not explain:
+
+```
+bind r, res_r = compare q against t by xcorr(normalised)
+```
+
+The residue must be consumed before its frame closes. A program cannot report a clean result while discarding the evidence that the result was not clean.
+
+### 8.2 Design: one language, two implementations
+
+Synopsis is realised as two independent compilers: a TypeScript front-end (995 lines) for interactive use in the browser, and a Rust command-line compiler (1,808 lines) for batch work. This is not redundancy. A property demonstrated of a single implementation is a property of that program; the same property demonstrated of two implementations written independently is a property of the *language*. The two are held to a shared conformance corpus, and a disagreement between them is by construction a defect in one of them rather than a difference of dialect.
+
+The corpus is the arbiter. It fixes:
+
+| Component | Count | What it pins |
+|-----------|-------|--------------|
+| Reserved words | 39 | The lexicon, checked against both tokenizers |
+| Accepted programs | 4 | The syntax tree, node for node and field for field |
+| Refused programs | 16 | The error class each must raise |
+| Result types | 3 | What each construct produces |
+| Required parameters | 5 | Which parameters have no default |
+
+Both compilers dump their syntax trees in a common serialisation and are compared against reference trees field by field. Tree equality is stricter than behavioural agreement and catches divergences — a mis-associated operand, a dropped modifier — that would otherwise surface only on inputs nobody thought to test.
+
+### 8.3 Guarantees carried by the grammar
+
+The distinction that matters for the reproducibility argument is *where* a guarantee lives. A guarantee enforced by a checker holds for programs the checker examines, and fails silently if the checker is bypassed, disabled, or incomplete. A guarantee carried by the grammar holds for every program that exists, because a program violating it cannot be written down.
+
+Termination, the absence of positional access, and the absence of defaults are all of the second kind. They are consequences of which productions the grammar contains, and they are therefore properties of the language rather than of either compiler. This is the reason the grammar is small, and the reason it is unlikely to grow: each construct admitted to it is a guarantee surrendered.
+
+### 8.4 The refusal hierarchy
+
+Refusals are classified, and the classification is part of the language specification rather than a convenience of the implementation:
+
+```
+SynopsisError
+├── ParseError            not a well-formed program
+└── TypeError             well-formed, but not well-typed
+    ├── ArityError        wrong number of arguments
+    ├── ScopeError        name unbound, or bound in another frame
+    ├── ResidueError      residue never consumed
+    ├── ParameterError    a required parameter was omitted
+    └── TerminationError  a settling step that would not converge
+```
+
+A compiler may report a **strict subclass** of the specified error but never a superclass. Reporting `ParseError` where the corpus specifies `SynopsisError` is conformant: the program was caught earlier, and more precisely, than required. Reporting `SynopsisError` where `ScopeError` is specified is not, because it discards information the author needs in order to act.
+
+The frame construct deserves particular note. Each `under <frame> { ... }` block introduces a distinct frame index, and this index is part of the type of every value projected within it. A value projected in a nucleotide frame and a value projected in a protein frame are of genuinely different types, with no coercion between them. Frame confusion is thereby not a mistake to be caught downstream but a program that does not typecheck.
+
+### 8.5 Status
+
+Implementation proceeds in stages, and the boundary is stated here because the distinction between what is implemented and what is specified is precisely the distinction this section argues for.
+
+| Stage | Component | Status |
+|-------|-----------|--------|
+| A | Tokenizer, parser, syntax tree, error hierarchy | **Complete**, both implementations |
+| B | Type checker: frames, dimensions, result types | Specified; not implemented |
+| C | Refusal rules: residue consumption, required parameters | Specified; not implemented |
+| D | Report generation | Specified; not implemented |
+| E | Evaluator | Specified; not implemented |
+
+Stage A is verified as follows. Against the shared corpus, the Rust compiler passes 20/20 tree-and-parse-error cases and 4/4 must-not-parse forms; the TypeScript front-end passes the same 24/24. The Rust compiler additionally carries 17 unit tests. The eighteen tutorial scripts served by the interactive editor are checked against both implementations — 18/18 in each case — so the editor cannot teach a program the command-line tool would reject.
+
+The conformance runners are themselves mutation-tested: a deliberate defect is introduced into each compiler and the suite is required to fail. A suite that passes on first run is evidence that it ran, not that it discriminates. This is not a formality. One runner initially displayed the syntax-tree statistics it compared without asserting on them, and a mutation that collapsed a twelve-statement tree to three still reported success; the assertion was added and the mutation is now caught.
+
+Consequently, of the sixteen refused programs in the corpus, those refused by the grammar are refused today, and those refused by the type checker are not yet refused by any implementation. Tooling built on the language is required to report this distinction rather than obscure it.
+
+### 8.6 Usage
+
+A complete program. Every parameter is written out, both outputs of the comparison are bound, and the destination of the report is stated:
+
+```
+# Locate a motif in a target by coherent multichannel matched filtering.
+open motif  = "motif.fa"
+open target = "chr7_region.fa"
+
+under nucleotide {
+    let q = project motif  by channels(dna)
+    let t = project target by channels(dna)
+    bind r, res_r = compare q against t by xcorr(normalised)
+    let hits = detect peaks in r {
+        z            = 4.0 ;
+        min_distance = 30  ;
+        min_score    = 0.35
+    }
+    claim "motif occurs at least once above z=4" = hits
+    record hits, res_r
+}
+
+report to "motif_scan.report"
+```
+
+The `claim` construct attaches a natural-language assertion to the value intended to support it, so that the report carries the claim and its evidence together and a reader need not reconstruct the former from the code.
+
+The command-line compiler:
+
+```bash
+cd synopsis/rs
+cargo build --release
+./target/release/synopsis parse motif_scan.syp
+```
+
+The conformance suites, which are the useful thing to run when changing either implementation:
+
+```bash
+cd synopsis/corpus
+node run_parse.mjs        # TypeScript front-end against the corpus
+node run_parse_rs.mjs     # Rust compiler against the same corpus
+node run_tutorial.mjs     # the interactive tutorial against the Rust compiler
+
+node --experimental-strip-types check_ide.mts    # tutorial against the TS front-end
+node --experimental-strip-types check_shape.mts  # the editor's diagrams against the tree
+```
+
+An interactive editor is available at `/ide` in the web interface. It runs the TypeScript front-end — the same one the conformance suite exercises — entirely in the browser, over eighteen scripts: twelve lessons that build the corpus programs one construct at a time, and six programs the language must refuse. Where a refusal belongs to a stage not yet implemented, the editor says so rather than displaying a diagnostic it did not derive.
+
+The editor draws three diagrams beside the source, and each is derived from the syntax tree alone. The **tree** view renders the parse, with every parameter written out beside the construct that carries it; the **frames** view draws each `under` block as a separate container annotated with its frame index, so that a value referenced across frames is visibly in the wrong box rather than merely reported as an error; and the **residue** view lists every comparison alongside whether its residue was consumed before the frame closed.
+
+That the diagrams are confined to syntax is a constraint rather than a limitation of effort. The evaluator is not implemented, so the editor has no numeric results of its own, and a chart drawn from numbers computed elsewhere would be indistinguishable — to the reader of a diagnostic panel — from one the displayed program had produced. The adapters that build these diagrams are held to the parser by `check_shape.mts`, which is itself mutation-tested against three defect classes: dropping the parameter map, failing to descend into nested loop bodies, and transposing the operands of a comparison. The second and third initially survived, and assertions discriminating them were added.
+
+## 9. Future Directions
+
+### 9.1 Advanced Environmental Noise Modeling
 
 Extension of environmental gradient search to incorporate temporal and spatial correlation structures in genomic noise:
 
@@ -1331,7 +1467,7 @@ N(x,t) = ∑ₖ αₖ Φₖ(x) Ψₖ(t) + ε(x,t)
 
 Where Φₖ(x) represents spatial basis functions and Ψₖ(t) captures temporal dynamics.
 
-### 8.2 Quantum Computing Integration
+### 9.2 Quantum Computing Integration
 
 Integration with quantum annealing for combinatorial optimization of gene interaction networks:
 
@@ -1341,11 +1477,11 @@ H = ∑ᵢ hᵢσᵢᶻ + ∑ᵢⱼ Jᵢⱼσᵢᶻσⱼᶻ + ∑ᵢ λᵢN(xᵢ
 
 Where σᵢᶻ represents gene states, Jᵢⱼ encodes interaction strengths, and N(xᵢ) incorporates environmental noise context.
 
-### 8.3 Federated Learning Extension
+### 9.3 Federated Learning Extension
 
 Implementation of privacy-preserving federated learning for multi-institutional genomic analysis with shared noise models but private data.
 
-### 8.4 Advanced Turbulance DSL Features
+### 9.4 Advanced Turbulance DSL Features
 
 Extension of Turbulance to support hierarchical hypothesis systems and automated experimental design:
 
@@ -1363,11 +1499,11 @@ ExperimentalDesign = argmin_d Cost(d)
 subject to: Power(d, H) ≥ β, α-error ≤ 0.05, Effect_Size(d) ≥ δ_min
 ```
 
-### 8.5 Causal Inference Integration
+### 9.5 Causal Inference Integration
 
 Incorporation of directed acyclic graphs (DAGs) for causal relationship inference in genomic networks with noise-aware structure learning.
 
-## 9. Conclusions
+## 10. Conclusions
 
 Gospel demonstrates a fundamental reconceptualization of genomic analysis through **Partition Theory**—the principle that charge, information, and computation emerge from the partitioning of phase space rather than existing as primary entities.
 

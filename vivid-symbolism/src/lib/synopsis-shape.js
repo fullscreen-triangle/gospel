@@ -1,0 +1,275 @@
+/**
+ * Adapters from the syntax tree to the shapes the D3 views draw.
+ *
+ * These are pure functions over the AST and nothing else. That is the
+ * whole design constraint: the panel must never display a number the
+ * compiler did not produce, so there is no data source here other than
+ * the tree the parser just built. When the evaluator lands (stage E)
+ * its results become a second, clearly separate input -- not a
+ * retrofit of these functions.
+ *
+ * One thing worth knowing before reading further: `Params` in the AST
+ * is a real `Map`, not a plain object. `JSON.stringify` renders a Map
+ * as `{}`, which is why the raw-JSON view silently showed every
+ * parameter block as empty. Parameters are the language's central
+ * claim -- no defaults, everything stated -- so hiding them was the
+ * worst possible field to lose. `paramList` below is the fix, and it is
+ * the reason these adapters exist rather than the views reading the
+ * tree directly.
+ */
+
+/** A Map, a plain object, or null -> [[key, value], ...]. Never throws. */
+export function paramList(params) {
+  if (!params) return [];
+  if (params instanceof Map) return [...params.entries()];
+  if (typeof params === "object") return Object.entries(params);
+  return [];
+}
+
+/** Short human label for a parameter block, e.g. "z=4, min_distance=30". */
+function paramSummary(params) {
+  const ps = paramList(params);
+  if (ps.length === 0) return "";
+  return ps.map(([k, v]) => `${k}=${v}`).join(", ");
+}
+
+/**
+ * A one-line description of an expression, used as a tree node label.
+ * Deliberately terse: the tree is read at 11px in a 22rem column.
+ */
+function exprLabel(e) {
+  if (!e || !e.node) return "?";
+  switch (e.node) {
+    case "Var": return e.name;
+    case "Num": return String(e.value);
+    case "Project": return `project by ${e.projector}`;
+    case "Compare": return `compare by ${e.method}`;
+    case "Detect": return `detect ${e.kind}`;
+    case "Align": return "align";
+    case "UnitExpr": return `unit anchors ${e.anchors}`;
+    case "ResponseExpr": return `response by ${e.method ?? "(anonymous)"}`;
+    case "NearestUnit": return "nearest_unit";
+    case "CorrExpr": return `corr by ${e.by}`;
+    default: return e.node;
+  }
+}
+
+/** Child expressions of an expression, in source order, with role names. */
+function exprKids(e) {
+  if (!e || !e.node) return [];
+  switch (e.node) {
+    case "Project": return [["src", e.src]];
+    case "Compare": return [["left", e.left], ["right", e.right]];
+    case "Detect": return [["in", e.src]];
+    case "UnitExpr": return [["src", e.src]];
+    case "ResponseExpr": return [["src", e.src]];
+    case "NearestUnit": return [["net", e.net], ["to", e.to]];
+    case "CorrExpr": return [["from", e.src], ["to", e.dst]];
+    case "Align": {
+      const out = [["central", e.central[0]], ["central", e.central[1]]];
+      // resp is null for the false-friend form the arity rule refuses.
+      // Showing its absence is more informative than omitting the row.
+      if (e.resp) out.push(["response", e.resp[0]], ["response", e.resp[1]]);
+      return out;
+    }
+    default: return [];
+  }
+}
+
+/** Parameters carried by an expression, if it has any. */
+function exprParams(e) {
+  if (!e) return null;
+  if (e.node === "Project") return e.args;
+  if (e.node === "Compare" || e.node === "Detect" || e.node === "Align") return e.params;
+  return null;
+}
+
+let uid = 0;
+const node = (o) => ({ id: `n${uid++}`, children: [], ...o });
+
+function fromExpr(e, role) {
+  const n = node({
+    label: exprLabel(e),
+    role,
+    line: e?.line ?? null,
+    kind: e?.node ?? "?",
+    params: paramSummary(exprParams(e)),
+  });
+  n.children = exprKids(e).map(([r, kid]) => fromExpr(kid, r));
+  return n;
+}
+
+function fromStmt(s) {
+  const base = { line: s.line, kind: s.node };
+  switch (s.node) {
+    case "Let":
+      return node({ ...base, label: `let ${s.name}`, children: [fromExpr(s.expr, "=")] });
+    case "Bind":
+      // Both names are shown because binding two is the point: the
+      // residue is not a by-product, it is half the result.
+      return node({
+        ...base,
+        label: `bind ${s.value}, ${s.residue}`,
+        residue: s.residue,
+        children: [fromExpr(s.expr, "=")],
+      });
+    case "Relax":
+      return node({ ...base, label: `relax ${s.target}`, params: paramSummary(s.params) });
+    case "Claim":
+      return node({ ...base, label: `claim "${s.text}"`, children: [fromExpr(s.expr, "=")] });
+    case "Record":
+      return node({ ...base, label: `record ${s.names.join(", ")}` });
+    case "Drop":
+      return node({ ...base, label: `drop ${s.name}` });
+    case "For":
+      return node({
+        ...base,
+        label: `for ${s.var} in items(...)${s.guard ? ` where ${s.guard}` : ""}`,
+        children: s.body.map(fromStmt),
+      });
+    case "Sweep":
+      return node({
+        ...base,
+        label: s.values
+          ? `sweep ${s.var} in [${s.values.join(", ")}]`
+          : `sweep ${s.var} in ${s.lo}..${s.hi} step ${s.step}`,
+        children: s.body.map(fromStmt),
+      });
+    default:
+      return node({ ...base, label: s.node });
+  }
+}
+
+function fromDecl(d) {
+  if (d.node === "Open")
+    return node({ label: `open ${d.name}`, line: d.line, kind: "Open", params: d.path });
+  return node({
+    label: `method ${d.name}`,
+    line: d.line,
+    kind: "MethodDecl",
+    params: `${d.spec}(${paramSummary(d.params)})`,
+  });
+}
+
+/**
+ * The whole program as one d3.hierarchy-ready tree.
+ * Returns null for a program that did not parse -- there is no tree to
+ * draw, and inventing a partial one would misrepresent what happened.
+ */
+export function astTree(ast) {
+  if (!ast) return null;
+  uid = 0;
+  return node({
+    label: "program",
+    kind: "Program",
+    line: 1,
+    params: ast.report ? `report to "${ast.report}"` : "",
+    children: [
+      ...ast.decls.map(fromDecl),
+      ...ast.frames.map((f) =>
+        node({
+          label: `under ${f.name}`,
+          line: f.line,
+          kind: "FrameBlock",
+          children: f.body.map(fromStmt),
+        })
+      ),
+    ],
+  });
+}
+
+/* ------------------------------------------------------------------ */
+
+/** Walk every statement in a frame, including nested for/sweep bodies. */
+function walk(body, fn) {
+  for (const s of body) {
+    fn(s);
+    if (Array.isArray(s.body)) walk(s.body, fn);
+  }
+}
+
+/** Names mentioned anywhere in an expression. */
+function mentions(e, out = []) {
+  if (!e || !e.node) return out;
+  if (e.node === "Var") out.push(e.name);
+  for (const [, kid] of exprKids(e)) mentions(kid, out);
+  return out;
+}
+
+/**
+ * The residue ledger: every `bind`, and whether its residue is consumed
+ * before the frame closes.
+ *
+ * This is stage-A information only -- it reports what the source says,
+ * not what a checker decided, because the checker does not exist yet.
+ * A residue counts as consumed if it is recorded, dropped, or mentioned
+ * by a later expression. That is the rule as specified; when stage C
+ * implements it, this view and the checker must agree, and any
+ * disagreement is a defect in one of them.
+ */
+export function residueLedger(ast) {
+  if (!ast) return [];
+  const rows = [];
+  for (const f of ast.frames) {
+    const binds = [];
+    const used = new Set();
+    walk(f.body, (s) => {
+      if (s.node === "Bind") binds.push({ name: s.residue, value: s.value, line: s.line });
+      if (s.node === "Record") s.names.forEach((n) => used.add(n));
+      if (s.node === "Drop") used.add(s.name);
+      if (s.expr) mentions(s.expr).forEach((n) => used.add(n));
+    });
+    for (const b of binds)
+      rows.push({ ...b, frame: f.name, consumed: used.has(b.name) });
+  }
+  return rows;
+}
+
+/**
+ * Frames, and what is bound inside each.
+ *
+ * The point of drawing this is Thm 9.6: a frame index is part of a
+ * value's type, so a name bound in one frame is not the same type as a
+ * name bound in another. Showing the frames as disjoint boxes makes
+ * that visible rather than merely stated -- and makes the
+ * cross-frame-reference refusal legible, since the offending name is
+ * visibly in the wrong box.
+ */
+export function frameMap(ast) {
+  if (!ast) return { opens: [], methods: [], frames: [] };
+  return {
+    opens: ast.decls.filter((d) => d.node === "Open").map((d) => d.name),
+    methods: ast.decls.filter((d) => d.node === "MethodDecl").map((d) => d.name),
+    frames: ast.frames.map((f, i) => {
+      const bound = [];
+      const usedHere = new Set();
+      walk(f.body, (s) => {
+        if (s.node === "Let") bound.push({ name: s.name, line: s.line, kind: "let" });
+        if (s.node === "Bind") {
+          bound.push({ name: s.value, line: s.line, kind: "bind" });
+          bound.push({ name: s.residue, line: s.line, kind: "residue" });
+        }
+        if (s.node === "For") bound.push({ name: s.var, line: s.line, kind: "for" });
+        if (s.node === "Sweep") bound.push({ name: s.var, line: s.line, kind: "sweep" });
+        if (s.expr) mentions(s.expr).forEach((n) => usedHere.add(n));
+        if (s.node === "Record") s.names.forEach((n) => usedHere.add(n));
+      });
+      const names = new Set(bound.map((b) => b.name));
+      return {
+        name: f.name,
+        index: i,
+        line: f.line,
+        bound,
+        // Names used here that this frame never bound and no `open`
+        // provided. Under the frame rule these are the interesting
+        // ones: a value from a sibling frame is a DIFFERENT type, not
+        // merely out of scope.
+        foreign: [...usedHere].filter(
+          (n) =>
+            !names.has(n) &&
+            !ast.decls.some((d) => d.name === n)
+        ),
+      };
+    }),
+  };
+}
