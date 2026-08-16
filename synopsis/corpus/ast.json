@@ -1,0 +1,248 @@
+{
+  "$comment": "The synopsis AST, declared once. The TypeScript interfaces (synopsis/ts/src/ast.ts) and the Rust enum (synopsis/rs/src/ast.rs) are GENERATED from this file by synopsis/corpus/gen_ast.py. Hand-writing both is how two compilers start disagreeing about whether a field is optional. Mirrors validation/lang.py:175-327; field names and optionality match the reference dataclasses exactly.",
+  "types": {
+    "str": {
+      "ts": "string",
+      "rs": "String"
+    },
+    "str?": {
+      "ts": "string | null",
+      "rs": "Option<String>"
+    },
+    "num": {
+      "ts": "number",
+      "rs": "f64"
+    },
+    "int": {
+      "ts": "number",
+      "rs": "usize"
+    },
+    "expr": {
+      "ts": "Expr",
+      "rs": "Box<Expr>"
+    },
+    "expr?": {
+      "ts": "Expr | null",
+      "rs": "Option<Box<Expr>>"
+    },
+    "stmt[]": {
+      "ts": "Stmt[]",
+      "rs": "Vec<Stmt>"
+    },
+    "str[]": {
+      "ts": "string[]",
+      "rs": "Vec<String>"
+    },
+    "num[]?": {
+      "ts": "number[] | null",
+      "rs": "Option<Vec<f64>>"
+    },
+    "params": {
+      "ts": "Params",
+      "rs": "Params"
+    },
+    "pair": {
+      "ts": "[Expr, Expr]",
+      "rs": "(Box<Expr>, Box<Expr>)"
+    },
+    "pair?": {
+      "ts": "[Expr, Expr] | null",
+      "rs": "Option<(Box<Expr>, Box<Expr>)>"
+    },
+    "expr[]": {
+      "ts": "Expr[]",
+      "rs": "Vec<Expr>"
+    },
+    "decl[]": {
+      "ts": "Decl[]",
+      "rs": "Vec<Decl>"
+    },
+    "frame[]": {
+      "ts": "FrameBlock[]",
+      "rs": "Vec<FrameBlock>"
+    }
+  },
+  "expressions": {
+    "$comment": "Expression nodes. `Expr = object` in the reference (lang.py:259) -- untyped there because Python does not need it; here the union is closed and both compilers enforce it.",
+    "Project": {
+      "doc": "project <src> by <projector>(<args>)  -- Sec 7.3",
+      "fields": {
+        "src": "expr",
+        "projector": "str",
+        "args": "params"
+      }
+    },
+    "Compare": {
+      "doc": "compare <l> against <r> by <method>(<params>)",
+      "fields": {
+        "left": "expr",
+        "right": "expr",
+        "method": "str",
+        "params": "params"
+      }
+    },
+    "Detect": {
+      "doc": "detect peaks|top in <src> { params }  -- `kind` selects the result type",
+      "fields": {
+        "kind": "str",
+        "src": "expr",
+        "params": "params"
+      }
+    },
+    "Align": {
+      "doc": "align central(a,b) response(c,d) under phi_c, phi_r { theta }  -- Thm 9.5. has_response_clause=false is the false-friend mistake the arity rule must refuse.",
+      "fields": {
+        "central": "pair",
+        "resp": "pair?",
+        "corrs": "str[]",
+        "params": "params",
+        "has_response_clause": "bool"
+      }
+    },
+    "UnitExpr": {
+      "doc": "unit <src> anchors <n>  -- Def 5.4 anchors/residue split",
+      "fields": {
+        "src": "expr",
+        "anchors": "int"
+      }
+    },
+    "ResponseExpr": {
+      "doc": "response <src> by <method>  -- method=null means ANONYMOUS, which Rule 6.7 refuses",
+      "fields": {
+        "src": "expr",
+        "method": "str?"
+      }
+    },
+    "NearestUnit": {
+      "doc": "nearest_unit <net> to <unit>",
+      "fields": {
+        "net": "expr",
+        "to": "expr"
+      }
+    },
+    "CorrExpr": {
+      "doc": "corr from <src> to <dst> by <by>",
+      "fields": {
+        "src": "expr",
+        "dst": "expr",
+        "by": "str"
+      }
+    },
+    "Var": {
+      "doc": "a bound name",
+      "fields": {
+        "name": "str"
+      }
+    },
+    "Num": {
+      "doc": "a numeric literal",
+      "fields": {
+        "value": "num"
+      }
+    }
+  },
+  "statements": {
+    "Let": {
+      "doc": "let x = <expr>. NOTE: the reference parser has an `ann` branch for `let x : ty = e`, but ':' is not in the tokenizer's punctuation class, so that branch is unreachable -- `let x : seq` fails with `unexpected character ':'`. The field is kept (always null) so the two implementations stay structurally identical to the reference; neither compiler may start accepting the annotation without a decision, because that would extend the language.",
+      "fields": {
+        "name": "str",
+        "ann": "str?",
+        "expr": "expr"
+      }
+    },
+    "Bind": {
+      "doc": "bind v, res = <expr>  -- introduces BOTH the value and its residue; Cor 9.8 requires the residue be consumed before the frame closes",
+      "fields": {
+        "value": "str",
+        "residue": "str",
+        "expr": "expr"
+      }
+    },
+    "Relax": {
+      "doc": "relax <target> until quiescent { eta ; theta }  -- Thm 9.3 refuses eta <= 0",
+      "fields": {
+        "target": "str",
+        "params": "params"
+      }
+    },
+    "Sweep": {
+      "doc": "sweep x in lo..hi step s { }  or  sweep x in [..] { }  -- Thm 9.1: trip count fixed on entry. `values` non-null means the literal-list form, and lo/hi/step are then unused.",
+      "fields": {
+        "var": "str",
+        "lo": "num",
+        "hi": "num",
+        "step": "num",
+        "values": "num[]?",
+        "body": "stmt[]"
+      }
+    },
+    "For": {
+      "doc": "for u in items(<src>) [where <guard>] { }  -- finite item set, so total",
+      "fields": {
+        "var": "str",
+        "src": "expr",
+        "guard": "str?",
+        "body": "stmt[]"
+      }
+    },
+    "Claim": {
+      "doc": "claim \"text\" = <expr>",
+      "fields": {
+        "text": "str",
+        "expr": "expr"
+      }
+    },
+    "Record": {
+      "doc": "record a, b, c  -- consumes pending residue",
+      "fields": {
+        "names": "str[]"
+      }
+    },
+    "Drop": {
+      "doc": "drop x  -- explicitly abandons a residue; the report records that it was abandoned rather than omitting it",
+      "fields": {
+        "name": "str"
+      }
+    }
+  },
+  "declarations": {
+    "Open": {
+      "doc": "open name = \"path\"",
+      "fields": {
+        "name": "str",
+        "path": "str"
+      }
+    },
+    "MethodDecl": {
+      "doc": "method name = spec(params)  -- Rule 6.7: responses must name a declared method",
+      "fields": {
+        "name": "str",
+        "spec": "str",
+        "params": "params"
+      }
+    }
+  },
+  "toplevel": {
+    "FrameBlock": {
+      "doc": "under <name> { }  -- Sec 7.4. Each block introduces a fresh frame index phi; types carrying different phi are DIFFERENT TYPES, which is what gives Thm 9.6.",
+      "fields": {
+        "name": "str",
+        "body": "stmt[]"
+      }
+    },
+    "Program": {
+      "doc": "the whole program. `report` is the terminal `report to \"path\"`; null is a ParseError, since there is no silent program (Rule 6.11).",
+      "fields": {
+        "decls": "decl[]",
+        "frames": "frame[]",
+        "report": "str?"
+      }
+    }
+  },
+  "notes": [
+    "Every node carries `line: number` for diagnostics (lang.py:176). It is implicit and added by the generator to every struct, not listed per-node.",
+    "`params` is an ordered string->(number|string) map. Order is preserved because the report prints parameters in source order.",
+    "There is deliberately NO indexing node, NO while node, NO recursion: Thm 9.4 (sequences opaque) and Thm 9.1 (bounded iteration) are enforced by the grammar's shape, not by a later check.",
+    "Only three fields are optional: `Align.resp`, `Let.ann` and `ResponseExpr.method`. Every other subexpression slot is REQUIRED, and that is checked, not assumed: dump_ref_ast.py's trees were scanned for null fields and those three are the only ones that ever occur. Declaring the rest optional would make every consumer handle a case the grammar cannot produce -- and would let a compiler emit a null there without any test noticing."
+  ]
+}
