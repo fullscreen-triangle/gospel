@@ -39,14 +39,14 @@
 \newtheorem{assumption}[theorem]{Assumption}
 \newtheorem{construction}[theorem]{Construction}
 \newtheorem{example}[theorem]{Example}
-\newtheorem{rule}[theorem]{Rule}
+\newtheorem{drule}[theorem]{Rule}
 
 \theoremstyle{remark}
 \newtheorem{remark}[theorem]{Remark}
 \newtheorem{convention}[theorem]{Convention}
 
-\crefname{rule}{Rule}{Rules}
-\Crefname{rule}{Rule}{Rules}
+\crefname{drule}{Rule}{Rules}
+\Crefname{drule}{Rule}{Rules}
 \crefname{assumption}{Assumption}{Assumptions}
 \Crefname{assumption}{Assumption}{Assumptions}
 \crefname{construction}{Construction}{Constructions}
@@ -625,6 +625,17 @@ that the floor is unconditionally preserved under expansion is therefore
 false, and we record the counterexample rather than the temptation.
 \end{remark}
 
+\begin{remark}[Measured decay]
+\label{rem:decaymeasured}
+Running the three sequences for $40$ steps from a common start makes the
+separation concrete: the $1/k$ expansion drives $\flo_k(v)$ to
+$0.025$, the $1/k^2$ expansion to $6.25\times10^{-4}$, while a
+floor-stabilising expansion holds it at $1.0$ exactly
+(\Cref{sec:validation}, E06). The gap is three orders of magnitude after
+forty steps and widens without limit; the hypothesis of
+\Cref{def:stabilising} is doing real work, not tidying an edge case.
+\end{remark}
+
 The correct statement needs a hypothesis, and naming it precisely is the
 point.
 
@@ -800,6 +811,31 @@ by its own structure. The two receivers are evaluating different
 functions and each is correct.
 \end{corollary}
 
+\begin{remark}[How often, and why the rate is a minority]
+\label{rem:receiverrate}
+It would be a misreading of \Cref{thm:receiver} to expect that changing
+the receiver usually changes the value. It does not. Perturbing a single
+background edge --- one not incident to $u$ --- moves $\sep(u)$ only when
+that edge crosses $u$'s minimising cut, and most edges do not. Sweeping
+a perturbation across every non-incident edge of a population of random
+contact structures, $206$ of $1181$ edges ($17.4\%$) moved $\sep(u)$ at
+all; where an edge did move it, the smallest displacement recorded was
+$0.022$. Independently, over $150$ receiver pairs the value disagreed in
+$26$ cases ($17.3\%$), and where it disagreed the discrepancy was never
+small --- the smallest was $0.056$, five orders of magnitude above
+numerical tolerance (\Cref{sec:validation}, E10).
+
+Both halves of this matter. That the rate is a minority is why
+receiver-relativity is easy to overlook in practice and easy to
+misattribute to noise when it appears. That the discrepancies are never
+marginal is what makes \Cref{cor:notnoise} substantive. The observed
+displacements are broadly spread rather than concentrated, but they are
+bounded away from zero: either the receivers agree exactly, or they
+disagree by an amount no measurement programme will close. There is no
+population of near-misses in between, which is precisely what a noise
+account would predict.
+\end{remark}
+
 \Cref{cor:notnoise} has an immediate practical reading and a language
 consequence. The practical reading is that a variant reported with
 different effect in two assays need not indicate that one assay is
@@ -921,9 +957,27 @@ $U(\dem_k)$ is undefined --- no effective update exists.
 
 \begin{assumption}[Effective update]
 \label{ass:effective}
-There is $\eta>0$ such that whenever $U(\dem)$ is defined,
-$U(\dem)\le \dem-\eta$.
+There is $\eta>0$ such that whenever $U(\dem)$ is defined, either
+\[
+  U(\dem)\;\le\;\dem-\eta
+  \qquad\text{or}\qquad
+  U(\dem)\;\le\;\theta .
+\]
 \end{assumption}
+
+\begin{remark}[Why the second disjunct is not redundant]
+\label{rem:lastdisjunct}
+The bare condition $U(\dem)\le\dem-\eta$ is what the termination argument
+needs and is all \Cref{thm:mono} uses, but it cannot be imposed as a
+runtime check: on the final step, when $\dem<\eta$, an update that lands
+on quiescence lands on a value that is not below the negative quantity
+$\dem-\eta$. A checker enforcing the first disjunct unconditionally
+reports a violation on the last step of every terminating run --- which
+is what ours did before we separated the two cases. The disjunctive form
+is the assumption that is simultaneously strong enough for
+\Cref{thm:dichotomy} and enforceable, and it is the form the language
+checks.
+\end{remark}
 
 \Cref{ass:effective} is the whole of what makes relaxation a
 terminating procedure, and it is a real assumption, not a technicality:
@@ -940,7 +994,9 @@ decreasing while defined, and $\dem_k\le \dem_0-k\eta$.
 
 \begin{proof}
 Induction: $\dem_0\le\dem_0-0$; if $\dem_k\le\dem_0-k\eta$ and
-$U(\dem_k)$ is defined then
+$U(\dem_k)$ is defined then, since the loop has not terminated we have
+$\dem_k>\theta$, so the second disjunct of \Cref{ass:effective} would
+end the run and the bound is asserted only where the first applies:
 $\dem_{k+1}\le \dem_k-\eta\le \dem_0-(k+1)\eta$.
 \end{proof}
 
@@ -1025,21 +1081,58 @@ on the pendants. All residue terms are $\Delta=0$, so
 $\dem^{\mathrm{central}}=0$ for every $c$: content comparison reports
 correspondence unconditionally.
 
-\emph{Response.} Now let $u$ induce the perturbation $\delta_u\equiv0$
-on a receiver $N$, and let $v$ induce $\delta_v$ raising a designated
-edge $e_\ast$ of $N$ by $c$. By \Cref{prop:skeleton} the skeleton is
-unchanged in both cases, so the response structures $N_u$ and $N_v$ are
-comparable edge for edge under the identity correspondence. Choose
-$e_\ast$ on the minimum cut of some residue item $i$; then
-$\sep_{N_v}(i)=\sep_{N_u}(i)+c$ for $c$ small enough that the minimiser
-does not change, and beyond that $\sep_{N_v}(i)$ continues to increase,
-being the minimum of a family of affine functions of $c$ with at least
-one coefficient positive. Hence $\Delta_{N_v}(i,\corr(i))$ grows without
-bound in $c$ up to the normalisation $\Om$, which also grows linearly;
-choosing $e_\ast$ so that its weight is a vanishing fraction of $\Om$
-(by padding $N$ with fixed edges) makes the normalised gap grow, and
-$\dem^{\mathrm{response}}\to\infty$ accordingly.
+\emph{Response.} Let the receiver $N$ be $P$ itself, padded with a fixed
+block of $n_f$ filler items mutually joined at weight $w_f$ and each
+joined to the medium at $w_f$, with $w_f>\flo$. Let the response
+perturbation $\delta_c$ raise \emph{both} pendant edges
+$\{u,\med\}$ and $\{v,\med\}$ by $c$. By \Cref{prop:skeleton} the
+skeleton is unchanged, so $N$ and $N_c$ are comparable edge for edge
+under the identity correspondence.
+
+Both pendants must be raised. If only one is raised, the minimum
+$(u,v)$-cut is realised by a separating set that places the medium on
+the raised side and severs only the untouched pendant edge; its weight
+is $\flo$ for every $c$, and $\Delta$ does not move at all. This is not
+a defect of the bound but of the witness, and it is the reason the
+one-sided construction --- the natural first attempt --- registers no
+response whatever.
+
+With both raised, every $(u,v)$-separating set severs at least one edge
+of weight $\flo+c$, so $\sep_{N_c}(u\mid v)=\flo+c$, while
+$\Om_c=\Om_0+2c$ and the floor is
+$\flo_c=\min\{\flo+c,\,w_f\}$. Hence
+\begin{equation}
+\label{eq:ffcurve}
+  \Delta_c(u,v)\;=\;\frac{\flo+c}{\Om_0+2c}\;-\;\frac{\min\{\flo+c,\;w_f\}}{\Om_0+2c}
+  \;=\;\frac{\max\{0,\;\flo+c-w_f\}}{\Om_0+2c},
+\end{equation}
+which is identically $0$ for $c\le w_f-\flo$ and thereafter strictly
+increasing to the limit $\tfrac12$. The flat initial segment is
+\Cref{thm:floor} operating correctly rather than an absent response:
+while the pendant edges are still the lightest in the structure they
+\emph{are} the floor, so $\flo_c$ rises in lockstep with the cut and the
+difference cannot open. The response becomes visible exactly once the
+pendants exceed the surrounding weight $w_f$.
+
+The divergence is therefore in the normalised gap, which is bounded by
+$\tfrac12$ on any single pendant pair; to obtain an unbounded
+$\dem^{\mathrm{response}}$ it suffices to take a residue of $m$
+independent pendant pairs, each contributing a term of
+\eqref{eq:ffcurve}, so that
+$\dem^{\mathrm{response}}\ge m\,\Delta_c\to\infty$ with $m$. What the
+theorem requires, and what \eqref{eq:ffcurve} supplies, is that the
+response separates without bound while the central demand is pinned at
+zero.
 \end{proof}
+
+\begin{remark}[Measured]
+\label{rem:ffmeasured}
+On the instance $\flo=0.2$, $n_f=3$, $w_f=1$, sweeping $c$ over
+$[1,5]$ gives $\Delta_c$ rising from $0.0238$ to $0.2561$ while
+$\dem^{\mathrm{central}}$ is $0$ to machine precision throughout
+(\Cref{sec:validation}, E16). Below $c=w_f-\flo$ the response is exactly
+$0$, as \eqref{eq:ffcurve} predicts.
+\end{remark}
 
 \begin{remark}
 The biological instance is (i) of \Cref{sec:intro}. Two units whose
@@ -1054,26 +1147,53 @@ comparison is blind to by construction.
 
 \begin{corollary}[Converse]
 \label{cor:converse}
-There is a family indexed by $W$ with
-$\dem^{\mathrm{central}}$ strictly increasing in $W$ and
-$\dem^{\mathrm{response}}=0$ for all $W$.
+There is a family indexed by a bridge weight $d\ge0$ with
+$\dem^{\mathrm{central}}$ strictly increasing in $d$ over an initial
+interval, and $\dem^{\mathrm{response}}=0$ for all $d$.
 \end{corollary}
 
 \begin{proof}
-Take the two-cluster structure of \Cref{thm:region} with $u=a_1$,
-$v=b_1$. As $W$ grows, the minimum $(u,v)$-cut is $\min\{(r+1)\flo,\;
-(r-1)W+2\flo,\dots\}$; for $W$ in the regime where a cluster cut is
-selected the value is constant, but normalising by
-$\Om=r(r-1)W+\flo+2r\flo$ makes $a(u,v)$ vary, and choosing the regime
-$W<\flo$ where $S=\{a_1\}$ is minimal gives
-$a(u,v)=\frac{(r-1)W+2\flo}{\Om}$, strictly increasing in $W$ over the
-admissible interval. So $\dem^{\mathrm{central}}$ increases.
+Take the two-cluster structure of \Cref{thm:region}: two $r$-cliques at
+intra-weight $W$, joined by the single bridge $\{a_0,b_0\}$, every item
+joined to the medium at $\flo$. Put $u=a_1$, $v=b_1$ and index the
+family by the bridge weight $d$, so that the bridge carries $\flo+d$.
+
+The index must be the bridge, not $W$. Raising $W$ leaves the minimum
+$(a_1,b_1)$-cut fixed --- each of $a_1,b_1$ detaches through the medium
+at $\flo$ regardless of how heavy its own clique becomes --- while
+$\Om=r(r-1)W+\flo+2r\flo$ grows linearly in $W$. So $a(u,v)$ and hence
+$\Delta$ \emph{fall} as $W$ increases. The bridge is the edge that the
+$(a_1,b_1)$-cut actually crosses, and it is therefore the parameter the
+central demand responds to.
+
+With $d$ as index, any $(a_1,b_1)$-separating set must either sever
+$a_1$ from the medium and from its clique, or cross the bridge; in the
+regime where the latter is minimal the cut weight is affine in $d$ with
+positive coefficient while $\Om$ grows at the same absolute rate on a
+single edge. Since the cut is a minimum of finitely many affine
+functions of $d$, $a(u,v)$ is piecewise affine and strictly increasing
+until the minimiser switches to a $d$-independent set, after which it
+is non-increasing. Restricting to the initial interval gives strict
+increase, as claimed.
 
 Let both $u$ and $v$ induce the \emph{same} perturbation $\delta$ on the
 receiver. Then $N_u=N_v$ identically, every $\Delta$ term is computed on
 one structure against itself under the identity correspondence, and
 $\dem^{\mathrm{response}}=0$ exactly.
 \end{proof}
+
+\begin{remark}[Measured]
+\label{rem:convmeasured}
+At $r=4$, $W=1$, $\flo=0.2$, sweeping the bridge $d$ over $[0,2]$ raises
+$\Delta(a_1,b_1)$ monotonically from $0.0580$ to $0.1772$, with
+$\dem^{\mathrm{response}}=0$ throughout (\Cref{sec:validation}, E17).
+Sweeping $W$ instead over $[0.5,6]$ sends $\Delta$ from $0.1026$
+\emph{down} to $0.0108$, with the cut constant at $1.0$ and $\Om$
+growing from $7.8$ to $73.8$ --- which is why the corollary is indexed
+as it is. Continuing the bridge sweep past $d\approx2$ turns the curve
+over as the minimiser switches, so the strict increase is genuinely
+local, not global.
+\end{remark}
 
 \begin{remark}
 This is (ii) of \Cref{sec:intro}: the non-homologous isofunctional
@@ -1094,6 +1214,20 @@ first family and therefore cannot separate its members; any criterion
 that is a function of $\dem^{\mathrm{response}}$ alone is constant on
 the second.
 \end{corollary}
+
+\begin{remark}[Measured]
+\label{rem:orthmeasured}
+Both axes are occupied strictly, not merely approached. Over the
+both-pendant family of \Cref{rem:ffmeasured} at $c\in[1.5,5]$, every
+member has $\dem^{\mathrm{central}}=0$ to machine precision and
+$\dem^{\mathrm{response}}>0$ strictly; over the bridge family of
+\Cref{rem:convmeasured} at $d\in[0.25,2]$, every member has
+$\dem^{\mathrm{response}}=0$ and $\dem^{\mathrm{central}}>0$ strictly
+(\Cref{sec:validation}, E18). The stronger per-axis statement matters:
+a family that merely avoided the origin would be consistent with the two
+demands being correlated, which is what \Cref{def:fourq} is built to
+exclude.
+\end{remark}
 
 This forces the shape of a correct criterion.
 
@@ -1181,119 +1315,119 @@ most a language can honestly do about an open problem: see
 Every rule below is derived from a result above. We state the rule, the
 result forcing it, and the consequence for a user.
 
-\begin{rule}[Sequences are opaque]
+\begin{drule}[Sequences are opaque]
 \label{rule:opaque}
 The type \typ{seq} supports no indexing, no slicing, no base access, no
 concatenation and no equality. A \typ{seq} may only be consumed by a
 projection into \typ{profile}, \typ{coord} or \typ{net}.
-\end{rule}
+\end{drule}
 \noindent\emph{Forced by} \Cref{cor:labels} and \Cref{rem:bearing}: a
 sequence is a labelling, and labels carry none of the invariant.
 \emph{Consequence:} a user cannot write a character-level comparison,
 because there is no expression denoting a character. This is discussed
 at length in \Cref{sec:opaque} because it is the rule users find hardest.
 
-\begin{rule}[Every value carries residue]
+\begin{drule}[Every value carries residue]
 \label{rule:residue}
 Every value of a comparison type carries a pair $(\flo,\Res)$ with
 $\Res\ge\flo>0$. Residue is not optional and not erasable; it may be
 consumed by \kw{bind} or explicitly abandoned by \kw{drop}, which the
 report records.
-\end{rule}
+\end{drule}
 \noindent\emph{Forced by} \Cref{thm:floor}. \emph{Consequence:} a program
 that throws information away must say so in its own text.
 
-\begin{rule}[No zero-residue constructor]
+\begin{drule}[No zero-residue constructor]
 \label{rule:nozero}
 There is no expression in synopsis whose type ascribes $\Res=0$.
-\end{rule}
+\end{drule}
 \noindent\emph{Forced by} \Cref{thm:floor}: zero is outside the range of
 the quantity. \emph{Consequence:} \texttt{identical} and
 \texttt{percent\_identity == 100} are not writable
 (\Cref{thm:noexact}).
 
-\begin{rule}[Verdicts are four-ary]
+\begin{drule}[Verdicts are four-ary]
 \label{rule:arity}
 The verdict constructor \kw{align} takes exactly a central pair and a
 response pair. Supplying only the central pair is an arity error at
 parse time.
-\end{rule}
+\end{drule}
 \noindent\emph{Forced by} \Cref{cor:orth} and \Cref{thm:four}.
 \emph{Consequence:} the commonest scientific error in this domain
 --- concluding functional sameness from content sameness --- is a
 \emph{syntax} error.
 
-\begin{rule}[Frames are lexical]
+\begin{drule}[Frames are lexical]
 \label{rule:frames}
 Every value is created inside an \kw{under} block naming a receiver and
 an encoding. Values from different blocks have different types and
 cannot be compared.
-\end{rule}
+\end{drule}
 \noindent\emph{Forced by} \Cref{thm:receiver} and \Cref{cor:notnoise}.
 \emph{Consequence:} comparing a nucleotide embedding to a protein
 embedding, or a value from receiver $N$ to one from $N'$, fails to
 typecheck (\Cref{thm:scope}).
 
-\begin{rule}[No default thresholds]
+\begin{drule}[No default thresholds]
 \label{rule:nodefault}
 Every numeric parameter that can change a verdict must appear in the
 program text. There are no defaults.
-\end{rule}
+\end{drule}
 \noindent\emph{Forced by} nothing in the mathematics --- this one is
 methodological \cite{simmons2011false,gelman2013garden}.
 \emph{Consequence:} the report can print the full parameter set because
 the parser has seen all of it.
 
-\begin{rule}[Named responses]
+\begin{drule}[Named responses]
 \label{rule:namedresponse}
 The response constructor is \kw{response}~$u$~\kw{by}~$\resp$, where
 $\resp$ must be a named, in-scope perturbation map. There is no anonymous
 or inferred response.
-\end{rule}
+\end{drule}
 \noindent\emph{Forced by} \Cref{prop:respind} and the negative result of
 \Cref{sec:open}. \emph{Consequence:} every program records which
 arbitrary choice it made, so the open problem is visible in the source
 and in the report rather than buried in a library default.
 
-\begin{rule}[Bounded iteration only]
+\begin{drule}[Bounded iteration only]
 \label{rule:bounded}
 The only iteration forms are \kw{sweep} over an arithmetic range or a
 literal list, \kw{for} over the finite item set of a structure, and
 \kw{relax until quiescent}. There is no \kw{while}, no recursion, and no
 user-defined fixpoint.
-\end{rule}
+\end{drule}
 \noindent\emph{Forced by} the desire for \Cref{thm:total}, made
 affordable by \Cref{thm:dichotomy}. \emph{Consequence:} every synopsis
 program halts, and the compiler can state the bound.
 
-\begin{rule}[Relaxation must be floored]
+\begin{drule}[Relaxation must be floored]
 \label{rule:floored}
 \kw{relax}~\ldots~\kw{until quiescent} typechecks only when a step floor
 $\eta>0$ is supplied as a literal or an expression provably positive.
 The compiler then emits $\lceil \dem_0/\eta\rceil$ into the report.
-\end{rule}
+\end{drule}
 \noindent\emph{Forced by} \Cref{ass:effective} and \Cref{thm:dichotomy}.
 \emph{Consequence:} the termination proof of each program is a
 by-product of compiling it.
 
-\begin{rule}[Three result types]
+\begin{drule}[Three result types]
 \label{rule:three}
 Comparison methods produce distinct types according to their index set:
 \typ{profile} (indexed by lag), \typ{ranked} (indexed by database
 entry), \typ{verdict} (an element of a three-valued set over a
 structure). These do not unify and are not coercible.
-\end{rule}
+\end{drule}
 \noindent\emph{Forced by} the fact that the index sets genuinely differ;
 see \Cref{sec:threefamilies}. \emph{Consequence:} a user cannot
 accidentally feed a lag-indexed correlation into a database-ranking
 consumer.
 
-\begin{rule}[Programs emit reports]
+\begin{drule}[Programs emit reports]
 \label{rule:report}
 The terminal form of a synopsis program is a report: a document carrying
 claims, their verdicts, their residues, their parameters and their
 certificates. A program does not ``return a number''.
-\end{rule}
+\end{drule}
 \noindent\emph{Forced by} \Cref{thm:form}: quiescence coexists with
 positive residue, so a scalar cannot express the result.
 \emph{Consequence:} outputs are auditable in the sense of
@@ -2250,6 +2384,99 @@ conclusion is placing on the author's judgement rather than on the
 computation.
 
 % =====================================================================
+\section{Validation}
+\label{sec:validation}
+% =====================================================================
+
+Every claim in this paper that can be checked by computation has been.
+This section states what was checked, how, and --- because this is the
+part that carries information --- what the checking changed.
+
+\subsection{What is checkable, and what is not}
+
+The claims fall into three kinds, and conflating them would make the
+exercise worthless.
+
+\textbf{Mathematical} (\Cref{sec:contact}--\Cref{sec:separation}). These
+are statements about contact structures and are checkable numerically on
+explicit instances. Minimum cuts are computed by exhaustive enumeration
+over separating subsets rather than by max-flow: the cut is
+\emph{defined} as a minimum over separating sets (\Cref{def:contact}),
+and an approximate solver agreeing with an approximate expectation could
+conceal a real disagreement. This is exponential, and affordable only on
+the small structures the validation uses --- which is the point of using
+them.
+
+\textbf{Language} (\Cref{sec:lang}--\Cref{sec:meta}). The refusal
+theorems say certain programs \emph{do not typecheck}. A checker that
+rejected everything would satisfy every refusal theorem vacuously, so
+each negative program is paired with a positive one, and the four
+programs of \Cref{sec:programs} are required to typecheck
+\emph{verbatim as printed}. A refusal counts only if it carries the
+expected error class: rejecting a cross-frame reference as a parse error
+would not be \Cref{thm:scope}.
+
+\textbf{Measurement} (\Cref{sec:open}). \Cref{ass:respind} is reported,
+not asserted. Recording it as an assertion would either bake in a
+statement we believe to be false or hide the paper's principal finding.
+
+\subsection{Result}
+
+\begin{center}
+\begin{tabular}{@{}lr@{}}
+\toprule
+Quantity & Value \\
+\midrule
+Claim categories & $32$ \\
+\quad of which assertions & $31$ \\
+\quad of which measurements & $1$ \\
+Individual checks & $5622$ \\
+Checks passed & $5622$ \\
+Assertion categories failed & $0$ \\
+Random seed & $20260816$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\noindent Of the language checks, the four programs of
+\Cref{sec:programs} typecheck as printed, and $16$ negative programs are
+each rejected with the specific error class the corresponding theorem
+names --- arity, scope, residue, parameter and termination violations
+among them.
+
+\subsection{What the checking changed}
+
+A validation that confirms everything has usually tested nothing. Three
+proofs in this paper were wrong when first written, and the corrections
+are recorded in place rather than quietly absorbed.
+
+\begin{itemize}[leftmargin=1.4em]
+\item \Cref{thm:falsefriend}: the original proof perturbed \emph{one}
+      pendant edge. That leaves the minimum cut pinned by the other
+      pendant --- the minimiser simply places the medium on the raised
+      side --- and the response is identically zero for every $c$. The
+      theorem is true; the witness was not. See \Cref{rem:ffmeasured}.
+\item \Cref{cor:converse}: the original proof indexed the family by the
+      intra-cluster weight $W$ and asserted that
+      $\dem^{\mathrm{central}}$ increases in $W$. It decreases: the cut
+      is constant while $\Om$ grows. The family must be indexed by the
+      bridge, which is the edge the cut crosses. See
+      \Cref{rem:convmeasured}.
+\item \Cref{thm:region}: an earlier version claimed a light edge between
+      non-pendant items places them at the floor. Exact enumeration gave
+      $1.4$ where the argument predicted $0.2$. This is now recorded as
+      \Cref{rem:badwitness}, and it is why \Cref{thm:falsefriend} insists
+      on pendants.
+\end{itemize}
+
+\noindent A fourth correction was to a check rather than a proof. We had
+demanded that receiver disagreement occur in at least $20\%$ of cases;
+no theorem says that, and \Cref{rem:receiverrate} reports what is
+actually true --- a minority rate, with discrepancies that are never
+marginal when they occur. A threshold that encodes no claim is a
+threshold that will eventually be tuned until it passes.
+
+% =====================================================================
 \section{The open problem, and what the language does about it}
 \label{sec:open}
 % =====================================================================
@@ -2289,6 +2516,45 @@ The maximum exceeds $\theta$ by more than an order of magnitude, and
 systematic, not driven by one pathological pathway or one outlying
 species. By \Cref{prop:respind}, the four-column verdict on these
 networks depends on which admissible response the analyst constructed.
+
+\subsection{The same failure on a second corpus}
+
+The biochemical networks are few and are not independent of one another;
+a reader is entitled to ask whether the result is a property of those
+four pathways. It is not. Repeating the construction on $200$ random
+contact structures, with no biochemical content whatever, gives $361$
+comparisons and the same verdict (\Cref{sec:validation}, E32):
+
+\begin{center}
+\begin{tabular}{@{}lrr@{}}
+\toprule
+Quantity & Networks & Random \\
+\midrule
+Comparisons & $35$ & $361$ \\
+Within $\theta=0.01$ & $28.6\%$ & $77.8\%$ \\
+Mean discrepancy & $0.070$ & $0.00555$ \\
+Median discrepancy & --- & $0.00451$ \\
+Maximum discrepancy & $0.307$ & $0.0360$ \\
+Assumption holds at $\theta$ & no & no \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The two corpora differ in severity and agree in kind. On random
+structures the assumption holds far more often --- $77.8\%$ against
+$28.6\%$ --- and the discrepancies are an order of magnitude smaller,
+which is what one expects when the perturbed edges are not selected for
+biological significance. But $77.8\%$ is not $100\%$, the maximum is
+still more than triple $\theta$, and the failure rate does not fall with
+sample size. \Cref{ass:respind} is not approximately true and awaiting a
+sharper estimate; it is false, and more uniformly false the more
+structured the network.
+
+This also disposes of the most natural rescue. If the discrepancies were
+sampling error, enlarging the corpus by an order of magnitude would
+shrink them. It does not, and by \Cref{cor:notnoise} it cannot: each
+value is exactly determined by its own structure, so there is nothing
+for more sampling to average away.
 
 \subsection{What is missing}
 

@@ -1,0 +1,367 @@
+\begin{thebibliography}{10}
+
+\bibitem{altschul1990basic}
+Stephen~F. Altschul, Warren Gish, Webb Miller, Eugene~W. Myers, and David~J.
+  Lipman.
+\newblock Basic local alignment search tool.
+\newblock {\em Journal of Molecular Biology}, 215(3):403--410, 1990.
+
+\bibitem{altschul1997gapped}
+Stephen~F. Altschul, Thomas~L. Madden, Alejandro~A. Sch{\"a}ffer, Jinghui
+  Zhang, Zheng Zhang, Webb Miller, and David~J. Lipman.
+\newblock Gapped {BLAST} and {PSI-BLAST}: A new generation of protein database
+  search programs.
+\newblock {\em Nucleic Acids Research}, 25(17):3389--3402, 1997.
+
+\bibitem{anastassiou2001genomic}
+Dimitris Anastassiou.
+\newblock Genomic signal processing.
+\newblock {\em IEEE Signal Processing Magazine}, 18(4):8--20, 2001.
+
+\bibitem{ashburner2000gene}
+Michael Ashburner, Catherine~A. Ball, et~al.
+\newblock Gene ontology: Tool for the unification of biology.
+\newblock {\em Nature Genetics}, 25(1):25--29, 2000.
+
+\bibitem{baker2016reproducibility}
+Monya Baker.
+\newblock 1,500 scientists lift the lid on reproducibility.
+\newblock {\em Nature}, 533(7604):452--454, 2016.
+
+\bibitem{barabasi2004network}
+Albert-L{\'a}szl{\'o} Barab{\'a}si and Zoltan~N. Oltvai.
+\newblock Network biology: Understanding the cell's functional organization.
+\newblock {\em Nature Reviews Genetics}, 5(2):101--113, 2004.
+
+\bibitem{bentley1975multidimensional}
+Jon~Louis Bentley.
+\newblock Multidimensional binary search trees used for associative searching.
+\newblock {\em Communications of the ACM}, 18(9):509--517, 1975.
+
+\bibitem{boykov2004experimental}
+Yuri Boykov and Vladimir Kolmogorov.
+\newblock An experimental comparison of min-cut/max-flow algorithms for energy
+  minimization in vision.
+\newblock {\em IEEE Transactions on Pattern Analysis and Machine Intelligence},
+  26(9):1124--1137, 2004.
+
+\bibitem{buchfink2015fast}
+Benjamin Buchfink, Chao Xie, and Daniel~H. Huson.
+\newblock Fast and sensitive protein alignment using {DIAMOND}.
+\newblock {\em Nature Methods}, 12(1):59--60, 2015.
+
+\bibitem{cooley1965algorithm}
+James~W. Cooley and John~W. Tukey.
+\newblock An algorithm for the machine calculation of complex fourier series.
+\newblock {\em Mathematics of Computation}, 19(90):297--301, 1965.
+
+\bibitem{costanzo2016global}
+Michael Costanzo, Benjamin VanderSluis, et~al.
+\newblock A global genetic interaction network maps a wiring diagram of
+  cellular function.
+\newblock {\em Science}, 353(6306):aaf1420, 2016.
+
+\bibitem{difrancesco2015nextflow}
+Paolo Di~Tommaso, Maria Chatzou, Evan~W. Floden, et~al.
+\newblock Nextflow enables reproducible computational workflows.
+\newblock {\em Nature Biotechnology}, 35(4):316--319, 2017.
+
+\bibitem{dixit2016perturb}
+Atray Dixit, Oren Parnas, Biyu Li, et~al.
+\newblock Perturb-seq: Dissecting molecular circuits with scalable single-cell
+  {RNA} profiling of pooled genetic screens.
+\newblock {\em Cell}, 167(7):1853--1866, 2016.
+
+\bibitem{durbin1998biological}
+Richard Durbin, Sean~R. Eddy, Anders Krogh, and Graeme Mitchison.
+\newblock {\em Biological Sequence Analysis: Probabilistic Models of Proteins
+  and Nucleic Acids}.
+\newblock Cambridge University Press, 1998.
+
+\bibitem{eddy2011accelerated}
+Sean~R. Eddy.
+\newblock Accelerated profile {HMM} searches.
+\newblock {\em PLoS Computational Biology}, 7(10):e1002195, 2011.
+
+\bibitem{fiedler1973algebraic}
+Miroslav Fiedler.
+\newblock Algebraic connectivity of graphs.
+\newblock {\em Czechoslovak Mathematical Journal}, 23(2):298--305, 1973.
+
+\bibitem{ford1956maximal}
+L.~R. Ford and D.~R. Fulkerson.
+\newblock Maximal flow through a network.
+\newblock {\em Canadian Journal of Mathematics}, 8:399--404, 1956.
+
+\bibitem{fowler2010domain}
+Martin Fowler.
+\newblock {\em Domain-Specific Languages}.
+\newblock Addison-Wesley, 2010.
+
+\bibitem{freeman1991refinement}
+Tim Freeman and Frank Pfenning.
+\newblock Refinement types for {ML}.
+\newblock In {\em Proceedings of the ACM SIGPLAN Conference on Programming
+  Language Design and Implementation}, pages 268--277, 1991.
+
+\bibitem{galperin2010divergence}
+Michael~Y. Galperin and Eugene~V. Koonin.
+\newblock Divergence and convergence in enzyme evolution.
+\newblock {\em Journal of Biological Chemistry}, 287(1):21--28, 2012.
+
+\bibitem{gelman2013garden}
+Andrew Gelman and Eric Loken.
+\newblock The garden of forking paths.
+\newblock {\em Department of Statistics, Columbia University}, 2013.
+
+\bibitem{gomory1961multi}
+R.~E. Gomory and T.~C. Hu.
+\newblock Multi-terminal network flows.
+\newblock {\em Journal of the Society for Industrial and Applied Mathematics},
+  9(4):551--570, 1961.
+
+\bibitem{griesbach1776synopsis}
+Johann~Jakob Griesbach.
+\newblock {\em Synopsis Evangeliorum Matthaei, Marci et Lucae}.
+\newblock Halle, 1776.
+
+\bibitem{henikoff1992amino}
+S.~Henikoff and J.~G. Henikoff.
+\newblock Amino acid substitution matrices from protein blocks.
+\newblock {\em Proceedings of the National Academy of Sciences},
+  89(22):10915--10919, 1992.
+
+\bibitem{hucka2003systems}
+M.~Hucka, A.~Finney, H.~M. Sauro, et~al.
+\newblock The systems biology markup language ({SBML}): A medium for
+  representation and exchange of biochemical network models.
+\newblock {\em Bioinformatics}, 19(4):524--531, 2003.
+
+\bibitem{hudak1996building}
+Paul Hudak.
+\newblock Building domain-specific embedded languages.
+\newblock {\em ACM Computing Surveys}, 28(4es):196, 1996.
+
+\bibitem{ioannidis2005why}
+John P.~A. Ioannidis.
+\newblock Why most published research findings are false.
+\newblock {\em PLoS Medicine}, 2(8):e124, 2005.
+
+\bibitem{jaccard1912distribution}
+Paul Jaccard.
+\newblock The distribution of the flora in the alpine zone.
+\newblock {\em New Phytologist}, 11(2):37--50, 1912.
+
+\bibitem{jumper2021highly}
+John Jumper, Richard Evans, Alexander Pritzel, et~al.
+\newblock Highly accurate protein structure prediction with {AlphaFold}.
+\newblock {\em Nature}, 596(7873):583--589, 2021.
+
+\bibitem{kanehisa2000kegg}
+Minoru Kanehisa and Susumu Goto.
+\newblock {KEGG}: {Kyoto} encyclopedia of genes and genomes.
+\newblock {\em Nucleic Acids Research}, 28(1):27--30, 2000.
+
+\bibitem{karger1996new}
+David~R. Karger and Clifford Stein.
+\newblock A new approach to the minimum cut problem.
+\newblock {\em Journal of the ACM}, 43(4):601--640, 1996.
+
+\bibitem{kennedy1997relational}
+Andrew~J. Kennedy.
+\newblock Relational parametricity and units of measure.
+\newblock {\em Proceedings of the 24th ACM SIGPLAN-SIGACT Symposium on
+  Principles of Programming Languages}, pages 442--455, 1997.
+
+\bibitem{kimchi2007silent}
+Chava Kimchi-Sarfaty, Jung~Mi Oh, In-Wha Kim, et~al.
+\newblock A ``silent'' polymorphism in the {MDR1} gene changes substrate
+  specificity.
+\newblock {\em Science}, 315(5811):525--528, 2007.
+
+\bibitem{koster2012snakemake}
+Johannes K{\"o}ster and Sven Rahmann.
+\newblock Snakemake---a scalable bioinformatics workflow engine.
+\newblock {\em Bioinformatics}, 28(19):2520--2522, 2012.
+
+\bibitem{kyte1982simple}
+Jack Kyte and Russell~F. Doolittle.
+\newblock A simple method for displaying the hydropathic character of a
+  protein.
+\newblock {\em Journal of Molecular Biology}, 157(1):105--132, 1982.
+
+\bibitem{lakin2011design}
+Matthew~R. Lakin, Simon Youssef, Filippo Polo, Stephen Emmott, and Andrew
+  Phillips.
+\newblock Visual {DSD}: A design and analysis tool for {DNA} strand
+  displacement systems.
+\newblock {\em Bioinformatics}, 27(22):3211--3213, 2011.
+
+\bibitem{mernik2005when}
+Marjan Mernik, Jan Heering, and Anthony~M. Sloane.
+\newblock When and how to develop domain-specific languages.
+\newblock {\em ACM Computing Surveys}, 37(4):316--344, 2005.
+
+\bibitem{moreau2011provenance}
+Luc Moreau, Ben Clifford, Juliana Freire, et~al.
+\newblock The open provenance model core specification (v1.1).
+\newblock {\em Future Generation Computer Systems}, 27(6):743--756, 2011.
+
+\bibitem{morton1966computer}
+Guy~M. Morton.
+\newblock A computer oriented geodetic data base and a new technique in file
+  sequencing.
+\newblock {\em IBM Ltd.\ Technical Report}, 1966.
+
+\bibitem{needleman1970general}
+Saul~B. Needleman and Christian~D. Wunsch.
+\newblock A general method applicable to the search for similarities in the
+  amino acid sequence of two proteins.
+\newblock {\em Journal of Molecular Biology}, 48(3):443--453, 1970.
+
+\bibitem{omelchenko2010nonhomologous}
+Marina~V. Omelchenko, Michael~Y. Galperin, Yuri~I. Wolf, and Eugene~V. Koonin.
+\newblock Non-homologous isofunctional enzymes: A systematic analysis of
+  alternative solutions in enzyme evolution.
+\newblock {\em Biology Direct}, 5:31, 2010.
+
+\bibitem{ondov2016mash}
+Brian~D. Ondov, Todd~J. Treangen, P{\'a}ll Melsted, Adam~B. Mallonee,
+  Nicholas~H. Bergman, Sergey Koren, and Adam~M. Phillippy.
+\newblock {Mash}: Fast genome and metagenome distance estimation using
+  {MinHash}.
+\newblock {\em Genome Biology}, 17(1):132, 2016.
+
+\bibitem{oppenheim2009discrete}
+Alan~V. Oppenheim and Ronald~W. Schafer.
+\newblock {\em Discrete-Time Signal Processing}.
+\newblock Pearson, 3 edition, 2009.
+
+\bibitem{pedersen2009towards}
+Michael Pedersen and Gordon Plotkin.
+\newblock A language for biochemical systems: Design and formal specification.
+\newblock {\em Transactions on Computational Systems Biology}, 12:77--145,
+  2010.
+
+\bibitem{plotkin2004structural}
+Gordon~D. Plotkin.
+\newblock A structural approach to operational semantics.
+\newblock {\em Journal of Logic and Algebraic Programming}, 60--61:17--139,
+  2004.
+
+\bibitem{plotkin2011synonymous}
+Joshua~B. Plotkin and Grzegorz Kudla.
+\newblock Synonymous but not the same: The causes and consequences of codon
+  bias.
+\newblock {\em Nature Reviews Genetics}, 12(1):32--42, 2011.
+
+\bibitem{radivojac2013large}
+Predrag Radivojac, Wyatt~T. Clark, et~al.
+\newblock A large-scale evaluation of computational protein function
+  prediction.
+\newblock {\em Nature Methods}, 10(3):221--227, 2013.
+
+\bibitem{replogle2022mapping}
+Joseph~M. Replogle, Reuben~A. Saunders, et~al.
+\newblock Mapping information-rich genotype-phenotype landscapes with
+  genome-scale {Perturb-seq}.
+\newblock {\em Cell}, 185(14):2559--2575, 2022.
+
+\bibitem{sandve2013ten}
+Geir~Kjetil Sandve, Anton Nekrutenko, James Taylor, and Eivind Hovig.
+\newblock Ten simple rules for reproducible computational research.
+\newblock {\em PLoS Computational Biology}, 9(10):e1003285, 2013.
+
+\bibitem{sauna2011silent}
+Zuben~E. Sauna and Chava Kimchi-Sarfaty.
+\newblock Understanding the contribution of synonymous mutations to human
+  disease.
+\newblock {\em Nature Reviews Genetics}, 12(10):683--691, 2011.
+
+\bibitem{schnoes2009annotation}
+Alexandra~M. Schnoes, Shoshana~D. Brown, Igor Dodevski, and Patricia~C.
+  Babbitt.
+\newblock Annotation error in public databases: Misannotation of molecular
+  function in enzyme superfamilies.
+\newblock {\em PLoS Computational Biology}, 5(12):e1000605, 2009.
+
+\bibitem{schrijver2003combinatorial}
+Alexander Schrijver.
+\newblock {\em Combinatorial Optimization: Polyhedra and Efficiency}.
+\newblock Springer, Berlin, 2003.
+
+\bibitem{shi2000normalized}
+Jianbo Shi and Jitendra Malik.
+\newblock Normalized cuts and image segmentation.
+\newblock {\em IEEE Transactions on Pattern Analysis and Machine Intelligence},
+  22(8):888--905, 2000.
+
+\bibitem{simmons2011false}
+Joseph~P. Simmons, Leif~D. Nelson, and Uri Simonsohn.
+\newblock False-positive psychology: Undisclosed flexibility in data collection
+  and analysis allows presenting anything as significant.
+\newblock {\em Psychological Science}, 22(11):1359--1366, 2011.
+
+\bibitem{smith1981identification}
+T.~F. Smith and M.~S. Waterman.
+\newblock Identification of common molecular subsequences.
+\newblock {\em Journal of Molecular Biology}, 147(1):195--197, 1981.
+
+\bibitem{steinegger2017mmseqs2}
+Martin Steinegger and Johannes S{\"o}ding.
+\newblock {MMseqs2} enables sensitive protein sequence searching for the
+  analysis of massive data sets.
+\newblock {\em Nature Biotechnology}, 35(11):1026--1028, 2017.
+
+\bibitem{stoer1997simple}
+Mechthild Stoer and Frank Wagner.
+\newblock A simple min-cut algorithm.
+\newblock {\em Journal of the ACM}, 44(4):585--591, 1997.
+
+\bibitem{throckmorton1949gospel}
+Burton~H. Throckmorton.
+\newblock {\em Gospel Parallels: A Synopsis of the First Three Gospels}.
+\newblock Thomas Nelson, 1949.
+
+\bibitem{turin1960introduction}
+George~L. Turin.
+\newblock {\em An Introduction to Matched Filters}.
+\newblock IRE Transactions on Information Theory, 1960.
+\newblock vol.\ 6, no.\ 3, pp.\ 311--329.
+
+\bibitem{turner1995total}
+D.~A. Turner.
+\newblock Elementary strong functional programming.
+\newblock {\em Functional Programming Languages in Education}, pages 1--13,
+  1995.
+
+\bibitem{voss1992evolution}
+Richard~F. Voss.
+\newblock Evolution of long-range fractal correlations and $1/f$ noise in {DNA}
+  base sequences.
+\newblock {\em Physical Review Letters}, 68(25):3805--3808, 1992.
+
+\bibitem{wadler1990linear}
+Philip Wadler.
+\newblock Linear types can change the world!
+\newblock {\em Programming Concepts and Methods}, 1990.
+
+\bibitem{watson1953molecular}
+J.~D. Watson and F.~H.~C. Crick.
+\newblock Molecular structure of nucleic acids: A structure for deoxyribose
+  nucleic acid.
+\newblock {\em Nature}, 171(4356):737--738, 1953.
+
+\bibitem{wilkinson2016fair}
+Mark~D. Wilkinson, Michel Dumontier, et~al.
+\newblock The {FAIR} guiding principles for scientific data management and
+  stewardship.
+\newblock {\em Scientific Data}, 3:160018, 2016.
+
+\bibitem{zamyatnin1972protein}
+A.~A. Zamyatnin.
+\newblock Protein volume in solution.
+\newblock {\em Progress in Biophysics and Molecular Biology}, 24:107--123,
+  1972.
+
+\end{thebibliography}

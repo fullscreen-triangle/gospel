@@ -1,0 +1,48 @@
+This is BibTeX, Version 0.99e
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: synopsis-genomic-scripting.aux
+Reallocating 'name_of_file' (item size: 1) to 6 items.
+The style file: plain.bst
+Reallocating 'name_of_file' (item size: 1) to 11 items.
+Database file #1: references.bib
+You've used 65 entries,
+            2118 wiz_defined-function locations,
+            875 strings with 13769 characters,
+and the built_in function-call counts, 21487 in all, are:
+= -- 2163
+> -- 945
+< -- 3
++ -- 391
+- -- 308
+* -- 1615
+:= -- 3622
+add.period$ -- 196
+call.type$ -- 65
+change.case$ -- 332
+chr.to.int$ -- 0
+cite$ -- 65
+duplicate$ -- 745
+empty$ -- 1695
+format.name$ -- 308
+if$ -- 4377
+int.to.chr$ -- 0
+int.to.str$ -- 65
+missing$ -- 72
+newline$ -- 329
+num.names$ -- 130
+pop$ -- 262
+preamble$ -- 1
+purify$ -- 273
+quote$ -- 0
+skip$ -- 512
+stack$ -- 0
+substring$ -- 1663
+swap$ -- 89
+text.length$ -- 3
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 246
+warning$ -- 0
+while$ -- 234
+width$ -- 67
+write$ -- 711
