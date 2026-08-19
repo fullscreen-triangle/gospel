@@ -22,6 +22,9 @@ import {
   residueLedger,
   frameMap,
   paramList,
+  dataflow,
+  parameterSurface,
+  alignmentArity,
 } from "../../vivid-symbolism/src/lib/synopsis-shape.js";
 
 let fails = 0;
@@ -225,6 +228,137 @@ console.log("\nframe map locates the cross-frame reference");
     ok(foreign.length === 0,
        `${f.id}: no foreign names, got [${foreign.join(", ")}]`);
   }
+}
+
+// --------------------------------------------------------------- 5
+// Dataflow resolves names per frame, not globally.
+//
+// This is the assertion that caught a real defect. The first version
+// of `dataflow` kept one global name table, so in
+// `cross-frame-reference` the name `a` -- bound in `nucleotide_frame`
+// and used illegally in `protein_frame` -- resolved cleanly and the
+// graph reported nothing dangling. Under the frame rule that edge is
+// precisely the refusal: `a` in the second frame is not an
+// out-of-scope name, it is a value of a different type with no
+// coercion to this one. A graph that quietly resolves it draws a
+// program the checker refuses.
+
+console.log("\ndataflow resolves names per frame");
+{
+  const bad = (ALL_FILES as any[]).find((f) => f.id === "cross-frame-reference")!;
+  const g = dataflow(parse(bad.src));
+  const dangling = g.links.filter((l: any) => !l.resolved);
+  ok(dangling.length > 0, "the cross-frame use leaves an unresolved edge");
+  ok(dangling.every((l: any) => l.source === "a"),
+     `and it is 'a' that fails to resolve, got [${dangling.map((l: any) => l.source).join(", ")}]`);
+
+  // The converse. An adapter that marked everything unresolved would
+  // satisfy the check above and be useless, so the accepted lessons
+  // must come back clean.
+  for (const f of (ALL_FILES as any[]).filter((x) => x.group !== "refusals")) {
+    const d = dataflow(parse(f.src));
+    const loose = d.links.filter((l: any) => !l.resolved).map((l: any) => l.source);
+    ok(loose.length === 0, `${f.id}: every name resolves, got [${loose.join(", ")}]`);
+
+    // Depth is the x axis of the view, so a collapsed depth would
+    // render every value in one column and say nothing. A program
+    // that projects and then compares must reach at least depth 2.
+    const maxd = Math.max(0, ...d.nodes.map((n: any) => n.depth));
+    const compares = parse(f.src).frames.some((fr: any) =>
+      fr.body.some((s: any) => s.expr?.node === "Compare"));
+    if (compares) ok(maxd >= 2, `${f.id}: derivation depth ${maxd}, want >= 2`);
+  }
+
+  // `undefined-variable` is the other half of the same property: the
+  // name was never bound ANYWHERE, so it must dangle too.
+  const undef = (ALL_FILES as any[]).find((f) => f.id === "undefined-variable")!;
+  const u = dataflow(parse(undef.src));
+  ok(u.links.some((l: any) => !l.resolved && l.source === "nonexistent"),
+     "the unbound name dangles");
+}
+
+// --------------------------------------------------------------- 6
+// The parameter surface is complete.
+//
+// The language has no defaults, so this view is the whole set of
+// numbers a result rests on. A missing row is therefore not a cosmetic
+// loss: it is a parameter the reader would not know had been chosen.
+// The count is checked against a recount of the AST rather than a
+// pinned number, so it follows the grammar if the grammar grows.
+
+console.log("\nparameter surface covers every stated parameter");
+{
+  for (const f of (ALL_FILES as any[]).filter((x) => x.group !== "refusals")) {
+    const ast: any = parse(f.src);
+    const rows = parameterSurface(ast);
+
+    // Recount from the tree: every Map-valued params field, plus the
+    // arguments carried by a projector or a method declaration.
+    let want = 0;
+    for (const d of ast.decls)
+      if (d.node === "MethodDecl") want += d.params?.size ?? 0;
+    const visit = (body: any[]) => {
+      for (const s of body) {
+        const e = s.expr;
+        if (e?.params instanceof Map) want += e.params.size;
+        if (e?.args instanceof Map) want += e.args.size;
+        if (s.params instanceof Map) want += s.params.size;
+        if (Array.isArray(s.body)) visit(s.body);
+      }
+    };
+    for (const fr of ast.frames) visit(fr.body);
+
+    ok(rows.length === want,
+       `${f.id}: ${rows.length} parameter rows, want ${want}`);
+    ok(rows.every((r: any) => r.owner && r.key && r.line > 0),
+       `${f.id}: every row names an owner, a key and a line`);
+  }
+
+  // The numeric flag drives whether a bar is drawn at all, so a
+  // number misflagged as symbolic would silently lose its magnitude.
+  const scan: any = parse(
+    (ALL_FILES as any[]).find((f) => f.id === "06-motif-scan")!.src);
+  const rows = parameterSurface(scan);
+  const z = rows.find((r: any) => r.key === "z");
+  ok(z !== undefined && z.numeric === true && z.value === 4.0,
+     `z is numeric 4.0, got ${JSON.stringify(z)}`);
+  const norm = rows.find((r: any) => String(r.value) === "normalised");
+  ok(norm !== undefined && norm.numeric === false,
+     "a symbolic argument is not flagged numeric");
+}
+
+// --------------------------------------------------------------- 7
+// Alignment arity counts all four columns.
+//
+// The rule the view exists to show is that an alignment needs a
+// central pair AND a response pair AND its correspondences: agreement
+// on structure alone is not sufficient evidence. `has_response_clause`
+// is carried rather than inferred, because the parser distinguishes a
+// clause written empty from one that was never written, and that
+// distinction is the whole point.
+
+console.log("\nalignment arity carries all four columns");
+{
+  for (const id of ["11-alignment", "12-transfer"]) {
+    const ast: any = parse((ALL_FILES as any[]).find((f) => f.id === id)!.src);
+    const rows = alignmentArity(ast);
+    ok(rows.length === 1, `${id}: one alignment, got ${rows.length}`);
+    const a = rows[0];
+    ok(a.central === 2, `${id}: central pair, got ${a.central}`);
+    ok(a.resp === 2, `${id}: response pair, got ${a.resp}`);
+    ok(a.hasResponseClause === true, `${id}: the response clause is written`);
+    ok(a.corrs.length === 2,
+       `${id}: two correspondences, got [${a.corrs.join(", ")}]`);
+    ok(typeof a.theta === "number" && a.theta > 0,
+       `${id}: theta is a stated positive number, got ${a.theta}`);
+  }
+
+  // A program with no alignment must yield no rows, not a row of
+  // zeroes -- which would draw four empty slots and read as a defect.
+  const scan: any = parse(
+    (ALL_FILES as any[]).find((f) => f.id === "06-motif-scan")!.src);
+  ok(alignmentArity(scan).length === 0,
+     "a program without an alignment yields no arity rows");
 }
 
 console.log(

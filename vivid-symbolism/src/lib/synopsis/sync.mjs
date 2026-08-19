@@ -23,7 +23,12 @@ import { dirname, join, resolve } from "node:path";
 const HERE = dirname(fileURLToPath(import.meta.url));
 const SRC = resolve(HERE, "..", "..", "..", "..", "synopsis", "ts", "src");
 
-const FILES = ["errors.ts", "tokens.ts", "ast.ts", "parser.ts"];
+// Stage A (tokens, ast, parser) plus Stage B (check). `check.ts` joined
+// the list when the checker landed: before it existed the web tool could
+// only report that a program parsed, and had to say so in a banner
+// admitting the check was not implemented. It is implemented, so the
+// banner is gone and this file is what replaced it.
+const FILES = ["errors.ts", "tokens.ts", "ast.ts", "parser.ts", "check.ts"];
 
 if (!existsSync(SRC)) {
   console.error(`source not found: ${SRC}`);

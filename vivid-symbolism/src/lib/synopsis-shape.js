@@ -273,3 +273,185 @@ export function frameMap(ast) {
     }),
   };
 }
+
+/* ------------------------------------------------------------------ */
+/* Adapters for the quantitative views.                                */
+/*                                                                     */
+/* The three above answer "what shape is this program". The three      */
+/* below answer questions with numeric answers: how far each value     */
+/* stands from its inputs, what the whole parameter surface is, and    */
+/* how many correspondences each alignment carries. They are still     */
+/* measured from the tree and nothing else -- the evaluator does not   */
+/* exist, so a chart whose axis was a SCORE would be a chart of a      */
+/* number no compiler produced. Depth, count and arity are produced,   */
+/* by the parser, and they move when the program moves, which is the   */
+/* only property that makes a chart worth drawing rather than          */
+/* decorating.                                                         */
+
+/**
+ * The dataflow graph: one node per bound name, one edge per use.
+ *
+ * This is the view the tree cannot give. A syntax tree nests by
+ * grammar, so `let a` and `let b` are siblings however tightly the
+ * second depends on the first -- the dependency between them travels
+ * in a name, not in the nesting. Drawing names as nodes and uses as
+ * edges puts the real order of derivation on screen, and a node's
+ * depth (its distance from the nearest `open`) measures how much
+ * machinery stands between a file on disk and a claim about it.
+ */
+export function dataflow(ast) {
+  if (!ast) return { nodes: [], links: [] };
+
+  const nodes = [];
+  const links = [];
+  const byName = new Map();
+
+  const add = (n) => {
+    // A later binding of the same name shadows the earlier one for
+    // subsequent uses, and overwriting in `byName` reproduces that.
+    // The earlier node stays in `nodes`: it was still derived, and
+    // dropping it would erase work the program actually did.
+    nodes.push(n);
+    byName.set(n.name, n);
+    return n;
+  };
+
+  for (const d of ast.decls)
+    add({
+      name: d.name,
+      kind: d.node === "Open" ? "open" : "method",
+      line: d.line,
+      frame: null,
+      depth: 0,
+    });
+
+  for (const f of ast.frames) {
+    // Visibility is per-frame, not global. A name bound in a sibling
+    // frame is NOT in scope here -- under the frame rule it is a value
+    // of a different type, with no coercion to this one -- so it must
+    // not silently resolve. Declarations are the exception: `open` and
+    // `method` sit outside every frame and are visible in all of them.
+    const visible = new Set(ast.decls.map((d) => d.name));
+
+    walk(f.body, (s) => {
+      const from = s.expr ? mentions(s.expr) : [];
+
+      // A response names its method as a bare string, not a Var, so it
+      // never turns up in `mentions`. Adding it explicitly is what
+      // makes "this declared method is used here" an edge instead of
+      // leaving the method unconnected at the left margin.
+      if (s.expr && s.expr.node === "ResponseExpr" && s.expr.method)
+        from.push(s.expr.method);
+
+      const targets = [];
+      if (s.node === "Let") targets.push({ name: s.name, kind: "let" });
+      if (s.node === "Bind") {
+        targets.push({ name: s.value, kind: "bind" });
+        targets.push({ name: s.residue, kind: "residue" });
+      }
+      if (s.node === "For") targets.push({ name: s.var, kind: "for" });
+      if (s.node === "Sweep") targets.push({ name: s.var, kind: "sweep" });
+
+      for (const t of targets) {
+        const depth =
+          from.length === 0
+            ? 1
+            : 1 +
+              Math.max(
+                0,
+                ...from.map((n) => (visible.has(n) ? byName.get(n)?.depth ?? 0 : 0))
+              );
+        const n = add({ ...t, line: s.line, frame: f.name, depth });
+        visible.add(n.name);
+        for (const src of from)
+          // An unresolved source is exactly the undefined-variable and
+          // cross-frame cases. It is kept as a dangling edge rather
+          // than dropped, because the missing end IS the diagnostic --
+          // and this view is drawn for stage-B refusals.
+          links.push({ source: src, target: n.name, resolved: visible.has(src) });
+      }
+    });
+  }
+
+  return { nodes, links };
+}
+
+/**
+ * Every parameter written anywhere in the program, with its owner.
+ *
+ * "There are no defaults" is the language's sharpest claim, and no
+ * view showed its consequence: the complete set of numbers a result
+ * rests on, in one place. That set is what a reader would need in
+ * order to reproduce the result, and its size is a real property of
+ * the program -- it grows as the program commits to more.
+ */
+export function parameterSurface(ast) {
+  if (!ast) return [];
+  const rows = [];
+
+  const push = (owner, ownerKind, line, frame, params) => {
+    for (const [k, v] of paramList(params))
+      rows.push({
+        owner,
+        ownerKind,
+        key: k,
+        value: v,
+        numeric: typeof v === "number",
+        line,
+        frame,
+      });
+  };
+
+  for (const d of ast.decls)
+    if (d.node === "MethodDecl")
+      push(d.name, "method", d.line, null, d.params);
+
+  for (const f of ast.frames)
+    walk(f.body, (s) => {
+      if (s.node === "Relax")
+        push(`relax ${s.target}`, "relax", s.line, f.name, s.params);
+      const e = s.expr;
+      if (!e) return;
+      if (e.node === "Project") push(e.projector, "projector", s.line, f.name, e.args);
+      if (e.node === "Compare") push(e.method, "method", s.line, f.name, e.params);
+      if (e.node === "Detect") push(`detect ${e.kind}`, "detect", s.line, f.name, e.params);
+      if (e.node === "Align") push("align", "align", s.line, f.name, e.params);
+    });
+
+  return rows;
+}
+
+/**
+ * Alignments, and the correspondences each one carries.
+ *
+ * The four-column arity is the rule that an alignment needs BOTH a
+ * central pair and a response pair: agreement on structure alone, or
+ * on behaviour alone, is not sufficient evidence. That rule is about
+ * a count, so a count is the honest thing to draw. A row whose
+ * response column is empty is exactly the shape the checker refuses,
+ * and it reads as a missing bar rather than as prose.
+ *
+ * `has_response_clause` is carried rather than inferred from `resp`,
+ * because the two differ in the case the rule exists for: the parser
+ * records a written-but-empty clause distinctly from an absent one.
+ */
+export function alignmentArity(ast) {
+  if (!ast) return [];
+  const rows = [];
+  for (const f of ast.frames)
+    walk(f.body, (s) => {
+      const e = s.expr;
+      if (!e || e.node !== "Align") return;
+      rows.push({
+        name: s.name ?? s.value ?? "align",
+        line: s.line,
+        frame: f.name,
+        central: e.central ? e.central.length : 0,
+        resp: e.resp ? e.resp.length : 0,
+        hasResponseClause: !!e.has_response_clause,
+        corrs: e.corrs ? e.corrs.slice() : [],
+        theta: paramList(e.params).find(([k]) => k === "theta")?.[1] ?? null,
+      });
+    });
+  return rows;
+}

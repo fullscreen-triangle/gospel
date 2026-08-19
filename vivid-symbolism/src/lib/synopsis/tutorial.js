@@ -11,10 +11,16 @@
 // no tutorial at all.
 //
 // `stage` on a refusal records WHERE the refusal comes from:
-//   "A" -- the grammar refuses it; this page shows the real diagnostic
-//   "B" -- the checker refuses it; not implemented yet, and the panel
-//          says so rather than fabricating an error the page cannot
-//          actually produce.
+//   "A" -- the grammar refuses it. The program cannot be written, so
+//          there is no tree and the views say so.
+//   "B" -- the checker refuses it. The program parses, so the tree IS
+//          drawn: the rule being taught is usually a relation between
+//          two nodes a reader can point at.
+//
+// Both stages produce real diagnostics now. The field is no longer a
+// note about what is unimplemented; check_ide.mts asserts that each
+// refusal actually fires at the stage claimed here, so a mislabelled
+// lesson is a test failure rather than a quiet inaccuracy.
 
 export const TUTORIAL = [
   {

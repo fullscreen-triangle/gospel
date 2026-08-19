@@ -6,41 +6,20 @@
 // disagreed about a lesson, the page would teach a language the CLI
 // does not accept. Running both is what closes that gap.
 //
-// The analyse() below mirrors vivid-symbolism/src/lib/synopsis/analyse.js
-// rather than importing it. That is a deliberate, and slightly
-// uncomfortable, duplication: the vendored copies drop the `.ts` import
-// extensions so webpack can resolve them, which makes them unloadable
-// by Node. Mirroring the twenty lines here keeps the check runnable
-// without weakening the vendored bundle. If analyse.js grows past this,
-// it should move behind a shared module instead.
+// This used to mirror analyse.js here rather than importing it, because
+// the vendored copies drop their `.ts` import extensions for webpack and
+// are therefore unloadable by Node. That duplication has been removed:
+// `resolve_ext.mjs` teaches the loader to re-add the extension, so the
+// page's ACTUAL analyse() is what runs below. The mirrored copy had
+// already gone stale -- it stopped at the parser after the checker
+// landed -- which is the failure mode a second implementation always
+// has, and the reason it is gone.
 //
-// Run: node --experimental-strip-types check_ide.mts
+// Run: node --experimental-strip-types --import ./resolve_ext.mjs check_ide.mts
 
 import { ALL_FILES } from "../../vivid-symbolism/src/lib/synopsis/tutorial.js";
+import { analyse } from "../../vivid-symbolism/src/lib/synopsis/analyse.js";
 import { tokenise } from "../ts/src/tokens.ts";
-import { parse } from "../ts/src/parser.ts";
-import { SynopsisError } from "../ts/src/errors.ts";
-
-// Mirrors src/lib/synopsis/analyse.js exactly. Held here because the
-// originals keep their .ts import extensions and so resolve under Node;
-// the vendored copies are byte-identical modulo that rewrite.
-function countStmts(body: any[]): number {
-  let n = 0;
-  for (const s of body) { n += 1; if (Array.isArray(s.body)) n += countStmts(s.body); }
-  return n;
-}
-function analyse(src: string): any {
-  try {
-    const ast: any = parse(src);
-    return { ok: true, ast, counts: {
-      decls: ast.decls.length, frames: ast.frames.length,
-      stmts: ast.frames.reduce((n: number, f: any) => n + countStmts(f.body), 0),
-      report: ast.report } };
-  } catch (e: any) {
-    if (e instanceof SynopsisError) return { ok: false, error: (e as any).className, message: e.message, line: (e as any).line };
-    return { ok: false, error: "InternalError", message: String(e && e.message), line: null };
-  }
-}
 
 // Pinned shape of every accepted program: decls, frames, stmts.
 // Displaying a count proves nothing; asserting it is what makes a
@@ -62,9 +41,22 @@ for (const f of ALL_FILES as any[]) {
   let t: any = null; try { t = tokenise(f.src); } catch { t = null; }
   const want = f.group === "tutorial" ? "ok" : (f.reported || f.expect);
   const got = r.ok ? "ok" : r.error;
-  if (f.group === "refusals" && f.stage === "B") {
-    if (!r.ok) { bad++; console.log("FAIL", f.id, "labelled stage B but the parser refused it:", r.error); continue; }
-  } else if (got !== want) { bad++; console.log("FAIL", f.id, "got", got, "want", want); continue; }
+  if (got !== want) { bad++; console.log("FAIL", f.id, "got", got, "want", want); continue; }
+
+  // `stage` is a claim about WHICH pass refuses the program, and now
+  // that both passes exist it can be checked rather than trusted. A
+  // lesson labelled "B" that dies in the parser is teaching the wrong
+  // rule: the reader is told the grammar accepts the program and the
+  // meaning is what fails, and the tree they are shown would be the
+  // evidence for it -- except there would be no tree.
+  if (f.group === "refusals" && r.stage !== f.stage) {
+    bad++;
+    console.log("FAIL", f.id, `labelled stage ${f.stage} but refused at stage ${r.stage}`);
+    continue;
+  }
+  if (f.group === "refusals" && f.stage === "B" && !r.ast) {
+    bad++; console.log("FAIL", f.id, "stage-B refusal carries no tree"); continue;
+  }
   if (r.ok) {
     const want3 = EXPECT[f.id];
     if (!want3) { bad++; console.log("FAIL", f.id, "no pinned counts"); continue; }

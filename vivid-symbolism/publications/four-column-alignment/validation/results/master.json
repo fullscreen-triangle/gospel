@@ -6,7 +6,7 @@
  "total_checks": 14073,
  "total_passed": 14073,
  "all_passed": true,
- "elapsed_seconds": 12.28,
+ "elapsed_seconds": 22.133,
  "categories": [
   {
    "check": "Floor",
@@ -17,7 +17,7 @@
    "max_error": 0.0,
    "failures": [],
    "tag": "E01",
-   "seconds": 0.62
+   "seconds": 1.561
   },
   {
    "check": "IntrinsicFloor",
@@ -28,7 +28,7 @@
    "max_error": 0.0,
    "failures": [],
    "tag": "E02",
-   "seconds": 0.018
+   "seconds": 0.053
   },
   {
    "check": "CutInvariance",
@@ -39,7 +39,7 @@
    "max_error": 0.0,
    "failures": [],
    "tag": "E03",
-   "seconds": 0.321
+   "seconds": 0.608
   },
   {
    "check": "IdentityIsRegion",
@@ -50,7 +50,7 @@
    "max_error": 0.0,
    "failures": [],
    "tag": "E04",
-   "seconds": 0.04
+   "seconds": 0.087
   },
   {
    "check": "SkeletonPersists",
@@ -61,7 +61,7 @@
    "max_error": 0.0,
    "failures": [],
    "tag": "E05",
-   "seconds": 0.471
+   "seconds": 1.508
   },
   {
    "check": "ReceiverRelativity",
@@ -72,7 +72,7 @@
    "max_error": 0.0,
    "failures": [],
    "tag": "E06",
-   "seconds": 0.063
+   "seconds": 0.152
   },
   {
    "check": "DistanceToFloor",
@@ -83,7 +83,7 @@
    "max_error": 0.0,
    "failures": [],
    "tag": "E07",
-   "seconds": 0.337
+   "seconds": 0.885
   },
   {
    "check": "RelaxationDichotomy",
@@ -94,7 +94,7 @@
    "max_error": 0.0,
    "failures": [],
    "tag": "E08",
-   "seconds": 0.013
+   "seconds": 0.036
   },
   {
    "check": "QuiescenceBlind",
@@ -105,7 +105,7 @@
    "max_error": 0.42857142857142855,
    "failures": [],
    "tag": "E09",
-   "seconds": 0.014
+   "seconds": 0.037
   },
   {
    "check": "FalseFriendAndConverse",
@@ -116,7 +116,7 @@
    "max_error": 0.7205882352941178,
    "failures": [],
    "tag": "E10",
-   "seconds": 0.003
+   "seconds": 0.008
   },
   {
    "check": "PathwayContactGraphs",
@@ -127,7 +127,7 @@
    "max_error": 0.0,
    "failures": [],
    "tag": "E11",
-   "seconds": 0.147
+   "seconds": 0.283
   },
   {
    "check": "PathwayInvariance",
@@ -138,7 +138,7 @@
    "max_error": 0.0,
    "failures": [],
    "tag": "E12",
-   "seconds": 7.697
+   "seconds": 11.911
   },
   {
    "check": "ResponseIndependence",
@@ -149,7 +149,7 @@
    "max_error": 0.3065939089416056,
    "failures": [],
    "tag": "E13",
-   "seconds": 1.412,
+   "seconds": 1.811,
    "measurements": {
     "n_comparisons": 35,
     "theta": 0.01,
@@ -169,7 +169,7 @@
    "max_error": 0.0,
    "failures": [],
    "tag": "E14",
-   "seconds": 1.11,
+   "seconds": 3.172,
    "measurements": {
     "verdicts": {
      "CORRESPOND": 0,

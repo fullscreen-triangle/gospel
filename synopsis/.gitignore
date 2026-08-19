@@ -1,0 +1,6 @@
+# Cargo build output. 200MB+ of compiled artefacts, reproducible from
+# source with `cargo build --release`; nothing here belongs in history.
+rs/target/
+
+# Node dependencies for the TypeScript front-end and its runners.
+ts/node_modules/

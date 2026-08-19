@@ -2,7 +2,13 @@ import { useState } from "react";
 import dynamic from "next/dynamic";
 
 /**
- * The output pane: Problems, Tree, Frames, Residue, Tokens.
+ * The output pane: Problems, six diagrams, and the token stream.
+ *
+ * The diagrams split into two kinds. Tree, Frames and Residue answer
+ * what SHAPE the program has. Dataflow, Params and Arity answer
+ * questions with numeric answers -- how far each value stands from
+ * the files it came from, what the complete set of stated parameters
+ * is, and whether an alignment carries all four of its columns.
  *
  * The tree is worth showing precisely because it is the artefact the
  * two compilers are held to. The trees this page draws are compared,
@@ -14,10 +20,13 @@ import dynamic from "next/dynamic";
  * The panel will not invent a diagnostic. Where a refusal belongs to a
  * checking stage that is not implemented yet, it says so in those words
  * instead of printing an error the parser did not raise. The same rule
- * governs the diagrams: they draw the syntax tree and nothing else,
- * because the evaluator does not exist and a chart of numbers this
- * program did not produce would be indistinguishable, to a reader, from
- * one it did.
+ * governs the diagrams: every one of them is computed from the tree the
+ * parser just built, and from nothing else. The evaluator does not
+ * exist, so this page has no scores to plot -- and a chart of numbers
+ * this program did not produce would be indistinguishable, to a reader,
+ * from one it did. What the front-end DOES measure is real and it moves
+ * when the source moves: derivation depth, the parameter surface, the
+ * arity of an alignment. Those are the axes here.
  */
 
 // d3 measures and mutates DOM, so it must not run during the server
@@ -30,10 +39,19 @@ const Views = dynamic(() => import("./Views"), {
   ),
 });
 
-const TABS = ["Problems", "Tree", "Frames", "Residue", "Tokens"];
+const TABS = [
+  "Problems",
+  "Tree",
+  "Dataflow",
+  "Frames",
+  "Residue",
+  "Params",
+  "Arity",
+  "Tokens",
+];
 
 /** The tabs Views renders. Kept beside TABS so the two cannot drift. */
-const DIAGRAMS = ["Tree", "Frames", "Residue"];
+const DIAGRAMS = ["Tree", "Dataflow", "Frames", "Residue", "Params", "Arity"];
 
 function Tab({ id, active, onClick, badge }) {
   return (
@@ -65,45 +83,48 @@ function Row({ label, value }) {
 }
 
 function Problems({ result, file, onJump }) {
-  // A refusal the checker will make, which does not exist yet. Saying
-  // so is the honest option; printing the class as though we had
-  // derived it would be a lie the reader cannot detect.
-  const pending = file?.group === "refusals" && file.stage === "B" && result.ok;
+  // A stage-B refusal that the checker did NOT make. This used to be
+  // the common case, and the panel said so: the checker did not exist,
+  // and announcing the expected class would have been claiming a
+  // diagnostic we had not derived. The checker exists now, so reaching
+  // here means the two disagree -- the corpus says this program must be
+  // refused and our checker accepted it. That is a defect in the
+  // checker, and it is reported as one rather than as a pending stage.
+  const missed = file?.group === "refusals" && result.ok;
 
-  if (pending) {
+  if (missed) {
     return (
       <div className="space-y-3">
         <div className="flex items-start gap-2 rounded border border-[#cca700]/40 bg-[#cca700]/10 p-3">
           <span className="mt-0.5 text-[#cca700]">▲</span>
           <div className="space-y-1.5">
             <p className="text-[13px] font-semibold text-[#cca700]">
-              Parses — refused later, by a check not yet implemented
+              Accepted — but the corpus says it must be refused
             </p>
             <p className="text-[12px] leading-relaxed text-[#cccccc]/70">
-              This program is well-formed as far as the grammar is
-              concerned, so the parser accepts it. It must still be
-              refused with{" "}
+              The conformance corpus records this program as refused with{" "}
               <code className="rounded bg-black/40 px-1 font-mono text-[#f48771]">
                 {file.expect}
               </code>
-              , and that refusal belongs to the type checker. The checker
-              is the next stage of work; this page reports what the
-              parser actually did rather than anticipating it.
+              , and this build accepted it. That is a defect in the
+              checker, not a property of the program. The page reports
+              what the compiler actually did.
             </p>
           </div>
         </div>
-        <Row label="parser" value="accepted" />
-        <Row label="expected" value={`${file.expect} (stage B)`} />
+        <Row label="expected" value={file.expect} />
+        <Row label="got" value="accepted" />
       </div>
     );
   }
 
   if (result.ok) {
+    const rep = result.report;
     return (
       <div className="space-y-3">
         <div className="flex items-center gap-2 text-[13px] font-semibold text-[#4ec9b0]">
           <span>✓</span>
-          <span>Parsed — no problems</span>
+          <span>Parsed and typechecked — no problems</span>
         </div>
         <div className="space-y-1">
           <Row label="declarations" value={result.counts.decls} />
@@ -111,6 +132,26 @@ function Problems({ result, file, onJump }) {
           <Row label="statements" value={result.counts.stmts} />
           <Row label="report to" value={result.counts.report ?? "—"} />
         </div>
+        {rep ? (
+          // What the checker learned, as opposed to what the parser
+          // counted. Parameters are here because the language has no
+          // defaults: every threshold a program relies on was written
+          // down, and this is where a reader sees the whole set.
+          <div className="space-y-1 border-t border-[#cccccc]/10 pt-2">
+            {/* claims and responses are lists; parameters and residues
+                are keyed maps, mirroring the reference's dicts. */}
+            <Row label="claims" value={rep.claims.length || "—"} />
+            <Row
+              label="residues"
+              value={Object.keys(rep.residues).length || "—"}
+            />
+            <Row
+              label="parameters"
+              value={Object.keys(rep.parameters).length || "—"}
+            />
+            <Row label="responses" value={rep.responses.length || "—"} />
+          </div>
+        ) : null}
       </div>
     );
   }
@@ -140,8 +181,20 @@ function Problems({ result, file, onJump }) {
 
       {expected && (
         <p className="text-[11px] leading-relaxed text-[#cccccc]/50">
-          This refusal is the point of the lesson — the program is
-          rejected by the grammar itself, before any analysis runs.
+          This refusal is the point of the lesson —{" "}
+          {result.stage === "A" ? (
+            <>
+              the program is rejected by the grammar itself, before any
+              analysis runs. It cannot be written, so there is nothing
+              for the checker to decide.
+            </>
+          ) : (
+            <>
+              the program parses, so the tree beside this pane is
+              complete. It is rejected by the type checker: it can be
+              written, but it cannot be meant.
+            </>
+          )}
           {file.reported && file.reported !== file.expect ? (
             <>
               {" "}The reference records this as{" "}
@@ -207,7 +260,7 @@ export default function OutputPanel({ result, file, tokens, onJump }) {
 
   return (
     <section className="flex h-full flex-col bg-[#1e1e1e]">
-      <div className="flex shrink-0 items-center gap-0.5 border-b border-black/40 bg-[#252526] px-2">
+      <div className="flex shrink-0 flex-wrap items-center gap-0.5 border-b border-black/40 bg-[#252526] px-2">
         {TABS.map((t) => (
           <Tab
             key={t}

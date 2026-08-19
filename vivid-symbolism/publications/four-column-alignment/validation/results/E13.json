@@ -7,7 +7,7 @@
  "max_error": 0.3065939089416056,
  "failures": [],
  "tag": "E13",
- "seconds": 1.412,
+ "seconds": 1.811,
  "measurements": {
   "n_comparisons": 35,
   "theta": 0.01,

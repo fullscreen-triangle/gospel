@@ -14,7 +14,7 @@
 // checker: a program cannot reach into a sequence position even in
 // principle.
 
-import { ParseError } from "./errors";
+import { ParseError, pyRepr } from "./errors";
 import { tokenise, type Token } from "./tokens";
 import type {
   Align, Bind, Claim, Compare, CorrExpr, Decl, Detect, Drop, Expr,
@@ -265,7 +265,7 @@ class Parser {
     }
 
     throw new ParseError(
-      `unexpected statement ${JSON.stringify(t.text)}`,
+      `unexpected statement ${pyRepr(t.text)}`,
       t.line,
     );
   }

@@ -21,10 +21,15 @@ USAGE:
     synopsis --help
 
 `parse` exits 0 if the program is well-formed as far as the grammar is
-concerned, and 1 with a diagnostic on stderr if it is not. Note that a
-program can parse and still be refused: the rules that give the language
-its guarantees are checked after parsing, and `synopsis check` (Stage C)
-is what reports those.
+concerned, and 1 with a diagnostic on stderr if it is not.
+
+A program can parse and still be refused. The rules that give the
+language its guarantees -- frame separation, the residue rule, required
+parameters, the four-column arity -- are checked after parsing, by
+`synopsis check`. That subcommand is NOT in this binary yet: the checker
+exists in the TypeScript front-end and is held to the same corpus, but
+it has no Rust port. Until it does, a program this binary accepts has
+been shown to be well-formed, not to be meaningful.
 ";
 
 fn read_source(path: Option<&str>) -> std::io::Result<String> {
