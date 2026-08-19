@@ -106,12 +106,12 @@ export default function IDE() {
                 {dirty ? " •" : ""}
               </span>
               <span className="ml-auto text-[11px] text-[#cccccc]/40">
-                synopsis — stage A (parser)
+                synopsis — parser and checker
               </span>
             </Chrome>
 
-            <div className="grid h-[34rem] grid-cols-1 md:grid-cols-[15rem_minmax(0,1fr)] lg:grid-cols-[15rem_minmax(0,1fr)_22rem]">
-              <div className="hidden min-h-0 border-r border-black/40 md:block">
+            <div className="grid h-[34rem] grid-cols-[15rem_minmax(0,1fr)_22rem] lg:grid-cols-[15rem_minmax(0,1fr)] md:grid-cols-1">
+              <div className="min-h-0 border-r border-black/40 md:hidden">
                 <Explorer
                   tutorial={TUTORIAL_FILES}
                   refusals={REFUSAL_FILES}
@@ -133,7 +133,7 @@ export default function IDE() {
                 />
               </div>
 
-              <div className="hidden min-h-0 lg:block">
+              <div className="min-h-0 lg:hidden">
                 <OutputPanel
                   result={result}
                   file={file}
@@ -190,20 +190,20 @@ export default function IDE() {
           </section>
 
           <p className="mt-8 max-w-3xl text-[13px] leading-relaxed text-dark/55 dark:text-light/55">
-            The parser is complete; the type checker is not. Four of the
-            six refusals below are caught by the checker rather than the
-            grammar, and for those the output panel says so plainly
-            instead of printing an error it did not derive. The two that
-            are refused here — a missing report, and indexing a sequence
-            — are refused by the shape of the grammar itself, which is
-            what makes them impossible to write rather than merely
-            discouraged.
+            Both stages run here. Two of the six refusals — a missing
+            report, and indexing a sequence — are refused by the shape
+            of the grammar itself, which is what makes them impossible
+            to write rather than merely discouraged. The other four
+            parse cleanly and are refused by the type checker, so for
+            those the tree beside the editor is complete: the rule being
+            broken is a relation between two nodes you can point at.
           </p>
 
           <p className="mt-3 max-w-3xl text-[13px] leading-relaxed text-dark/55 dark:text-light/55">
-            On a narrow screen the output panel is hidden and the file
-            list collapses; the editor needs three columns to be worth
-            reading, so this page is best on a wide display.
+            Below 1024px the output panel is hidden and below 768px the
+            file list collapses with it; the editor needs its three
+            columns to be worth reading, so this page is best on a wide
+            display.
           </p>
         </div>
       </main>
