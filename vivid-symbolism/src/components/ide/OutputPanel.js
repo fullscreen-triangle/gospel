@@ -254,8 +254,49 @@ function Tokens({ tokens }) {
   );
 }
 
-export default function OutputPanel({ result, file, tokens, onJump }) {
+/**
+ * Nothing has been compiled yet.
+ *
+ * This replaces the whole panel rather than emptying its body. A tab
+ * strip above an empty pane invites clicking through seven views that
+ * each say nothing, which reads as a broken page instead of one that
+ * is waiting. `stale` distinguishes the two ways of arriving here --
+ * never having run, and having run and then edited -- because the
+ * second means a result existed and was deliberately discarded, and
+ * saying so is the difference between a page that lost your output
+ * and one that refused to show you a report about code you have
+ * since changed.
+ */
+function NotRun({ stale, onRun }) {
+  return (
+    <section className="flex h-full flex-col items-center justify-center gap-3 bg-[#1e1e1e] p-6 text-center">
+      <p className="text-[13px] font-semibold text-[#cccccc]/80">
+        {stale ? "Edited since the last run" : "Not compiled yet"}
+      </p>
+      <p className="max-w-[16rem] text-[12px] leading-relaxed text-[#cccccc]/45">
+        {stale
+          ? "The source has changed, so the previous report describes code that is no longer on screen. Run it again to see what the compiler makes of this version."
+          : "Diagnostics, the syntax tree and the six diagrams are all derived from a parse. Run the program to produce one."}
+      </p>
+      <button
+        onClick={onRun}
+        className="rounded bg-[#28c840]/90 px-3 py-1 font-mono text-[11px] text-[#1e1e1e] transition-colors hover:bg-[#28c840]"
+      >
+        run
+      </button>
+      <p className="font-mono text-[10px] text-[#cccccc]/30">Ctrl+Enter</p>
+    </section>
+  );
+}
+
+export default function OutputPanel({ result, file, tokens, stale, onRun, onJump }) {
   const [tab, setTab] = useState("Problems");
+
+  // Before the first run there is no result to describe, and after an
+  // edit the one we have describes different source. Either way the
+  // honest thing to draw is the absence, not a stale report.
+  if (!result) return <NotRun stale={stale} onRun={onRun} />;
+
   const problemCount = result.ok ? 0 : 1;
 
   return (

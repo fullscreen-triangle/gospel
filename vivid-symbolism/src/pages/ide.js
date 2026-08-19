@@ -1,12 +1,12 @@
 import Head from "next/head";
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 import TransitionEffect from "@/components/TransitionEffect";
 import Explorer from "@/components/ide/Explorer";
 import Editor from "@/components/ide/Editor";
 import OutputPanel from "@/components/ide/OutputPanel";
 import { analyse, tokensOf } from "@/lib/synopsis/analyse";
-import { ALL_FILES, TUTORIAL, REFUSALS } from "@/lib/synopsis/tutorial";
+import { ALL_FILES } from "@/lib/synopsis/tutorial";
 
 /**
  * The synopsis IDE.
@@ -22,6 +22,15 @@ import { ALL_FILES, TUTORIAL, REFUSALS } from "@/lib/synopsis/tutorial";
  * programs and six of which must be refused, and the edit affordance
  * exists so a reader can break a program on purpose and see what the
  * language says about it.
+ *
+ * Compilation is EXPLICIT. An earlier version analysed on a debounced
+ * timer, so a lesson arrived already compiled and its diagnostic was
+ * simply present, as though it were a property of the file rather than
+ * the outcome of running something. That taught the wrong thing about
+ * a compiler. Here the source sits un-run until someone asks, and the
+ * result is pinned to the exact text it was produced from -- so what
+ * the panel shows is always a report about code that was actually
+ * submitted, never about code that has since been edited.
  */
 
 const TUTORIAL_FILES = ALL_FILES.filter((f) => f.group === "tutorial");
@@ -40,6 +49,26 @@ function Chrome({ children }) {
   );
 }
 
+function RunIcon() {
+  return (
+    <svg viewBox="0 0 16 16" className="h-3 w-3" fill="currentColor" aria-hidden="true">
+      <path d="M4 2.5v11l9-5.5-9-5.5z" />
+    </svg>
+  );
+}
+
+function ExpandIcon({ full }) {
+  return (
+    <svg viewBox="0 0 16 16" className="h-3.5 w-3.5" fill="currentColor" aria-hidden="true">
+      {full ? (
+        <path d="M2 6h4V2H4.5v2.5H2V6zm8-4v4h4V4.5h-2.5V2H10zM2 10v1.5h2.5V14H6v-4H2zm8 0v4h1.5v-2.5H14V10h-4z" />
+      ) : (
+        <path d="M2 2v4h1.5V3.5H6V2H2zm8 0v1.5h2.5V6H14V2h-4zM3.5 10H2v4h4v-1.5H3.5V10zm9 0v2.5H10V14h4v-4h-1.5z" />
+      )}
+    </svg>
+  );
+}
+
 export default function IDE() {
   const [activeId, setActiveId] = useState(TUTORIAL_FILES[0].id);
   const [sources, setSources] = useState(() =>
@@ -47,27 +76,201 @@ export default function IDE() {
   );
   const [caret, setCaret] = useState({ line: 1, col: 1 });
   const [jumpTo, setJumpTo] = useState(null);
+  const [full, setFull] = useState(false);
+
+  // What the compiler was last handed, and what it said. `src` is the
+  // text that produced this -- keeping it is what lets the page tell
+  // "you have not run this yet" apart from "you have run it and then
+  // changed it", which are different things to say to a reader.
+  const [run, setRun] = useState(null);
+  const [running, setRunning] = useState(false);
 
   const file = ALL_FILES.find((f) => f.id === activeId);
   const src = sources[activeId];
 
-  // Debounced, because analysing on every keystroke makes the diagnostic
-  // flicker through every intermediate half-typed state while someone is
-  // in the middle of a line -- which reads as noise, not as feedback.
-  const [settled, setSettled] = useState(src);
-  useEffect(() => {
-    const t = setTimeout(() => setSettled(src), 300);
-    return () => clearTimeout(t);
-  }, [src]);
+  const compile = useCallback(() => {
+    const text = sources[activeId];
+    setRunning(true);
+    // A frame's delay so the button's pressed state actually paints.
+    // The parse itself is microseconds -- this is honest about being
+    // for the eye, not a simulated workload.
+    requestAnimationFrame(() => {
+      setRun({
+        id: activeId,
+        src: text,
+        result: analyse(text),
+        tokens: tokensOf(text),
+        at: Date.now(),
+      });
+      setRunning(false);
+    });
+  }, [activeId, sources]);
 
-  const result = useMemo(() => analyse(settled), [settled]);
-  const tokens = useMemo(() => tokensOf(settled), [settled]);
+  // Ctrl/Cmd+Enter, the shortcut every REPL and notebook already uses.
+  useEffect(() => {
+    const onKey = (e) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === "Enter") {
+        e.preventDefault();
+        compile();
+      }
+      if (e.key === "Escape" && full) setFull(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [compile, full]);
+
+  // Fullscreen takes over the viewport, so the page behind it must not
+  // scroll underneath.
+  useEffect(() => {
+    if (!full) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = prev;
+    };
+  }, [full]);
 
   const dirty = src !== file.src;
-  const errorLine = result.ok ? null : result.line;
+
+  // The result belongs to this file AND to this exact text. A result
+  // from before an edit is a report about code that is no longer on
+  // screen, and showing it would be worse than showing nothing.
+  const current = run && run.id === activeId && run.src === src ? run : null;
+  const stale = run && run.id === activeId && run.src !== src;
+  const errorLine = current && !current.result.ok ? current.result.line : null;
 
   const setSrc = (next) => setSources((s) => ({ ...s, [activeId]: next }));
   const revert = () => setSrc(file.src);
+
+  const status = running
+    ? "compiling…"
+    : current
+    ? current.result.ok
+      ? "no problems"
+      : current.result.error
+    : stale
+    ? "edited since last run"
+    : "not run";
+
+  const window_ = (
+    <div
+      className={
+        full
+          ? "flex h-full flex-col overflow-hidden bg-[#1e1e1e]"
+          : "overflow-hidden rounded-lg border border-black/50 shadow-2xl"
+      }
+    >
+      <Chrome>
+        <span className="ml-2 font-mono text-[12px] text-[#cccccc]/80">
+          {file.name}
+          {dirty ? " •" : ""}
+        </span>
+
+        <button
+          onClick={compile}
+          disabled={running}
+          title="Compile (Ctrl+Enter)"
+          className={`ml-4 flex items-center gap-1.5 rounded px-2 py-0.5 font-mono text-[11px] transition-colors ${
+            current
+              ? "bg-white/10 text-[#cccccc]/70 hover:bg-white/20 hover:text-white"
+              : "bg-[#28c840]/90 text-[#1e1e1e] hover:bg-[#28c840]"
+          } disabled:opacity-50`}
+        >
+          <RunIcon />
+          {current ? "run again" : "run"}
+        </button>
+
+        {stale && (
+          <span className="font-mono text-[10px] text-[#cca700]">
+            edited — run again
+          </span>
+        )}
+
+        <span className="ml-auto flex items-center gap-3">
+          <span className="text-[11px] text-[#cccccc]/40">
+            synopsis — parser and checker
+          </span>
+          <button
+            onClick={() => setFull((f) => !f)}
+            title={full ? "Exit full screen (Esc)" : "Full screen"}
+            aria-label={full ? "Exit full screen" : "Full screen"}
+            className="flex items-center gap-1.5 rounded px-1.5 py-0.5 text-[#cccccc]/60 transition-colors hover:bg-white/10 hover:text-white"
+          >
+            <ExpandIcon full={full} />
+            <span className="font-mono text-[10px]">
+              {full ? "exit" : "full screen"}
+            </span>
+          </button>
+        </span>
+      </Chrome>
+
+      <div
+        className={`grid grid-cols-[15rem_minmax(0,1fr)_22rem] lg:grid-cols-[15rem_minmax(0,1fr)] md:grid-cols-1 ${
+          full ? "min-h-0 flex-1" : "h-[34rem]"
+        }`}
+      >
+        <div className="min-h-0 border-r border-black/40 md:hidden">
+          <Explorer
+            tutorial={TUTORIAL_FILES}
+            refusals={REFUSAL_FILES}
+            activeId={activeId}
+            onSelect={(id) => {
+              setActiveId(id);
+              setJumpTo(null);
+            }}
+          />
+        </div>
+
+        <div className="min-h-0 border-r border-black/40">
+          <Editor
+            value={src}
+            onChange={setSrc}
+            errorLine={errorLine}
+            onCaret={setCaret}
+            jumpTo={jumpTo}
+          />
+        </div>
+
+        <div className="min-h-0 lg:hidden">
+          <OutputPanel
+            result={current?.result ?? null}
+            file={file}
+            tokens={current?.tokens ?? null}
+            stale={stale}
+            onRun={compile}
+            onJump={(line) => setJumpTo({ line, at: Date.now() })}
+          />
+        </div>
+      </div>
+
+      <div className="flex items-center gap-4 border-t border-black/40 bg-[#007acc] px-3 py-1 font-mono text-[11px] text-white">
+        <span>{status}</span>
+        <span className="ml-auto">
+          Ln {caret.line}, Col {caret.col}
+        </span>
+        <span>synopsis</span>
+        {dirty && (
+          <button
+            onClick={revert}
+            className="rounded bg-white/20 px-1.5 hover:bg-white/30"
+          >
+            revert
+          </button>
+        )}
+      </div>
+    </div>
+  );
+
+  if (full) {
+    return (
+      <>
+        <Head>
+          <title>synopsis — IDE | Gospel</title>
+        </Head>
+        <div className="fixed inset-0 z-50 bg-[#1e1e1e]">{window_}</div>
+      </>
+    );
+  }
 
   return (
     <>
@@ -91,79 +294,18 @@ export default function IDE() {
               corpus programs one construct at a time; the last six are
               programs the language must refuse, because a language is
               defined as much by what it rejects as by what it accepts.
-              The compiler running below is the same front-end the
-              command-line tool uses, compiled to WebAssembly-free
-              JavaScript and run entirely in this tab — nothing you type
-              is sent anywhere.
+              Press <span className="font-mono text-[15px]">run</span> to
+              compile the one on screen. The compiler is the same
+              front-end the command-line tool uses, running entirely in
+              this tab — nothing you type is sent anywhere.
             </p>
           </header>
 
-          {/* the window */}
-          <div className="overflow-hidden rounded-lg border border-black/50 shadow-2xl">
-            <Chrome>
-              <span className="ml-2 font-mono text-[12px] text-[#cccccc]/80">
-                {file.name}
-                {dirty ? " •" : ""}
-              </span>
-              <span className="ml-auto text-[11px] text-[#cccccc]/40">
-                synopsis — parser and checker
-              </span>
-            </Chrome>
-
-            <div className="grid h-[34rem] grid-cols-[15rem_minmax(0,1fr)_22rem] lg:grid-cols-[15rem_minmax(0,1fr)] md:grid-cols-1">
-              <div className="min-h-0 border-r border-black/40 md:hidden">
-                <Explorer
-                  tutorial={TUTORIAL_FILES}
-                  refusals={REFUSAL_FILES}
-                  activeId={activeId}
-                  onSelect={(id) => {
-                    setActiveId(id);
-                    setJumpTo(null);
-                  }}
-                />
-              </div>
-
-              <div className="min-h-0 border-r border-black/40">
-                <Editor
-                  value={src}
-                  onChange={setSrc}
-                  errorLine={errorLine}
-                  onCaret={setCaret}
-                  jumpTo={jumpTo}
-                />
-              </div>
-
-              <div className="min-h-0 lg:hidden">
-                <OutputPanel
-                  result={result}
-                  file={file}
-                  tokens={tokens}
-                  onJump={(line) => setJumpTo({ line, at: Date.now() })}
-                />
-              </div>
-            </div>
-
-            {/* status bar */}
-            <div className="flex items-center gap-4 border-t border-black/40 bg-[#007acc] px-3 py-1 font-mono text-[11px] text-white">
-              <span>{result.ok ? "no problems" : result.error}</span>
-              <span className="ml-auto">
-                Ln {caret.line}, Col {caret.col}
-              </span>
-              <span>synopsis</span>
-              {dirty && (
-                <button
-                  onClick={revert}
-                  className="rounded bg-white/20 px-1.5 hover:bg-white/30"
-                >
-                  revert
-                </button>
-              )}
-            </div>
-          </div>
+          {window_}
 
           {/* the lesson, below the window rather than inside it, so the
               editor keeps the full height it needs */}
-          <section className="mt-6 grid gap-6 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
+          <section className="mt-6 grid gap-6 lg:grid-cols-1">
             <div>
               <h2 className="text-xs font-bold uppercase tracking-widest text-primary dark:text-primaryDark">
                 {file.group === "refusals" ? "Refusal" : "Lesson"}
@@ -203,7 +345,7 @@ export default function IDE() {
             Below 1024px the output panel is hidden and below 768px the
             file list collapses with it; the editor needs its three
             columns to be worth reading, so this page is best on a wide
-            display.
+            display — or in full screen.
           </p>
         </div>
       </main>
