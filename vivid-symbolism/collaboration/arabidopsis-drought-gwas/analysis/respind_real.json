@@ -1,0 +1,159 @@
+{
+  "Shoot": {
+    "spearman": {
+      "gain": {
+        "gain": 1.0,
+        "increase": 0.782,
+        "rescue": 0.778,
+        "W_D (size)": 0.607,
+        "tolerance loss (mock only)": 0.455
+      },
+      "increase": {
+        "gain": 0.782,
+        "increase": 1.0,
+        "rescue": 0.667,
+        "W_D (size)": 0.059,
+        "tolerance loss (mock only)": 0.8
+      },
+      "rescue": {
+        "gain": 0.778,
+        "increase": 0.667,
+        "rescue": 1.0,
+        "W_D (size)": 0.404,
+        "tolerance loss (mock only)": 0.148
+      },
+      "W_D (size)": {
+        "gain": 0.607,
+        "increase": 0.059,
+        "rescue": 0.404,
+        "W_D (size)": 1.0,
+        "tolerance loss (mock only)": -0.259
+      },
+      "tolerance loss (mock only)": {
+        "gain": 0.455,
+        "increase": 0.8,
+        "rescue": 0.148,
+        "W_D (size)": -0.259,
+        "tolerance loss (mock only)": 1.0
+      }
+    },
+    "top20_jaccard": {
+      "gain~increase": 0.4411764705882353,
+      "gain~rescue": 0.42028985507246375,
+      "increase~rescue": 0.32432432432432434
+    },
+    "top20_in_all": [
+      16,
+      49
+    ]
+  },
+  "Root": {
+    "spearman": {
+      "gain": {
+        "gain": 1.0,
+        "increase": 0.594,
+        "rescue": 0.614,
+        "W_D (size)": 0.736,
+        "tolerance loss (mock only)": 0.277
+      },
+      "increase": {
+        "gain": 0.594,
+        "increase": 1.0,
+        "rescue": 0.405,
+        "W_D (size)": -0.026,
+        "tolerance loss (mock only)": 0.805
+      },
+      "rescue": {
+        "gain": 0.614,
+        "increase": 0.405,
+        "rescue": 1.0,
+        "W_D (size)": 0.436,
+        "tolerance loss (mock only)": -0.159
+      },
+      "W_D (size)": {
+        "gain": 0.736,
+        "increase": -0.026,
+        "rescue": 0.436,
+        "W_D (size)": 1.0,
+        "tolerance loss (mock only)": -0.294
+      },
+      "tolerance loss (mock only)": {
+        "gain": 0.277,
+        "increase": 0.805,
+        "rescue": -0.159,
+        "W_D (size)": -0.294,
+        "tolerance loss (mock only)": 1.0
+      }
+    },
+    "top20_jaccard": {
+      "gain~increase": 0.18072289156626506,
+      "gain~rescue": 0.2564102564102564,
+      "increase~rescue": 0.16666666666666666
+    },
+    "top20_in_all": [
+      7,
+      49
+    ]
+  },
+  "rescuer_counts": {
+    "Shoot_Rescuer": {
+      "1.0": 152,
+      "0.0": 91
+    },
+    "Root_Rescuer": {
+      "1.0": 186,
+      "0.0": 57
+    }
+  },
+  "noise": {
+    "cv_shoot_WD": 0.12165223142510583,
+    "k": 49,
+    "n": 244,
+    "W only (lower bound)": {
+      "gain": {
+        "rho_median": 0.9607512116377709,
+        "rho_p5": 0.9506095157714203,
+        "top20_retained": 0.8640816326530611
+      },
+      "increase": {
+        "rho_median": 0.9802027561590403,
+        "rho_p5": 0.9743808343410926,
+        "top20_retained": 0.9224897959183673
+      },
+      "rescue": {
+        "rho_median": 0.9433071973559299,
+        "rho_p5": 0.9276620899405785,
+        "top20_retained": 0.824938775510204
+      }
+    },
+    "all cells, CV-matched": {
+      "gain": {
+        "rho_median": 0.95109397315891,
+        "rho_p5": 0.9399180034987443,
+        "top20_retained": 0.8468571428571428
+      },
+      "increase": {
+        "rho_median": 0.9657090025942483,
+        "rho_p5": 0.9578356842142236,
+        "top20_retained": 0.8907755102040817
+      },
+      "rescue": {
+        "rho_median": 0.9202397067613656,
+        "rho_p5": 0.9026901304454835,
+        "top20_retained": 0.7897142857142857
+      }
+    }
+  },
+  "candidates": {
+    "genes": 28,
+    "multi_metric": 7,
+    "multi_family": 0,
+    "by_family": {
+      "WCS417-drought biomass (size)": 3,
+      "absolute gain under drought": 1,
+      "drought loss, MOCK ONLY (no bacterium)": 3,
+      "relative increase under drought": 12,
+      "rescue (W vs mock, normalised by drought loss)": 9
+    }
+  }
+}

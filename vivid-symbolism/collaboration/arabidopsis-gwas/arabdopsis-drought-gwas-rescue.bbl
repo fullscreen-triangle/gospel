@@ -1,0 +1,275 @@
+\begin{thebibliography}{37}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Pieterse et~al.(2014)Pieterse, Zamioudis, Berendsen, Weller, Van~Wees,
+  and Bakker]{pieterse2014}
+Corn{\'e} M.~J. Pieterse, Christos Zamioudis, Roeland~L. Berendsen, David~M.
+  Weller, Saskia C.~M. Van~Wees, and Peter A. H.~M. Bakker.
+\newblock Induced systemic resistance by beneficial microbes.
+\newblock \emph{Annual Review of Phytopathology}, 52:\penalty0 347--375, 2014.
+
+\bibitem[Zamioudis et~al.(2013)Zamioudis, Mastranesti, Dhonukshe, Blilou, and
+  Pieterse]{zamioudis2013}
+Christos Zamioudis, Parthena Mastranesti, Pankaj Dhonukshe, Ikram Blilou, and
+  Corn{\'e} M.~J. Pieterse.
+\newblock Unraveling root developmental programs initiated by beneficial
+  \emph{Pseudomonas} spp. bacteria.
+\newblock \emph{Plant Physiology}, 162\penalty0 (1):\penalty0 304--318, 2013.
+
+\bibitem[Berendsen et~al.(2015)Berendsen, van Verk, Stringlis, Zamioudis,
+  Tommassen, Pieterse, and Bakker]{berendsen2015}
+Roeland~L. Berendsen, Marcel~C. van Verk, Ioannis~A. Stringlis, Christos
+  Zamioudis, Jan Tommassen, Corn{\'e} M.~J. Pieterse, and Peter A. H.~M.
+  Bakker.
+\newblock Unearthing the genomes of plant-beneficial \emph{Pseudomonas} model
+  strains {WCS358}, {WCS374} and {WCS417}.
+\newblock \emph{BMC Genomics}, 16:\penalty0 539, 2015.
+
+\bibitem[Zamioudis et~al.(2015)Zamioudis, Korteland, Van~Pelt, van Hamersveld,
+  Dombrowski, Bai, Hanson, Van~Verk, Ling, Schulze-Lefert, and
+  Pieterse]{zamioudis2015}
+Christos Zamioudis, Jolanda Korteland, Johan~A. Van~Pelt, Muriel van
+  Hamersveld, Nina Dombrowski, Yang Bai, Johannes Hanson, Marcel~C. Van~Verk,
+  Hong-Qing Ling, Paul Schulze-Lefert, and Corn{\'e} M.~J. Pieterse.
+\newblock Rhizobacterial volatiles and photosynthesis-related signals
+  coordinate \emph{MYB72} expression in \emph{Arabidopsis} roots during onset
+  of induced systemic resistance and iron-deficiency responses.
+\newblock \emph{The Plant Journal}, 84\penalty0 (2):\penalty0 309--322, 2015.
+
+\bibitem[Stringlis et~al.(2018)Stringlis, Yu, Feussner, de~Jonge, Van~Bentum,
+  Van~Verk, Berendsen, Bakker, Feussner, and Pieterse]{stringlis2018}
+Ioannis~A. Stringlis, Ke~Yu, Kirstin Feussner, Ronnie de~Jonge, Sietske
+  Van~Bentum, Marcel~C. Van~Verk, Roeland~L. Berendsen, Peter A. H.~M. Bakker,
+  Ivo Feussner, and Corn{\'e} M.~J. Pieterse.
+\newblock {MYB72}-dependent coumarin exudation shapes root microbiome assembly
+  to promote plant health.
+\newblock \emph{Proceedings of the National Academy of Sciences USA},
+  115\penalty0 (22):\penalty0 E5213--E5222, 2018.
+
+\bibitem[Verbon et~al.(2017)Verbon, Trapet, Stringlis, Kruijs, Bakker, and
+  Pieterse]{verbon2017}
+Eline~H. Verbon, Pauline~L. Trapet, Ioannis~A. Stringlis, Sophie Kruijs, Peter
+  A. H.~M. Bakker, and Corn{\'e} M.~J. Pieterse.
+\newblock Iron and immunity.
+\newblock \emph{Annual Review of Phytopathology}, 55:\penalty0 355--375, 2017.
+
+\bibitem[Wintermans et~al.(2016)Wintermans, Bakker, and
+  Pieterse]{wintermans2016}
+Paul C.~A. Wintermans, Peter A. H.~M. Bakker, and Corn{\'e} M.~J. Pieterse.
+\newblock Natural genetic variation in \emph{Arabidopsis} for responsiveness to
+  plant growth-promoting rhizobacteria.
+\newblock \emph{Plant Molecular Biology}, 90\penalty0 (6):\penalty0 623--634,
+  2016.
+
+\bibitem[de~Vries et~al.(2020)de~Vries, Griffiths, Knight, Nicolitch, and
+  Williams]{devries2020}
+Franciska~T. de~Vries, Rob~I. Griffiths, Christopher~G. Knight, Oceane
+  Nicolitch, and Alex Williams.
+\newblock Harnessing rhizosphere microbiomes for drought-resilient crop
+  production.
+\newblock \emph{Science}, 368\penalty0 (6488):\penalty0 270--274, 2020.
+
+\bibitem[Atwell et~al.(2010)Atwell, Huang, Vilhj{\'a}lmsson, Willems, Horton,
+  Li, Meng, Platt, Tarone, Hu, et~al.]{atwell2010}
+Susanna Atwell, Yu~S. Huang, Bjarni~J. Vilhj{\'a}lmsson, Glenda Willems,
+  Matthew Horton, Yan Li, Dazhe Meng, Alexander Platt, Aaron~M. Tarone, Tina~T.
+  Hu, et~al.
+\newblock Genome-wide association study of 107 phenotypes in \emph{Arabidopsis
+  thaliana} inbred lines.
+\newblock \emph{Nature}, 465:\penalty0 627--631, 2010.
+
+\bibitem[Grimm et~al.(2017)Grimm, Roqueiro, Salom{\'e}, Kleeberger, Greshake,
+  Zhu, Liu, Lippert, Stegle, Sch{\"o}lkopf, Weigel, and Borgwardt]{grimm2017}
+Dominik~G. Grimm, Dami{\'a}n Roqueiro, Patrice~A. Salom{\'e}, Stefan
+  Kleeberger, Bastian Greshake, Wangsheng Zhu, Chang Liu, Christoph Lippert,
+  Oliver Stegle, Bernhard Sch{\"o}lkopf, Detlef Weigel, and Karsten~M.
+  Borgwardt.
+\newblock {easyGWAS}: A cloud-based platform for comparing the results of
+  genome-wide association studies.
+\newblock \emph{The Plant Cell}, 29\penalty0 (1):\penalty0 5--19, 2017.
+
+\bibitem[Pearson(1897)]{pearson1897}
+Karl Pearson.
+\newblock Mathematical contributions to the theory of evolution.---on a form of
+  spurious correlation which may arise when indices are used in the measurement
+  of organs.
+\newblock \emph{Proceedings of the Royal Society of London}, 60:\penalty0
+  489--498, 1897.
+
+\bibitem[Kronmal(1993)]{kronmal1993}
+Richard~A. Kronmal.
+\newblock Spurious correlation and the fallacy of the ratio standard revisited.
+\newblock \emph{Journal of the Royal Statistical Society, Series A},
+  156\penalty0 (3):\penalty0 379--392, 1993.
+
+\bibitem[Fischer and Maurer(1978)]{fischer1978}
+R.~A. Fischer and R.~Maurer.
+\newblock Drought resistance in spring wheat cultivars. {I}. {Grain} yield
+  responses.
+\newblock \emph{Australian Journal of Agricultural Research}, 29\penalty0
+  (5):\penalty0 897--912, 1978.
+
+\bibitem[Verslues et~al.(2006)Verslues, Agarwal, Katiyar-Agarwal, Zhu, and
+  Zhu]{verslues2006}
+Paul~E. Verslues, Manu Agarwal, Surekha Katiyar-Agarwal, Jianhua Zhu, and
+  Jian-Kang Zhu.
+\newblock Methods and concepts in quantifying resistance to drought, salt and
+  freezing, abiotic stresses that affect plant water status.
+\newblock \emph{The Plant Journal}, 45\penalty0 (4):\penalty0 523--539, 2006.
+
+\bibitem[El-Soda et~al.(2014)El-Soda, Malosetti, Zwaan, Koornneef, and
+  Aarts]{elsoda2014}
+Mohamed El-Soda, Marcos Malosetti, Bas~J. Zwaan, Maarten Koornneef, and Mark
+  G.~M. Aarts.
+\newblock Genotype $\times$ environment interaction {QTL} mapping in plants:
+  lessons from \emph{Arabidopsis}.
+\newblock \emph{Trends in Plant Science}, 19\penalty0 (6):\penalty0 390--398,
+  2014.
+
+\bibitem[Des~Marais et~al.(2013)Des~Marais, Hernandez, and
+  Juenger]{desmarais2013}
+David~L. Des~Marais, Kyle~M. Hernandez, and Thomas~E. Juenger.
+\newblock Genotype-by-environment interaction and plasticity: exploring genomic
+  responses of plants to the abiotic environment.
+\newblock \emph{Annual Review of Ecology, Evolution, and Systematics},
+  44:\penalty0 5--29, 2013.
+
+\bibitem[{1001 Genomes Consortium}(2016)]{genomes2016}
+{1001 Genomes Consortium}.
+\newblock 1,135 genomes reveal the global pattern of polymorphism in
+  \emph{Arabidopsis thaliana}.
+\newblock \emph{Cell}, 166\penalty0 (2):\penalty0 481--491, 2016.
+
+\bibitem[Carroll et~al.(2006)Carroll, Ruppert, Stefanski, and
+  Crainiceanu]{carroll2006}
+Raymond~J. Carroll, David Ruppert, Leonard~A. Stefanski, and Ciprian~M.
+  Crainiceanu.
+\newblock \emph{Measurement Error in Nonlinear Models: A Modern Perspective}.
+\newblock Chapman \& Hall/CRC, Boca Raton, 2 edition, 2006.
+
+\bibitem[Cochran(1954)]{cochran1954}
+William~G. Cochran.
+\newblock The combination of estimates from different experiments.
+\newblock \emph{Biometrics}, 10\penalty0 (1):\penalty0 101--129, 1954.
+
+\bibitem[Higgins and Thompson(2002)]{higgins2002}
+Julian P.~T. Higgins and Simon~G. Thompson.
+\newblock Quantifying heterogeneity in a meta-analysis.
+\newblock \emph{Statistics in Medicine}, 21\penalty0 (11):\penalty0 1539--1558,
+  2002.
+
+\bibitem[Falconer and Mackay(1996)]{falconer1996}
+Douglas~S. Falconer and Trudy F.~C. Mackay.
+\newblock \emph{Introduction to Quantitative Genetics}.
+\newblock Longman, Harlow, 4 edition, 1996.
+
+\bibitem[Lynch and Walsh(1998)]{lynch1998}
+Michael Lynch and Bruce Walsh.
+\newblock \emph{Genetics and Analysis of Quantitative Traits}.
+\newblock Sinauer, Sunderland, MA, 1998.
+
+\bibitem[Schuirmann(1987)]{schuirmann1987}
+Donald~J. Schuirmann.
+\newblock A comparison of the two one-sided tests procedure and the power
+  approach for assessing the equivalence of average bioavailability.
+\newblock \emph{Journal of Pharmacokinetics and Biopharmaceutics}, 15\penalty0
+  (6):\penalty0 657--680, 1987.
+
+\bibitem[Lehmann and Romano(2005)]{lehmann2005}
+Erich~L. Lehmann and Joseph~P. Romano.
+\newblock \emph{Testing Statistical Hypotheses}.
+\newblock Springer, New York, 3 edition, 2005.
+
+\bibitem[Efron(1979)]{efron1979}
+Bradley Efron.
+\newblock Bootstrap methods: another look at the jackknife.
+\newblock \emph{The Annals of Statistics}, 7\penalty0 (1):\penalty0 1--26,
+  1979.
+
+\bibitem[Spearman(1904)]{spearman1904}
+Charles Spearman.
+\newblock The proof and measurement of association between two things.
+\newblock \emph{The American Journal of Psychology}, 15\penalty0 (1):\penalty0
+  72--101, 1904.
+
+\bibitem[Jaccard(1912)]{jaccard1912}
+Paul Jaccard.
+\newblock The distribution of the flora in the alpine zone.
+\newblock \emph{New Phytologist}, 11\penalty0 (2):\penalty0 37--50, 1912.
+
+\bibitem[Shrout and Fleiss(1979)]{shrout1979}
+Patrick~E. Shrout and Joseph~L. Fleiss.
+\newblock Intraclass correlations: uses in assessing rater reliability.
+\newblock \emph{Psychological Bulletin}, 86\penalty0 (2):\penalty0 420--428,
+  1979.
+
+\bibitem[Fick and Hijmans(2017)]{fick2017}
+Stephen~E. Fick and Robert~J. Hijmans.
+\newblock {WorldClim} 2: new 1-km spatial resolution climate surfaces for
+  global land areas.
+\newblock \emph{International Journal of Climatology}, 37\penalty0
+  (12):\penalty0 4302--4315, 2017.
+
+\bibitem[Yu et~al.(2006)Yu, Pressoir, Briggs, Vroh~Bi, Yamasaki, Doebley,
+  McMullen, Gaut, Nielsen, Holland, Kresovich, and Buckler]{yu2006}
+Jianming Yu, Gael Pressoir, William~H. Briggs, Irie Vroh~Bi, Masanori Yamasaki,
+  John~F. Doebley, Michael~D. McMullen, Brandon~S. Gaut, Dahlia~M. Nielsen,
+  James~B. Holland, Stephen Kresovich, and Edward~S. Buckler.
+\newblock A unified mixed-model method for association mapping that accounts
+  for multiple levels of relatedness.
+\newblock \emph{Nature Genetics}, 38:\penalty0 203--208, 2006.
+
+\bibitem[Kang et~al.(2010)Kang, Sul, Service, Zaitlen, Kong, Freimer, Sabatti,
+  and Eskin]{kang2010}
+Hyun~Min Kang, Jae~Hoon Sul, Susan~K. Service, Noah~A. Zaitlen, Sit-yee Kong,
+  Nelson~B. Freimer, Chiara Sabatti, and Eleazar Eskin.
+\newblock Variance component model to account for sample structure in
+  genome-wide association studies.
+\newblock \emph{Nature Genetics}, 42:\penalty0 348--354, 2010.
+
+\bibitem[Harris et~al.(2020)Harris, Millman, van~der Walt, Gommers, Virtanen,
+  Cournapeau, et~al.]{harris2020}
+Charles~R. Harris, K.~Jarrod Millman, St{\'e}fan~J. van~der Walt, Ralf Gommers,
+  Pauli Virtanen, David Cournapeau, et~al.
+\newblock Array programming with {NumPy}.
+\newblock \emph{Nature}, 585:\penalty0 357--362, 2020.
+
+\bibitem[Virtanen et~al.(2020)Virtanen, Gommers, Oliphant, Haberland, Reddy,
+  Cournapeau, et~al.]{virtanen2020}
+Pauli Virtanen, Ralf Gommers, Travis~E. Oliphant, Matt Haberland, Tyler Reddy,
+  David Cournapeau, et~al.
+\newblock {SciPy} 1.0: fundamental algorithms for scientific computing in
+  {Python}.
+\newblock \emph{Nature Methods}, 17:\penalty0 261--272, 2020.
+
+\bibitem[McKinney(2010)]{mckinney2010}
+Wes McKinney.
+\newblock Data structures for statistical computing in {Python}.
+\newblock In \emph{Proceedings of the 9th Python in Science Conference}, pages
+  56--61, 2010.
+
+\bibitem[Pedregosa et~al.(2011)Pedregosa, Varoquaux, Gramfort, Michel, Thirion,
+  Grisel, et~al.]{pedregosa2011}
+Fabian Pedregosa, Ga{\"e}l Varoquaux, Alexandre Gramfort, Vincent Michel,
+  Bertrand Thirion, Olivier Grisel, et~al.
+\newblock Scikit-learn: Machine learning in {Python}.
+\newblock \emph{Journal of Machine Learning Research}, 12:\penalty0 2825--2830,
+  2011.
+
+\bibitem[Hunter(2007)]{hunter2007}
+John~D. Hunter.
+\newblock Matplotlib: A {2D} graphics environment.
+\newblock \emph{Computing in Science \& Engineering}, 9\penalty0 (3):\penalty0
+  90--95, 2007.
+
+\bibitem[Bostock et~al.(2011)Bostock, Ogievetsky, and Heer]{bostock2011}
+Michael Bostock, Vadim Ogievetsky, and Jeffrey Heer.
+\newblock {D}$^3$: Data-driven documents.
+\newblock \emph{IEEE Transactions on Visualization and Computer Graphics},
+  17\penalty0 (12):\penalty0 2301--2309, 2011.
+
+\end{thebibliography}

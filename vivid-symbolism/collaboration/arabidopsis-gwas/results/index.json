@@ -1,0 +1,97 @@
+{
+  "seed": 417,
+  "bootstrap_B": 1000,
+  "noise_models": {
+    "M1_plant_inoculated_only": {
+      "mock": false,
+      "batch": false,
+      "mock_mult": 1.0
+    },
+    "M2_plant_all_cells": {
+      "mock": true,
+      "batch": false,
+      "mock_mult": 1.0
+    },
+    "M3_plant_plus_batch": {
+      "mock": true,
+      "batch": true,
+      "mock_mult": 1.0
+    },
+    "M4_M3_mock_noise_x1.5": {
+      "mock": true,
+      "batch": true,
+      "mock_mult": 1.5
+    }
+  },
+  "reference_model": "M3_plant_plus_batch",
+  "plant_cv": {
+    "Shoot": 0.1210874389465408,
+    "Root": 0.15565517910417442
+  },
+  "batch_cv": {
+    "Shoot": 0.08142452192851568,
+    "Root": 0.09289500205143975
+  },
+  "n_main": 235,
+  "excluded_repeated": [
+    6909,
+    7394,
+    9807,
+    9874
+  ],
+  "experiments": {
+    "E1_audit": {
+      "file": "E1_audit.json",
+      "seconds": 0.02
+    },
+    "E2_heterogeneity": {
+      "file": "E2_heterogeneity.json",
+      "seconds": 0.73
+    },
+    "E3_dependence": {
+      "file": "E3_dependence.json",
+      "seconds": 5.3
+    },
+    "E4_canonical": {
+      "file": "E4_canonical.json",
+      "seconds": 1.55
+    },
+    "E5_four_column": {
+      "file": "E5_four_column.json",
+      "seconds": 0.87
+    },
+    "E6_calibration": {
+      "file": "E6_calibration.json",
+      "seconds": 0.68
+    },
+    "E7_batch": {
+      "file": "E7_batch.json",
+      "seconds": 0.02
+    },
+    "E8_candidates": {
+      "file": "E8_candidates.json",
+      "seconds": 0.08
+    },
+    "E9_ratio": {
+      "file": "E9_ratio.json",
+      "seconds": 0.01
+    },
+    "E10_classes": {
+      "file": "E10_classes.json",
+      "seconds": 0.78
+    },
+    "E11_geography": {
+      "file": "E11_geography.json",
+      "seconds": 0.03
+    },
+    "E12_design": {
+      "file": "E12_design.json",
+      "seconds": 0.79
+    },
+    "accessions": {
+      "file": "accessions.json",
+      "seconds": 0.29
+    }
+  },
+  "total_seconds": 11.1
+}

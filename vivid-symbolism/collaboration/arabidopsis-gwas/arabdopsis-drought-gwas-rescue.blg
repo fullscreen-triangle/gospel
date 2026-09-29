@@ -1,0 +1,48 @@
+This is BibTeX, Version 0.99e
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: arabdopsis-drought-gwas-rescue.aux
+Reallocating 'name_of_file' (item size: 1) to 9 items.
+The style file: unsrtnat.bst
+Reallocating 'name_of_file' (item size: 1) to 11 items.
+Database file #1: references.bib
+You've used 37 entries,
+            2481 wiz_defined-function locations,
+            787 strings with 12353 characters,
+and the built_in function-call counts, 16146 in all, are:
+= -- 1270
+> -- 1057
+< -- 18
++ -- 396
+- -- 322
+* -- 1419
+:= -- 2675
+add.period$ -- 111
+call.type$ -- 37
+change.case$ -- 73
+chr.to.int$ -- 37
+cite$ -- 37
+duplicate$ -- 713
+empty$ -- 1368
+format.name$ -- 373
+if$ -- 3303
+int.to.chr$ -- 1
+int.to.str$ -- 38
+missing$ -- 41
+newline$ -- 193
+num.names$ -- 111
+pop$ -- 277
+preamble$ -- 1
+purify$ -- 37
+quote$ -- 0
+skip$ -- 401
+stack$ -- 0
+substring$ -- 876
+swap$ -- 82
+text.length$ -- 1
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 247
+warning$ -- 0
+while$ -- 140
+width$ -- 0
+write$ -- 491

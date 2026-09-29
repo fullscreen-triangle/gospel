@@ -1,0 +1,147 @@
+{
+  "workbook": "GWAS Kundai.xlsx",
+  "n_plants_raw": 1841,
+  "raw_cells_present": [
+    "WCS417 x DS"
+  ],
+  "n_accessions": 247,
+  "repeated_lines": [
+    6909,
+    7394,
+    9807,
+    9874
+  ],
+  "n_main": 235,
+  "plants_per_accession": {
+    "7": 243,
+    "14": 3,
+    "98": 1
+  },
+  "root_length_filled": 1042,
+  "identities": {
+    "Shoot": {
+      "rescue_eq_(W-MD)/(MN-MD)_n_hold": 235,
+      "rescue_eq_(W-MD)/(MN-MD)_median_abs_resid": 3.785979862946931e-10,
+      "rescue_mismatch_ids": [
+        6909,
+        7394,
+        9807,
+        9874
+      ],
+      "rescue_mismatch_resid": [
+        0.009799807571124142,
+        0.020833721015568574,
+        0.010521411515245216,
+        0.06772779113720492
+      ],
+      "increase_eq_W/MD-1_n_hold": 239,
+      "increase_mismatch_ids": [
+        6909,
+        7394,
+        9807,
+        9874
+      ],
+      "increase_mismatch_are_repeated_lines": true,
+      "raw_mean_eq_AVG_W_max_abs_resid": 4.285716670437978e-09,
+      "median_MN": 46.80000007086727,
+      "median_MD": 9.874999999999998,
+      "median_W": 18.9,
+      "median_fractional_loss": 0.784471813
+    },
+    "Root": {
+      "rescue_eq_(W-MD)/(MN-MD)_n_hold": 235,
+      "rescue_eq_(W-MD)/(MN-MD)_median_abs_resid": 5.898818655758475e-10,
+      "rescue_mismatch_ids": [
+        6909,
+        7394,
+        9807,
+        9874
+      ],
+      "rescue_mismatch_resid": [
+        0.007196452942296622,
+        0.009046933066679724,
+        0.007040811066216346,
+        0.13456305172289235
+      ],
+      "increase_eq_W/MD-1_n_hold": 239,
+      "increase_mismatch_ids": [
+        6909,
+        7394,
+        9807,
+        9874
+      ],
+      "increase_mismatch_are_repeated_lines": true,
+      "raw_mean_eq_AVG_W_max_abs_resid": 4.2857148940811385e-09,
+      "median_MN": 14.550000007058912,
+      "median_MD": 2.414285714,
+      "median_W": 6.064285714,
+      "median_fractional_loss": 0.841498559
+    },
+    "Total": {
+      "rescue_eq_(W-MD)/(MN-MD)_n_hold": 235,
+      "rescue_eq_(W-MD)/(MN-MD)_median_abs_resid": 4.170827017091483e-10,
+      "rescue_mismatch_ids": [
+        6909,
+        7394,
+        9807,
+        9874
+      ],
+      "rescue_mismatch_resid": [
+        0.008584842038177942,
+        0.018027535840121678,
+        0.009855191282828801,
+        0.0805298023449724
+      ],
+      "increase_eq_W/MD-1_n_hold": 239,
+      "increase_mismatch_ids": [
+        6909,
+        7394,
+        9807,
+        9874
+      ],
+      "increase_mismatch_are_repeated_lines": true,
+      "raw_mean_eq_AVG_W_max_abs_resid": 4.285716670437978e-09,
+      "median_MN": 61.59999993840001,
+      "median_MD": 12.471428569,
+      "median_W": 25.071428570000002,
+      "median_fractional_loss": 0.799389002
+    }
+  },
+  "table1_is_drought": {
+    "r_mock_vs_MD": 0.9629573162179957,
+    "r_wcs_vs_W": 0.9748919059647663,
+    "n": 243
+  },
+  "table2_tolerance_is_loss": {
+    "n": 240,
+    "identical": 239
+  },
+  "rescuer_labels": {
+    "Shoot_Rescuer": {
+      "n1": 152,
+      "n0": 91,
+      "gain_range_label1": [
+        6.085714286,
+        25.55714286
+      ],
+      "gain_range_label0": [
+        0.7285714289999987,
+        7.754761904999999
+      ],
+      "n_negative_gain": 0
+    },
+    "Root_Rescuer": {
+      "n1": 186,
+      "n0": 57,
+      "gain_range_label1": [
+        2.757142857,
+        8.414285714
+      ],
+      "gain_range_label0": [
+        0.2714285710000004,
+        2.851428571
+      ],
+      "n_negative_gain": 0
+    }
+  }
+}

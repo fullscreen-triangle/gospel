@@ -86,7 +86,8 @@ const Navbar = () => {
         <CustomLink className="mx-4" href="/interference" title="Interference" />
         <CustomLink className="mx-4" href="/ide" title="IDE" />
         <CustomLink className="mx-4" href="/method" title="Method" />
-        <CustomLink className="ml-4" href="/paper" title="Paper" />
+        <CustomLink className="mx-4" href="/paper" title="Paper" />
+        <CustomLink className="ml-4" href="/rescue" title="Rescue" />
       </nav>
       <nav
         className="flex items-center justify-center flex-wrap lg:mt-2
@@ -121,7 +122,8 @@ const Navbar = () => {
         <CustomMobileLink toggle={handleClick} className="mx-4 lg:m-0 lg:my-2" href="/interference" title="Interference" />
         <CustomMobileLink toggle={handleClick} className="mx-4 lg:m-0 lg:my-2" href="/ide" title="IDE" />
         <CustomMobileLink toggle={handleClick} className="mx-4 lg:m-0 lg:my-2" href="/method" title="Method" />
-        <CustomMobileLink toggle={handleClick} className="ml-4 lg:m-0 lg:my-2" href="/paper" title="Paper" />
+        <CustomMobileLink toggle={handleClick} className="mx-4 lg:m-0 lg:my-2" href="/paper" title="Paper" />
+        <CustomMobileLink toggle={handleClick} className="ml-4 lg:m-0 lg:my-2" href="/rescue" title="Rescue" />
       </nav>
       <nav
         className="flex items-center justify-center  mt-2

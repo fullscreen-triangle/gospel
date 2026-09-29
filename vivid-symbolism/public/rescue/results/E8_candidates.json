@@ -1,0 +1,446 @@
+{
+  "rows": [
+    {
+      "gene": "AT1G21910",
+      "symbol": "DREB26",
+      "variant": "Upstream gene variant",
+      "metric": "Median Shoot FW",
+      "family": "inoculated_size",
+      "metric_column": "Median_Shoot_FW",
+      "rho_metric_vs_mock_loss": -0.2653733037938974,
+      "rho_metric_vs_size": 0.9812396255012351
+    },
+    {
+      "gene": "AT1G43720",
+      "symbol": "",
+      "variant": "Upstream gene variant",
+      "metric": "AVG percent increase in TFW",
+      "family": "increase",
+      "metric_column": "AVG_percent_increase_in_TFW",
+      "rho_metric_vs_mock_loss": 0.8103846559544319,
+      "rho_metric_vs_size": 0.01068577650775872
+    },
+    {
+      "gene": "AT1G51430",
+      "symbol": "",
+      "variant": "Stop Gained",
+      "metric": "AVG Percent Rescue Root",
+      "family": "rescue",
+      "metric_column": "AVG_percent_Rescue_Root",
+      "rho_metric_vs_mock_loss": -0.0288685348616434,
+      "rho_metric_vs_size": 0.3036552844931097
+    },
+    {
+      "gene": "AT1G58007",
+      "symbol": "",
+      "variant": "Upstream gene variant",
+      "metric": "Median percent increase in TFW",
+      "family": "increase",
+      "metric_column": "Median_percent_increase_in_TFW",
+      "rho_metric_vs_mock_loss": 0.8034970694780009,
+      "rho_metric_vs_size": -0.015146593977784385
+    },
+    {
+      "gene": "AT1G58007",
+      "symbol": "",
+      "variant": "Upstream gene variant",
+      "metric": "AVG percent increase in SFW",
+      "family": "increase",
+      "metric_column": "AVG_percent_increase_in_SFW_",
+      "rho_metric_vs_mock_loss": 0.8002153581097711,
+      "rho_metric_vs_size": 0.07256773104810389
+    },
+    {
+      "gene": "AT1G62770",
+      "symbol": "PMEI9",
+      "variant": "Upstream gene variant",
+      "metric": "AVG Percent Rescue Root",
+      "family": "rescue",
+      "metric_column": "AVG_percent_Rescue_Root",
+      "rho_metric_vs_mock_loss": -0.0288685348616434,
+      "rho_metric_vs_size": 0.3036552844931097
+    },
+    {
+      "gene": "AT1G77660",
+      "symbol": "MORN4",
+      "variant": "Upstream gene variant",
+      "metric": "Median percent Loss in SFW under drought",
+      "family": "mock_only_loss",
+      "metric_column": "Median_percent_Loss_in_SFW_under_drought",
+      "rho_metric_vs_mock_loss": 0.9715357409711639,
+      "rho_metric_vs_size": null
+    },
+    {
+      "gene": "AT1G77660",
+      "symbol": "MORN4",
+      "variant": "Upstream gene variant",
+      "metric": "AVG percent loss in SFW under drought",
+      "family": "mock_only_loss",
+      "metric_column": "AVG_percent_Loss_in_SFW_under_drought",
+      "rho_metric_vs_mock_loss": 0.9999999999999998,
+      "rho_metric_vs_size": null
+    },
+    {
+      "gene": "AT1G77660",
+      "symbol": "MORN4",
+      "variant": "Upstream gene variant",
+      "metric": "AVG percent loss in TFW under drought",
+      "family": "mock_only_loss",
+      "metric_column": "AVG_percent_Loss_in_TFW_under_drought",
+      "rho_metric_vs_mock_loss": 0.9815821455233597,
+      "rho_metric_vs_size": null
+    },
+    {
+      "gene": "AT1G77810",
+      "symbol": "",
+      "variant": "Upstream gene variant",
+      "metric": "AVG percent increase in TFW",
+      "family": "increase",
+      "metric_column": "AVG_percent_increase_in_TFW",
+      "rho_metric_vs_mock_loss": 0.8103846559544319,
+      "rho_metric_vs_size": 0.01068577650775872
+    },
+    {
+      "gene": "AT1G77815",
+      "symbol": "",
+      "variant": "Upstream gene variant",
+      "metric": "AVG percent increase in TFW",
+      "family": "increase",
+      "metric_column": "AVG_percent_increase_in_TFW",
+      "rho_metric_vs_mock_loss": 0.8103846559544319,
+      "rho_metric_vs_size": 0.01068577650775872
+    },
+    {
+      "gene": "AT2G06025",
+      "symbol": "GNAT6",
+      "variant": "Upstream gene variant",
+      "metric": "AVG Percent Rescue Root",
+      "family": "rescue",
+      "metric_column": "AVG_percent_Rescue_Root",
+      "rho_metric_vs_mock_loss": -0.0288685348616434,
+      "rho_metric_vs_size": 0.3036552844931097
+    },
+    {
+      "gene": "AT2G06095",
+      "symbol": "",
+      "variant": "Missense variant",
+      "metric": "AVG Percent Rescue Root",
+      "family": "rescue",
+      "metric_column": "AVG_percent_Rescue_Root",
+      "rho_metric_vs_mock_loss": -0.0288685348616434,
+      "rho_metric_vs_size": 0.3036552844931097
+    },
+    {
+      "gene": "AT2G07213",
+      "symbol": "",
+      "variant": "Upstream gene variant",
+      "metric": "Median percent Loss in SFW under drought",
+      "family": "mock_only_loss",
+      "metric_column": "Median_percent_Loss_in_SFW_under_drought",
+      "rho_metric_vs_mock_loss": 0.9715357409711639,
+      "rho_metric_vs_size": null
+    },
+    {
+      "gene": "AT2G18550",
+      "symbol": "HB21",
+      "variant": "Upstream gene variant",
+      "metric": "AVG percent increase in TFW",
+      "family": "increase",
+      "metric_column": "AVG_percent_increase_in_TFW",
+      "rho_metric_vs_mock_loss": 0.8103846559544319,
+      "rho_metric_vs_size": 0.01068577650775872
+    },
+    {
+      "gene": "AT2G18570",
+      "symbol": "",
+      "variant": "Upstream gene variant",
+      "metric": "Median percent increase in TFW",
+      "family": "increase",
+      "metric_column": "Median_percent_increase_in_TFW",
+      "rho_metric_vs_mock_loss": 0.8034970694780009,
+      "rho_metric_vs_size": -0.015146593977784385
+    },
+    {
+      "gene": "AT2G18570",
+      "symbol": "",
+      "variant": "Upstream gene variant",
+      "metric": "AVG percent increase in TFW",
+      "family": "increase",
+      "metric_column": "AVG_percent_increase_in_TFW",
+      "rho_metric_vs_mock_loss": 0.8103846559544319,
+      "rho_metric_vs_size": 0.01068577650775872
+    },
+    {
+      "gene": "AT2G36490",
+      "symbol": "DML1",
+      "variant": "Upstream gene variant",
+      "metric": "Median percent increase in TFW",
+      "family": "increase",
+      "metric_column": "Median_percent_increase_in_TFW",
+      "rho_metric_vs_mock_loss": 0.8034970694780009,
+      "rho_metric_vs_size": -0.015146593977784385
+    },
+    {
+      "gene": "AT3G06845",
+      "symbol": "",
+      "variant": "Upstream gene variant",
+      "metric": "Median Root FW",
+      "family": "inoculated_size",
+      "metric_column": "Median_Root_FW",
+      "rho_metric_vs_mock_loss": -0.2399260461093828,
+      "rho_metric_vs_size": 0.6542727189412147
+    },
+    {
+      "gene": "AT3G15115",
+      "symbol": "",
+      "variant": "Upstream gene variant",
+      "metric": "AVG Percent Rescue Root",
+      "family": "rescue",
+      "metric_column": "AVG_percent_Rescue_Root",
+      "rho_metric_vs_mock_loss": -0.0288685348616434,
+      "rho_metric_vs_size": 0.3036552844931097
+    },
+    {
+      "gene": "AT3G26020",
+      "symbol": "PP2AB'ETA",
+      "variant": "Upstream gene variant",
+      "metric": "Median percent increase in TFW",
+      "family": "increase",
+      "metric_column": "Median_percent_increase_in_TFW",
+      "rho_metric_vs_mock_loss": 0.8034970694780009,
+      "rho_metric_vs_size": -0.015146593977784385
+    },
+    {
+      "gene": "AT3G26020",
+      "symbol": "PP2AB'ETA",
+      "variant": "Upstream gene variant",
+      "metric": "Median percent increase in SFW",
+      "family": "increase",
+      "metric_column": "Median_percent_increase_in_SFW_",
+      "rho_metric_vs_mock_loss": 0.7840579235627226,
+      "rho_metric_vs_size": 0.04446630761665198
+    },
+    {
+      "gene": "AT3G26050",
+      "symbol": "",
+      "variant": "Upstream gene variant",
+      "metric": "Median percent increase in SFW",
+      "family": "increase",
+      "metric_column": "Median_percent_increase_in_SFW_",
+      "rho_metric_vs_mock_loss": 0.7840579235627226,
+      "rho_metric_vs_size": 0.04446630761665198
+    },
+    {
+      "gene": "AT3G30247",
+      "symbol": "",
+      "variant": "Missense variant",
+      "metric": "AVG percent increase in TFW",
+      "family": "increase",
+      "metric_column": "AVG_percent_increase_in_TFW",
+      "rho_metric_vs_mock_loss": 0.8103846559544319,
+      "rho_metric_vs_size": 0.01068577650775872
+    },
+    {
+      "gene": "AT3G30247",
+      "symbol": "",
+      "variant": "Missense variant",
+      "metric": "Median percent increase in TFW",
+      "family": "increase",
+      "metric_column": "Median_percent_increase_in_TFW",
+      "rho_metric_vs_mock_loss": 0.8034970694780009,
+      "rho_metric_vs_size": -0.015146593977784385
+    },
+    {
+      "gene": "AT3G48630",
+      "symbol": "",
+      "variant": "Splice donor variant",
+      "metric": "AVG Gain in TFW Drought",
+      "family": "gain",
+      "metric_column": "AVG_Gain_in_TFW_Drought",
+      "rho_metric_vs_mock_loss": 0.4524369948848669,
+      "rho_metric_vs_size": 0.5904604706550226
+    },
+    {
+      "gene": "AT3G48630",
+      "symbol": "",
+      "variant": "Missense variant",
+      "metric": "AVG Gain in TFW Drought",
+      "family": "gain",
+      "metric_column": "AVG_Gain_in_TFW_Drought",
+      "rho_metric_vs_mock_loss": 0.4524369948848669,
+      "rho_metric_vs_size": 0.5904604706550226
+    },
+    {
+      "gene": "AT3G48630",
+      "symbol": "",
+      "variant": "Splice acceptor variant",
+      "metric": "AVG Gain in TFW Drought",
+      "family": "gain",
+      "metric_column": "AVG_Gain_in_TFW_Drought",
+      "rho_metric_vs_mock_loss": 0.4524369948848669,
+      "rho_metric_vs_size": 0.5904604706550226
+    },
+    {
+      "gene": "AT3G48630",
+      "symbol": "",
+      "variant": "Missense variant",
+      "metric": "AVG Gain in SFW Drought",
+      "family": "gain",
+      "metric_column": "AVG_Gain_in_SFW_Drought",
+      "rho_metric_vs_mock_loss": 0.45484623803328644,
+      "rho_metric_vs_size": 0.6011077867014286
+    },
+    {
+      "gene": "AT3G48630",
+      "symbol": "",
+      "variant": "Splice donor variant",
+      "metric": "AVG Gain in SFW Drought",
+      "family": "gain",
+      "metric_column": "AVG_Gain_in_SFW_Drought",
+      "rho_metric_vs_mock_loss": 0.45484623803328644,
+      "rho_metric_vs_size": 0.6011077867014286
+    },
+    {
+      "gene": "AT3G48630",
+      "symbol": "",
+      "variant": "Splice acceptor variant",
+      "metric": "AVG Gain in SFW Drought",
+      "family": "gain",
+      "metric_column": "AVG_Gain_in_SFW_Drought",
+      "rho_metric_vs_mock_loss": 0.45484623803328644,
+      "rho_metric_vs_size": 0.6011077867014286
+    },
+    {
+      "gene": "AT3G57587",
+      "symbol": "",
+      "variant": "Upstream gene variant",
+      "metric": "Median Shoot FW",
+      "family": "inoculated_size",
+      "metric_column": "Median_Shoot_FW",
+      "rho_metric_vs_mock_loss": -0.2653733037938974,
+      "rho_metric_vs_size": 0.9812396255012351
+    },
+    {
+      "gene": "AT3G57587",
+      "symbol": "",
+      "variant": "Upstream gene variant",
+      "metric": "AVG Shoot FW",
+      "family": "inoculated_size",
+      "metric_column": "AVG_Shoot_FW",
+      "rho_metric_vs_mock_loss": -0.25854058918737133,
+      "rho_metric_vs_size": 1.0
+    },
+    {
+      "gene": "AT5G23960",
+      "symbol": "TPS21",
+      "variant": "Upstream gene variant",
+      "metric": "AVG percent loss in TFW under drought",
+      "family": "mock_only_loss",
+      "metric_column": "AVG_percent_Loss_in_TFW_under_drought",
+      "rho_metric_vs_mock_loss": 0.9815821455233597,
+      "rho_metric_vs_size": null
+    },
+    {
+      "gene": "AT5G38950",
+      "symbol": "",
+      "variant": "Upstream gene variant",
+      "metric": "AVG Percent Rescue Root",
+      "family": "rescue",
+      "metric_column": "AVG_percent_Rescue_Root",
+      "rho_metric_vs_mock_loss": -0.0288685348616434,
+      "rho_metric_vs_size": 0.3036552844931097
+    },
+    {
+      "gene": "AT5G40740",
+      "symbol": "AUG6",
+      "variant": "Upstream gene variant",
+      "metric": "Median percent increase in TFW",
+      "family": "increase",
+      "metric_column": "Median_percent_increase_in_TFW",
+      "rho_metric_vs_mock_loss": 0.8034970694780009,
+      "rho_metric_vs_size": -0.015146593977784385
+    },
+    {
+      "gene": "AT5G48640",
+      "symbol": "CYCLINC1-1",
+      "variant": "Upstream gene variant",
+      "metric": "Total Rescue",
+      "family": "rescue",
+      "metric_column": null,
+      "rho_metric_vs_mock_loss": null,
+      "rho_metric_vs_size": null
+    },
+    {
+      "gene": "AT5G48650",
+      "symbol": "G3BP-LIKE",
+      "variant": "Upstream gene variant",
+      "metric": "Total Rescue",
+      "family": "rescue",
+      "metric_column": null,
+      "rho_metric_vs_mock_loss": null,
+      "rho_metric_vs_size": null
+    },
+    {
+      "gene": "AT5G60600",
+      "symbol": "HDS",
+      "variant": "Upstream gene variant",
+      "metric": "Root Rescue",
+      "family": "rescue",
+      "metric_column": "Root_Rescuer",
+      "rho_metric_vs_mock_loss": 0.3098002977692183,
+      "rho_metric_vs_size": 0.2589984564020378
+    },
+    {
+      "gene": "AT5G66070",
+      "symbol": "ATARRE",
+      "variant": "Upstream gene variant",
+      "metric": "Median percent increase in TFW",
+      "family": "increase",
+      "metric_column": "Median_percent_increase_in_TFW",
+      "rho_metric_vs_mock_loss": 0.8034970694780009,
+      "rho_metric_vs_size": -0.015146593977784385
+    }
+  ],
+  "n_rows": 40,
+  "n_genes": 28,
+  "genes_by_family": {
+    "gain": 1,
+    "increase": 12,
+    "inoculated_size": 3,
+    "mock_only_loss": 3,
+    "rescue": 9
+  },
+  "genes_multi_metric": 7,
+  "genes_multi_family": 0,
+  "multi_metric_genes": {
+    "AT1G58007": [
+      "AVG percent increase in SFW",
+      "Median percent increase in TFW"
+    ],
+    "AT1G77660": [
+      "AVG percent loss in SFW under drought",
+      "AVG percent loss in TFW under drought",
+      "Median percent Loss in SFW under drought"
+    ],
+    "AT2G18570": [
+      "AVG percent increase in TFW",
+      "Median percent increase in TFW"
+    ],
+    "AT3G26020": [
+      "Median percent increase in SFW",
+      "Median percent increase in TFW"
+    ],
+    "AT3G30247": [
+      "AVG percent increase in TFW",
+      "Median percent increase in TFW"
+    ],
+    "AT3G48630": [
+      "AVG Gain in SFW Drought",
+      "AVG Gain in TFW Drought"
+    ],
+    "AT3G57587": [
+      "AVG Shoot FW",
+      "Median Shoot FW"
+    ]
+  }
+}
