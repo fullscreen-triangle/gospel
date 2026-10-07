@@ -1,0 +1,50 @@
+This is BibTeX, Version 0.99e
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: genomic-semiotic-graph-verditcs.aux
+Reallocating 'name_of_file' (item size: 1) to 9 items.
+The style file: unsrtnat.bst
+Reallocating 'name_of_file' (item size: 1) to 11 items.
+Database file #1: references.bib
+Warning--can't use both author and editor fields in peirce_cp
+You've used 83 entries,
+            2481 wiz_defined-function locations,
+            1048 strings with 21279 characters,
+and the built_in function-call counts, 37352 in all, are:
+= -- 2810
+> -- 2619
+< -- 54
++ -- 979
+- -- 812
+* -- 3274
+:= -- 6228
+add.period$ -- 263
+call.type$ -- 83
+change.case$ -- 159
+chr.to.int$ -- 82
+cite$ -- 84
+duplicate$ -- 1613
+empty$ -- 3103
+format.name$ -- 915
+if$ -- 7658
+int.to.chr$ -- 2
+int.to.str$ -- 84
+missing$ -- 82
+newline$ -- 434
+num.names$ -- 253
+pop$ -- 679
+preamble$ -- 1
+purify$ -- 83
+quote$ -- 0
+skip$ -- 949
+stack$ -- 0
+substring$ -- 1843
+swap$ -- 236
+text.length$ -- 9
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 557
+warning$ -- 1
+while$ -- 296
+width$ -- 0
+write$ -- 1107
+(There was 1 warning)

@@ -1,0 +1,15 @@
+{
+  "seed": 417,
+  "B": 1000,
+  "experiments": {
+    "F1_audit": 0.05,
+    "F2_noise": 0.83,
+    "F3_retest": 2.5,
+    "F4_replicates": 3.42,
+    "F5_lambda": 90.63,
+    "F6_drought": 6.54,
+    "F7_certify": 6.86,
+    "F_phenotypes": 0.02
+  },
+  "total_seconds": 110.8
+}

@@ -14,6 +14,9 @@ import {
 import {
   CalibrationCurves, DesignHeatmap, GeoMap, TierChart, VerdictExplorer,
 } from "@/components/rescue/VerdictCharts";
+import {
+  Col0Runs, DroughtVsNonStress, RetestForest, RetestScatter,
+} from "@/components/rescue/ReplicationCharts";
 
 const BASE = "/rescue";
 const FILES = {
@@ -21,6 +24,8 @@ const FILES = {
   e3: "E3_dependence", e4: "E4_canonical", e5: "E5_four_column", e6: "E6_calibration",
   e7: "E7_batch", e8: "E8_candidates", e9: "E9_ratio", e10: "E10_classes",
   e11: "E11_geography", e12: "E12_design",
+  f1: "F1_audit", f2: "F2_noise", f3: "F3_retest", f4: "F4_replicates", f5: "F5_lambda",
+  f6: "F6_drought", f7: "F7_certify",
 };
 
 const TOC = [
@@ -39,9 +44,10 @@ const TOC = [
   ["mutants", "12 · E9 — Checking a mutant claim"],
   ["design", "13 · E12 — The next experiment"],
   ["geography", "14 · E11 — Collection sites"],
-  ["protocol", "15 · Protocol for the reanalysis"],
-  ["limits", "16 · Limitations"],
-  ["files", "17 · Files and reproduction"],
+  ["replicates", "15 · F1–F7 — Three runs and a non-stress control"],
+  ["protocol", "16 · Protocol for the reanalysis"],
+  ["limits", "17 · Limitations"],
+  ["files", "18 · Files and reproduction"],
 ];
 
 // ------------------------------------------------------------------ prose kit
@@ -143,6 +149,7 @@ export default function Rescue() {
   const acc = D.accessions ? D.accessions.accessions : null;
   const lamS = D.e4 ? D.e4.organs.Shoot : null;
   const lamR = D.e4 ? D.e4.organs.Root : null;
+  const f4S = D.f4 ? D.f4.Shoot : null;
 
   return (
     <>
@@ -162,7 +169,7 @@ export default function Rescue() {
             A reanalysis of a natural-variation screen for drought rescue of <i>Arabidopsis thaliana</i> by the
             beneficial rhizobacterium <i>Pseudomonas simiae</i> WCS417. The screen covers 247 accessions, two
             inoculation treatments, two water regimes and two organs. This page is the experiment&apos;s
-            specification. For each of twelve analyses it states the purpose, the inputs, the procedure, the
+            specification. For each of nineteen analyses, in two series, it states the purpose, the inputs, the procedure, the
             output file, what would count as success, and what happened. Every chart reads the same JSON files
             the manuscript was built from, and several recompute their statistics live in your browser.
           </p>
@@ -179,6 +186,10 @@ export default function Rescue() {
             <Link href={`${BASE}/arabdopsis-drought-gwas-rescue.pdf`} target="_blank"
               className="rounded-lg border-2 border-dark px-4 py-2 hover:border-primary dark:border-light dark:hover:border-primaryDark">
               Manuscript (PDF)
+            </Link>
+            <Link href={`${BASE}/rescue-presentation.pdf`} target="_blank"
+              className="rounded-lg border-2 border-dark px-4 py-2 hover:border-primary dark:border-light dark:hover:border-primaryDark">
+              Slides (PDF)
             </Link>
             <Link href={`${BASE}/references.bib`} target="_blank"
               className="rounded-lg border-2 border-dark px-4 py-2 hover:border-primary dark:border-light dark:hover:border-primaryDark">
@@ -231,13 +242,25 @@ export default function Rescue() {
                 differ. It almost never can certify that they rescue equally. It resolves four to five tiers of
                 rescue, and its largest source of noise is batch, which its own Col-0 control can measure.</li>
             </ol>
+            <Callout tone="warn" title="Update, 3 October: the full per-plant workbook">
+              <p>
+                A second workbook added per-plant weights for all four conditions and two independent reruns
+                of 50 accessions. It confirms points 1 and 3, and it changes the meaning of points 2 and 4.
+                Run against run, an accession&apos;s drought sensitivity replicates (ρ ≈ 0.7), but its rescue does
+                not (ρ ≈ 0.1–0.2). No accession that looked like a non-rescuer stayed one, and the Col-0 control
+                itself was not rescued in one of the three runs. Without drought, WCS417 slightly inhibits
+                growth. The single-run rescue phenotype behind the candidate genes is therefore mostly that
+                run. See <a href="#replicates" className="font-semibold underline">§15</a>.
+              </p>
+            </Callout>
             <div className="mt-6 grid grid-cols-4 gap-4 lg:grid-cols-2 sm:grid-cols-1">
               <Tile label="Analysis set" value={D.e1 ? `${D.e1.n_main}` : "…"} sub="accessions with all three cell means" />
               <Tile label="λ̂ shoot" value={lamS ? lamS.lambda_hat_corrected.toFixed(2) : "…"}
                 sub={lamS ? `95% [${lamS.lambda_ci95_corrected[0].toFixed(2)}, ${lamS.lambda_ci95_corrected[1].toFixed(2)}]; λ = 1 excluded` : ""} />
               <Tile label="λ̂ root" value={lamR ? lamR.lambda_hat_corrected.toFixed(2) : "…"}
                 sub={lamR ? `95% [${lamR.lambda_ci95_corrected[0].toFixed(2)}, ${lamR.lambda_ci95_corrected[1].toFixed(2)}]` : ""} />
-              <Tile label="Tiers resolved" value={D.e10 ? `${D.e10.Shoot.M3_plant_plus_batch.max_depth.canonical} / ${D.e10.Root.M3_plant_plus_batch.max_depth.canonical}` : "…"} sub="shoot / root, batch-inclusive noise" />
+              <Tile label="Rescue, run vs run" value={f4S ? f4S.test_retest_spearman_BR2_BR3.rescue.toFixed(2) : "…"}
+                sub={f4S ? `shoot ρ, 48 accessions; drought loss ${f4S.component_test_retest_spearman.loss.toFixed(2)}` : ""} />
             </div>
             <p>
               The page is long, about half an hour of reading, because it is meant to be used as a specification.
@@ -472,6 +495,11 @@ export default function Rescue() {
                 M3 is pessimistic: if mock and inoculated plants shared trays, part of the batch effect would cancel
                 in the gain. So M2 and M3 bracket the truth.
               </p>
+              <p>
+                <b>Superseded (§15):</b> the second workbook measures all four cells. Mock-drought plants are the
+                noisiest (shoot CV 0.18, not 0.12). Noise between independent runs is about CV 0.18–0.22, more than
+                twice the within-run batch in M3. M3 was not pessimistic; it was optimistic.
+              </p>
             </Callout>
             {D.e2 ? <ReliabilityBars e2={D.e2} /> : null}
             <p>
@@ -492,6 +520,12 @@ export default function Rescue() {
               and is compatible with zero under every noise model. It is the first line to retest as a candidate
               loss-of-rescue accession.
             </p>
+            <Callout title="Since retested">
+              <p>
+                Per-1 was regrown twice (§15). It was rescued in both runs: 5.3 and 3.2 mg shoot, with both intervals
+                above zero. None of the accessions that looked like non-rescuers in run 1 stayed one.
+              </p>
+            </Callout>
           </Section>
 
           {/* ============================================================ batch */}
@@ -809,6 +843,16 @@ export default function Rescue() {
               <li><b>Keep a common control in every block and record block membership</b>, then enter block as a
                 term in the model.</li>
             </ol>
+            <Callout tone="warn" title="Revised by the replicate runs (§15)">
+              <p>
+                This design assumed run-to-run noise equal to the Col-0 within-run batch. Two real reruns show it is
+                more than twice as large, and that rescue has a single-run reliability of only about 0.1–0.2. By
+                the Spearman–Brown formula, a rescue phenotype with reliability 0.6 then needs about 6 runs (at 0.2)
+                to 14 runs (at 0.1). The recommendations stand, and they matter more. In particular, co-locate mock
+                and inoculated plants: under non-stress they shared trays and their batch offsets cancelled
+                (r = 0.66–0.88), but under drought they did not (r ≈ 0).
+              </p>
+            </Callout>
           </Section>
 
           {/* ============================================================ geography */}
@@ -832,12 +876,119 @@ export default function Rescue() {
             </p>
           </Section>
 
-          {/* ============================================================ protocol */}
-          <Section id="protocol" kicker="Specification" title="15 · Protocol for the reanalysis">
+          {/* ============================================================ replicates */}
+          <Section id="replicates" kicker="Experiments F1–F7" title="15 · Three runs and a non-stress control">
             <p>
-              What follows is the procedure the data now support, written as steps. Steps 1–3 need no new data. Steps
-              4–6 need the per-plant mock and non-stress weights, which exist in the laboratory but not in the
-              workbook, and the genotypes.
+              Everything above was derived from one workbook that held per-plant weights for a single cell. A second
+              workbook (<Code>NS+DS.xlsx</Code>, 8,820 plants) holds them for all four cells. It also holds two
+              further independent runs under drought (run 2 and run 3) for 50 accessions. These were not chosen at
+              random: 43 of the 50 carried the &ldquo;non-rescuer&rdquo; label. The lab regrew the apparent weak
+              rescuers to confirm them. That makes run 2 against run 3 an unbiased reproducibility test, because
+              neither run was used to select the accessions. Run 1 against the retest is expected to regress to the
+              mean.
+            </p>
+            <Spec
+              id="F1 — consistency"
+              purpose="Check the second workbook against the first and against the cell means recovered in E1."
+              inputs="NS+DS.xlsx (all four cells, per plant, runs 1–3); the first workbook."
+              procedure="Compare run-1 inoculated-drought means with the first raw sheet; compare recovered M_D and M_N with measured means; test both definitions of the non-stress gain."
+              output={<JsonLink name="F1_audit" />}
+              acceptance="Identities hold to 10⁻² mg for every accession outside the lines grown in more than one block."
+              result="Accepted. The first GWAS used run 1 only (244 accessions identical). Recovered M_D matches 241/243 and M_N 235/239; every mismatch is a repeated line. The non-stress gain is W_N − M_N (240/241)."
+            />
+            <Spec
+              id="F2 — measured noise"
+              purpose="Replace the noise assumptions of E2 and E7 with measurement."
+              inputs="Per-plant weights in all cells; Col-0 blocks in every cell (21 under drought across three runs, 14 without drought)."
+              procedure="Median within-accession CV per cell; method-of-moments batch CV from Col-0 blocks per cell and run; correlation of Col-0 mock and inoculated block means within a run."
+              output={<JsonLink name="F2_noise" />}
+              acceptance="Descriptive."
+              result="Mock-drought is the noisiest cell (shoot plant CV 0.18, batch CV 0.18). Mock and inoculated block offsets are shared without drought (r = 0.66 shoot, 0.88 root) but not under drought in run 1 (r ≈ 0.01)."
+            />
+            {D.f2 ? <Col0Runs f2={D.f2} /> : null}
+            <p>
+              The reference genotype gives the plainest view of the problem. Col-0 was grown in every run, and its
+              shoot gain was 6.2, 1.4 and 6.0 mg. In run 2 its interval includes zero. Under the screen&apos;s own
+              criterion, the reference line would have been called a non-rescuer in that run.
+            </p>
+            <Spec
+              id="F3 — retest of the weak rescuers"
+              purpose="Ask whether weak or absent rescue in run 1 replicates."
+              inputs="The 50 regrown accessions; gain per run and pooled over runs 2–3, with bootstrap 95% intervals."
+              procedure="Flag accessions compatible with zero in run 1 and in the pooled retest; measure regression toward the all-accession mean."
+              output={<JsonLink name="F3_retest" />}
+              acceptance="A loss-of-rescue accession is confirmed only if its gain is compatible with zero in both run 1 and the retest."
+              result="None confirmed. Five accessions are compatible with zero in run 1 and four different ones in the retest (one or two borderline cases flip between bootstrap draws); the lists never overlap, and no retest estimate is negative. Retest gains regressed 26% (shoot) and 32% (root) toward the population mean."
+            />
+            {D.f3 ? <RetestScatter f3={D.f3} /> : null}
+            <Spec
+              id="F4 — reproducibility between independent runs"
+              purpose="Measure, without any noise model, how well each phenotype replicates between two independent runs."
+              inputs="Run 2 and run 3 for 48 accessions; mock non-stress from the single non-stress run."
+              procedure="Spearman ρ with Fisher-z 95% intervals and ICC between runs, for each rescue reading and for its components (log W, log M_D, mock drought loss); run-to-run CV beyond plant sampling."
+              output={<JsonLink name="F4_replicates" />}
+              acceptance="A phenotype is reproducible if its 95% interval excludes zero."
+              result={f4S ? <>Reproducible: mock drought loss ρ = {f4S.component_test_retest_spearman.loss.toFixed(2)}, log M_D {f4S.component_test_retest_spearman.logMD.toFixed(2)}, log W {f4S.component_test_retest_spearman.logW.toFixed(2)}, % increase {f4S.test_retest_spearman_BR2_BR3.increase.toFixed(2)}. Not distinguishable from zero: gain {f4S.test_retest_spearman_BR2_BR3.gain.toFixed(2)}, rescue {f4S.test_retest_spearman_BR2_BR3.rescue.toFixed(2)}, canonical {f4S.test_retest_spearman_BR2_BR3.canonical.toFixed(2)} (shoot; root similar). Run-to-run CV ≈ 0.18 (W) and 0.22 (M_D).</> : "…"}
+            />
+            {D.f4 ? <RetestForest f4={D.f4} /> : null}
+            <p>
+              This is the central result of the second series. What an accession reliably carries from run to run
+              is its <b>drought sensitivity</b>. What it gains from WCS417 beyond that changes from run to run.
+              Percentage increase replicates moderately well only because, as E3 showed, it largely ranks drought
+              sensitivity. So its reproducibility is evidence that it measures drought sensitivity, not that it
+              measures rescue.
+            </p>
+            <p>
+              Two caveats apply. The 48 accessions were selected as apparent weak rescuers, although their run-1
+              gains spread 91% as widely as the full panel&apos;s. And two runs on 48 accessions give wide intervals,
+              which is why the chart shows them.
+            </p>
+            <Spec
+              id="F5 — λ with all cells measured"
+              purpose="Re-estimate the canonical exponent with measured noise in every cell."
+              inputs="Run-1 per-plant data, all four cells, 237 (shoot) and 236 (root) accessions."
+              procedure="As E4, with plant resampling in every cell and calibration at the measured per-cell plant and batch CVs."
+              output={<JsonLink name="F5_lambda" />}
+              acceptance="As E4."
+              result={D.f5 ? <>λ̂ = {D.f5.Shoot.lambda_hat_corrected.toFixed(2)} [{D.f5.Shoot.lambda_ci95_corrected[0].toFixed(2)}, {D.f5.Shoot.lambda_ci95_corrected[1].toFixed(2)}] shoot; {D.f5.Root.lambda_hat_corrected.toFixed(2)} [{D.f5.Root.lambda_ci95_corrected[0].toFixed(2)}, {D.f5.Root.lambda_ci95_corrected[1].toFixed(2)}] root. % increase is still excluded. Plain rescue (λ = 0) lies inside the root interval and at the upper edge of the shoot interval (the bound moves across zero between Monte Carlo reruns).</> : "…"}
+            />
+            <Spec
+              id="F6 — with and without drought"
+              purpose="Ask whether drought rescue is general growth promotion, now that the inoculated non-stress cell is measured."
+              inputs="All four cells, run 1 and the non-stress run."
+              procedure="Per accession, log(W/M_D) under drought and log(W_N/M_N) without, with delta-method standard errors; their correlation; the interaction log(W/M_D) − log(W_N/M_N)."
+              output={<JsonLink name="F6_drought" />}
+              acceptance="Descriptive."
+              result="Without drought, WCS417 inhibits shoot growth on average (−12%; 30% of accessions significantly, 1% promoted); root is unchanged. Under drought, 95% (shoot) and 99% (root) of accessions are promoted. The two effects are uncorrelated (ρ = −0.08, −0.01). The interaction is positive in 92–94% of accessions but correlates 0.79–0.82 with drought loss."
+            />
+            {D.f6 ? <DroughtVsNonStress f6={D.f6} /> : null}
+            <p>
+              The benefit is specific to drought, and it is not general growth promotion carried into stress. This
+              differs from plate assays of the same strain without stress, where nearly every accession was
+              promoted. The inoculation × water interaction might look like the natural phenotype, but it sits at
+              the λ = 1 end of the family and inherits the same loading on drought sensitivity.
+            </p>
+            <Spec
+              id="F7 — certification under measured noise"
+              purpose="Redo E5 and E10 with measured rather than modelled noise."
+              inputs="Canonical rescue; measured plant noise; Col-0 batch per cell; run-to-run CV from F4."
+              procedure="Minimum certifiable margin over all pairs and resolution depth, under three measured noise levels."
+              output={<JsonLink name="F7_certify" />}
+              acceptance="Descriptive."
+              result={D.f7 ? <>Shoot median margin {D.f7.Shoot.measured_plant_noise.min_certifiable_margin_sd_quantiles[2].toFixed(1)} SD with plant noise, {D.f7.Shoot.measured_plant_plus_batch.min_certifiable_margin_sd_quantiles[2].toFixed(1)} with within-run batch, {D.f7.Shoot.measured_run_to_run.min_certifiable_margin_sd_quantiles[2].toFixed(1)} with run-to-run noise; tiers {D.f7.Shoot.measured_plant_noise.tiers}, {D.f7.Shoot.measured_plant_plus_batch.tiers}, {D.f7.Shoot.measured_run_to_run.tiers}. The earlier modelled bracket (1.8–2.7 SD, 4–8 tiers) was optimistic.</> : "…"}
+            />
+            <div className="mt-6 grid grid-cols-3 gap-4 lg:grid-cols-1">
+              <Tile label="Confirmed non-rescuers" value={D.f3 ? `${D.f3.organs.Shoot.consistently_compatible_with_zero.length}` : "…"} sub="of 50 regrown accessions" />
+              <Tile label="Tiers, run-to-run noise" value={D.f7 ? `${D.f7.Shoot.measured_run_to_run.tiers} / ${D.f7.Root.measured_run_to_run.tiers}` : "…"} sub="shoot / root" />
+              <Tile label="Inhibited without drought" value={D.f6 ? `${Math.round(100 * D.f6.Shoot.log_promotion_nonstress.frac_significantly_negative)}%` : "…"} sub="of accessions, shoot" />
+            </div>
+          </Section>
+
+          {/* ============================================================ protocol */}
+          <Section id="protocol" kicker="Specification" title="16 · Protocol for the reanalysis">
+            <p>
+              What follows is the procedure the data now support, revised after the replicate runs (§15). The
+              per-plant weights for all cells now exist; the association steps still need the genotypes.
             </p>
             <ol className="ml-6 list-decimal space-y-3">
               <li><b>Fix the phenotype before mapping.</b> Use the canonical reading per organ: f at λ̂, which for
@@ -850,8 +1001,12 @@ export default function Rescue() {
               <li><b>Map with kinship</b> (a mixed model), and in root add log M_N as a covariate.</li>
               <li><b>Report certifiability with any ranking</b>: the resolution depth, the minimum certifiable margin,
                 and the fraction of declined pairs.</li>
-              <li><b>Retest Per-1</b> and the accessions whose gain is compatible with zero, as loss-of-rescue
-                candidates.</li>
+              <li><b>Do not claim loss-of-rescue accessions.</b> The retest confirmed none, Per-1 included (§15).</li>
+              <li><b>Treat drought sensitivity as the reproducible phenotype.</b> Mock drought loss replicates at
+                ρ ≈ 0.7 between runs and is a sound GWAS phenotype now. A rescue GWAS must wait for a phenotype
+                averaged over several independent runs.</li>
+              <li><b>Expect the existing rescue candidates to replicate poorly</b>, since they were mapped on a
+                single-run phenotype with run-to-run reliability of about 0.1–0.2.</li>
               <li><b>For the iron mutants</b>, report absolute gain and loss-normalised rescue next to % increase.</li>
               <li><b>For the next screen</b>, use independent runs, co-located mock and inoculated plants, and a
                 common control per block.</li>
@@ -869,32 +1024,33 @@ export default function Rescue() {
           </Section>
 
           {/* ============================================================ limits */}
-          <Section id="limits" kicker="Honesty" title="16 · Limitations">
+          <Section id="limits" kicker="Honesty" title="17 · Limitations">
             <ol className="ml-6 list-decimal space-y-2">
-              <li><b>Three cells have modelled, not measured, noise.</b> M4 (mock noise × 1.5) changes no
-                qualitative conclusion, but per-plant data would replace the assumption with a measurement.</li>
+              <li><b>The E-series noise was modelled.</b> The F-series replaces it with measurement (§15); where the
+                two differ, the measured version holds and the modelled one was optimistic.</li>
               <li><b>Batch is estimated from one cell and one genotype.</b> Batch effects are assumed independent
                 across cells; shared trays would make the batch-inclusive model pessimistic.</li>
               <li><b>No genotypes.</b> No association was rerun, corrected for structure, or tested.</li>
-              <li><b>One run.</b> A second run could sharpen every conclusion about construction dependence, and in
-                shoot could reverse it.</li>
+              <li><b>Reruns cover 50 selected accessions.</b> They were apparent weak rescuers, and two runs on
+                48 accessions give wide intervals.</li>
               <li><b>The λ family is a model.</b> The root rejection of b₁ + b₂ = 1 shows that it is incomplete there.
                 The bias correction assumes the noise model.</li>
               <li><b>Margins are choices.</b> The four-column table depends on δ. The minimum certifiable margin does
                 not.</li>
-              <li><b>W_N cannot be recovered</b>, so no reading that uses the inoculated non-stress plants can be
-                evaluated.</li>
+              <li><b>Non-stress was grown once</b>, so its run-to-run reproducibility is unknown.</li>
             </ol>
           </Section>
 
           {/* ============================================================ files */}
-          <Section id="files" kicker="Reproduction" title="17 · Files and reproduction">
+          <Section id="files" kicker="Reproduction" title="18 · Files and reproduction">
             <p>
               The validation suite lives in <Code>collaboration/arabidopsis-gwas/validation/</Code>. Running
               <Code> python experiments.py</Code> regenerates every result from the workbook in about ten seconds,
               deterministically from seed 417. <Code>python make_figures.py</Code> rebuilds the six manuscript panels
-              from the JSON, and <Code>python export_site.py</Code> copies the results to this page. Every chart here
-              reads these files:
+              from the JSON, and <Code>python export_site.py</Code> copies the results to this page. The second series
+              runs with <Code>python experiments_full.py</Code> (about two minutes) from <Code>NS+DS.xlsx</Code>, and
+              writes per-accession phenotypes for new association scans to <Code>results/phenotypes_full.csv</Code>.
+              Every chart here reads these files:
             </p>
             <ul className="grid grid-cols-3 gap-2 lg:grid-cols-2 sm:grid-cols-1">
               {Object.values(FILES).map((f) => <li key={f}><JsonLink name={f} /></li>)}

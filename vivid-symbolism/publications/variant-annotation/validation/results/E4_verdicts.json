@@ -1,0 +1,934 @@
+{
+ "go": {
+  "human": {
+   "memberships": 336841,
+   "annotation_lines": 904944,
+   "not_lines": 1383,
+   "membership_verdicts": {
+    "symbol": 0,
+    "collapsed": 31224,
+    "index": 88174,
+    "icon": 165338,
+    "composite": 52105
+   },
+   "line_verdicts": {
+    "symbol": 0,
+    "collapsed": 137874,
+    "index": 467117,
+    "icon": 299953,
+    "composite": 0
+   },
+   "evidence_counts": {
+    "IPI": 292613,
+    "IEA": 194927,
+    "ISS": 35436,
+    "NAS": 25943,
+    "IDA": 117322,
+    "TAS": 110106,
+    "EXP": 15380,
+    "IEP": 913,
+    "HTP": 1134,
+    "IMP": 27248,
+    "IGI": 2492,
+    "ISA": 1440,
+    "ND": 300,
+    "HDA": 9824,
+    "RCA": 470,
+    "IC": 1525,
+    "HMP": 147,
+    "HEP": 44,
+    "ISO": 16,
+    "ISM": 3,
+    "IBA": 67661
+   },
+   "header": [
+    "!date-generated: 2026-05-21T08:10",
+    "!date-generated: 2026-05-20T11:45",
+    "!date-generated: 2026-04-30 09:29",
+    "!date-generated: 2026-01-05"
+   ],
+   "genes": 38923,
+   "terms": 17989
+  },
+  "yeast": {
+   "memberships": 66508,
+   "annotation_lines": 138964,
+   "not_lines": 31,
+   "membership_verdicts": {
+    "symbol": 0,
+    "collapsed": 7407,
+    "index": 23893,
+    "icon": 19797,
+    "composite": 15411
+   },
+   "line_verdicts": {
+    "symbol": 0,
+    "collapsed": 11671,
+    "index": 77561,
+    "icon": 49732,
+    "composite": 0
+   },
+   "evidence_counts": {
+    "IDA": 22161,
+    "IEA": 28065,
+    "NAS": 5104,
+    "IMP": 15126,
+    "TAS": 1934,
+    "HDA": 7132,
+    "RCA": 4725,
+    "IPI": 25397,
+    "IGI": 5367,
+    "ND": 3451,
+    "EXP": 2234,
+    "ISS": 717,
+    "IC": 1182,
+    "HMP": 71,
+    "ISA": 249,
+    "ISM": 408,
+    "HGI": 51,
+    "IEP": 22,
+    "ISO": 14,
+    "IBA": 15554
+   },
+   "header": [
+    "!date-generated: 2026-05-21T09:00",
+    "!date-generated: 2026-05-20T10:18",
+    "!date-generated: 2026-04-30 09:40",
+    "!date-generated: 2026-01-05"
+   ],
+   "genes": 7103,
+   "terms": 6085
+  },
+  "arabidopsis": {
+   "memberships": 181886,
+   "annotation_lines": 250175,
+   "not_lines": 1087,
+   "membership_verdicts": {
+    "symbol": 0,
+    "collapsed": 12992,
+    "index": 43178,
+    "icon": 109412,
+    "composite": 16304
+   },
+   "line_verdicts": {
+    "symbol": 0,
+    "collapsed": 15723,
+    "index": 89058,
+    "icon": 145394,
+    "composite": 0
+   },
+   "evidence_counts": {
+    "IPI": 24921,
+    "IEA": 72765,
+    "ISS": 6560,
+    "ISM": 17517,
+    "IMP": 17026,
+    "ND": 11069,
+    "IDA": 21703,
+    "EXP": 2519,
+    "TAS": 3617,
+    "IGI": 2672,
+    "HDA": 15342,
+    "IEP": 4670,
+    "NAS": 875,
+    "IC": 162,
+    "HEP": 205,
+    "RCA": 30,
+    "ISA": 6,
+    "IBA": 48516
+   },
+   "header": [
+    "!date-generated: 2026-05-21T09:06",
+    "!date-generated: 2026-05-20T10:32",
+    "!date-generated: 2026-04-30 09:14",
+    "!date-generated: 2026-01-05"
+   ],
+   "genes": 37573,
+   "terms": 7290
+  }
+ },
+ "clinvar": {
+  "A1": {
+   "variants": 4404748,
+   "verdicts": {
+    "symbol": 0,
+    "collapsed": 1433,
+    "index": 4288116,
+    "icon": 38949,
+    "composite": 76250
+   },
+   "by_class": {
+    "P": {
+     "symbol": 0,
+     "collapsed": 132,
+     "index": 332636,
+     "icon": 22311,
+     "composite": 32444
+    },
+    "U": {
+     "symbol": 0,
+     "collapsed": 768,
+     "index": 2377351,
+     "icon": 6098,
+     "composite": 7103
+    },
+    "B": {
+     "symbol": 0,
+     "collapsed": 481,
+     "index": 1397546,
+     "icon": 2208,
+     "composite": 8909
+    },
+    "O": {
+     "symbol": 0,
+     "collapsed": 52,
+     "index": 6447,
+     "icon": 7943,
+     "composite": 27
+    },
+    "C": {
+     "symbol": 0,
+     "collapsed": 0,
+     "index": 174136,
+     "icon": 389,
+     "composite": 27767
+    }
+   }
+  },
+  "A2": {
+   "variants": 4404748,
+   "verdicts": {
+    "symbol": 0,
+    "collapsed": 25427,
+    "index": 4315868,
+    "icon": 14955,
+    "composite": 48498
+   },
+   "by_class": {
+    "P": {
+     "symbol": 0,
+     "collapsed": 15510,
+     "index": 350023,
+     "icon": 6933,
+     "composite": 15057
+    },
+    "U": {
+     "symbol": 0,
+     "collapsed": 2786,
+     "index": 2378969,
+     "icon": 4080,
+     "composite": 5485
+    },
+    "B": {
+     "symbol": 0,
+     "collapsed": 660,
+     "index": 1399032,
+     "icon": 2029,
+     "composite": 7423
+    },
+    "O": {
+     "symbol": 0,
+     "collapsed": 6379,
+     "index": 6468,
+     "icon": 1616,
+     "composite": 6
+    },
+    "C": {
+     "symbol": 0,
+     "collapsed": 92,
+     "index": 181376,
+     "icon": 297,
+     "composite": 20527
+    }
+   }
+  },
+  "scv": 6735018,
+  "method_counts": {
+   "clinical testing": 6379761,
+   "research": 76195,
+   "literature only": 66129,
+   "curation": 66873,
+   "not provided": 129572,
+   "phenotyping only": 6656,
+   "reference population": 3683,
+   "provider interpretation": 3564,
+   "case-control": 3292,
+   "in vitro": 991,
+   "in vivo": 389,
+   "other": 0
+  }
+ },
+ "definability": {
+  "synthetic": {
+   "records": 2400,
+   "agree": 2400,
+   "verdicts": {
+    "symbol": 349,
+    "collapsed": 388,
+    "index": 488,
+    "icon": 648,
+    "composite": 527
+   }
+  },
+  "go_human": {
+   "records": 1500,
+   "agree_sparql": 1500,
+   "agree_direct": 1500
+  },
+  "clinvar": {
+   "records": 1500,
+   "agree_sparql": 1500,
+   "agree_direct": 1500
+  }
+ },
+ "monotonicity": {
+  "synthetic": {
+   "graphs": 300,
+   "additions": 10425,
+   "retractions": 0,
+   "transitions": {
+    "symbol->collapsed": 1231,
+    "collapsed->icon": 441,
+    "symbol->composite": 159,
+    "symbol->icon": 358,
+    "collapsed->index": 376,
+    "symbol->index": 283,
+    "icon->composite": 203,
+    "index->composite": 201,
+    "collapsed->composite": 32
+   }
+  },
+  "clinvar": [
+   {
+    "checkpoint": 2005,
+    "variants": 15595,
+    "scv": 16286
+   },
+   {
+    "checkpoint": 2006,
+    "variants": 16916,
+    "scv": 17731,
+    "verdict_changes": 10,
+    "verdict_retractions": 0,
+    "class_changes": 10,
+    "pathogenic_retracted": 0,
+    "class_transitions": {
+     "U->C": 10
+    }
+   },
+   {
+    "checkpoint": 2007,
+    "variants": 18278,
+    "scv": 19257,
+    "verdict_changes": 14,
+    "verdict_retractions": 0,
+    "class_changes": 6,
+    "pathogenic_retracted": 0,
+    "class_transitions": {
+     "U->C": 6
+    }
+   },
+   {
+    "checkpoint": 2008,
+    "variants": 20072,
+    "scv": 21286,
+    "verdict_changes": 15,
+    "verdict_retractions": 0,
+    "class_changes": 44,
+    "pathogenic_retracted": 2,
+    "class_transitions": {
+     "P->C": 2,
+     "U->C": 42
+    }
+   },
+   {
+    "checkpoint": 2009,
+    "variants": 22129,
+    "scv": 23603,
+    "verdict_changes": 20,
+    "verdict_retractions": 0,
+    "class_changes": 50,
+    "pathogenic_retracted": 0,
+    "class_transitions": {
+     "O->P": 1,
+     "U->C": 49
+    }
+   },
+   {
+    "checkpoint": 2010,
+    "variants": 27107,
+    "scv": 28894,
+    "verdict_changes": 28,
+    "verdict_retractions": 0,
+    "class_changes": 51,
+    "pathogenic_retracted": 1,
+    "class_transitions": {
+     "O->P": 5,
+     "B->C": 2,
+     "U->C": 43,
+     "P->C": 1
+    }
+   },
+   {
+    "checkpoint": 2011,
+    "variants": 36395,
+    "scv": 38766,
+    "verdict_changes": 88,
+    "verdict_retractions": 0,
+    "class_changes": 90,
+    "pathogenic_retracted": 9,
+    "class_transitions": {
+     "B->C": 6,
+     "P->C": 9,
+     "U->C": 74,
+     "O->C": 1
+    }
+   },
+   {
+    "checkpoint": 2012,
+    "variants": 47230,
+    "scv": 50954,
+    "verdict_changes": 172,
+    "verdict_retractions": 0,
+    "class_changes": 228,
+    "pathogenic_retracted": 29,
+    "class_transitions": {
+     "P->C": 29,
+     "O->U": 1,
+     "O->P": 2,
+     "U->C": 193,
+     "O->B": 3
+    }
+   },
+   {
+    "checkpoint": 2013,
+    "variants": 67693,
+    "scv": 75084,
+    "verdict_changes": 599,
+    "verdict_retractions": 0,
+    "class_changes": 223,
+    "pathogenic_retracted": 63,
+    "class_transitions": {
+     "O->P": 5,
+     "P->C": 63,
+     "O->B": 29,
+     "U->C": 83,
+     "O->U": 13,
+     "B->C": 30
+    }
+   },
+   {
+    "checkpoint": 2014,
+    "variants": 89922,
+    "scv": 104442,
+    "verdict_changes": 1034,
+    "verdict_retractions": 0,
+    "class_changes": 643,
+    "pathogenic_retracted": 101,
+    "class_transitions": {
+     "B->C": 175,
+     "P->C": 101,
+     "O->B": 104,
+     "U->C": 219,
+     "O->P": 24,
+     "O->U": 20
+    }
+   },
+   {
+    "checkpoint": 2015,
+    "variants": 130475,
+    "scv": 159877,
+    "verdict_changes": 1280,
+    "verdict_retractions": 0,
+    "class_changes": 1185,
+    "pathogenic_retracted": 143,
+    "class_transitions": {
+     "P->C": 143,
+     "O->B": 152,
+     "U->C": 461,
+     "O->P": 27,
+     "O->U": 68,
+     "B->C": 330,
+     "O->C": 4
+    }
+   },
+   {
+    "checkpoint": 2016,
+    "variants": 189443,
+    "scv": 243960,
+    "verdict_changes": 4800,
+    "verdict_retractions": 0,
+    "class_changes": 2012,
+    "pathogenic_retracted": 481,
+    "class_transitions": {
+     "P->C": 481,
+     "U->C": 665,
+     "O->B": 117,
+     "O->P": 27,
+     "B->C": 607,
+     "O->U": 109,
+     "O->C": 6
+    }
+   },
+   {
+    "checkpoint": 2017,
+    "variants": 279355,
+    "scv": 372672,
+    "verdict_changes": 3379,
+    "verdict_retractions": 0,
+    "class_changes": 3669,
+    "pathogenic_retracted": 580,
+    "class_transitions": {
+     "P->C": 580,
+     "O->U": 142,
+     "O->B": 111,
+     "U->C": 1492,
+     "B->C": 1313,
+     "O->P": 23,
+     "O->C": 8
+    }
+   },
+   {
+    "checkpoint": 2018,
+    "variants": 553520,
+    "scv": 748272,
+    "verdict_changes": 2518,
+    "verdict_retractions": 0,
+    "class_changes": 8308,
+    "pathogenic_retracted": 597,
+    "class_transitions": {
+     "P->C": 597,
+     "B->C": 4017,
+     "U->C": 3314,
+     "O->B": 234,
+     "O->U": 104,
+     "O->P": 25,
+     "O->C": 17
+    }
+   },
+   {
+    "checkpoint": 2019,
+    "variants": 740058,
+    "scv": 998718,
+    "verdict_changes": 2826,
+    "verdict_retractions": 0,
+    "class_changes": 7094,
+    "pathogenic_retracted": 717,
+    "class_transitions": {
+     "B->C": 915,
+     "P->C": 717,
+     "O->B": 175,
+     "O->U": 67,
+     "U->C": 5185,
+     "O->P": 27,
+     "O->C": 8
+    }
+   },
+   {
+    "checkpoint": 2020,
+    "variants": 881305,
+    "scv": 1202236,
+    "verdict_changes": 3811,
+    "verdict_retractions": 0,
+    "class_changes": 6821,
+    "pathogenic_retracted": 717,
+    "class_transitions": {
+     "P->C": 717,
+     "O->B": 72,
+     "U->C": 4711,
+     "O->P": 26,
+     "B->C": 1233,
+     "O->U": 59,
+     "O->C": 3
+    }
+   },
+   {
+    "checkpoint": 2021,
+    "variants": 1215816,
+    "scv": 1665272,
+    "verdict_changes": 7780,
+    "verdict_retractions": 0,
+    "class_changes": 9159,
+    "pathogenic_retracted": 1204,
+    "class_transitions": {
+     "P->C": 1204,
+     "O->U": 111,
+     "O->P": 44,
+     "O->B": 107,
+     "U->C": 5202,
+     "B->C": 2484,
+     "O->C": 7
+    }
+   },
+   {
+    "checkpoint": 2022,
+    "variants": 1766414,
+    "scv": 2377238,
+    "verdict_changes": 5541,
+    "verdict_retractions": 0,
+    "class_changes": 13644,
+    "pathogenic_retracted": 2079,
+    "class_transitions": {
+     "P->C": 2079,
+     "O->P": 48,
+     "O->U": 109,
+     "U->C": 8317,
+     "O->C": 12,
+     "B->C": 3018,
+     "O->B": 61
+    }
+   },
+   {
+    "checkpoint": 2023,
+    "variants": 2413523,
+    "scv": 3262016,
+    "verdict_changes": 10188,
+    "verdict_retractions": 0,
+    "class_changes": 24265,
+    "pathogenic_retracted": 2300,
+    "class_transitions": {
+     "P->C": 2300,
+     "O->B": 56,
+     "O->U": 128,
+     "U->C": 17367,
+     "O->P": 44,
+     "B->C": 4356,
+     "O->C": 14
+    }
+   },
+   {
+    "checkpoint": 2024,
+    "variants": 3226046,
+    "scv": 4536422,
+    "verdict_changes": 6915,
+    "verdict_retractions": 0,
+    "class_changes": 37852,
+    "pathogenic_retracted": 3558,
+    "class_transitions": {
+     "P->C": 3558,
+     "U->C": 25463,
+     "O->U": 165,
+     "B->C": 8508,
+     "O->P": 52,
+     "O->B": 90,
+     "O->C": 16
+    }
+   },
+   {
+    "checkpoint": 2025,
+    "variants": 4261157,
+    "scv": 6106610,
+    "verdict_changes": 6487,
+    "verdict_retractions": 0,
+    "class_changes": 48099,
+    "pathogenic_retracted": 3492,
+    "class_transitions": {
+     "P->C": 3492,
+     "B->C": 12749,
+     "O->B": 79,
+     "U->C": 31619,
+     "O->U": 101,
+     "O->P": 47,
+     "O->C": 12
+    }
+   },
+   {
+    "checkpoint": 2026,
+    "variants": 4363136,
+    "scv": 6427169,
+    "verdict_changes": 3972,
+    "verdict_retractions": 0,
+    "class_changes": 14617,
+    "pathogenic_retracted": 1040,
+    "class_transitions": {
+     "P->C": 1040,
+     "O->U": 23,
+     "O->B": 39,
+     "U->C": 11155,
+     "O->P": 18,
+     "B->C": 2340,
+     "O->C": 2
+    }
+   },
+   {
+    "checkpoint": "all",
+    "variants": 4404748,
+    "scv": 6735018,
+    "verdict_changes": 9538,
+    "verdict_retractions": 0,
+    "class_changes": 5515,
+    "pathogenic_retracted": 1380,
+    "class_transitions": {
+     "P->C": 1380,
+     "B->C": 1948,
+     "U->C": 2146,
+     "O->P": 28,
+     "O->U": 9,
+     "O->B": 3,
+     "O->C": 1
+    }
+   }
+  ]
+ },
+ "content_independence": {
+  "groups": 49910,
+  "pair_matrix": [
+   [
+    2,
+    2,
+    2,
+    2
+   ],
+   [
+    2,
+    48267,
+    4765,
+    7631
+   ],
+   [
+    2,
+    4765,
+    5740,
+    3353
+   ],
+   [
+    2,
+    7631,
+    3353,
+    8441
+   ]
+  ],
+  "order": [
+   "collapsed",
+   "index",
+   "icon",
+   "composite"
+  ]
+ },
+ "vcf_receiver": {
+  "emitted_classes": 23,
+  "H_verdict_bits": 0.20308353279684188,
+  "H_verdict_given_emitted_bits": 0.12065865457506211,
+  "share_variants_in_mixed_classes": 0.9999963675561008,
+  "classes": {
+   "P|rev-2": [
+    0,
+    0,
+    47,
+    88,
+    3
+   ],
+   "P|rev-1": [
+    0,
+    0,
+    0,
+    4,
+    0
+   ],
+   "P|rev0": [
+    0,
+    13,
+    23775,
+    15536,
+    967
+   ],
+   "P|rev1": [
+    0,
+    119,
+    307705,
+    4754,
+    23167
+   ],
+   "P|rev3": [
+    0,
+    0,
+    1109,
+    1927,
+    8284
+   ],
+   "P|rev4": [
+    0,
+    0,
+    0,
+    2,
+    23
+   ],
+   "U|rev0": [
+    0,
+    1,
+    49795,
+    2230,
+    43
+   ],
+   "U|rev1": [
+    0,
+    767,
+    2327556,
+    3179,
+    5443
+   ],
+   "U|rev3": [
+    0,
+    0,
+    0,
+    689,
+    1617
+   ],
+   "B|rev0": [
+    0,
+    8,
+    40569,
+    221,
+    51
+   ],
+   "B|rev1": [
+    0,
+    473,
+    1356855,
+    1052,
+    6190
+   ],
+   "B|rev3": [
+    0,
+    0,
+    122,
+    931,
+    2662
+   ],
+   "B|rev4": [
+    0,
+    0,
+    0,
+    4,
+    6
+   ],
+   "O|rev-1": [
+    0,
+    47,
+    2321,
+    5204,
+    3
+   ],
+   "O|rev0": [
+    0,
+    5,
+    2496,
+    2097,
+    10
+   ],
+   "O|rev1": [
+    0,
+    0,
+    1630,
+    7,
+    12
+   ],
+   "O|rev3": [
+    0,
+    0,
+    0,
+    10,
+    0
+   ],
+   "O|rev4": [
+    0,
+    0,
+    0,
+    625,
+    2
+   ],
+   "C|rev-2": [
+    0,
+    0,
+    1,
+    0,
+    0
+   ],
+   "C|rev0": [
+    0,
+    0,
+    140,
+    99,
+    132
+   ],
+   "C|rev1": [
+    0,
+    0,
+    173937,
+    202,
+    22654
+   ],
+   "C|rev3": [
+    0,
+    0,
+    58,
+    88,
+    4980
+   ],
+   "C|rev4": [
+    0,
+    0,
+    0,
+    0,
+    1
+   ]
+  }
+ },
+ "declarations": {
+  "go_contact": [
+   "EXP",
+   "HDA",
+   "HEP",
+   "HGI",
+   "HMP",
+   "HTP",
+   "IDA",
+   "IEP",
+   "IGI",
+   "IMP",
+   "IPI"
+  ],
+  "go_derivation": [
+   "IBA",
+   "IBD",
+   "IEA",
+   "IGC",
+   "IKR",
+   "IRD",
+   "ISA",
+   "ISM",
+   "ISO",
+   "ISS",
+   "RCA"
+  ],
+  "go_neither": [
+   "IC",
+   "NAS",
+   "ND",
+   "TAS"
+  ],
+  "clinvar_contact": [
+   "case-control",
+   "clinical testing",
+   "in vitro",
+   "in vivo",
+   "phenotyping only",
+   "reference population",
+   "research"
+  ],
+  "clinvar_derivation_A1": [
+   "curation",
+   "literature only",
+   "provider interpretation"
+  ],
+  "clinvar_derivation_A2": [
+   "curation",
+   "provider interpretation"
+  ]
+ },
+ "_meta": {
+  "experiment": "E4_verdicts",
+  "seed": 20261003,
+  "seconds": 91.58
+ }
+}

@@ -17,10 +17,10 @@ def main():
         shutil.copy2(p, DEST / "results" / p.name)
     for p in FIGURES.glob("*.png"):
         shutil.copy2(p, DEST / "figures" / p.name)
-    for name in ("arabdopsis-drought-gwas-rescue.pdf", "references.bib"):
+    for name in ("arabdopsis-drought-gwas-rescue.pdf", "references.bib", "presentation/rescue-presentation.pdf"):
         src = ROOT / name
         if src.exists():
-            shutil.copy2(src, DEST / name)
+            shutil.copy2(src, DEST / src.name)
     print("exported to", DEST)
 
 

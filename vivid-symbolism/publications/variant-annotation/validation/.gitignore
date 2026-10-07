@@ -1,0 +1,4 @@
+data/raw/*.gz
+data/derived/
+__pycache__/
+*/__pycache__/

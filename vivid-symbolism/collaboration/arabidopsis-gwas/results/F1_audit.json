@@ -1,0 +1,105 @@
+{
+  "n_plants": 8820,
+  "accessions": 247,
+  "plants_by_cell_and_replicate": {
+    "DS_Mock|BR1": 1841,
+    "DS_Mock|BR2": 364,
+    "DS_Mock|BR3": 364,
+    "DS_WCS417|BR1": 1841,
+    "DS_WCS417|BR2": 364,
+    "DS_WCS417|BR3": 364,
+    "NS_Mock|NS": 1841,
+    "NS_WCS417|NS": 1841
+  },
+  "missing_weights": {
+    "shoot": 324,
+    "root": 331,
+    "total": 348
+  },
+  "replicated_accessions": [
+    265,
+    6092,
+    6125,
+    7002,
+    7026,
+    7071,
+    7333,
+    7353,
+    7372,
+    7378,
+    7411,
+    7416,
+    8354,
+    9314,
+    9339,
+    9508,
+    9515,
+    9529,
+    9537,
+    9541,
+    9544,
+    9545,
+    9559,
+    9562,
+    9565,
+    9609,
+    9626,
+    9630,
+    9635,
+    9653,
+    9698,
+    9705,
+    9725,
+    9741,
+    9771,
+    9813,
+    9830,
+    9831,
+    9834,
+    9836,
+    9838,
+    9852,
+    9869,
+    9880,
+    9918,
+    9925,
+    9927,
+    9928,
+    9944
+  ],
+  "W_BR1_equals_first_workbook": {
+    "n": 244,
+    "max_abs_diff": 0.0
+  },
+  "recovered_MD_vs_measured": {
+    "n": 243,
+    "n_match_1e-2": 241,
+    "mismatch": {
+      "6909": 0.1068794526067407,
+      "9874": 1.7571428542857142
+    }
+  },
+  "recovered_MN_vs_measured": {
+    "n": 239,
+    "n_match_1e-2": 235,
+    "mismatch": {
+      "6909": 1.92523401804727,
+      "7394": 0.1709895567171955,
+      "9807": 1.1440871965847919,
+      "9874": 10.296354197363549
+    }
+  },
+  "gain_non_stress_is_WN_minus_MN": {
+    "n": 241,
+    "n_match_1e-6": 240
+  },
+  "gain_non_stress_is_W_minus_WN": {
+    "n": 240,
+    "n_match_1e-6": 0
+  },
+  "replicated_accessions_rescuer_label": {
+    "0.0": 43,
+    "1.0": 6
+  },
+  "replicated_accessions_BR1_rescue_percentile_median": 0.25523012552301255
+}

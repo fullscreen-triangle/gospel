@@ -1,0 +1,157 @@
+{
+  "Shoot": {
+    "n": 237,
+    "batch_cv_used": {
+      "DS_WCS417": 0.08142452192851568,
+      "DS_Mock": 0.1772367951764579,
+      "NS_Mock": 0.104908042482044
+    },
+    "run_cv_used": {
+      "W": 0.1803798482747667,
+      "MD": 0.21760701643822222
+    },
+    "measured_plant_noise": {
+      "median_se_over_sd": 0.37896272232360984,
+      "reliability": 0.6619563503666781,
+      "min_certifiable_margin_sd_quantiles": [
+        0.8301378412664915,
+        1.3834591560103129,
+        1.9988324653615817,
+        2.9529827290453645,
+        4.799964521968815
+      ],
+      "frac_certifiable_below_1sd": 0.10212400772366445,
+      "tiers": 8,
+      "tier_sizes": [
+        18,
+        27,
+        60,
+        55,
+        43,
+        20,
+        13,
+        1
+      ]
+    },
+    "measured_plant_plus_batch": {
+      "median_se_over_sd": 0.8777563211166945,
+      "reliability": 0.0,
+      "min_certifiable_margin_sd_quantiles": [
+        1.7435246716249881,
+        2.4840902614147327,
+        3.29988980882203,
+        4.518461204344094,
+        8.022960981868426
+      ],
+      "frac_certifiable_below_1sd": 0.0,
+      "tiers": 3,
+      "tier_sizes": [
+        84,
+        125,
+        28
+      ]
+    },
+    "measured_run_to_run": {
+      "median_se_over_sd": 1.3641672098947217,
+      "reliability": 0.0,
+      "min_certifiable_margin_sd_quantiles": [
+        2.530959840046096,
+        3.5126939948722207,
+        4.589901359088858,
+        6.041856707696201,
+        16.289096838525086
+      ],
+      "frac_certifiable_below_1sd": 0.0,
+      "tiers": 2,
+      "tier_sizes": [
+        185,
+        52
+      ]
+    },
+    "previous_modelled": {
+      "M2_median_margin": 1.8017146743001702,
+      "M3_median_margin": 2.7465012085458156,
+      "M2_tiers": 8,
+      "M3_tiers": 4
+    }
+  },
+  "Root": {
+    "n": 236,
+    "batch_cv_used": {
+      "DS_WCS417": 0.09289500205143975,
+      "DS_Mock": 0.2235486857134437,
+      "NS_Mock": 0.12571808452272965
+    },
+    "run_cv_used": {
+      "W": 0.18681409552834669,
+      "MD": 0.2765501452634435
+    },
+    "measured_plant_noise": {
+      "median_se_over_sd": 0.3643768589518038,
+      "reliability": 0.7585091192635519,
+      "min_certifiable_margin_sd_quantiles": [
+        0.8345526897074012,
+        1.3189038769920856,
+        1.8734964639206195,
+        2.6486662695731633,
+        4.296819722535069
+      ],
+      "frac_certifiable_below_1sd": 0.10558961413631446,
+      "tiers": 9,
+      "tier_sizes": [
+        10,
+        30,
+        50,
+        45,
+        39,
+        40,
+        10,
+        11,
+        1
+      ]
+    },
+    "measured_plant_plus_batch": {
+      "median_se_over_sd": 0.7727467117031247,
+      "reliability": 0.0,
+      "min_certifiable_margin_sd_quantiles": [
+        1.5939524773118159,
+        2.2016311934691264,
+        2.861117398967716,
+        3.7979836472753723,
+        6.009286964969974
+      ],
+      "frac_certifiable_below_1sd": 0.0004688063469166967,
+      "tiers": 4,
+      "tier_sizes": [
+        44,
+        103,
+        84,
+        5
+      ]
+    },
+    "measured_run_to_run": {
+      "median_se_over_sd": 1.069564470580722,
+      "reliability": 0.0,
+      "min_certifiable_margin_sd_quantiles": [
+        2.140697788903546,
+        2.8912580992044727,
+        3.7347284491385317,
+        4.869799813706285,
+        7.606010907816771
+      ],
+      "frac_certifiable_below_1sd": 0.0,
+      "tiers": 3,
+      "tier_sizes": [
+        120,
+        110,
+        6
+      ]
+    },
+    "previous_modelled": {
+      "M2_median_margin": 1.6903499837857383,
+      "M3_median_margin": 2.4114511007775743,
+      "M2_tiers": 10,
+      "M3_tiers": 5
+    }
+  }
+}

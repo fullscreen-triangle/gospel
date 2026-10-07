@@ -1,0 +1,438 @@
+{
+ "pairs_per_setting": 1080,
+ "baseline": {
+  "R0_d0.0": {
+   "pairs": 1080,
+   "indiscernible": 1080,
+   "automorphic": 1080,
+   "indisc_auto_disagreements": 0,
+   "letters": {
+    "+": 0,
+    "-": 0,
+    "-rev": 0,
+    "+rev": 0
+   },
+   "predicted_indiscernible": 1080.0
+  },
+  "R0_d0.2": {
+   "pairs": 1080,
+   "indiscernible": 176,
+   "automorphic": 176,
+   "indisc_auto_disagreements": 0,
+   "letters": {
+    "+": 0,
+    "-": 622,
+    "-rev": 282,
+    "+rev": 0
+   },
+   "predicted_indiscernible": 181.6561704960002
+  },
+  "R1_d0.0": {
+   "pairs": 1080,
+   "indiscernible": 1080,
+   "automorphic": 1080,
+   "indisc_auto_disagreements": 0,
+   "letters": {
+    "+": 0,
+    "-": 0,
+    "-rev": 0,
+    "+rev": 0
+   },
+   "predicted_indiscernible": 1080.0
+  },
+  "R1_d0.2": {
+   "pairs": 1080,
+   "indiscernible": 169,
+   "automorphic": 169,
+   "indisc_auto_disagreements": 0,
+   "letters": {
+    "+": 0,
+    "-": 643,
+    "-rev": 268,
+    "+rev": 0
+   },
+   "predicted_indiscernible": 181.6561704960002
+  },
+  "R2_d0.0": {
+   "pairs": 1080,
+   "indiscernible": 0,
+   "automorphic": 0,
+   "indisc_auto_disagreements": 0,
+   "letters": {
+    "+": 1080,
+    "-": 0,
+    "-rev": 0,
+    "+rev": 0
+   },
+   "predicted_indiscernible": 0.0
+  },
+  "R2_d0.2": {
+   "pairs": 1080,
+   "indiscernible": 0,
+   "automorphic": 0,
+   "indisc_auto_disagreements": 0,
+   "letters": {
+    "+": 813,
+    "-": 267,
+    "-rev": 0,
+    "+rev": 0
+   },
+   "predicted_indiscernible": 0.0
+  }
+ },
+ "R3_grid": {
+  "0.0_0.0": {
+   "pairs": 1080,
+   "indiscernible": 1080,
+   "automorphic": 1080,
+   "indisc_auto_disagreements": 0,
+   "letters": {
+    "+": 0,
+    "-": 0,
+    "-rev": 0,
+    "+rev": 0
+   },
+   "predicted_indiscernible": 1080.0
+  },
+  "0.0_0.1": {
+   "pairs": 1080,
+   "indiscernible": 439,
+   "automorphic": 439,
+   "indisc_auto_disagreements": 0,
+   "letters": {
+    "+": 0,
+    "-": 393,
+    "-rev": 248,
+    "+rev": 0
+   },
+   "predicted_indiscernible": 429.696520704
+  },
+  "0.0_0.2": {
+   "pairs": 1080,
+   "indiscernible": 170,
+   "automorphic": 170,
+   "indisc_auto_disagreements": 0,
+   "letters": {
+    "+": 0,
+    "-": 600,
+    "-rev": 310,
+    "+rev": 0
+   },
+   "predicted_indiscernible": 181.6561704960002
+  },
+  "0.0_0.3": {
+   "pairs": 1080,
+   "indiscernible": 85,
+   "automorphic": 85,
+   "indisc_auto_disagreements": 0,
+   "letters": {
+    "+": 0,
+    "-": 691,
+    "-rev": 304,
+    "+rev": 0
+   },
+   "predicted_indiscernible": 87.99707289599996
+  },
+  "0.2_0.0": {
+   "pairs": 1080,
+   "indiscernible": 417,
+   "automorphic": 417,
+   "indisc_auto_disagreements": 0,
+   "letters": {
+    "+": 73,
+    "-": 334,
+    "-rev": 256,
+    "+rev": 0
+   },
+   "predicted_indiscernible": 442.36800000000017
+  },
+  "0.2_0.1": {
+   "pairs": 1080,
+   "indiscernible": 181,
+   "automorphic": 181,
+   "indisc_auto_disagreements": 0,
+   "letters": {
+    "+": 67,
+    "-": 570,
+    "-rev": 262,
+    "+rev": 0
+   },
+   "predicted_indiscernible": 176.0036948803585
+  },
+  "0.2_0.2": {
+   "pairs": 1080,
+   "indiscernible": 68,
+   "automorphic": 68,
+   "indisc_auto_disagreements": 0,
+   "letters": {
+    "+": 53,
+    "-": 741,
+    "-rev": 218,
+    "+rev": 0
+   },
+   "predicted_indiscernible": 74.40636743516168
+  },
+  "0.2_0.3": {
+   "pairs": 1080,
+   "indiscernible": 42,
+   "automorphic": 42,
+   "indisc_auto_disagreements": 0,
+   "letters": {
+    "+": 55,
+    "-": 784,
+    "-rev": 199,
+    "+rev": 0
+   },
+   "predicted_indiscernible": 36.04360105820159
+  },
+  "0.4_0.0": {
+   "pairs": 1080,
+   "indiscernible": 149,
+   "automorphic": 149,
+   "indisc_auto_disagreements": 0,
+   "letters": {
+    "+": 279,
+    "-": 391,
+    "-rev": 261,
+    "+rev": 0
+   },
+   "predicted_indiscernible": 139.96799999999996
+  },
+  "0.4_0.1": {
+   "pairs": 1080,
+   "indiscernible": 59,
+   "automorphic": 59,
+   "indisc_auto_disagreements": 0,
+   "letters": {
+    "+": 224,
+    "-": 594,
+    "-rev": 203,
+    "+rev": 0
+   },
+   "predicted_indiscernible": 55.68866908323843
+  },
+  "0.4_0.2": {
+   "pairs": 1080,
+   "indiscernible": 20,
+   "automorphic": 20,
+   "indisc_auto_disagreements": 0,
+   "letters": {
+    "+": 224,
+    "-": 692,
+    "-rev": 144,
+    "+rev": 0
+   },
+   "predicted_indiscernible": 23.54263969628162
+  },
+  "0.4_0.3": {
+   "pairs": 1080,
+   "indiscernible": 9,
+   "automorphic": 9,
+   "indisc_auto_disagreements": 0,
+   "letters": {
+    "+": 195,
+    "-": 744,
+    "-rev": 132,
+    "+rev": 0
+   },
+   "predicted_indiscernible": 11.404420647321595
+  },
+  "0.6_0.0": {
+   "pairs": 1080,
+   "indiscernible": 29,
+   "automorphic": 29,
+   "indisc_auto_disagreements": 0,
+   "letters": {
+    "+": 546,
+    "-": 357,
+    "-rev": 148,
+    "+rev": 0
+   },
+   "predicted_indiscernible": 27.64800000000001
+  },
+  "0.6_0.1": {
+   "pairs": 1080,
+   "indiscernible": 11,
+   "automorphic": 11,
+   "indisc_auto_disagreements": 0,
+   "letters": {
+    "+": 470,
+    "-": 497,
+    "-rev": 102,
+    "+rev": 0
+   },
+   "predicted_indiscernible": 11.000230930022406
+  },
+  "0.6_0.2": {
+   "pairs": 1080,
+   "indiscernible": 6,
+   "automorphic": 6,
+   "indisc_auto_disagreements": 0,
+   "letters": {
+    "+": 439,
+    "-": 565,
+    "-rev": 70,
+    "+rev": 0
+   },
+   "predicted_indiscernible": 4.650397964697605
+  },
+  "0.6_0.3": {
+   "pairs": 1080,
+   "indiscernible": 1,
+   "automorphic": 1,
+   "indisc_auto_disagreements": 0,
+   "letters": {
+    "+": 364,
+    "-": 663,
+    "-rev": 52,
+    "+rev": 0
+   },
+   "predicted_indiscernible": 2.2527250661375993
+  },
+  "0.8_0.0": {
+   "pairs": 1080,
+   "indiscernible": 2,
+   "automorphic": 2,
+   "indisc_auto_disagreements": 0,
+   "letters": {
+    "+": 846,
+    "-": 197,
+    "-rev": 35,
+    "+rev": 0
+   },
+   "predicted_indiscernible": 1.7279999999999982
+  },
+  "0.8_0.1": {
+   "pairs": 1080,
+   "indiscernible": 0,
+   "automorphic": 0,
+   "indisc_auto_disagreements": 0,
+   "letters": {
+    "+": 689,
+    "-": 356,
+    "-rev": 35,
+    "+rev": 0
+   },
+   "predicted_indiscernible": 0.6875144331263997
+  },
+  "0.8_0.2": {
+   "pairs": 1080,
+   "indiscernible": 0,
+   "automorphic": 0,
+   "indisc_auto_disagreements": 0,
+   "letters": {
+    "+": 612,
+    "-": 451,
+    "-rev": 17,
+    "+rev": 0
+   },
+   "predicted_indiscernible": 0.2906498727936001
+  },
+  "0.8_0.3": {
+   "pairs": 1080,
+   "indiscernible": 0,
+   "automorphic": 0,
+   "indisc_auto_disagreements": 0,
+   "letters": {
+    "+": 560,
+    "-": 509,
+    "-rev": 11,
+    "+rev": 0
+   },
+   "predicted_indiscernible": 0.14079531663359982
+  },
+  "1.0_0.0": {
+   "pairs": 1080,
+   "indiscernible": 0,
+   "automorphic": 0,
+   "indisc_auto_disagreements": 0,
+   "letters": {
+    "+": 1080,
+    "-": 0,
+    "-rev": 0,
+    "+rev": 0
+   },
+   "predicted_indiscernible": 0.0
+  },
+  "1.0_0.1": {
+   "pairs": 1080,
+   "indiscernible": 0,
+   "automorphic": 0,
+   "indisc_auto_disagreements": 0,
+   "letters": {
+    "+": 913,
+    "-": 167,
+    "-rev": 0,
+    "+rev": 0
+   },
+   "predicted_indiscernible": 0.0
+  },
+  "1.0_0.2": {
+   "pairs": 1080,
+   "indiscernible": 0,
+   "automorphic": 0,
+   "indisc_auto_disagreements": 0,
+   "letters": {
+    "+": 823,
+    "-": 257,
+    "-rev": 0,
+    "+rev": 0
+   },
+   "predicted_indiscernible": 0.0
+  },
+  "1.0_0.3": {
+   "pairs": 1080,
+   "indiscernible": 0,
+   "automorphic": 0,
+   "indisc_auto_disagreements": 0,
+   "letters": {
+    "+": 718,
+    "-": 362,
+    "-rev": 0,
+    "+rev": 0
+   },
+   "predicted_indiscernible": 0.0
+  }
+ },
+ "q": [
+  0.0,
+  0.2,
+  0.4,
+  0.6,
+  0.8,
+  1.0
+ ],
+ "d": [
+  0.0,
+  0.1,
+  0.2,
+  0.3
+ ],
+ "concordance": {
+  "records": 2000,
+  "violations": 0,
+  "kappa_verdict_by_inputs": {
+   "icon+icon": "icon",
+   "index+index": "composite",
+   "index+collapsed": "composite",
+   "symbol+index": "composite",
+   "symbol+symbol": "icon",
+   "collapsed+collapsed": "icon",
+   "index+symbol": "composite",
+   "collapsed+symbol": "icon",
+   "icon+index": "composite",
+   "icon+collapsed": "icon",
+   "symbol+collapsed": "icon",
+   "symbol+icon": "icon",
+   "collapsed+icon": "icon",
+   "index+icon": "composite",
+   "collapsed+index": "composite",
+   "icon+symbol": "icon"
+  }
+ },
+ "_meta": {
+  "experiment": "E5_twins",
+  "seed": 20261003,
+  "seconds": 9.86
+ }
+}

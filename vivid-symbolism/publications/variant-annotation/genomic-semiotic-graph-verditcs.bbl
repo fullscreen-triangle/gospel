@@ -1,0 +1,603 @@
+\begin{thebibliography}{83}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[McKenna et~al.(2010)McKenna, Hanna, Banks, Sivachenko, Cibulskis,
+  Kernytsky, Garimella, Altshuler, Gabriel, Daly, and DePristo]{mckenna2010}
+Aaron McKenna, Matthew Hanna, Eric Banks, Andrey Sivachenko, Kristian
+  Cibulskis, Andrew Kernytsky, Kiran Garimella, David Altshuler, Stacey
+  Gabriel, Mark Daly, and Mark~A. DePristo.
+\newblock The genome analysis toolkit: A {MapReduce} framework for analyzing
+  next-generation {DNA} sequencing data.
+\newblock \emph{Genome Research}, 20\penalty0 (9):\penalty0 1297--1303, 2010.
+
+\bibitem[Danecek et~al.(2021)Danecek, Bonfield, Liddle, Marshall, Ohan,
+  Pollard, Whitwham, Keane, McCarthy, Davies, and Li]{danecek2021}
+Petr Danecek, James~K. Bonfield, Jennifer Liddle, John Marshall, Valeriu Ohan,
+  Martin~O. Pollard, Andrew Whitwham, Thomas Keane, Shane~A. McCarthy,
+  Robert~M. Davies, and Heng Li.
+\newblock Twelve years of {SAMtools} and {BCFtools}.
+\newblock \emph{GigaScience}, 10\penalty0 (2):\penalty0 giab008, 2021.
+
+\bibitem[Li and Stephens(2003)]{li2003}
+Na~Li and Matthew Stephens.
+\newblock Modeling linkage disequilibrium and identifying recombination
+  hotspots using single-nucleotide polymorphism data.
+\newblock \emph{Genetics}, 165\penalty0 (4):\penalty0 2213--2233, 2003.
+
+\bibitem[Marchini and Howie(2010)]{marchini2010}
+Jonathan Marchini and Bryan Howie.
+\newblock Genotype imputation for genome-wide association studies.
+\newblock \emph{Nature Reviews Genetics}, 11\penalty0 (7):\penalty0 499--511,
+  2010.
+
+\bibitem[Das et~al.(2016)Das, Forer, Sch{\"o}nherr, Sidore, Locke, Kwong,
+  Vrieze, Chew, Levy, McGue, Schlessinger, Stambolian, Loh, Iacono, Swaroop,
+  Scott, Cucca, Kronenberg, Boehnke, Abecasis, and Fuchsberger]{das2016}
+Sayantan Das, Lukas Forer, Sebastian Sch{\"o}nherr, Carlo Sidore, Adam~E.
+  Locke, Alan Kwong, Scott~I. Vrieze, Emily~Y. Chew, Shawn Levy, Matt McGue,
+  David Schlessinger, Dwight Stambolian, Po-Ru Loh, William~G. Iacono, Anand
+  Swaroop, Laura~J. Scott, Francesco Cucca, Florian Kronenberg, Michael
+  Boehnke, Gon{\c c}alo~R. Abecasis, and Christian Fuchsberger.
+\newblock Next-generation genotype imputation service and methods.
+\newblock \emph{Nature Genetics}, 48\penalty0 (10):\penalty0 1284--1287, 2016.
+
+\bibitem[Browning and Browning(2016)]{browning2016}
+Brian~L. Browning and Sharon~R. Browning.
+\newblock Genotype imputation with millions of reference samples.
+\newblock \emph{American Journal of Human Genetics}, 98\penalty0 (1):\penalty0
+  116--126, 2016.
+
+\bibitem[Ashburner et~al.(2000)Ashburner, Ball, Blake, Botstein, Butler,
+  Cherry, Davis, Dolinski, Dwight, Eppig, Harris, Hill, Issel-Tarver,
+  Kasarskis, Lewis, Matese, Richardson, Ringwald, Rubin, and
+  Sherlock]{ashburner2000}
+Michael Ashburner, Catherine~A. Ball, Judith~A. Blake, David Botstein, Heather
+  Butler, J.~Michael Cherry, Allan~P. Davis, Kara Dolinski, Selina~S. Dwight,
+  Janan~T. Eppig, Midori~A. Harris, David~P. Hill, Laurie Issel-Tarver, Andrew
+  Kasarskis, Suzanna Lewis, John~C. Matese, Joel~E. Richardson, Martin
+  Ringwald, Gerald~M. Rubin, and Gavin Sherlock.
+\newblock Gene {O}ntology: Tool for the unification of biology.
+\newblock \emph{Nature Genetics}, 25\penalty0 (1):\penalty0 25--29, 2000.
+
+\bibitem[{The Gene Ontology Consortium}(2023)]{go2023}
+{The Gene Ontology Consortium}.
+\newblock The {G}ene {O}ntology knowledgebase in 2023.
+\newblock \emph{Genetics}, 224\penalty0 (1):\penalty0 iyad031, 2023.
+
+\bibitem[Subramanian et~al.(2005)Subramanian, Tamayo, Mootha, Mukherjee, Ebert,
+  Gillette, Paulovich, Pomeroy, Golub, Lander, and Mesirov]{subramanian2005}
+Aravind Subramanian, Pablo Tamayo, Vamsi~K. Mootha, Sayan Mukherjee,
+  Benjamin~L. Ebert, Michael~A. Gillette, Amanda Paulovich, Scott~L. Pomeroy,
+  Todd~R. Golub, Eric~S. Lander, and Jill~P. Mesirov.
+\newblock Gene set enrichment analysis: A knowledge-based approach for
+  interpreting genome-wide expression profiles.
+\newblock \emph{Proceedings of the National Academy of Sciences}, 102\penalty0
+  (43):\penalty0 15545--15550, 2005.
+
+\bibitem[Liberzon et~al.(2011)Liberzon, Subramanian, Pinchback,
+  Thorvaldsd{\'o}ttir, Tamayo, and Mesirov]{liberzon2011}
+Arthur Liberzon, Aravind Subramanian, Reid Pinchback, Helga
+  Thorvaldsd{\'o}ttir, Pablo Tamayo, and Jill~P. Mesirov.
+\newblock Molecular signatures database ({MSigDB}) 3.0.
+\newblock \emph{Bioinformatics}, 27\penalty0 (12):\penalty0 1739--1740, 2011.
+
+\bibitem[Landrum et~al.(2018)Landrum, Lee, Benson, Brown, Chao, Chitipiralla,
+  Gu, Hart, Hoffman, Jang, Karapetyan, Katz, Liu, Maddipatla, Malheiro,
+  McDaniel, Ovetsky, Riley, Zhou, Holmes, Kattman, and Maglott]{landrum2018}
+Melissa~J. Landrum, Jennifer~M. Lee, Mark Benson, Garth~R. Brown, Chen Chao,
+  Shanmuga Chitipiralla, Baoshan Gu, Jennifer Hart, Douglas Hoffman, Wonhee
+  Jang, Karen Karapetyan, Kenneth Katz, Chunlei Liu, Zenith Maddipatla, Adriana
+  Malheiro, Kurt McDaniel, Michael Ovetsky, George Riley, George Zhou,
+  J.~Bradley Holmes, Brandi~L. Kattman, and Donna~R. Maglott.
+\newblock {ClinVar}: Improving access to variant interpretations and supporting
+  evidence.
+\newblock \emph{Nucleic Acids Research}, 46\penalty0 (D1):\penalty0
+  D1062--D1067, 2018.
+
+\bibitem[Peirce(1931--1958)]{peirce_cp}
+Charles~Sanders Peirce.
+\newblock \emph{Collected Papers of {C}harles {S}anders {P}eirce}.
+\newblock Harvard University Press, Cambridge, MA, 1931--1958.
+\newblock 8 volumes.
+
+\bibitem[Peirce(1906)]{peirce1906}
+Charles~Sanders Peirce.
+\newblock Prolegomena to an apology for pragmaticism.
+\newblock \emph{The Monist}, 16\penalty0 (4):\penalty0 492--546, 1906.
+
+\bibitem[Cyganiak et~al.(2014)Cyganiak, Wood, and Lanthaler]{rdf11}
+Richard Cyganiak, David Wood, and Markus Lanthaler.
+\newblock {RDF} 1.1 concepts and abstract syntax.
+\newblock W3C Recommendation, 2014.
+\newblock URL \url{https://www.w3.org/TR/rdf11-concepts/}.
+
+\bibitem[Hogan et~al.(2021)Hogan, Blomqvist, Cochez, d'Amato, de~Melo,
+  Gutierrez, Kirrane, Labra~Gayo, Navigli, Neumaier, et~al.]{hogan2021}
+Aidan Hogan, Eva Blomqvist, Michael Cochez, Claudia d'Amato, Gerard de~Melo,
+  Claudio Gutierrez, Sabrina Kirrane, Jos{\'e}~Emilio Labra~Gayo, Roberto
+  Navigli, Sebastian Neumaier, et~al.
+\newblock Knowledge graphs.
+\newblock \emph{ACM Computing Surveys}, 54\penalty0 (4):\penalty0 71:1--71:37,
+  2021.
+
+\bibitem[Danecek et~al.(2011)Danecek, Auton, Abecasis, Albers, Banks, DePristo,
+  Handsaker, Lunter, Marth, Sherry, McVean, Durbin, and {1000 Genomes Project
+  Analysis Group}]{danecek2011}
+Petr Danecek, Adam Auton, Goncalo Abecasis, Cornelis~A. Albers, Eric Banks,
+  Mark~A. DePristo, Robert~E. Handsaker, Gerton Lunter, Gabor~T. Marth,
+  Stephen~T. Sherry, Gilean McVean, Richard Durbin, and {1000 Genomes Project
+  Analysis Group}.
+\newblock The variant call format and {VCF}tools.
+\newblock \emph{Bioinformatics}, 27\penalty0 (15):\penalty0 2156--2158, 2011.
+
+\bibitem[Poplin et~al.(2018)Poplin, Ruano-Rubio, DePristo, Fennell, Carneiro,
+  Van~der Auwera, Kling, Gauthier, Levy-Moonshine, Roazen, Shakir, Thibault,
+  Chandran, Whelan, Lek, Gabriel, Daly, Neale, MacArthur, and
+  Banks]{poplin2018}
+Ryan Poplin, Valentin Ruano-Rubio, Mark~A. DePristo, Tim~J. Fennell,
+  Mauricio~O. Carneiro, Geraldine~A. Van~der Auwera, David~E. Kling, Laura~D.
+  Gauthier, Ami Levy-Moonshine, David Roazen, Khalid Shakir, Joel Thibault,
+  Sheila Chandran, Chris Whelan, Monkol Lek, Stacey Gabriel, Mark~J. Daly, Ben
+  Neale, Daniel~G. MacArthur, and Eric Banks.
+\newblock Scaling accurate genetic variant discovery to tens of thousands of
+  samples.
+\newblock \emph{bioRxiv}, page 201178, 2018.
+\newblock \doi{10.1101/201178}.
+
+\bibitem[Lebo et~al.(2013)Lebo, Sahoo, and McGuinness]{provo}
+Timothy Lebo, Satya Sahoo, and Deborah McGuinness.
+\newblock {PROV-O}: The {PROV} ontology.
+\newblock W3C Recommendation, 2013.
+\newblock URL \url{https://www.w3.org/TR/prov-o/}.
+
+\bibitem[de~Saussure(1916)]{saussure1916}
+Ferdinand de~Saussure.
+\newblock \emph{Cours de linguistique g{\'e}n{\'e}rale}.
+\newblock Payot, Paris, 1916.
+
+\bibitem[Kripke(1980)]{kripke1980}
+Saul~A. Kripke.
+\newblock \emph{Naming and Necessity}.
+\newblock Harvard University Press, Cambridge, MA, 1980.
+
+\bibitem[Putnam(1975)]{putnam1975}
+Hilary Putnam.
+\newblock The meaning of `meaning'.
+\newblock \emph{Minnesota Studies in the Philosophy of Science}, 7:\penalty0
+  131--193, 1975.
+
+\bibitem[Harnad(1990)]{harnad1990}
+Stevan Harnad.
+\newblock The symbol grounding problem.
+\newblock \emph{Physica D: Nonlinear Phenomena}, 42\penalty0 (1--3):\penalty0
+  335--346, 1990.
+
+\bibitem[Worrall(1989)]{worrall1989}
+John Worrall.
+\newblock Structural realism: The best of both worlds?
+\newblock \emph{Dialectica}, 43\penalty0 (1--2):\penalty0 99--124, 1989.
+
+\bibitem[Ladyman(1998)]{ladyman1998}
+James Ladyman.
+\newblock What is structural realism?
+\newblock \emph{Studies in History and Philosophy of Science}, 29\penalty0
+  (3):\penalty0 409--424, 1998.
+
+\bibitem[Cassirer(1910)]{cassirer1910}
+Ernst Cassirer.
+\newblock \emph{Substanzbegriff und Funktionsbegriff}.
+\newblock Bruno Cassirer, Berlin, 1910.
+
+\bibitem[Newman(1928)]{newman1928}
+M.~H.~A. Newman.
+\newblock Mr. {R}ussell's ``causal theory of perception''.
+\newblock \emph{Mind}, 37\penalty0 (146):\penalty0 137--148, 1928.
+
+\bibitem[Morrison(2009)]{morrison2009}
+Margaret Morrison.
+\newblock Models, measurement and computer simulation: The changing face of
+  experimentation.
+\newblock \emph{Philosophical Studies}, 143\penalty0 (1):\penalty0 33--57,
+  2009.
+
+\bibitem[Parker(2009)]{parker2009}
+Wendy~S. Parker.
+\newblock Does matter really matter? {C}omputer simulations, experiments, and
+  materiality.
+\newblock \emph{Synthese}, 169\penalty0 (3):\penalty0 483--496, 2009.
+
+\bibitem[Guala(2002)]{guala2002}
+Francesco Guala.
+\newblock Models, simulations, and experiments.
+\newblock In Lorenzo Magnani and Nancy~J. Nersessian, editors,
+  \emph{Model-Based Reasoning: Science, Technology, Values}, pages 59--74.
+  Kluwer, New York, 2002.
+
+\bibitem[Morgan(2005)]{morgan2005}
+Mary~S. Morgan.
+\newblock Experiments versus models: New phenomena, inference and surprise.
+\newblock \emph{Journal of Economic Methodology}, 12\penalty0 (2):\penalty0
+  317--329, 2005.
+
+\bibitem[Winsberg(2010)]{winsberg2010}
+Eric Winsberg.
+\newblock \emph{Science in the Age of Computer Simulation}.
+\newblock University of Chicago Press, Chicago, 2010.
+
+\bibitem[Reiter(1978)]{reiter1978}
+Raymond Reiter.
+\newblock On closed world data bases.
+\newblock In Herv{\'e} Gallaire and Jack Minker, editors, \emph{Logic and Data
+  Bases}, pages 55--76. Plenum Press, New York, 1978.
+
+\bibitem[Kleene(1952)]{kleene1952}
+Stephen~Cole Kleene.
+\newblock \emph{Introduction to Metamathematics}.
+\newblock North-Holland, Amsterdam, 1952.
+
+\bibitem[Codd(1979)]{codd1979}
+E.~F. Codd.
+\newblock Extending the database relational model to capture more meaning.
+\newblock \emph{ACM Transactions on Database Systems}, 4\penalty0 (4):\penalty0
+  397--434, 1979.
+
+\bibitem[Imieli{\'n}ski and Lipski(1984)]{imielinski1984}
+Tomasz Imieli{\'n}ski and Witold Lipski.
+\newblock Incomplete information in relational databases.
+\newblock \emph{Journal of the ACM}, 31\penalty0 (4):\penalty0 761--791, 1984.
+
+\bibitem[Libkin(2016)]{libkin2016}
+Leonid Libkin.
+\newblock {SQL}'s three-valued logic and certain answers.
+\newblock \emph{ACM Transactions on Database Systems}, 41\penalty0
+  (1):\penalty0 1:1--1:28, 2016.
+
+\bibitem[Kryszkiewicz(1998)]{kryszkiewicz1998}
+Marzena Kryszkiewicz.
+\newblock Rough set approach to incomplete information systems.
+\newblock \emph{Information Sciences}, 112\penalty0 (1--4):\penalty0 39--49,
+  1998.
+
+\bibitem[Pawlak(1982)]{pawlak1982}
+Zdzis{\l}aw Pawlak.
+\newblock Rough sets.
+\newblock \emph{International Journal of Computer and Information Sciences},
+  11\penalty0 (5):\penalty0 341--356, 1982.
+
+\bibitem[Harris and Seaborne(2013)]{sparql11}
+Steve Harris and Andy Seaborne.
+\newblock {SPARQL} 1.1 query language.
+\newblock W3C Recommendation, 2013.
+\newblock URL \url{https://www.w3.org/TR/sparql11-query/}.
+
+\bibitem[P{\'e}rez et~al.(2009)P{\'e}rez, Arenas, and Gutierrez]{perez2009}
+Jorge P{\'e}rez, Marcelo Arenas, and Claudio Gutierrez.
+\newblock Semantics and complexity of {SPARQL}.
+\newblock \emph{ACM Transactions on Database Systems}, 34\penalty0
+  (3):\penalty0 16:1--16:45, 2009.
+
+\bibitem[Chandra and Harel(1980)]{chandra1980}
+Ashok~K. Chandra and David Harel.
+\newblock Computable queries for relational data bases.
+\newblock \emph{Journal of Computer and System Sciences}, 21\penalty0
+  (2):\penalty0 156--178, 1980.
+
+\bibitem[Abiteboul et~al.(1995)Abiteboul, Hull, and Vianu]{abiteboul1995}
+Serge Abiteboul, Richard Hull, and Victor Vianu.
+\newblock \emph{Foundations of Databases}.
+\newblock Addison-Wesley, Reading, MA, 1995.
+
+\bibitem[Weisfeiler and Leman(1968)]{weisfeiler1968}
+Boris Weisfeiler and Andrei Leman.
+\newblock The reduction of a graph to canonical form and the algebra which
+  appears therein.
+\newblock \emph{Nauchno-Technicheskaya Informatsia, Ser. 2}, 9:\penalty0
+  12--16, 1968.
+
+\bibitem[Cai et~al.(1992)Cai, F{\"u}rer, and Immerman]{cai1992}
+Jin-Yi Cai, Martin F{\"u}rer, and Neil Immerman.
+\newblock An optimal lower bound on the number of variables for graph
+  identification.
+\newblock \emph{Combinatorica}, 12\penalty0 (4):\penalty0 389--410, 1992.
+
+\bibitem[Moxon et~al.(2021)Moxon, Solbrig, Unni, Jiao, Bruskiewich, Balhoff,
+  Vaidya, Duncan, Hegde, Miller, Brush, Harris, Haendel, and
+  Mungall]{moxon2021}
+Sierra A.~T. Moxon, Harold Solbrig, Deepak~R. Unni, Dazhi Jiao, Richard~M.
+  Bruskiewich, James~P. Balhoff, Gaurav Vaidya, William~D. Duncan, Harshad
+  Hegde, Mark Miller, Matthew~H. Brush, Nomi~L. Harris, Melissa~A. Haendel, and
+  Christopher~J. Mungall.
+\newblock The {L}inked {D}ata {M}odeling {L}anguage ({LinkML}): A
+  general-purpose data modeling framework grounded in machine-readable
+  semantics.
+\newblock In \emph{Proceedings of the International Conference on Biomedical
+  Ontologies (ICBO 2021)}, volume 3073 of \emph{CEUR Workshop Proceedings},
+  pages 148--151, 2021.
+
+\bibitem[Tarski(1955)]{tarski1955}
+Alfred Tarski.
+\newblock A lattice-theoretical fixpoint theorem and its applications.
+\newblock \emph{Pacific Journal of Mathematics}, 5\penalty0 (2):\penalty0
+  285--309, 1955.
+
+\bibitem[Giglio et~al.(2019)Giglio, Tauber, Nadendla, Munro, Olley, Ball,
+  Mitraka, Schriml, Gaudet, Hobbs, Erill, Siegele, Hu, Mungall, and
+  Chibucos]{giglio2019}
+Michelle Giglio, Rebecca Tauber, Suvarna Nadendla, James Munro, Dustin Olley,
+  Shoshannah Ball, Elvira Mitraka, Lynn~M. Schriml, Pascale Gaudet,
+  Elizabeth~T. Hobbs, Ivan Erill, Deborah~A. Siegele, James~C. Hu, Chris
+  Mungall, and Marcus~C. Chibucos.
+\newblock {ECO}, the {E}vidence \& {C}onclusion {O}ntology: Community standard
+  for evidence information.
+\newblock \emph{Nucleic Acids Research}, 47\penalty0 (D1):\penalty0
+  D1186--D1194, 2019.
+
+\bibitem[Voss(1992)]{voss1992}
+Richard~F. Voss.
+\newblock Evolution of long-range fractal correlations and 1/f noise in {DNA}
+  base sequences.
+\newblock \emph{Physical Review Letters}, 68\penalty0 (25):\penalty0
+  3805--3808, 1992.
+
+\bibitem[Anastassiou(2001)]{anastassiou2001}
+Dimitris Anastassiou.
+\newblock Genomic signal processing.
+\newblock \emph{IEEE Signal Processing Magazine}, 18\penalty0 (4):\penalty0
+  8--20, 2001.
+
+\bibitem[Turin(1960)]{turin1960}
+George~L. Turin.
+\newblock An introduction to matched filters.
+\newblock \emph{IRE Transactions on Information Theory}, 6\penalty0
+  (3):\penalty0 311--329, 1960.
+
+\bibitem[Oppenheim and Schafer(2009)]{oppenheim2009}
+Alan~V. Oppenheim and Ronald~W. Schafer.
+\newblock \emph{Discrete-Time Signal Processing}.
+\newblock Pearson, Upper Saddle River, NJ, 3rd edition, 2009.
+
+\bibitem[Watson and Crick(1953)]{watson1953}
+J.~D. Watson and F.~H.~C. Crick.
+\newblock Molecular structure of nucleic acids: A structure for deoxyribose
+  nucleic acid.
+\newblock \emph{Nature}, 171:\penalty0 737--738, 1953.
+
+\bibitem[Chargaff(1950)]{chargaff1950}
+Erwin Chargaff.
+\newblock Chemical specificity of nucleic acids and mechanism of their
+  enzymatic degradation.
+\newblock \emph{Experientia}, 6\penalty0 (6):\penalty0 201--209, 1950.
+
+\bibitem[Patterson(1934)]{patterson1934}
+A.~L. Patterson.
+\newblock A {F}ourier series method for the determination of the components of
+  interatomic distances in crystals.
+\newblock \emph{Physical Review}, 46\penalty0 (5):\penalty0 372--376, 1934.
+
+\bibitem[Rosenblatt and Seymour(1982)]{rosenblatt1982}
+Joseph Rosenblatt and Paul~D. Seymour.
+\newblock The structure of homometric sets.
+\newblock \emph{SIAM Journal on Algebraic and Discrete Methods}, 3\penalty0
+  (3):\penalty0 343--350, 1982.
+
+\bibitem[Hayes et~al.(1980)Hayes, Lim, and Oppenheim]{hayes1980}
+Monson~H. Hayes, Jae~S. Lim, and Alan~V. Oppenheim.
+\newblock Signal reconstruction from phase or magnitude.
+\newblock \emph{IEEE Transactions on Acoustics, Speech, and Signal Processing},
+  28\penalty0 (6):\penalty0 672--680, 1980.
+
+\bibitem[Anderson et~al.(1981)Anderson, Bankier, Barrell, de~Bruijn, Coulson,
+  Drouin, Eperon, Nierlich, Roe, Sanger, Schreier, Smith, Staden, and
+  Young]{anderson1981}
+S.~Anderson, A.~T. Bankier, B.~G. Barrell, M.~H.~L. de~Bruijn, A.~R. Coulson,
+  J.~Drouin, I.~C. Eperon, D.~P. Nierlich, B.~A. Roe, F.~Sanger, P.~H.
+  Schreier, A.~J.~H. Smith, R.~Staden, and I.~G. Young.
+\newblock Sequence and organization of the human mitochondrial genome.
+\newblock \emph{Nature}, 290:\penalty0 457--465, 1981.
+
+\bibitem[{Genomic Standards Consortium}(2026)]{mixs_repo}
+{Genomic Standards Consortium}.
+\newblock {MIxS} {LinkML} schema.
+\newblock \url{https://github.com/GenomicsStandardsConsortium/mixs}, 2026.
+\newblock Snapshot at commit 0bc3c221, 16 September 2026.
+
+\bibitem[{German Human Genome-Phenome Archive}(2026)]{ghga_repo}
+{German Human Genome-Phenome Archive}.
+\newblock {GHGA} submission metadata schema.
+\newblock \url{https://github.com/ghga-de/ghga-metadata-schema}, 2026.
+\newblock Snapshot at commit cfc65e15, 17 June 2026.
+
+\bibitem[{National Microbiome Data Collaborative}(2026)]{nmdc_repo}
+{National Microbiome Data Collaborative}.
+\newblock {NMDC} schema.
+\newblock \url{https://github.com/microbiomedata/nmdc-schema}, 2026.
+\newblock Snapshot at commit 64701088, 2 October 2026.
+
+\bibitem[{NFDI4Chem and NFDI4Cat}(2026{\natexlab{a}})]{chemdcat_repo}
+{NFDI4Chem and NFDI4Cat}.
+\newblock {Chem-DCAT-AP}: a {DCAT} application profile for chemistry.
+\newblock \url{https://github.com/nfdi-de/chem-dcat-ap}, 2026{\natexlab{a}}.
+\newblock Snapshot at commit 8d0c0eb6, 1 October 2026.
+
+\bibitem[{NFDI4Chem and NFDI4Cat}(2026{\natexlab{b}})]{dcatplus_repo}
+{NFDI4Chem and NFDI4Cat}.
+\newblock {DCAT-AP-PLUS}.
+\newblock \url{https://github.com/nfdi-de/dcat-ap-plus}, 2026{\natexlab{b}}.
+\newblock Snapshot at commit c094ef37, 1 October 2026.
+
+\bibitem[{RDFLib Team}(2026)]{rdflib}
+{RDFLib Team}.
+\newblock {RDFLib}: a {Python} library for working with {RDF}.
+\newblock \url{https://github.com/RDFLib/rdflib}, 2026.
+\newblock Version 7.6.
+
+\bibitem[Cordella et~al.(2004)Cordella, Foggia, Sansone, and
+  Vento]{cordella2004}
+Luigi~P. Cordella, Pasquale Foggia, Carlo Sansone, and Mario Vento.
+\newblock A (sub)graph isomorphism algorithm for matching large graphs.
+\newblock \emph{IEEE Transactions on Pattern Analysis and Machine
+  Intelligence}, 26\penalty0 (10):\penalty0 1367--1372, 2004.
+
+\bibitem[Hagberg et~al.(2008)Hagberg, Schult, and Swart]{hagberg2008}
+Aric~A. Hagberg, Daniel~A. Schult, and Pieter~J. Swart.
+\newblock Exploring network structure, dynamics, and function using {NetworkX}.
+\newblock In \emph{Proceedings of the 7th Python in Science Conference (SciPy
+  2008)}, pages 11--15, 2008.
+
+\bibitem[Harris et~al.(2020)Harris, Millman, van~der Walt, Gommers, Virtanen,
+  Cournapeau, Wieser, Taylor, Berg, Smith, et~al.]{harris2020numpy}
+Charles~R. Harris, K.~Jarrod Millman, St{\'e}fan~J. van~der Walt, Ralf Gommers,
+  Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, Sebastian Berg,
+  Nathaniel~J. Smith, et~al.
+\newblock Array programming with {NumPy}.
+\newblock \emph{Nature}, 585:\penalty0 357--362, 2020.
+
+\bibitem[Hunter(2007)]{hunter2007}
+John~D. Hunter.
+\newblock Matplotlib: A {2D} graphics environment.
+\newblock \emph{Computing in Science \& Engineering}, 9\penalty0 (3):\penalty0
+  90--95, 2007.
+
+\bibitem[{\v S}kunca et~al.(2012){\v S}kunca, Altenhoff, and
+  Dessimoz]{skunca2012}
+Nives {\v S}kunca, Adrian Altenhoff, and Christophe Dessimoz.
+\newblock Quality of computationally inferred gene ontology annotations.
+\newblock \emph{PLoS Computational Biology}, 8\penalty0 (5):\penalty0 e1002533,
+  2012.
+
+\bibitem[Yang et~al.(2017)Yang, Lincoln, Kobayashi, Nykamp, Nussbaum, and
+  Topper]{yang2017}
+Shan Yang, Stephen~E. Lincoln, Yuya Kobayashi, Keith Nykamp, Robert~L.
+  Nussbaum, and Scott Topper.
+\newblock Sources of discordance among germ-line variant classifications in
+  {ClinVar}.
+\newblock \emph{Genetics in Medicine}, 19\penalty0 (10):\penalty0 1118--1126,
+  2017.
+
+\bibitem[Harrison et~al.(2017)Harrison, Dolinsky, Knight~Johnson, Pesaran,
+  Azzariti, Bale, Chao, Das, Vincent, and Rehm]{harrison2017}
+Steven~M. Harrison, Jill~S. Dolinsky, Amy~E. Knight~Johnson, Tina Pesaran,
+  Danielle~R. Azzariti, Sherri Bale, Elizabeth~C. Chao, Soma Das, Lisa Vincent,
+  and Heidi~L. Rehm.
+\newblock Clinical laboratories collaborate to resolve differences in variant
+  interpretations submitted to {ClinVar}.
+\newblock \emph{Genetics in Medicine}, 19\penalty0 (10):\penalty0 1096--1104,
+  2017.
+
+\bibitem[Khatri et~al.(2012)Khatri, Sirota, and Butte]{khatri2012}
+Purvesh Khatri, Marina Sirota, and Atul~J. Butte.
+\newblock Ten years of pathway analysis: Current approaches and outstanding
+  challenges.
+\newblock \emph{PLoS Computational Biology}, 8\penalty0 (2):\penalty0 e1002375,
+  2012.
+
+\bibitem[Tomczak et~al.(2018)Tomczak, Mortensen, Winnenburg, Liu, Alessi,
+  Swamy, Vallania, Lofgren, Haynes, Shah, Musen, and Khatri]{tomczak2018}
+Aurelie Tomczak, Jonathan~M. Mortensen, Rainer Winnenburg, Charles Liu,
+  Dominique~T. Alessi, Varsha Swamy, Francesco Vallania, Shane Lofgren, Winston
+  Haynes, Nigam~H. Shah, Mark~A. Musen, and Purvesh Khatri.
+\newblock Interpretation of biological experiments changes with evolution of
+  the {G}ene {O}ntology and its annotations.
+\newblock \emph{Scientific Reports}, 8:\penalty0 5115, 2018.
+
+\bibitem[Buneman et~al.(2001)Buneman, Khanna, and Tan]{buneman2001}
+Peter Buneman, Sanjeev Khanna, and Wang-Chiew Tan.
+\newblock Why and where: A characterization of data provenance.
+\newblock In \emph{Database Theory -- ICDT 2001}, volume 1973 of \emph{Lecture
+  Notes in Computer Science}, pages 316--330. Springer, 2001.
+
+\bibitem[Green et~al.(2007)Green, Karvounarakis, and Tannen]{green2007}
+Todd~J. Green, Grigoris Karvounarakis, and Val Tannen.
+\newblock Provenance semirings.
+\newblock In \emph{Proceedings of the 26th ACM SIGMOD-SIGACT-SIGART Symposium
+  on Principles of Database Systems (PODS)}, pages 31--40, 2007.
+
+\bibitem[Cheney et~al.(2009)Cheney, Chiticariu, and Tan]{cheney2009}
+James Cheney, Laura Chiticariu, and Wang-Chiew Tan.
+\newblock Provenance in databases: Why, how, and where.
+\newblock \emph{Foundations and Trends in Databases}, 1\penalty0 (4):\penalty0
+  379--474, 2009.
+
+\bibitem[Schnoes et~al.(2009)Schnoes, Brown, Dodevski, and
+  Babbitt]{schnoes2009}
+Alexandra~M. Schnoes, Shoshana~D. Brown, Igor Dodevski, and Patricia~C.
+  Babbitt.
+\newblock Annotation error in public databases: Misannotation of molecular
+  function in enzyme superfamilies.
+\newblock \emph{PLoS Computational Biology}, 5\penalty0 (12):\penalty0
+  e1000605, 2009.
+
+\bibitem[Field et~al.(2008)Field, Garrity, Gray, Morrison, Selengut, Sterk,
+  Tatusova, Thomson, Allen, Angiuoli, et~al.]{field2008}
+Dawn Field, George Garrity, Tanya Gray, Norman Morrison, Jeremy Selengut, Peter
+  Sterk, Tatiana Tatusova, Nicholas Thomson, Michael~J. Allen, Samuel~V.
+  Angiuoli, et~al.
+\newblock The minimum information about a genome sequence ({MIGS})
+  specification.
+\newblock \emph{Nature Biotechnology}, 26\penalty0 (5):\penalty0 541--547,
+  2008.
+
+\bibitem[Yilmaz et~al.(2011)Yilmaz, Kottmann, Field, Knight, Cole,
+  Amaral-Zettler, Gilbert, Karsch-Mizrachi, Johnston, Cochrane,
+  et~al.]{yilmaz2011}
+Pelin Yilmaz, Renzo Kottmann, Dawn Field, Rob Knight, James~R. Cole, Linda
+  Amaral-Zettler, Jack~A. Gilbert, Ilene Karsch-Mizrachi, Anjanette Johnston,
+  Guy Cochrane, et~al.
+\newblock Minimum information about a marker gene sequence ({MIMARKS}) and
+  minimum information about any (x) sequence ({MIxS}) specifications.
+\newblock \emph{Nature Biotechnology}, 29\penalty0 (5):\penalty0 415--420,
+  2011.
+
+\bibitem[Sansone et~al.(2012)Sansone, Rocca-Serra, Field, Maguire, Taylor,
+  Hofmann, Fang, Neumann, Tong, Amaral-Zettler, et~al.]{sansone2012}
+Susanna-Assunta Sansone, Philippe Rocca-Serra, Dawn Field, Eamonn Maguire,
+  Chris Taylor, Oliver Hofmann, Hong Fang, Steffen Neumann, Weida Tong, Linda
+  Amaral-Zettler, et~al.
+\newblock Toward interoperable bioscience data.
+\newblock \emph{Nature Genetics}, 44\penalty0 (2):\penalty0 121--126, 2012.
+
+\bibitem[Eloe-Fadrosh et~al.(2022)Eloe-Fadrosh, Ahmed, Babinski, Baumes,
+  Borkum, Bramer, Canon, Christianson, Corilo, Davenport,
+  et~al.]{eloefadrosh2022}
+Emiley~A. Eloe-Fadrosh, Faiza Ahmed, Michal Babinski, Jeffrey Baumes, Mark
+  Borkum, Lisa Bramer, Shane Canon, Danielle~S. Christianson, Yuri~E. Corilo,
+  Karen~W. Davenport, et~al.
+\newblock The {N}ational {M}icrobiome {D}ata {C}ollaborative data portal: An
+  integrated multi-omics microbiome data resource.
+\newblock \emph{Nucleic Acids Research}, 50\penalty0 (D1):\penalty0 D828--D836,
+  2022.
+
+\bibitem[Rehm et~al.(2021)Rehm, Page, Smith, Adams, Alterovitz, Babb, Barkley,
+  Baudis, Beauvais, Beck, et~al.]{rehm2021}
+Heidi~L. Rehm, Angela J.~H. Page, Lindsay Smith, Jeremy~B. Adams, Gil
+  Alterovitz, Lawrence~J. Babb, Maxmillian~P. Barkley, Michael Baudis, Michael
+  J.~S. Beauvais, Tim Beck, et~al.
+\newblock {GA4GH}: International policies and standards for data sharing across
+  genomic research and healthcare.
+\newblock \emph{Cell Genomics}, 1\penalty0 (2):\penalty0 100029, 2021.
+
+\bibitem[Wagner et~al.(2021)Wagner, Babb, Alterovitz, Baudis, Brush, Cameron,
+  Cline, Griffith, Griffith, Hunt, et~al.]{wagner2021}
+Alex~H. Wagner, Lawrence Babb, Gil Alterovitz, Michael Baudis, Matthew Brush,
+  Daniel~L. Cameron, Melissa Cline, Malachi Griffith, Obi~L. Griffith, Sarah~E.
+  Hunt, et~al.
+\newblock The {GA4GH} {V}ariation {R}epresentation {S}pecification: A
+  computational framework for variation representation and federated
+  identification.
+\newblock \emph{Cell Genomics}, 1\penalty0 (2):\penalty0 100027, 2021.
+
+\bibitem[Wilkinson et~al.(2016)Wilkinson, Dumontier, Aalbersberg, Appleton,
+  Axton, Baak, Blomberg, Boiten, da~Silva~Santos, Bourne,
+  et~al.]{wilkinson2016}
+Mark~D. Wilkinson, Michel Dumontier, IJsbrand~Jan Aalbersberg, Gabrielle
+  Appleton, Myles Axton, Arie Baak, Niklas Blomberg, Jan-Willem Boiten,
+  Luiz~Bonino da~Silva~Santos, Philip~E. Bourne, et~al.
+\newblock The {FAIR} guiding principles for scientific data management and
+  stewardship.
+\newblock \emph{Scientific Data}, 3:\penalty0 160018, 2016.
+
+\end{thebibliography}

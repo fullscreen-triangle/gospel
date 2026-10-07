@@ -1,0 +1,233 @@
+{
+ "genericity": {
+  "classes": [
+   "bgp",
+   "optional",
+   "union",
+   "minus",
+   "not_exists",
+   "literal_filter",
+   "aggregate",
+   "path_sequence",
+   "path_closure",
+   "typed",
+   "ask",
+   "lexical",
+   "order_limit",
+   "constant"
+  ],
+  "fragment": [
+   "bgp",
+   "optional",
+   "union",
+   "minus",
+   "not_exists",
+   "literal_filter",
+   "aggregate",
+   "path_sequence",
+   "path_closure",
+   "typed",
+   "ask"
+  ],
+  "controls": [
+   "lexical",
+   "order_limit",
+   "constant"
+  ],
+  "violations": {
+   "bgp": 0,
+   "optional": 0,
+   "union": 0,
+   "minus": 0,
+   "not_exists": 0,
+   "literal_filter": 0,
+   "aggregate": 0,
+   "path_sequence": 0,
+   "path_closure": 0,
+   "typed": 0,
+   "ask": 0,
+   "lexical": 211,
+   "order_limit": 170,
+   "constant": 240
+  },
+  "tests": {
+   "bgp": 240,
+   "optional": 240,
+   "union": 240,
+   "minus": 240,
+   "not_exists": 240,
+   "literal_filter": 240,
+   "aggregate": 240,
+   "path_sequence": 240,
+   "path_closure": 240,
+   "typed": 240,
+   "ask": 240,
+   "lexical": 240,
+   "order_limit": 240,
+   "constant": 240
+  },
+  "control_by_size": {
+   "lexical": {
+    "8": [
+     1,
+     6
+    ],
+    "9": [
+     15,
+     24
+    ],
+    "10": [
+     31,
+     36
+    ],
+    "11": [
+     37,
+     42
+    ],
+    "12": [
+     6,
+     6
+    ],
+    "13": [
+     6,
+     6
+    ],
+    "14": [
+     23,
+     24
+    ],
+    "15": [
+     50,
+     54
+    ],
+    "16": [
+     30,
+     30
+    ],
+    "17": [
+     6,
+     6
+    ],
+    "18": [
+     6,
+     6
+    ]
+   },
+   "order_limit": {
+    "8": [
+     1,
+     6
+    ],
+    "9": [
+     15,
+     24
+    ],
+    "10": [
+     25,
+     36
+    ],
+    "11": [
+     23,
+     42
+    ],
+    "12": [
+     6,
+     6
+    ],
+    "13": [
+     4,
+     6
+    ],
+    "14": [
+     16,
+     24
+    ],
+    "15": [
+     41,
+     54
+    ],
+    "16": [
+     28,
+     30
+    ],
+    "17": [
+     5,
+     6
+    ],
+    "18": [
+     6,
+     6
+    ]
+   },
+   "constant": {
+    "8": [
+     6,
+     6
+    ],
+    "9": [
+     24,
+     24
+    ],
+    "10": [
+     36,
+     36
+    ],
+    "11": [
+     42,
+     42
+    ],
+    "12": [
+     6,
+     6
+    ],
+    "13": [
+     6,
+     6
+    ],
+    "14": [
+     24,
+     24
+    ],
+    "15": [
+     54,
+     54
+    ],
+    "16": [
+     30,
+     30
+    ],
+    "17": [
+     6,
+     6
+    ],
+    "18": [
+     6,
+     6
+    ]
+   }
+  },
+  "individuals_min": 8,
+  "individuals_max": 18
+ },
+ "orbits": {
+  "pairs": 160,
+  "table": {
+   "orbit_and_returned": 60,
+   "orbit_not_returned": 0,
+   "no_orbit_returned": 0,
+   "no_orbit_not_returned": 100
+  },
+  "colour_soundness_violations": 0,
+  "colour_separated_of_different_orbit": [
+   100,
+   100
+  ],
+  "description_query_median_s": 2.532957911491394,
+  "description_query_max_s": 234.41141939163208
+ },
+ "_meta": {
+  "experiment": "E2_generic",
+  "seed": 20261003,
+  "seconds": 1369.55
+ }
+}

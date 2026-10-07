@@ -1,0 +1,22 @@
+{
+ "GenomicsStandardsConsortium/mixs": {
+  "sha": "0bc3c221b4a368ed7939d9a1fe4cbd8f407a221b",
+  "date": "2026-09-16T14:53:09Z"
+ },
+ "ghga-de/ghga-metadata-schema": {
+  "sha": "cfc65e155b511eac2d4b5e6fd4841660615efd1c",
+  "date": "2026-06-17T09:12:03Z"
+ },
+ "microbiomedata/nmdc-schema": {
+  "sha": "647010882b233ff14cb1ba8339406437079ced88",
+  "date": "2026-10-02T13:06:11Z"
+ },
+ "nfdi-de/chem-dcat-ap": {
+  "sha": "8d0c0eb618da948a7d947b8f028633768e74f048",
+  "date": "2026-10-01T07:55:54Z"
+ },
+ "nfdi-de/dcat-ap-plus": {
+  "sha": "c094ef3715c2e6d1afc750532e50fe064db8f66a",
+  "date": "2026-10-01T07:49:02Z"
+ }
+}

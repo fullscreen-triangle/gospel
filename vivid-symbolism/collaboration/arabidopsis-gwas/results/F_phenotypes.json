@@ -1,0 +1,22 @@
+{
+  "file": "phenotypes_full.csv",
+  "n": 237,
+  "columns": [
+    "gid",
+    "name",
+    "shoot_canonical_rescue",
+    "shoot_rescue",
+    "shoot_log_promotion_drought",
+    "shoot_log_promotion_nonstress",
+    "shoot_interaction",
+    "shoot_mock_drought_loss",
+    "shoot_log_MN",
+    "root_canonical_rescue",
+    "root_rescue",
+    "root_log_promotion_drought",
+    "root_log_promotion_nonstress",
+    "root_interaction",
+    "root_mock_drought_loss",
+    "root_log_MN"
+  ]
+}

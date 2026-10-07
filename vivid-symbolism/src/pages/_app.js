@@ -12,6 +12,7 @@ const montserrat = Montserrat({ subsets: ["latin"], variable: "--font-mont" });
 
 export default function App({ Component, pageProps }) {
   const router = useRouter();
+  const bare = router.pathname === "/login";   // no site chrome before sign-in
 
   return (
     <>
@@ -22,11 +23,11 @@ export default function App({ Component, pageProps }) {
       <main
         className={`${montserrat.variable} font-mont  bg-light dark:bg-dark w-full min-h-screen h-full`}
       >
-        <Navbar />
+        {bare ? null : <Navbar />}
         <AnimatePresence initial={false} mode="wait">
           <Component key={router.asPath} {...pageProps} />
         </AnimatePresence>
-        <Footer />
+        {bare ? null : <Footer />}
       </main>
     </>
   );

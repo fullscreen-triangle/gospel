@@ -1,0 +1,1819 @@
+{
+  "focal": {
+    "gid": 9836,
+    "name": "Cod-0"
+  },
+  "n_snps": 10709949,
+  "n_species": 1135,
+  "n_panel_genotyped": 247,
+  "cod0_nonreference_alleles": 671423,
+  "rare_threshold_species": 0.01,
+  "n_rare_cod0_alleles": 19726,
+  "n_private_cod0_alleles": 4549,
+  "rare_by_class": {
+    "intergenic": 7371,
+    "promoter": 3871,
+    "CDS": 3854,
+    "intron": 2460,
+    "UTR3": 1016,
+    "UTR5": 915,
+    "exon": 239
+  },
+  "private_by_class": {
+    "intergenic": 1809,
+    "CDS": 924,
+    "promoter": 795,
+    "intron": 571,
+    "UTR3": 223,
+    "UTR5": 182,
+    "exon": 45
+  },
+  "n_genes_with_rare_functional": 5635,
+  "top_genes": [
+    {
+      "gene": "AT5G24480",
+      "n_rare": 44,
+      "n_cds": 42,
+      "n_utr": 0,
+      "n_promoter": 0,
+      "n_private": 2,
+      "max_allies": 0,
+      "symbol": "AT5G24480",
+      "description": "Beta-galactosidase related protein",
+      "length": 1206,
+      "biotype": "protein_coding",
+      "functional": 42,
+      "functional_per_kb": 19.038984587488667
+    },
+    {
+      "gene": "AT2G45590",
+      "n_rare": 29,
+      "n_cds": 19,
+      "n_utr": 9,
+      "n_promoter": 1,
+      "n_private": 0,
+      "max_allies": 0,
+      "symbol": "AT2G45590",
+      "description": "Protein kinase superfamily protein",
+      "length": 3124,
+      "biotype": "protein_coding",
+      "functional": 29,
+      "functional_per_kb": 7.032007759456839
+    },
+    {
+      "gene": "AT1G21550",
+      "n_rare": 27,
+      "n_cds": 19,
+      "n_utr": 8,
+      "n_promoter": 0,
+      "n_private": 0,
+      "max_allies": 0,
+      "symbol": "AT1G21550",
+      "description": "Calcium-binding EF-hand family protein",
+      "length": 989,
+      "biotype": "protein_coding",
+      "functional": 27,
+      "functional_per_kb": 13.574660633484163
+    },
+    {
+      "gene": "AT5G54730",
+      "n_rare": 27,
+      "n_cds": 17,
+      "n_utr": 5,
+      "n_promoter": 3,
+      "n_private": 0,
+      "max_allies": 1,
+      "symbol": "G18F",
+      "description": "autophagy 18 F-like protein",
+      "length": 3582,
+      "biotype": "protein_coding",
+      "functional": 25,
+      "functional_per_kb": 5.456132693147097
+    },
+    {
+      "gene": "AT5G02900",
+      "n_rare": 26,
+      "n_cds": 16,
+      "n_utr": 0,
+      "n_promoter": 9,
+      "n_private": 2,
+      "max_allies": 0,
+      "symbol": "CYP96A13",
+      "description": "cytochrome P450, family 96, subfamily A, polypeptide 13",
+      "length": 1510,
+      "biotype": "protein_coding",
+      "functional": 25,
+      "functional_per_kb": 9.9601593625498
+    },
+    {
+      "gene": "AT1G21560",
+      "n_rare": 29,
+      "n_cds": 3,
+      "n_utr": 19,
+      "n_promoter": 3,
+      "n_private": 0,
+      "max_allies": 0,
+      "symbol": "AT1G21560",
+      "description": "uncharacterized protein",
+      "length": 2442,
+      "biotype": "protein_coding",
+      "functional": 25,
+      "functional_per_kb": 7.2632190586868095
+    },
+    {
+      "gene": "AT4G21900",
+      "n_rare": 32,
+      "n_cds": 21,
+      "n_utr": 2,
+      "n_promoter": 0,
+      "n_private": 0,
+      "max_allies": 0,
+      "symbol": "PRORP3",
+      "description": "proteinaceous RNase P 3",
+      "length": 3084,
+      "biotype": "protein_coding",
+      "functional": 23,
+      "functional_per_kb": 5.631733594515182
+    },
+    {
+      "gene": "AT5G24490",
+      "n_rare": 45,
+      "n_cds": 15,
+      "n_utr": 8,
+      "n_promoter": 0,
+      "n_private": 0,
+      "max_allies": 0,
+      "symbol": "AT5G24490",
+      "description": "30S ribosomal protein",
+      "length": 1860,
+      "biotype": "protein_coding",
+      "functional": 23,
+      "functional_per_kb": 8.041958041958042
+    },
+    {
+      "gene": "AT2G04740",
+      "n_rare": 22,
+      "n_cds": 5,
+      "n_utr": 5,
+      "n_promoter": 12,
+      "n_private": 0,
+      "max_allies": 0,
+      "symbol": "AT2G04740",
+      "description": "ankyrin repeat family protein",
+      "length": 2729,
+      "biotype": "protein_coding",
+      "functional": 22,
+      "functional_per_kb": 5.899705014749262
+    },
+    {
+      "gene": "AT5G38865",
+      "n_rare": 22,
+      "n_cds": 19,
+      "n_utr": 0,
+      "n_promoter": 0,
+      "n_private": 0,
+      "max_allies": 0,
+      "symbol": "AT5G38865",
+      "description": "uncharacterized protein",
+      "length": 1092,
+      "biotype": "protein_coding",
+      "functional": 19,
+      "functional_per_kb": 9.082217973231357
+    },
+    {
+      "gene": "AT1G75090",
+      "n_rare": 19,
+      "n_cds": 17,
+      "n_utr": 0,
+      "n_promoter": 2,
+      "n_private": 1,
+      "max_allies": 0,
+      "symbol": "AT1G75090",
+      "description": "DNA glycosylase superfamily protein",
+      "length": 2319,
+      "biotype": "protein_coding",
+      "functional": 19,
+      "functional_per_kb": 5.724615848147033
+    },
+    {
+      "gene": "AT5G24500",
+      "n_rare": 25,
+      "n_cds": 16,
+      "n_utr": 1,
+      "n_promoter": 0,
+      "n_private": 3,
+      "max_allies": 0,
+      "symbol": "AT5G24500",
+      "description": "fantom protein",
+      "length": 1636,
+      "biotype": "protein_coding",
+      "functional": 17,
+      "functional_per_kb": 6.4491654021244305
+    },
+    {
+      "gene": "AT1G21590",
+      "n_rare": 19,
+      "n_cds": 15,
+      "n_utr": 1,
+      "n_promoter": 1,
+      "n_private": 0,
+      "max_allies": 0,
+      "symbol": "AT1G21590",
+      "description": "kinase with adenine nucleotide alpha hydrolases-like domain-containing protein",
+      "length": 3786,
+      "biotype": "protein_coding",
+      "functional": 17,
+      "functional_per_kb": 3.5520267446719602
+    },
+    {
+      "gene": "AT2G29040",
+      "n_rare": 18,
+      "n_cds": 13,
+      "n_utr": 3,
+      "n_promoter": 1,
+      "n_private": 1,
+      "max_allies": 1,
+      "symbol": "AT2G29040",
+      "description": "Exostosin family protein",
+      "length": 3031,
+      "biotype": "protein_coding",
+      "functional": 17,
+      "functional_per_kb": 4.21731580253039
+    },
+    {
+      "gene": "AT1G21925",
+      "n_rare": 17,
+      "n_cds": 1,
+      "n_utr": 0,
+      "n_promoter": 16,
+      "n_private": 0,
+      "max_allies": 0,
+      "symbol": "AT1G21925",
+      "description": "Plant thionin family protein",
+      "length": 303,
+      "biotype": "protein_coding",
+      "functional": 17,
+      "functional_per_kb": 13.046815042210284
+    },
+    {
+      "gene": "AT1G21580",
+      "n_rare": 17,
+      "n_cds": 6,
+      "n_utr": 1,
+      "n_promoter": 9,
+      "n_private": 0,
+      "max_allies": 0,
+      "symbol": "AT1G21580",
+      "description": "Zinc finger C-x8-C-x5-C-x3-H type family protein",
+      "length": 8775,
+      "biotype": "protein_coding",
+      "functional": 16,
+      "functional_per_kb": 1.6368286445012787
+    },
+    {
+      "gene": "AT5G24470",
+      "n_rare": 18,
+      "n_cds": 13,
+      "n_utr": 0,
+      "n_promoter": 2,
+      "n_private": 0,
+      "max_allies": 0,
+      "symbol": "PRR5",
+      "description": "two-component response regulator-like protein",
+      "length": 2343,
+      "biotype": "protein_coding",
+      "functional": 15,
+      "functional_per_kb": 4.486987735566856
+    },
+    {
+      "gene": "AT5G54855",
+      "n_rare": 15,
+      "n_cds": 9,
+      "n_utr": 5,
+      "n_promoter": 1,
+      "n_private": 0,
+      "max_allies": 0,
+      "symbol": "AT5G54855",
+      "description": "Pollen Ole e 1 allergen and extensin family protein",
+      "length": 1626,
+      "biotype": "protein_coding",
+      "functional": 15,
+      "functional_per_kb": 5.712109672505712
+    },
+    {
+      "gene": "AT5G55340",
+      "n_rare": 15,
+      "n_cds": 8,
+      "n_utr": 7,
+      "n_promoter": 0,
+      "n_private": 0,
+      "max_allies": 0,
+      "symbol": "AT5G55340",
+      "description": "MBOAT (membrane bound O-acyl transferase) family protein",
+      "length": 1402,
+      "biotype": "protein_coding",
+      "functional": 15,
+      "functional_per_kb": 6.244796003330557
+    },
+    {
+      "gene": "AT5G02970",
+      "n_rare": 18,
+      "n_cds": 7,
+      "n_utr": 3,
+      "n_promoter": 5,
+      "n_private": 1,
+      "max_allies": 0,
+      "symbol": "AT5G02970",
+      "description": "alpha/beta-Hydrolases superfamily protein",
+      "length": 2950,
+      "biotype": "protein_coding",
+      "functional": 15,
+      "functional_per_kb": 3.7974683544303796
+    },
+    {
+      "gene": "AT5G03080",
+      "n_rare": 17,
+      "n_cds": 3,
+      "n_utr": 9,
+      "n_promoter": 3,
+      "n_private": 1,
+      "max_allies": 0,
+      "symbol": "LPPgamma",
+      "description": "Phosphatidic acid phosphatase (PAP2) family protein",
+      "length": 1623,
+      "biotype": "protein_coding",
+      "functional": 15,
+      "functional_per_kb": 5.71864277544796
+    },
+    {
+      "gene": "AT2G29100",
+      "n_rare": 14,
+      "n_cds": 12,
+      "n_utr": 0,
+      "n_promoter": 2,
+      "n_private": 4,
+      "max_allies": 1,
+      "symbol": "GLR2.9",
+      "description": "glutamate receptor 2.9",
+      "length": 3853,
+      "biotype": "protein_coding",
+      "functional": 14,
+      "functional_per_kb": 2.8848135174119105
+    },
+    {
+      "gene": "AT2G29090",
+      "n_rare": 27,
+      "n_cds": 9,
+      "n_utr": 5,
+      "n_promoter": 0,
+      "n_private": 3,
+      "max_allies": 0,
+      "symbol": "CYP707A2",
+      "description": "cytochrome P450, family 707, subfamily A, polypeptide 2",
+      "length": 4898,
+      "biotype": "protein_coding",
+      "functional": 14,
+      "functional_per_kb": 2.3736859952526284
+    },
+    {
+      "gene": "AT1G58250",
+      "n_rare": 21,
+      "n_cds": 6,
+      "n_utr": 3,
+      "n_promoter": 5,
+      "n_private": 2,
+      "max_allies": 0,
+      "symbol": "SAB",
+      "description": "HYPERSENSITIVE TO PI STARVATION 4",
+      "length": 14681,
+      "biotype": "protein_coding",
+      "functional": 14,
+      "functional_per_kb": 0.8928002040686182
+    },
+    {
+      "gene": "AT3G06530",
+      "n_rare": 18,
+      "n_cds": 12,
+      "n_utr": 0,
+      "n_promoter": 1,
+      "n_private": 0,
+      "max_allies": 0,
+      "symbol": "AT3G06530",
+      "description": "ARM repeat superfamily protein",
+      "length": 11480,
+      "biotype": "protein_coding",
+      "functional": 13,
+      "functional_per_kb": 1.0416666666666667
+    },
+    {
+      "gene": "AT4G13610",
+      "n_rare": 14,
+      "n_cds": 12,
+      "n_utr": 0,
+      "n_promoter": 1,
+      "n_private": 0,
+      "max_allies": 0,
+      "symbol": "MEE57",
+      "description": "DNA (cytosine-5-)-methyltransferase family protein",
+      "length": 6210,
+      "biotype": "protein_coding",
+      "functional": 13,
+      "functional_per_kb": 1.8030513176144245
+    },
+    {
+      "gene": "AT5G42640",
+      "n_rare": 13,
+      "n_cds": 11,
+      "n_utr": 0,
+      "n_promoter": 2,
+      "n_private": 0,
+      "max_allies": 0,
+      "symbol": "AT5G42640",
+      "description": "C2H2 and C2HC zinc fingers superfamily protein",
+      "length": 903,
+      "biotype": "protein_coding",
+      "functional": 13,
+      "functional_per_kb": 6.831318970047294
+    },
+    {
+      "gene": "AT1G37020",
+      "n_rare": 19,
+      "n_cds": 10,
+      "n_utr": 0,
+      "n_promoter": 3,
+      "n_private": 1,
+      "max_allies": 0,
+      "symbol": "AT1G37020",
+      "description": "Cysteine proteinases superfamily protein",
+      "length": 3008,
+      "biotype": "protein_coding",
+      "functional": 13,
+      "functional_per_kb": 3.243512974051896
+    },
+    {
+      "gene": "AT5G51500",
+      "n_rare": 13,
+      "n_cds": 3,
+      "n_utr": 0,
+      "n_promoter": 10,
+      "n_private": 1,
+      "max_allies": 0,
+      "symbol": "AT5G51500",
+      "description": "Plant invertase/pectin methylesterase inhibitor superfamily",
+      "length": 2170,
+      "biotype": "protein_coding",
+      "functional": 13,
+      "functional_per_kb": 4.100946372239748
+    },
+    {
+      "gene": "AT3G05940",
+      "n_rare": 14,
+      "n_cds": 2,
+      "n_utr": 9,
+      "n_promoter": 2,
+      "n_private": 0,
+      "max_allies": 0,
+      "symbol": "AT3G05940",
+      "description": "organic solute transporter ostalpha protein (DUF300)",
+      "length": 3042,
+      "biotype": "protein_coding",
+      "functional": 13,
+      "functional_per_kb": 3.216229589312222
+    },
+    {
+      "gene": "AT5G08945",
+      "n_rare": 13,
+      "n_cds": 0,
+      "n_utr": 0,
+      "n_promoter": 13,
+      "n_private": 0,
+      "max_allies": 0,
+      "symbol": "AT5G08945",
+      "description": "ncRNA",
+      "length": 316,
+      "biotype": "lncRNA",
+      "functional": 13,
+      "functional_per_kb": 9.878419452887538
+    },
+    {
+      "gene": "AT1G63210",
+      "n_rare": 12,
+      "n_cds": 11,
+      "n_utr": 0,
+      "n_promoter": 1,
+      "n_private": 2,
+      "max_allies": 1,
+      "symbol": "AT1G63210",
+      "description": "Transcription elongation factor Spt6",
+      "length": 3667,
+      "biotype": "protein_coding",
+      "functional": 12,
+      "functional_per_kb": 2.5712449110777804
+    },
+    {
+      "gene": "AT5G07570",
+      "n_rare": 12,
+      "n_cds": 11,
+      "n_utr": 1,
+      "n_promoter": 0,
+      "n_private": 3,
+      "max_allies": 0,
+      "symbol": "AT5G07570",
+      "description": "glycine/proline-rich protein",
+      "length": 4749,
+      "biotype": "protein_coding",
+      "functional": 12,
+      "functional_per_kb": 2.087319533831971
+    },
+    {
+      "gene": "AT2G04750",
+      "n_rare": 19,
+      "n_cds": 8,
+      "n_utr": 0,
+      "n_promoter": 4,
+      "n_private": 0,
+      "max_allies": 0,
+      "symbol": "AT2G04750",
+      "description": "Actin binding Calponin homology (CH) domain-containing protein",
+      "length": 2987,
+      "biotype": "protein_coding",
+      "functional": 12,
+      "functional_per_kb": 3.0097817908201656
+    },
+    {
+      "gene": "AT5G41610",
+      "n_rare": 12,
+      "n_cds": 6,
+      "n_utr": 6,
+      "n_promoter": 0,
+      "n_private": 2,
+      "max_allies": 1,
+      "symbol": "CHX18",
+      "description": "cation/H+ exchanger 18",
+      "length": 3632,
+      "biotype": "protein_coding",
+      "functional": 12,
+      "functional_per_kb": 2.590673575129534
+    },
+    {
+      "gene": "AT2G28630",
+      "n_rare": 14,
+      "n_cds": 4,
+      "n_utr": 2,
+      "n_promoter": 6,
+      "n_private": 0,
+      "max_allies": 0,
+      "symbol": "KCS12",
+      "description": "3-ketoacyl-CoA synthase 12",
+      "length": 2950,
+      "biotype": "protein_coding",
+      "functional": 12,
+      "functional_per_kb": 3.0379746835443036
+    },
+    {
+      "gene": "AT1G21140",
+      "n_rare": 12,
+      "n_cds": 2,
+      "n_utr": 1,
+      "n_promoter": 9,
+      "n_private": 0,
+      "max_allies": 0,
+      "symbol": "AT1G21140",
+      "description": "Vacuolar iron transporter (VIT) family protein",
+      "length": 1099,
+      "biotype": "protein_coding",
+      "functional": 12,
+      "functional_per_kb": 5.717008099094807
+    },
+    {
+      "gene": "AT1G66145",
+      "n_rare": 12,
+      "n_cds": 2,
+      "n_utr": 0,
+      "n_promoter": 10,
+      "n_private": 0,
+      "max_allies": 0,
+      "symbol": "CLE18",
+      "description": "CLAVATA3/ESR-RELATED 18",
+      "length": 306,
+      "biotype": "protein_coding",
+      "functional": 12,
+      "functional_per_kb": 9.188361408882082
+    },
+    {
+      "gene": "AT1G50820",
+      "n_rare": 15,
+      "n_cds": 8,
+      "n_utr": 0,
+      "n_promoter": 3,
+      "n_private": 4,
+      "max_allies": 0,
+      "symbol": "AT1G50820",
+      "description": "aminotransferase-like, mobile domain protein",
+      "length": 7156,
+      "biotype": "protein_coding",
+      "functional": 11,
+      "functional_per_kb": 1.3487003433055418
+    },
+    {
+      "gene": "AT1G69550",
+      "n_rare": 11,
+      "n_cds": 7,
+      "n_utr": 2,
+      "n_promoter": 2,
+      "n_private": 0,
+      "max_allies": 0,
+      "symbol": "AT1G69550",
+      "description": "disease resistance protein (TIR-NBS-LRR class)",
+      "length": 5580,
+      "biotype": "protein_coding",
+      "functional": 11,
+      "functional_per_kb": 1.6717325227963526
+    }
+  ],
+  "curated": [
+    {
+      "category": "WCS417 / ISR / iron-coumarin",
+      "gene": "AT1G56160",
+      "symbol": "MYB72",
+      "n_rare": 0,
+      "classes": {},
+      "positions": []
+    },
+    {
+      "category": "WCS417 / ISR / iron-coumarin",
+      "gene": "AT5G36890",
+      "symbol": "BGLU42",
+      "n_rare": 0,
+      "classes": {},
+      "positions": []
+    },
+    {
+      "category": "WCS417 / ISR / iron-coumarin",
+      "gene": "AT3G13610",
+      "symbol": "F6'H1",
+      "n_rare": 0,
+      "classes": {},
+      "positions": []
+    },
+    {
+      "category": "WCS417 / ISR / iron-coumarin",
+      "gene": "AT4G31940",
+      "symbol": "CYP82C4",
+      "n_rare": 1,
+      "classes": {
+        "UTR3": 1
+      },
+      "positions": [
+        {
+          "pos": 15454191,
+          "class": "UTR3",
+          "carriers_species": 2
+        }
+      ]
+    },
+    {
+      "category": "WCS417 / ISR / iron-coumarin",
+      "gene": "AT3G12900",
+      "symbol": "S8H",
+      "n_rare": 0,
+      "classes": {},
+      "positions": []
+    },
+    {
+      "category": "WCS417 / ISR / iron-coumarin",
+      "gene": "AT3G53480",
+      "symbol": "ABCG37/PDR9",
+      "n_rare": 0,
+      "classes": {},
+      "positions": []
+    },
+    {
+      "category": "WCS417 / ISR / iron-coumarin",
+      "gene": "AT4G19690",
+      "symbol": "IRT1",
+      "n_rare": 0,
+      "classes": {},
+      "positions": []
+    },
+    {
+      "category": "WCS417 / ISR / iron-coumarin",
+      "gene": "AT1G01580",
+      "symbol": "FRO2",
+      "n_rare": 4,
+      "classes": {
+        "intron": 2,
+        "promoter": 1,
+        "CDS": 1
+      },
+      "positions": [
+        {
+          "pos": 208093,
+          "class": "promoter",
+          "carriers_species": 3
+        },
+        {
+          "pos": 210185,
+          "class": "intron",
+          "carriers_species": 4
+        },
+        {
+          "pos": 211619,
+          "class": "CDS",
+          "carriers_species": 3
+        },
+        {
+          "pos": 211842,
+          "class": "intron",
+          "carriers_species": 4
+        }
+      ]
+    },
+    {
+      "category": "WCS417 / ISR / iron-coumarin",
+      "gene": "AT4G30190",
+      "symbol": "AHA2",
+      "n_rare": 0,
+      "classes": {},
+      "positions": []
+    },
+    {
+      "category": "WCS417 / ISR / iron-coumarin",
+      "gene": "AT2G28160",
+      "symbol": "FIT",
+      "n_rare": 0,
+      "classes": {},
+      "positions": []
+    },
+    {
+      "category": "WCS417 / ISR / iron-coumarin",
+      "gene": "AT3G56970",
+      "symbol": "bHLH38",
+      "n_rare": 0,
+      "classes": {},
+      "positions": []
+    },
+    {
+      "category": "WCS417 / ISR / iron-coumarin",
+      "gene": "AT3G56980",
+      "symbol": "bHLH39",
+      "n_rare": 0,
+      "classes": {},
+      "positions": []
+    },
+    {
+      "category": "WCS417 / ISR / iron-coumarin",
+      "gene": "AT3G47640",
+      "symbol": "PYE",
+      "n_rare": 1,
+      "classes": {
+        "promoter": 1
+      },
+      "positions": [
+        {
+          "pos": 17566791,
+          "class": "promoter",
+          "carriers_species": 9
+        }
+      ]
+    },
+    {
+      "category": "WCS417 / ISR / iron-coumarin",
+      "gene": "AT3G18290",
+      "symbol": "BTS",
+      "n_rare": 6,
+      "classes": {
+        "intron": 4,
+        "UTR5": 1,
+        "CDS": 1
+      },
+      "positions": [
+        {
+          "pos": 6274224,
+          "class": "UTR5",
+          "carriers_species": 1
+        },
+        {
+          "pos": 6274817,
+          "class": "intron",
+          "carriers_species": 2
+        },
+        {
+          "pos": 6276080,
+          "class": "intron",
+          "carriers_species": 5
+        },
+        {
+          "pos": 6279061,
+          "class": "intron",
+          "carriers_species": 5
+        },
+        {
+          "pos": 6279436,
+          "class": "CDS",
+          "carriers_species": 2
+        },
+        {
+          "pos": 6279985,
+          "class": "intron",
+          "carriers_species": 4
+        }
+      ]
+    },
+    {
+      "category": "WCS417 / ISR / iron-coumarin",
+      "gene": "AT3G08040",
+      "symbol": "FRD3",
+      "n_rare": 0,
+      "classes": {},
+      "positions": []
+    },
+    {
+      "category": "WCS417 / ISR / iron-coumarin",
+      "gene": "AT5G03280",
+      "symbol": "EIN2",
+      "n_rare": 0,
+      "classes": {},
+      "positions": []
+    },
+    {
+      "category": "WCS417 / ISR / iron-coumarin",
+      "gene": "AT1G64280",
+      "symbol": "NPR1",
+      "n_rare": 1,
+      "classes": {
+        "promoter": 1
+      },
+      "positions": [
+        {
+          "pos": 23856442,
+          "class": "promoter",
+          "carriers_species": 7
+        }
+      ]
+    },
+    {
+      "category": "WCS417 / ISR / iron-coumarin",
+      "gene": "AT1G32640",
+      "symbol": "MYC2",
+      "n_rare": 1,
+      "classes": {
+        "CDS": 1
+      },
+      "positions": [
+        {
+          "pos": 11800762,
+          "class": "CDS",
+          "carriers_species": 1
+        }
+      ]
+    },
+    {
+      "category": "WCS417 / ISR / iron-coumarin",
+      "gene": "AT2G46370",
+      "symbol": "JAR1",
+      "n_rare": 0,
+      "classes": {},
+      "positions": []
+    },
+    {
+      "category": "WCS417 / ISR / iron-coumarin",
+      "gene": "AT3G23150",
+      "symbol": "ETR2",
+      "n_rare": 0,
+      "classes": {},
+      "positions": []
+    },
+    {
+      "category": "immunity / microbe perception",
+      "gene": "AT5G46330",
+      "symbol": "FLS2",
+      "n_rare": 0,
+      "classes": {},
+      "positions": []
+    },
+    {
+      "category": "immunity / microbe perception",
+      "gene": "AT4G33430",
+      "symbol": "BAK1",
+      "n_rare": 0,
+      "classes": {},
+      "positions": []
+    },
+    {
+      "category": "immunity / microbe perception",
+      "gene": "AT5G20480",
+      "symbol": "EFR",
+      "n_rare": 0,
+      "classes": {},
+      "positions": []
+    },
+    {
+      "category": "immunity / microbe perception",
+      "gene": "AT3G21630",
+      "symbol": "CERK1",
+      "n_rare": 1,
+      "classes": {
+        "CDS": 1
+      },
+      "positions": [
+        {
+          "pos": 7618011,
+          "class": "CDS",
+          "carriers_species": 1
+        }
+      ]
+    },
+    {
+      "category": "immunity / microbe perception",
+      "gene": "AT2G33580",
+      "symbol": "LYK5",
+      "n_rare": 0,
+      "classes": {},
+      "positions": []
+    },
+    {
+      "category": "immunity / microbe perception",
+      "gene": "AT1G73080",
+      "symbol": "PEPR1",
+      "n_rare": 0,
+      "classes": {},
+      "positions": []
+    },
+    {
+      "category": "immunity / microbe perception",
+      "gene": "AT2G19190",
+      "symbol": "FRK1",
+      "n_rare": 0,
+      "classes": {},
+      "positions": []
+    },
+    {
+      "category": "immunity / microbe perception",
+      "gene": "AT3G52430",
+      "symbol": "PAD4",
+      "n_rare": 1,
+      "classes": {
+        "CDS": 1
+      },
+      "positions": [
+        {
+          "pos": 19431783,
+          "class": "CDS",
+          "carriers_species": 1
+        }
+      ]
+    },
+    {
+      "category": "immunity / microbe perception",
+      "gene": "AT3G48090",
+      "symbol": "EDS1",
+      "n_rare": 0,
+      "classes": {},
+      "positions": []
+    },
+    {
+      "category": "immunity / microbe perception",
+      "gene": "AT1G74710",
+      "symbol": "ICS1/SID2",
+      "n_rare": 1,
+      "classes": {
+        "intron": 1
+      },
+      "positions": [
+        {
+          "pos": 28072847,
+          "class": "intron",
+          "carriers_species": 5
+        }
+      ]
+    },
+    {
+      "category": "drought / ABA",
+      "gene": "AT4G26080",
+      "symbol": "ABI1",
+      "n_rare": 0,
+      "classes": {},
+      "positions": []
+    },
+    {
+      "category": "drought / ABA",
+      "gene": "AT5G57050",
+      "symbol": "ABI2",
+      "n_rare": 2,
+      "classes": {
+        "promoter": 1,
+        "UTR3": 1
+      },
+      "positions": [
+        {
+          "pos": 23086521,
+          "class": "promoter",
+          "carriers_species": 8
+        },
+        {
+          "pos": 23089477,
+          "class": "UTR3",
+          "carriers_species": 5
+        }
+      ]
+    },
+    {
+      "category": "drought / ABA",
+      "gene": "AT3G14440",
+      "symbol": "NCED3",
+      "n_rare": 0,
+      "classes": {},
+      "positions": []
+    },
+    {
+      "category": "drought / ABA",
+      "gene": "AT1G45249",
+      "symbol": "ABF2/AREB1",
+      "n_rare": 0,
+      "classes": {},
+      "positions": []
+    },
+    {
+      "category": "drought / ABA",
+      "gene": "AT5G05410",
+      "symbol": "DREB2A",
+      "n_rare": 0,
+      "classes": {},
+      "positions": []
+    },
+    {
+      "category": "drought / ABA",
+      "gene": "AT5G52310",
+      "symbol": "RD29A",
+      "n_rare": 1,
+      "classes": {
+        "promoter": 1
+      },
+      "positions": [
+        {
+          "pos": 21240071,
+          "class": "promoter",
+          "carriers_species": 1
+        }
+      ]
+    },
+    {
+      "category": "drought / ABA",
+      "gene": "AT4G33950",
+      "symbol": "OST1/SnRK2.6",
+      "n_rare": 0,
+      "classes": {},
+      "positions": []
+    },
+    {
+      "category": "drought / ABA",
+      "gene": "AT2G26040",
+      "symbol": "PYL2",
+      "n_rare": 1,
+      "classes": {
+        "CDS": 1
+      },
+      "positions": [
+        {
+          "pos": 11095174,
+          "class": "CDS",
+          "carriers_species": 5
+        }
+      ]
+    },
+    {
+      "category": "drought / ABA",
+      "gene": "AT4G17870",
+      "symbol": "PYR1",
+      "n_rare": 0,
+      "classes": {},
+      "positions": []
+    },
+    {
+      "category": "drought / ABA",
+      "gene": "AT5G25610",
+      "symbol": "RD22",
+      "n_rare": 0,
+      "classes": {},
+      "positions": []
+    },
+    {
+      "category": "drought / ABA",
+      "gene": "AT1G20440",
+      "symbol": "COR47",
+      "n_rare": 0,
+      "classes": {},
+      "positions": []
+    },
+    {
+      "category": "drought / ABA",
+      "gene": "AT3G53420",
+      "symbol": "PIP2;1",
+      "n_rare": 0,
+      "classes": {},
+      "positions": []
+    },
+    {
+      "category": "drought / ABA",
+      "gene": "AT2G40170",
+      "symbol": "EM6",
+      "n_rare": 0,
+      "classes": {},
+      "positions": []
+    },
+    {
+      "category": "drought / ABA",
+      "gene": "AT1G52690",
+      "symbol": "LEA",
+      "n_rare": 0,
+      "classes": {},
+      "positions": []
+    },
+    {
+      "category": "root development / auxin",
+      "gene": "AT3G62980",
+      "symbol": "TIR1",
+      "n_rare": 0,
+      "classes": {},
+      "positions": []
+    },
+    {
+      "category": "root development / auxin",
+      "gene": "AT5G20730",
+      "symbol": "ARF7",
+      "n_rare": 3,
+      "classes": {
+        "CDS": 2,
+        "intron": 1
+      },
+      "positions": [
+        {
+          "pos": 7018638,
+          "class": "CDS",
+          "carriers_species": 5
+        },
+        {
+          "pos": 7020055,
+          "class": "intron",
+          "carriers_species": 5
+        },
+        {
+          "pos": 7020887,
+          "class": "CDS",
+          "carriers_species": 6
+        }
+      ]
+    },
+    {
+      "category": "root development / auxin",
+      "gene": "AT1G19220",
+      "symbol": "ARF19",
+      "n_rare": 0,
+      "classes": {},
+      "positions": []
+    },
+    {
+      "category": "root development / auxin",
+      "gene": "AT2G42430",
+      "symbol": "LBD16",
+      "n_rare": 0,
+      "classes": {},
+      "positions": []
+    },
+    {
+      "category": "root development / auxin",
+      "gene": "AT4G14550",
+      "symbol": "IAA14/SLR",
+      "n_rare": 0,
+      "classes": {},
+      "positions": []
+    },
+    {
+      "category": "root development / auxin",
+      "gene": "AT1G73590",
+      "symbol": "PIN1",
+      "n_rare": 0,
+      "classes": {},
+      "positions": []
+    },
+    {
+      "category": "root development / auxin",
+      "gene": "AT2G38120",
+      "symbol": "AUX1",
+      "n_rare": 1,
+      "classes": {
+        "promoter": 1
+      },
+      "positions": [
+        {
+          "pos": 15972235,
+          "class": "promoter",
+          "carriers_species": 1
+        }
+      ]
+    },
+    {
+      "category": "root development / auxin",
+      "gene": "AT1G70560",
+      "symbol": "TAA1",
+      "n_rare": 0,
+      "classes": {},
+      "positions": []
+    },
+    {
+      "category": "root development / auxin",
+      "gene": "AT5G20960",
+      "symbol": "AAO1",
+      "n_rare": 0,
+      "classes": {},
+      "positions": []
+    }
+  ],
+  "gwas_candidates": [
+    {
+      "gene": "AT1G21910",
+      "symbol": "DREB26",
+      "n_rare_cod0": 0,
+      "classes": {}
+    },
+    {
+      "gene": "AT1G43720",
+      "symbol": "AT1G43720",
+      "n_rare_cod0": 0,
+      "classes": {}
+    },
+    {
+      "gene": "AT1G51430",
+      "symbol": "AT1G51430",
+      "n_rare_cod0": 1,
+      "classes": {
+        "intron": 1
+      }
+    },
+    {
+      "gene": "AT1G58007",
+      "symbol": "AT1G58007",
+      "n_rare_cod0": 1,
+      "classes": {
+        "promoter": 1
+      }
+    },
+    {
+      "gene": "AT1G62770",
+      "symbol": "AT1G62770",
+      "n_rare_cod0": 0,
+      "classes": {}
+    },
+    {
+      "gene": "AT1G77660",
+      "symbol": "AT1G77660",
+      "n_rare_cod0": 1,
+      "classes": {
+        "CDS": 1
+      }
+    },
+    {
+      "gene": "AT1G77810",
+      "symbol": "AT1G77810",
+      "n_rare_cod0": 0,
+      "classes": {}
+    },
+    {
+      "gene": "AT1G77815",
+      "symbol": "AT1G77815",
+      "n_rare_cod0": 0,
+      "classes": {}
+    },
+    {
+      "gene": "AT2G06025",
+      "symbol": "AT2G06025",
+      "n_rare_cod0": 1,
+      "classes": {
+        "intron": 1
+      }
+    },
+    {
+      "gene": "AT2G06095",
+      "symbol": "AT2G06095",
+      "n_rare_cod0": 1,
+      "classes": {
+        "intron": 1
+      }
+    },
+    {
+      "gene": "AT2G07213",
+      "symbol": "AT2G07213",
+      "n_rare_cod0": 0,
+      "classes": {}
+    },
+    {
+      "gene": "AT2G18550",
+      "symbol": "HB21",
+      "n_rare_cod0": 0,
+      "classes": {}
+    },
+    {
+      "gene": "AT2G18570",
+      "symbol": "AT2G18570",
+      "n_rare_cod0": 0,
+      "classes": {}
+    },
+    {
+      "gene": "AT2G36490",
+      "symbol": "DML1",
+      "n_rare_cod0": 0,
+      "classes": {}
+    },
+    {
+      "gene": "AT3G06845",
+      "symbol": "AT3G06845",
+      "n_rare_cod0": 0,
+      "classes": {}
+    },
+    {
+      "gene": "AT3G15115",
+      "symbol": "AT3G15115",
+      "n_rare_cod0": 0,
+      "classes": {}
+    },
+    {
+      "gene": "AT3G26020",
+      "symbol": "AT3G26020",
+      "n_rare_cod0": 0,
+      "classes": {}
+    },
+    {
+      "gene": "AT3G26050",
+      "symbol": "AT3G26050",
+      "n_rare_cod0": 0,
+      "classes": {}
+    },
+    {
+      "gene": "AT3G30247",
+      "symbol": "AT3G30247",
+      "n_rare_cod0": 0,
+      "classes": {}
+    },
+    {
+      "gene": "AT3G48630",
+      "symbol": "AT3G48630",
+      "n_rare_cod0": 0,
+      "classes": {}
+    },
+    {
+      "gene": "AT3G57587",
+      "symbol": "AT3G57587",
+      "n_rare_cod0": 0,
+      "classes": {}
+    },
+    {
+      "gene": "AT5G23960",
+      "symbol": "TPS21",
+      "n_rare_cod0": 0,
+      "classes": {}
+    },
+    {
+      "gene": "AT5G38950",
+      "symbol": "AT5G38950",
+      "n_rare_cod0": 0,
+      "classes": {}
+    },
+    {
+      "gene": "AT5G40740",
+      "symbol": "AUG6",
+      "n_rare_cod0": 0,
+      "classes": {}
+    },
+    {
+      "gene": "AT5G48640",
+      "symbol": "AT5G48640",
+      "n_rare_cod0": 1,
+      "classes": {
+        "CDS": 1
+      }
+    },
+    {
+      "gene": "AT5G48650",
+      "symbol": "AT5G48650",
+      "n_rare_cod0": 2,
+      "classes": {
+        "promoter": 2
+      }
+    },
+    {
+      "gene": "AT5G60600",
+      "symbol": "HDS",
+      "n_rare_cod0": 0,
+      "classes": {}
+    },
+    {
+      "gene": "AT5G66070",
+      "symbol": "AT5G66070",
+      "n_rare_cod0": 1,
+      "classes": {
+        "CDS": 1
+      }
+    }
+  ],
+  "shared_with_high_rescuers": {
+    "n_sites": 134,
+    "genes": [
+      {
+        "gene": "AT5G41610",
+        "symbol": "CHX18",
+        "n": 17,
+        "classes": "CDS,UTR3",
+        "allies": "Cho-0,IP-Cap-1"
+      },
+      {
+        "gene": "AT2G21235",
+        "symbol": "AT2G21235",
+        "n": 5,
+        "classes": "promoter",
+        "allies": "Chat-1,IP-Cap-1"
+      },
+      {
+        "gene": "AT3G13950",
+        "symbol": "AT3G13950",
+        "n": 4,
+        "classes": "CDS,UTR5,promoter",
+        "allies": "Chat-1,Cho-0"
+      },
+      {
+        "gene": "AT2G18840",
+        "symbol": "AT2G18840",
+        "n": 4,
+        "classes": "UTR5,intron,promoter",
+        "allies": "BI-4,Chat-1"
+      },
+      {
+        "gene": "AT1G62800",
+        "symbol": "ASP4",
+        "n": 3,
+        "classes": "CDS,intron",
+        "allies": "Chat-1,IP-Cap-1"
+      },
+      {
+        "gene": "AT2G28050",
+        "symbol": "AT2G28050",
+        "n": 3,
+        "classes": "CDS,promoter",
+        "allies": "Cho-0,IP-Cap-1"
+      },
+      {
+        "gene": "AT2G25360",
+        "symbol": "AT2G25360",
+        "n": 3,
+        "classes": "CDS,promoter",
+        "allies": "Cho-0,IP-Cap-1"
+      },
+      {
+        "gene": "AT3G13970",
+        "symbol": "APG12B",
+        "n": 3,
+        "classes": "CDS,intron,promoter",
+        "allies": "Chat-1,Cho-0"
+      },
+      {
+        "gene": "AT5G41612",
+        "symbol": "AT5G41612",
+        "n": 3,
+        "classes": "exon,promoter",
+        "allies": "Cho-0,IP-Cap-1"
+      },
+      {
+        "gene": "AT3G49250",
+        "symbol": "DMS3",
+        "n": 3,
+        "classes": "CDS,UTR3,intron",
+        "allies": "Chat-1,IP-Cap-1"
+      },
+      {
+        "gene": "AT5G41605",
+        "symbol": "",
+        "n": 3,
+        "classes": "promoter",
+        "allies": "Cho-0,IP-Cap-1"
+      },
+      {
+        "gene": "AT3G14010",
+        "symbol": "CID4",
+        "n": 3,
+        "classes": "UTR5,promoter",
+        "allies": "Chat-1,Cho-0"
+      },
+      {
+        "gene": "AT2G21230",
+        "symbol": "AT2G21230",
+        "n": 3,
+        "classes": "CDS,promoter",
+        "allies": "Chat-1,IP-Cap-1"
+      },
+      {
+        "gene": "AT2G18876",
+        "symbol": "AT2G18876",
+        "n": 3,
+        "classes": "intron,promoter",
+        "allies": "BI-4,Chat-1"
+      },
+      {
+        "gene": "AT1G56680",
+        "symbol": "AT1G56680",
+        "n": 2,
+        "classes": "promoter",
+        "allies": "Chat-1,Cho-0"
+      },
+      {
+        "gene": "AT3G13830",
+        "symbol": "AT3G13830",
+        "n": 2,
+        "classes": "CDS,promoter",
+        "allies": "Chat-1,Cho-0"
+      },
+      {
+        "gene": "AT4G19410",
+        "symbol": "AT4G19410",
+        "n": 2,
+        "classes": "CDS,intron",
+        "allies": "Chat-1,IP-Cap-1"
+      },
+      {
+        "gene": "AT3G49240",
+        "symbol": "emb1796",
+        "n": 2,
+        "classes": "CDS,promoter",
+        "allies": "Chat-1,IP-Cap-1"
+      },
+      {
+        "gene": "AT1G62810",
+        "symbol": "CuAO1",
+        "n": 2,
+        "classes": "UTR3,promoter",
+        "allies": "Chat-1,IP-Cap-1"
+      },
+      {
+        "gene": "AT1G31360",
+        "symbol": "RECQL2",
+        "n": 2,
+        "classes": "CDS,intron",
+        "allies": "BI-4,IP-Cap-1"
+      },
+      {
+        "gene": "AT2G46800",
+        "symbol": "ZAT",
+        "n": 2,
+        "classes": "promoter",
+        "allies": "Cho-0,IP-Cap-1"
+      },
+      {
+        "gene": "AT2G25344",
+        "symbol": "LCR14",
+        "n": 2,
+        "classes": "CDS,intron",
+        "allies": "Cho-0,IP-Cap-1"
+      },
+      {
+        "gene": "AT2G18850",
+        "symbol": "AT2G18850",
+        "n": 2,
+        "classes": "intron",
+        "allies": "BI-4,Chat-1"
+      },
+      {
+        "gene": "AT2G26960",
+        "symbol": "MYB81",
+        "n": 2,
+        "classes": "CDS,promoter",
+        "allies": "Cho-0,IP-Cap-1"
+      },
+      {
+        "gene": "AT2G46830",
+        "symbol": "CCA1",
+        "n": 2,
+        "classes": "CDS,UTR5",
+        "allies": "Cho-0,IP-Cap-1"
+      },
+      {
+        "gene": "AT2G46880",
+        "symbol": "PAP14",
+        "n": 2,
+        "classes": "CDS,promoter",
+        "allies": "Cho-0,IP-Cap-1"
+      },
+      {
+        "gene": "AT3G13930",
+        "symbol": "AT3G13930",
+        "n": 2,
+        "classes": "CDS,UTR3",
+        "allies": "Chat-1,Cho-0"
+      },
+      {
+        "gene": "AT3G13882",
+        "symbol": "AT3G13882",
+        "n": 2,
+        "classes": "CDS",
+        "allies": "Chat-1,Cho-0"
+      },
+      {
+        "gene": "AT3G14020",
+        "symbol": "NF-YA6",
+        "n": 2,
+        "classes": "CDS,promoter",
+        "allies": "Chat-1,Cho-0"
+      },
+      {
+        "gene": "AT3G45570",
+        "symbol": "AT3G45570",
+        "n": 2,
+        "classes": "promoter",
+        "allies": "BI-4,Chat-1"
+      },
+      {
+        "gene": "AT3G49230",
+        "symbol": "AT3G49230",
+        "n": 2,
+        "classes": "UTR3,UTR5",
+        "allies": "Chat-1,IP-Cap-1"
+      },
+      {
+        "gene": "AT1G56690",
+        "symbol": "AT1G56690",
+        "n": 1,
+        "classes": "promoter",
+        "allies": "Chat-1,Cho-0"
+      },
+      {
+        "gene": "AT1G29290",
+        "symbol": "AT1G29290",
+        "n": 1,
+        "classes": "UTR3",
+        "allies": "Cho-0,IP-Cap-1"
+      },
+      {
+        "gene": "AT1G27870",
+        "symbol": "AT1G27870",
+        "n": 1,
+        "classes": "promoter",
+        "allies": "Cho-0,IP-Cap-1"
+      },
+      {
+        "gene": "AT2G22190",
+        "symbol": "TPPE",
+        "n": 1,
+        "classes": "intron",
+        "allies": "Cho-0,IP-Cap-1"
+      },
+      {
+        "gene": "AT2G18830",
+        "symbol": "AT2G18830",
+        "n": 1,
+        "classes": "promoter",
+        "allies": "BI-4,Chat-1"
+      },
+      {
+        "gene": "AT2G09970",
+        "symbol": "AT2G09970",
+        "n": 1,
+        "classes": "CDS",
+        "allies": "Chat-1,Cho-0"
+      },
+      {
+        "gene": "AT2G08190",
+        "symbol": "AT2G08190",
+        "n": 1,
+        "classes": "promoter",
+        "allies": "Cho-0,IP-Cap-1"
+      },
+      {
+        "gene": "AT1G62830",
+        "symbol": "LDL1",
+        "n": 1,
+        "classes": "CDS",
+        "allies": "Chat-1,IP-Cap-1"
+      },
+      {
+        "gene": "AT3G02610",
+        "symbol": "AT3G02610",
+        "n": 1,
+        "classes": "promoter",
+        "allies": "Cho-0,IP-Cap-1"
+      }
+    ]
+  },
+  "relatives": [
+    {
+      "name": "IP-Mur-0",
+      "gid": 9562,
+      "kinship": 6.538346154359772,
+      "shoot_rescue_mean": 0.1918878811244354
+    },
+    {
+      "name": "IP-Bis-0",
+      "gid": 9525,
+      "kinship": 6.505814079451041,
+      "shoot_rescue_mean": 0.1861924686192468
+    },
+    {
+      "name": "IP-Ria-0",
+      "gid": 9577,
+      "kinship": 6.4940732239590435,
+      "shoot_rescue_mean": 0.2532198712051519
+    },
+    {
+      "name": "Pru-0",
+      "gid": 9886,
+      "kinship": 6.478120237216575,
+      "shoot_rescue_mean": 0.2202512934220251
+    },
+    {
+      "name": "Moe-0",
+      "gid": 9868,
+      "kinship": 6.450808258698787,
+      "shoot_rescue_mean": 0.2629996994289148
+    },
+    {
+      "name": "IP-Bar-1",
+      "gid": 9521,
+      "kinship": 6.4409902905516905,
+      "shoot_rescue_mean": 0.2503214744963565
+    },
+    {
+      "name": "Hec-0",
+      "gid": 9850,
+      "kinship": 6.430197309970636,
+      "shoot_rescue_mean": 0.184445237245808
+    },
+    {
+      "name": "IP-Hor-0",
+      "gid": 9547,
+      "kinship": 6.413059964188113,
+      "shoot_rescue_mean": 0.4819506016466118
+    },
+    {
+      "name": "Se-0",
+      "gid": 6961,
+      "kinship": 6.411057602668675,
+      "shoot_rescue_mean": 0.2025964299088752
+    },
+    {
+      "name": "Aru-0",
+      "gid": 9821,
+      "kinship": 6.390644370179618,
+      "shoot_rescue_mean": 0.3634045077105575
+    }
+  ],
+  "relatives_mean_shoot_rescue": 0.25972694648079836,
+  "panel_mean_shoot_rescue": 0.2541920499236442,
+  "col0_kinship_to_cod0": 6.254394620710825,
+  "heritability_reml": {
+    "shoot_rescue": {
+      "h2": 0.178,
+      "lrt": 5.129947670407846,
+      "p": 0.011758218338536679,
+      "n": 237
+    },
+    "shoot_canonical_rescue": {
+      "h2": 0.185,
+      "lrt": 5.478618369697396,
+      "p": 0.00962523437423051,
+      "n": 237
+    },
+    "shoot_log_promotion_drought": {
+      "h2": 0.257,
+      "lrt": 4.100300598970771,
+      "p": 0.021437794952808863,
+      "n": 237
+    },
+    "shoot_mock_drought_loss": {
+      "h2": 0.32,
+      "lrt": 3.6002537139136406,
+      "p": 0.02888537688929075,
+      "n": 237
+    },
+    "shoot_log_promotion_nonstress": {
+      "h2": 0.5,
+      "lrt": 4.584029540577649,
+      "p": 0.016135620371516335,
+      "n": 237
+    },
+    "root_rescue": {
+      "h2": 0.32,
+      "lrt": 9.442609442509157,
+      "p": 0.001060008231070009,
+      "n": 236
+    },
+    "root_mock_drought_loss": {
+      "h2": 0.219,
+      "lrt": 3.2027515984936583,
+      "p": 0.036757244138790716,
+      "n": 236
+    },
+    "shoot_log_MN": {
+      "h2": 0.982,
+      "lrt": 23.994675983604694,
+      "p": 4.830122785593605e-07,
+      "n": 237
+    }
+  }
+}
